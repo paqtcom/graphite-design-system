@@ -2,6 +2,10 @@
   "name": "@w2wds/core",
   "version": "0.1.0",
   "description": "Base components for the Way2Web Design System",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Way2Web/way2web-design-system.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
