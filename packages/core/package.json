@@ -26,6 +26,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@stencil/angular-output-target": "0.0.5",
     "@stencil/react-output-target": "0.0.9",
     "@types/jest": "^26.0.10",
     "@types/puppeteer": "2.0.1",
