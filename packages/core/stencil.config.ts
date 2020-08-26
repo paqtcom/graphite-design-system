@@ -13,13 +13,12 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@w2wds/core',
       proxiesFile: '../react/src/components.ts',
+      includeDefineCustomElements: true,
+      includePolyfills: true, // Enable if needed
     }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements-bundle',
     },
     {
       type: 'docs-readme',
