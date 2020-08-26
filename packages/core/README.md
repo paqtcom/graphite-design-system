@@ -43,14 +43,22 @@ The first step for all three of these strategies is to [publish to NPM](https://
 
 ### Script tag
 
-- Put a script tag similar to this `<script src='https://unpkg.com/@w2wds/core@0.0.1/dist/core.js'></script>` in the head of your index.html
+- Put a script tag similar to this `<script src='https://unpkg.com/@w2wds/core@latest/dist/core.js'></script>` in the head of your index.html
 - Then you can use the element anywhere in your template, JSX, html etc
+- For example:
+  ```html
+  <way-button href="https://www.way2web.nl">Way2Web</way-button>
+  ```
 
 ### Node Modules
 
 - Run `npm install @w2wds/core --save`
 - Put a script tag similar to this `<script src='node_modules/@w2wds/core/dist/core.js'></script>` in the head of your index.html
 - Then you can use the element anywhere in your template, JSX, html etc
+- For example:
+  ```html
+  <way-button href="https://www.way2web.nl">Way2Web</way-button>
+  ```
 
 ### In a stencil-starter app
 
