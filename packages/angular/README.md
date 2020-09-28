@@ -2,7 +2,7 @@
 
 # @w2wds/angular
 
-These are Angular specific building blocks on top of @w2wds/core components.
+These are Angular specific building blocks on top of [@w2wds/core](../core/README.md) components.
 
 ## Using these components
 
@@ -18,7 +18,7 @@ Or:
 yarn add @w2wds/angular
 ```
 
-Import the Way2WebDesignSystemModule module in your `app.module.ts`:
+Import the `Way2WebDesignSystemModule` module in your `app.module.ts`:
 
 ```js
 import { Way2WebDesignSystemModule } from '@w2wds/angular';

@@ -2,7 +2,7 @@
 
 # @w2wds/react
 
-These are React specific building blocks on top of @w2wds/core components.
+These are React specific building blocks on top of [@w2wds/core](../core/README.md) components.
 
 ## Using these components
 
