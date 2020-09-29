@@ -35,7 +35,7 @@ We list a few options below, [check the Stencil docs for all the possibilities](
 
   ```js
   // Import Way2Web Web Components
-  import { applyPolyfills, defineCustomElements } from '@w2wds/loader';
+  import { applyPolyfills, defineCustomElements } from '@w2wds/core/loader';
   // ...
   // configure Vue.js to ignore Way2Web Web Components
   Vue.config.ignoredElements = [/way-\w*/];
@@ -87,6 +87,10 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
 
 <small>[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=two-way-binding)</small>
+
+#### Codesandbox example
+
+An example of the default setup: https://codesandbox.io/s/w2wds-vue-2-example-d56t6
 
 ### Vue 3
 
