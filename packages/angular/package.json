@@ -1,6 +1,6 @@
 {
   "name": "@w2wds/angular",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Angular specific wrapper for the components of the Way2Web Design System",
   "repository": {
     "type": "git",
@@ -28,20 +28,20 @@
     "dist/"
   ],
   "dependencies": {
-    "@w2wds/core": "^0.2.0",
+    "@w2wds/core": "^0.2.1",
     "tslib": "^1.9.3"
   },
   "peerDependencies": {
     "@angular-devkit/core": "^7.2.1",
     "@angular-devkit/schematics": "^7.2.1",
-    "@angular/core": "^7.2.1",
     "@angular/common": "^7.2.1",
-    "@angular/forms": "^7.2.1",
-    "@angular/router": "^7.2.1",
     "@angular/compiler": "^7.2.1",
     "@angular/compiler-cli": "^7.2.1",
+    "@angular/core": "^7.2.1",
+    "@angular/forms": "^7.2.1",
     "@angular/platform-browser": "^7.2.1",
     "@angular/platform-browser-dynamic": "^7.2.1",
+    "@angular/router": "^7.2.1",
     "rxjs": ">=6.2.0",
     "zone.js": "^0.8.26"
   },
