@@ -5,7 +5,7 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@w2wds/core';
 
-import { applyPolyfills, defineCustomElements } from '@w2wds/core/loader';
+import { defineCustomElements } from '@w2wds/core/loader';
 
-applyPolyfills().then(() => defineCustomElements());
+defineCustomElements();
 export const WayButton = /*@__PURE__*/createReactComponent<JSX.WayButton, HTMLWayButtonElement>('way-button');

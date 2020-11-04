@@ -39,6 +39,10 @@ Use the component(s) you want in your html:
 <way-button href="https://www.way2web.nl">Way2Web</way-button>
 ```
 
+### CodeSandbox example
+
+An example of this setup: https://codesandbox.io/s/w2wds-angular-example-tvyud
+
 ## How to release a new version
 
 - Build the core package

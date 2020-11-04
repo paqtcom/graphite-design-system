@@ -1,10 +1,10 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { angularOutputTarget } from '@stencil/angular-output-target';
+import { vueOutputTarget } from "@stencil/vue-output-target";
 
 export const config: Config = {
   namespace: 'core',
-  taskQueue: 'async',
   outputTargets: [
     angularOutputTarget({
       componentCorePackage: '@w2wds/core',
@@ -14,7 +14,13 @@ export const config: Config = {
       componentCorePackage: '@w2wds/core',
       proxiesFile: '../react/src/components.ts',
       includeDefineCustomElements: true,
-      includePolyfills: true, // Enable if needed
+      includePolyfills: false,
+    }),
+    vueOutputTarget({
+      componentCorePackage: '@w2wds/core',
+      proxiesFile: '../vue/src/proxies.ts',
+      includeDefineCustomElements: true,
+      includePolyfills: false,
     }),
     {
       type: 'dist',

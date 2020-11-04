@@ -4,7 +4,7 @@
 
 The Way2Web Design System (w2wds) Core package contains the Web Components that make up the reusable UI building blocks of the Way2Web Design System. These components are designed to be used in traditional frontend view libraries/frameworks (such as Stencil, React, Angular, or Vue), or on their own through traditional JavaScript in the browser.
 
-# Stencil
+## Stencil
 
 Stencil is a compiler for building fast web apps using Web Components.
 
@@ -12,21 +12,53 @@ Stencil combines the best concepts of the most popular frontend frameworks into 
 
 Stencil components are just Web Components, so they work in any major framework or with no framework at all.
 
-## Using these components
+## Browser Support
 
-We list a few options below, [check the Stencil docs for all the possibilities](https://stenciljs.com/docs/overview).
+We support these browsers: https://browserslist.dev/?q=ZGVmYXVsdHMsIG5vdCBpZSAxMQ%3D%3D
+
+```bash
+npx browserslist "defaults, not ie 11"
+```
+
+So it doesn't run on legacy browsers: IE11, Edge 18 & below (Edge before it moved to Chromium), and Safari 10.
+
+The advantage of this is we have less runtime within our builds, and having faster production builds by not having to also downlevel to es5. Plus you don't need any polyfills.
+
+If you really need support for these legacy browsers, let us know, and we might consider it.
+
+## Using these components
 
 ### Script tag
 
 - Put a script tag similar to this in the head of your index.html:
   ```html
-  <script src="https://unpkg.com/@w2wds/core@latest/dist/core.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.esm.js"></script>
   ```
-- Then you can use the element anywhere in your template, JSX, html etc
+- Then you can use the elements anywhere in your template, JSX, html etc.
 - For example:
   ```html
   <way-button href="https://www.way2web.nl">Way2Web</way-button>
   ```
+
+#### CodeSandbox example
+
+An example of this setup: https://codesandbox.io/s/w2wds-script-tag-example-zx09l
+
+### Angular
+
+Use the [Angular bindings](../angular/README.md).
+
+### React
+
+Use the [React bindings](../react/README.md).
+
+### Svelte
+
+Svelte bindings are possible. Please let us know if you would like them, and we will consider them.
+
+### Vue 3
+
+Use the [Vue bindings](../vue/README.md).
 
 ### Vue 2
 
@@ -35,14 +67,12 @@ We list a few options below, [check the Stencil docs for all the possibilities](
 
   ```js
   // Import Way2Web Web Components
-  import { applyPolyfills, defineCustomElements } from '@w2wds/core/loader';
+  import { defineCustomElements } from '@w2wds/core/loader';
   // ...
   // configure Vue.js to ignore Way2Web Web Components
   Vue.config.ignoredElements = [/way-\w*/];
   // Register Way2Web Web Components
-  applyPolyfills().then(() => {
-    defineCustomElements(window);
-  });
+  defineCustomElements(window);
 
   new Vue({
     render: h => h(App),
@@ -62,6 +92,10 @@ We list a few options below, [check the Stencil docs for all the possibilities](
 
 _Vue provides several different ways to install and use the framework in an application. The above technique for integrating a Stencil custom element library has been tested on a Vue 2 application that was created using the vue-cli with ES2015 and WebPack as primary options. A similar technique should work if the application was generated using other options._
 
+#### CodeSandbox example
+
+An example of this setup: https://codesandbox.io/s/w2wds-vue2-example-mkbm4
+
 #### Binding Complex Data
 
 When binding complex data such as objects and arrays, use the `.prop` modifier to make Vue bind them as a property instead of an attribute:
@@ -70,7 +104,7 @@ When binding complex data such as objects and arrays, use the `.prop` modifier t
 <way-select :options.prop="myOptions" />
 ```
 
-<small>[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)</small>
+_[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)_
 
 #### Two-way Binding
 
@@ -86,52 +120,8 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
 
-<small>[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=two-way-binding)</small>
-
-#### Codesandbox example
-
-An example of the default setup: https://codesandbox.io/s/w2wds-vue-2-example-d56t6
-
-### Vue 3
-
-Vue 3 bindings are coming, which will provide better DX.
-
-### React
-
-Use the [React framework bindings](../react/README.md)
-
-### Angular
-
-Use the [Angular framework bindings](../angular/README.md)
-
-### Svelte
-
-Svelte bindings are possible. Please let us know if you would like them, and we will consider them.
+_[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)_
 
 ## Development
 
-To start building the components using Stencil, clone this repo to a new directory:
-
-```bash
-git clone https://github.com/Way2Web/way2web-design-system.git way2web-design-system
-cd way2web-design-system
-```
-
-```bash
-npm install
-npm start
-```
-
-To build the components for production, run:
-
-```bash
-npm run build
-```
-
-To run the unit & e2e tests for the components, run:
-
-```bash
-npm test
-```
-
-Need help? Check out the docs [here](https://stenciljs.com/docs/my-first-component).
+Follow the [instructions in the root of this repo](../../README.md).

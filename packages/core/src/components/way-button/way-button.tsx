@@ -10,7 +10,7 @@ export class WayButton {
    * Set to `"outline"` for a transparent button with a border, or to `"solid"`.
    * The default style is `"solid"`.
    */
-  @Prop({ reflectToAttr: true, mutable: true }) fill?: 'outline' | 'solid';
+  @Prop({ reflect: true, mutable: true }) fill?: 'outline' | 'solid';
 
   /**
    * Contains a URL or a URL fragment that the hyperlink points to.
