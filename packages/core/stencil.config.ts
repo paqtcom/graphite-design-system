@@ -27,6 +27,9 @@ export const config: Config = {
       esmLoaderPath: '../loader',
     },
     {
+      type: 'dist-hydrate-script'
+    },
+    {
       type: 'docs-readme',
     },
     {
