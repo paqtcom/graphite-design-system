@@ -1,6 +1,6 @@
 {
   "name": "@w2wds/core",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Base components for the Way2Web Design System",
   "repository": {
     "type": "git",
@@ -16,7 +16,8 @@
   "collection:main": "dist/collection/index.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "hydrate/"
   ],
   "scripts": {
     "build": "stencil build --docs",
