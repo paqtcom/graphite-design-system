@@ -19,7 +19,7 @@ export const config: Config = {
     vueOutputTarget({
       componentCorePackage: '@w2wds/core',
       proxiesFile: '../vue/src/proxies.ts',
-      includeDefineCustomElements: true,
+      includeDefineCustomElements: false,
       includePolyfills: false,
     }),
     {

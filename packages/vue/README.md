@@ -18,6 +18,20 @@ Or:
 yarn add @w2wds/vue
 ```
 
+Edit the `main.js` file of a Vue 3 project like this:
+
+```js
+import { createApp } from "vue";
+import App from "./App.vue";
+import { defineCustomElements } from "@w2wds/core/loader";
+
+const app = createApp(App);
+
+defineCustomElements().then(() => {
+  app.mount("#app");
+});
+```
+
 Import the component(s) you want to use:
 
 ```js
