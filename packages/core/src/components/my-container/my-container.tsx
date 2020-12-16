@@ -47,7 +47,7 @@ export class MyContainer {
         <way-form ref={el => (this.formEl = el)} onValueChange={e => (this.formState = e.detail)}>
           <h3>the form</h3>
           <way-select
-            name="derp"
+            name="mySelection"
             form={true} // important for way-form to interact with component
             options={this.selectOptions}
             onValueChange={e => this.updateSelected(e)}

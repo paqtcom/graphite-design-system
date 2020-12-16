@@ -19,8 +19,7 @@ export interface IselectConfig {
 @Component({
   tag: 'way-select',
   styleUrl: 'way-select.scss',
-  shadow: false,
-  scoped: true,
+  shadow: true,
 })
 export class W2wSelect {
   private optionListEl?: HTMLInputElement;
@@ -55,7 +54,7 @@ export class W2wSelect {
   }
 
   @Listen('click', { target: 'window' })
-  handleOutsideClick(e: { target: HTMLInputElement }) {
+  handleOutsideClick() {
     // if this component has a parent component, e.target is parent instead of this.
     // Therefore we cannot check for this.el !== e.target
     this.hasFocus = false;
@@ -78,7 +77,7 @@ export class W2wSelect {
   }
 
   @Event({ bubbles: true }) valueChange: EventEmitter<IFormElementData>;
-  private valueSelectedHandler(selectedValues) {
+  private valueSelectedHandler() {
     this.valueChange.emit({
       name: this.name,
       value: this.cleanData(),
@@ -91,7 +90,7 @@ export class W2wSelect {
     this.filteredOptions = [...this.options].filter(option => option.label.indexOf(this.inputValue) !== -1);
     this.markSelectedOptions();
     this.sortFilteredOptions();
-    this.valueSelectedHandler(this.localSelected);
+    this.valueSelectedHandler();
   }
 
   private sortFilteredOptions() {
