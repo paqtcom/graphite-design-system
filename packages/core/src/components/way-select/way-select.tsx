@@ -71,7 +71,6 @@ export class W2wSelect {
   private delayedFocus() {
     setTimeout(() => {
       this.hasFocus = true;
-      //todo set to this.scrollPos
       this.optionListEl.scrollTop = this.scrollPos;
     }, 0);
   }
