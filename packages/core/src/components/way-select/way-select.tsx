@@ -124,7 +124,7 @@ export class W2wSelect {
    * @param {ISelectOption} option
    */
   private removeTagListener(option) {
-    this.localSelected = [...this.localSelected].filter(selectedOption => selectedOption.value != option.value);
+    this.localSelected = this.localSelected.filter(selectedOption => selectedOption.value != option.value);
     this.updateOptions();
   }
 
