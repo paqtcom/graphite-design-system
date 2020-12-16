@@ -1,20 +1,7 @@
 import { Component, Method, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
-import { IFormElementData } from '../../types/forms';
+import { IFormElementData } from '../../types/form';
 import Fragment from '../way-fragment/way-fragment';
-
-export interface ISelectOption {
-  label: string;
-  value: any;
-  selected?: boolean;
-}
-
-export interface IselectConfig {
-  selectedText?: string;
-  multi?: boolean;
-  maxTagWidth?: string;
-  maxTags?: number;
-  tagColor?: string;
-}
+import { ISelectOption, ISelectConfig } from '../../types/select';
 
 @Component({
   tag: 'way-select',
@@ -27,7 +14,7 @@ export class W2wSelect {
   @Element() el: HTMLElement;
 
   @Prop() options?: Array<ISelectOption> = [];
-  @Prop() config?: IselectConfig = {};
+  @Prop() config?: ISelectConfig = {};
   @Prop() validation?: (value: any) => string[];
   @Prop() value?: Array<{ label: string; value: any }>;
   // used for w2w-form
@@ -38,7 +25,7 @@ export class W2wSelect {
   @State() hasFocus = false;
   @State() filteredOptions: Array<ISelectOption> = this.options;
   @State() localSelected: Array<ISelectOption> = [];
-  @State() localConfig: IselectConfig = {
+  @State() localConfig: ISelectConfig = {
     selectedText: 'selected',
     maxTagWidth: '10rem',
     tagColor: 'green',

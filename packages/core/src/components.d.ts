@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IselectConfig, ISelectOption } from "./components/way-select/way-select";
-import { IFormElementData } from "./types/forms";
+import { ISelectConfig, ISelectOption } from "./types/select";
+import { IFormElementData } from "./types/form";
 export namespace Components {
     interface MyContainer {
         "getVal": () => Promise<{}>;
@@ -33,7 +33,7 @@ export namespace Components {
         "getVal": () => Promise<{}>;
     }
     interface WaySelect {
-        "config"?: IselectConfig;
+        "config"?: ISelectConfig;
         "form"?: boolean;
         "getVal": () => Promise<ISelectOption[]>;
         "name"?: string;
@@ -99,7 +99,7 @@ declare namespace LocalJSX {
         "onValueChange"?: (event: CustomEvent<object>) => void;
     }
     interface WaySelect {
-        "config"?: IselectConfig;
+        "config"?: ISelectConfig;
         "form"?: boolean;
         "name"?: string;
         "onValueChange"?: (event: CustomEvent<IFormElementData>) => void;

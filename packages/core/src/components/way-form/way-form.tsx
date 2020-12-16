@@ -1,5 +1,5 @@
 import { Component, Method, Event, EventEmitter, Element, h, State } from '@stencil/core';
-import { IFormElement, IFormElementData } from '../../types/forms';
+import { IFormElement, IFormElementData } from '../../types/form';
 
 @Component({
   tag: 'way-form',

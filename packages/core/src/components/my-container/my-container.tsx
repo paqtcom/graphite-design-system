@@ -1,5 +1,5 @@
 import { Component, Method, State, h } from '@stencil/core';
-import { IFormElementData } from '../../types/forms';
+import { IFormElementData } from '../../types/form';
 
 @Component({
   tag: 'my-container',
@@ -71,7 +71,9 @@ export class MyContainer {
         })}
         <hr />
         <h4>w2-form value:</h4>
-        {JSON.stringify(this.formState)}
+        <code>
+          {JSON.stringify(this.formState)}
+        </code>
       </div>
     );
   }
