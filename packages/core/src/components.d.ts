@@ -24,6 +24,12 @@ export namespace Components {
          */
         "target": string | undefined;
     }
+    interface WayInput {
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to.
+         */
+        "type": string | undefined;
+    }
 }
 declare global {
     interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
@@ -32,8 +38,15 @@ declare global {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
     };
+    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
+    }
+    var HTMLWayInputElement: {
+        prototype: HTMLWayInputElement;
+        new (): HTMLWayInputElement;
+    };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
+        "way-input": HTMLWayInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -55,8 +68,15 @@ declare namespace LocalJSX {
          */
         "target"?: string | undefined;
     }
+    interface WayInput {
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to.
+         */
+        "type"?: string | undefined;
+    }
     interface IntrinsicElements {
         "way-button": WayButton;
+        "way-input": WayInput;
     }
 }
 export { LocalJSX as JSX };
@@ -64,6 +84,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
         }
     }
 }
