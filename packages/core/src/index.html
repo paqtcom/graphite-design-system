@@ -8,9 +8,13 @@
     <script type="module" src="/build/core.esm.js"></script>
     <script nomodule src="/build/core.js"></script>
 
+     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
       :root {
-        --way-font-family: Helvetica;
+        --way-font-family: 'Ubuntu', sans-serif;
+        --way-font-size: 15px;
       }
     </style>
   </head>
@@ -22,7 +26,20 @@
     <way-button href="https://github.com/way2web" target="_blank" fill="outline">
       Way2Web GitHub
     </way-button>
+
     <way-input type="text">
+      <label slot="label">
+        Label:
+      </label>
+    </way-input>
+
+    <way-input type="text" inline="true">
+      <label slot="label">
+        Label:
+      </label>
+    </way-input>
+
+     <way-input type="text" disabled="true">
       <label slot="label">
         Label:
       </label>

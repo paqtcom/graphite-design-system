@@ -26,7 +26,15 @@ export namespace Components {
     }
     interface WayInput {
         /**
-          * Contains a URL or a URL fragment that the hyperlink points to.
+          * Specifies what if input is disabled.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies what if label and input must be inline.
+         */
+        "inline": boolean;
+        /**
+          * Specifies what type of input to use.
          */
         "type": string | undefined;
     }
@@ -70,7 +78,15 @@ declare namespace LocalJSX {
     }
     interface WayInput {
         /**
-          * Contains a URL or a URL fragment that the hyperlink points to.
+          * Specifies what if input is disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies what if label and input must be inline.
+         */
+        "inline"?: boolean;
+        /**
+          * Specifies what type of input to use.
          */
         "type"?: string | undefined;
     }

@@ -6,29 +6,49 @@ import { Component, Host, h, Prop, State } from '@stencil/core';
   shadow: true,
 })
 export class Wayinput {
-
   /**
-   * Contains a URL or a URL fragment that the hyperlink points to.
+   * Specifies what type of input to use.
    */
   @Prop() type: string | undefined;
 
-  @State() value: string;
+  /**
+   * Specifies what if input is disabled.
+   */
+  @Prop() disabled: boolean;
 
+  /**
+   * Specifies what if label and input must be inline.
+   */
+  @Prop() inline: boolean;
+
+  @State() value: string;
 
   handleChange(event) {
     this.value = event.target.value;
+
+    // let error = this.error;
+    // if (event.target.validity.typeMismatch) {
+    //   error = true;
+    // }
   }
 
   render() {
-    const { type } = this;
+    const { type, disabled } = this;
     const attrs = {
       type,
-    };
+      disabled,
+    }
 
     return (
       <Host>
-        <slot class="label" name="label"></slot>
-        <input {...attrs} value={this.value} onInput={(event) => this.handleChange(event)} />
+        <div
+          class={{
+            'input-inline': this.inline,
+          }}
+        >
+          <slot name="label"></slot>
+          <input {...attrs} value={this.value} onInput={(event) => this.handleChange(event)} class={{ 'input-disabled': this.disabled }}/>
+        </div>
       </Host>
     );
   }

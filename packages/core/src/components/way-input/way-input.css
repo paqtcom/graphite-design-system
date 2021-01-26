@@ -4,6 +4,7 @@
   width: auto;
 
   font-family: var(--way-font-family, inherit);
+  font-size: var(--way-font-size);
 
   user-select: none;
   vertical-align: top;
@@ -37,16 +38,27 @@ input {
   padding-left: 0.75rem;
 }
 
-.input:focus {
+input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
   border-color: #a4cafe;
 }
 
-.label {
-  margin-bottom: 0.25rem;
-  line-height: 1.25rem;
-  font-size: 0.875rem;
+::slotted(label) {
   font-weight: 500;
+  font-size: 0.875rem;
+  text-align: left;
+  line-height: 1.25rem;
   display: block;
+   margin-bottom: 0.25rem;
+}
+
+.input-inline {
+  display: flex;
+  align-items: center;
+}
+
+.input-disabled {
+  background-color: #fbfbfb;
+  cursor: not-allowed;
 }
