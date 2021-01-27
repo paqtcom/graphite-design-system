@@ -16,10 +16,22 @@ export class Wayinput {
    */
   @Prop() disabled: boolean;
 
+  /** Set to true to make the input readonly. */
+  @Prop({ reflect: true }) readonly = false;
+
   /**
    * Specifies what if label and input must be inline.
    */
   @Prop() inline: boolean;
+
+  /** The input's size. */
+  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /** The input's name attribute. */
+  @Prop({ reflect: true }) name: string | undefined;
+
+  /** The input's label. Alternatively, you can use the label slot. */
+  @Prop() label: string | undefined;
 
   @State() value: string;
 
@@ -33,9 +45,11 @@ export class Wayinput {
   }
 
   render() {
-    const { type, disabled } = this;
+    const { type, name, readonly, disabled } = this;
     const attrs = {
       type,
+      name,
+      readonly,
       disabled,
     }
 
@@ -46,8 +60,37 @@ export class Wayinput {
             'input-inline': this.inline,
           }}
         >
-          <slot name="label"></slot>
-          <input {...attrs} value={this.value} onInput={(event) => this.handleChange(event)} class={{ 'input-disabled': this.disabled }}/>
+          {this.label ? (
+            <label
+              class={{
+                label: true,
+
+                // Sizes
+                'label-small': this.size === 'small',
+                'label-large': this.size === 'large',
+              }}
+              htmlFor={this.name}
+            >
+              { this.label }
+            </label>
+          ) : null }
+
+          <input
+            {...attrs}
+            id={this.name}
+            value={this.value}
+            onInput={(event) => this.handleChange(event)}
+            class={{
+              input: true,
+
+              // States
+              'input-disabled': this.disabled,
+
+              // Sizes
+              'input-small': this.size === 'small',
+              'input-large': this.size === 'large',
+            }}
+          />
         </div>
       </Host>
     );

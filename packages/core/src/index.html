@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Way2web Stencil components</title>
 
     <script type="module" src="/build/core.esm.js"></script>
     <script nomodule src="/build/core.js"></script>
@@ -15,6 +15,21 @@
       :root {
         --way-font-family: 'Ubuntu', sans-serif;
         --way-font-size: 15px;
+
+        /* Inputs */
+        --way-input-font-size: 15px;
+        --way-input-font-size-small: 12px;
+        --way-input-font-size-large: 18px;
+        --way-input-background-color: #ffffff;
+        --way-input-border-color: #d2d6dc;
+        --way-input-border-width: 1px;
+        --way-input-border-radius: 0.375rem;
+
+        /* Label */
+        --way-label-font-size: 14px;
+        --way-label-font-size-small: 12px;
+        --way-label-font-size-large: 17px;
+        --way-label-font-weight: 500;
       }
     </style>
   </head>
@@ -27,19 +42,19 @@
       Way2Web GitHub
     </way-button>
 
-    <way-input type="text">
+    <way-input type="text" size="small" name="input" label="label">
+      <label slot="label" for="input">
+        Label:
+      </label>
+    </way-input>
+
+    <way-input type="text" inline="true" name="input" readonly="true" label="label">
       <label slot="label">
         Label:
       </label>
     </way-input>
 
-    <way-input type="text" inline="true">
-      <label slot="label">
-        Label:
-      </label>
-    </way-input>
-
-     <way-input type="text" disabled="true">
+     <way-input type="text" disabled="true" size="large" name="input" label="label">
       <label slot="label">
         Label:
       </label>

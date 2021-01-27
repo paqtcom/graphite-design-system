@@ -34,6 +34,22 @@ export namespace Components {
          */
         "inline": boolean;
         /**
+          * The input's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * The input's name attribute.
+         */
+        "name": string | undefined;
+        /**
+          * Set to true to make the input readonly.
+         */
+        "readonly": boolean;
+        /**
+          * The input's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
           * Specifies what type of input to use.
          */
         "type": string | undefined;
@@ -85,6 +101,22 @@ declare namespace LocalJSX {
           * Specifies what if label and input must be inline.
          */
         "inline"?: boolean;
+        /**
+          * The input's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string | undefined;
+        /**
+          * Set to true to make the input readonly.
+         */
+        "readonly"?: boolean;
+        /**
+          * The input's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
         /**
           * Specifies what type of input to use.
          */

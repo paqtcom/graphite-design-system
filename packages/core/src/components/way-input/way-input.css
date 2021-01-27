@@ -5,6 +5,7 @@
 
   font-family: var(--way-font-family, inherit);
   font-size: var(--way-font-size);
+  line-height: 1.25rem;
 
   user-select: none;
   vertical-align: top;
@@ -19,38 +20,54 @@
   --border-style: solid;
 }
 
-input {
-  line-height: 1.25rem;
-  font-size: 0.875rem;
+.input {
+  display: block;
+  appearance: none;
+  background-color: var(--way-input-background-color);
+  width: 100%;
+
+  font-size: var(--way-input-font-size);
+
   transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  width: 100%;
-  display: block;
-  appearance: none;
-  background-color: #ffffff;
-  border-color: #d2d6dc;
-  border-width: 1px;
-  border-radius: 0.375rem;
-  padding-top: 0.5rem;
-  padding-right: 0.75rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
+
+  border: solid var(--way-input-border-width) var(--way-input-border-color);
+  border-radius: var(--way-input-border-radius);
+
+  padding: 0.5rem 0.75rem;
 }
 
-input:focus {
+.input-small {
+  font-size: var(--way-input-font-size-small);
+  padding: 0.25rem 0.375rem;
+}
+
+.input-large {
+  font-size: var(--way-input-font-size-large);
+  padding: 1rem 1.5rem;
+}
+
+.input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
   border-color: #a4cafe;
 }
 
-::slotted(label) {
-  font-weight: 500;
-  font-size: 0.875rem;
+.label {
+  font-weight: var(--way-label-font-weight);
+  font-size: var(--way-label-font-size);
   text-align: left;
-  line-height: 1.25rem;
   display: block;
-   margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.label-small {
+  font-size: var(--way-label-font-size-small);
+}
+
+.label-large {
+  font-size: var(--way-label-font-size-large);
 }
 
 .input-inline {
@@ -59,6 +76,7 @@ input:focus {
 }
 
 .input-disabled {
-  background-color: #fbfbfb;
+  background-color: #eeeeee;
+  opacity: 0.5;
   cursor: not-allowed;
 }
