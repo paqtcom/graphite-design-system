@@ -28,7 +28,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/angular-output-target": "0.0.5",
     "@stencil/core": "^2.3.0",
     "@stencil/react-output-target": "0.0.9",
     "@stencil/vue-output-target": "^0.1.8",

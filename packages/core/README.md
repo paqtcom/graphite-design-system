@@ -46,7 +46,7 @@ An example of this setup: https://codesandbox.io/s/w2wds-script-tag-example-zx09
 
 ### Angular
 
-Use the [Angular bindings](../angular/README.md).
+Angular bindings are possible. Please let us know if you would like them, and we will consider them.
 
 ### React
 
