@@ -41,10 +41,14 @@ export class W2wSelect {
   }
 
   @Listen('click', { target: 'window' })
-  handleOutsideClick() {
+  handleOutsideClick(event: MouseEvent) {
     // if this component has a parent component, e.target is parent instead of this.
     // Therefore we cannot check for this.el !== e.target
-    this.hasFocus = false;
+    // Instead do this:
+    const path = event.composedPath() as Array<EventTarget>;
+    if (!path.includes(this.el)) {
+      this.hasFocus = false;
+    }
   }
 
   /**
@@ -54,12 +58,8 @@ export class W2wSelect {
     return this.localSelected.map(({ selected, ...toKeepAttrs }) => toKeepAttrs);
   }
 
-  // hack for the handleOutsideClick "bug"
-  private delayedFocus() {
-    setTimeout(() => {
-      this.hasFocus = true;
-      this.optionListEl.scrollTop = this.scrollPos;
-    }, 0);
+  private focus() {
+    this.hasFocus = true;
   }
 
   @Event({ bubbles: true }) valueChange: EventEmitter<IFormElementData>;
@@ -102,7 +102,7 @@ export class W2wSelect {
     } else {
       this.localSelected = this.localSelected.filter(selected => selected.value !== option.value);
     }
-    this.delayedFocus();
+    this.focus();
     this.updateOptions();
   }
 
@@ -177,9 +177,9 @@ export class W2wSelect {
             style={{ minWidth: this.calcMinInputWidth() }}
             type="text"
             onInput={this.handleOnInput}
-            onClick={() => this.delayedFocus()}
+            onClick={() => this.focus()}
             value={this.inputValue}
-            onFocus={() => (this.hasFocus = true)}
+            onFocus={() => this.focus()}
           />
         </div>
         <div class={{ 'w2w-select__option-list': true, 'w2w-select__option-list--has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
