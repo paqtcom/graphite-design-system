@@ -31,6 +31,7 @@ export class W2wSelect {
     tagColor: 'green',
     ...this.config,
   };
+  @State() highlightIndex: number = 0;
 
   // use until clicking outside works
   @State() scrollPos: number = 0;
@@ -47,10 +48,37 @@ export class W2wSelect {
     // Instead do this:
     const path = event.composedPath() as Array<EventTarget>;
     if (!path.includes(this.el)) {
-      this.hasFocus = false;
+      this.unFocus();
     }
   }
 
+  /**
+   * Listens to keydown events on whole document to open / close / select options.
+   * In the future we want to be more dynamic and add / remove eventListener based on this.hasFocus.
+   *
+   * @param event 
+   */
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.unFocus();
+      return;
+    }
+
+    if (event.key === 'ArrowUp') {
+      this.highlightIndex > 0 ? this.highlightIndex-- : 0;
+      return;
+    }
+
+    if (event.key === 'ArrowDown') {
+      this.highlightIndex < this.filteredOptions.length -1 ? this.highlightIndex++ : this.filteredOptions.length;
+      return;
+    }
+
+    if (event.key === 'Enter' && this.hasFocus) {
+      this.filteredOptions[this.highlightIndex] && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
+    }
+  }
   /**
    * Strip attribute that aren't needed.
    */
@@ -60,6 +88,13 @@ export class W2wSelect {
 
   private focus() {
     this.hasFocus = true;
+
+    // select first of this.filteredOptions;
+  }
+
+  private unFocus() {
+    this.hasFocus = false;
+    this.highlightIndex = 0;
   }
 
   @Event({ bubbles: true }) valueChange: EventEmitter<IFormElementData>;
@@ -77,6 +112,7 @@ export class W2wSelect {
     this.markSelectedOptions();
     this.sortFilteredOptions();
     this.valueSelectedHandler();
+    this.setHighlightedOption();
   }
 
   private sortFilteredOptions() {
@@ -88,6 +124,18 @@ export class W2wSelect {
       ...fOption,
       selected: !!this.localSelected.find(selected => selected.value === fOption.value),
     }));
+  }
+
+  private setHighlightedOption(i: number = 0) {
+    console.log('set highlight');
+    for (let index = 0; index < this.filteredOptions.length; index++) {
+      const element = this.filteredOptions[index];
+      if (index === i) {
+        element.highLighted = true;
+      } else {
+        element.highLighted = false;
+      }
+    }
   }
 
   /**
@@ -185,8 +233,8 @@ export class W2wSelect {
         <div class={{ 'w2w-select__option-list': true, 'w2w-select__option-list--has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
           {this.filteredOptions.length < 1 && <p>No options available</p>}
           {this.filteredOptions.length > 0 &&
-            this.filteredOptions.map(option => (
-              <div onClick={() => this.optionSelectedListener(option)} class={{ 'w2w-select__option': true, 'w2w-select__option--selected': option.selected }}>
+            this.filteredOptions.map((option, i) => (
+              <div onClick={() => this.optionSelectedListener(option)} class={{ 'w2w-select__option': true, 'w2w-select__option--selected': option.selected, 'w2w-select__option--highlighted': i === this.highlightIndex }}>
                 {option.label}
               </div>
             ))}

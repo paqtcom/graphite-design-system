@@ -2,6 +2,7 @@ export interface ISelectOption {
   label: string;
   value: any;
   selected?: boolean;
+  highLighted?: boolean;
 }
 
 export interface ISelectConfig {

@@ -66,6 +66,10 @@
       background-color: darken($color-selected, 10%);
     }
   }
+
+  &__option--highlighted {
+    background-color: darken($color-selected, 40%);
+  }
 }
 
 .w2w-tags {
