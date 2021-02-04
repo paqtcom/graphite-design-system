@@ -67,11 +67,13 @@ export class W2wSelect {
 
     if (event.key === 'ArrowUp') {
       this.highlightIndex > 0 ? this.highlightIndex-- : 0;
+      // todo: .scrollIntoView();
       return;
     }
 
     if (event.key === 'ArrowDown') {
       this.highlightIndex < this.filteredOptions.length -1 ? this.highlightIndex++ : this.filteredOptions.length;
+      // todo: .scrollIntoView();
       return;
     }
 
@@ -88,13 +90,12 @@ export class W2wSelect {
 
   private focus() {
     this.hasFocus = true;
-
-    // select first of this.filteredOptions;
   }
 
   private unFocus() {
     this.hasFocus = false;
     this.highlightIndex = 0;
+    this.optionListEl.scrollTop = 0;
   }
 
   @Event({ bubbles: true }) valueChange: EventEmitter<IFormElementData>;
@@ -127,7 +128,6 @@ export class W2wSelect {
   }
 
   private setHighlightedOption(i: number = 0) {
-    console.log('set highlight');
     for (let index = 0; index < this.filteredOptions.length; index++) {
       const element = this.filteredOptions[index];
       if (index === i) {
