@@ -1,10 +1,10 @@
 export interface IFormElement extends ChildNode {
-    getValue: ()=>any,
-    callback: (e: any)=> void
+  getValue: () => any;
+  callback: (e: any) => void;
 }
 
 export interface IFormElementData {
-    name: string;
-    value: any;
-    errors: string[];
+  name: string;
+  value: any;
+  errors: string[];
 }
