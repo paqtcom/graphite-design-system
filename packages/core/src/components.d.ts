@@ -11,6 +11,15 @@ export namespace Components {
     interface MyContainer {
         "getValue": () => Promise<{}>;
     }
+    interface WayAutosuggest {
+        "config"?: ISelectConfig;
+        "form"?: boolean;
+        "getValue": () => Promise<ISelectOption[]>;
+        "name"?: string;
+        "options"?: Array<ISelectOption>;
+        "validation"?: (value: any) => string[];
+        "value"?: Array<{ label: string; value: any }>;
+    }
     interface WayButton {
         /**
           * Set to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"`.
@@ -32,15 +41,6 @@ export namespace Components {
     interface WayForm {
         "getValue": () => Promise<{}>;
     }
-    interface WaySelect {
-        "config"?: ISelectConfig;
-        "form"?: boolean;
-        "getValue": () => Promise<ISelectOption[]>;
-        "name"?: string;
-        "options"?: Array<ISelectOption>;
-        "validation"?: (value: any) => string[];
-        "value"?: Array<{ label: string; value: any }>;
-    }
 }
 declare global {
     interface HTMLMyContainerElement extends Components.MyContainer, HTMLStencilElement {
@@ -48,6 +48,12 @@ declare global {
     var HTMLMyContainerElement: {
         prototype: HTMLMyContainerElement;
         new (): HTMLMyContainerElement;
+    };
+    interface HTMLWayAutosuggestElement extends Components.WayAutosuggest, HTMLStencilElement {
+    }
+    var HTMLWayAutosuggestElement: {
+        prototype: HTMLWayAutosuggestElement;
+        new (): HTMLWayAutosuggestElement;
     };
     interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
     }
@@ -61,21 +67,24 @@ declare global {
         prototype: HTMLWayFormElement;
         new (): HTMLWayFormElement;
     };
-    interface HTMLWaySelectElement extends Components.WaySelect, HTMLStencilElement {
-    }
-    var HTMLWaySelectElement: {
-        prototype: HTMLWaySelectElement;
-        new (): HTMLWaySelectElement;
-    };
     interface HTMLElementTagNameMap {
         "my-container": HTMLMyContainerElement;
+        "way-autosuggest": HTMLWayAutosuggestElement;
         "way-button": HTMLWayButtonElement;
         "way-form": HTMLWayFormElement;
-        "way-select": HTMLWaySelectElement;
     }
 }
 declare namespace LocalJSX {
     interface MyContainer {
+    }
+    interface WayAutosuggest {
+        "config"?: ISelectConfig;
+        "form"?: boolean;
+        "name"?: string;
+        "onValueChange"?: (event: CustomEvent<IFormElementData>) => void;
+        "options"?: Array<ISelectOption>;
+        "validation"?: (value: any) => string[];
+        "value"?: Array<{ label: string; value: any }>;
     }
     interface WayButton {
         /**
@@ -98,20 +107,11 @@ declare namespace LocalJSX {
     interface WayForm {
         "onValueChange"?: (event: CustomEvent<object>) => void;
     }
-    interface WaySelect {
-        "config"?: ISelectConfig;
-        "form"?: boolean;
-        "name"?: string;
-        "onValueChange"?: (event: CustomEvent<IFormElementData>) => void;
-        "options"?: Array<ISelectOption>;
-        "validation"?: (value: any) => string[];
-        "value"?: Array<{ label: string; value: any }>;
-    }
     interface IntrinsicElements {
         "my-container": MyContainer;
+        "way-autosuggest": WayAutosuggest;
         "way-button": WayButton;
         "way-form": WayForm;
-        "way-select": WaySelect;
     }
 }
 export { LocalJSX as JSX };
@@ -119,9 +119,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-container": LocalJSX.MyContainer & JSXBase.HTMLAttributes<HTMLMyContainerElement>;
+            "way-autosuggest": LocalJSX.WayAutosuggest & JSXBase.HTMLAttributes<HTMLWayAutosuggestElement>;
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
             "way-form": LocalJSX.WayForm & JSXBase.HTMLAttributes<HTMLWayFormElement>;
-            "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
         }
     }
 }

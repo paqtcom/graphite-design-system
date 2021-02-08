@@ -40,7 +40,7 @@ export class WayForm {
 
   render() {
     return (
-      <form class="w2w-form">
+      <form>
         <slot />
       </form>
     );

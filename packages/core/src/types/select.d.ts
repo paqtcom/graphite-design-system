@@ -1,8 +1,8 @@
 export interface ISelectOption {
   label: string;
-  value: any;
+  value: string | number;
   selected?: boolean;
-  highLighted?: boolean;
+  highlighted?: boolean;
 }
 
 export interface ISelectConfig {

@@ -4,8 +4,8 @@ import Fragment from '../way-fragment/way-fragment';
 import { ISelectOption, ISelectConfig } from '../../types/select';
 
 @Component({
-  tag: 'way-select',
-  styleUrl: 'way-select.scss',
+  tag: 'way-autosuggest',
+  styleUrl: 'way-autosuggest.scss',
   shadow: true,
 })
 export class W2wSelect {
@@ -131,9 +131,9 @@ export class W2wSelect {
     for (let index = 0; index < this.filteredOptions.length; index++) {
       const element = this.filteredOptions[index];
       if (index === i) {
-        element.highLighted = true;
+        element.highlighted = true;
       } else {
-        element.highLighted = false;
+        element.highlighted = false;
       }
     }
   }

@@ -46,7 +46,7 @@ export class MyContainer {
         <h1>container</h1>
         <way-form ref={el => (this.formEl = el)} onValueChange={e => (this.formState = e.detail)}>
           <h3>the form</h3>
-          <way-select
+          <way-autosuggest
             name="mySelection"
             form={true} // important for way-form to interact with component
             options={this.selectOptions}
