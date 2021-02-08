@@ -37,7 +37,7 @@ export class W2wSelect {
   @State() scrollPos: number = 0;
 
   @Method()
-  async getVal() {
+  async getValue() {
     return this.localSelected;
   }
 

@@ -1,5 +1,5 @@
 export interface IFormElement extends ChildNode {
-    getVal: ()=>any,
+    getValue: ()=>any,
     callback: (e: any)=> void
 }
 

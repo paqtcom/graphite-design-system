@@ -9,7 +9,7 @@ import { ISelectConfig, ISelectOption } from "./types/select";
 import { IFormElementData } from "./types/form";
 export namespace Components {
     interface MyContainer {
-        "getVal": () => Promise<{}>;
+        "getValue": () => Promise<{}>;
     }
     interface WayButton {
         /**
@@ -30,12 +30,12 @@ export namespace Components {
         "target": string | undefined;
     }
     interface WayForm {
-        "getVal": () => Promise<{}>;
+        "getValue": () => Promise<{}>;
     }
     interface WaySelect {
         "config"?: ISelectConfig;
         "form"?: boolean;
-        "getVal": () => Promise<ISelectOption[]>;
+        "getValue": () => Promise<ISelectOption[]>;
         "name"?: string;
         "options"?: Array<ISelectOption>;
         "validation"?: (value: any) => string[];

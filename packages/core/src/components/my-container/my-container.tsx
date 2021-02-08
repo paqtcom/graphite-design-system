@@ -28,8 +28,8 @@ export class MyContainer {
   @State() formState: any = {};
 
   @Method()
-  async getVal() {
-    return await this.formEl.getVal();
+  async getValue() {
+    return await this.formEl.getValue();
   }
 
   updateSelected(e: { detail: IFormElementData }) {

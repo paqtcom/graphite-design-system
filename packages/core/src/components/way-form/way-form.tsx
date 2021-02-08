@@ -5,12 +5,12 @@ import { IFormElement, IFormElementData } from '../../types/form';
   tag: 'way-form',
   shadow: true,
 })
-export class W2wForm {
+export class WayForm {
   @Element() el: HTMLElement;
   @State() formState = {};
 
   @Method()
-  async getVal() {
+  async getValue() {
     return this.formState;
   }
 
