@@ -58,8 +58,9 @@ export class W2wSelect {
    *
    * @param event 
    */
-  @Listen('keydown', { target: 'document' })
+  @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
+    console.log('xxx');
     if (event.key === 'Escape') {
       this.unFocus();
       return;
