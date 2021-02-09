@@ -8,17 +8,13 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ISelectConfig, ISelectOption } from "./types/select";
 import { IFormElementData } from "./types/form";
 export namespace Components {
-    interface MyContainer {
-        "getValue": () => Promise<{}>;
-    }
     interface WayAutosuggest {
         "config"?: ISelectConfig;
-        "form"?: boolean;
-        "getValue": () => Promise<ISelectOption[]>;
+        "getValue": () => Promise<any[]>;
         "name"?: string;
         "options"?: Array<ISelectOption>;
         "validation"?: (value: any) => string[];
-        "value"?: Array<{ label: string; value: any }>;
+        "value"?: string | Array<{ label: string; value: any }>;
     }
     interface WayButton {
         /**
@@ -43,12 +39,6 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLMyContainerElement extends Components.MyContainer, HTMLStencilElement {
-    }
-    var HTMLMyContainerElement: {
-        prototype: HTMLMyContainerElement;
-        new (): HTMLMyContainerElement;
-    };
     interface HTMLWayAutosuggestElement extends Components.WayAutosuggest, HTMLStencilElement {
     }
     var HTMLWayAutosuggestElement: {
@@ -68,23 +58,19 @@ declare global {
         new (): HTMLWayFormElement;
     };
     interface HTMLElementTagNameMap {
-        "my-container": HTMLMyContainerElement;
         "way-autosuggest": HTMLWayAutosuggestElement;
         "way-button": HTMLWayButtonElement;
         "way-form": HTMLWayFormElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyContainer {
-    }
     interface WayAutosuggest {
         "config"?: ISelectConfig;
-        "form"?: boolean;
         "name"?: string;
         "onValueChange"?: (event: CustomEvent<IFormElementData>) => void;
         "options"?: Array<ISelectOption>;
         "validation"?: (value: any) => string[];
-        "value"?: Array<{ label: string; value: any }>;
+        "value"?: string | Array<{ label: string; value: any }>;
     }
     interface WayButton {
         /**
@@ -108,7 +94,6 @@ declare namespace LocalJSX {
         "onValueChange"?: (event: CustomEvent<object>) => void;
     }
     interface IntrinsicElements {
-        "my-container": MyContainer;
         "way-autosuggest": WayAutosuggest;
         "way-button": WayButton;
         "way-form": WayForm;
@@ -118,7 +103,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-container": LocalJSX.MyContainer & JSXBase.HTMLAttributes<HTMLMyContainerElement>;
             "way-autosuggest": LocalJSX.WayAutosuggest & JSXBase.HTMLAttributes<HTMLWayAutosuggestElement>;
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
             "way-form": LocalJSX.WayForm & JSXBase.HTMLAttributes<HTMLWayFormElement>;

@@ -16,15 +16,14 @@ export class W2wSelect {
   @Prop() options?: Array<ISelectOption> = [];
   @Prop() config?: ISelectConfig = {};
   @Prop() validation?: (value: any) => string[];
-  @Prop() value?: Array<{ label: string; value: any }>;
+  @Prop() value?: string | Array<{ label: string; value: any }>;
   // used for w2w-form
   @Prop() name?: string;
-  @Prop() form?: boolean;
 
   @State() inputValue: string = '';
   @State() hasFocus = false;
   @State() filteredOptions: Array<ISelectOption> = this.options;
-  @State() localSelected: Array<ISelectOption> = [];
+  @State() localSelected = [];
   @State() localConfig: ISelectConfig = {
     selectedText: 'selected',
     maxTagWidth: '10rem',
@@ -86,7 +85,7 @@ export class W2wSelect {
    * Strip attribute that aren't needed.
    */
   private cleanData(): any[] {
-    return this.localSelected.map(({ selected, ...toKeepAttrs }) => toKeepAttrs);
+    return this.localSelected && this.localSelected.map(({ selected, ...toKeepAttrs }) => toKeepAttrs);
   }
 
   private focus() {
@@ -110,11 +109,11 @@ export class W2wSelect {
 
   @Watch('options')
   private updateOptions() {
+    if(!this.options || this.options.length < 1) return;
     this.filteredOptions = [...this.options].filter(option => option.label.indexOf(this.inputValue) !== -1);
     this.markSelectedOptions();
     this.sortFilteredOptions();
     this.valueSelectedHandler();
-    this.setHighlightedOption();
   }
 
   private sortFilteredOptions() {
@@ -122,21 +121,12 @@ export class W2wSelect {
   }
 
   private markSelectedOptions() {
+    if (!this.localSelected) return;
+
     this.filteredOptions = this.filteredOptions.map(fOption => ({
       ...fOption,
       selected: !!this.localSelected.find(selected => selected.value === fOption.value),
     }));
-  }
-
-  private setHighlightedOption(i: number = 0) {
-    for (let index = 0; index < this.filteredOptions.length; index++) {
-      const element = this.filteredOptions[index];
-      if (index === i) {
-        element.highlighted = true;
-      } else {
-        element.highlighted = false;
-      }
-    }
   }
 
   /**
@@ -146,12 +136,12 @@ export class W2wSelect {
   private optionSelectedListener(option: ISelectOption) {
     if (!this.localConfig.multi) {
       this.localSelected = [option];
+      this.unFocus();
     } else if (!option.selected) {
       this.localSelected.push(option);
     } else {
       this.localSelected = this.localSelected.filter(selected => selected.value !== option.value);
     }
-    this.focus();
     this.updateOptions();
   }
 
@@ -160,6 +150,8 @@ export class W2wSelect {
    * @param {ISelectOption} option
    */
   private removeTagListener(option) {
+    if (!this.localSelected) return;
+
     this.localSelected = this.localSelected.filter(selectedOption => selectedOption.value != option.value);
     this.updateOptions();
   }
@@ -189,7 +181,9 @@ export class W2wSelect {
   }
 
   private renderTags() {
-    if (this.localSelected.length < this.localConfig.maxTags + 1) {
+    if (!this.localSelected) {
+      return null;
+    } else if (this.localSelected.length < this.localConfig.maxTags + 1) {
       return (
         <Fragment>
           {this.localSelected.length > 0 &&
@@ -211,7 +205,7 @@ export class W2wSelect {
   }
 
   componentWillLoad() {
-    this.localSelected = this.value;
+    this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     this.updateOptions();
   }
 
