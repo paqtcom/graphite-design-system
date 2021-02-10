@@ -204,7 +204,6 @@ export class W2wSelect {
 
   private renderInputOutsideShadowRoot(container: HTMLElement, name: string, value: string | null) {
     let input = container.querySelector("input.hidden-input") as HTMLInputElement | null;
-    console.log(input);
     if (!input) {
         input = container.ownerDocument.createElement("input");
         input.type = "hidden";
