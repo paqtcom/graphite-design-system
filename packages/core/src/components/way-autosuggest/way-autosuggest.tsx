@@ -59,7 +59,6 @@ export class W2wSelect {
    */
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
-    console.log('xxx');
     if (event.key === 'Escape') {
       this.unFocus();
       return;
@@ -98,9 +97,9 @@ export class W2wSelect {
     this.optionListEl.scrollTop = 0;
   }
 
-  @Event({ bubbles: true }) valueChange: EventEmitter<IFormElementData>;
+  @Event({ bubbles: true }) wayChange: EventEmitter<IFormElementData>;
   private valueSelectedHandler() {
-    this.valueChange.emit({
+    this.wayChange.emit({
       name: this.name,
       value: this.cleanData(),
       errors: this.validationErrors(),

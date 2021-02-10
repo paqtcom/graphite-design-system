@@ -34,9 +34,6 @@ export namespace Components {
          */
         "target": string | undefined;
     }
-    interface WayForm {
-        "getValue": () => Promise<{}>;
-    }
 }
 declare global {
     interface HTMLWayAutosuggestElement extends Components.WayAutosuggest, HTMLStencilElement {
@@ -51,23 +48,16 @@ declare global {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
     };
-    interface HTMLWayFormElement extends Components.WayForm, HTMLStencilElement {
-    }
-    var HTMLWayFormElement: {
-        prototype: HTMLWayFormElement;
-        new (): HTMLWayFormElement;
-    };
     interface HTMLElementTagNameMap {
         "way-autosuggest": HTMLWayAutosuggestElement;
         "way-button": HTMLWayButtonElement;
-        "way-form": HTMLWayFormElement;
     }
 }
 declare namespace LocalJSX {
     interface WayAutosuggest {
         "config"?: ISelectConfig;
         "name"?: string;
-        "onValueChange"?: (event: CustomEvent<IFormElementData>) => void;
+        "onWayChange"?: (event: CustomEvent<IFormElementData>) => void;
         "options"?: Array<ISelectOption>;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
@@ -90,13 +80,9 @@ declare namespace LocalJSX {
          */
         "target"?: string | undefined;
     }
-    interface WayForm {
-        "onValueChange"?: (event: CustomEvent<object>) => void;
-    }
     interface IntrinsicElements {
         "way-autosuggest": WayAutosuggest;
         "way-button": WayButton;
-        "way-form": WayForm;
     }
 }
 export { LocalJSX as JSX };
@@ -105,7 +91,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "way-autosuggest": LocalJSX.WayAutosuggest & JSXBase.HTMLAttributes<HTMLWayAutosuggestElement>;
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
-            "way-form": LocalJSX.WayForm & JSXBase.HTMLAttributes<HTMLWayFormElement>;
         }
     }
 }

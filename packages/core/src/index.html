@@ -24,6 +24,12 @@
     </way-button>
 
     <hr>
+    <div>
+      <p>autosuggest data:</p>
+      <div class="autosuggest-code">
+
+      </div>
+    </div>
     <way-autosuggest value='[{ "label": "boom", "value": 139 }]' />
     <script>
       const selectOptions = [
@@ -47,7 +53,7 @@
 
       autosuggest.options = selectOptions;
       autosuggest.config = {
-        multi: false,
+        multi: true,
         maxTags: 6,
         selectedText: 'geselecteerd',
         tagColor: 'rgba(60, 170, 180, 1)',
@@ -55,7 +61,9 @@
       // If value is set in HTML, this js will be ignored.
       autosuggest.value = [{ label: 'aap', value: 137 }];
 
-      autosuggest.addEventListener('valueChange', event => { console.log('xxx', event); })
+      autosuggest.addEventListener('wayChange', event => {
+        document.querySelector('.autosuggest-code').innerHTML = JSON.stringify(event.detail.value);
+      })
     </script>
   </body>
 </html>
