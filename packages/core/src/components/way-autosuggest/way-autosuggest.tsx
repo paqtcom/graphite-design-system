@@ -1,6 +1,5 @@
 import { Component, Method, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
 import { IFormElementData } from '../../types/form';
-import Fragment from '../way-fragment/way-fragment';
 import { ISelectOption, ISelectConfig } from '../../types/select';
 
 @Component({
@@ -184,14 +183,14 @@ export class W2wSelect {
       return null;
     } else if (this.localSelected.length < this.localConfig.maxTags + 1) {
       return (
-        <Fragment>
+        <template>
           {this.localSelected.length > 0 &&
             this.localSelected.map(tag => (
               <div title={tag.label} onClick={() => this.removeTagListener(tag)} class="tag" style={{ backgroundColor: this.config.tagColor }}>
                 <span>{tag.label}</span>
               </div>
             ))}
-        </Fragment>
+        </template>
       );
     } else {
       const text = `${this.localSelected.length} ${this.localConfig.selectedText}`;
