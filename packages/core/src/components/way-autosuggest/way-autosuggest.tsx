@@ -10,14 +10,13 @@ import { ISelectOption, ISelectConfig } from '../../types/select';
 export class W2wSelect {
   private optionListEl?: HTMLInputElement;
   private inputEl?: HTMLInputElement;
-  @Element() el: HTMLElement;
+  @Element() el!: HTMLWayAutosuggestElement;
 
   @Prop() options?: Array<ISelectOption> = [];
   @Prop() config?: ISelectConfig = {};
   @Prop() validation?: (value: any) => string[];
   @Prop() value?: string | Array<{ label: string; value: any }>;
-  // used for w2w-form
-  @Prop() name?: string;
+  @Prop() name: string;
 
   @State() inputValue: string = '';
   @State() hasFocus = false;
@@ -154,10 +153,11 @@ export class W2wSelect {
     this.updateOptions();
   }
 
-  // What kind of event is this? I can't use InputEvent type
-  private handleOnInput = evt => {
+  private handleOnInput = (evt: InputEvent) => {
+    const input = evt.target as HTMLInputElement;
+
     this.hasFocus = true;
-    this.inputValue = evt.target.value;
+    this.inputValue = input.value;
     this.updateOptions();
   };
 
@@ -202,12 +202,28 @@ export class W2wSelect {
     }
   }
 
+  private renderInputOutsideShadowRoot(container: HTMLElement, name: string, value: string | null) {
+    let input = container.querySelector("input.hidden-input") as HTMLInputElement | null;
+    console.log(input);
+    if (!input) {
+        input = container.ownerDocument.createElement("input");
+        input.type = "hidden";
+        input.classList.add("hidden-input");
+        container.appendChild(input);
+    }
+    input.name = name;
+    input.value = value || "";
+  }
+
   componentWillLoad() {
     this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     this.updateOptions();
   }
 
   render() {
+    // todo: if a (to be made) valueSelector callback function prop is given, return comma seperated string instead of JSON
+    this.renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
+
     return (
       <div class={{ 'w2w-select': true, 'w2w-select--has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
         <div class={{ 'w2w-select__input-container': true, 'w2w-select__input-container--show': this.localConfig.multi }}>
