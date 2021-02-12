@@ -196,7 +196,7 @@ export class W2wSelect {
     } else {
       const text = `${this.localSelected.length} ${this.localConfig.selectedText}`;
       return (
-        <div class="tag tag--counter" title={text} style={{ backgroundColor: this.config.tagColor }}>
+        <div class="tag counter" title={text} style={{ backgroundColor: this.config.tagColor }}>
           <span>{text}</span>
         </div>
       );
