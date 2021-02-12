@@ -96,6 +96,7 @@ export class W2wSelect {
   }
 
   @Event({ bubbles: true }) wayChange: EventEmitter<IFormElementData>;
+
   private valueSelectedHandler() {
     this.wayChange.emit({
       name: this.name,
@@ -165,7 +166,7 @@ export class W2wSelect {
     return this.validation ? this.validation(this.localSelected) : [];
   }
 
-  private calcMinInputWidth(): string {
+  private calculateMinimumInputWidth(): string {
     if (!this.inputEl) return '7em';
 
     const calculation = this.inputEl.value.length * 0.7;
@@ -183,14 +184,14 @@ export class W2wSelect {
       return null;
     } else if (this.localSelected.length < this.localConfig.maxTags + 1) {
       return (
-        <template>
+        <this.Fragment>
           {this.localSelected.length > 0 &&
             this.localSelected.map(tag => (
               <div title={tag.label} onClick={() => this.removeTagListener(tag)} class="tag" style={{ backgroundColor: this.config.tagColor }}>
                 <span>{tag.label}</span>
               </div>
             ))}
-        </template>
+        </this.Fragment>
       );
     } else {
       const text = `${this.localSelected.length} ${this.localConfig.selectedText}`;
@@ -201,6 +202,17 @@ export class W2wSelect {
       );
     }
   }
+
+  /**
+   * Used to render multiple HTMLElements without using a wrapper element.
+   * In React JSX we can use '<> <div/><div/><div/> </>' but is not allowed in TS for StencilJS.
+   * 
+   * @param { any } _
+   * @param { HTMLElement[] } children 
+   * 
+   * @returns HTMLElement[]
+   */
+  private Fragment = (_: any, children: HTMLElement[]): HTMLElement[] => [ ...children ];
 
   private renderInputOutsideShadowRoot(container: HTMLElement, name: string, value: string | null) {
     let input = container.querySelector("input.hidden-input") as HTMLInputElement | null;
@@ -224,13 +236,13 @@ export class W2wSelect {
     this.renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
 
     return (
-      <div class={{ 'w2w-select': true, 'w2w-select--has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
-        <div class={{ 'w2w-select__input-container': true, 'w2w-select__input-container--show': this.localConfig.multi }}>
+      <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
+        <div class="input-container">
           {this.renderTags()}
           <input
             ref={el => (this.inputEl = el as HTMLInputElement)}
-            class="w2w-select__input"
-            style={{ minWidth: this.calcMinInputWidth() }}
+            class="input"
+            style={{ minWidth: this.calculateMinimumInputWidth() }}
             type="text"
             onInput={this.handleOnInput}
             onClick={() => this.focus()}
@@ -238,11 +250,11 @@ export class W2wSelect {
             onFocus={() => this.focus()}
           />
         </div>
-        <div class={{ 'w2w-select__option-list': true, 'w2w-select__option-list--has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
+        <div class={{ 'option-list': true, 'has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
           {this.filteredOptions.length < 1 && <p>No options available</p>}
           {this.filteredOptions.length > 0 &&
             this.filteredOptions.map((option, i) => (
-              <div onClick={() => this.optionSelectedListener(option)} class={{ 'w2w-select__option': true, 'w2w-select__option--selected': option.selected, 'w2w-select__option--highlighted': i === this.highlightIndex }}>
+              <div onClick={() => this.optionSelectedListener(option)} class={{ 'option': true, 'option-selected': option.selected, 'option--highlighted': i === this.highlightIndex }}>
                 {option.label}
               </div>
             ))}

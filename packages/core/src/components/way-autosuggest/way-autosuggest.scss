@@ -1,25 +1,28 @@
-.w2w-select {
-  $height: 40px;
-  $color-selected: rgba(133, 172, 226, 1);
+.way-autosuggest {
+  --color-selected: rgba(133, 172, 226, 0.6);
+  --color-highlighted: rgba(0, 0, 0, 0.1);
+  --color-highlighted-selected: rgba(133, 172, 226, 0.9);
+
+  --height: 40px;
 
   display: block;
   border: 1px solid rgba(0, 0, 0, 0.5);
   display: flex;
   position: relative;
   border-radius: 3px;
-  min-height: $height;
+  min-height: var(--height);
   font-family: Helvetica, Arial, sans-serif;
 
-  &--has-error {
+  .has-error {
     border: 1px solid rgba(219, 0, 0, 0.5);
   }
 
-  &__input {
+  .input {
     flex: 1;
     outline: none;
     border: none;
     font-family: inherit;
-    height: $height;
+    height: var(--height);
     width: 100%;
     box-sizing: border-box;
     background-color: transparent;
@@ -27,14 +30,14 @@
     padding: 0 5px;
   }
 
-  &__input-container {
+  .input-container {
     flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
     max-width: 100%;
   }
 
-  &__option-list {
+  .option-list {
     position: absolute;
     display: none;
     top: 100%;
@@ -45,12 +48,12 @@
     overflow-y: auto;
     background-color: #ffffff;
 
-    &--has-focus {
+    &.has-focus {
       display: block;
     }
   }
 
-  &__option {
+  .option {
     padding: 8px 10px;
     cursor: pointer;
 
@@ -59,21 +62,24 @@
     }
   }
 
-  &__option--selected {
-    background-color: $color-selected;
+  .option-selected {
+    background-color: var(--color-selected);
 
     &:hover {
-      background-color: darken($color-selected, 10%);
+      background-color: var(--color-highlighted-selected);
     }
   }
 
-  &__option--highlighted {
-    background-color: darken($color-selected, 40%);
+  .option--highlighted {
+    background-color: var(--color-highlighted);
+  }
+
+  .option-selected.option--highlighted {
+    background-color: var(--color-highlighted-selected);
   }
 }
 
 .w2w-tags {
-  // background-color: gray;
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
