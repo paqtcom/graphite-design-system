@@ -62,7 +62,10 @@
       autosuggest.value = [{ label: 'aap', value: 137 }];
 
       autosuggest.addEventListener('wayChange', event => {
+        // we get the value both in the event.detail
         document.querySelector('.autosuggest-code').innerHTML = JSON.stringify(event.detail.value);
+        // and in the updated element value prop
+        console.log('autosuggest.value', autosuggest.value);
       })
     </script>
   </body>

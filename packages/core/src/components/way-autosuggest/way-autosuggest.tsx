@@ -33,11 +33,6 @@ export class W2wSelect {
   // use until clicking outside works
   @State() scrollPos: number = 0;
 
-  @Method()
-  async getValue() {
-    return this.localSelected;
-  }
-
   @Listen('click', { target: 'window' })
   handleOutsideClick(event: MouseEvent) {
     // if this component has a parent component, e.target is parent instead of this.
@@ -105,13 +100,20 @@ export class W2wSelect {
     });
   }
 
+  @Watch('value')
+  private watchValue() {
+    this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
+    this.updateOptions();
+  }
+
   @Watch('options')
   private updateOptions() {
-    if(!this.options || this.options.length < 1) return;
+    if (!this.options || this.options.length < 1) return;
     this.filteredOptions = [...this.options].filter(option => option.label.indexOf(this.inputValue) !== -1);
     this.markSelectedOptions();
     this.sortFilteredOptions();
     this.valueSelectedHandler();
+    this.value = this.localSelected;
   }
 
   private sortFilteredOptions() {
@@ -141,6 +143,7 @@ export class W2wSelect {
       this.localSelected = this.localSelected.filter(selected => selected.value !== option.value);
     }
     this.updateOptions();
+    this.value = this.localSelected;
   }
 
   /**

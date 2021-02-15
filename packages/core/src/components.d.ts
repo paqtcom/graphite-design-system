@@ -10,7 +10,6 @@ import { IFormElementData } from "./types/form";
 export namespace Components {
     interface WayAutosuggest {
         "config"?: ISelectConfig;
-        "getValue": () => Promise<any[]>;
         "name": string;
         "options"?: Array<ISelectOption>;
         "validation"?: (value: any) => string[];
