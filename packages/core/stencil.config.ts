@@ -1,9 +1,12 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from "@stencil/vue-output-target";
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'core',
+  plugins: [sass()],
+  globalStyle: 'src/css/core.scss',
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@w2wds/core',

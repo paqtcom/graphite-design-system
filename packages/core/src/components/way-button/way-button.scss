@@ -1,0 +1,121 @@
+@import '../../themes/w2wds.globals';
+
+// Button
+// --------------------------------------------------
+
+:host {
+  display: inline-block;
+
+  width: auto;
+
+  font-family: var(--way-font-family, inherit);
+
+  user-select: none;
+  vertical-align: top;
+  vertical-align: -webkit-baseline-middle;
+  pointer-events: auto;
+
+  font-kerning: none;
+
+  --border-radius: 5px;
+  --border-width: 2px;
+  --border-color: var(--way-color-primary);
+  --border-style: solid;
+}
+
+// Default variant
+// --------------------------------------------------
+
+:host(.button-default) {
+  --border-color: var(--way-color-light);
+  --background: transparent;
+  --color: var(--way-color-dark-tint);
+
+  --border-color-hover: var(--way-color-medium-shade);
+  --background-hover: transparent;
+  --color-hover: var(--way-color-dark-tint);
+}
+
+// Primary variant
+// --------------------------------------------------
+
+:host(.button-primary) {
+  --background: var(--way-color-primary);
+  --color: var(--way-color-primary-contrast);
+
+  --border-color-hover: var(--way-color-primary-shade);
+  --background-hover: var(--way-color-primary-shade);
+}
+
+// Secondary variant
+// --------------------------------------------------
+
+:host(.button-secondary) {
+  --border-color: var(--way-color-light);
+  --background: transparent;
+  --color: var(--way-color-primary);
+
+  --border-color-hover: var(--way-color-primary);
+  --background-hover: transparent;
+  --color-hover: var(--way-color-primary);
+}
+
+.button-native {
+  @include font-smoothing();
+  @include text-inherit();
+
+  border-radius: var(--border-radius);
+
+  display: block;
+  position: relative;
+
+  padding: 20px;
+
+  width: 100%;
+  height: 100%;
+
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+
+  background: var(--background);
+  color: var(--color);
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  z-index: 0;
+  box-sizing: border-box;
+
+  text-decoration: none;
+}
+
+.button-inner {
+  display: flex;
+  position: relative;
+
+  flex-flow: row nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+// Button: States
+// --------------------------------------------------
+
+@media (any-hover: hover) {
+  :host(:hover) {
+    color: var(--color-hover);
+  }
+
+  :host(:hover) .button-native {
+    background: var(--background-hover);
+    border-color: var(--border-color-hover);
+  }
+}

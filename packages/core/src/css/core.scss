@@ -1,0 +1,28 @@
+:root {
+  // Theme color tokens
+  // --------------------------------------------------
+
+  --way-color-primary: #1799de;
+  --way-color-primary-contrast: #ffffff;
+  --way-color-primary-shade: #00679e;
+  --way-color-primary-tint: #46b2ec;
+
+  --way-color-light: #dbe5eb;
+  --way-color-light-contrast: #051f2c;
+  --way-color-light-shade: #c1d1db;
+  --way-color-light-tint: #e7eef4;
+
+  --way-color-medium: #697886;
+  --way-color-medium-contrast: #ffffff;
+  --way-color-medium-shade: #4c5960;
+  --way-color-medium-tint: #9eaeb7;
+
+  --way-color-dark: #02131b;
+  --way-color-dark-contrast: #ffffff;
+  --way-color-dark-shade: #000000;
+  --way-color-dark-tint: #051f2c;
+
+  // Typography tokens
+  // --------------------------------------------------
+  --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}

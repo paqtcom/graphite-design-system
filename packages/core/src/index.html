@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
 
+    <link rel="stylesheet" href="/build/core.css">
     <script type="module" src="/build/core.esm.js"></script>
     <script nomodule src="/build/core.js"></script>
-
-    <style>
-      :root {
-        --way-font-family: Helvetica;
-      }
-    </style>
   </head>
   <body>
-    <way-button href="https://www.way2web.nl" target="_blank">
-      Way2Web Website
+    <way-button target="_blank">
+      Default button
     </way-button>
 
-    <way-button href="https://github.com/way2web" target="_blank" fill="outline">
-      Way2Web GitHub
+    <way-button href="https://www.way2web.nl" target="_blank">
+      Default button with href
+    </way-button>
+
+    <way-button variant="primary">
+      Primary button
+    </way-button>
+
+    <way-button variant="secondary">
+      Secondary button
     </way-button>
   </body>
 </html>

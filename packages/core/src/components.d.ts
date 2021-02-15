@@ -8,10 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface WayButton {
         /**
-          * Set to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"`.
-         */
-        "fill"?: 'outline' | 'solid';
-        /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href": string | undefined;
@@ -23,6 +19,7 @@ export namespace Components {
           * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
         "target": string | undefined;
+        "variant"?: 'default' | 'primary';
     }
 }
 declare global {
@@ -39,10 +36,6 @@ declare global {
 declare namespace LocalJSX {
     interface WayButton {
         /**
-          * Set to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"`.
-         */
-        "fill"?: 'outline' | 'solid';
-        /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href"?: string | undefined;
@@ -54,6 +47,7 @@ declare namespace LocalJSX {
           * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
         "target"?: string | undefined;
+        "variant"?: 'default' | 'primary';
     }
     interface IntrinsicElements {
         "way-button": WayButton;
