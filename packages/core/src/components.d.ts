@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface WayButton {
         /**
+          * Set to true to draw a circle button.
+         */
+        "circle": boolean;
+        /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href": string | undefined;
@@ -16,10 +20,17 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * The button's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
           * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
         "target": string | undefined;
-        "variant"?: 'default' | 'primary';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"` and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'text';
     }
 }
 declare global {
@@ -36,6 +47,10 @@ declare global {
 declare namespace LocalJSX {
     interface WayButton {
         /**
+          * Set to true to draw a circle button.
+         */
+        "circle"?: boolean;
+        /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href"?: string | undefined;
@@ -44,10 +59,17 @@ declare namespace LocalJSX {
          */
         "rel"?: string | undefined;
         /**
+          * The button's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
           * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
         "target"?: string | undefined;
-        "variant"?: 'default' | 'primary';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"` and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'text';
     }
     interface IntrinsicElements {
         "way-button": WayButton;

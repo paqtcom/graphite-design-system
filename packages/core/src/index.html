@@ -8,22 +8,78 @@
     <link rel="stylesheet" href="/build/core.css">
     <script type="module" src="/build/core.esm.js"></script>
     <script nomodule src="/build/core.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <way-button target="_blank">
-      Default button
-    </way-button>
+    <section>
+      <h2>way-button</h2>
 
-    <way-button href="https://www.way2web.nl" target="_blank">
-      Default button with href
-    </way-button>
+      <section>
+        <h3>Variants</h3>
 
-    <way-button variant="primary">
-      Primary button
-    </way-button>
+        <way-button>
+          Default
+        </way-button>
 
-    <way-button variant="secondary">
-      Secondary button
-    </way-button>
+        <way-button variant="primary">
+          Primary
+        </way-button>
+
+        <way-button variant="secondary">
+          Secondary
+        </way-button>
+
+        <way-button variant="plain">
+          Plain
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-button size="small">
+          Small
+        </way-button>
+
+        <way-button>
+          Medium
+        </way-button>
+
+        <way-button size="large">
+          Large
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Circle Buttons</h3>
+
+        <way-button size="small" circle>
+          <ion-icon name="heart-outline" slot="icon-only"></ion-icon>
+        </way-button>
+
+        <way-button circle>
+          <ion-icon name="heart-outline" slot="icon-only"></ion-icon>
+        </way-button>
+
+        <way-button size="large" circle>
+          <ion-icon name="heart-outline" slot="icon-only"></ion-icon>
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Link Buttons</h3>
+
+        <way-button href="https://www.way2web.nl" target="_blank">
+          Link
+        </way-button>
+      </section>
+
+    </section>
   </body>
 </html>

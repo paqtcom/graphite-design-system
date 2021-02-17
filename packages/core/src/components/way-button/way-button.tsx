@@ -6,7 +6,21 @@ import { Component, Host, h, Prop } from '@stencil/core';
 })
 export class WayButton {
 
-  @Prop() variant?: 'default' | 'primary' = 'default';
+  /**
+   * The different variants.
+   * The options are: `"default"`, `"primary"`, `"secondary"` and `"text"`.
+   */
+  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'text' = 'default';
+
+  /**
+   * The button's size.
+   */
+  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
+   * Set to true to draw a circle button.
+   */
+  @Prop({ reflect: true }) circle = false;
 
   /**
    * Contains a URL or a URL fragment that the hyperlink points to.
@@ -26,7 +40,7 @@ export class WayButton {
   @Prop() rel: string | undefined;
 
   render() {
-    const { rel, target, href, variant } = this;
+    const { rel, target, href, variant, size } = this;
     const TagType = href === undefined ? 'button' : 'a' as any;
     const attrs = {
       href,
@@ -38,6 +52,8 @@ export class WayButton {
       <Host
         class={{
           [`button-${variant}`]: true,
+          [`button-${size}`]: true,
+          'button-circle': this.circle,
         }}
       >
         <TagType
@@ -46,6 +62,7 @@ export class WayButton {
           part="native"
         >
           <span class="button-inner">
+            <slot name="icon-only"></slot>
             <slot name="start"></slot>
             <slot></slot>
             <slot name="end"></slot>

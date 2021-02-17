@@ -9,6 +9,7 @@
   width: auto;
 
   font-family: var(--way-font-family, inherit);
+  font-weight: var(--way-font-weight-semibold);
 
   user-select: none;
   vertical-align: top;
@@ -17,34 +18,37 @@
 
   font-kerning: none;
 
-  --border-radius: 5px;
-  --border-width: 2px;
-  --border-color: var(--way-color-primary);
-  --border-style: solid;
-}
+  font-size: var(--way-button-font-size-medium);
 
-// Default variant
-// --------------------------------------------------
+  --height: var(--way-input-height-medium);
 
-:host(.button-default) {
+  --border-radius: var(--way-input-border-radius-medium);
+
   --border-color: var(--way-color-light);
   --background: transparent;
   --color: var(--way-color-dark-tint);
 
-  --border-color-hover: var(--way-color-medium-shade);
+  --border-color-hover: var(--way-color-medium);
   --background-hover: transparent;
   --color-hover: var(--way-color-dark-tint);
+
+  --padding-top: 0;
+  --padding-start: var(--way-spacing-medium);
+  --padding-end: var(--way-spacing-medium);
+  --padding-bottom: 0;
 }
 
 // Primary variant
 // --------------------------------------------------
 
 :host(.button-primary) {
+  --border-color: var(--way-color-primary);
   --background: var(--way-color-primary);
   --color: var(--way-color-primary-contrast);
 
   --border-color-hover: var(--way-color-primary-shade);
   --background-hover: var(--way-color-primary-shade);
+  --color-hover: var(--way-color-primary-contrast);
 }
 
 // Secondary variant
@@ -60,22 +64,62 @@
   --color-hover: var(--way-color-primary);
 }
 
+// Plain variant
+// --------------------------------------------------
+
+:host(.button-plain) {
+  --border-color: transparent;
+  --background: transparent;
+  --color: var(--way-color-primary);
+
+  --border-color-hover: transparent;
+  --background-hover: transparent;
+  --color-hover: var(--way-color-primary-shade);
+}
+
+// Sizes
+// --------------------------------------------------
+
+:host(.button-small) {
+  --padding-start: var(--way-spacing-small);
+  --padding-end: var(--way-spacing-small);
+
+  --border-radius: var(--way-input-border-radius-small);
+
+  --height: var(--way-input-height-small);
+
+  font-size: var(--way-button-font-size-small);
+}
+
+:host(.button-large) {
+  --padding-start: var(--way-spacing-large);
+  --padding-end: var(--way-spacing-large);
+
+  --border-radius: var(--way-input-border-radius-large);
+
+  --height: var(--way-input-height-large);
+
+  font-size: var(--way-button-font-size-large);
+}
+
 .button-native {
   @include font-smoothing();
   @include text-inherit();
 
-  border-radius: var(--border-radius);
-
   display: block;
   position: relative;
 
-  padding: 20px;
+  padding-top: var(--padding-top);
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: var(--padding-bottom);
 
   width: 100%;
-  height: 100%;
+  height: var(--height);
 
-  border-width: var(--border-width);
-  border-style: var(--border-style);
+  border-radius: var(--border-radius);
+  border-width: var(--way-input-border-width);
+  border-style: solid;
   border-color: var(--border-color);
 
   background: var(--background);
@@ -106,16 +150,30 @@
   z-index: 1;
 }
 
+// Circle modifier
+// --------------------------------------------------
+
+:host(.button-circle) .button-native {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 50%;
+  width: var(--height);
+}
+
 // Button: States
 // --------------------------------------------------
 
 @media (any-hover: hover) {
-  :host(:hover) {
-    color: var(--color-hover);
-  }
-
   :host(:hover) .button-native {
+    color: var(--color-hover);
     background: var(--background-hover);
     border-color: var(--border-color-hover);
   }
+}
+
+::slotted([slot='icon-only']) {
+  font-size: 1.4em;
+  pointer-events: none;
 }
