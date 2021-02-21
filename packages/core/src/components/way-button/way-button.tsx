@@ -1,21 +1,36 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { inheritAttributes } from '../../utils/utils';
 @Component({
   tag: 'way-button',
   styleUrl: 'way-button.scss',
   shadow: true,
 })
 export class WayButton {
+  private inheritedAttributes: { [k: string]: any } = {};
+
+  @Element() el!: HTMLElement;
 
   /**
    * The different variants.
-   * The options are: `"default"`, `"primary"`, `"secondary"` and `"text"`.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
    */
-  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'text' = 'default';
+  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' = 'default';
+
+  /**
+   * If `true`, the user cannot interact with the button.
+   */
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * The button's size.
    */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
+   * Set to `"block"` for a full-width button or to `"full"` for a full-width button
+   * without left and right borders.
+   */
+  @Prop({ reflect: true }) expand?: 'full' | 'block';
 
   /**
    * Set to true to draw a circle button.
@@ -39,27 +54,83 @@ export class WayButton {
    */
   @Prop() rel: string | undefined;
 
+    /**
+   * The type of the button.
+   */
+  @Prop() type: 'submit' | 'reset' | 'button' = 'button';
+
+  /**
+   * Emitted when the button has focus.
+   */
+  @Event() wayFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button loses focus.
+   */
+  @Event() wayBlur!: EventEmitter<void>;
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
+  }
+
+  private handleClick = (ev: Event) => {
+    if (this.type !== 'button') {
+      // this button wants to specifically submit/reset a form
+      // climb up the dom to see if we're in a <form>
+      // and if so, then use JS to submit/reset it
+      const form = this.el.closest('form');
+      if (form) {
+        ev.preventDefault();
+
+        const fakeButton = document.createElement('button');
+        fakeButton.type = this.type;
+        fakeButton.style.display = 'none';
+        form.appendChild(fakeButton);
+        fakeButton.click();
+        fakeButton.remove();
+      }
+    }
+  }
+
+  private onFocus = () => {
+    this.wayFocus.emit();
+  }
+
+  private onBlur = () => {
+    this.wayBlur.emit();
+  }
+
   render() {
-    const { rel, target, href, variant, size } = this;
+    const { rel, target, href, variant, size, expand, type, inheritedAttributes, disabled } = this;
     const TagType = href === undefined ? 'button' : 'a' as any;
-    const attrs = {
-      href,
-      rel,
-      target,
-    };
+    const attrs = (TagType === 'button')
+      ? { type }
+      : {
+        href,
+        rel,
+        target
+      };
 
     return (
       <Host
+        onClick={this.handleClick}
+        aria-disabled={disabled ? 'true' : null}
         class={{
           [`button-${variant}`]: true,
           [`button-${size}`]: true,
+          [`button-${expand}`]: expand !== undefined,
           'button-circle': this.circle,
+          'button-disabled': disabled,
         }}
       >
         <TagType
           {...attrs}
           class="button-native"
           part="native"
+          disabled={disabled}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          {...inheritedAttributes}
         >
           <span class="button-inner">
             <slot name="icon-only"></slot>

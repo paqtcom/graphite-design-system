@@ -4,38 +4,69 @@
 // --------------------------------------------------
 
 :host {
+  /**
+   * @prop --background: Background of the button
+   * @prop --background-hover: Background of the button on hover
+   *
+   * @prop --color: Text color of the button
+   * @prop --color-hover: Text color of the button when hover
+   *
+   * @prop --transition: Transition of the button
+   *
+   * @prop --border-radius: Border radius of the button
+   * @prop --border-width: Border width of the button
+   * @prop --border-style: Border style of the button
+   * @prop --border-color: Border color of the button
+   * @prop --border-color-hover: Border color of the button when hover
+   *
+   * @prop --padding-top: Top padding of the button
+   * @prop --padding-end: Right padding of the button (will be left padding when we support right-to-left direction)
+   * @prop --padding-bottom: Bottom padding of the button
+   * @prop --padding-start: Left padding of the button (will be right padding when we support right-to-left direction)
+   *
+   * @prop --height: Height of the button
+   */
   display: inline-block;
 
   width: auto;
 
   font-family: var(--way-font-family, inherit);
   font-weight: var(--way-font-weight-semibold);
+  font-size: var(--way-button-font-size-medium);
+  font-kerning: none;
 
   user-select: none;
   vertical-align: top;
   vertical-align: -webkit-baseline-middle;
   pointer-events: auto;
 
-  font-kerning: none;
-
-  font-size: var(--way-button-font-size-medium);
-
   --height: var(--way-input-height-medium);
 
   --border-radius: var(--way-input-border-radius-medium);
+  --border-width: var(--way-input-border-width);
+  --border-style: solid;
+
+  --background: transparent;
+  --background-hover: transparent;
+
+  --color: var(--way-color-dark-tint);
+  --color-hover: var(--way-color-dark-tint);
 
   --border-color: var(--way-color-light);
-  --background: transparent;
-  --color: var(--way-color-dark-tint);
-
   --border-color-hover: var(--way-color-medium);
-  --background-hover: transparent;
-  --color-hover: var(--way-color-dark-tint);
 
   --padding-top: 0;
   --padding-start: var(--way-spacing-medium);
   --padding-end: var(--way-spacing-medium);
   --padding-bottom: 0;
+
+  --transition: background-color 150ms linear, opacity 150ms linear, border 150ms linear, color 150ms linear;
+}
+
+:host(.button-disabled) {
+  cursor: default;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 // Primary variant
@@ -62,6 +93,19 @@
   --border-color-hover: var(--way-color-primary);
   --background-hover: transparent;
   --color-hover: var(--way-color-primary);
+}
+
+// Danger variant
+// --------------------------------------------------
+
+:host(.button-danger) {
+  --border-color: var(--way-color-danger);
+  --background: transparent;
+  --color: var(--way-color-danger);
+
+  --border-color-hover: var(--way-color-danger);
+  --background-hover: var(--way-color-danger);
+  --color-hover: var(--way-color-danger-contrast);
 }
 
 // Plain variant
@@ -102,6 +146,53 @@
   font-size: var(--way-button-font-size-large);
 }
 
+// Block Button
+// --------------------------------------------------
+
+:host(.button-block) {
+  display: block;
+}
+
+:host(.button-block) .button-native {
+  margin-left: 0;
+  margin-right: 0;
+
+  display: block;
+
+  width: 100%;
+
+  clear: both;
+
+  contain: content;
+}
+
+:host(.button-block) .button-native::after {
+  clear: both;
+}
+
+// Full button
+// --------------------------------------------------
+
+:host(.button-full) {
+  display: block;
+}
+
+:host(.button-full) .button-native {
+  margin-left: 0;
+  margin-right: 0;
+
+  display: block;
+
+  width: 100%;
+
+  contain: content;
+
+  border-radius: 0;
+
+  border-right-width: 0;
+  border-left-width: 0;
+}
+
 .button-native {
   @include font-smoothing();
   @include text-inherit();
@@ -117,9 +208,11 @@
   width: 100%;
   height: var(--height);
 
+  transition: var(--transition);
+
   border-radius: var(--border-radius);
-  border-width: var(--way-input-border-width);
-  border-style: solid;
+  border-width: var(--border-width);
+  border-style: var(--border-style);
   border-color: var(--border-color);
 
   background: var(--background);
@@ -133,6 +226,14 @@
   box-sizing: border-box;
 
   text-decoration: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .button-inner {
@@ -171,6 +272,28 @@
     background: var(--background-hover);
     border-color: var(--border-color-hover);
   }
+}
+
+// Button Icons
+// --------------------------------------------------
+
+::slotted(*) {
+  font-size: 1.4em;
+  pointer-events: none;
+}
+
+::slotted([slot='start']) {
+  margin-top: 0;
+  margin-left: -0.3em;
+  margin-right: 0.3em;
+  margin-bottom: 0;
+}
+
+::slotted([slot='end']) {
+  margin-top: 0;
+  margin-left: 0.3em;
+  margin-right: -0.2em;
+  margin-bottom: 0;
 }
 
 ::slotted([slot='icon-only']) {

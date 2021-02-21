@@ -12,6 +12,14 @@ export namespace Components {
          */
         "circle": boolean;
         /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.
+         */
+        "expand"?: 'full' | 'block';
+        /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href": string | undefined;
@@ -28,9 +36,13 @@ export namespace Components {
          */
         "target": string | undefined;
         /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"` and `"text"`.
+          * The type of the button.
          */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'text';
+        "type": 'submit' | 'reset' | 'button';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
 }
 declare global {
@@ -51,9 +63,25 @@ declare namespace LocalJSX {
          */
         "circle"?: boolean;
         /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.
+         */
+        "expand"?: 'full' | 'block';
+        /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href"?: string | undefined;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -67,9 +95,13 @@ declare namespace LocalJSX {
          */
         "target"?: string | undefined;
         /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"` and `"text"`.
+          * The type of the button.
          */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'text';
+        "type"?: 'submit' | 'reset' | 'button';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
     interface IntrinsicElements {
         "way-button": WayButton;
