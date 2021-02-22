@@ -28,6 +28,23 @@
 | `wayFocus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 
 
+## Slots
+
+| Slot          | Description                                                                                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+|               | Content is placed between the named slots if provided without a slot.                                           |
+| `"end"`       | Content is placed to the right of the button text (will be to the left when we support right-to-left direction) |
+| `"icon-only"` | Should be used on an icon in a button that has no text.                                                         |
+| `"start"`     | Content is placed to the left of the button text (will be to the right when we support right-to-left direction) |
+
+
+## Shadow Parts
+
+| Part       | Description                                                             |
+| ---------- | ----------------------------------------------------------------------- |
+| `"native"` | The native HTML button or anchor element that wraps all child elements. |
+
+
 ## CSS Custom Properties
 
 | Name                   | Description                                                                                |

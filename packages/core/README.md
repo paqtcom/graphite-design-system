@@ -30,8 +30,9 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 ### Script tag
 
-- Put a script tag similar to this in the head of your index.html:
+- Just add the following tags to your page.
   ```html
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.css" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.esm.js"></script>
   ```
 - Then you can use the elements anywhere in your template, JSX, html etc.
@@ -66,12 +67,16 @@ Use the [Vue bindings](../vue/README.md).
 - Edit `src/main.js` to include:
 
   ```js
-  // Import Way2Web Web Components
+  // Import Way2Web Design System components
   import { defineCustomElements } from '@w2wds/core/loader';
+
+  /* Core CSS required for Way2Web Design System components to work properly */
+  import '@w2wds/core/dist/core/core.css';
+
   // ...
-  // configure Vue.js to ignore Way2Web Web Components
+  // configure Vue.js to ignore Way2Web Design System components
   Vue.config.ignoredElements = [/way-\w*/];
-  // Register Way2Web Web Components
+  // Register Way2Web Design System components
   defineCustomElements(window);
 
   new Vue({
