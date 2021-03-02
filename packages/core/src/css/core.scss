@@ -7,6 +7,11 @@
   --way-color-primary-shade: #00679e;
   --way-color-primary-tint: #46b2ec;
 
+  --way-color-secondary: #051f2c;
+  --way-color-secondary-contrast: #ffffff;
+  --way-color-secondary-shade: #000;
+  --way-color-secondary-tint: #0a415c;
+
   --way-color-danger: #ff5363;
   --way-color-danger-contrast: #051f2c;
   --way-color-danger-shade: #ff1f35;
@@ -72,19 +77,17 @@
   // Form tokens
   // -------------------------------------------------
 
-  // Buttons
-  --way-button-font-size-small: var(--way-font-size-x-small);
-  --way-button-font-size-medium: var(--way-font-size-small);
-  --way-button-font-size-large: var(--way-font-size-medium);
+  --way-form-element-font-size-small: var(--way-font-size-small);
+  --way-form-element-font-size-medium: var(--way-font-size-medium);
+  --way-form-element-font-size-large: var(--way-font-size-large);
 
-  // Inputs
-  --way-input-height-small: 1.875rem; // 30px
-  --way-input-height-medium: 2.5rem; // 40px
-  --way-input-height-large: 3.125rem; // 50px
+  --way-form-element-height-small: 2.188rem; // 35px
+  --way-form-element-height-medium: 3.125rem; // 50px
+  --way-form-element-height-large: 4.063rem; // 65px
 
-  --way-input-border-width: 2px;
+  --way-form-element-border-width: 2px;
 
-  --way-input-border-radius-small: var(--way-border-radius-medium);
-  --way-input-border-radius-medium: var(--way-border-radius-medium);
-  --way-input-border-radius-large: var(--way-border-radius-medium);
+  --way-form-element-border-radius-small: var(--way-border-radius-medium);
+  --way-form-element-border-radius-medium: var(--way-border-radius-medium);
+  --way-form-element-border-radius-large: var(--way-border-radius-medium);
 }
