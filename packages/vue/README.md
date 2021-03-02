@@ -25,6 +25,9 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { defineCustomElements } from "@w2wds/core/loader";
 
+/* Core CSS required for Way2Web Design System components to work properly */
+import "@w2wds/core/dist/core/core.css";
+
 const app = createApp(App);
 
 defineCustomElements().then(() => {

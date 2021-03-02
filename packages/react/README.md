@@ -18,6 +18,12 @@ Or:
 yarn add @w2wds/react
 ```
 
+Import the Core CSS required for Way2Web Design System components to work properly:
+
+```js
+import "@w2wds/core/dist/core/core.css";
+```
+
 Import the component(s) you want to use:
 
 ```js

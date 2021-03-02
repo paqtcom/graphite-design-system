@@ -30,8 +30,9 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 ### Script tag
 
-- Put a script tag similar to this in the head of your index.html:
+- Just add the following tags to your page.
   ```html
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.css" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.esm.js"></script>
   ```
 - Then you can use the elements anywhere in your template, JSX, html etc.
@@ -66,12 +67,16 @@ Use the [Vue bindings](../vue/README.md).
 - Edit `src/main.js` to include:
 
   ```js
-  // Import Way2Web Web Components
+  // Import Way2Web Design System components
   import { defineCustomElements } from '@w2wds/core/loader';
+
+  /* Core CSS required for Way2Web Design System components to work properly */
+  import '@w2wds/core/dist/core/core.css';
+
   // ...
-  // configure Vue.js to ignore Way2Web Web Components
+  // configure Vue.js to ignore Way2Web Design System components
   Vue.config.ignoredElements = [/way-\w*/];
-  // Register Way2Web Web Components
+  // Register Way2Web Design System components
   defineCustomElements(window);
 
   new Vue({
@@ -125,3 +130,53 @@ _[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=bi
 ## Development
 
 Follow the [instructions in the root of this repo](../../README.md).
+
+## License
+
+- [MIT](../../LICENSE)
+
+## Attribution
+
+### Ionic Framework
+
+Some component code is based or inspired on the [Ionic Framework](https://ionicframework.com/) components.
+
+```
+Copyright 2015-present Drifty Co.
+http://drifty.com/
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+### Shoelace
+
+Some component code is based or inspired on the [Shoelace](https://shoelace.style/) components.
+
+```
+Copyright (c) 2020 A Beautiful Site, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```

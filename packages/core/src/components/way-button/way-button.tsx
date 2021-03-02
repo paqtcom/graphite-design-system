@@ -1,16 +1,50 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { inheritAttributes } from '../../utils/utils';
 
+/**
+ * @slot - Content is placed between the named slots if provided without a slot.
+ * @slot icon-only - Should be used on an icon in a button that has no text.
+ * @slot start - Content is placed to the left of the button text (will be to the right when we support right-to-left direction)
+ * @slot end - Content is placed to the right of the button text (will be to the left when we support right-to-left direction)
+ *
+ * @part native - The native HTML button or anchor element that wraps all child elements.
+ */
 @Component({
   tag: 'way-button',
-  styleUrl: 'way-button.css',
+  styleUrl: 'way-button.scss',
   shadow: true,
 })
 export class WayButton {
+  private inheritedAttributes: { [k: string]: any } = {};
+
+  @Element() el!: HTMLElement;
+
   /**
-   * Set to `"outline"` for a transparent button with a border, or to `"solid"`.
-   * The default style is `"solid"`.
+   * The different variants.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
    */
-  @Prop({ reflect: true, mutable: true }) fill?: 'outline' | 'solid';
+  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' = 'default';
+
+  /**
+   * If `true`, the user cannot interact with the button.
+   */
+  @Prop({ reflect: true }) disabled = false;
+
+  /**
+   * The button's size.
+   */
+  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
+   * Set to `"block"` for a full-width button or to `"full"` for a full-width button
+   * without left and right borders.
+   */
+  @Prop({ reflect: true }) expand?: 'full' | 'block';
+
+  /**
+   * Set to true to draw a circle button.
+   */
+  @Prop({ reflect: true }) circle = false;
 
   /**
    * Contains a URL or a URL fragment that the hyperlink points to.
@@ -29,32 +63,91 @@ export class WayButton {
    */
   @Prop() rel: string | undefined;
 
-  render() {
-    const { rel, target, href } = this;
-    const attrs = {
-      href,
-      rel,
-      target,
-    };
+    /**
+   * The type of the button.
+   */
+  @Prop() type: 'submit' | 'reset' | 'button' = 'button';
 
-    let fill = this.fill;
-    if (fill === undefined) {
-      fill = 'solid';
+  /**
+   * Emitted when the button has focus.
+   */
+  @Event() wayFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button loses focus.
+   */
+  @Event() wayBlur!: EventEmitter<void>;
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
+  }
+
+  private handleClick = (ev: Event) => {
+    if (this.type !== 'button') {
+      // this button wants to specifically submit/reset a form
+      // climb up the dom to see if we're in a <form>
+      // and if so, then use JS to submit/reset it
+      const form = this.el.closest('form');
+      if (form) {
+        ev.preventDefault();
+
+        const fakeButton = document.createElement('button');
+        fakeButton.type = this.type;
+        fakeButton.style.display = 'none';
+        form.appendChild(fakeButton);
+        fakeButton.click();
+        fakeButton.remove();
+      }
     }
+  }
+
+  private onFocus = () => {
+    this.wayFocus.emit();
+  }
+
+  private onBlur = () => {
+    this.wayBlur.emit();
+  }
+
+  render() {
+    const { rel, target, href, variant, size, expand, type, inheritedAttributes, disabled } = this;
+    const TagType = href === undefined ? 'button' : 'a' as any;
+    const attrs = (TagType === 'button')
+      ? { type }
+      : {
+        href,
+        rel,
+        target
+      };
 
     return (
       <Host
+        onClick={this.handleClick}
+        aria-disabled={disabled ? 'true' : null}
         class={{
-          [`button-${fill}`]: true,
+          [`button-${variant}`]: true,
+          [`button-${size}`]: true,
+          [`button-${expand}`]: expand !== undefined,
+          'button-circle': this.circle,
+          'button-disabled': disabled,
         }}
       >
-        <a {...attrs} class="button-native">
+        <TagType
+          {...attrs}
+          class="button-native"
+          part="native"
+          disabled={disabled}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          {...inheritedAttributes}
+        >
           <span class="button-inner">
+            <slot name="icon-only"></slot>
             <slot name="start"></slot>
             <slot></slot>
             <slot name="end"></slot>
           </span>
-        </a>
+        </TagType>
       </Host>
     );
   }
