@@ -1,7 +1,7 @@
 {
   "name": "@w2wds/react",
   "sideEffects": false,
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "React specific wrapper for the components of the Way2Web Design System",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@w2wds/core": "^0.2.4"
+    "@w2wds/core": "^0.3.0"
   },
   "peerDependencies": {
     "react": "^16.7.0",

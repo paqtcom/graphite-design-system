@@ -6,12 +6,11 @@ Library of components for the Way2Web Design System
 
 ### Packages
 
-| Project              | Package                                                          | Version                                                                                                            |                   Links                   |
-| -------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------: |
-| **Core components**  | [`@w2wds/core`](https://www.npmjs.com/package/@w2wds/core)       | [![version](https://img.shields.io/npm/v/@w2wds/core/latest.svg)](https://www.npmjs.com/package/@w2wds/core)       |  [`README.md`](packages/core/README.md)   |
-| **Angular bindings** | [`@w2wds/angular`](https://www.npmjs.com/package/@w2wds/angular) | [![version](https://img.shields.io/npm/v/@w2wds/angular/latest.svg)](https://www.npmjs.com/package/@w2wds/angular) | [`README.md`](packages/angular/README.md) |
-| **React bindings**   | [`@w2wds/react`](https://www.npmjs.com/package/@w2wds/react)     | [![version](https://img.shields.io/npm/v/@w2wds/react/latest.svg)](https://www.npmjs.com/package/@w2wds/react)     |  [`README.md`](packages/react/README.md)  |
-| **Vue 3 bindings**   | [`@w2wds/vue`](https://www.npmjs.com/package/@w2wds/vue)         | [![version](https://img.shields.io/npm/v/@w2wds/vue/latest.svg)](https://www.npmjs.com/package/@w2wds/vue)         |   [`README.md`](packages/vue/README.md)   |
+| Project             | Package                                                      | Version                                                                                                        |                  Links                  |
+| ------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- | :-------------------------------------: |
+| **Core components** | [`@w2wds/core`](https://www.npmjs.com/package/@w2wds/core)   | [![version](https://img.shields.io/npm/v/@w2wds/core/latest.svg)](https://www.npmjs.com/package/@w2wds/core)   | [`README.md`](packages/core/README.md)  |
+| **React bindings**  | [`@w2wds/react`](https://www.npmjs.com/package/@w2wds/react) | [![version](https://img.shields.io/npm/v/@w2wds/react/latest.svg)](https://www.npmjs.com/package/@w2wds/react) | [`README.md`](packages/react/README.md) |
+| **Vue 3 bindings**  | [`@w2wds/vue`](https://www.npmjs.com/package/@w2wds/vue)     | [![version](https://img.shields.io/npm/v/@w2wds/vue/latest.svg)](https://www.npmjs.com/package/@w2wds/vue)     |  [`README.md`](packages/vue/README.md)  |
 
 ## Development
 
@@ -66,6 +65,6 @@ You can then publish all the packages to npm (with lerna):
 npm run publish
 ```
 
-This will ask what the next version of each package should be, changes all the package.json's, created all the tags in the repo and published it to npm (if your terminal has GitHub and npm access).
+This will ask what the next version of each package should be, changes all the package.json's, creates all the tags in the repo and publishes it to npm (if your terminal has GitHub and npm access).
 
 Or you can navigate to the packages yourself, change the `package.json`, create the tag in the repo, and run `npm publish`.

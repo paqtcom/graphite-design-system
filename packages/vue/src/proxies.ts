@@ -9,9 +9,16 @@ import { JSX } from '@w2wds/core';
 
 
 export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', [
-  'fill',
+  'variant',
+  'disabled',
+  'size',
+  'expand',
+  'circle',
   'href',
   'target',
-  'rel'
+  'rel',
+  'type',
+  'wayFocus',
+  'wayBlur'
 ]);
 

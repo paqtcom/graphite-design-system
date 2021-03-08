@@ -1,17 +1,13 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { angularOutputTarget } from '@stencil/angular-output-target';
 import { vueOutputTarget } from "@stencil/vue-output-target";
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'core',
   plugins: [sass()],
+  globalStyle: 'src/css/core.scss',
   outputTargets: [
-    angularOutputTarget({
-      componentCorePackage: '@w2wds/core',
-      directivesProxyFile: '../angular/src/directives/proxies.ts',
-    }),
     reactOutputTarget({
       componentCorePackage: '@w2wds/core',
       proxiesFile: '../react/src/components.ts',

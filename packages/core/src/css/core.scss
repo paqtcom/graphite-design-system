@@ -1,0 +1,90 @@
+:root {
+  // Theme color tokens
+  // --------------------------------------------------
+
+  --way-color-primary: #1799de;
+  --way-color-primary-contrast: #ffffff;
+  --way-color-primary-shade: #00679e;
+  --way-color-primary-tint: #46b2ec;
+
+  --way-color-danger: #ff5363;
+  --way-color-danger-contrast: #051f2c;
+  --way-color-danger-shade: #ff1f35;
+  --way-color-danger-tint: #ff8591;
+
+  --way-color-light: #dbe5eb;
+  --way-color-light-contrast: #051f2c;
+  --way-color-light-shade: #c1d1db;
+  --way-color-light-tint: #e7eef4;
+
+  --way-color-medium: #697886;
+  --way-color-medium-contrast: #ffffff;
+  --way-color-medium-shade: #4c5960;
+  --way-color-medium-tint: #9eaeb7;
+
+  --way-color-dark: #02131b;
+  --way-color-dark-contrast: #ffffff;
+  --way-color-dark-shade: #000000;
+  --way-color-dark-tint: #051f2c;
+
+  // Border radius tokens
+  // --------------------------------------------------
+  --way-border-radius-small: 0.125rem; // 2px
+  --way-border-radius-medium: 0.25rem; // 4px
+  --way-border-radius-large: 0.5rem; // 8px
+  --way-border-radius-x-large: 1rem; // 16px
+
+  // Spacing tokens
+  // --------------------------------------------------
+
+  --way-spacing-xxx-small: 0.125rem; // 2px
+  --way-spacing-xx-small: 0.25rem; // 4px
+  --way-spacing-x-small: 0.5rem; // 8px
+  --way-spacing-small: 0.75rem; // 12px
+  --way-spacing-medium: 1rem; // 16px
+  --way-spacing-large: 1.25rem; // 20px
+  --way-spacing-x-large: 1.75rem; // 28px
+  --way-spacing-xx-large: 2.25rem; // 36px
+  --way-spacing-xxx-large: 3rem; // 48px
+  --way-spacing-xxxx-large: 4.5rem; // 72px
+
+  // Typography tokens
+  // --------------------------------------------------
+  --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  // Font sizes
+  --way-font-size-xx-small: 0.625rem; // 10px
+  --way-font-size-x-small: 0.75rem; // 12px
+  --way-font-size-small: 0.875rem; // 14px
+  --way-font-size-medium: 1rem; // 16px
+  --way-font-size-large: 1.25rem; // 20px
+  --way-font-size-x-large: 1.5rem; // 24px
+  --way-font-size-xx-large: 2.25rem; // 36px
+  --way-font-size-xxx-large: 3rem; // 48px
+  --way-font-size-xxxx-large: 4.5rem; // 72px
+
+  // Font weights
+  --way-font-weight-light: 300;
+  --way-font-weight-normal: 400;
+  --way-font-weight-semibold: 500;
+  --way-font-weight-bold: 700;
+
+  // Form tokens
+  // -------------------------------------------------
+
+  // Buttons
+  --way-button-font-size-small: var(--way-font-size-x-small);
+  --way-button-font-size-medium: var(--way-font-size-small);
+  --way-button-font-size-large: var(--way-font-size-medium);
+
+  // Inputs
+  --way-input-height-small: 1.875rem; // 30px
+  --way-input-height-medium: 2.5rem; // 40px
+  --way-input-height-large: 3.125rem; // 50px
+
+  --way-input-border-width: 2px;
+
+  --way-input-border-radius-small: var(--way-border-radius-medium);
+  --way-input-border-radius-medium: var(--way-border-radius-medium);
+  --way-input-border-radius-large: var(--way-border-radius-medium);
+}
