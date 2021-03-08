@@ -1,9 +1,4 @@
-export interface IFormElement extends ChildNode {
-  getValue: () => any;
-  callback: (e: any) => void;
-}
-
-export interface IFormElementData {
+export interface FormElementData {
   name: string;
   value: any;
   errors: string[];

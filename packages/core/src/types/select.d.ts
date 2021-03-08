@@ -1,11 +1,11 @@
-export interface ISelectOption {
+export interface WayAutosuggestOption {
   label: string;
   value: string | number;
   selected?: boolean;
   highlighted?: boolean;
 }
 
-export interface ISelectConfig {
+export interface WayAutosuggestConfig {
   selectedText?: string;
   multi?: boolean;
   maxTagWidth?: string;

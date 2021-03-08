@@ -5,13 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ISelectConfig, ISelectOption } from "./types/select";
-import { IFormElementData } from "./types/form";
+import { WayAutosuggestConfig, WayAutosuggestOption } from "./types/select";
+import { FormElementData } from "./types/form";
 export namespace Components {
     interface WayAutosuggest {
-        "config"?: ISelectConfig;
+        "config"?: WayAutosuggestConfig;
         "name": string;
-        "options"?: Array<ISelectOption>;
+        "options"?: Array<WayAutosuggestOption>;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
     }
@@ -54,10 +54,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface WayAutosuggest {
-        "config"?: ISelectConfig;
+        "config"?: WayAutosuggestConfig;
         "name"?: string;
-        "onWayChange"?: (event: CustomEvent<IFormElementData>) => void;
-        "options"?: Array<ISelectOption>;
+        "onWayChange"?: (event: CustomEvent<FormElementData>) => void;
+        "options"?: Array<WayAutosuggestOption>;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
     }

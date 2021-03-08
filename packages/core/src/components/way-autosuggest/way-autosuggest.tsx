@@ -1,6 +1,7 @@
 import { Component, Method, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
-import { IFormElementData } from '../../types/form';
-import { ISelectOption, ISelectConfig } from '../../types/select';
+import { FormElementData } from '../../types/form';
+import { WayAutosuggestOption, WayAutosuggestConfig } from '../../types/select';
+import { renderInputOutsideShadowRoot } from '../../utils/utils';
 
 @Component({
   tag: 'way-autosuggest',
@@ -12,17 +13,17 @@ export class W2wSelect {
   private inputEl?: HTMLInputElement;
   @Element() el!: HTMLWayAutosuggestElement;
 
-  @Prop() options?: Array<ISelectOption> = [];
-  @Prop() config?: ISelectConfig = {};
+  @Prop() options?: Array<WayAutosuggestOption> = [];
+  @Prop() config?: WayAutosuggestConfig = {};
   @Prop() validation?: (value: any) => string[];
   @Prop() value?: string | Array<{ label: string; value: any }>;
   @Prop() name: string;
 
   @State() inputValue: string = '';
   @State() hasFocus = false;
-  @State() filteredOptions: Array<ISelectOption> = this.options;
+  @State() filteredOptions: Array<WayAutosuggestOption> = this.options;
   @State() localSelected = [];
-  @State() localConfig: ISelectConfig = {
+  @State() localConfig: WayAutosuggestConfig = {
     selectedText: 'selected',
     maxTagWidth: '10rem',
     tagColor: 'green',
@@ -90,7 +91,7 @@ export class W2wSelect {
     this.optionListEl.scrollTop = 0;
   }
 
-  @Event({ bubbles: true }) wayChange: EventEmitter<IFormElementData>;
+  @Event({ bubbles: true }) wayChange: EventEmitter<FormElementData>;
 
   private valueSelectedHandler() {
     this.wayChange.emit({
@@ -131,9 +132,9 @@ export class W2wSelect {
 
   /**
    * Listener when user adds an option.
-   * @param {ISelectOption} option
+   * @param {WayAutosuggestOption} option
    */
-  private optionSelectedListener(option: ISelectOption) {
+  private optionSelectedListener(option: WayAutosuggestOption) {
     if (!this.localConfig.multi) {
       this.localSelected = [option];
       this.unFocus();
@@ -148,7 +149,7 @@ export class W2wSelect {
 
   /**
    * Listener when user removes a tag.
-   * @param {ISelectOption} option
+   * @param {WayAutosuggestOption} option
    */
   private removeTagListener(option) {
     if (!this.localSelected) return;
@@ -217,18 +218,6 @@ export class W2wSelect {
    */
   private Fragment = (_: any, children: HTMLElement[]): HTMLElement[] => [ ...children ];
 
-  private renderInputOutsideShadowRoot(container: HTMLElement, name: string, value: string | null) {
-    let input = container.querySelector("input.hidden-input") as HTMLInputElement | null;
-    if (!input) {
-        input = container.ownerDocument.createElement("input");
-        input.type = "hidden";
-        input.classList.add("hidden-input");
-        container.appendChild(input);
-    }
-    input.name = name;
-    input.value = value || "";
-  }
-
   componentWillLoad() {
     this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     this.updateOptions();
@@ -236,7 +225,7 @@ export class W2wSelect {
 
   render() {
     // todo: if a (to be made) valueSelector callback function prop is given, return comma seperated string instead of JSON
-    this.renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
+    renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
 
     return (
       <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
