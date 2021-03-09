@@ -81,15 +81,16 @@ export class W2wSelect {
    */
   private setScrollPosition(direction: string, highlightIndex: number) {
     const firstOption = this.optionListEl.querySelector('.option') as HTMLElement;
+    const marginOfError = 10;
 
     if (!firstOption) return;
     const top = this.optionListEl.scrollTop;
     const bottom = this.optionListEl.scrollTop + this.optionListEl.offsetHeight;
 
-    if(direction === 'down' && firstOption.offsetHeight * highlightIndex +10 > bottom) {
+    if(direction === 'down' && firstOption.offsetHeight * highlightIndex > bottom - marginOfError) {
       this.optionListEl.scrollTop += firstOption.offsetHeight;
       
-    } else if (direction === 'up' && firstOption.offsetHeight * highlightIndex < top) {
+    } else if (direction === 'up' && firstOption.offsetHeight * highlightIndex + 10 < top + marginOfError) {
       this.optionListEl.scrollTop -=firstOption.offsetHeight;
     }
   }
