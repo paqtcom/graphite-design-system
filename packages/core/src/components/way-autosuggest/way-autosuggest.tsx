@@ -74,20 +74,24 @@ export class W2wSelect {
     }
   }
 
+  /**
+   * Determine if optionListEl has to scroll down or up, depending on the highlighted option.
+   * @param direction 
+   * @param highlightIndex 
+   */
   private setScrollPosition(direction: string, highlightIndex: number) {
-    const optionListHeight = this.optionListEl.offsetHeight;
     const firstOption = this.optionListEl.querySelector('.option') as HTMLElement;
 
     if (!firstOption) return;
+    const top = this.optionListEl.scrollTop;
+    const bottom = this.optionListEl.scrollTop + this.optionListEl.offsetHeight;
 
-    if(direction === 'down') {
-      if (highlightIndex * firstOption.offsetHeight + firstOption.offsetHeight <= optionListHeight) return;
+    if(direction === 'down' && firstOption.offsetHeight * highlightIndex +10 > bottom) {
       this.optionListEl.scrollTop += firstOption.offsetHeight;
-    } else {
+      
+    } else if (direction === 'up' && firstOption.offsetHeight * highlightIndex < top) {
       this.optionListEl.scrollTop -=firstOption.offsetHeight;
     }
-    
-    
   }
   /**
    * Strip attribute that aren't needed.
