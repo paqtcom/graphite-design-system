@@ -1,15 +1,27 @@
-.way-autosuggest {
-  --color-selected: rgba(133, 172, 226, 0.6);
+:host {
+  font-family: var(--way-font-family, inherit);
+  font-weight: var(--way-font-weight-semibold);
+  font-size: var(--way-button-font-size-medium);
+  font-kerning: none;
+
+  --border-radius: var(--way-input-border-radius-medium);
+  --border-color: var(--way-color-medium);
+
+  --color-selected: var(--way-color-primary);
   --color-highlighted: rgba(0, 0, 0, 0.1);
-  --color-highlighted-selected: rgba(133, 172, 226, 0.9);
+  --color-highlighted-selected: var(--way-color-primary-shade);
+}
+
+.way-autosuggest {
+
 
   --height: 40px;
 
   display: block;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
   display: flex;
   position: relative;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
   min-height: var(--height);
   font-family: Helvetica, Arial, sans-serif;
 
@@ -88,11 +100,11 @@
 .tag {
   padding: 4px 6px;
   margin: 4px;
-  background-color: palevioletred;
+  background-color: var(--way-color-primary);
   color: #ffffff;
   display: flex;
   align-items: center;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
   max-width: calc(100% - 20px);
 
   .counter {

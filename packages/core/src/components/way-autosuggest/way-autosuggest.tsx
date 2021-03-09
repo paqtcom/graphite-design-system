@@ -1,4 +1,4 @@
-import { Component, Method, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
+import { Component, Host, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
 import { FormElementData } from '../../types/form';
 import { WayAutosuggestOption, WayAutosuggestConfig } from '../../types/select';
 import { renderInputOutsideShadowRoot } from '../../utils/utils';
@@ -26,7 +26,6 @@ export class W2wSelect {
   @State() localConfig: WayAutosuggestConfig = {
     selectedText: 'selected',
     maxTagWidth: '10rem',
-    tagColor: 'green',
     ...this.config,
   };
   @State() highlightIndex: number = 0;
@@ -60,19 +59,35 @@ export class W2wSelect {
 
     if (event.key === 'ArrowUp') {
       this.highlightIndex > 0 ? this.highlightIndex-- : 0;
-      // todo: .scrollIntoView();
+      this.setScrollPosition('up', this.highlightIndex);
       return;
     }
 
     if (event.key === 'ArrowDown') {
       this.highlightIndex < this.filteredOptions.length -1 ? this.highlightIndex++ : this.filteredOptions.length;
-      // todo: .scrollIntoView();
+      this.setScrollPosition('down', this.highlightIndex);
       return;
     }
 
     if (event.key === 'Enter' && this.hasFocus) {
       this.filteredOptions[this.highlightIndex] && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
     }
+  }
+
+  private setScrollPosition(direction: string, highlightIndex: number) {
+    const optionListHeight = this.optionListEl.offsetHeight;
+    const firstOption = this.optionListEl.querySelector('.option') as HTMLElement;
+
+    if (!firstOption) return;
+
+    if(direction === 'down') {
+      if (highlightIndex * firstOption.offsetHeight + firstOption.offsetHeight <= optionListHeight) return;
+      this.optionListEl.scrollTop += firstOption.offsetHeight;
+    } else {
+      this.optionListEl.scrollTop -=firstOption.offsetHeight;
+    }
+    
+    
   }
   /**
    * Strip attribute that aren't needed.
@@ -228,30 +243,32 @@ export class W2wSelect {
     renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
 
     return (
-      <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
-        <div class="input-container">
-          {this.renderTags()}
-          <input
-            ref={el => (this.inputEl = el as HTMLInputElement)}
-            class="input"
-            style={{ minWidth: this.calculateMinimumInputWidth() }}
-            type="text"
-            onInput={this.handleOnInput}
-            onClick={() => this.focus()}
-            value={this.inputValue}
-            onFocus={() => this.focus()}
-          />
+      <Host>
+        <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
+          <div class="input-container">
+            {this.renderTags()}
+            <input
+              ref={el => (this.inputEl = el as HTMLInputElement)}
+              class="input"
+              style={{ minWidth: this.calculateMinimumInputWidth() }}
+              type="text"
+              onInput={this.handleOnInput}
+              onClick={() => this.focus()}
+              value={this.inputValue}
+              onFocus={() => this.focus()}
+            />
+          </div>
+          <div class={{ 'option-list': true, 'has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
+            {this.filteredOptions.length < 1 && <p>No options available</p>}
+            {this.filteredOptions.length > 0 &&
+              this.filteredOptions.map((option, i) => (
+                <div onClick={() => this.optionSelectedListener(option)} class={{ 'option': true, 'option-selected': option.selected, 'option--highlighted': i === this.highlightIndex }}>
+                  {option.label}
+                </div>
+              ))}
+          </div>
         </div>
-        <div class={{ 'option-list': true, 'has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
-          {this.filteredOptions.length < 1 && <p>No options available</p>}
-          {this.filteredOptions.length > 0 &&
-            this.filteredOptions.map((option, i) => (
-              <div onClick={() => this.optionSelectedListener(option)} class={{ 'option': true, 'option-selected': option.selected, 'option--highlighted': i === this.highlightIndex }}>
-                {option.label}
-              </div>
-            ))}
-        </div>
-      </div>
+      </Host>
     );
   }
 }

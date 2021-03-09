@@ -13,6 +13,13 @@
       body {
         font-family: sans-serif;
       }
+
+      code {
+        background-color: var(--way-color-light);
+        padding: var(--way-spacing-medium);
+        border-radius: var(--way-input-border-radius-medium);
+
+      }
     </style>
   </head>
   <body>
@@ -163,49 +170,53 @@
     </script>
 
     <hr>
-    <div>
-      <p>autosuggest data:</p>
-      <div class="autosuggest-code">
-
+    
+    <section>
+      <h2>way-autosuggest</h2>
+      <way-autosuggest name="autosuggest" value='[{ "label": "boom", "value": 139 }]'></way-autosuggest>
+      <div>
+        <p>autosuggest data:</p>
+        <code class="autosuggest-code">
+  
+        </code>
       </div>
-    </div>
-    <way-autosuggest name="autosuggest" value='[{ "label": "boom", "value": 139 }]'></way-autosuggest>
-    <script>
-      const selectOptions = [
-        { label: 'noot', value: 134 },
-        { label: 'mies', value: 135 },
-        { label: 'aap', value: 137 },
-        { label: 'boom', value: 139 },
-        { label: 'lamp', value: 140 },
-        { label: 'stoel', value: 141 },
-        { label: 'appel gebak met kaneel', value: 142 },
-        { label: 'peer', value: 143 },
-        { label: 'Dit is een hele lange zing yeehhh', value: 144 },
-        { label: 'water', value: 145 },
-        { label: 'regen', value: 147 },
-        { label: 'zon', value: 148 },
-        { label: 'koek', value: 149 },
-        { label: 'pot', value: 99 },
-      ];
+      <script>
+        const selectOptions = [
+          { label: 'noot', value: 134 },
+          { label: 'mies', value: 135 },
+          { label: 'aap', value: 137 },
+          { label: 'boom', value: 139 },
+          { label: 'lamp', value: 140 },
+          { label: 'stoel', value: 141 },
+          { label: 'appel gebak met kaneel', value: 142 },
+          { label: 'peer', value: 143 },
+          { label: 'Dit is een hele lange zing yeehhh', value: 144 },
+          { label: 'water', value: 145 },
+          { label: 'regen', value: 147 },
+          { label: 'zon', value: 148 },
+          { label: 'koek', value: 149 },
+          { label: 'pot', value: 99 },
+        ];
 
-      const autosuggest = document.querySelector('way-autosuggest');
-
-      autosuggest.options = selectOptions;
-      autosuggest.config = {
-        multi: true,
-        maxTags: 6,
-        selectedText: 'geselecteerd',
-        tagColor: 'rgba(60, 170, 180, 1)',
-      }
-      // If value is set in HTML, this js will be ignored.
-      autosuggest.value = [{ label: 'aap', value: 137 }];
-
-      autosuggest.addEventListener('wayChange', event => {
-        // we get the value both in the event.detail
-        document.querySelector('.autosuggest-code').innerHTML = JSON.stringify(event.detail.value);
-        // and in the updated element value prop
-        console.log('autosuggest.value', autosuggest.value);
-      })
-    </script>
+        const autosuggest = document.querySelector('way-autosuggest');
+  
+        autosuggest.options = selectOptions;
+        autosuggest.config = {
+          multi: true,
+          maxTags: 6,
+          selectedText: 'geselecteerd',
+          tagColor: 'rgba(60, 170, 180, 1)',
+        }
+        // If value is set in HTML, this js will be ignored.
+        autosuggest.value = [{ label: 'aap', value: 137 }];
+  
+        autosuggest.addEventListener('wayChange', event => {
+          // we get the value both in the event.detail
+          document.querySelector('.autosuggest-code').innerHTML = JSON.stringify(event.detail.value);
+          // and in the updated element value prop
+          console.log('autosuggest.value:', autosuggest.value);
+        })
+      </script>
+    </section>
   </body>
 </html>
