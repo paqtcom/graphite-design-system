@@ -125,7 +125,66 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
 
-_[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)_
+## Customization
+
+Way2Web Design System components are built with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) for easy customization of an application. CSS variables allow a value to be stored in one place, then referenced in multiple other places. They also make it possible to change CSS dynamically at runtime (which previously required a CSS preprocessor), useful for a dark theme for example. CSS variables make it easier than ever to override Way2Web Design System components to match a brand or theme.
+
+### Global Variables
+
+CSS variables can be set globally in an application in the :root selector.
+
+```css
+:root {
+  /* Changes the primary color palette to purple */
+  --way-color-primary: #a855f7;
+  --way-color-primary-contrast: #ffffff;
+  --way-color-primary-shade: #7e22ce;
+  --way-color-primary-tint: #d8b4fe;
+
+  /* Changes the font family */
+  --way-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+}
+```
+
+For a complete list of these global variables, [refer to core.scss in the project's source code](./src/css/core.scss).
+
+#### Colors
+
+There are six colors used throughout the Way2Web Design System components:
+
+- primary
+- secondary
+- danger
+- dark
+- medium
+- light
+
+Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`.
+
+| Name     | Property                       | Description                                                              |
+| :------- | :----------------------------- | ------------------------------------------------------------------------ |
+| Base     | `--ion-color-primary`          | The main color that all variations are derived from                      |
+| Contrast | `--ion-color-primary-contrast` | The opposite of the base color, should be visible against the base color |
+| Shade    | `--ion-color-primary-shade`    | A slightly darker version of the base color                              |
+| Tint     | `--ion-color-primary-tint`     | A slightly lighter version of the base color                             |
+
+Please use [this contrast checker](https://webaim.org/resources/contrastchecker/) for accessiblity.
+
+### Component Variables
+
+The Way2Web Design System provides variables that exist at the component level, such as `--background` and `--color`. For a list of the custom properties a component accepts, view the CSS Custom Properties section of its API reference. For example, see the [Button CSS Custom Properties](./src/components/way-button/readme.md#css-custom-properties).
+
+```css
+/* Set the color on all way-button elements */
+way-button {
+  --color: #222;
+}
+
+/* Set the background on a way-button with the .fancy-button class */
+.fancy-button {
+  --background: #00ff00;
+}
+```
 
 ## Development
 
@@ -139,7 +198,7 @@ Follow the [instructions in the root of this repo](../../README.md).
 
 ### Ionic Framework
 
-Some component code is based or inspired on the [Ionic Framework](https://ionicframework.com/) components.
+Some component code & documentation is based or inspired on the [Ionic Framework](https://ionicframework.com/) components.
 
 ```
 Copyright 2015-present Drifty Co.
@@ -169,7 +228,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### Shoelace
 
-Some component code is based or inspired on the [Shoelace](https://shoelace.style/) components.
+Some component code & documentation is based or inspired on the [Shoelace](https://shoelace.style/) components.
 
 ```
 Copyright (c) 2020 A Beautiful Site, LLC
