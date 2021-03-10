@@ -16,6 +16,7 @@ export class W2wSelect {
   @Prop() options?: Array<WayAutosuggestOption> = [];
   @Prop() config?: WayAutosuggestConfig = {};
   @Prop() validation?: (value: any) => string[];
+  @Prop() valueSelector: string | ((item: unknown, index: number)=>string[]);
   @Prop() value?: string | Array<{ label: string; value: any }>;
   @Prop() name: string;
 
@@ -97,7 +98,8 @@ export class W2wSelect {
     }
   }
   /**
-   * Strip attribute that aren't needed.
+   * Strip the 'selected' attribute which has been added in this component to track state.
+   * Todo: refactor because 'selected' might actually be a commonly used prop name.
    */
   private cleanData(): any[] {
     return this.localSelected && this.localSelected.map(({ selected, ...toKeepAttrs }) => toKeepAttrs);
@@ -123,14 +125,19 @@ export class W2wSelect {
     });
   }
 
+  // When value is being changed from inside this component, the watch will also get triggered.
+  // Starting to wonder if is the right decision to always keep the value prop updated with latest changes.
   @Watch('value')
   private watchValue() {
+    console.log('watchValue triggered');
     this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
+    console.log('this.updateOptions() watchValue');
     this.updateOptions();
   }
 
   @Watch('options')
   private updateOptions() {
+    console.log('updateOptions');
     if (!this.options || this.options.length < 1) return;
     this.filteredOptions = [...this.options]
       .filter(option => 
@@ -172,20 +179,27 @@ export class W2wSelect {
     } else if (!option.selected) {
       this.localSelected.push(option);
     } else {
-      this.localSelected = this.localSelected.filter(selected => selected.value !== option.value);
+      // this.localSelected = this.localSelected.filter(selected => selected.value !== option.value);
+      this.removeTag(option);
     }
-    this.updateOptions();
     this.value = this.localSelected;
+    console.log('this.updateOptions() optionSelectedListener');
+    this.updateOptions();
   }
 
   /**
-   * Listener when user removes a tag.
+   * Listener when user clicks on a selected tag.
    * @param {WayAutosuggestOption} option
    */
-  private removeTagListener(option) {
-    if (!this.localSelected) return;
+  private removeTag(option) {
 
-    this.localSelected = this.localSelected.filter(selectedOption => selectedOption.value != option.value);
+    if (!this.localSelected) return;
+    // would have liked to use Array.filter but this will trigger the @watch on value
+    // since it will update to a new reference.
+    // this.localSelected = this.localSelected.filter(selectedOptions => selectedOptions.value !== option.value);
+    const index = this.localSelected.findIndex((selectedOption)=> selectedOption.value === option.value);
+    this.localSelected.splice(index, 1);
+    console.log('this.updateOptions() 200');
     this.updateOptions();
   }
 
@@ -194,6 +208,7 @@ export class W2wSelect {
 
     this.hasFocus = true;
     this.inputValue = input.value;
+    console.log('this.updateOptions() 208');
     this.updateOptions();
   };
 
@@ -215,19 +230,22 @@ export class W2wSelect {
   }
 
   private renderTags() {
-    if (!this.localSelected) {
+    // No tags
+    if (this.localSelected.length === 0) {
       return null;
+    // If tags not exceeds maxTags
     } else if (this.localSelected.length < this.localConfig.maxTags + 1) {
       return (
         <this.Fragment>
           {this.localSelected.length > 0 &&
             this.localSelected.map(tag => (
-              <div title={tag.label} onClick={() => this.removeTagListener(tag)} class="tag" style={{ backgroundColor: this.config.tagColor }}>
+              <div title={tag.label} onClick={() => this.removeTag(tag)} class="tag" style={{ backgroundColor: this.config.tagColor }}>
                 <span>{tag.label}</span>
               </div>
             ))}
         </this.Fragment>
       );
+      // If maxTags is not set or If tags exceed maxTags
     } else {
       const text = `${this.localSelected.length} ${this.localConfig.selectedText}`;
       return (
@@ -250,14 +268,21 @@ export class W2wSelect {
   private Fragment = (_: any, children: HTMLElement[]): HTMLElement[] => [ ...children ];
 
   componentWillLoad() {
-    this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
+    if (this.value) {
+      this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
+    }
+    console.log('this.updateOptions() 272');
     this.updateOptions();
   }
 
   render() {
-    // todo: if a (to be made) valueSelector callback function prop is given, return comma seperated string instead of JSON
-    renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
-
+    // if a valueSelector callback function prop is given, return comma separated string instead of JSON
+    if(this.localSelected && typeof this.valueSelector === 'function') {
+      const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
+      renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
+    } else {
+      renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
+    }
     return (
       <Host>
         <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
@@ -272,6 +297,7 @@ export class W2wSelect {
               onClick={() => this.focus()}
               value={this.inputValue}
               onFocus={() => this.focus()}
+              placeholder="Start typing"
             />
           </div>
           <div class={{ 'option-list': true, 'has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>

@@ -173,44 +173,88 @@
     <hr>
     
     <section>
-      <h2>way-autosuggest</h2>
-      <way-autosuggest name="autosuggest" value='[{ "label": "Benny Balotelli", "value": 2 }]'></way-autosuggest>
-      <div>
-        <p>autosuggest data:</p>
-        <code class="autosuggest-code">
-  
-        </code>
-      </div>
       <script>
         const selectOptions = [
-          { label: 'Arthur Benjamin Dickinson', value: 1001 },
-          { label: 'Alexa van der Borre', value: 301 },
-          { label: 'Benny Balotelli', value: 2 },
-          { label: 'Eddy Masters', value: 451 },
-          { label: 'Dennis Lei', value: 123 },
-          { label: 'Lynn Kwan', value: 4 },
-          { label: 'Mai Nguyễn', value: 39 },
-        ];
-
-        const autosuggest = document.querySelector('way-autosuggest');
-  
-        autosuggest.options = selectOptions;
-        autosuggest.config = {
-          multi: true,
-          maxTags: 6,
-          selectedText: 'geselecteerd',
-          tagColor: 'rgba(60, 170, 180, 1)',
-        }
-        // If value is set in HTML, this js will be ignored.
-        autosuggest.value = [{ label: 'Benny Balotelli', value: 2 }];
-  
-        autosuggest.addEventListener('wayChange', event => {
-          // we get the value both in the event.detail
-          document.querySelector('.autosuggest-code').innerHTML = JSON.stringify(event.detail.value);
-          // and in the updated element value prop
-          console.log('autosuggest.value:', autosuggest.value);
-        })
+            { label: 'Arthur Benjamin Dickinson', value: 1001, age: 32 },
+            { label: 'Alexa van der Borre', value: 301, age: 29 },
+            { label: 'Benny Balotelli', value: 2 },
+            { label: 'Eddy Masters', value: 451 },
+            { label: 'Dennis Lei', value: 123 },
+            { label: 'Lynn Kwan', value: 4 },
+            { label: 'Mai Nguyễn', value: 39 },
+            { label: 'Michael Sigþórsson', value: 35 },
+          ];
       </script>
+      <h2>way-autosuggest</h2>
+      <section>
+        <h3>Basic usage</h3>
+        <way-autosuggest name="autosuggest" value='[{ "label": "Benny Balotelli", "value": 2 }]'></way-autosuggest>
+        <div>
+          <p>autosuggest data:</p>
+          <code class="code-autosuggest-basic"></code>
+        </div>
+        <script>
+          (function(){
+            const autosuggest = document.querySelector('way-autosuggest');
+    
+            autosuggest.options = selectOptions;
+            autosuggest.config = {
+              multi: true,
+              maxTags: 6,
+              selectedText: 'geselecteerd',
+              tagColor: 'rgba(60, 170, 180, 1)',
+            }
+            // If value is set in HTML, this js will be ignored.
+            autosuggest.value = [{ label: 'Benny Balotelli', value: 2 }];
+      
+            autosuggest.addEventListener('wayChange', event => {
+              // we get the value both in the event.detail
+              document.querySelector('.code-autosuggest-basic').innerHTML = JSON.stringify(event.detail.value);
+            })
+          })()
+        </script>
+      </section>
+      <section>
+        <h3>Prop: valueSelector : string | function</h3>
+        <p>
+          With a valueSelector you can decide which property should be placed in the hidden input. <br>
+          The return values will be a comma separated string.
+        </p>
+        <p>When given a string, the autosuggest will search for the top level properties</p>
+        <way-autosuggest 
+          class="as-value-selector" 
+          name="autosuggest-value-selector"
+        ></way-autosuggest>
+      <div>
+        <p>autosuggest data:</p>
+        <code class="code-as-value-selector"></code>
+        <p>hidden input data</p>
+        <code class="code-as-value-selector-2"></code>
+      </div>
+        <script>
+          (function(){
+            const autosuggest = document.querySelector('.as-value-selector');
+    
+            autosuggest.options = selectOptions;
+            autosuggest.config = {
+              multi: true,
+            }
+
+            autosuggest.valueSelector = (item, index) => {
+              return item.value;
+            }
+      
+            autosuggest.addEventListener('wayChange', event => {
+              // we get the value both in the event.detail
+              document.querySelector('.code-as-value-selector').innerHTML = JSON.stringify(event.detail.value);
+              const hiddenInput = document.querySelector('input[name=autosuggest-value-selector]');
+              if(hiddenInput) {
+                document.querySelector('.code-as-value-selector-2').innerHTML = hiddenInput.value;
+              }
+            })
+          })()
+        </script>
+      </section>
     </section>
   </body>
 </html>

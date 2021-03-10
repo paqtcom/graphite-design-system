@@ -14,6 +14,7 @@ export namespace Components {
         "options"?: Array<WayAutosuggestOption>;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
+        "valueSelector": string | ((item: unknown, index: number)=>string[]);
     }
     interface WayButton {
         /**
@@ -80,6 +81,7 @@ declare namespace LocalJSX {
         "options"?: Array<WayAutosuggestOption>;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
+        "valueSelector"?: string | ((item: unknown, index: number)=>string[]);
     }
     interface WayButton {
         /**
