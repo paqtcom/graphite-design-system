@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { WayAutosuggestConfig, WayAutosuggestOption } from "./types/select";
-import { FormElementData } from "./types/form";
+import { WayAutosuggestConfig, WayAutosuggestOption } from "@/types/autosuggest";
+import { FormElementData } from "@/types/form";
 export namespace Components {
     interface WayAutosuggest {
         "config"?: WayAutosuggestConfig;

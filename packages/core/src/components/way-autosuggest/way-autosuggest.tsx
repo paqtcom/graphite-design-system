@@ -1,7 +1,7 @@
 import { Component, Host, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
-import { FormElementData } from '../../types/form';
-import { WayAutosuggestOption, WayAutosuggestConfig } from '../../types/select';
-import { renderInputOutsideShadowRoot } from '../../utils/utils';
+import { FormElementData } from '@/types/form';
+import { WayAutosuggestOption, WayAutosuggestConfig } from '@/types/autosuggest';
+import { renderInputOutsideShadowRoot } from '@/utils/utils';
 
 @Component({
   tag: 'way-autosuggest',
@@ -72,6 +72,8 @@ export class W2wSelect {
     if (event.key === 'Enter' && this.hasFocus) {
       this.filteredOptions[this.highlightIndex] && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
     }
+
+    // todo: when hitting backspace while !inputValue, remove last item from array localSelected
   }
 
   /**
@@ -130,7 +132,16 @@ export class W2wSelect {
   @Watch('options')
   private updateOptions() {
     if (!this.options || this.options.length < 1) return;
-    this.filteredOptions = [...this.options].filter(option => option.label.indexOf(this.inputValue) !== -1);
+    this.filteredOptions = [...this.options]
+      .filter(option => 
+        option.label.toLowerCase()
+        // Take care of diacritical marks with normalize and replace:
+        // https://thread.engineering/2018-08-29-searching-and-sorting-text-with-diacritical-marks-in-javascript/
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .indexOf(this.inputValue.toLowerCase()) !== -1
+      );
+
     this.markSelectedOptions();
     this.sortFilteredOptions();
     this.valueSelectedHandler();
