@@ -25,13 +25,39 @@ describe('way-autosuggest', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should render a hidden input', async () => {
+  it('with no valueSelector should render a hidden input', async () => {
     const page = await newE2EPage();
-    await page.setContent('<way-autosuggest name="test-select"></way-autosuggest>');
+    await page.setContent(`<way-autosuggest name="select"></way-autosuggest>`);
 
-    const hiddenInput = await page.find('input[name=test-select]');
+    // normal element with no valueSelector
+    const hiddenInput = await page.find('input[name=select]');
     expect(hiddenInput).toBeTruthy()
+    const inputValue = await hiddenInput.getAttribute('value');
+    expect(inputValue).toBe('[]');
+  })
 
+  it('with valueSelector should render a hidden input', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`<way-autosuggest value-selector="value" name="select"></way-autosuggest>`);
+
+    // // Setting prop via code does not work..
+    // const props = {
+    //   valueSelector: (item) => item.value,
+    // }
+
+    // await page.$eval('way-autosuggest',
+    //   (elm: any, { valueSelector }) => {
+    //     elm.valueSelector = valueSelector
+    //   },
+    //   props 
+    // );
+    
+    await page.waitForChanges();
+
+    const hiddenInput = await page.find('input[name=select]');
+    expect(hiddenInput).toBeTruthy()
+    const inputValue = await hiddenInput.getAttribute('value');
+    expect(inputValue).toBe('');
   })
 
   it('should update hidden input with latest data', async () => {
@@ -42,7 +68,6 @@ describe('way-autosuggest', () => {
     let inputValue;
 
     inputValue = await hiddenInput.getAttribute('value');
-    expect(inputValue).toBe('');
 
     await page.$eval('way-autosuggest',
       (elm, optionListOptions) => {
@@ -74,7 +99,6 @@ describe('way-autosuggest', () => {
     optionList = await page.find('way-autosuggest >>> .option-list');
     expect(optionList).not.toHaveClass('has-focus');
     input.focus();
-    // page.keyboard.type('China')
     await page.waitForChanges();
     expect(optionList).toHaveClass('has-focus');
   })

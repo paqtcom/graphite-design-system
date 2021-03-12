@@ -192,6 +192,8 @@
         <div>
           <p>autosuggest data:</p>
           <code class="code-autosuggest-basic"></code>
+          <p>hidden input data:</p>
+          <code class="code-autosuggest-basic-hidden"></code>
         </div>
         <script>
           (function(){
@@ -209,8 +211,12 @@
       
             autosuggest.addEventListener('wayChange', event => {
               // we get the value both in the event.detail
-              console.log(event);
               document.querySelector('.code-autosuggest-basic').innerHTML = JSON.stringify(event.detail.value);
+
+              const hiddenInput = document.querySelector('input[name=autosuggest]');
+              if(hiddenInput) {
+                document.querySelector('.code-autosuggest-basic-hidden').innerHTML = hiddenInput.value;
+              }
             })
           })()
         </script>
@@ -240,14 +246,11 @@
             autosuggest.config = {
               multi: true,
             }
+            // Both are the same: autosuggest.valueSelector = 'value';
+            autosuggest.valueSelector = (item, index) => item.value;
 
-            autosuggest.valueSelector = (item, index) => {
-              return item.value;
-            }
-      
             autosuggest.addEventListener('wayChange', event => {
               // we get the value both in the event.detail
-              console.log('event', event);
               document.querySelector('.code-as-value-selector').innerHTML = JSON.stringify(event.detail.value);
               const hiddenInput = document.querySelector('input[name=autosuggest-value-selector]');
               if(hiddenInput) {

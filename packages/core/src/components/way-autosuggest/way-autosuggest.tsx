@@ -78,10 +78,12 @@ export class W2wAutoselect {
   }
 
   private renderHiddenInput() {
-    console.log('renderHiddenInput');
     // if a valueSelector callback function prop is given, return comma separated string instead of JSON
     if(this.localSelected && typeof this.valueSelector === 'function') {
       const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
+      renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
+    } else if(this.localSelected && typeof this.valueSelector === 'string') {
+      const commaSeparatedString = this.localSelected.map((local) => local[`${this.valueSelector}`]).join();
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
     } else {
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
@@ -276,6 +278,7 @@ export class W2wAutoselect {
       this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     }
     this.updateOptions();
+    this.renderHiddenInput();
   }
 
   render() {
