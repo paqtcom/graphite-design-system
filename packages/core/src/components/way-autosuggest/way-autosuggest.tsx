@@ -77,6 +77,17 @@ export class W2wSelect {
     // todo: when hitting backspace while !inputValue, remove last item from array localSelected
   }
 
+  private renderHiddenInput() {
+    console.log('renderHiddenInput');
+    // if a valueSelector callback function prop is given, return comma separated string instead of JSON
+    if(this.localSelected && typeof this.valueSelector === 'function') {
+      const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
+      renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
+    } else {
+      renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
+    }
+  }
+
   /**
    * Determine if optionListEl has to scroll down or up, depending on the highlighted option.
    * @param direction 
@@ -118,6 +129,7 @@ export class W2wSelect {
   @Event({ bubbles: true }) wayChange: EventEmitter<FormElementData>;
 
   private valueSelectedHandler() {
+    this.renderHiddenInput();
     this.wayChange.emit({
       name: this.name,
       value: this.cleanData(),
@@ -129,15 +141,12 @@ export class W2wSelect {
   // Starting to wonder if is the right decision to always keep the value prop updated with latest changes.
   @Watch('value')
   private watchValue() {
-    console.log('watchValue triggered');
     this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
-    console.log('this.updateOptions() watchValue');
     this.updateOptions();
   }
 
   @Watch('options')
   private updateOptions() {
-    console.log('updateOptions');
     if (!this.options || this.options.length < 1) return;
     this.filteredOptions = [...this.options]
       .filter(option => 
@@ -148,11 +157,11 @@ export class W2wSelect {
         .replace(/[\u0300-\u036f]/g, '')
         .indexOf(this.inputValue.toLowerCase()) !== -1
       );
-
+      
+    this.value = this.localSelected;
     this.markSelectedOptions();
     this.sortFilteredOptions();
     this.valueSelectedHandler();
-    this.value = this.localSelected;
   }
 
   private sortFilteredOptions() {
@@ -175,16 +184,15 @@ export class W2wSelect {
   private optionSelectedListener(option: WayAutosuggestOption) {
     if (!this.localConfig.multi) {
       this.localSelected = [option];
+      this.updateOptions();
       this.unFocus();
     } else if (!option.selected) {
       this.localSelected.push(option);
+      this.updateOptions();
     } else {
-      // this.localSelected = this.localSelected.filter(selected => selected.value !== option.value);
       this.removeTag(option);
     }
     this.value = this.localSelected;
-    console.log('this.updateOptions() optionSelectedListener');
-    this.updateOptions();
   }
 
   /**
@@ -194,12 +202,9 @@ export class W2wSelect {
   private removeTag(option) {
 
     if (!this.localSelected) return;
-    // would have liked to use Array.filter but this will trigger the @watch on value
-    // since it will update to a new reference.
-    // this.localSelected = this.localSelected.filter(selectedOptions => selectedOptions.value !== option.value);
+    // Cannot use simple Array.filter() because setting refference to new array will trigger @watch on value
     const index = this.localSelected.findIndex((selectedOption)=> selectedOption.value === option.value);
     this.localSelected.splice(index, 1);
-    console.log('this.updateOptions() 200');
     this.updateOptions();
   }
 
@@ -208,7 +213,6 @@ export class W2wSelect {
 
     this.hasFocus = true;
     this.inputValue = input.value;
-    console.log('this.updateOptions() 208');
     this.updateOptions();
   };
 
@@ -271,18 +275,10 @@ export class W2wSelect {
     if (this.value) {
       this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     }
-    console.log('this.updateOptions() 272');
     this.updateOptions();
   }
 
   render() {
-    // if a valueSelector callback function prop is given, return comma separated string instead of JSON
-    if(this.localSelected && typeof this.valueSelector === 'function') {
-      const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
-      renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
-    } else {
-      renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
-    }
     return (
       <Host>
         <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>

@@ -209,6 +209,7 @@
       
             autosuggest.addEventListener('wayChange', event => {
               // we get the value both in the event.detail
+              console.log(event);
               document.querySelector('.code-autosuggest-basic').innerHTML = JSON.stringify(event.detail.value);
             })
           })()
@@ -246,6 +247,7 @@
       
             autosuggest.addEventListener('wayChange', event => {
               // we get the value both in the event.detail
+              console.log('event', event);
               document.querySelector('.code-as-value-selector').innerHTML = JSON.stringify(event.detail.value);
               const hiddenInput = document.querySelector('input[name=autosuggest-value-selector]');
               if(hiddenInput) {
