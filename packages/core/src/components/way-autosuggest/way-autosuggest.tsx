@@ -8,7 +8,7 @@ import { renderInputOutsideShadowRoot } from '@/utils/utils';
   styleUrl: 'way-autosuggest.scss',
   shadow: true,
 })
-export class W2wSelect {
+export class W2wAutoselect {
   private optionListEl?: HTMLInputElement;
   private inputEl?: HTMLInputElement;
   @Element() el!: HTMLWayAutosuggestElement;
