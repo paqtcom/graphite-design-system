@@ -19,7 +19,7 @@ export class WayButton {
 
   /**
    * The different variants.
-   * The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"text"`.
    */
   @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' = 'default';
 
