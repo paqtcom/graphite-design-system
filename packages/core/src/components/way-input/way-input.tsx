@@ -7,33 +7,39 @@ import { Component, Host, h, Prop, State } from '@stencil/core';
 })
 export class Wayinput {
   /**
+   * The state of the input's value attribute.
+   */
+  @State() value: string;
+
+  /**
    * Specifies what type of input to use.
    */
   @Prop() type: string | undefined;
+
+  /**
+   * The input's name attribute.
+   */
+  @Prop({ reflect: true }) name: string | undefined;
 
   /**
    * Specifies what if input is disabled.
    */
   @Prop() disabled: boolean;
 
-  /** Set to true to make the input readonly. */
-  @Prop({ reflect: true }) readonly = false;
-
   /**
    * Specifies what if label and input must be inline.
    */
   @Prop() inline: boolean;
 
-  /** The input's size. */
+  /**
+   * The input's size.
+   */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
-  /** The input's name attribute. */
-  @Prop({ reflect: true }) name: string | undefined;
-
-  /** The input's label. Alternatively, you can use the label slot. */
+  /**
+   * The input's label. Alternatively, you can use the label slot.
+   */
   @Prop() label: string | undefined;
-
-  @State() value: string;
 
   handleChange(event) {
     this.value = event.target.value;
@@ -45,11 +51,10 @@ export class Wayinput {
   }
 
   render() {
-    const { type, name, readonly, disabled } = this;
+    const { type, name, disabled } = this;
     const attrs = {
       type,
       name,
-      readonly,
       disabled,
     }
 
@@ -68,6 +73,7 @@ export class Wayinput {
                 // Sizes
                 'label-small': this.size === 'small',
                 'label-large': this.size === 'large',
+                'label-inline': this.inline,
               }}
               htmlFor={this.name}
             >

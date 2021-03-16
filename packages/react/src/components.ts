@@ -9,3 +9,4 @@ import { defineCustomElements } from '@w2wds/core/loader';
 
 defineCustomElements();
 export const WayButton = /*@__PURE__*/createReactComponent<JSX.WayButton, HTMLWayButtonElement>('way-button');
+export const WayInput = /*@__PURE__*/createReactComponent<JSX.WayInput, HTMLWayInputElement>('way-input');

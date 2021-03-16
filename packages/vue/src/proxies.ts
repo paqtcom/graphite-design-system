@@ -15,3 +15,13 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'rel'
 ]);
 
+
+export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
+  'type',
+  'name',
+  'disabled',
+  'inline',
+  'size',
+  'label'
+]);
+

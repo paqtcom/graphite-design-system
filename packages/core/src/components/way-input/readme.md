@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                                                            | Type                   | Default     |
-| -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
-| `fill`   | `fill`    | Set to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"`.                                                                            | `"outline" \| "solid"` | `undefined` |
-| `href`   | `href`    | Contains a URL or a URL fragment that the hyperlink points to.                                                                                                                         | `string`               | `undefined` |
-| `rel`    | `rel`     | Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types). | `string`               | `undefined` |
-| `target` | `target`  | Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.                                                                             | `string`               | `undefined` |
+| Property   | Attribute  | Description                                                   | Type                             | Default     |
+| ---------- | ---------- | ------------------------------------------------------------- | -------------------------------- | ----------- |
+| `disabled` | `disabled` | Specifies what if input is disabled.                          | `boolean`                        | `undefined` |
+| `inline`   | `inline`   | Specifies what if label and input must be inline.             | `boolean`                        | `undefined` |
+| `label`    | `label`    | The input's label. Alternatively, you can use the label slot. | `string`                         | `undefined` |
+| `name`     | `name`     | The input's name attribute.                                   | `string`                         | `undefined` |
+| `size`     | `size`     | The input's size.                                             | `"large" \| "medium" \| "small"` | `'medium'`  |
+| `type`     | `type`     | Specifies what type of input to use.                          | `string`                         | `undefined` |
 
 
 ----------------------------------------------

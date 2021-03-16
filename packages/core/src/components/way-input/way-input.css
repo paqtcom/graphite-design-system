@@ -70,6 +70,10 @@
   font-size: var(--way-label-font-size-large);
 }
 
+.label-inline {
+  margin-right: 0.25rem;
+}
+
 .input-inline {
   display: flex;
   align-items: center;

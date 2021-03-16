@@ -42,10 +42,6 @@ export namespace Components {
          */
         "name": string | undefined;
         /**
-          * Set to true to make the input readonly.
-         */
-        "readonly": boolean;
-        /**
           * The input's size.
          */
         "size": 'small' | 'medium' | 'large';
@@ -109,10 +105,6 @@ declare namespace LocalJSX {
           * The input's name attribute.
          */
         "name"?: string | undefined;
-        /**
-          * Set to true to make the input readonly.
-         */
-        "readonly"?: boolean;
         /**
           * The input's size.
          */
