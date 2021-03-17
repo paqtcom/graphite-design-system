@@ -90,4 +90,24 @@
   --way-form-element-border-radius-small: var(--way-border-radius-medium);
   --way-form-element-border-radius-medium: var(--way-border-radius-medium);
   --way-form-element-border-radius-large: var(--way-border-radius-medium);
+
+  // Input
+  // -------------------------------------------------
+  --way-input-font-size: var(--way-font-size-small);
+  --way-input-font-size-small: var(--way-font-size-x-small);
+  --way-input-font-size-large: var(--way-font-size-large);
+  --way-input-background-color: var(--way-color-primary-contrast);
+  --way-input-border-color: var(--way-color-medium-tint);
+  --way-input-border-width: 1px;
+  --way-input-border-radius: var(--way-border-radius-medium);
+
+  // Label
+  // -------------------------------------------------
+  --way-label-font-size: var(--way-input-font-size);
+  --way-label-font-size-small: var(--way-input-font-size-small);
+  --way-label-font-size-large: var(--way-input-font-size-large);
+  --way-label-font-weight: var(--way-font-weight-semibold);
 }
+
+
+

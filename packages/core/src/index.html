@@ -15,24 +15,7 @@
     <style>
       body {
         font-family: sans-serif;
-      :root {
-        --way-font-family: 'Ubuntu', sans-serif;
-        --way-font-size: 15px;
-
-        /* Inputs */
-        --way-input-font-size: 15px;
-        --way-input-font-size-small: 12px;
-        --way-input-font-size-large: 18px;
-        --way-input-background-color: #ffffff;
-        --way-input-border-color: #d2d6dc;
-        --way-input-border-width: 1px;
-        --way-input-border-radius: 0.375rem;
-
-        /* Label */
-        --way-label-font-size: 14px;
-        --way-label-font-size-small: 12px;
-        --way-label-font-size-large: 17px;
-        --way-label-font-weight: 500;
+        background-color: #eee;
       }
     </style>
   </head>
@@ -165,6 +148,34 @@
       </section>
     </section>
 
+     <section>
+      <h2>way-input</h2>
+
+      <section>
+          <h3>Sizes</h3>
+
+          <way-input type="text" name="input" size="small" label="label"></way-input>
+
+          <way-input type="text" name="input" size="medium" label="label"></way-input>
+
+          <way-input type="text" name="input" size="large" label="label"></way-input>
+      </section>
+
+      <section>
+          <h3>Inline</h3>
+
+          <way-input type="text" name="input" size="medium" label="label" inline>
+            <ion-icon class="icon" name="settings-outline" slot="start"></ion-icon>
+          </way-input>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-input type="text" name="input" size="medium" label="label" disabled></way-input>
+      </section>
+    </section>
+
     <script>
       let clickExampleElement = document.getElementById('clickExample');
 
@@ -182,10 +193,5 @@
         console.log('wayBlur');
       });
     </script>
-    <way-input type="text" size="small" name="input" label="label" inline />
-
-    <way-input type="text" name="input" label="label" />
-
-    <way-input type="text" size="large" name="input" label="label" disabled />
   </body>
 </html>

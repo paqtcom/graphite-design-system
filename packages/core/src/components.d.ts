@@ -46,7 +46,7 @@ export namespace Components {
     }
     interface WayInput {
         /**
-          * Specifies what if input is disabled.
+          * If `true`, the user cannot interact with the input.
          */
         "disabled": boolean;
         /**
@@ -138,7 +138,7 @@ declare namespace LocalJSX {
     }
     interface WayInput {
         /**
-          * Specifies what if input is disabled.
+          * If `true`, the user cannot interact with the input.
          */
         "disabled"?: boolean;
         /**
@@ -153,6 +153,14 @@ declare namespace LocalJSX {
           * The input's name attribute.
          */
         "name"?: string | undefined;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * The input's size.
          */

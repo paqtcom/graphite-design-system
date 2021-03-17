@@ -1,11 +1,15 @@
-import { Component, Host, h, Prop, State } from '@stencil/core';
-
+import { Component, Host, h, Prop, Element, Event, EventEmitter, State } from '@stencil/core';
+import { inheritAttributes } from '../../utils/utils';
 @Component({
   tag: 'way-input',
-  styleUrl: 'way-input.css',
+  styleUrl: 'way-input.scss',
   shadow: true,
 })
 export class Wayinput {
+  private inheritedAttributes: { [k: string]: any } = {};
+
+  @Element() el!: HTMLElement;
+
   /**
    * The state of the input's value attribute.
    */
@@ -22,9 +26,9 @@ export class Wayinput {
   @Prop({ reflect: true }) name: string | undefined;
 
   /**
-   * Specifies what if input is disabled.
+   * If `true`, the user cannot interact with the input.
    */
-  @Prop() disabled: boolean;
+  @Prop({ reflect: true }) disabled = false;
 
   /**
    * Specifies what if label and input must be inline.
@@ -41,6 +45,29 @@ export class Wayinput {
    */
   @Prop() label: string | undefined;
 
+
+  /**
+   * Emitted when the input has focus.
+   */
+  @Event() wayFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the input loses focus.
+   */
+  @Event() wayBlur!: EventEmitter<void>;
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
+  }
+
+  private onFocus = () => {
+    this.wayFocus.emit();
+  }
+
+  private onBlur = () => {
+    this.wayBlur.emit();
+  }
+
   handleChange(event) {
     this.value = event.target.value;
 
@@ -51,7 +78,7 @@ export class Wayinput {
   }
 
   render() {
-    const { type, name, disabled } = this;
+    const { type, name, disabled, inheritedAttributes } = this;
     const attrs = {
       type,
       name,
@@ -59,45 +86,48 @@ export class Wayinput {
     }
 
     return (
-      <Host>
-        <div
-          class={{
-            'input-inline': this.inline,
-          }}
-        >
-          {this.label ? (
-            <label
-              class={{
-                label: true,
-
-                // Sizes
-                'label-small': this.size === 'small',
-                'label-large': this.size === 'large',
-                'label-inline': this.inline,
-              }}
-              htmlFor={this.name}
-            >
-              { this.label }
-            </label>
-          ) : null }
-
-          <input
-            {...attrs}
-            id={this.name}
-            value={this.value}
-            onInput={(event) => this.handleChange(event)}
+      <Host
+        aria-disabled={disabled ? 'true' : null}
+        class={{
+          'input-inline': this.inline,
+        }}
+      >
+        {this.label ? (
+          <label
             class={{
-              input: true,
-
-              // States
-              'input-disabled': this.disabled,
+              label: true,
 
               // Sizes
-              'input-small': this.size === 'small',
-              'input-large': this.size === 'large',
+              'label-small': this.size === 'small',
+              'label-large': this.size === 'large',
+              'label-inline': this.inline,
             }}
-          />
-        </div>
+            htmlFor={this.name}
+          >
+            { this.label }
+          </label>
+        ) : null }
+
+        <input
+          {...attrs}
+          id={this.name}
+          value={this.value}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          disabled={disabled}
+          {...inheritedAttributes}
+          onInput={(event) => this.handleChange(event)}
+          class={{
+            input: true,
+
+            // States
+            'input-disabled': disabled,
+
+            // Sizes
+            'input-small': this.size === 'small',
+            'input-large': this.size === 'large',
+          }}
+        />
       </Host>
     );
   }
