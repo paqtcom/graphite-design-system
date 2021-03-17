@@ -30,8 +30,9 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 ### Script tag
 
-- Put a script tag similar to this in the head of your index.html:
+- Just add the following tags to your page.
   ```html
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.css" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.esm.js"></script>
   ```
 - Then you can use the elements anywhere in your template, JSX, html etc.
@@ -46,7 +47,7 @@ An example of this setup: https://codesandbox.io/s/w2wds-script-tag-example-zx09
 
 ### Angular
 
-Use the [Angular bindings](../angular/README.md).
+Angular bindings are possible. Please let us know if you would like them, and we will consider them.
 
 ### React
 
@@ -66,12 +67,16 @@ Use the [Vue bindings](../vue/README.md).
 - Edit `src/main.js` to include:
 
   ```js
-  // Import Way2Web Web Components
+  // Import Way2Web Design System components
   import { defineCustomElements } from '@w2wds/core/loader';
+
+  /* Core CSS required for Way2Web Design System components to work properly */
+  import '@w2wds/core/dist/core/core.css';
+
   // ...
-  // configure Vue.js to ignore Way2Web Web Components
+  // configure Vue.js to ignore Way2Web Design System components
   Vue.config.ignoredElements = [/way-\w*/];
-  // Register Way2Web Web Components
+  // Register Way2Web Design System components
   defineCustomElements(window);
 
   new Vue({
@@ -120,8 +125,117 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
 
-_[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)_
+## Customization
+
+Way2Web Design System components are built with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) for easy customization of an application. CSS variables allow a value to be stored in one place, then referenced in multiple other places. They also make it possible to change CSS dynamically at runtime (which previously required a CSS preprocessor), useful for a dark theme for example. CSS variables make it easier than ever to override Way2Web Design System components to match a brand or theme.
+
+### Global Variables
+
+CSS variables can be set globally in an application in the :root selector.
+
+```css
+:root {
+  /* Changes the primary color palette to purple */
+  --way-color-primary: #a855f7;
+  --way-color-primary-contrast: #ffffff;
+  --way-color-primary-shade: #7e22ce;
+  --way-color-primary-tint: #d8b4fe;
+
+  /* Changes the font family */
+  --way-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+}
+```
+
+For a complete list of these global variables, [refer to core.scss in the project's source code](./src/css/core.scss).
+
+#### Colors
+
+There are six colors used throughout the Way2Web Design System components:
+
+- primary
+- secondary
+- danger
+- dark
+- medium
+- light
+
+Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`.
+
+| Name     | Property                       | Description                                                              |
+| :------- | :----------------------------- | ------------------------------------------------------------------------ |
+| Base     | `--ion-color-primary`          | The main color that all variations are derived from                      |
+| Contrast | `--ion-color-primary-contrast` | The opposite of the base color, should be visible against the base color |
+| Shade    | `--ion-color-primary-shade`    | A slightly darker version of the base color                              |
+| Tint     | `--ion-color-primary-tint`     | A slightly lighter version of the base color                             |
+
+Please use [this contrast checker](https://webaim.org/resources/contrastchecker/) for accessiblity.
+
+### Component Variables
+
+The Way2Web Design System provides variables that exist at the component level, such as `--background` and `--color`. For a list of the custom properties a component accepts, view the CSS Custom Properties section of its API reference. For example, see the [Button CSS Custom Properties](./src/components/way-button/readme.md#css-custom-properties).
+
+```css
+/* Set the color on all way-button elements */
+way-button {
+  --color: #222;
+}
+
+/* Set the background on a way-button with the .fancy-button class */
+.fancy-button {
+  --background: #00ff00;
+}
+```
 
 ## Development
 
 Follow the [instructions in the root of this repo](../../README.md).
+
+## License
+
+- [MIT](../../LICENSE)
+
+## Attribution
+
+### Ionic Framework
+
+Some component code & documentation is based or inspired on the [Ionic Framework](https://ionicframework.com/) components.
+
+```
+Copyright 2015-present Drifty Co.
+http://drifty.com/
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+### Shoelace
+
+Some component code & documentation is based or inspired on the [Shoelace](https://shoelace.style/) components.
+
+```
+Copyright (c) 2020 A Beautiful Site, LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```

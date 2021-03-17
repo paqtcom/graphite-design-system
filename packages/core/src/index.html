@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Way2web Stencil components</title>
+    <title>Way2Web Design System</title>
 
+    <link rel="stylesheet" href="/build/core.css">
     <script type="module" src="/build/core.esm.js"></script>
-    <script nomodule src="/build/core.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
 
      <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
+      body {
+        font-family: sans-serif;
       :root {
         --way-font-family: 'Ubuntu', sans-serif;
         --way-font-size: 15px;
@@ -34,14 +37,151 @@
     </style>
   </head>
   <body>
-    <way-button href="https://www.way2web.nl" target="_blank">
-      Way2Web Website
-    </way-button>
+    <section>
+      <h2>way-button</h2>
 
-    <way-button href="https://github.com/way2web" target="_blank" fill="outline">
-      Way2Web GitHub
-    </way-button>
+      <section>
+        <h3>Variants</h3>
 
+        <way-button id="clickExample">
+          Default
+        </way-button>
+
+        <way-button variant="primary" id="focusBlurExample">
+          Primary
+        </way-button>
+
+        <way-button variant="secondary">
+          Secondary
+        </way-button>
+
+        <way-button variant="danger">
+          Danger
+        </way-button>
+
+        <way-button variant="plain">
+          Plain
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-button size="small">
+          Small
+        </way-button>
+
+        <way-button>
+          Medium
+        </way-button>
+
+        <way-button size="large">
+          Large
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Icons</h3>
+
+        <way-button>
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          Settings
+        </way-button>
+
+        <way-button>
+          <ion-icon name="refresh-outline" slot="end"></ion-icon>
+          Refresh
+        </way-button>
+
+        <way-button>
+          <ion-icon name="link-outline" slot="start"></ion-icon>
+          Open
+          <ion-icon name="exit-outline" slot="end"></ion-icon>
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Circle Buttons</h3>
+
+        <way-button variant="primary" size="small" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </way-button>
+
+        <way-button variant="primary" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </way-button>
+
+        <way-button variant="primary" size="large" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Link Buttons</h3>
+
+        <way-button href="https://www.way2web.nl" target="_blank">
+          Link
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Block Button</h3>
+
+        <way-button expand="block">
+          Block
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Full Button</h3>
+
+        <way-button expand="full" aria-label="aria label test">
+          Block
+        </way-button>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-button disabled>
+          Default
+        </way-button>
+
+        <way-button variant="primary" disabled>
+          Primary
+        </way-button>
+
+        <way-button variant="secondary" disabled>
+          Secondary
+        </way-button>
+
+        <way-button variant="danger" disabled>
+          Danger
+        </way-button>
+
+        <way-button variant="plain" disabled>
+          Plain
+        </way-button>
+      </section>
+    </section>
+
+    <script>
+      let clickExampleElement = document.getElementById('clickExample');
+
+      clickExampleElement.addEventListener('click', () => {
+        console.log('clicked');
+      });
+
+      let focusBlurExampleElement = document.getElementById('focusBlurExample');
+
+      focusBlurExampleElement.addEventListener('wayFocus', () => {
+        console.log('wayFocus');
+      });
+
+      focusBlurExampleElement.addEventListener('wayBlur', () => {
+        console.log('wayBlur');
+      });
+    </script>
     <way-input type="text" size="small" name="input" label="label" inline />
 
     <way-input type="text" name="input" label="label" />

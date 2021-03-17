@@ -1,19 +1,39 @@
-import { format } from './utils';
+import { inheritAttributes } from './utils';
 
-describe('format', () => {
-  it('returns empty string for no names defined', () => {
-    expect(format(undefined, undefined, undefined)).toEqual('');
+describe('inheritAttributes()', () => {
+  it('should create an attribute inheritance object', () => {
+    const el = document.createElement('div');
+    el.setAttribute('tabindex', '20');
+    el.setAttribute('title', 'myTitle');
+
+    const attributeObject = inheritAttributes(el, ['tabindex', 'title']);
+
+    expect(attributeObject).toEqual({
+      tabindex: '20',
+      title: 'myTitle'
+    });
   });
 
-  it('formats just first names', () => {
-    expect(format('Joseph', undefined, undefined)).toEqual('Joseph');
+  it('should not inherit attributes that are not defined on the element', () => {
+    const el = document.createElement('div');
+    el.setAttribute('tabindex', '20');
+
+    const attributeObject = inheritAttributes(el, ['tabindex', 'title']);
+
+    expect(attributeObject).toEqual({
+      tabindex: '20'
+    });
   });
 
-  it('formats first and last names', () => {
-    expect(format('Joseph', undefined, 'Publique')).toEqual('Joseph Publique');
-  });
+  it('should not inherit attributes that are not defined on the input array', () => {
+    const el = document.createElement('div');
+    el.setAttribute('tabindex', '20');
+    el.setAttribute('title', 'myTitle');
 
-  it('formats first, middle and last names', () => {
-    expect(format('Joseph', 'Quincy', 'Publique')).toEqual('Joseph Quincy Publique');
+    const attributeObject = inheritAttributes(el, ['title']);
+
+    expect(attributeObject).toEqual({
+      title: 'myTitle'
+    });
   });
 });

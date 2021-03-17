@@ -8,9 +8,17 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface WayButton {
         /**
-          * Set to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"`.
+          * Set to true to draw a circle button.
          */
-        "fill"?: 'outline' | 'solid';
+        "circle": boolean;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled": boolean;
+        /**
+          * Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.
+         */
+        "expand"?: 'full' | 'block';
         /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
@@ -20,9 +28,21 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * The button's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
           * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
         "target": string | undefined;
+        /**
+          * The type of the button.
+         */
+        "type": 'submit' | 'reset' | 'button';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
     interface WayInput {
         /**
@@ -72,21 +92,49 @@ declare global {
 declare namespace LocalJSX {
     interface WayButton {
         /**
-          * Set to `"outline"` for a transparent button with a border, or to `"solid"`. The default style is `"solid"`.
+          * Set to true to draw a circle button.
          */
-        "fill"?: 'outline' | 'solid';
+        "circle"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the button.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.
+         */
+        "expand"?: 'full' | 'block';
         /**
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href"?: string | undefined;
         /**
+          * Emitted when the button loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
         "rel"?: string | undefined;
         /**
+          * The button's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
           * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
          */
         "target"?: string | undefined;
+        /**
+          * The type of the button.
+         */
+        "type"?: 'submit' | 'reset' | 'button';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
     interface WayInput {
         /**
