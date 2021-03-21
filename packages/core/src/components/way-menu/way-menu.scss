@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  padding: var(--way-spacing-x-small) 0;
+}
+
+:host:focus {
+  outline: none;
+}

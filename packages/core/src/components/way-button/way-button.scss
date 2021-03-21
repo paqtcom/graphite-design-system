@@ -43,7 +43,7 @@
   --height: var(--way-form-element-height-medium);
 
   --border-radius: var(--way-form-element-border-radius-medium);
-  --border-width: var(--way-form-element-border-width);
+  --border-width: 1px;
   --border-style: solid;
 
   --background: transparent;
@@ -271,6 +271,20 @@
     color: var(--color-hover);
     background: var(--background-hover);
     border-color: var(--border-color-hover);
+  }
+}
+
+// Caret modifier
+// --------------------------------------------------
+
+:host(.button-caret) .caret {
+  display: flex;
+  align-items: center;
+  margin-left: 0.3em;
+
+  svg {
+    width: 1em;
+    height: 1em;
   }
 }
 

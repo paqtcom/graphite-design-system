@@ -17,6 +17,52 @@
   </head>
   <body>
     <section>
+      <h2>way-dropdown</h2>
+
+      <way-dropdown placement="right-start">
+        <way-button slot="trigger" caret>Dropdown</way-button>
+        <way-menu>
+          <way-menu-item>Dropdown Item 1</way-menu-item>
+          <way-menu-item>Dropdown Item 2</way-menu-item>
+          <way-menu-item>Dropdown Item 3</way-menu-item>
+          <way-menu-divider></way-menu-divider>
+          <way-menu-item checked>Checked</way-menu-item>
+          <way-menu-item disabled>Disabled</way-menu-item>
+          <way-menu-divider></way-menu-divider>
+          <way-menu-item>
+            Prefix
+            <ion-icon slot="start" name="gift-outline"></ion-icon>
+          </way-menu-item>
+          <way-menu-item>
+            Suffix Icon
+            <ion-icon slot="end" name="heart-outline"></ion-icon>
+          </way-menu-item>
+        </way-menu>
+      </way-dropdown>
+    </section>
+
+    <section>
+      <h2>way-menu</h2>
+      <p>Including way-menu-item & way-menu-divider</p>
+
+      <way-menu style="max-width: 200px; border: solid 1px var(--way-color-light); border-radius: var(--way-border-radius-medium);">
+        <way-menu-item value="undo" checked>Undo</way-menu-item>
+        <way-menu-item value="redo">Redo</way-menu-item>
+        <way-menu-divider></way-menu-divider>
+        <way-menu-item value="cut" disabled>Cut</way-menu-item>
+        <way-menu-item value="copy" checked>
+          Copy
+          <ion-icon slot="end" name="copy-outline"></ion-icon>
+        </way-menu-item>
+        <way-menu-item value="paste">
+          <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+          Paste
+        </way-menu-item>
+        <way-menu-item value="delete">Delete</way-menu-item>
+      </way-menu>
+    </section>
+
+    <section>
       <h2>way-button</h2>
 
       <section>
@@ -120,6 +166,14 @@
       </section>
 
       <section>
+        <h3>Caret</h3>
+
+        <way-button size="small" caret>Small</way-button>
+        <way-button size="medium" caret>Medium</way-button>
+        <way-button size="large" caret>Large</way-button>
+      </section>
+
+      <section>
         <h3>Disabled</h3>
 
         <way-button disabled>
@@ -142,24 +196,24 @@
           Plain
         </way-button>
       </section>
+
+      <script>
+        let clickExampleElement = document.getElementById('clickExample');
+
+        clickExampleElement.addEventListener('click', () => {
+          console.log('clicked');
+        });
+
+        let focusBlurExampleElement = document.getElementById('focusBlurExample');
+
+        focusBlurExampleElement.addEventListener('wayFocus', () => {
+          console.log('wayFocus');
+        });
+
+        focusBlurExampleElement.addEventListener('wayBlur', () => {
+          console.log('wayBlur');
+        });
+      </script>
     </section>
-
-    <script>
-      let clickExampleElement = document.getElementById('clickExample');
-
-      clickExampleElement.addEventListener('click', () => {
-        console.log('clicked');
-      });
-
-      let focusBlurExampleElement = document.getElementById('focusBlurExample');
-
-      focusBlurExampleElement.addEventListener('wayFocus', () => {
-        console.log('wayFocus');
-      });
-
-      focusBlurExampleElement.addEventListener('wayBlur', () => {
-        console.log('wayBlur');
-      });
-    </script>
   </body>
 </html>

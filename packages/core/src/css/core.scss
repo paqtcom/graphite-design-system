@@ -39,6 +39,16 @@
   --way-border-radius-large: 0.5rem; // 8px
   --way-border-radius-x-large: 1rem; // 16px
 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Elevation tokens
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  --way-shadow-x-small: 0 1px 0 #0d131e0d;
+  --way-shadow-small: 0 1px 2px #0d131e1a;
+  --way-shadow-medium: 0 2px 4px #0d131e1a;
+  --way-shadow-large: 0 2px 8px #0d131e1a;
+  --way-shadow-x-large: 0 4px 16px #0d131e1a;
+
   // Spacing tokens
   // --------------------------------------------------
 
@@ -55,7 +65,19 @@
 
   // Typography tokens
   // --------------------------------------------------
+
+  // Fonts
   --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  // Letter spacings
+  --way-letter-spacing-dense: -0.015em;
+  --way-letter-spacing-normal: normal;
+  --way-letter-spacing-loose: 0.075em;
+
+  // Line heights
+  --way-line-height-dense: 1.4;
+  --way-line-height-normal: 1.8;
+  --way-line-height-loose: 2.2;
 
   // Font sizes
   --way-font-size-xx-small: 0.625rem; // 10px
@@ -85,9 +107,13 @@
   --way-form-element-height-medium: 3.125rem; // 50px
   --way-form-element-height-large: 4.063rem; // 65px
 
-  --way-form-element-border-width: 2px;
-
   --way-form-element-border-radius-small: var(--way-border-radius-medium);
   --way-form-element-border-radius-medium: var(--way-border-radius-medium);
   --way-form-element-border-radius-large: var(--way-border-radius-medium);
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Z-index tokens
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  --way-z-index-dropdown: 900;
 }

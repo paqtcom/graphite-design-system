@@ -34,6 +34,11 @@ export class WayButton {
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
   /**
+   * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
+   */
+  @Prop() caret = false;
+
+  /**
    * Set to `"block"` for a full-width button or to `"full"` for a full-width button
    * without left and right borders.
    */
@@ -126,6 +131,7 @@ export class WayButton {
           [`button-${variant}`]: true,
           [`button-${size}`]: true,
           [`button-${expand}`]: expand !== undefined,
+          'button-caret': this.caret,
           'button-circle': this.circle,
           'button-disabled': disabled,
         }}
@@ -143,6 +149,20 @@ export class WayButton {
             <slot name="start"></slot>
             <slot></slot>
             <slot name="end"></slot>
+            {this.caret && (
+              <span class="caret">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            )}
           </span>
         </TagType>
       </Host>
