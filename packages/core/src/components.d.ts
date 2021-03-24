@@ -44,27 +44,57 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
+    interface WayInput {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies what if label and input must be inline.
+         */
+        "inline": boolean;
+        /**
+          * The input's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * The input's name attribute.
+         */
+        "name": string | undefined;
+        /**
+          * The input's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of input to use.
+         */
+        "type": string | undefined;
+    }
     interface WayTextarea {
+        /**
+          * If `true`, the textarea should autofocus.
+         */
+        "autofocus": boolean;
         /**
           * If `true`, the user cannot interact with the textarea.
          */
         "disabled": boolean;
         /**
-          * Specifies what if label and textarea must be inline.
-         */
-        "inline": boolean;
-        /**
           * The textarea's label. Alternatively, you can use the label slot.
          */
         "label": string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength": number;
         /**
           * The textarea's name attribute.
          */
         "name": string | undefined;
         /**
-          * The textarea's size.
+          * Specifies how many textarea rows to use.
          */
-        "size": 'small' | 'medium' | 'large';
+        "rows": number | undefined;
         /**
           * Specifies what type of textarea to use.
          */
@@ -78,6 +108,12 @@ declare global {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
     };
+    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
+    }
+    var HTMLWayInputElement: {
+        prototype: HTMLWayInputElement;
+        new (): HTMLWayInputElement;
+    };
     interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
     }
     var HTMLWayTextareaElement: {
@@ -86,6 +122,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
+        "way-input": HTMLWayInputElement;
         "way-textarea": HTMLWayTextareaElement;
     }
 }
@@ -136,19 +173,57 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
+    interface WayInput {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies what if label and input must be inline.
+         */
+        "inline"?: boolean;
+        /**
+          * The input's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string | undefined;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * The input's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of input to use.
+         */
+        "type"?: string | undefined;
+    }
     interface WayTextarea {
+        /**
+          * If `true`, the textarea should autofocus.
+         */
+        "autofocus"?: boolean;
         /**
           * If `true`, the user cannot interact with the textarea.
          */
         "disabled"?: boolean;
         /**
-          * Specifies what if label and textarea must be inline.
-         */
-        "inline"?: boolean;
-        /**
           * The textarea's label. Alternatively, you can use the label slot.
          */
         "label"?: string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength"?: number;
         /**
           * The textarea's name attribute.
          */
@@ -162,9 +237,9 @@ declare namespace LocalJSX {
          */
         "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
-          * The textarea's size.
+          * Specifies how many textarea rows to use.
          */
-        "size"?: 'small' | 'medium' | 'large';
+        "rows"?: number | undefined;
         /**
           * Specifies what type of textarea to use.
          */
@@ -172,6 +247,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "way-button": WayButton;
+        "way-input": WayInput;
         "way-textarea": WayTextarea;
     }
 }
@@ -180,6 +256,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }
     }

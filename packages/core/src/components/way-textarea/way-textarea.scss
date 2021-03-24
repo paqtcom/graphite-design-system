@@ -32,32 +32,22 @@
   background-color: var(--way-color-primary-contrast);
   width: 100%;
 
-  font-size: var(--way-textarea-font-size);
+  font-size: var(--way-form-font-size);
 
   transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
 
-  border: solid var(--way-textarea-border-width) var(--way-textarea-border-color);
-  border-radius: var(--way-textarea-border-radius);
+  border: solid var(--way-form-border-width) var(--way-form-border-color);
+  border-radius: var(--way-form-border-radius);
 
   padding: var(--way-spacing-x-small) var(--way-spacing-small);
-}
-
-.textarea-small {
-  font-size: var(--way-textarea-font-size-small);
-  padding: var(--way-spacing-xx-small) var(--way-spacing-x-small);
-}
-
-.textarea-large {
-  font-size: var(--way-textarea-font-size-large);
-  padding: var(--way-spacing-medium) var(--way-spacing-x-large);
 }
 
 .textarea:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: var(--way-textarea-border-color-focus);
+  border-color: var(--way-form-border-color-focus);
 }
 
 .label {
@@ -68,25 +58,8 @@
   margin-bottom: var(--way-spacing-xx-small);
 }
 
-.label-small {
-  font-size: var(--way-label-font-size-small);
-}
-
-.label-large {
-  font-size: var(--way-label-font-size-large);
-}
-
-.label-inline {
-  margin-right: var(--way-spacing-xx-small);
-}
-
-.textarea-inline {
-  display: flex;
-  align-items: center;
-}
-
 .textarea-disabled {
-  background-color: var(--way-textarea-background-color-disabled);
+  background-color: var(--way-form-background-color-disabled);
   opacity: 0.5;
   cursor: not-allowed;
 }

@@ -17,6 +17,11 @@
     </style>
   </head>
   <body>
+          <section>
+        <h3>Autofocus</h3>
+
+        <way-textarea type="text" name="textarea" label="label" rows="10" autofocus></way-textarea>
+      </section>
     <section>
       <h2>way-button</h2>
 
@@ -148,28 +153,28 @@
     <section>
       <h2>way-textarea</h2>
 
+
+
       <section>
-          <h3>Sizes</h3>
+          <h3>Rows</h3>
 
-          <way-textarea type="text" name="textarea" size="small" label="label"></way-textarea>
+          <way-textarea type="text" name="textarea" label="label" rows="5"></way-textarea>
 
-          <way-textarea type="text" name="textarea" size="medium" label="label"></way-textarea>
+          <way-textarea type="text" name="textarea" label="label" rows="10"></way-textarea>
 
-          <way-textarea type="text" name="textarea" size="large" label="label"></way-textarea>
+          <way-textarea type="text" name="textarea" label="label" rows="15"></way-textarea>
       </section>
 
       <section>
-          <h3>Inline</h3>
+          <h3>Max Characters</h3>
 
-          <way-textarea type="text" name="textarea" size="medium" label="label" inline>
-            <ion-icon class="icon" name="settings-outline" slot="start"></ion-icon>
-          </way-textarea>
+          <way-textarea type="text" name="textarea" label="label" rows="10" maxlength="20"></way-textarea>
       </section>
 
       <section>
         <h3>Disabled</h3>
 
-        <way-textarea type="text" name="textarea" size="medium" label="label" disabled></way-textarea>
+        <way-textarea type="text" name="textarea" label="label" rows="10" disabled></way-textarea>
       </section>
     </section>
 

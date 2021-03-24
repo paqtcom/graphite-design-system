@@ -31,19 +31,24 @@ export class WayTextarea {
   @Prop({ reflect: true }) disabled = false;
 
   /**
-   * Specifies what if label and textarea must be inline.
+   * Specifies how many characters are allowed.
    */
-  @Prop() inline: boolean;
-
-  /**
-   * The textarea's size.
-   */
-  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @Prop() maxlength: number;
 
   /**
    * The textarea's label. Alternatively, you can use the label slot.
    */
   @Prop() label: string | undefined;
+
+ /**
+   * Specifies how many textarea rows to use.
+   */
+  @Prop() rows: number | undefined;
+
+ /**
+   * If `true`, the textarea should autofocus.
+   */
+  @Prop({ reflect: true }) autofocus = false;
 
 
   /**
@@ -70,37 +75,29 @@ export class WayTextarea {
 
   handleChange(event) {
     this.value = event.target.value;
-
-    // let error = this.error;
-    // if (event.target.validity.typeMismatch) {
-    //   error = true;
-    // }
   }
 
   render() {
-    const { type, name, disabled, inheritedAttributes } = this;
+    const { type, name, disabled, rows, maxlength, autofocus, inheritedAttributes } = this;
     const attrs = {
       type,
       name,
       disabled,
+      rows,
+      maxlength,
+      autofocus,
     }
 
     return (
       <Host
         aria-disabled={disabled ? 'true' : null}
         class={{
-          'textarea-inline': this.inline,
         }}
       >
         {this.label ? (
           <label
             class={{
               label: true,
-
-              // Sizes
-              'label-small': this.size === 'small',
-              'label-large': this.size === 'large',
-              'label-inline': this.inline,
             }}
             htmlFor={this.name}
           >
@@ -115,6 +112,9 @@ export class WayTextarea {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           disabled={disabled}
+          rows={rows}
+          maxlength={maxlength}
+          autofocus={autofocus}
           {...inheritedAttributes}
           onInput={(event) => this.handleChange(event)}
           class={{
@@ -122,10 +122,6 @@ export class WayTextarea {
 
             // States
             'textarea-disabled': disabled,
-
-            // Sizes
-            'textarea-small': this.size === 'small',
-            'textarea-large': this.size === 'large',
           }}
         />
       </Host>
