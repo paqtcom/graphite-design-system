@@ -22,3 +22,15 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'wayBlur'
 ]);
 
+
+export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', [
+  'type',
+  'name',
+  'disabled',
+  'inline',
+  'size',
+  'label',
+  'wayFocus',
+  'wayBlur'
+]);
+

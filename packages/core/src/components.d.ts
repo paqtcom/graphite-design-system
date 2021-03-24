@@ -44,6 +44,32 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
+    interface WayTextarea {
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies what if label and textarea must be inline.
+         */
+        "inline": boolean;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * The textarea's name attribute.
+         */
+        "name": string | undefined;
+        /**
+          * The textarea's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of textarea to use.
+         */
+        "type": string | undefined;
+    }
 }
 declare global {
     interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
@@ -52,8 +78,15 @@ declare global {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
     };
+    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
+    }
+    var HTMLWayTextareaElement: {
+        prototype: HTMLWayTextareaElement;
+        new (): HTMLWayTextareaElement;
+    };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
+        "way-textarea": HTMLWayTextareaElement;
     }
 }
 declare namespace LocalJSX {
@@ -103,8 +136,43 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
+    interface WayTextarea {
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies what if label and textarea must be inline.
+         */
+        "inline"?: boolean;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * The textarea's name attribute.
+         */
+        "name"?: string | undefined;
+        /**
+          * Emitted when the textarea loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * The textarea's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of textarea to use.
+         */
+        "type"?: string | undefined;
+    }
     interface IntrinsicElements {
         "way-button": WayButton;
+        "way-textarea": WayTextarea;
     }
 }
 export { LocalJSX as JSX };
@@ -112,6 +180,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }
     }
 }

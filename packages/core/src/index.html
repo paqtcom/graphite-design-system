@@ -12,6 +12,7 @@
     <style>
       body {
         font-family: sans-serif;
+        background-color: #eee;
       }
     </style>
   </head>
@@ -141,6 +142,34 @@
         <way-button variant="plain" disabled>
           Plain
         </way-button>
+      </section>
+    </section>
+
+    <section>
+      <h2>way-textarea</h2>
+
+      <section>
+          <h3>Sizes</h3>
+
+          <way-textarea type="text" name="textarea" size="small" label="label"></way-textarea>
+
+          <way-textarea type="text" name="textarea" size="medium" label="label"></way-textarea>
+
+          <way-textarea type="text" name="textarea" size="large" label="label"></way-textarea>
+      </section>
+
+      <section>
+          <h3>Inline</h3>
+
+          <way-textarea type="text" name="textarea" size="medium" label="label" inline>
+            <ion-icon class="icon" name="settings-outline" slot="start"></ion-icon>
+          </way-textarea>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-textarea type="text" name="textarea" size="medium" label="label" disabled></way-textarea>
       </section>
     </section>
 
