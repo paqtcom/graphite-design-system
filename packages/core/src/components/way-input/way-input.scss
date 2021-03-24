@@ -29,35 +29,35 @@
 .input {
   display: block;
   appearance: none;
-  background-color: var(--way-input-background-color);
+  background-color: var(--way-form-background-color);
   width: 100%;
 
-  font-size: var(--way-input-font-size);
+  font-size: var(--way-form-font-size);
 
   transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
 
-  border: solid var(--way-input-border-width) var(--way-input-border-color);
-  border-radius: var(--way-input-border-radius);
+  border: solid var(--way-form-border-width) var(--way-form-border-color);
+  border-radius: var(--way-form-border-radius);
 
   padding: var(--way-spacing-x-small) var(--way-spacing-small);
 }
 
 .input-small {
-  font-size: var(--way-input-font-size-small);
+  font-size: var(--way-form-font-size-small);
   padding: var(--way-spacing-xx-small) var(--way-spacing-x-small);
 }
 
 .input-large {
-  font-size: var(--way-input-font-size-large);
+  font-size: var(--way-form-font-size-large);
   padding: var(--way-spacing-medium) var(--way-spacing-x-large);
 }
 
 .input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: var(--way-input-border-color-focus);
+  border-color: var(--way-form-border-color-focus);
 }
 
 .label {
@@ -86,7 +86,7 @@
 }
 
 .input-disabled {
-  background-color: var(--way-input-background-color-disabled);
+  background-color: var(--way-form-background-color-disabled);
   opacity: 0.5;
   cursor: not-allowed;
 }

@@ -91,23 +91,23 @@
   --way-form-element-border-radius-medium: var(--way-border-radius-medium);
   --way-form-element-border-radius-large: var(--way-border-radius-medium);
 
-  // Input
+  // Form
   // -------------------------------------------------
-  --way-input-font-size: var(--way-font-size-small);
-  --way-input-font-size-small: var(--way-font-size-x-small);
-  --way-input-font-size-large: var(--way-font-size-large);
-  --way-input-background-color: var(--way-color-primary-contrast);
-  --way-input-background-color-disabled: #eee;
-  --way-input-border-color: var(--way-color-medium-tint);
-  --way-input-border-width: 1px;
-  --way-input-border-radius: var(--way-border-radius-medium);
-  --way-input-border-color-focus: #a4cafe;
+  --way-form-font-size: var(--way-font-size-small);
+  --way-form-font-size-small: var(--way-font-size-x-small);
+  --way-form-font-size-large: var(--way-font-size-large);
+  --way-form-background-color: var(--way-color-primary-contrast);
+  --way-form-background-color-disabled: #eee;
+  --way-form-border-color: var(--way-color-medium-tint);
+  --way-form-border-width: 1px;
+  --way-form-border-radius: var(--way-border-radius-medium);
+  --way-form-border-color-focus: #a4cafe;
 
   // Label
   // -------------------------------------------------
-  --way-label-font-size: var(--way-input-font-size);
-  --way-label-font-size-small: var(--way-input-font-size-small);
-  --way-label-font-size-large: var(--way-input-font-size-large);
+  --way-label-font-size: var(--way-form-font-size);
+  --way-label-font-size-small: var(--way-form-font-size-small);
+  --way-label-font-size-large: var(--way-form-font-size-large);
   --way-label-font-weight: var(--way-font-weight-semibold);
 }
 
