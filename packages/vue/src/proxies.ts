@@ -29,6 +29,8 @@ export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input',
   'disabled',
   'inline',
   'size',
-  'label'
+  'label',
+  'wayFocus',
+  'wayBlur'
 ]);
 
