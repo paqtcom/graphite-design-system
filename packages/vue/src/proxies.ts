@@ -27,9 +27,10 @@ export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-t
   'type',
   'name',
   'disabled',
-  'inline',
-  'size',
+  'maxlength',
   'label',
+  'rows',
+  'autofocus',
   'wayFocus',
   'wayBlur'
 ]);

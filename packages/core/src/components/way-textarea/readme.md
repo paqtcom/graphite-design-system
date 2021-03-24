@@ -7,14 +7,15 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                      | Type                             | Default     |
-| ---------- | ---------- | ---------------------------------------------------------------- | -------------------------------- | ----------- |
-| `disabled` | `disabled` | If `true`, the user cannot interact with the textarea.           | `boolean`                        | `false`     |
-| `inline`   | `inline`   | Specifies what if label and textarea must be inline.             | `boolean`                        | `undefined` |
-| `label`    | `label`    | The textarea's label. Alternatively, you can use the label slot. | `string`                         | `undefined` |
-| `name`     | `name`     | The textarea's name attribute.                                   | `string`                         | `undefined` |
-| `size`     | `size`     | The textarea's size.                                             | `"large" \| "medium" \| "small"` | `'medium'`  |
-| `type`     | `type`     | Specifies what type of textarea to use.                          | `string`                         | `undefined` |
+| Property    | Attribute   | Description                                                      | Type      | Default     |
+| ----------- | ----------- | ---------------------------------------------------------------- | --------- | ----------- |
+| `autofocus` | `autofocus` | If `true`, the textarea should autofocus.                        | `boolean` | `false`     |
+| `disabled`  | `disabled`  | If `true`, the user cannot interact with the textarea.           | `boolean` | `false`     |
+| `label`     | `label`     | The textarea's label. Alternatively, you can use the label slot. | `string`  | `undefined` |
+| `maxlength` | `maxlength` | Specifies how many characters are allowed.                       | `number`  | `undefined` |
+| `name`      | `name`      | The textarea's name attribute.                                   | `string`  | `undefined` |
+| `rows`      | `rows`      | Specifies how many textarea rows to use.                         | `number`  | `undefined` |
+| `type`      | `type`      | Specifies what type of textarea to use.                          | `string`  | `undefined` |
 
 
 ## Events
