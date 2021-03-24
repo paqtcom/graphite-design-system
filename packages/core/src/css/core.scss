@@ -97,9 +97,11 @@
   --way-input-font-size-small: var(--way-font-size-x-small);
   --way-input-font-size-large: var(--way-font-size-large);
   --way-input-background-color: var(--way-color-primary-contrast);
+  --way-input-background-color-disabled: #eee;
   --way-input-border-color: var(--way-color-medium-tint);
   --way-input-border-width: 1px;
   --way-input-border-radius: var(--way-border-radius-medium);
+  --way-input-border-color-focus: #a4cafe;
 
   // Label
   // -------------------------------------------------
