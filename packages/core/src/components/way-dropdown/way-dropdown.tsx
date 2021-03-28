@@ -5,6 +5,10 @@ import Popover from '../../utils/popover';
 
 let id = 0;
 
+/**
+ * @slot trigger - The dropdown's trigger, usually a `<way-button>` element.
+ * @slot - The dropdown's content.
+ */
 @Component({
   tag: 'way-dropdown',
   styleUrl: 'way-dropdown.scss',

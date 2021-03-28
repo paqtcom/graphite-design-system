@@ -19,9 +19,9 @@ export class WayButton {
 
   /**
    * The different variants.
-   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"text"`.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
    */
-  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' = 'default';
+  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain' = 'default';
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -151,16 +151,7 @@ export class WayButton {
             <slot name="end"></slot>
             {this.caret && (
               <span class="caret">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
+                <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Chevron Down</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 184l144 144 144-144'/></svg>
               </span>
             )}
           </span>

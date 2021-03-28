@@ -54,5 +54,22 @@ export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-m
 ]);
 
 
-export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select');
+export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', [
+  'multiple',
+  'maxTagsVisible',
+  'disabled',
+  'name',
+  'placeholder',
+  'size',
+  'hoist',
+  'value',
+  'label',
+  'helpText',
+  'required',
+  'clearable',
+  'invalid',
+  'wayChange',
+  'wayFocus',
+  'wayBlur'
+]);
 

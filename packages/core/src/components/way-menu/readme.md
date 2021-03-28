@@ -35,6 +35,19 @@ Type: `Promise<void>`
 |      | The menu's content, including menu items, and later on: menu dividers, and menu labels. |
 
 
+## Dependencies
+
+### Used by
+
+ - [way-select](../way-select)
+
+### Graph
+```mermaid
+graph TD;
+  way-select --> way-menu
+  style way-menu fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

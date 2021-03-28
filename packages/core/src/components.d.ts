@@ -44,9 +44,9 @@ export namespace Components {
          */
         "type": 'submit' | 'reset' | 'button';
         /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"text"`.
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
          */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
     interface WayDropdown {
         /**
@@ -127,7 +127,91 @@ export namespace Components {
          */
         "value": string;
     }
+    interface WayMenuLabel {
+    }
     interface WaySelect {
+        /**
+          * Set to true to add a clear button when the select is populated.
+         */
+        "clearable": boolean;
+        /**
+          * Set to true to disable the select control.
+         */
+        "disabled": boolean;
+        /**
+          * The select's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
+         */
+        "hoist": boolean;
+        /**
+          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+         */
+        "invalid": boolean;
+        /**
+          * The select's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+         */
+        "maxTagsVisible": number;
+        /**
+          * Set to true to enable multiselect.
+         */
+        "multiple": boolean;
+        /**
+          * The select's name.
+         */
+        "name": string;
+        /**
+          * Set to true to draw a pill-style select with rounded edges.
+         */
+        "pill": boolean;
+        /**
+          * The select's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Checks for validity and shows the browser's validation message if the control is invalid.
+         */
+        "reportValidity": () => Promise<boolean>;
+        /**
+          * The select's required attribute.
+         */
+        "required": boolean;
+        /**
+          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
+         */
+        "setCustomValidity": (message: string) => Promise<void>;
+        /**
+          * The select's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The value of the control. This will be a string or an array depending on `multiple`.
+         */
+        "value": string | Array<string>;
+    }
+    interface WayTag {
+        /**
+          * Set to true to make the tag clearable.
+         */
+        "clearable": boolean;
+        /**
+          * Set to true to draw a pill-style tag with rounded edges.
+         */
+        "pill": boolean;
+        /**
+          * The tag's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The tag's type.
+         */
+        "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
 }
 declare global {
@@ -161,11 +245,23 @@ declare global {
         prototype: HTMLWayMenuItemElement;
         new (): HTMLWayMenuItemElement;
     };
+    interface HTMLWayMenuLabelElement extends Components.WayMenuLabel, HTMLStencilElement {
+    }
+    var HTMLWayMenuLabelElement: {
+        prototype: HTMLWayMenuLabelElement;
+        new (): HTMLWayMenuLabelElement;
+    };
     interface HTMLWaySelectElement extends Components.WaySelect, HTMLStencilElement {
     }
     var HTMLWaySelectElement: {
         prototype: HTMLWaySelectElement;
         new (): HTMLWaySelectElement;
+    };
+    interface HTMLWayTagElement extends Components.WayTag, HTMLStencilElement {
+    }
+    var HTMLWayTagElement: {
+        prototype: HTMLWayTagElement;
+        new (): HTMLWayTagElement;
     };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
@@ -173,7 +269,9 @@ declare global {
         "way-menu": HTMLWayMenuElement;
         "way-menu-divider": HTMLWayMenuDividerElement;
         "way-menu-item": HTMLWayMenuItemElement;
+        "way-menu-label": HTMLWayMenuLabelElement;
         "way-select": HTMLWaySelectElement;
+        "way-tag": HTMLWayTagElement;
     }
 }
 declare namespace LocalJSX {
@@ -223,9 +321,9 @@ declare namespace LocalJSX {
          */
         "type"?: 'submit' | 'reset' | 'button';
         /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"text"`.
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
          */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
     interface WayDropdown {
         /**
@@ -306,7 +404,99 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface WayMenuLabel {
+    }
     interface WaySelect {
+        /**
+          * Set to true to add a clear button when the select is populated.
+         */
+        "clearable"?: boolean;
+        /**
+          * Set to true to disable the select control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The select's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * Enable this option to prevent the panel from being clipped when the component is placed inside a container with `overflow: auto|scroll`.
+         */
+        "hoist"?: boolean;
+        /**
+          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+         */
+        "invalid"?: boolean;
+        /**
+          * The select's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit.
+         */
+        "maxTagsVisible"?: number;
+        /**
+          * Set to true to enable multiselect.
+         */
+        "multiple"?: boolean;
+        /**
+          * The select's name.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onWayChange"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set to true to draw a pill-style select with rounded edges.
+         */
+        "pill"?: boolean;
+        /**
+          * The select's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * The select's required attribute.
+         */
+        "required"?: boolean;
+        /**
+          * The select's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The value of the control. This will be a string or an array depending on `multiple`.
+         */
+        "value"?: string | Array<string>;
+    }
+    interface WayTag {
+        /**
+          * Set to true to make the tag clearable.
+         */
+        "clearable"?: boolean;
+        /**
+          * Emitted when the clear button is activated.
+         */
+        "onWayClear"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set to true to draw a pill-style tag with rounded edges.
+         */
+        "pill"?: boolean;
+        /**
+          * The tag's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The tag's type.
+         */
+        "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
     interface IntrinsicElements {
         "way-button": WayButton;
@@ -314,7 +504,9 @@ declare namespace LocalJSX {
         "way-menu": WayMenu;
         "way-menu-divider": WayMenuDivider;
         "way-menu-item": WayMenuItem;
+        "way-menu-label": WayMenuLabel;
         "way-select": WaySelect;
+        "way-tag": WayTag;
     }
 }
 export { LocalJSX as JSX };
@@ -326,7 +518,9 @@ declare module "@stencil/core" {
             "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
             "way-menu-divider": LocalJSX.WayMenuDivider & JSXBase.HTMLAttributes<HTMLWayMenuDividerElement>;
             "way-menu-item": LocalJSX.WayMenuItem & JSXBase.HTMLAttributes<HTMLWayMenuItemElement>;
+            "way-menu-label": LocalJSX.WayMenuLabel & JSXBase.HTMLAttributes<HTMLWayMenuLabelElement>;
             "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
+            "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
         }
     }
 }

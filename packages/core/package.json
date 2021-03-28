@@ -34,6 +34,7 @@
     "@stencil/vue-output-target": "^0.1.8",
     "@types/jest": "^26.0.15",
     "@types/puppeteer": "2.0.1",
+    "@types/resize-observer-browser": "^0.1.5",
     "jest": "26.0.1",
     "jest-cli": "26.0.1",
     "puppeteer": "2.1.1"

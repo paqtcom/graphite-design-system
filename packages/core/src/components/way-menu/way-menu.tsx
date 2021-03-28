@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Event, EventEmitter, Method } from '@stencil/core';
-import { getTextContent } from '../../utils/utils'
+import { getTextContent } from '../../utils/slot'
 
 /**
  * @slot - The menu's content, including menu items, and later on: menu dividers, and menu labels.
@@ -16,7 +16,7 @@ export class WayMenu {
   @Element() el!: HTMLWayMenuElement;
 
   /** Emitted when a menu item is selected. */
-  @Event() waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
+  @Event({ eventName: 'waySelect' }) waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
@@ -64,7 +64,7 @@ export class WayMenu {
     const target = event.target as HTMLElement;
     const item = target.closest('way-menu-item');
 
-    if (item && item.disabled) {
+    if (item && !item.disabled) {
       this.waySelect.emit({ item });
     }
   }
@@ -118,7 +118,13 @@ export class WayMenu {
 
   render() {
     return (
-      <Host>
+      <Host
+        class="menu"
+        role="menu"
+        onClick={this.handleClick}
+        onKeyDown={this.handleKeyDown}
+        tabIndex={0}
+      >
         <slot></slot>
       </Host>
     );

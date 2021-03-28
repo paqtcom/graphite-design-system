@@ -1,0 +1,145 @@
+:host {
+  display: inline-block;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  border: solid 1px;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  cursor: default;
+}
+
+.tag-clear {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.tag-clear svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Type modifiers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.tag-primary {
+  background-color: rgba(var(--way-color-primary-rgb), 0.1);
+  border-color: rgba(var(--way-color-primary-rgb), 0.2);
+  color: var(--way-color-primary);
+
+  .tag-clear {
+    --color: var(--way-color-primary);
+    --color-hover: var(--way-color-primary-shade);
+  }
+}
+
+.tag-success {
+  background-color: rgba(var(--way-color-success-rgb), 0.1);
+  border-color: rgba(var(--way-color-success-rgb), 0.2);
+  color: var(--way-color-success);
+
+  .tag-clear {
+    --color: var(--way-color-success);
+    --color-hover: var(--way-color-success-shade);
+  }
+}
+
+.tag-info {
+  background-color: rgba(var(--way-color-medium-rgb), 0.1);
+  border-color: rgba(var(--way-color-medium-rgb), 0.2);
+  color: var(--way-color-medium);
+
+  .tag-clear {
+    --color: var(--way-color-medium);
+    --color-hover: var(--way-color-medium-shade);
+  }
+}
+
+.tag-warning {
+  background-color: rgba(var(--way-color-warning-rgb), 0.1);
+  border-color: rgba(var(--way-color-warning-rgb), 0.2);
+  color: var(--way-color-warning);
+
+  .tag-clear {
+    --color: var(--way-color-warning);
+    --color-hover: var(--way-color-warning-shade);
+  }
+}
+
+.tag-danger {
+  background-color: rgba(var(--way-color-danger-rgb), 0.1);
+  border-color: rgba(var(--way-color-danger-rgb), 0.2);
+  color: var(--way-color-danger);
+
+  .tag-clear {
+    --color: var(--way-color-danger);
+    --color-hover: var(--way-color-danger-shade);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Size modifiers
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.tag-small {
+  font-size: var(--way-form-element-font-size-small);
+  height: calc(var(--way-form-element-height-small) * 0.8);
+  line-height: calc(var(--way-form-element-height-small) - 1px * 2);
+  border-radius: var(--way-form-element-border-radius-small);
+  padding: 0 var(--way-spacing-x-small);
+
+  .tag-clear {
+    margin-left: var(--way-spacing-xx-small);
+    margin-right: calc(-1 * var(--way-spacing-xxx-small));
+
+    svg {
+      font-size: var(--way-form-element-font-size-small);
+    }
+  }
+}
+
+.tag-medium {
+  font-size: var(--way-form-element-font-size-medium);
+  height: calc(var(--way-form-element-height-medium) * 0.8);
+  line-height: calc(var(--way-form-element-height-medium) - 1px * 2);
+  border-radius: var(--way-form-element-border-radius-medium);
+  padding: 0 var(--way-spacing-small);
+
+  .tag-clear {
+    margin-left: var(--way-spacing-xx-small);
+    margin-right: calc(-1 * var(--way-spacing-xx-small));
+
+    svg {
+      font-size: var(--way-form-element-font-size-medium);
+    }
+  }
+}
+
+.tag-large {
+  font-size: var(--way-form-element-font-size-large);
+  height: calc(var(--way-form-element-height-large) * 0.8);
+  line-height: calc(var(--way-form-element-height-large) - 1px * 2);
+  border-radius: var(--way-form-element-border-radius-large);
+  padding: 0 var(--way-spacing-medium);
+
+  .tag-clear {
+    margin-left: var(--way-spacing-xx-small);
+    margin-right: calc(-1 * var(--way-spacing-x-small));
+
+    svg {
+      font-size: var(--way-form-element-font-size-large);
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pill modifier
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.tag-pill {
+  border-radius: 9999px;
+}

@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  font-family: var(--way-font-family);
+  font-size: var(--way-font-size-small);
+  font-weight: var(--way-font-weight-normal);
+  line-height: var(--way-line-height-normal);
+  letter-spacing: var(--way-letter-spacing-normal);
+  color: var(--way-color-medium-tint);
+  padding: var(--way-spacing-xx-small) var(--way-spacing-x-large);
+  user-select: none;
+}

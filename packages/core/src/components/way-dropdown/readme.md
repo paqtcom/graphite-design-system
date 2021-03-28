@@ -51,6 +51,27 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot        | Description                                               |
+| ----------- | --------------------------------------------------------- |
+|             | The dropdown's content.                                   |
+| `"trigger"` | The dropdown's trigger, usually a `<way-button>` element. |
+
+
+## Dependencies
+
+### Used by
+
+ - [way-select](../way-select)
+
+### Graph
+```mermaid
+graph TD;
+  way-select --> way-dropdown
+  style way-dropdown fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -17,6 +17,169 @@
   </head>
   <body>
     <section>
+      <h2>way-select</h2>
+
+      <section>
+        <h3>Placeholders</h3>
+
+        <way-select placeholder="Select one">
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Clearable</h3>
+
+        <way-select placeholder="Clearable" clearable>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <way-select pill>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-select placeholder="Disabled" disabled>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Multiple</h3>
+
+        <way-select placeholder="Select multiple" multiple id="fiets">
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+          <way-menu-divider></way-menu-divider>
+          <way-menu-item value="option-4">Option 4</way-menu-item>
+          <way-menu-item value="option-5">Option 5</way-menu-item>
+          <way-menu-item value="option-6">Option 6</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Grouping Options</h3>
+
+        <way-select placeholder="Select one">
+          <way-menu-label>Group 1</way-menu-label>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+          <way-menu-divider></way-menu-divider>
+          <way-menu-label>Group 2</way-menu-label>
+          <way-menu-item value="option-4">Option 4</way-menu-item>
+          <way-menu-item value="option-5">Option 5</way-menu-item>
+          <way-menu-item value="option-6">Option 6</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-select placeholder="Small" size="small" multiple clearable>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+
+        <br>
+
+        <way-select placeholder="Medium" size="medium" multiple clearable>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+
+        <br>
+
+        <way-select placeholder="Large" size="large" multiple clearable>
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <way-select label="Select one">
+          <way-menu-item value="option-1">Option 1</way-menu-item>
+          <way-menu-item value="option-2">Option 2</way-menu-item>
+          <way-menu-item value="option-3">Option 3</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <way-select
+          label="Experience"
+          help-text="Please tell us your skill level."
+        >
+          <way-menu-item value="option-1">Novice</way-menu-item>
+          <way-menu-item value="option-2">Intermediate</way-menu-item>
+          <way-menu-item value="option-3">Advanced</way-menu-item>
+        </way-select>
+      </section>
+    </section>
+
+    <section>
+      <h2>way-tag</h2>
+
+      <section>
+        <h3>Types</h3>
+
+        <way-tag type="primary">Primary</way-tag>
+        <way-tag type="success">Success</way-tag>
+        <way-tag type="info">Info</way-tag>
+        <way-tag type="warning">Warning</way-tag>
+        <way-tag type="danger">Danger</way-tag>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-tag size="small">Small</way-tag>
+        <way-tag size="medium">Medium</way-tag>
+        <way-tag size="large">Large</way-tag>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <way-tag size="small" pill>Small</way-tag>
+        <way-tag size="medium" pill>Medium</way-tag>
+        <way-tag size="large" pill>Large</way-tag>
+      </section>
+
+      <section>
+        <h3>Clearable</h3>
+
+        <div class="tags-clearable">
+          <way-tag type="info" size="small" clearable>Small</way-tag>
+          <way-tag size="medium" clearable>Medium</way-tag>
+          <way-tag type="danger" size="large" clearable>Large</way-tag>
+        </div>
+      </section>
+    </section>
+
+    <section>
       <h2>way-dropdown</h2>
 
       <way-dropdown placement="right-start">
@@ -43,12 +206,14 @@
 
     <section>
       <h2>way-menu</h2>
-      <p>Including way-menu-item & way-menu-divider</p>
+      <p>Including way-menu-item & way-menu-divider & way-menu-label</p>
 
       <way-menu style="max-width: 200px; border: solid 1px var(--way-color-light); border-radius: var(--way-border-radius-medium);">
+        <way-menu-label>Timetravel</way-menu-label>
         <way-menu-item value="undo" checked>Undo</way-menu-item>
         <way-menu-item value="redo">Redo</way-menu-item>
         <way-menu-divider></way-menu-divider>
+        <way-menu-label>Transformation</way-menu-label>
         <way-menu-item value="cut" disabled>Cut</way-menu-item>
         <way-menu-item value="copy" checked>
           Copy
@@ -198,13 +363,13 @@
       </section>
 
       <script>
-        let clickExampleElement = document.getElementById('clickExample');
+        const clickExampleElement = document.getElementById('clickExample');
 
         clickExampleElement.addEventListener('click', () => {
           console.log('clicked');
         });
 
-        let focusBlurExampleElement = document.getElementById('focusBlurExample');
+        const focusBlurExampleElement = document.getElementById('focusBlurExample');
 
         focusBlurExampleElement.addEventListener('wayFocus', () => {
           console.log('wayFocus');
@@ -212,6 +377,14 @@
 
         focusBlurExampleElement.addEventListener('wayBlur', () => {
           console.log('wayBlur');
+        });
+
+        const tagsClearable = document.querySelector('.tags-clearable');
+
+        tagsClearable.addEventListener('wayClear', event => {
+          const tag = event.target;
+          tag.style.opacity = '0';
+          setTimeout(() => tag.style.opacity = '1', 2000);
         });
       </script>
     </section>

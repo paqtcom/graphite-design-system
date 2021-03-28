@@ -3,34 +3,70 @@
   // --------------------------------------------------
 
   --way-color-primary: #1799de;
+  --way-color-primary-rgb: 23, 153, 222;
   --way-color-primary-contrast: #ffffff;
+  --way-color-primary-contrast-rgb: 255, 255, 255;
   --way-color-primary-shade: #00679e;
   --way-color-primary-tint: #46b2ec;
 
   --way-color-secondary: #051f2c;
+  --way-color-secondary-rgb: 5, 31, 44;
   --way-color-secondary-contrast: #ffffff;
+  --way-color-secondary-contrast-rgb: 255, 255, 255;
   --way-color-secondary-shade: #000;
   --way-color-secondary-tint: #0a415c;
 
+  --way-color-tertiary: #0c4a6e;
+  --way-color-tertiary-rgb: 12, 74, 110;
+  --way-color-tertiary-contrast: #ffffff;
+  --way-color-tertiary-contrast-rgb: 255, 255, 255;
+  --way-color-tertiary-shade: #083249;
+  --way-color-tertiary-tint: #106393;
+
+  --way-color-success: #0fbe78;
+  --way-color-success-rgb: 15, 190, 120;
+  --way-color-success-contrast: #000000;
+  --way-color-success-contrast-rgb: 0, 0, 0;
+  --way-color-success-shade: #0c975f;
+  --way-color-success-tint: #12e28f;
+
+  --way-color-warning: #fbbc4e;
+  --way-color-warning-rgb: 251, 188, 78;
+  --way-color-warning-contrast: #051f2c;
+  --way-color-warning-contrast-rgb: 5, 31, 44;
+  --way-color-warning-shade: #fbb337;
+  --way-color-warning-tint: #fdd187;
+
   --way-color-danger: #ff5363;
+  --way-color-danger-rgb: 255, 83, 99;
   --way-color-danger-contrast: #051f2c;
+  --way-color-danger-contrast-rgb: 5, 31, 44;
   --way-color-danger-shade: #ff1f35;
   --way-color-danger-tint: #ff8591;
 
   --way-color-light: #dbe5eb;
+  --way-color-light-rgb: 219, 229, 235;
   --way-color-light-contrast: #051f2c;
+  --way-color-light-contrast-rgb: 5, 31, 44;
   --way-color-light-shade: #c1d1db;
   --way-color-light-tint: #e7eef4;
 
   --way-color-medium: #697886;
+  --way-color-medium-rgb: 105, 120, 134;
   --way-color-medium-contrast: #ffffff;
+  --way-color-medium-contrast-rgb: 255, 255, 255;
   --way-color-medium-shade: #4c5960;
   --way-color-medium-tint: #9eaeb7;
 
   --way-color-dark: #02131b;
+  --way-color-dark-rgb: 2, 19, 27;
   --way-color-dark-contrast: #ffffff;
+  --way-color-dark-contrast-rgb: 255, 255, 255;
   --way-color-dark-shade: #000000;
   --way-color-dark-tint: #051f2c;
+
+  --way-color-white: #ffffff;
+  --way-color-black: #000000;
 
   // Border radius tokens
   // --------------------------------------------------
@@ -110,6 +146,20 @@
   --way-form-element-border-radius-small: var(--way-border-radius-medium);
   --way-form-element-border-radius-medium: var(--way-border-radius-medium);
   --way-form-element-border-radius-large: var(--way-border-radius-medium);
+
+  // Labels
+  --way-form-element-label-font-size-small: var(--way-font-size-small);
+  --way-form-element-label-font-size-medium: var(--way-font-size-medium);
+  --way-form-element-label-font-size-large: var(--way-font-size-large);
+
+  --way-form-element-label-color: inherit;
+
+  // Help text
+  --way-form-element-help-text-font-size-small: var(--way-font-size-x-small);
+  --way-form-element-help-text-font-size-medium: var(--way-font-size-small);
+  --way-form-element-help-text-font-size-large: var(--way-font-size-medium);
+
+  --way-form-element-help-text-color: var(--way-color-medium-tint);
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Z-index tokens
