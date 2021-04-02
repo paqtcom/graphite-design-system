@@ -20,44 +20,49 @@
 
   font-kerning: none;
 
-  --border-radius: 5px;
-  --border-width: 3px;
-  --border-color: #4598d8;
+  --border-radius: var(--way-form-element-border-radius-medium);
+  --border-width: var(--way-form-element-input-border-width);
+  --border-color: var(--way-color-medium-tint);
+  --border-color-focus: var(--way-color-light);
   --border-style: solid;
+  --font-size: var(--way-form-element-font-size-small);
+  --font-size-small: var(--way-form-element-font-size-x-small);
+  --font-size-large: var(--way-form-element-font-size-x-small);
+  --background-color: var(--way-color-white);
 }
 
 .input {
   display: block;
   appearance: none;
-  background-color: var(--way-form-background-color);
+  background-color: var(--background-color);
   width: 100%;
 
-  font-size: var(--way-form-font-size);
+  font-size: var(--font-size);
 
   transition-duration: 150ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
 
-  border: solid var(--way-form-border-width) var(--way-form-border-color);
-  border-radius: var(--way-form-border-radius);
+  border: solid var(--border-width) var(--border-color);
+  border-radius: var(--border-radius);
 
   padding: var(--way-spacing-x-small) var(--way-spacing-small);
 }
 
 .input-small {
-  font-size: var(--way-form-font-size-small);
+  font-size: var(--font-size-small);
   padding: var(--way-spacing-xx-small) var(--way-spacing-x-small);
 }
 
 .input-large {
-  font-size: var(--way-form-font-size-large);
+  font-size: var(--font-size-large);
   padding: var(--way-spacing-medium) var(--way-spacing-x-large);
 }
 
 .input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: var(--way-form-border-color-focus);
+  border-color: var(--border-color-focus);
 }
 
 .label {
@@ -86,7 +91,7 @@
 }
 
 .input-disabled {
-  background-color: var(--way-form-background-color-disabled);
+  cursor: default;
   opacity: 0.5;
-  cursor: not-allowed;
+  pointer-events: none;
 }
