@@ -25,6 +25,16 @@
 | `wayFocus` | Emitted when the input has focus.   | `CustomEvent<void>` |
 
 
+## CSS Custom Properties
+
+| Name              | Description                |
+| ----------------- | -------------------------- |
+| `--border-color`  | Border color of the button |
+| `--border-radius` | Border radius of the input |
+| `--border-style`  | Border style of the button |
+| `--border-width`  | Border width of the button |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
