@@ -1,6 +1,22 @@
+@import '../../themes/w2wds.globals';
+
+// Menu
+// --------------------------------------------------
+
 :host {
+  /**
+   * @prop --padding-top: Top padding of the menu
+   * @prop --padding-bottom: Bottom padding of the menu
+   */
+  --padding-top: var(--way-spacing-x-small);
+  --padding-bottom: var(--way-spacing-x-small);
+
   display: block;
-  padding: var(--way-spacing-x-small) 0;
+
+  padding-top: var(--padding-top);
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: var(--padding-bottom);
 }
 
 :host:focus {
