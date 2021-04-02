@@ -39,6 +39,11 @@ export class WayButton {
   @Prop() caret = false;
 
   /**
+   * Set to true to draw a pill-style button with rounded edges.
+   */
+  @Prop({ reflect: true }) pill = false;
+
+  /**
    * Set to `"block"` for a full-width button or to `"full"` for a full-width button
    * without left and right borders.
    */
@@ -133,6 +138,7 @@ export class WayButton {
           [`button-${expand}`]: expand !== undefined,
           'button-caret': this.caret,
           'button-circle': this.circle,
+          'button-pill': this.pill,
           'button-disabled': disabled,
         }}
       >

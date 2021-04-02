@@ -288,6 +288,13 @@
   }
 }
 
+// Pill modifier
+// --------------------------------------------------
+
+:host(.button-pill) .button-native {
+  border-radius: var(--height);
+}
+
 // Button Icons
 // --------------------------------------------------
 
