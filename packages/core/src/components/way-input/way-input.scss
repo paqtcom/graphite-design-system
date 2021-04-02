@@ -1,0 +1,97 @@
+:host {
+  /**
+    * @prop --border-radius: Border radius of the input
+    * @prop --border-width: Border width of the button
+    * @prop --border-style: Border style of the button
+    * @prop --border-color: Border color of the button
+    */
+  display: inline-block;
+
+  width: auto;
+
+  font-family: var(--way-font-family, inherit);
+  font-size: var(--way-font-size);
+  line-height: 1.25rem;
+
+  user-select: none;
+  vertical-align: top;
+  vertical-align: -webkit-baseline-middle;
+  pointer-events: auto;
+
+  font-kerning: none;
+
+  --border-radius: var(--way-form-element-border-radius-medium);
+  --border-width: var(--way-form-element-input-border-width);
+  --border-color: var(--way-color-medium-tint);
+  --border-color-focus: var(--way-color-light);
+  --border-style: solid;
+  --font-size: var(--way-form-element-font-size-small);
+  --font-size-small: var(--way-form-element-font-size-x-small);
+  --font-size-large: var(--way-form-element-font-size-x-small);
+  --background-color: var(--way-color-white);
+}
+
+.input {
+  display: block;
+  appearance: none;
+  background-color: var(--background-color);
+  width: 100%;
+
+  font-size: var(--font-size);
+
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+
+  border: solid var(--border-width) var(--border-color);
+  border-radius: var(--border-radius);
+
+  padding: var(--way-spacing-x-small) var(--way-spacing-small);
+}
+
+.input-small {
+  font-size: var(--font-size-small);
+  padding: var(--way-spacing-xx-small) var(--way-spacing-x-small);
+}
+
+.input-large {
+  font-size: var(--font-size-large);
+  padding: var(--way-spacing-medium) var(--way-spacing-x-large);
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
+  border-color: var(--border-color-focus);
+}
+
+.label {
+  font-weight: var(--way-label-font-weight);
+  font-size: var(--way-label-font-size);
+  text-align: left;
+  display: block;
+  margin-bottom: var(--way-spacing-xx-small);
+}
+
+.label-small {
+  font-size: var(--way-label-font-size-small);
+}
+
+.label-large {
+  font-size: var(--way-label-font-size-large);
+}
+
+.label-inline {
+  margin-right: var(--way-spacing-xx-small);
+}
+
+.input-inline {
+  display: flex;
+  align-items: center;
+}
+
+.input-disabled {
+  cursor: default;
+  opacity: 0.5;
+  pointer-events: none;
+}

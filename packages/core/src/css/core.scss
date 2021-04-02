@@ -32,6 +32,8 @@
   --way-color-dark-shade: #000000;
   --way-color-dark-tint: #051f2c;
 
+  --way-color-white: #ffffff;
+
   // Border radius tokens
   // --------------------------------------------------
   --way-border-radius-small: 0.125rem; // 2px
@@ -77,6 +79,7 @@
   // Form tokens
   // -------------------------------------------------
 
+  --way-form-element-font-size-x-small: var(--way-font-size-x-small);
   --way-form-element-font-size-small: var(--way-font-size-small);
   --way-form-element-font-size-medium: var(--way-font-size-medium);
   --way-form-element-font-size-large: var(--way-font-size-large);
@@ -85,28 +88,20 @@
   --way-form-element-height-medium: 3.125rem; // 50px
   --way-form-element-height-large: 4.063rem; // 65px
 
+  --way-form-element-input-border-width: 1px;
   --way-form-element-border-width: 2px;
 
-  --way-form-element-border-radius-small: var(--way-border-radius-medium);
+  --way-form-element-border-radius-small: var(--way-border-radius-small);
   --way-form-element-border-radius-medium: var(--way-border-radius-medium);
-  --way-form-element-border-radius-large: var(--way-border-radius-medium);
-
-  // Form
-  // -------------------------------------------------
-  --way-form-font-size: var(--way-font-size-small);
-  --way-form-font-size-small: var(--way-font-size-x-small);
-  --way-form-font-size-large: var(--way-font-size-large);
-  --way-form-background-color: var(--way-color-primary-contrast);
-  --way-form-background-color-disabled: #eee;
-  --way-form-border-color: var(--way-color-medium-tint);
-  --way-form-border-width: 1px;
-  --way-form-border-radius: var(--way-border-radius-medium);
-  --way-form-border-color-focus: #a4cafe;
+  --way-form-element-border-radius-large: var(--way-border-radius-large);
 
   // Label
   // -------------------------------------------------
-  --way-label-font-size: var(--way-input-font-size);
-  --way-label-font-size-small: var(--way-input-font-size-small);
-  --way-label-font-size-large: var(--way-input-font-size-large);
+  --way-label-font-size: var(--way-form-font-size);
+  --way-label-font-size-small: var(--way-form-font-size-small);
+  --way-label-font-size-large: var(--way-form-font-size-large);
   --way-label-font-weight: var(--way-font-weight-semibold);
 }
+
+
+
