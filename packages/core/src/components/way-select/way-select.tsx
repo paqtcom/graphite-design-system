@@ -350,7 +350,7 @@ export class WaySelect {
         this.displayLabel = '';
         this.displayTags = this.displayTags.slice(0, this.maxTagsVisible);
         this.displayTags.push(
-          <way-tag exportparts="base:tag" type="info" size={this.size}>
+          <way-tag type="info" size={this.size} pill={this.pill}>
             +{total - this.maxTagsVisible}
           </way-tag>
         );

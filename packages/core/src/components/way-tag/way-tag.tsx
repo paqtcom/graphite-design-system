@@ -31,16 +31,15 @@ export class WayTag {
 
   render() {
     return (
-      <Host>
-        <span
-          class={{
-            'tag': true,
-            [`tag-${this.type}`]: true,
-            [`tag-${this.size}`]: true,
-            'tag-pill': this.pill,
-            'tag-clearable': this.clearable
-          }}
-        >
+      <Host
+        class={{
+          [`tag-${this.type}`]: true,
+          [`tag-${this.size}`]: true,
+          'tag-pill': this.pill,
+          'tag-clearable': this.clearable
+        }}
+      >
+        <span class="tag">
           <slot></slot>
 
           {this.clearable && (

@@ -103,10 +103,6 @@
   flex-wrap: wrap;
   justify-content: left;
   margin-left: var(--way-spacing-xx-small);
-
-  way-tag {
-    --color: inherit;
-  }
 }
 
 // Hidden input (for form control validation to show)
