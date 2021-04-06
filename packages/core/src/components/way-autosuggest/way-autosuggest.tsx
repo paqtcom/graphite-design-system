@@ -84,10 +84,10 @@ export class WayAutoselect {
       const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
     } else if(this.localSelected && typeof this.valueSelector === 'string') {
-      const commaSeparatedString = this.localSelected.map((local) => local[`${this.valueSelector}`]).join();
+      const commaSeparatedString = this.cleanData().map((local) => local[`${this.valueSelector}`]).join();
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
     } else {
-      renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.localSelected));
+      renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.cleanData()));
     }
   }
 
