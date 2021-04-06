@@ -90,12 +90,6 @@
   }
 }
 
-.w2w-tags {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-}
-
 .tag {
   padding: 4px 6px;
   margin: 4px;
@@ -105,6 +99,8 @@
   align-items: center;
   border-radius: var(--border-radius);
   max-width: calc(100% - 20px);
+
+  height: calc(var(--way-form-element-height-medium) - 16px);
 
   .counter {
     min-width: 46px;
