@@ -72,7 +72,8 @@ export class WayAutoselect {
     }
 
     if (event.key === 'Enter' && this.hasFocus) {
-      this.filteredOptions[this.highlightIndex] && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
+      this.filteredOptions[this.highlightIndex] 
+      && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
     }
 
     // todo: when hitting backspace while !inputValue, remove last item from array localSelected
@@ -168,7 +169,8 @@ export class WayAutoselect {
   }
 
   private sortFilteredOptions() {
-    this.filteredOptions = [...this.filteredOptions].sort((a, b) => a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }));
+    this.filteredOptions = 
+      [...this.filteredOptions].sort((a, b) => a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }));
   }
 
   private markSelectedOptions() {
@@ -285,7 +287,11 @@ export class WayAutoselect {
   render() {
     return (
       <Host>
-        <div class={{ 'way-autosuggest': true, 'has-error': this.validationErrors().length > 0 }} onClick={() => this.inputEl && this.inputEl.focus()}>
+        <div class={{ 
+            'way-autosuggest': true,
+            'has-error': this.validationErrors().length > 0 
+          }} onClick={() => this.inputEl && this.inputEl.focus()}
+        >
           <div class="input-container">
             {this.renderTags()}
             <input
@@ -300,11 +306,21 @@ export class WayAutoselect {
               placeholder={this.placeholder}
             />
           </div>
-          <div class={{ 'option-list': true, 'has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>
+          <div 
+            class={{ 'option-list': true, 'has-focus': this.hasFocus }}
+            ref={el => (this.optionListEl = el as HTMLInputElement)}
+          >
             {this.filteredOptions.length < 1 && <p>No options available</p>}
             {this.filteredOptions.length > 0 &&
               this.filteredOptions.map((option, i) => (
-                <div onClick={() => this.optionSelectedListener(option)} class={{ 'option': true, 'option-selected': option.selected, 'option--highlighted': i === this.highlightIndex }}>
+                <div 
+                  onClick={() => this.optionSelectedListener(option)}
+                  class={{ 
+                    'option': true,
+                    'option-selected': option.selected,
+                    'option--highlighted': i === this.highlightIndex 
+                  }}
+                >
                   {option.label}
                 </div>
               ))}
