@@ -4,14 +4,14 @@
   font-size: var(--way-button-font-size-medium);
   font-kerning: none;
 
-  --border-radius: var(--way-input-border-radius-medium);
+  --border-radius: var(--way-form-element-border-radius-medium);
   --border-color: var(--way-color-light);
 
   --color-selected: var(--way-color-primary);
   --color-highlighted: rgba(0, 0, 0, 0.1);
   --color-highlighted-selected: var(--way-color-primary-shade);
-  --border-width: var(--way-input-border-width);
-  --height: var(--way-input-height-medium);
+  --border-width: var(--way-form-element-border-width);
+  --height: var(--way-form-element-height-medium);
 }
 
 .way-autosuggest {
