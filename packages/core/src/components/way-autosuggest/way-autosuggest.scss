@@ -11,13 +11,10 @@
   --color-highlighted: rgba(0, 0, 0, 0.1);
   --color-highlighted-selected: var(--way-color-primary-shade);
   --border-width: var(--way-input-border-width);
+  --height: var(--way-form-element-height-medium);
 }
 
 .way-autosuggest {
-
-
-  --height: 40px;
-
   display: block;
   border: var(--border-width) solid var(--border-color);
   display: flex;
