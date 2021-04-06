@@ -12,6 +12,7 @@
   --color-highlighted-selected: var(--way-color-primary-shade);
   --border-width: var(--way-form-element-border-width);
   --height: var(--way-form-element-height-medium);
+  --tag-color: var(--way-color-primary);
 }
 
 .way-autosuggest {
@@ -98,7 +99,7 @@
 .tag {
   padding: 4px 6px;
   margin: 4px;
-  background-color: var(--way-color-primary);
+  background-color: var(--tag-color);
   color: #ffffff;
   display: flex;
   align-items: center;

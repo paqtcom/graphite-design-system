@@ -246,7 +246,7 @@ export class WayAutoselect {
         <this.Fragment>
           {this.localSelected.length > 0 &&
             this.localSelected.map(tag => (
-              <div title={tag.label} onClick={() => this.removeTag(tag)} class="tag" style={{ backgroundColor: this.config.tagColor }}>
+              <div title={tag.label} onClick={() => this.removeTag(tag)} class="tag">
                 <span>{tag.label}</span>
               </div>
             ))}
@@ -256,7 +256,7 @@ export class WayAutoselect {
     } else {
       const text = `${this.localSelected.length} ${this.localConfig.selectedText}`;
       return (
-        <div class="tag counter" title={text} style={{ backgroundColor: this.config.tagColor }}>
+        <div class="tag counter" title={text}>
           <span>{text}</span>
         </div>
       );
