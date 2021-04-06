@@ -12,6 +12,7 @@ export namespace Components {
         "config"?: WayAutosuggestConfig;
         "name": string;
         "options"?: Array<WayAutosuggestOption>;
+        "placeholder"?: string;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
         "valueSelector": string | ((item: unknown, index: number)=>string[]);
@@ -79,6 +80,7 @@ declare namespace LocalJSX {
         "name"?: string;
         "onWayChange"?: (event: CustomEvent<FormElementData>) => void;
         "options"?: Array<WayAutosuggestOption>;
+        "placeholder"?: string;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
         "valueSelector"?: string | ((item: unknown, index: number)=>string[]);

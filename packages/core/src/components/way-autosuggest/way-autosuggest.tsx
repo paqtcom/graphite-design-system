@@ -19,6 +19,7 @@ export class WayAutoselect {
   @Prop() valueSelector: string | ((item: unknown, index: number)=>string[]);
   @Prop() value?: string | Array<{ label: string; value: any }>;
   @Prop() name: string;
+  @Prop() placeholder?: string;
 
   @State() inputValue: string = '';
   @State() hasFocus = false;
@@ -296,7 +297,7 @@ export class WayAutoselect {
               onClick={() => this.focus()}
               value={this.inputValue}
               onFocus={() => this.focus()}
-              placeholder="Start typing"
+              placeholder={this.placeholder}
             />
           </div>
           <div class={{ 'option-list': true, 'has-focus': this.hasFocus }} ref={el => (this.optionListEl = el as HTMLInputElement)}>

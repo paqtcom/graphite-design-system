@@ -7,6 +7,7 @@ export interface WayAutosuggestOption {
 
 export interface WayAutosuggestConfig {
   selectedText?: string;
+  startTypingText?: string;
   multi?: boolean;
   maxTagWidth?: string;
   maxTags?: number;
