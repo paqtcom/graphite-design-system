@@ -6,8 +6,6 @@ import { inheritAttributes } from '../../utils/utils';
  * @slot icon-only - Should be used on an icon in a button that has no text.
  * @slot start - Content is placed to the left of the button text (will be to the right when we support right-to-left direction)
  * @slot end - Content is placed to the right of the button text (will be to the left when we support right-to-left direction)
- *
- * @part native - The native HTML button or anchor element that wraps all child elements.
  */
 @Component({
   tag: 'way-button',
@@ -135,7 +133,6 @@ export class WayButton {
         <TagType
           {...attrs}
           class="button-native"
-          part="native"
           disabled={disabled}
           onFocus={this.onFocus}
           onBlur={this.onBlur}

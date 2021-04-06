@@ -32,7 +32,7 @@
 
   font-family: var(--way-font-family, inherit);
   font-weight: var(--way-font-weight-semibold);
-  font-size: var(--way-button-font-size-medium);
+  font-size: var(--way-form-element-font-size-medium);
   font-kerning: none;
 
   user-select: none;
@@ -40,10 +40,10 @@
   vertical-align: -webkit-baseline-middle;
   pointer-events: auto;
 
-  --height: var(--way-input-height-medium);
+  --height: var(--way-form-element-height-medium);
 
-  --border-radius: var(--way-input-border-radius-medium);
-  --border-width: var(--way-input-border-width);
+  --border-radius: var(--way-form-element-border-radius-medium);
+  --border-width: var(--way-form-element-border-width);
   --border-style: solid;
 
   --background: transparent;
@@ -128,22 +128,22 @@
   --padding-start: var(--way-spacing-small);
   --padding-end: var(--way-spacing-small);
 
-  --border-radius: var(--way-input-border-radius-small);
+  --border-radius: var(--way-form-element-border-radius-small);
 
-  --height: var(--way-input-height-small);
+  --height: var(--way-form-element-height-small);
 
-  font-size: var(--way-button-font-size-small);
+  font-size: var(--way-form-element-font-size-small);
 }
 
 :host(.button-large) {
   --padding-start: var(--way-spacing-large);
   --padding-end: var(--way-spacing-large);
 
-  --border-radius: var(--way-input-border-radius-large);
+  --border-radius: var(--way-form-element-border-radius-large);
 
-  --height: var(--way-input-height-large);
+  --height: var(--way-form-element-height-large);
 
-  font-size: var(--way-button-font-size-large);
+  font-size: var(--way-form-element-font-size-large);
 }
 
 // Block Button
