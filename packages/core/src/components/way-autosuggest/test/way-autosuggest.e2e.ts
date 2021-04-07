@@ -91,6 +91,65 @@ describe('way-autosuggest', () => {
     expect(JSON.parse(inputValue)[0].value).toBe('Arthur');
   })
 
+  it('Assigning @Prop valueSelector in JS with string', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<way-autosuggest name="test-select"></way-autosuggest>');
+    const hiddenInput = await page.find('input[name=test-select]');
+
+    await page.$eval('way-autosuggest',
+      (elm, optionListOptions) => {
+        elm.options = optionListOptions;
+        elm.valueSelector = 'label';
+        elm.value = '[{ "label": "Benny Balotelli", "value": 2 }]'
+      },
+      optionListOptions
+    );
+
+    await page.waitForChanges();
+
+    const inputValue = await hiddenInput.getAttribute('value');
+    expect(inputValue).toBe('Benny Balotelli');
+  })
+
+  it('Assigning @Prop valueSelector in JS with object', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<way-autosuggest name="test-select"></way-autosuggest>');
+    const hiddenInput = await page.find('input[name=test-select]');
+
+    await page.$eval('way-autosuggest',
+      (elm, optionListOptions) => {
+        elm.options = optionListOptions;
+        elm.valueSelector = 'label';
+        elm.value = [{ "label": "Benny Balotelli", "value": 2 }]
+      },
+      optionListOptions
+    );
+
+    await page.waitForChanges();
+
+    const inputValue = await hiddenInput.getAttribute('value');
+    expect(inputValue).toBe('Benny Balotelli');
+  })
+
+  it('Assigning @Prop valueSelector in HTML with string', async() => {
+    const page = await newE2EPage();
+    await page.setContent('<way-autosuggest name="test-select" value-selector="value"></way-autosuggest>');
+    const hiddenInput = await page.find('input[name=test-select]');
+
+    await page.$eval('way-autosuggest',
+      (elm, optionListOptions) => {
+        elm.options = optionListOptions;
+        elm.value = [{ "label": "Benny Balotelli", "value": 2 }]
+      },
+      optionListOptions
+    );
+
+    await page.waitForChanges();
+
+    const inputValue = await hiddenInput.getAttribute('value');
+    expect(inputValue).toBe('2');
+  })
+
   it('should show option list when focussed', async() => {
     const page = await newE2EPage();
     let optionList;

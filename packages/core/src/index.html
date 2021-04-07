@@ -249,8 +249,13 @@
             autosuggest.config = {
               multi: true,
             }
-            // Both are the same: autosuggest.valueSelector = 'value';
-            autosuggest.valueSelector = (item, index) => item.value;
+            // JS examples:
+            // autosuggest.valueSelector = 'value';
+            // autosuggest.valueSelector = (item, index) => item.value;
+
+            // HTML example:
+            // <way-autosuggest value-selector="value"></way-autosuggest
+            autosuggest.valueSelector = 'value';
 
             autosuggest.addEventListener('wayChange', event => {
               // we get the value both in the event.detail
