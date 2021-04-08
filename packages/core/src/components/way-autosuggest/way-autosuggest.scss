@@ -13,6 +13,7 @@
   --border-width: var(--way-form-element-border-width);
   --height: var(--way-form-element-height-medium);
   --tag-color: var(--way-color-primary);
+  --max-tag-width: calc(100% - 20px);
 }
 
 .way-autosuggest {
@@ -98,7 +99,7 @@
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
-  max-width: calc(100% - 20px);
+  max-width: var(--max-tag-width);
 
   height: calc(var(--way-form-element-height-medium) - 16px);
 

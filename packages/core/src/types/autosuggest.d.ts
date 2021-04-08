@@ -6,9 +6,8 @@ export interface WayAutosuggestOption {
 }
 
 export interface WayAutosuggestConfig {
-  selectedText?: string;
-  multi?: boolean;
-  maxTagWidth?: string;
+  backspaceDelete?: boolean;
   maxTags?: number;
-  tagColor?: string;
+  multi?: boolean;
+  selectedText?: string;
 }

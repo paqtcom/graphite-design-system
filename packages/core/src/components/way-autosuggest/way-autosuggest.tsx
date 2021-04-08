@@ -13,21 +13,23 @@ export class WayAutoselect {
   private inputEl?: HTMLInputElement;
   @Element() el!: HTMLWayAutosuggestElement;
 
-  @Prop() options?: Array<WayAutosuggestOption> = [];
   @Prop() config?: WayAutosuggestConfig = {};
+  @Prop() name: string;
+  @Prop() options?: Array<WayAutosuggestOption> = [];
+  @Prop() placeholder?: string;
   @Prop() validation?: (value: any) => string[];
   @Prop() valueSelector: string | ((item: unknown, index: number)=>string[]);
   @Prop() value?: string | Array<{ label: string; value: any }>;
-  @Prop() name: string;
-  @Prop() placeholder?: string;
 
-  @State() inputValue: string = '';
-  @State() hasFocus = false;
   @State() filteredOptions: Array<WayAutosuggestOption> = this.options;
+  @State() hasFocus = false;
+  @State() inputValue: string = '';
   @State() localSelected = [];
   @State() localConfig: WayAutosuggestConfig = {
+    backspaceDelete: true,
+    maxTags: 0,
+    multi: true,
     selectedText: 'selected',
-    maxTagWidth: '10rem',
     ...this.config,
   };
   @State() highlightIndex: number = 0;
@@ -76,7 +78,16 @@ export class WayAutoselect {
       && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
     }
 
-    // todo: when hitting backspace while !inputValue, remove last item from array localSelected
+    if(
+      event.key === 'Backspace' &&
+      this.localConfig.backspaceDelete &&
+      this.hasFocus &&
+      !this.inputValue &&
+      this.localSelected.length > 0 &&
+      !this.maxTagsReached()
+    ){
+      this.removeTag(this.localSelected[this.localSelected.length -1]);
+    }
   }
 
   private renderHiddenInput() {
@@ -90,6 +101,10 @@ export class WayAutoselect {
     } else {
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.cleanData()));
     }
+  }
+
+  private maxTagsReached(): boolean {
+    return this.localConfig.maxTags && this.localSelected.length > this.localConfig.maxTags;
   }
 
   /**
@@ -243,7 +258,7 @@ export class WayAutoselect {
     if (this.localSelected.length === 0) {
       return null;
     // If tags not exceeds maxTags
-    } else if (this.localSelected.length < this.localConfig.maxTags + 1) {
+    } else if (!this.maxTagsReached()) {
       return (
         <this.Fragment>
           {this.localSelected.length > 0 &&

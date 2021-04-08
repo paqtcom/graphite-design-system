@@ -205,9 +205,8 @@
     
             autosuggest.options = selectOptions;
             autosuggest.config = {
-              multi: true,
               maxTags: 6,
-              selectedText: 'geselecteerd'
+              selectedText: 'selected'
             }
             // If value is set in HTML, this js will be ignored.
             autosuggest.value = [{ label: 'Benny Balotelli', value: 2 }];
@@ -225,7 +224,14 @@
         </script>
       </section>
       <section>
-        <h3>Prop: valueSelector : string | function</h3>
+        <h3>Prop: options? : Array&lt;WayAutosuggestOption&gt; = []</h3>
+        <p>
+          An array of WayAutosuggestOption. Which is an object with at least a 
+          <strong>label:string</strong> and a <strong>value: string | number</strong>.
+          <br>
+          Value has to be of type string or number because it needs to be able to be rendered in the hidden input.
+        </p>
+        <h3>Prop: valueSelector? : string | function</h3>
         <p>
           With a valueSelector you can decide which property should be placed in the hidden input. <br>
           The return values will be a comma separated string.
@@ -246,9 +252,6 @@
             const autosuggest = document.querySelector('.as-value-selector');
     
             autosuggest.options = selectOptions;
-            autosuggest.config = {
-              multi: true,
-            }
             // JS examples:
             // autosuggest.valueSelector = 'value';
             // autosuggest.valueSelector = (item, index) => item.value;
@@ -267,6 +270,21 @@
             })
           })()
         </script>
+        <h3>Prop: config?: Object</h3>
+        <h4>config.backspaceDelete? : boolean = true</h4>
+        <p>Enable or disable deleting tags by backspace key</p>
+        <h4>config.maxTags? : number = 0</h4>
+        <p>
+          When selected tags are greater than maxTags, they will be grouped in one tag with a counter. <br>
+          Value 0 means no maximum.
+          <small>text is configurable in <strong>config.selectedText</strong></small>
+        </p>
+        <small>important: <strong>backspaceDelete</strong> will be disabled when maxTags is reached.</small>
+        <h4>config.multi? : boolean = true</h4>
+        <p>Being able to select multiple values</p>
+        <h4>config.selectedText? : string = 'selected'</h4>
+        <p>The text which shows when tags are grouped due to maxTags reached.</p>
+        <small>Check <strong>config.maxTags</strong></small>
       </section>
     </section>
   </body>
