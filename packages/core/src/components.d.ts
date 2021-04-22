@@ -54,17 +54,25 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * Draws the checkbox in an indeterminate state.
          */
-        "label": string | undefined;
+        "indeterminate": boolean;
         /**
           * The checkbox's name attribute.
          */
         "name": string;
         /**
+          * Removes focus from the checkbox.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
           * Makes the checkbox a required field.
          */
         "required": boolean;
+        /**
+          * Sets focus on the checkbox.
+         */
+        "setFocus": () => Promise<void>;
         /**
           * The checkbox's value attribute.
          */
@@ -216,9 +224,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * Draws the checkbox in an indeterminate state.
          */
-        "label"?: string | undefined;
+        "indeterminate"?: boolean;
         /**
           * The checkbox's name attribute.
          */

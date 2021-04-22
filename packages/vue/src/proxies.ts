@@ -26,7 +26,6 @@ export const GraButton = /*@__PURE__*/ defineContainer<JSX.GraButton>('gra-butto
 export const GraCheckbox = /*@__PURE__*/ defineContainer<JSX.GraCheckbox>('gra-checkbox', [
   'name',
   'value',
-  'label',
   'disabled',
   'required',
   'checked',

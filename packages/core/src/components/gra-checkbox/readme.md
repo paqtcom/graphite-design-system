@@ -7,15 +7,14 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                                   | Type      | Default     |
-| --------------- | --------------- | ------------------------------------------------------------- | --------- | ----------- |
-| `checked`       | `checked`       | Draws the checkbox in a checked state.                        | `boolean` | `false`     |
-| `disabled`      | `disabled`      | Disables the checkbox.                                        | `boolean` | `false`     |
-| `indeterminate` | `indeterminate` | Draws the checkbox in an indeterminate state.                 | `boolean` | `false`     |
-| `label`         | `label`         | The input's label. Alternatively, you can use the label slot. | `string`  | `undefined` |
-| `name`          | `name`          | The checkbox's name attribute.                                | `string`  | `undefined` |
-| `required`      | `required`      | Makes the checkbox a required field.                          | `boolean` | `false`     |
-| `value`         | `value`         | The checkbox's value attribute.                               | `string`  | `undefined` |
+| Property        | Attribute       | Description                                   | Type      | Default     |
+| --------------- | --------------- | --------------------------------------------- | --------- | ----------- |
+| `checked`       | `checked`       | Draws the checkbox in a checked state.        | `boolean` | `false`     |
+| `disabled`      | `disabled`      | Disables the checkbox.                        | `boolean` | `false`     |
+| `indeterminate` | `indeterminate` | Draws the checkbox in an indeterminate state. | `boolean` | `false`     |
+| `name`          | `name`          | The checkbox's name attribute.                | `string`  | `undefined` |
+| `required`      | `required`      | Makes the checkbox a required field.          | `boolean` | `false`     |
+| `value`         | `value`         | The checkbox's value attribute.               | `string`  | `undefined` |
 
 
 ## Events
@@ -25,6 +24,29 @@
 | `graBlur`   | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
 | `graChange` | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
 | `graFocus`  | Emitted when the checkbox has focus.   | `CustomEvent<void>` |
+
+
+## Methods
+
+### `removeFocus() => Promise<void>`
+
+Removes focus from the checkbox.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setFocus() => Promise<void>`
+
+Sets focus on the checkbox.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Slots
