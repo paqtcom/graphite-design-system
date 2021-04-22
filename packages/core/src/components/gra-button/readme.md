@@ -24,8 +24,8 @@
 
 | Event      | Description                          | Type                |
 | ---------- | ------------------------------------ | ------------------- |
+| `graFocus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 | `wayBlur`  | Emitted when the button loses focus. | `CustomEvent<void>` |
-| `wayFocus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 
 
 ## Slots

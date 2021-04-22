@@ -49,7 +49,7 @@ export class GraInput {
   /**
    * Emitted when the input has focus.
    */
-  @Event() wayFocus!: EventEmitter<void>;
+  @Event() graFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the input loses focus.
@@ -61,7 +61,7 @@ export class GraInput {
   }
 
   private onFocus = () => {
-    this.wayFocus.emit();
+    this.graFocus.emit();
   }
 
   private onBlur = () => {

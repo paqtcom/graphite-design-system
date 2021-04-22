@@ -18,23 +18,22 @@ export const GraButton = /*@__PURE__*/ defineContainer<JSX.GraButton>('gra-butto
   'target',
   'rel',
   'type',
-  'wayFocus',
+  'graFocus',
   'wayBlur'
 ]);
 
 
 export const GraCheckbox = /*@__PURE__*/ defineContainer<JSX.GraCheckbox>('gra-checkbox', [
-  'variant',
+  'name',
+  'value',
+  'label',
   'disabled',
-  'size',
-  'expand',
-  'circle',
-  'href',
-  'target',
-  'rel',
-  'type',
-  'wayFocus',
-  'wayBlur'
+  'required',
+  'checked',
+  'indeterminate',
+  'graFocus',
+  'graBlur',
+  'graChange'
 ]);
 
 
@@ -45,7 +44,7 @@ export const GraInput = /*@__PURE__*/ defineContainer<JSX.GraInput>('gra-input',
   'inline',
   'size',
   'label',
-  'wayFocus',
+  'graFocus',
   'wayBlur'
 ]);
 
@@ -58,7 +57,7 @@ export const GraTextarea = /*@__PURE__*/ defineContainer<JSX.GraTextarea>('gra-t
   'label',
   'rows',
   'autofocus',
-  'wayFocus',
+  'graFocus',
   'wayBlur'
 ]);
 

@@ -46,41 +46,29 @@ export namespace Components {
     }
     interface GraCheckbox {
         /**
-          * Set to true to draw a circle checkbox.
+          * Draws the checkbox in a checked state.
          */
-        "circle": boolean;
+        "checked": boolean;
         /**
-          * If `true`, the user cannot interact with the checkbox.
+          * Disables the checkbox.
          */
         "disabled": boolean;
         /**
-          * Set to `"block"` for a full-width checkbox or to `"full"` for a full-width checkbox without left and right borders.
+          * The input's label. Alternatively, you can use the label slot.
          */
-        "expand"?: 'full' | 'block';
+        "label": string | undefined;
         /**
-          * Contains a URL or a URL fragment that the hyperlink points to.
+          * The checkbox's name attribute.
          */
-        "href": string | undefined;
+        "name": string;
         /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+          * Makes the checkbox a required field.
          */
-        "rel": string | undefined;
+        "required": boolean;
         /**
-          * The checkbox's size.
+          * The checkbox's value attribute.
          */
-        "size": 'small' | 'medium' | 'large';
-        /**
-          * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
-         */
-        "target": string | undefined;
-        /**
-          * The type of the checkbox.
-         */
-        "type": 'submit' | 'reset' | 'checkbox';
-        /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
-         */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
+        "value": string;
     }
     interface GraInput {
         /**
@@ -190,13 +178,13 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         /**
+          * Emitted when the button has focus.
+         */
+        "onGraFocus"?: (event: CustomEvent<void>) => void;
+        /**
           * Emitted when the button loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the button has focus.
-         */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -220,49 +208,41 @@ declare namespace LocalJSX {
     }
     interface GraCheckbox {
         /**
-          * Set to true to draw a circle checkbox.
+          * Draws the checkbox in a checked state.
          */
-        "circle"?: boolean;
+        "checked"?: boolean;
         /**
-          * If `true`, the user cannot interact with the checkbox.
+          * Disables the checkbox.
          */
         "disabled"?: boolean;
         /**
-          * Set to `"block"` for a full-width checkbox or to `"full"` for a full-width checkbox without left and right borders.
+          * The input's label. Alternatively, you can use the label slot.
          */
-        "expand"?: 'full' | 'block';
+        "label"?: string | undefined;
         /**
-          * Contains a URL or a URL fragment that the hyperlink points to.
+          * The checkbox's name attribute.
          */
-        "href"?: string | undefined;
+        "name"?: string;
         /**
           * Emitted when the checkbox loses focus.
          */
-        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        "onGraBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onGraChange"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the checkbox has focus.
          */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        "onGraFocus"?: (event: CustomEvent<void>) => void;
         /**
-          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+          * Makes the checkbox a required field.
          */
-        "rel"?: string | undefined;
+        "required"?: boolean;
         /**
-          * The checkbox's size.
+          * The checkbox's value attribute.
          */
-        "size"?: 'small' | 'medium' | 'large';
-        /**
-          * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
-         */
-        "target"?: string | undefined;
-        /**
-          * The type of the checkbox.
-         */
-        "type"?: 'submit' | 'reset' | 'checkbox';
-        /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
-         */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
+        "value"?: string;
     }
     interface GraInput {
         /**
@@ -282,13 +262,13 @@ declare namespace LocalJSX {
          */
         "name"?: string | undefined;
         /**
+          * Emitted when the input has focus.
+         */
+        "onGraFocus"?: (event: CustomEvent<void>) => void;
+        /**
           * Emitted when the input loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the input has focus.
-         */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * The input's size.
          */
@@ -320,13 +300,13 @@ declare namespace LocalJSX {
          */
         "name"?: string | undefined;
         /**
+          * Emitted when the textarea has focus.
+         */
+        "onGraFocus"?: (event: CustomEvent<void>) => void;
+        /**
           * Emitted when the textarea loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the textarea has focus.
-         */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Specifies how many textarea rows to use.
          */

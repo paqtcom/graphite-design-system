@@ -54,7 +54,7 @@ export class GraTextarea {
   /**
    * Emitted when the textarea has focus.
    */
-  @Event() wayFocus!: EventEmitter<void>;
+  @Event() graFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the textarea loses focus.
@@ -66,7 +66,7 @@ export class GraTextarea {
   }
 
   private onFocus = () => {
-    this.wayFocus.emit();
+    this.graFocus.emit();
   }
 
   private onBlur = () => {

@@ -9,18 +9,18 @@ describe('gra-input', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should emit wayFocus when gaining focus', async () => {
+  it('should emit graFocus when gaining focus', async () => {
     const page = await newE2EPage({
       html: `
         <gra-input></gra-input>
       `
     });
     const input = await page.find('gra-input');
-    const wayFocus = await input.spyOnEvent('wayFocus');
+    const graFocus = await input.spyOnEvent('graFocus');
 
     await input.click();
 
-    expect(wayFocus).toHaveReceivedEventTimes(1);
+    expect(graFocus).toHaveReceivedEventTimes(1);
   });
 
   it('should emit wayBlur when losing focus', async () => {
