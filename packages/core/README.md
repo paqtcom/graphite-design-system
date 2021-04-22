@@ -38,7 +38,7 @@ If you really need support for these legacy browsers, let us know, and we might 
 - Then you can use the elements anywhere in your template, JSX, html etc.
 - For example:
   ```html
-  <way-button href="https://www.way2web.nl">Way2Web</way-button>
+  <gra-button href="https://www.way2web.nl">Way2Web</gra-button>
   ```
 
 #### CodeSandbox example
@@ -75,7 +75,7 @@ Use the [Vue bindings](../vue/README.md).
 
   // ...
   // configure Vue.js to ignore Way2Web Design System components
-  Vue.config.ignoredElements = [/way-\w*/];
+  Vue.config.ignoredElements = [/gra-\w*/];
   // Register Way2Web Design System components
   defineCustomElements(window);
 
@@ -89,7 +89,7 @@ Use the [Vue bindings](../vue/README.md).
   render() {
     return (
       <div>
-        <way-button href="https://www.way2web.nl">Way2Web</way-button>
+        <gra-button href="https://www.way2web.nl">Way2Web</gra-button>
       </div>
     )
   }
@@ -106,7 +106,7 @@ An example of this setup: https://codesandbox.io/s/w2wds-vue2-example-mkbm4
 When binding complex data such as objects and arrays, use the `.prop` modifier to make Vue bind them as a property instead of an attribute:
 
 ```html
-<way-select :options.prop="myOptions" />
+<gra-select :options.prop="myOptions" />
 ```
 
 _[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)_
@@ -117,10 +117,10 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 
 ```html
 <!-- This doesn't work -->
-<way-input v-model="name"></way-input>
+<gra-input v-model="name"></gra-input>
 
 <!-- This works, but it's a bit longer -->
-<way-input :value="name" @input="name = $event.target.value"></way-input>
+<gra-input :value="name" @input="name = $event.target.value"></gra-input>
 ```
 
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
@@ -136,13 +136,13 @@ CSS variables can be set globally in an application in the :root selector.
 ```css
 :root {
   /* Changes the primary color palette to purple */
-  --way-color-primary: #a855f7;
-  --way-color-primary-contrast: #ffffff;
-  --way-color-primary-shade: #7e22ce;
-  --way-color-primary-tint: #d8b4fe;
+  --gra-color-primary: #a855f7;
+  --gra-color-primary-contrast: #ffffff;
+  --gra-color-primary-shade: #7e22ce;
+  --gra-color-primary-tint: #d8b4fe;
 
   /* Changes the font family */
-  --way-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --gra-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }
 ```
 
@@ -172,15 +172,15 @@ Please use [this contrast checker](https://webaim.org/resources/contrastchecker/
 
 ### Component Variables
 
-The Way2Web Design System provides variables that exist at the component level, such as `--background` and `--color`. For a list of the custom properties a component accepts, view the CSS Custom Properties section of its API reference. For example, see the [Button CSS Custom Properties](./src/components/way-button/readme.md#css-custom-properties).
+The Way2Web Design System provides variables that exist at the component level, such as `--background` and `--color`. For a list of the custom properties a component accepts, view the CSS Custom Properties section of its API reference. For example, see the [Button CSS Custom Properties](./src/components/gra-button/readme.md#css-custom-properties).
 
 ```css
-/* Set the color on all way-button elements */
-way-button {
+/* Set the color on all gra-button elements */
+gra-button {
   --color: #222;
 }
 
-/* Set the background on a way-button with the .fancy-button class */
+/* Set the background on a gra-button with the .fancy-button class */
 .fancy-button {
   --background: #00ff00;
 }

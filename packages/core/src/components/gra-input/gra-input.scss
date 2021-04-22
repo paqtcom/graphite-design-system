@@ -9,8 +9,8 @@
 
   width: auto;
 
-  font-family: var(--way-font-family, inherit);
-  font-size: var(--way-font-size);
+  font-family: var(--gra-font-family, inherit);
+  font-size: var(--gra-font-size);
   line-height: 1.25rem;
 
   user-select: none;
@@ -20,15 +20,15 @@
 
   font-kerning: none;
 
-  --border-radius: var(--way-form-element-border-radius-medium);
-  --border-width: var(--way-form-element-input-border-width);
-  --border-color: var(--way-color-medium-tint);
-  --border-color-focus: var(--way-color-light);
+  --border-radius: var(--gra-form-element-border-radius-medium);
+  --border-width: var(--gra-form-element-input-border-width);
+  --border-color: var(--gra-color-medium-tint);
+  --border-color-focus: var(--gra-color-light);
   --border-style: solid;
-  --font-size: var(--way-form-element-font-size-small);
-  --font-size-small: var(--way-form-element-font-size-x-small);
-  --font-size-large: var(--way-form-element-font-size-x-small);
-  --background-color: var(--way-color-white);
+  --font-size: var(--gra-form-element-font-size-small);
+  --font-size-small: var(--gra-form-element-font-size-x-small);
+  --font-size-large: var(--gra-form-element-font-size-x-small);
+  --background-color: var(--gra-color-white);
 }
 
 .input {
@@ -46,17 +46,17 @@
   border: var(--border-style) var(--border-width) var(--border-color);
   border-radius: var(--border-radius);
 
-  padding: var(--way-spacing-x-small) var(--way-spacing-small);
+  padding: var(--gra-spacing-x-small) var(--gra-spacing-small);
 }
 
 .input-small {
   font-size: var(--font-size-small);
-  padding: var(--way-spacing-xx-small) var(--way-spacing-x-small);
+  padding: var(--gra-spacing-xx-small) var(--gra-spacing-x-small);
 }
 
 .input-large {
   font-size: var(--font-size-large);
-  padding: var(--way-spacing-medium) var(--way-spacing-x-large);
+  padding: var(--gra-spacing-medium) var(--gra-spacing-x-large);
 }
 
 .input:focus {
@@ -66,23 +66,23 @@
 }
 
 .label {
-  font-weight: var(--way-label-font-weight);
-  font-size: var(--way-label-font-size);
+  font-weight: var(--gra-label-font-weight);
+  font-size: var(--gra-label-font-size);
   text-align: left;
   display: block;
-  margin-bottom: var(--way-spacing-xx-small);
+  margin-bottom: var(--gra-spacing-xx-small);
 }
 
 .label-small {
-  font-size: var(--way-label-font-size-small);
+  font-size: var(--gra-label-font-size-small);
 }
 
 .label-large {
-  font-size: var(--way-label-font-size-large);
+  font-size: var(--gra-label-font-size-large);
 }
 
 .label-inline {
-  margin-right: var(--way-spacing-xx-small);
+  margin-right: var(--gra-spacing-xx-small);
 }
 
 .input-inline {

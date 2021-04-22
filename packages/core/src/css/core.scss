@@ -2,105 +2,105 @@
   // Theme color tokens
   // --------------------------------------------------
 
-  --way-color-primary: #1799de;
-  --way-color-primary-contrast: #ffffff;
-  --way-color-primary-shade: #00679e;
-  --way-color-primary-tint: #46b2ec;
+  --gra-color-primary: #1799de;
+  --gra-color-primary-contrast: #ffffff;
+  --gra-color-primary-shade: #00679e;
+  --gra-color-primary-tint: #46b2ec;
 
-  --way-color-secondary: #051f2c;
-  --way-color-secondary-contrast: #ffffff;
-  --way-color-secondary-shade: #000;
-  --way-color-secondary-tint: #0a415c;
+  --gra-color-secondary: #051f2c;
+  --gra-color-secondary-contrast: #ffffff;
+  --gra-color-secondary-shade: #000;
+  --gra-color-secondary-tint: #0a415c;
 
-  --way-color-danger: #ff5363;
-  --way-color-danger-contrast: #051f2c;
-  --way-color-danger-shade: #ff1f35;
-  --way-color-danger-tint: #ff8591;
+  --gra-color-danger: #ff5363;
+  --gra-color-danger-contrast: #051f2c;
+  --gra-color-danger-shade: #ff1f35;
+  --gra-color-danger-tint: #ff8591;
 
-  --way-color-light: #dbe5eb;
-  --way-color-light-contrast: #051f2c;
-  --way-color-light-shade: #c1d1db;
-  --way-color-light-tint: #e7eef4;
+  --gra-color-light: #dbe5eb;
+  --gra-color-light-contrast: #051f2c;
+  --gra-color-light-shade: #c1d1db;
+  --gra-color-light-tint: #e7eef4;
 
-  --way-color-medium: #697886;
-  --way-color-medium-contrast: #ffffff;
-  --way-color-medium-shade: #4c5960;
-  --way-color-medium-tint: #9eaeb7;
+  --gra-color-medium: #697886;
+  --gra-color-medium-contrast: #ffffff;
+  --gra-color-medium-shade: #4c5960;
+  --gra-color-medium-tint: #9eaeb7;
 
-  --way-color-dark: #02131b;
-  --way-color-dark-contrast: #ffffff;
-  --way-color-dark-shade: #000000;
-  --way-color-dark-tint: #051f2c;
+  --gra-color-dark: #02131b;
+  --gra-color-dark-contrast: #ffffff;
+  --gra-color-dark-shade: #000000;
+  --gra-color-dark-tint: #051f2c;
 
-  --way-color-white: #ffffff;
+  --gra-color-white: #ffffff;
 
   // Border radius tokens
   // --------------------------------------------------
-  --way-border-radius-small: 0.125rem; // 2px
-  --way-border-radius-medium: 0.25rem; // 4px
-  --way-border-radius-large: 0.5rem; // 8px
-  --way-border-radius-x-large: 1rem; // 16px
+  --gra-border-radius-small: 0.125rem; // 2px
+  --gra-border-radius-medium: 0.25rem; // 4px
+  --gra-border-radius-large: 0.5rem; // 8px
+  --gra-border-radius-x-large: 1rem; // 16px
 
   // Spacing tokens
   // --------------------------------------------------
 
-  --way-spacing-xxx-small: 0.125rem; // 2px
-  --way-spacing-xx-small: 0.25rem; // 4px
-  --way-spacing-x-small: 0.5rem; // 8px
-  --way-spacing-small: 0.75rem; // 12px
-  --way-spacing-medium: 1rem; // 16px
-  --way-spacing-large: 1.25rem; // 20px
-  --way-spacing-x-large: 1.75rem; // 28px
-  --way-spacing-xx-large: 2.25rem; // 36px
-  --way-spacing-xxx-large: 3rem; // 48px
-  --way-spacing-xxxx-large: 4.5rem; // 72px
+  --gra-spacing-xxx-small: 0.125rem; // 2px
+  --gra-spacing-xx-small: 0.25rem; // 4px
+  --gra-spacing-x-small: 0.5rem; // 8px
+  --gra-spacing-small: 0.75rem; // 12px
+  --gra-spacing-medium: 1rem; // 16px
+  --gra-spacing-large: 1.25rem; // 20px
+  --gra-spacing-x-large: 1.75rem; // 28px
+  --gra-spacing-xx-large: 2.25rem; // 36px
+  --gra-spacing-xxx-large: 3rem; // 48px
+  --gra-spacing-xxxx-large: 4.5rem; // 72px
 
   // Typography tokens
   // --------------------------------------------------
-  --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --gra-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
   // Font sizes
-  --way-font-size-xx-small: 0.625rem; // 10px
-  --way-font-size-x-small: 0.75rem; // 12px
-  --way-font-size-small: 0.875rem; // 14px
-  --way-font-size-medium: 1rem; // 16px
-  --way-font-size-large: 1.25rem; // 20px
-  --way-font-size-x-large: 1.5rem; // 24px
-  --way-font-size-xx-large: 2.25rem; // 36px
-  --way-font-size-xxx-large: 3rem; // 48px
-  --way-font-size-xxxx-large: 4.5rem; // 72px
+  --gra-font-size-xx-small: 0.625rem; // 10px
+  --gra-font-size-x-small: 0.75rem; // 12px
+  --gra-font-size-small: 0.875rem; // 14px
+  --gra-font-size-medium: 1rem; // 16px
+  --gra-font-size-large: 1.25rem; // 20px
+  --gra-font-size-x-large: 1.5rem; // 24px
+  --gra-font-size-xx-large: 2.25rem; // 36px
+  --gra-font-size-xxx-large: 3rem; // 48px
+  --gra-font-size-xxxx-large: 4.5rem; // 72px
 
   // Font weights
-  --way-font-weight-light: 300;
-  --way-font-weight-normal: 400;
-  --way-font-weight-semibold: 500;
-  --way-font-weight-bold: 700;
+  --gra-font-weight-light: 300;
+  --gra-font-weight-normal: 400;
+  --gra-font-weight-semibold: 500;
+  --gra-font-weight-bold: 700;
 
   // Form tokens
   // -------------------------------------------------
 
-  --way-form-element-font-size-x-small: var(--way-font-size-x-small);
-  --way-form-element-font-size-small: var(--way-font-size-small);
-  --way-form-element-font-size-medium: var(--way-font-size-medium);
-  --way-form-element-font-size-large: var(--way-font-size-large);
+  --gra-form-element-font-size-x-small: var(--gra-font-size-x-small);
+  --gra-form-element-font-size-small: var(--gra-font-size-small);
+  --gra-form-element-font-size-medium: var(--gra-font-size-medium);
+  --gra-form-element-font-size-large: var(--gra-font-size-large);
 
-  --way-form-element-height-small: 2.188rem; // 35px
-  --way-form-element-height-medium: 3.125rem; // 50px
-  --way-form-element-height-large: 4.063rem; // 65px
+  --gra-form-element-height-small: 2.188rem; // 35px
+  --gra-form-element-height-medium: 3.125rem; // 50px
+  --gra-form-element-height-large: 4.063rem; // 65px
 
-  --way-form-element-input-border-width: 1px;
-  --way-form-element-border-width: 2px;
+  --gra-form-element-input-border-width: 1px;
+  --gra-form-element-border-width: 2px;
 
-  --way-form-element-border-radius-small: var(--way-border-radius-small);
-  --way-form-element-border-radius-medium: var(--way-border-radius-medium);
-  --way-form-element-border-radius-large: var(--way-border-radius-large);
+  --gra-form-element-border-radius-small: var(--gra-border-radius-small);
+  --gra-form-element-border-radius-medium: var(--gra-border-radius-medium);
+  --gra-form-element-border-radius-large: var(--gra-border-radius-large);
 
   // Label
   // -------------------------------------------------
-  --way-label-font-size: var(--way-form-font-size);
-  --way-label-font-size-small: var(--way-form-font-size-small);
-  --way-label-font-size-large: var(--way-form-font-size-large);
-  --way-label-font-weight: var(--way-font-weight-semibold);
+  --gra-label-font-size: var(--gra-form-font-size);
+  --gra-label-font-size-small: var(--gra-form-font-size-small);
+  --gra-label-font-size-large: var(--gra-form-font-size-large);
+  --gra-label-font-weight: var(--gra-font-weight-semibold);
 }
 
 

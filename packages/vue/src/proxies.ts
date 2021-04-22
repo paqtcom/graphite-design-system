@@ -8,7 +8,7 @@ import { JSX } from '@w2wds/core';
 
 
 
-export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', [
+export const GraButton = /*@__PURE__*/ defineContainer<JSX.GraButton>('gra-button', [
   'variant',
   'disabled',
   'size',
@@ -23,7 +23,22 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
 ]);
 
 
-export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
+export const GraCheckbox = /*@__PURE__*/ defineContainer<JSX.GraCheckbox>('gra-checkbox', [
+  'variant',
+  'disabled',
+  'size',
+  'expand',
+  'circle',
+  'href',
+  'target',
+  'rel',
+  'type',
+  'wayFocus',
+  'wayBlur'
+]);
+
+
+export const GraInput = /*@__PURE__*/ defineContainer<JSX.GraInput>('gra-input', [
   'type',
   'name',
   'disabled',
@@ -35,7 +50,7 @@ export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input',
 ]);
 
 
-export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', [
+export const GraTextarea = /*@__PURE__*/ defineContainer<JSX.GraTextarea>('gra-textarea', [
   'type',
   'name',
   'disabled',

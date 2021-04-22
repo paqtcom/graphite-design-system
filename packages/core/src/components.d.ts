@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface WayButton {
+    interface GraButton {
         /**
           * Set to true to draw a circle button.
          */
@@ -44,7 +44,45 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
-    interface WayInput {
+    interface GraCheckbox {
+        /**
+          * Set to true to draw a circle checkbox.
+         */
+        "circle": boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled": boolean;
+        /**
+          * Set to `"block"` for a full-width checkbox or to `"full"` for a full-width checkbox without left and right borders.
+         */
+        "expand"?: 'full' | 'block';
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to.
+         */
+        "href": string | undefined;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel": string | undefined;
+        /**
+          * The checkbox's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
+         */
+        "target": string | undefined;
+        /**
+          * The type of the checkbox.
+         */
+        "type": 'submit' | 'reset' | 'checkbox';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
+    }
+    interface GraInput {
         /**
           * If `true`, the user cannot interact with the input.
          */
@@ -70,7 +108,7 @@ export namespace Components {
          */
         "type": string | undefined;
     }
-    interface WayTextarea {
+    interface GraTextarea {
         /**
           * If `true`, the textarea should autofocus.
          */
@@ -102,32 +140,39 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
+    interface HTMLGraButtonElement extends Components.GraButton, HTMLStencilElement {
     }
-    var HTMLWayButtonElement: {
-        prototype: HTMLWayButtonElement;
-        new (): HTMLWayButtonElement;
+    var HTMLGraButtonElement: {
+        prototype: HTMLGraButtonElement;
+        new (): HTMLGraButtonElement;
     };
-    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
+    interface HTMLGraCheckboxElement extends Components.GraCheckbox, HTMLStencilElement {
     }
-    var HTMLWayInputElement: {
-        prototype: HTMLWayInputElement;
-        new (): HTMLWayInputElement;
+    var HTMLGraCheckboxElement: {
+        prototype: HTMLGraCheckboxElement;
+        new (): HTMLGraCheckboxElement;
     };
-    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
+    interface HTMLGraInputElement extends Components.GraInput, HTMLStencilElement {
     }
-    var HTMLWayTextareaElement: {
-        prototype: HTMLWayTextareaElement;
-        new (): HTMLWayTextareaElement;
+    var HTMLGraInputElement: {
+        prototype: HTMLGraInputElement;
+        new (): HTMLGraInputElement;
+    };
+    interface HTMLGraTextareaElement extends Components.GraTextarea, HTMLStencilElement {
+    }
+    var HTMLGraTextareaElement: {
+        prototype: HTMLGraTextareaElement;
+        new (): HTMLGraTextareaElement;
     };
     interface HTMLElementTagNameMap {
-        "way-button": HTMLWayButtonElement;
-        "way-input": HTMLWayInputElement;
-        "way-textarea": HTMLWayTextareaElement;
+        "gra-button": HTMLGraButtonElement;
+        "gra-checkbox": HTMLGraCheckboxElement;
+        "gra-input": HTMLGraInputElement;
+        "gra-textarea": HTMLGraTextareaElement;
     }
 }
 declare namespace LocalJSX {
-    interface WayButton {
+    interface GraButton {
         /**
           * Set to true to draw a circle button.
          */
@@ -173,7 +218,53 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
-    interface WayInput {
+    interface GraCheckbox {
+        /**
+          * Set to true to draw a circle checkbox.
+         */
+        "circle"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the checkbox.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to `"block"` for a full-width checkbox or to `"full"` for a full-width checkbox without left and right borders.
+         */
+        "expand"?: 'full' | 'block';
+        /**
+          * Contains a URL or a URL fragment that the hyperlink points to.
+         */
+        "href"?: string | undefined;
+        /**
+          * Emitted when the checkbox loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the checkbox has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
+         */
+        "rel"?: string | undefined;
+        /**
+          * The checkbox's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
+         */
+        "target"?: string | undefined;
+        /**
+          * The type of the checkbox.
+         */
+        "type"?: 'submit' | 'reset' | 'checkbox';
+        /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+         */
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
+    }
+    interface GraInput {
         /**
           * If `true`, the user cannot interact with the input.
          */
@@ -207,7 +298,7 @@ declare namespace LocalJSX {
          */
         "type"?: string | undefined;
     }
-    interface WayTextarea {
+    interface GraTextarea {
         /**
           * If `true`, the textarea should autofocus.
          */
@@ -246,18 +337,20 @@ declare namespace LocalJSX {
         "type"?: string | undefined;
     }
     interface IntrinsicElements {
-        "way-button": WayButton;
-        "way-input": WayInput;
-        "way-textarea": WayTextarea;
+        "gra-button": GraButton;
+        "gra-checkbox": GraCheckbox;
+        "gra-input": GraInput;
+        "gra-textarea": GraTextarea;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
-            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
-            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
+            "gra-button": LocalJSX.GraButton & JSXBase.HTMLAttributes<HTMLGraButtonElement>;
+            "gra-checkbox": LocalJSX.GraCheckbox & JSXBase.HTMLAttributes<HTMLGraCheckboxElement>;
+            "gra-input": LocalJSX.GraInput & JSXBase.HTMLAttributes<HTMLGraInputElement>;
+            "gra-textarea": LocalJSX.GraTextarea & JSXBase.HTMLAttributes<HTMLGraTextareaElement>;
         }
     }
 }

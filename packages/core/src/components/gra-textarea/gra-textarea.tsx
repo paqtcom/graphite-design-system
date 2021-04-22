@@ -1,11 +1,11 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter, State } from '@stencil/core';
 import { inheritAttributes } from '../../utils/utils';
 @Component({
-  tag: 'way-textarea',
-  styleUrl: 'way-textarea.scss',
+  tag: 'gra-textarea',
+  styleUrl: 'gra-textarea.scss',
   shadow: true,
 })
-export class WayTextarea {
+export class GraTextarea {
   private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLElement;

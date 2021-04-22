@@ -1,11 +1,11 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter, State } from '@stencil/core';
 import { inheritAttributes } from '../../utils/utils';
 @Component({
-  tag: 'way-input',
-  styleUrl: 'way-input.scss',
+  tag: 'gra-input',
+  styleUrl: 'gra-input.scss',
   shadow: true,
 })
-export class Wayinput {
+export class GraInput {
   private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLElement;

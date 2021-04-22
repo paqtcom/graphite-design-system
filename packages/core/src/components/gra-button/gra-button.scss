@@ -30,9 +30,9 @@
 
   width: auto;
 
-  font-family: var(--way-font-family, inherit);
-  font-weight: var(--way-font-weight-semibold);
-  font-size: var(--way-form-element-font-size-medium);
+  font-family: var(--gra-font-family, inherit);
+  font-weight: var(--gra-font-weight-semibold);
+  font-size: var(--gra-form-element-font-size-medium);
   font-kerning: none;
 
   user-select: none;
@@ -40,24 +40,24 @@
   vertical-align: -webkit-baseline-middle;
   pointer-events: auto;
 
-  --height: var(--way-form-element-height-medium);
+  --height: var(--gra-form-element-height-medium);
 
-  --border-radius: var(--way-form-element-border-radius-medium);
-  --border-width: var(--way-form-element-border-width);
+  --border-radius: var(--gra-form-element-border-radius-medium);
+  --border-width: var(--gra-form-element-border-width);
   --border-style: solid;
 
   --background: transparent;
   --background-hover: transparent;
 
-  --color: var(--way-color-dark-tint);
-  --color-hover: var(--way-color-dark-tint);
+  --color: var(--gra-color-dark-tint);
+  --color-hover: var(--gra-color-dark-tint);
 
-  --border-color: var(--way-color-light);
-  --border-color-hover: var(--way-color-medium);
+  --border-color: var(--gra-color-light);
+  --border-color-hover: var(--gra-color-medium);
 
   --padding-top: 0;
-  --padding-start: var(--way-spacing-medium);
-  --padding-end: var(--way-spacing-medium);
+  --padding-start: var(--gra-spacing-medium);
+  --padding-end: var(--gra-spacing-medium);
   --padding-bottom: 0;
 
   --transition: background-color 150ms linear, opacity 150ms linear, border 150ms linear, color 150ms linear;
@@ -73,39 +73,39 @@
 // --------------------------------------------------
 
 :host(.button-primary) {
-  --border-color: var(--way-color-primary);
-  --background: var(--way-color-primary);
-  --color: var(--way-color-primary-contrast);
+  --border-color: var(--gra-color-primary);
+  --background: var(--gra-color-primary);
+  --color: var(--gra-color-primary-contrast);
 
-  --border-color-hover: var(--way-color-primary-shade);
-  --background-hover: var(--way-color-primary-shade);
-  --color-hover: var(--way-color-primary-contrast);
+  --border-color-hover: var(--gra-color-primary-shade);
+  --background-hover: var(--gra-color-primary-shade);
+  --color-hover: var(--gra-color-primary-contrast);
 }
 
 // Secondary variant
 // --------------------------------------------------
 
 :host(.button-secondary) {
-  --border-color: var(--way-color-light);
+  --border-color: var(--gra-color-light);
   --background: transparent;
-  --color: var(--way-color-primary);
+  --color: var(--gra-color-primary);
 
-  --border-color-hover: var(--way-color-primary);
+  --border-color-hover: var(--gra-color-primary);
   --background-hover: transparent;
-  --color-hover: var(--way-color-primary);
+  --color-hover: var(--gra-color-primary);
 }
 
 // Danger variant
 // --------------------------------------------------
 
 :host(.button-danger) {
-  --border-color: var(--way-color-danger);
+  --border-color: var(--gra-color-danger);
   --background: transparent;
-  --color: var(--way-color-danger);
+  --color: var(--gra-color-danger);
 
-  --border-color-hover: var(--way-color-danger);
-  --background-hover: var(--way-color-danger);
-  --color-hover: var(--way-color-danger-contrast);
+  --border-color-hover: var(--gra-color-danger);
+  --background-hover: var(--gra-color-danger);
+  --color-hover: var(--gra-color-danger-contrast);
 }
 
 // Plain variant
@@ -114,36 +114,36 @@
 :host(.button-plain) {
   --border-color: transparent;
   --background: transparent;
-  --color: var(--way-color-primary);
+  --color: var(--gra-color-primary);
 
   --border-color-hover: transparent;
   --background-hover: transparent;
-  --color-hover: var(--way-color-primary-shade);
+  --color-hover: var(--gra-color-primary-shade);
 }
 
 // Sizes
 // --------------------------------------------------
 
 :host(.button-small) {
-  --padding-start: var(--way-spacing-small);
-  --padding-end: var(--way-spacing-small);
+  --padding-start: var(--gra-spacing-small);
+  --padding-end: var(--gra-spacing-small);
 
-  --border-radius: var(--way-form-element-border-radius-small);
+  --border-radius: var(--gra-form-element-border-radius-small);
 
-  --height: var(--way-form-element-height-small);
+  --height: var(--gra-form-element-height-small);
 
-  font-size: var(--way-form-element-font-size-small);
+  font-size: var(--gra-form-element-font-size-small);
 }
 
 :host(.button-large) {
-  --padding-start: var(--way-spacing-large);
-  --padding-end: var(--way-spacing-large);
+  --padding-start: var(--gra-spacing-large);
+  --padding-end: var(--gra-spacing-large);
 
-  --border-radius: var(--way-form-element-border-radius-large);
+  --border-radius: var(--gra-form-element-border-radius-large);
 
-  --height: var(--way-form-element-height-large);
+  --height: var(--gra-form-element-height-large);
 
-  font-size: var(--way-form-element-font-size-large);
+  font-size: var(--gra-form-element-font-size-large);
 }
 
 // Block Button
