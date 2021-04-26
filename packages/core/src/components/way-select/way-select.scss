@@ -2,7 +2,91 @@
 @import '../../themes/w2wds.globals';
 
 :host {
+  /**
+   * @prop --font-size: Font size of the select
+   * @prop --font-weight: Font weight of the select
+   *
+   * @prop --background-color: Background color of the select
+   * @prop --background-color-hover: Background color of the select on hover
+   *
+   * @prop --border-radius: Border radius of the select
+   * @prop --border-color: Border color of the select
+   * @prop --border-color-hover: Border color of the select on hover
+   *
+   * @prop --color: Text color of the select
+   *
+   * @prop --placeholder-color: Text color of the placeholder
+   *
+   * @prop --min-height: Minimum height of the select
+   *
+   * @prop --label-margin-start: Left margin of the label (will be right margin when we support right-to-left direction)
+   * @prop --label-margin-end: Right margin of the label (will be left margin when we support right-to-left direction)
+   *
+   * @prop --clear-icon-margin-end: Right margin of the clear icon (will be left margin when we support right-to-left direction)
+   *
+   * @prop --caret-margin-end: Right margin of the caret (will be left margin when we support right-to-left direction)
+   *
+   * @prop --tags-padding-top: Top padding of the tags
+   * @prop --tags-padding-bottom: Bottom padding of the tags
+   *
+   * @prop --tags-margin-end: Right margin of the tags (will be left margin when we support right-to-left direction)
+   */
+  --font-size: var(--way-form-element-font-size-medium);
+  --font-weight: var(--way-font-weight-normal);
+
+  --background-color: var(--way-color-white);
+  --background-color-hover: var(--way-color-white);
+
+  --border-radius: var(--way-form-element-border-radius-small);
+  --border-color: var(--way-color-light);
+  --border-color-hover: var(--way-color-medium);
+
+  --color: var(--way-color-dark-tint);
+
+  --placeholder-color: var(--way-color-medium-tint);
+
+  --min-height: var(--way-form-element-height-medium);
+
+  --label-margin-start: var(--way-spacing-medium);
+  --label-margin-end: var(--way-spacing-medium);
+
+  --clear-icon-margin-end: var(--way-spacing-medium);
+
+  --caret-margin-end: var(--way-spacing-medium);
+
+  --tags-padding-top: 3px;
+  --tags-padding-bottom: 3px;
+
+  --tags-margin-end: var(--way-spacing-xx-small);
+
   display: block;
+}
+
+// Size modifiers
+// --------------------------------------------------
+
+.select-small {
+  --font-size: var(--way-form-element-font-size-small);
+  --min-height: var(--way-form-element-height-small);
+
+  --label-margin-start: var(--way-spacing-small);
+  --label-margin-end: var(--way-spacing-small);
+  --clear-icon-margin-end: var(--way-spacing-small);
+  --caret-margin-end: var(--way-spacing-small);
+  --tags-padding-top: 2px;
+  --tags-padding-bottom: 2px;
+}
+
+.select-large {
+  --font-size: var(--way-form-element-font-size-large);
+  --min-height: var(--way-form-element-height-large);
+
+  --label-margin-start: var(--way-spacing-large);
+  --label-margin-end: var(--way-spacing-large);
+  --clear-icon-margin-end: var(--way-spacing-large);
+  --caret-margin-end: var(--way-spacing-large);
+  --tags-padding-top: 4px;
+  --tags-padding-bottom: 4px;
 }
 
 .select {
@@ -16,11 +100,14 @@
   position: relative;
   width: 100%;
   font-family: var(--way-font-family);
-  font-weight: var(--way-font-weight-normal);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
   letter-spacing: normal;
-  background-color: var(--way-color-white);
-  border: solid 1px var(--way-color-light);
-  color: var(--way-color-dark-tint);
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  border-radius: var(--border-radius);
+  min-height: var(--min-height);
+  color: var(--color);
   vertical-align: middle;
   overflow: hidden;
   transition: 150ms color, 150ms border, 150ms box-shadow;
@@ -28,8 +115,8 @@
 }
 
 .select:not(.select-disabled) .select-box:hover {
-  background-color: var(--way-color-white);
-  border-color: var(--way-color-medium);
+  background-color: var(--background-color-hover);
+  border-color: var(--border-color-hover);
 }
 
 .select:not(.select-disabled) .select-box:focus {
@@ -55,10 +142,19 @@
   align-items: center;
   user-select: none;
 
+  margin-top: 0;
+  margin-left: var(--label-margin-start);
+  margin-right: var(--label-margin-end);
+  margin-bottom: 0;
+
   @include hide-scrollbar;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+}
+
+.select-has-tags .select-label {
+  margin-left: 0;
 }
 
 .select-clear {
@@ -66,20 +162,28 @@
   --color-hover: var(--way-color-dark);
   flex: 0 0 auto;
 
+  margin-right: var(--clear-icon-margin-end);
+
   svg {
     width: 1.2em;
     height: 1.2em;
+
+    font-size: var(--font-size);
   }
 }
 
-.select-icon {
+.caret {
   flex: 0 0 auto;
   display: inline-flex;
   transition: 250ms transform ease;
 
+  margin-right: var(--caret-margin-end);
+
   svg {
     width: 1em;
     height: 1em;
+
+    font-size: var(--font-size);
   }
 }
 
@@ -89,11 +193,7 @@
 
 // Placeholder
 .select-placeholder-visible .select-label {
-  color: var(--way-color-medium-tint);
-}
-
-.select-disabled.select-placeholder-visible .select-label {
-  color: var(--way-color-medium-shade);
+  color: var(--placeholder-color);
 }
 
 // Tags
@@ -103,6 +203,16 @@
   flex-wrap: wrap;
   justify-content: left;
   margin-left: var(--way-spacing-xx-small);
+
+  padding-bottom: var(--tags-padding-bottom);
+
+  way-tag {
+    padding-top: var(--tags-padding-top);
+  }
+
+  way-tag:not(:last-of-type) {
+    margin-right: var(--tags-margin-end);
+  }
 }
 
 // Hidden input (for form control validation to show)
@@ -115,154 +225,9 @@
   height: 100%;
 }
 
-// Size modifiers
-// --------------------------------------------------
-
-.select-small {
-  .select-box {
-    border-radius: var(--way-form-element-border-radius-small);
-    font-size: var(--way-form-element-font-size-small);
-    min-height: var(--way-form-element-height-small);
-  }
-
-  .select-label {
-    margin: 0 var(--way-spacing-small);
-  }
-
-  .select-clear {
-    margin-right: var(--way-spacing-small);
-
-    svg {
-      font-size: var(--way-form-element-font-size-small);
-    }
-  }
-
-  .select-icon {
-    margin-right: var(--way-spacing-small);
-
-    svg {
-      font-size: var(--way-form-element-font-size-small);
-    }
-  }
-
-  .select-tags {
-    padding-bottom: 2px;
-
-    way-tag {
-      padding-top: 2px;
-    }
-
-    way-tag:not(:last-of-type) {
-      margin-right: var(--way-spacing-xx-small);
-    }
-  }
-
-  &.select-has-tags .select-label {
-    margin-left: 0;
-  }
-}
-
-.select-medium {
-  .select-box {
-    border-radius: var(--way-form-element-border-radius-small);
-    font-size: var(--way-form-element-font-size-medium);
-    min-height: var(--way-form-element-height-medium);
-  }
-
-  .select-label {
-    margin: 0 var(--way-spacing-medium);
-  }
-
-  .select-clear {
-    margin-right: var(--way-spacing-medium);
-
-    svg {
-      font-size: var(--way-form-element-font-size-medium);
-    }
-  }
-
-  .select-icon {
-    margin-right: var(--way-spacing-medium);
-
-    svg {
-      font-size: var(--way-form-element-font-size-medium);
-    }
-  }
-
-  .select-tags {
-    padding-bottom: 3px;
-
-    way-tag {
-      padding-top: 3px;
-    }
-
-    way-tag:not(:last-of-type) {
-      margin-right: var(--way-spacing-xx-small);
-    }
-  }
-
-  &.select-has-tags .select-label {
-    margin-left: 0;
-  }
-}
-
-.select-large {
-  .select-box {
-    border-radius: var(--way-form-element-border-radius-small);
-    font-size: var(--way-form-element-font-size-large);
-    min-height: var(--way-form-element-height-large);
-  }
-
-  .select-label {
-    margin: 0 var(--way-spacing-large);
-  }
-
-  .select-clear {
-    margin-right: var(--way-spacing-large);
-
-    svg {
-      font-size: var(--way-form-element-font-size-medium);
-    }
-  }
-
-  .select-icon {
-    margin-right: var(--way-spacing-large);
-
-    svg {
-      font-size: var(--way-form-element-font-size-large);
-    }
-  }
-
-  .select-tags {
-    padding-bottom: 4px;
-
-    way-tag {
-      padding-top: 4px;
-    }
-
-    way-tag:not(:last-of-type) {
-      margin-right: var(--way-spacing-xx-small);
-    }
-  }
-
-  &.select-has-tags .select-label {
-    margin-left: 0;
-  }
-}
-
 // Pill modifier
 // --------------------------------------------------
 
-.select-pill {
-  &.select-small .select-box {
-    border-radius: var(--way-form-element-height-small);
-  }
-
-  &.select-medium .select-box {
-    border-radius: var(--way-form-element-height-medium);
-  }
-
-  &.select-large .select-box {
-    border-radius: var(--way-form-element-height-large);
-  }
+.select-pill .select-box {
+  border-radius: var(--min-height);
 }
