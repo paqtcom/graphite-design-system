@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface GraButton {
+    interface WayButton {
         /**
           * Set to true to draw a circle button.
          */
@@ -44,7 +44,7 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
-    interface GraCheckbox {
+    interface WayCheckbox {
         /**
           * Draws the checkbox in a checked state.
          */
@@ -78,7 +78,7 @@ export namespace Components {
          */
         "value": string;
     }
-    interface GraInput {
+    interface WayInput {
         /**
           * If `true`, the user cannot interact with the input.
          */
@@ -104,7 +104,7 @@ export namespace Components {
          */
         "type": string | undefined;
     }
-    interface GraTextarea {
+    interface WayTextarea {
         /**
           * If `true`, the textarea should autofocus.
          */
@@ -136,39 +136,39 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLGraButtonElement extends Components.GraButton, HTMLStencilElement {
+    interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
     }
-    var HTMLGraButtonElement: {
-        prototype: HTMLGraButtonElement;
-        new (): HTMLGraButtonElement;
+    var HTMLWayButtonElement: {
+        prototype: HTMLWayButtonElement;
+        new (): HTMLWayButtonElement;
     };
-    interface HTMLGraCheckboxElement extends Components.GraCheckbox, HTMLStencilElement {
+    interface HTMLWayCheckboxElement extends Components.WayCheckbox, HTMLStencilElement {
     }
-    var HTMLGraCheckboxElement: {
-        prototype: HTMLGraCheckboxElement;
-        new (): HTMLGraCheckboxElement;
+    var HTMLWayCheckboxElement: {
+        prototype: HTMLWayCheckboxElement;
+        new (): HTMLWayCheckboxElement;
     };
-    interface HTMLGraInputElement extends Components.GraInput, HTMLStencilElement {
+    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
     }
-    var HTMLGraInputElement: {
-        prototype: HTMLGraInputElement;
-        new (): HTMLGraInputElement;
+    var HTMLWayInputElement: {
+        prototype: HTMLWayInputElement;
+        new (): HTMLWayInputElement;
     };
-    interface HTMLGraTextareaElement extends Components.GraTextarea, HTMLStencilElement {
+    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
     }
-    var HTMLGraTextareaElement: {
-        prototype: HTMLGraTextareaElement;
-        new (): HTMLGraTextareaElement;
+    var HTMLWayTextareaElement: {
+        prototype: HTMLWayTextareaElement;
+        new (): HTMLWayTextareaElement;
     };
     interface HTMLElementTagNameMap {
-        "gra-button": HTMLGraButtonElement;
-        "gra-checkbox": HTMLGraCheckboxElement;
-        "gra-input": HTMLGraInputElement;
-        "gra-textarea": HTMLGraTextareaElement;
+        "way-button": HTMLWayButtonElement;
+        "way-checkbox": HTMLWayCheckboxElement;
+        "way-input": HTMLWayInputElement;
+        "way-textarea": HTMLWayTextareaElement;
     }
 }
 declare namespace LocalJSX {
-    interface GraButton {
+    interface WayButton {
         /**
           * Set to true to draw a circle button.
          */
@@ -214,7 +214,7 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'text';
     }
-    interface GraCheckbox {
+    interface WayCheckbox {
         /**
           * Draws the checkbox in a checked state.
          */
@@ -252,7 +252,7 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
-    interface GraInput {
+    interface WayInput {
         /**
           * If `true`, the user cannot interact with the input.
          */
@@ -286,7 +286,7 @@ declare namespace LocalJSX {
          */
         "type"?: string | undefined;
     }
-    interface GraTextarea {
+    interface WayTextarea {
         /**
           * If `true`, the textarea should autofocus.
          */
@@ -325,20 +325,20 @@ declare namespace LocalJSX {
         "type"?: string | undefined;
     }
     interface IntrinsicElements {
-        "gra-button": GraButton;
-        "gra-checkbox": GraCheckbox;
-        "gra-input": GraInput;
-        "gra-textarea": GraTextarea;
+        "way-button": WayButton;
+        "way-checkbox": WayCheckbox;
+        "way-input": WayInput;
+        "way-textarea": WayTextarea;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "gra-button": LocalJSX.GraButton & JSXBase.HTMLAttributes<HTMLGraButtonElement>;
-            "gra-checkbox": LocalJSX.GraCheckbox & JSXBase.HTMLAttributes<HTMLGraCheckboxElement>;
-            "gra-input": LocalJSX.GraInput & JSXBase.HTMLAttributes<HTMLGraInputElement>;
-            "gra-textarea": LocalJSX.GraTextarea & JSXBase.HTMLAttributes<HTMLGraTextareaElement>;
+            "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
+            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
+            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }
     }
 }

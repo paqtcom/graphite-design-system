@@ -9,11 +9,11 @@ let id = 0;
  * @slot end - Content is placed to the right of the checkbox text (will be to the left when we support right-to-left direction)
  */
 @Component({
-  tag: 'gra-checkbox',
-  styleUrl: 'gra-checkbox.scss',
+  tag: 'way-checkbox',
+  styleUrl: 'way-checkbox.scss',
   shadow: true,
 })
-export class GraCheckbox {
+export class WayCheckbox {
   private inputId = `checkbox-${++id}`;
   private labelId = `checkbox-label-${id}`;
 

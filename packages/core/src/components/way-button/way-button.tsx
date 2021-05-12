@@ -8,11 +8,11 @@ import { inheritAttributes } from '../../utils/utils';
  * @slot end - Content is placed to the right of the button text (will be to the left when we support right-to-left direction)
  */
 @Component({
-  tag: 'gra-button',
-  styleUrl: 'gra-button.scss',
+  tag: 'way-button',
+  styleUrl: 'way-button.scss',
   shadow: true,
 })
-export class GraButton {
+export class WayButton {
   private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLElement;

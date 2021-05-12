@@ -8,7 +8,7 @@ import { JSX } from '@w2wds/core';
 
 
 
-export const GraButton = /*@__PURE__*/ defineContainer<JSX.GraButton>('gra-button', [
+export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', [
   'variant',
   'disabled',
   'size',
@@ -23,7 +23,7 @@ export const GraButton = /*@__PURE__*/ defineContainer<JSX.GraButton>('gra-butto
 ]);
 
 
-export const GraCheckbox = /*@__PURE__*/ defineContainer<JSX.GraCheckbox>('gra-checkbox', [
+export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-checkbox', [
   'name',
   'value',
   'disabled',
@@ -36,7 +36,7 @@ export const GraCheckbox = /*@__PURE__*/ defineContainer<JSX.GraCheckbox>('gra-c
 ]);
 
 
-export const GraInput = /*@__PURE__*/ defineContainer<JSX.GraInput>('gra-input', [
+export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
   'type',
   'name',
   'disabled',
@@ -48,7 +48,7 @@ export const GraInput = /*@__PURE__*/ defineContainer<JSX.GraInput>('gra-input',
 ]);
 
 
-export const GraTextarea = /*@__PURE__*/ defineContainer<JSX.GraTextarea>('gra-textarea', [
+export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', [
   'type',
   'name',
   'disabled',

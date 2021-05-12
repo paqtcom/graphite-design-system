@@ -1,24 +1,24 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('gra-input', () => {
+describe('way-button', () => {
   it('should render', async () => {
     const page = await newE2EPage();
-    await page.setContent('<gra-input></gra-input>');
+    await page.setContent('<way-button></way-button>');
 
-    const element = await page.find('gra-input');
+    const element = await page.find('way-button');
     expect(element).toHaveClass('hydrated');
   });
 
   it('should emit graFocus when gaining focus', async () => {
     const page = await newE2EPage({
       html: `
-        <gra-input></gra-input>
+        <way-button>Button</way-button>
       `
     });
-    const input = await page.find('gra-input');
-    const graFocus = await input.spyOnEvent('graFocus');
+    const button = await page.find('way-button');
+    const graFocus = await button.spyOnEvent('graFocus');
 
-    await input.click();
+    await button.click();
 
     expect(graFocus).toHaveReceivedEventTimes(1);
   });
@@ -26,15 +26,15 @@ describe('gra-input', () => {
   it('should emit wayBlur when losing focus', async () => {
     const page = await newE2EPage({
       html: `
-        <gra-input></gra-input>
+        <way-button>Button</way-button>
         <button>Native Button</button>
       `
     });
-    const input = await page.find('gra-input');
+    const button = await page.find('way-button');
     const nativeButton = await page.find('button');
-    const wayBlur = await input.spyOnEvent('wayBlur');
+    const wayBlur = await button.spyOnEvent('wayBlur');
 
-    await input.click();
+    await button.click();
     await nativeButton.click();
 
     expect(wayBlur).toHaveReceivedEventTimes(1);

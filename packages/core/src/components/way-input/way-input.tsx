@@ -1,63 +1,58 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter, State } from '@stencil/core';
 import { inheritAttributes } from '../../utils/utils';
 @Component({
-  tag: 'gra-textarea',
-  styleUrl: 'gra-textarea.scss',
+  tag: 'way-input',
+  styleUrl: 'way-input.scss',
   shadow: true,
 })
-export class GraTextarea {
+export class WayInput {
   private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLElement;
 
   /**
-   * The state of the textarea's value attribute.
+   * The state of the input's value attribute.
    */
   @State() value: string;
 
   /**
-   * Specifies what type of textarea to use.
+   * Specifies what type of input to use.
    */
   @Prop() type: string | undefined;
 
   /**
-   * The textarea's name attribute.
+   * The input's name attribute.
    */
   @Prop({ reflect: true }) name: string | undefined;
 
   /**
-   * If `true`, the user cannot interact with the textarea.
+   * If `true`, the user cannot interact with the input.
    */
   @Prop({ reflect: true }) disabled = false;
 
   /**
-   * Specifies how many characters are allowed.
+   * Specifies what if label and input must be inline.
    */
-  @Prop() maxlength: number;
+  @Prop() inline: boolean;
 
   /**
-   * The textarea's label. Alternatively, you can use the label slot.
+   * The input's size.
+   */
+  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
+   * The input's label. Alternatively, you can use the label slot.
    */
   @Prop() label: string | undefined;
 
- /**
-   * Specifies how many textarea rows to use.
-   */
-  @Prop() rows: number | undefined;
-
- /**
-   * If `true`, the textarea should autofocus.
-   */
-  @Prop({ reflect: true }) autofocus = false;
-
 
   /**
-   * Emitted when the textarea has focus.
+   * Emitted when the input has focus.
    */
   @Event() graFocus!: EventEmitter<void>;
 
   /**
-   * Emitted when the textarea loses focus.
+   * Emitted when the input loses focus.
    */
   @Event() wayBlur!: EventEmitter<void>;
 
@@ -75,29 +70,37 @@ export class GraTextarea {
 
   handleChange(event) {
     this.value = event.target.value;
+
+    // let error = this.error;
+    // if (event.target.validity.typeMismatch) {
+    //   error = true;
+    // }
   }
 
   render() {
-    const { type, name, disabled, rows, maxlength, autofocus, inheritedAttributes } = this;
+    const { type, name, disabled, inheritedAttributes } = this;
     const attrs = {
       type,
       name,
       disabled,
-      rows,
-      maxlength,
-      autofocus,
     }
 
     return (
       <Host
         aria-disabled={disabled ? 'true' : null}
         class={{
+          'input-inline': this.inline,
         }}
       >
         {this.label ? (
           <label
             class={{
               label: true,
+
+              // Sizes
+              'label-small': this.size === 'small',
+              'label-large': this.size === 'large',
+              'label-inline': this.inline,
             }}
             htmlFor={this.name}
           >
@@ -105,23 +108,24 @@ export class GraTextarea {
           </label>
         ) : null }
 
-        <textarea
+        <input
           {...attrs}
           id={this.name}
           value={this.value}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           disabled={disabled}
-          rows={rows}
-          maxlength={maxlength}
-          autofocus={autofocus}
           {...inheritedAttributes}
           onInput={(event) => this.handleChange(event)}
           class={{
-            textarea: true,
+            input: true,
 
             // States
-            'textarea-disabled': disabled,
+            'input-disabled': disabled,
+
+            // Sizes
+            'input-small': this.size === 'small',
+            'input-large': this.size === 'large',
           }}
         />
       </Host>
