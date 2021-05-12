@@ -186,13 +186,13 @@ declare namespace LocalJSX {
          */
         "href"?: string | undefined;
         /**
-          * Emitted when the button has focus.
-         */
-        "onGraFocus"?: (event: CustomEvent<void>) => void;
-        /**
           * Emitted when the button loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -234,15 +234,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the checkbox loses focus.
          */
-        "onGraBlur"?: (event: CustomEvent<void>) => void;
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the checkbox loses focus.
          */
-        "onGraChange"?: (event: CustomEvent<void>) => void;
+        "onWayChange"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the checkbox has focus.
          */
-        "onGraFocus"?: (event: CustomEvent<void>) => void;
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Makes the checkbox a required field.
          */
@@ -270,13 +270,13 @@ declare namespace LocalJSX {
          */
         "name"?: string | undefined;
         /**
-          * Emitted when the input has focus.
-         */
-        "onGraFocus"?: (event: CustomEvent<void>) => void;
-        /**
           * Emitted when the input loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * The input's size.
          */
@@ -308,13 +308,13 @@ declare namespace LocalJSX {
          */
         "name"?: string | undefined;
         /**
-          * Emitted when the textarea has focus.
-         */
-        "onGraFocus"?: (event: CustomEvent<void>) => void;
-        /**
           * Emitted when the textarea loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Specifies how many textarea rows to use.
          */

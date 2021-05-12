@@ -21,8 +21,8 @@
 
 | Event      | Description                         | Type                |
 | ---------- | ----------------------------------- | ------------------- |
-| `graFocus` | Emitted when the input has focus.   | `CustomEvent<void>` |
 | `wayBlur`  | Emitted when the input loses focus. | `CustomEvent<void>` |
+| `wayFocus` | Emitted when the input has focus.   | `CustomEvent<void>` |
 
 
 ## CSS Custom Properties

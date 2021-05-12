@@ -22,8 +22,8 @@
 
 | Event      | Description                            | Type                |
 | ---------- | -------------------------------------- | ------------------- |
-| `graFocus` | Emitted when the textarea has focus.   | `CustomEvent<void>` |
 | `wayBlur`  | Emitted when the textarea loses focus. | `CustomEvent<void>` |
+| `wayFocus` | Emitted when the textarea has focus.   | `CustomEvent<void>` |
 
 
 ## CSS Custom Properties

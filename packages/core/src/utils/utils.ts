@@ -1,7 +1,7 @@
 /**
  * Elements inside of web components sometimes need to inherit global attributes
- * set on the host. For example, the inner button in `gra-button` should inherit
- * the `aria-label` attribute that developers set directly on `gra-button`. This
+ * set on the host. For example, the inner button in `way-button` should inherit
+ * the `aria-label` attribute that developers set directly on `way-button`. This
  * helper function should be called in componentWillLoad and assigned to a variable
  * that is later used in the render function.
  *

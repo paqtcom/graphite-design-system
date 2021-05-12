@@ -42,24 +42,24 @@ export class WayCheckbox {
   /**
    * Emitted when the checkbox has focus.
    */
-  @Event() graFocus!: EventEmitter<void>;
+  @Event() wayFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the checkbox loses focus.
    */
-  @Event() graBlur!: EventEmitter<void>;
+  @Event() wayBlur!: EventEmitter<void>;
 
   /**
    * Emitted when the checkbox loses focus.
    */
-  @Event() graChange!: EventEmitter<void>;
+  @Event() wayChange!: EventEmitter<void>;
 
   @Watch('checked')
   @Watch('indeterminate')
   handleCheckedChange() {
     this.input.checked = this.checked;
     this.input.indeterminate = this.indeterminate;
-    this.graChange.emit();
+    this.wayChange.emit();
   }
 
   connectedCallback() {
@@ -92,12 +92,12 @@ export class WayCheckbox {
 
   handleBlur() {
     this.hasFocus = false;
-    this.graBlur.emit();
+    this.wayBlur.emit();
   }
 
   handleFocus() {
     this.hasFocus = true;
-    this.graFocus.emit();
+    this.wayFocus.emit();
   }
 
   handleMouseDown(event: MouseEvent) {

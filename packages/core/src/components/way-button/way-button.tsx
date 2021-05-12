@@ -69,7 +69,7 @@ export class WayButton {
   /**
    * Emitted when the button has focus.
    */
-  @Event() graFocus!: EventEmitter<void>;
+  @Event() wayFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the button loses focus.
@@ -100,7 +100,7 @@ export class WayButton {
   }
 
   private onFocus = () => {
-    this.graFocus.emit();
+    this.wayFocus.emit();
   }
 
   private onBlur = () => {

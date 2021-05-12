@@ -18,7 +18,7 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'target',
   'rel',
   'type',
-  'graFocus',
+  'wayFocus',
   'wayBlur'
 ]);
 
@@ -30,9 +30,9 @@ export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-c
   'required',
   'checked',
   'indeterminate',
-  'graFocus',
-  'graBlur',
-  'graChange'
+  'wayFocus',
+  'wayBlur',
+  'wayChange'
 ]);
 
 
@@ -43,7 +43,7 @@ export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input',
   'inline',
   'size',
   'label',
-  'graFocus',
+  'wayFocus',
   'wayBlur'
 ]);
 
@@ -56,7 +56,7 @@ export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-t
   'label',
   'rows',
   'autofocus',
-  'graFocus',
+  'wayFocus',
   'wayBlur'
 ]);
 

@@ -21,9 +21,9 @@
 
 | Event       | Description                            | Type                |
 | ----------- | -------------------------------------- | ------------------- |
-| `graBlur`   | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
-| `graChange` | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
-| `graFocus`  | Emitted when the checkbox has focus.   | `CustomEvent<void>` |
+| `wayBlur`   | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
+| `wayChange` | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
+| `wayFocus`  | Emitted when the checkbox has focus.   | `CustomEvent<void>` |
 
 
 ## Methods
