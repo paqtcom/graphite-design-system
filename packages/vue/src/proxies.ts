@@ -30,7 +30,7 @@ export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-c
   'required',
   'checked',
   'indeterminate',
-  'wayFocus',
+  'variant',
   'wayBlur',
   'wayChange'
 ]);

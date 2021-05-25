@@ -7,46 +7,23 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                   | Type      | Default     |
-| --------------- | --------------- | --------------------------------------------- | --------- | ----------- |
-| `checked`       | `checked`       | Draws the checkbox in a checked state.        | `boolean` | `false`     |
-| `disabled`      | `disabled`      | Disables the checkbox.                        | `boolean` | `false`     |
-| `indeterminate` | `indeterminate` | Draws the checkbox in an indeterminate state. | `boolean` | `false`     |
-| `name`          | `name`          | The checkbox's name attribute.                | `string`  | `undefined` |
-| `required`      | `required`      | Makes the checkbox a required field.          | `boolean` | `false`     |
-| `value`         | `value`         | The checkbox's value attribute.               | `string`  | `undefined` |
+| Property        | Attribute       | Description                                   | Type                   | Default     |
+| --------------- | --------------- | --------------------------------------------- | ---------------------- | ----------- |
+| `checked`       | `checked`       | Draws the checkbox in a checked state.        | `boolean`              | `false`     |
+| `disabled`      | `disabled`      | Disables the checkbox.                        | `boolean`              | `false`     |
+| `indeterminate` | `indeterminate` | Draws the checkbox in an indeterminate state. | `boolean`              | `false`     |
+| `name`          | `name`          | The checkbox's name attribute.                | `string`               | `undefined` |
+| `required`      | `required`      | Makes the checkbox a required field.          | `boolean`              | `false`     |
+| `value`         | `value`         | The checkbox's value attribute.               | `string`               | `undefined` |
+| `variant`       | `variant`       | The checkbox variants.                        | `"circle" \| "square"` | `'square'`  |
 
 
 ## Events
 
-| Event       | Description                            | Type                |
-| ----------- | -------------------------------------- | ------------------- |
-| `wayBlur`   | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
-| `wayChange` | Emitted when the checkbox loses focus. | `CustomEvent<void>` |
-| `wayFocus`  | Emitted when the checkbox has focus.   | `CustomEvent<void>` |
-
-
-## Methods
-
-### `removeFocus() => Promise<void>`
-
-Removes focus from the checkbox.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
-
-### `setFocus() => Promise<void>`
-
-Sets focus on the checkbox.
-
-#### Returns
-
-Type: `Promise<void>`
-
-
+| Event       | Description                           | Type                |
+| ----------- | ------------------------------------- | ------------------- |
+| `wayBlur`   | Emitted when the checkbox loses blur. | `CustomEvent<void>` |
+| `wayChange` | Emitted when the checkbox changes.    | `CustomEvent<void>` |
 
 
 ## Slots
@@ -72,23 +49,23 @@ Type: `Promise<void>`
 
 ## CSS Custom Properties
 
-| Name                   | Description                                                                                |
-| ---------------------- | ------------------------------------------------------------------------------------------ |
-| `--background`         | Background of the button                                                                   |
-| `--background-hover`   | Background of the button on hover                                                          |
-| `--border-color`       | Border color of the button                                                                 |
-| `--border-color-hover` | Border color of the button when hover                                                      |
-| `--border-radius`      | Border radius of the button                                                                |
-| `--border-style`       | Border style of the button                                                                 |
-| `--border-width`       | Border width of the button                                                                 |
-| `--color`              | Text color of the button                                                                   |
-| `--color-hover`        | Text color of the button when hover                                                        |
-| `--height`             | Height of the button                                                                       |
-| `--padding-bottom`     | Bottom padding of the button                                                               |
-| `--padding-end`        | Right padding of the button (will be left padding when we support right-to-left direction) |
-| `--padding-start`      | Left padding of the button (will be right padding when we support right-to-left direction) |
-| `--padding-top`        | Top padding of the button                                                                  |
-| `--transition`         | Transition of the button                                                                   |
+| Name                   | Description                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------- |
+| `--background`         | Background of the checkbox                                                                   |
+| `--background-hover`   | Background of the checkbox on hover                                                          |
+| `--border-color`       | Border color of the checkbox                                                                 |
+| `--border-color-hover` | Border color of the checkbox when hover                                                      |
+| `--border-radius`      | Border radius of the checkbox                                                                |
+| `--border-style`       | Border style of the checkbox                                                                 |
+| `--border-width`       | Border width of the checkbox                                                                 |
+| `--color`              | Text color of the checkbox                                                                   |
+| `--color-hover`        | Text color of the checkbox when hover                                                        |
+| `--height`             | Height of the checkbox                                                                       |
+| `--padding-bottom`     | Bottom padding of the checkbox                                                               |
+| `--padding-end`        | Right padding of the checkbox (will be left padding when we support right-to-left direction) |
+| `--padding-start`      | Left padding of the checkbox (will be right padding when we support right-to-left direction) |
+| `--padding-top`        | Top padding of the checkbox                                                                  |
+| `--transition`         | Transition of the checkbox                                                                   |
 
 
 ----------------------------------------------

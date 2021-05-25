@@ -62,21 +62,17 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Removes focus from the checkbox.
-         */
-        "removeFocus": () => Promise<void>;
-        /**
           * Makes the checkbox a required field.
          */
         "required": boolean;
         /**
-          * Sets focus on the checkbox.
-         */
-        "setFocus": () => Promise<void>;
-        /**
           * The checkbox's value attribute.
          */
         "value": string;
+        /**
+          * The checkbox variants.
+         */
+        "variant": 'circle' | 'square';
     }
     interface WayInput {
         /**
@@ -232,17 +228,13 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when the checkbox loses focus.
+          * Emitted when the checkbox loses blur.
          */
         "onWayBlur"?: (event: CustomEvent<void>) => void;
         /**
-          * Emitted when the checkbox loses focus.
+          * Emitted when the checkbox changes.
          */
         "onWayChange"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the checkbox has focus.
-         */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Makes the checkbox a required field.
          */
@@ -251,6 +243,10 @@ declare namespace LocalJSX {
           * The checkbox's value attribute.
          */
         "value"?: string;
+        /**
+          * The checkbox variants.
+         */
+        "variant"?: 'circle' | 'square';
     }
     interface WayInput {
         /**

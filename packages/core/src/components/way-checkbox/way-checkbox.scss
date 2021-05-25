@@ -1,48 +1,57 @@
 @import '../../themes/w2wds.globals';
 
-// Button
+// Checkbox
 // --------------------------------------------------
 
 :host {
   /**
-   * @prop --background: Background of the button
-   * @prop --background-hover: Background of the button on hover
+   * @prop --background: Background of the checkbox
+   * @prop --background-hover: Background of the checkbox on hover
    *
-   * @prop --color: Text color of the button
-   * @prop --color-hover: Text color of the button when hover
+   * @prop --color: Text color of the checkbox
+   * @prop --color-hover: Text color of the checkbox when hover
    *
-   * @prop --transition: Transition of the button
+   * @prop --transition: Transition of the checkbox
    *
-   * @prop --border-radius: Border radius of the button
-   * @prop --border-width: Border width of the button
-   * @prop --border-style: Border style of the button
-   * @prop --border-color: Border color of the button
-   * @prop --border-color-hover: Border color of the button when hover
+   * @prop --border-radius: Border radius of the checkbox
+   * @prop --border-width: Border width of the checkbox
+   * @prop --border-style: Border style of the checkbox
+   * @prop --border-color: Border color of the checkbox
+   * @prop --border-color-hover: Border color of the checkbox when hover
    *
-   * @prop --padding-top: Top padding of the button
-   * @prop --padding-end: Right padding of the button (will be left padding when we support right-to-left direction)
-   * @prop --padding-bottom: Bottom padding of the button
-   * @prop --padding-start: Left padding of the button (will be right padding when we support right-to-left direction)
+   * @prop --padding-top: Top padding of the checkbox
+   * @prop --padding-end: Right padding of the checkbox (will be left padding when we support right-to-left direction)
+   * @prop --padding-bottom: Bottom padding of the checkbox
+   * @prop --padding-start: Left padding of the checkbox (will be right padding when we support right-to-left direction)
    *
-   * @prop --height: Height of the button
+   * @prop --height: Height of the checkbox
    */
   display: inline-block;
 
-  // width: auto;
+  width: auto;
 
-  // font-family: var(--way-font-family, inherit);
-  // font-weight: var(--way-font-weight-semibold);
-  // font-size: var(--way-form-element-font-size-medium);
-  // font-kerning: none;
+  font-family: var(--way-font-family, inherit);
+  font-weight: var(--way-font-weight-semibold);
+  font-size: var(--way-form-element-font-size-medium);
+  font-kerning: none;
 
-  // user-select: none;
-  // vertical-align: top;
-  // vertical-align: -webkit-baseline-middle;
-  // pointer-events: auto;
+  user-select: none;
+  vertical-align: top;
+  vertical-align: -webkit-baseline-middle;
+  pointer-events: auto;
 
-  // --height: var(--way-form-element-height-medium);
+  --height: 20px;
+  --width: 20px;
 
-  // --border-radius: var(--way-form-element-border-radius-medium);
+  --height-icon-small: 20px;
+  --width-icon-small: 20px;
+  --height-icon-medium: 20px;
+  --width-icon-medium: 20px;
+  --height-icon-large: 20px;
+  --width-icon-large: 20px;
+
+  --border-radius: var(--way-form-element-border-radius-small);
+  --border-radius-circle: 50%;
   // --border-width: var(--way-form-element-border-width);
   // --border-style: solid;
 
@@ -66,10 +75,10 @@
 .checkbox {
   display: inline-flex;
   align-items: center;
-  font-family: var(--sl-input-font-family);
-  font-size: var(--sl-input-font-size-medium);
-  font-weight: var(--sl-input-font-weight);
-  color: var(--sl-input-color);
+  font-family: var(--way-font-family, inherit);
+  font-size: var(--way-form-element-font-size-medium);
+  font-weight: var(--way-font-weight-semibold);
+  color: var(--way-color-dark-tint);
   vertical-align: middle;
   cursor: pointer;
 }
@@ -79,14 +88,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--sl-toggle-size);
-  height: var(--sl-toggle-size);
-  border: solid var(--sl-input-border-width) var(--sl-input-border-color);
-  border-radius: 2px;
-  background-color: var(--sl-input-background-color);
-  color: var(--sl-color-white);
-  transition: var(--sl-transition-fast) border-color, var(--sl-transition-fast) background-color,
-    var(--sl-transition-fast) color, var(--sl-transition-fast) box-shadow;
+  width: var(--width);
+  height: var(--height);
+  border: solid var(--way-form-element-input-border-width) var(--way-color-medium-tint);
+  border-radius: var(--border-radius);
+  background-color: var(--way-color-white);
+  color: var(--way-color-white);
+  // transition: var(--way-transition-fast) border-color, var(--sl-transition-fast) background-color,
+  //   var(--sl-transition-fast) color, var(--sl-transition-fast) box-shadow;
 
   input[type='checkbox'] {
     position: absolute;
@@ -98,8 +107,8 @@
 
   .checkbox__icon {
     display: inline-flex;
-    width: var(--sl-toggle-size);
-    height: var(--sl-toggle-size);
+    width: 20px;
+    height: 20px;
 
     svg {
       width: 100%;
@@ -108,39 +117,15 @@
   }
 }
 
-// Hover
-.checkbox:not(.checkbox--checked):not(.checkbox--disabled) .checkbox__control:hover {
-  border-color: var(--sl-input-border-color-hover);
-  background-color: var(--sl-input-background-color-hover);
-}
-
-// Focus
-.checkbox.checkbox--focused:not(.checkbox--checked):not(.checkbox--disabled) .checkbox__control {
-  border-color: var(--sl-input-border-color-focus);
-  background-color: var(--sl-input-background-color-focus);
-  box-shadow: var(--sl-focus-ring-box-shadow);
+.checkbox__control-circle {
+  border-radius: var(--border-radius-circle);
 }
 
 // Checked/indeterminate
 .checkbox--checked .checkbox__control,
 .checkbox--indeterminate .checkbox__control {
-  border-color: var(--sl-color-primary-50);
-  background-color: var(--sl-color-primary-50);
-}
-
-// Checked/indeterminate + hover
-.checkbox.checkbox--checked:not(.checkbox--disabled) .checkbox__control:hover,
-.checkbox.checkbox--indeterminate:not(.checkbox--disabled) .checkbox__control:hover {
-  border-color: var(--sl-color-primary-60);
-  background-color: var(--sl-color-primary-60);
-}
-
-// Checked/indeterminate + focus
-.checkbox.checkbox--checked:not(.checkbox--disabled).checkbox--focused .checkbox__control,
-.checkbox.checkbox--indeterminate:not(.checkbox--disabled).checkbox--focused .checkbox__control {
-  border-color: var(--sl-color-primary-60);
-  background-color: var(--sl-color-primary-60);
-  box-shadow: var(--sl-focus-ring-box-shadow);
+  border-color: var(--way-color-primary);
+  background-color: var(--way-color-primary);
 }
 
 // Disabled
@@ -150,7 +135,7 @@
 }
 
 .checkbox__label {
-  line-height: var(--sl-toggle-size);
+  line-height: 1.25rem;
   margin-left: 0.5em;
   user-select: none;
 }

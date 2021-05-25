@@ -1,24 +1,24 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('way-button', () => {
+describe('way-checkbox', () => {
   it('should render', async () => {
     const page = await newE2EPage();
-    await page.setContent('<way-button></way-button>');
+    await page.setContent('<way-checkbox></way-checkbox>');
 
-    const element = await page.find('way-button');
+    const element = await page.find('way-checkbox');
     expect(element).toHaveClass('hydrated');
   });
 
   it('should emit wayFocus when gaining focus', async () => {
     const page = await newE2EPage({
       html: `
-        <way-button>Button</way-button>
+        <way-checkbox>Checkbox</way-checkbox>
       `
     });
-    const button = await page.find('way-button');
-    const wayFocus = await button.spyOnEvent('wayFocus');
+    const checkbox = await page.find('way-checkbox');
+    const wayFocus = await checkbox.spyOnEvent('wayFocus');
 
-    await button.click();
+    await checkbox.click();
 
     expect(wayFocus).toHaveReceivedEventTimes(1);
   });
@@ -26,16 +26,13 @@ describe('way-button', () => {
   it('should emit wayBlur when losing focus', async () => {
     const page = await newE2EPage({
       html: `
-        <way-button>Button</way-button>
-        <button>Native Button</button>
+        <way-checkbox>Checkbox</way-checkbox>
       `
     });
-    const button = await page.find('way-button');
-    const nativeButton = await page.find('button');
-    const wayBlur = await button.spyOnEvent('wayBlur');
+    const checkbox = await page.find('way-checkbox');
+    const wayBlur = await checkbox.spyOnEvent('wayBlur');
 
-    await button.click();
-    await nativeButton.click();
+    await checkbox.click();
 
     expect(wayBlur).toHaveReceivedEventTimes(1);
   });
