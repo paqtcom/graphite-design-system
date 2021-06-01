@@ -1,0 +1,36 @@
+@import '../../themes/w2wds.globals';
+
+:host {
+  display: block;
+}
+
+.radio-group {
+  border: solid 1px var(--way-color-light);
+  border-radius: var(--way-border-radius-medium);
+  padding: var(--way-spacing-large);
+  padding-top: var(--way-spacing-x-small);
+
+  .radio-group__label {
+    font-family: var(--way-font-family);
+    font-size: var(--way-form-element-font-size-medium);
+    font-weight: var(--way-font-weight-normal);
+    color: var(--way-form-element-color);
+    padding: 0 var(--way-spacing-xx-small);
+  }
+}
+
+::slotted(way-radio:not(:last-of-type)) {
+  display: block;
+  margin-bottom: var(--way-spacing-xx-small);
+}
+
+.radio-group-no-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+
+  .radio-group-label {
+    @include visually-hidden();
+  }
+}

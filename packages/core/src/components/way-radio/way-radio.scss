@@ -1,0 +1,92 @@
+@import '../../themes/w2wds.globals';
+
+:host {
+  display: inline-block;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--way-font-family);
+  font-size: var(--way-font-size-medium);
+  font-weight: var(--way-font-weight-normal);
+  color: var(--way-color-dark-tint);
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.radio-icon {
+  display: inline-flex;
+  width: var(--way-toggle-size);
+  height: var(--way-toggle-size);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.radio-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--way-toggle-size);
+  height: var(--way-toggle-size);
+  border: solid 1px var(--way-color-light);
+  border-radius: 50%;
+  background-color: var(--way-color-white);
+  color: transparent;
+  transition: 150ms border-color, 150ms background-color, 150ms color, 150ms box-shadow;
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+}
+
+// Hover
+.radio:not(.radio-checked):not(.radio-disabled) .radio-control:hover {
+  border-color: var(--way-color-medium);
+  background-color: var(--way-color-white);
+}
+
+// Focus
+.radio.radio-focused:not(.radio-checked):not(.radio-disabled) .radio-control {
+  outline: none;
+}
+
+// Checked
+.radio-checked .radio-control {
+  color: var(--way-color-white);
+  border-color: var(--way-color-primary);
+  background-color: var(--way-color-primary);
+}
+
+// Checked + hover
+.radio.radio-checked:not(.radio-disabled) .radio-control:hover {
+  border-color: var(--way-color-primary-tint);
+  background-color: var(--way-color-primary-tint);
+}
+
+// Checked + focus
+.radio.radio-checked:not(.radio-disabled).radio-focused .radio-control {
+  border-color: var(--way-color-primary-tint);
+  background-color: var(--way-color-primary-tint);
+  outline: none;
+}
+
+// Disabled
+.radio-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.radio-label {
+  line-height: var(--way-toggle-size);
+  margin-left: 0.5em;
+  user-select: none;
+}

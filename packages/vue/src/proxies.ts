@@ -13,6 +13,7 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'disabled',
   'size',
   'caret',
+  'pill',
   'expand',
   'circle',
   'href',
@@ -54,6 +55,26 @@ export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-m
 ]);
 
 
+export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way-menu-label');
+
+
+export const WayRadio = /*@__PURE__*/ defineContainer<JSX.WayRadio>('way-radio', [
+  'name',
+  'value',
+  'disabled',
+  'checked',
+  'wayBlur',
+  'wayChange',
+  'wayFocus'
+]);
+
+
+export const WayRadioGroup = /*@__PURE__*/ defineContainer<JSX.WayRadioGroup>('way-radio-group', [
+  'label',
+  'noFieldset'
+]);
+
+
 export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', [
   'multiple',
   'maxTagsVisible',
@@ -63,6 +84,7 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'size',
   'hoist',
   'value',
+  'pill',
   'label',
   'helpText',
   'required',
@@ -71,5 +93,14 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'wayChange',
   'wayFocus',
   'wayBlur'
+]);
+
+
+export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', [
+  'type',
+  'size',
+  'pill',
+  'clearable',
+  'wayClear'
 ]);
 

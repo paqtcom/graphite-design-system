@@ -103,7 +103,8 @@
   // --------------------------------------------------
 
   // Fonts
-  --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
 
   // Letter spacings
   --way-letter-spacing-dense: -0.015em;
@@ -160,6 +161,9 @@
   --way-form-element-help-text-font-size-large: var(--way-font-size-medium);
 
   --way-form-element-help-text-color: var(--way-color-medium-tint);
+
+  // Toggles (checkboxes, radios, switches)
+  --way-toggle-size: 1rem;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Z-index tokens

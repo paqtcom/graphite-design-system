@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Way2Web Design System</title>
 
-    <link rel="stylesheet" href="/build/core.css">
+    <link rel="stylesheet" href="/build/core.css" />
     <script type="module" src="/build/core.esm.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
 
     <style>
       body {
         font-family: sans-serif;
+        background-color: #f3f8fb;
       }
     </style>
   </head>
   <body>
+    <section>
+      <h2>way-radio & way-radio-group</h2>
+
+      <way-radio-group name="test" label="Select an option" no-fieldset>
+        <way-radio value="1" checked>Option 1</way-radio>
+        <way-radio value="2">Option 2</way-radio>
+        <way-radio value="3">Option 3</way-radio>
+      </way-radio-group>
+    </section>
+
     <section>
       <h2>way-select</h2>
 
@@ -98,7 +109,7 @@
           <way-menu-item value="option-3">Option 3</way-menu-item>
         </way-select>
 
-        <br>
+        <br />
 
         <way-select placeholder="Medium" size="medium" multiple clearable>
           <way-menu-item value="option-1">Option 1</way-menu-item>
@@ -106,7 +117,7 @@
           <way-menu-item value="option-3">Option 3</way-menu-item>
         </way-select>
 
-        <br>
+        <br />
 
         <way-select placeholder="Large" size="large" multiple clearable>
           <way-menu-item value="option-1">Option 1</way-menu-item>
@@ -128,10 +139,7 @@
       <section>
         <h3>Help Text</h3>
 
-        <way-select
-          label="Experience"
-          help-text="Please tell us your skill level."
-        >
+        <way-select label="Experience" help-text="Please tell us your skill level.">
           <way-menu-item value="option-1">Novice</way-menu-item>
           <way-menu-item value="option-2">Intermediate</way-menu-item>
           <way-menu-item value="option-3">Advanced</way-menu-item>
@@ -208,7 +216,13 @@
       <h2>way-menu</h2>
       <p>Including way-menu-item & way-menu-divider & way-menu-label</p>
 
-      <way-menu style="max-width: 200px; border: solid 1px var(--way-color-light); border-radius: var(--way-border-radius-medium);">
+      <way-menu
+        style="
+          max-width: 200px;
+          border: solid 1px var(--way-color-light);
+          border-radius: var(--way-border-radius-medium);
+        "
+      >
         <way-menu-label>Timetravel</way-menu-label>
         <way-menu-item value="undo" checked>Undo</way-menu-item>
         <way-menu-item value="redo">Redo</way-menu-item>
@@ -233,41 +247,25 @@
       <section>
         <h3>Variants</h3>
 
-        <way-button id="clickExample">
-          Default
-        </way-button>
+        <way-button id="clickExample"> Default </way-button>
 
-        <way-button variant="primary" id="focusBlurExample">
-          Primary
-        </way-button>
+        <way-button variant="primary" id="focusBlurExample"> Primary </way-button>
 
-        <way-button variant="secondary">
-          Secondary
-        </way-button>
+        <way-button variant="secondary"> Secondary </way-button>
 
-        <way-button variant="danger">
-          Danger
-        </way-button>
+        <way-button variant="danger"> Danger </way-button>
 
-        <way-button variant="plain">
-          Plain
-        </way-button>
+        <way-button variant="plain"> Plain </way-button>
       </section>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-button size="small">
-          Small
-        </way-button>
+        <way-button size="small"> Small </way-button>
 
-        <way-button>
-          Medium
-        </way-button>
+        <way-button> Medium </way-button>
 
-        <way-button size="large">
-          Large
-        </way-button>
+        <way-button size="large"> Large </way-button>
       </section>
 
       <section>
@@ -309,25 +307,19 @@
       <section>
         <h3>Link Buttons</h3>
 
-        <way-button href="https://www.way2web.nl" target="_blank">
-          Link
-        </way-button>
+        <way-button href="https://www.way2web.nl" target="_blank"> Link </way-button>
       </section>
 
       <section>
         <h3>Block Button</h3>
 
-        <way-button expand="block">
-          Block
-        </way-button>
+        <way-button expand="block"> Block </way-button>
       </section>
 
       <section>
         <h3>Full Button</h3>
 
-        <way-button expand="full" aria-label="aria label test">
-          Block
-        </way-button>
+        <way-button expand="full" aria-label="aria label test"> Block </way-button>
       </section>
 
       <section>
@@ -349,25 +341,15 @@
       <section>
         <h3>Disabled</h3>
 
-        <way-button disabled>
-          Default
-        </way-button>
+        <way-button disabled> Default </way-button>
 
-        <way-button variant="primary" disabled>
-          Primary
-        </way-button>
+        <way-button variant="primary" disabled> Primary </way-button>
 
-        <way-button variant="secondary" disabled>
-          Secondary
-        </way-button>
+        <way-button variant="secondary" disabled> Secondary </way-button>
 
-        <way-button variant="danger" disabled>
-          Danger
-        </way-button>
+        <way-button variant="danger" disabled> Danger </way-button>
 
-        <way-button variant="plain" disabled>
-          Plain
-        </way-button>
+        <way-button variant="plain" disabled> Plain </way-button>
       </section>
 
       <script>
@@ -392,7 +374,7 @@
         tagsClearable.addEventListener('wayClear', event => {
           const tag = event.target;
           tag.style.opacity = '0';
-          setTimeout(() => tag.style.opacity = '1', 2000);
+          setTimeout(() => (tag.style.opacity = '1'), 2000);
         });
       </script>
     </section>
