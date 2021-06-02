@@ -59,19 +59,21 @@ export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way
 
 
 export const WayRadio = /*@__PURE__*/ defineContainer<JSX.WayRadio>('way-radio', [
-  'name',
   'value',
   'disabled',
   'checked',
   'wayBlur',
-  'wayChange',
   'wayFocus'
 ]);
 
 
 export const WayRadioGroup = /*@__PURE__*/ defineContainer<JSX.WayRadioGroup>('way-radio-group', [
+  'allowEmptySelection',
   'label',
-  'noFieldset'
+  'noFieldset',
+  'name',
+  'value',
+  'wayChange'
 ]);
 
 

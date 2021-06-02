@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { WayRadioGroupChangeEventDetail } from "./components/way-radio-group/way-radio-group-interface";
 export namespace Components {
     interface WayButton {
         /**
@@ -143,13 +144,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * The radio's name attribute.
-         */
-        "name": string;
-        /**
           * Removes focus from the radio.
          */
         "removeFocus": () => Promise<void>;
+        "setButtonTabindex": (value: number) => Promise<void>;
         /**
           * Sets focus on the radio.
          */
@@ -161,13 +159,25 @@ export namespace Components {
     }
     interface WayRadioGroup {
         /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection": boolean;
+        /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
          */
         "noFieldset": boolean;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
     }
     interface WaySelect {
         /**
@@ -474,17 +484,9 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The radio's name attribute.
-         */
-        "name"?: string;
-        /**
           * Emitted when the control loses focus.
          */
         "onWayBlur"?: (event: CustomEvent<any>) => void;
-        /**
-          * Emitted when the control's checked state changes.
-         */
-        "onWayChange"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the control gains focus.
          */
@@ -496,13 +498,29 @@ declare namespace LocalJSX {
     }
     interface WayRadioGroup {
         /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
+        /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
          */
         "noFieldset"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onWayChange"?: (event: CustomEvent<WayRadioGroupChangeEventDetail>) => void;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
     }
     interface WaySelect {
         /**

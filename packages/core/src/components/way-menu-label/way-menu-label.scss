@@ -34,6 +34,7 @@
   --padding-bottom: var(--way-spacing-xx-small);
 
   display: block;
+  box-sizing: border-box;
   font-family: var(--way-font-family);
   font-size: var(--way-font-size-small);
   font-weight: var(--font-weight);

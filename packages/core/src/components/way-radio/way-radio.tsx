@@ -1,4 +1,5 @@
-import { Component, Host, h, Element, State, Prop, Watch, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core';
+import { addEventListener, removeEventListener } from '../../utils/utils';
 
 let id = 0;
 
@@ -8,16 +9,14 @@ let id = 0;
   shadow: true,
 })
 export class WayRadio {
-  inputId = `radio-${++id}`;
-  labelId = `radio-label-${id}`;
-  input: HTMLInputElement;
+  private inputId = `radio-${++id}`;
+  private labelId = `radio-label-${id}`;
+  private input: HTMLInputElement;
+  private radioGroup: HTMLWayRadioGroupElement | null = null;
 
   @Element() el: HTMLWayRadioElement;
 
   @State() hasFocus = false;
-
-  /** The radio's name attribute. */
-  @Prop() name: string;
 
   /** The radio's value attribute. */
   @Prop() value: string;
@@ -28,30 +27,44 @@ export class WayRadio {
   /** Set to true to draw the radio in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
 
-  @Watch('checked')
-  handleCheckedChange() {
-    if (this.checked) {
-      this.getSiblingRadios().map(radio => (radio.checked = false));
-    }
-    this.input.checked = this.checked;
-    this.wayChange.emit();
-  }
+  /**
+   * The tabindex of the radio button.
+   * @internal
+   */
+  @State() buttonTabindex = -1;
 
   /** Emitted when the control loses focus. */
   @Event() wayBlur: EventEmitter;
 
-  /** Emitted when the control's checked state changes. */
-  @Event() wayChange: EventEmitter;
-
   /** Emitted when the control gains focus. */
   @Event() wayFocus: EventEmitter;
 
+  /** @internal */
+  @Method()
+  async setButtonTabindex(value: number) {
+    this.buttonTabindex = value;
+  }
+
   connectedCallback() {
-    this.handleClick = this.handleClick.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
+
+    if (this.value === undefined) {
+      this.value = this.inputId;
+    }
+    const radioGroup = (this.radioGroup = this.el.closest('way-radio-group'));
+    if (radioGroup) {
+      this.updateState();
+      addEventListener(radioGroup, 'wayChange', this.updateState);
+    }
+  }
+
+  disconnectedCallback() {
+    const radioGroup = this.radioGroup;
+    if (radioGroup) {
+      removeEventListener(radioGroup, 'wayChange', this.updateState);
+      this.radioGroup = null;
+    }
   }
 
   /** Sets focus on the radio. */
@@ -66,26 +79,11 @@ export class WayRadio {
     this.input.blur();
   }
 
-  getAllRadios() {
-    const radioGroup = this.el.closest('way-radio-group');
-
-    // Radios must be part of a radio group
-    if (!radioGroup) {
-      return [];
+  private updateState = () => {
+    if (this.radioGroup) {
+      this.checked = this.radioGroup.value === this.value;
     }
-
-    return [...radioGroup.querySelectorAll('way-radio')].filter(
-      (radio: HTMLWayRadioElement) => radio.name === this.name,
-    ) as HTMLWayRadioElement[];
-  }
-
-  getSiblingRadios() {
-    return this.getAllRadios().filter(radio => radio !== this.el) as HTMLWayRadioElement[];
-  }
-
-  handleClick() {
-    this.checked = this.input.checked;
-  }
+  };
 
   handleBlur() {
     this.hasFocus = false;
@@ -97,31 +95,13 @@ export class WayRadio {
     this.wayFocus.emit();
   }
 
-  handleKeyDown(event: KeyboardEvent) {
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-      const radios = this.getAllRadios().filter(radio => !radio.disabled);
-      const incr = ['ArrowUp', 'ArrowLeft'].includes(event.key) ? -1 : 1;
-      let index = radios.indexOf(this.el) + incr;
-      if (index < 0) index = radios.length - 1;
-      if (index > radios.length - 1) index = 0;
-
-      this.getAllRadios().map(radio => (radio.checked = false));
-      radios[index].setFocus();
-      radios[index].checked = true;
-
-      event.preventDefault();
-    }
-  }
-
-  handleMouseDown(event: MouseEvent) {
-    // Prevent clicks on the label from briefly blurring the input
-    event.preventDefault();
-    this.input.focus();
-  }
-
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          'radio-disabled': this.disabled,
+        }}
+      >
         <label
           class={{
             'radio': true,
@@ -130,8 +110,6 @@ export class WayRadio {
             'radio-focused': this.hasFocus,
           }}
           htmlFor={this.inputId}
-          onKeyDown={this.handleKeyDown}
-          onMouseDown={this.handleMouseDown}
         >
           <span class="radio-control">
             <span class="radio-icon">
@@ -148,14 +126,12 @@ export class WayRadio {
               ref={el => (this.input = el)}
               id={this.inputId}
               type="radio"
-              name={this.name}
               value={this.value}
               checked={this.checked}
               disabled={this.disabled}
               role="radio"
               aria-checked={this.checked ? 'true' : 'false'}
               aria-labelledby={this.labelId}
-              onClick={this.handleClick}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
             />

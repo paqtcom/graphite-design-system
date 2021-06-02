@@ -20,11 +20,26 @@
     <section>
       <h2>way-radio & way-radio-group</h2>
 
-      <way-radio-group name="test" label="Select an option" no-fieldset>
-        <way-radio value="1" checked>Option 1</way-radio>
-        <way-radio value="2">Option 2</way-radio>
-        <way-radio value="3">Option 3</way-radio>
-      </way-radio-group>
+      <section>
+        <h3>With fieldset</h3>
+
+        <way-radio-group label="Select an option" value="3">
+          <way-radio value="1">Option 1</way-radio>
+          <way-radio value="2">Option 2</way-radio>
+          <way-radio value="3">Option 3</way-radio>
+        </way-radio-group>
+      </section>
+
+      <section>
+        <h3>No-fieldset & disabled option</h3>
+
+        <way-radio-group label="Select an option" value="2" no-fieldset>
+          <way-radio value="1">Option 1</way-radio>
+          <way-radio value="2">Option 2</way-radio>
+          <way-radio value="3">Option 3</way-radio>
+          <way-radio value="4" disabled>Disabled</way-radio>
+        </way-radio-group>
+      </section>
     </section>
 
     <section>

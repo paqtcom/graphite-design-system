@@ -2,6 +2,11 @@
 
 :host {
   display: inline-block;
+  box-sizing: border-box;
+}
+
+:host(.radio-disabled) {
+  pointer-events: none;
 }
 
 .radio {
@@ -82,7 +87,6 @@
 // Disabled
 .radio-disabled {
   opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .radio-label {
