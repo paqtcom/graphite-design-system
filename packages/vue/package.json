@@ -1,7 +1,7 @@
 {
   "name": "@w2wds/vue",
   "sideEffects": false,
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Vue specific wrapper for the components of the Way2Web Design System",
   "license": "MIT",
   "repository": {
