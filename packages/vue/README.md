@@ -23,14 +23,14 @@ Edit the `main.js` file of a Vue 3 project like this:
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
-import { defineCustomElements } from "@w2wds/core/loader";
+import { initializeWay2WebDesignSystem } from "@w2wds/vue";
 
 /* Core CSS required for Way2Web Design System components to work properly */
 import "@w2wds/core/dist/core/core.css";
 
 const app = createApp(App);
 
-defineCustomElements().then(() => {
+initializeWay2WebDesignSystem().then(() => {
   app.mount("#app");
 });
 ```
