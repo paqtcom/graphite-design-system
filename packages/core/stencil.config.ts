@@ -1,6 +1,6 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { vueOutputTarget } from "@stencil/vue-output-target";
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
@@ -19,13 +19,21 @@ export const config: Config = {
       proxiesFile: '../vue/src/proxies.ts',
       includeDefineCustomElements: false,
       includePolyfills: false,
+      componentModels: [
+        {
+          elements: ['way-select'],
+          targetAttr: 'value',
+          event: 'v-way-change',
+          externalEvent: 'wayChange',
+        },
+      ],
     }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
     },
     {
-      type: 'dist-hydrate-script'
+      type: 'dist-hydrate-script',
     },
     {
       type: 'docs-readme',

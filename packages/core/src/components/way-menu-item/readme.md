@@ -46,6 +46,23 @@ Type: `Promise<void>`
 | `"start"` | Content is placed to the left of the menu item's label (will be to the right when we support right-to-left direction) |
 
 
+## CSS Custom Properties
+
+| Name                         | Description                                                                                   |
+| ---------------------------- | --------------------------------------------------------------------------------------------- |
+| `--background-color`         | Background color of the menu item                                                             |
+| `--background-color-focused` | Background color of the menu item when focused                                                |
+| `--color`                    | Text color of the menu item                                                                   |
+| `--color-disabled`           | Text color of the menu item when disabled                                                     |
+| `--color-focused`            | Text color of the menu item when focused                                                      |
+| `--line-height`              | Line height of the menu item                                                                  |
+| `--padding-bottom`           | Bottom padding of the menu item                                                               |
+| `--padding-end`              | Right padding of the menu item (will be left padding when we support right-to-left direction) |
+| `--padding-start`            | Left padding of the menu item (will be right padding when we support right-to-left direction) |
+| `--padding-top`              | Top padding of the menu item                                                                  |
+| `--transition`               | Transition of the menu item                                                                   |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

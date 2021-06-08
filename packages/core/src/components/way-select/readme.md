@@ -18,6 +18,7 @@
 | `maxTagsVisible` | `max-tags-visible` | The maximum number of tags to show when `multiple` is true. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to -1 to remove the limit. | `number`                         | `3`        |
 | `multiple`       | `multiple`         | Set to true to enable multiselect.                                                                                                                                                             | `boolean`                        | `false`    |
 | `name`           | `name`             | The select's name.                                                                                                                                                                             | `string`                         | `''`       |
+| `pill`           | `pill`             | Set to true to draw a pill-style select with rounded edges.                                                                                                                                    | `boolean`                        | `false`    |
 | `placeholder`    | `placeholder`      | The select's placeholder text.                                                                                                                                                                 | `string`                         | `''`       |
 | `required`       | `required`         | The select's required attribute.                                                                                                                                                               | `boolean`                        | `false`    |
 | `size`           | `size`             | The select's size.                                                                                                                                                                             | `"large" \| "medium" \| "small"` | `'medium'` |
@@ -65,24 +66,34 @@ Type: `Promise<void>`
 | `"label"`     | The select's label. Alternatively, you can use the label prop. |
 
 
-## Shadow Parts
-
-| Part     | Description |
-| -------- | ----------- |
-| `"tags"` |             |
-
-
 ## CSS Custom Properties
 
-| Name           | Description                                                                           |
-| -------------- | ------------------------------------------------------------------------------------- |
-| `--focus-ring` | The focus ring style to use when the control receives focus, a `box-shadow` property. |
+| Name                       | Description                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
+| `--background-color`       | Background color of the select                                                               |
+| `--background-color-hover` | Background color of the select on hover                                                      |
+| `--border-color`           | Border color of the select                                                                   |
+| `--border-color-hover`     | Border color of the select on hover                                                          |
+| `--border-radius`          | Border radius of the select                                                                  |
+| `--caret-margin-end`       | Right margin of the caret (will be left margin when we support right-to-left direction)      |
+| `--clear-icon-margin-end`  | Right margin of the clear icon (will be left margin when we support right-to-left direction) |
+| `--color`                  | Text color of the select                                                                     |
+| `--font-size`              | Font size of the select                                                                      |
+| `--font-weight`            | Font weight of the select                                                                    |
+| `--label-margin-end`       | Right margin of the label (will be left margin when we support right-to-left direction)      |
+| `--label-margin-start`     | Left margin of the label (will be right margin when we support right-to-left direction)      |
+| `--min-height`             | Minimum height of the select                                                                 |
+| `--placeholder-color`      | Text color of the placeholder                                                                |
+| `--tags-margin-end`        | Right margin of the tags (will be left margin when we support right-to-left direction)       |
+| `--tags-padding-bottom`    | Bottom padding of the tags                                                                   |
+| `--tags-padding-top`       | Top padding of the tags                                                                      |
 
 
 ## Dependencies
 
 ### Depends on
 
+- [way-tag](../way-tag)
 - [way-dropdown](../way-dropdown)
 - [way-button](../way-button)
 - [way-menu](../way-menu)
@@ -90,9 +101,11 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
+  way-select --> way-tag
   way-select --> way-dropdown
   way-select --> way-button
   way-select --> way-menu
+  way-tag --> way-button
   style way-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

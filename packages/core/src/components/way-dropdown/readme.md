@@ -59,6 +59,17 @@ Type: `Promise<void>`
 | `"trigger"` | The dropdown's trigger, usually a `<way-button>` element. |
 
 
+## CSS Custom Properties
+
+| Name                       | Description                            |
+| -------------------------- | -------------------------------------- |
+| `--panel-background-color` | Background color of the dropdown panel |
+| `--panel-border-color`     | Border color of the button             |
+| `--panel-border-radius`    | Border radius of the dropdown panel    |
+| `--panel-box-shadow`       | Box shadow of the dropdown panel       |
+| `--transition`             | Transition of the dropdown             |
+
+
 ## Dependencies
 
 ### Used by

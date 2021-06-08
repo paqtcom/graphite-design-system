@@ -35,6 +35,14 @@ Type: `Promise<void>`
 |      | The menu's content, including menu items, and later on: menu dividers, and menu labels. |
 
 
+## CSS Custom Properties
+
+| Name               | Description                |
+| ------------------ | -------------------------- |
+| `--padding-bottom` | Bottom padding of the menu |
+| `--padding-top`    | Top padding of the menu    |
+
+
 ## Dependencies
 
 ### Used by
