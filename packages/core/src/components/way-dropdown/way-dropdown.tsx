@@ -32,25 +32,14 @@ export class WayDropdown {
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
    * inside of the viewport.
    */
-   @Prop() placement:
-   | 'top'
-   | 'top-start'
-   | 'top-end'
-   | 'bottom'
-   | 'bottom-start'
-   | 'bottom-end'
-   | 'right'
-   | 'right-start'
-   | 'right-end'
-   | 'left'
-   | 'left-start'
-   | 'left-end' = 'bottom-start';
+  @Prop() placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end' =
+    'bottom-start';
 
   /** Determines whether the dropdown should hide when a menu item is selected. */
   @Prop() closeOnSelect = true;
 
   /** The dropdown will close when the user interacts outside of this element (e.g. clicking). */
-  @Prop() containingElement: HTMLElement;
+  @Prop({ mutable: true }) containingElement: HTMLElement;
 
   /** The distance in pixels from which to offset the panel away from its trigger. */
   @Prop() distance = 2;
@@ -65,16 +54,16 @@ export class WayDropdown {
   @Prop() hoist = false;
 
   /** Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'wayShow' }) wayShow: EventEmitter;
+  @Event({ eventName: 'way-show' }) wayShow: EventEmitter;
 
   /** Emitted after the dropdown opens and all transitions are complete. */
-  @Event({ eventName: 'wayAfterShow' }) wayAfterShow: EventEmitter;
+  @Event({ eventName: 'way-after-show' }) wayAfterShow: EventEmitter;
 
   /** Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'wayHide' }) wayHide: EventEmitter;
+  @Event({ eventName: 'way-hide' }) wayHide: EventEmitter;
 
   /** Emitted after the dropdown closes and all transitions are complete. */
-  @Event({ eventName: 'wayAfterHide' }) wayAfterHide: EventEmitter;
+  @Event({ eventName: 'way-after-hide' }) wayAfterHide: EventEmitter;
 
   @Watch('open')
   handleOpenChange() {
@@ -91,7 +80,7 @@ export class WayDropdown {
       strategy: this.hoist ? 'fixed' : 'absolute',
       placement: this.placement,
       distance: this.distance,
-      skidding: this.skidding
+      skidding: this.skidding,
     });
   }
 
@@ -123,7 +112,7 @@ export class WayDropdown {
         if (!this.open) {
           this.panel.scrollTop = 0;
         }
-      }
+      },
     });
 
     // Show on init if open
@@ -145,14 +134,14 @@ export class WayDropdown {
       return;
     }
 
-    const slShow = this.wayShow.emit();
-    if (slShow.defaultPrevented) {
+    const wayShow = this.wayShow.emit();
+    if (wayShow.defaultPrevented) {
       this.open = false;
       return;
     }
 
-    this.panel.addEventListener('wayActivate', this.handleMenuItemActivate);
-    this.panel.addEventListener('waySelect', this.handlePanelSelect);
+    this.panel.addEventListener('way-activate', this.handleMenuItemActivate);
+    this.panel.addEventListener('way-select', this.handlePanelSelect);
     document.addEventListener('keydown', this.handleDocumentKeyDown);
     document.addEventListener('mousedown', this.handleDocumentMouseDown);
 
@@ -175,8 +164,8 @@ export class WayDropdown {
       return;
     }
 
-    this.panel.removeEventListener('wayActivate', this.handleMenuItemActivate);
-    this.panel.removeEventListener('waySelect', this.handlePanelSelect);
+    this.panel.removeEventListener('way-activate', this.handleMenuItemActivate);
+    this.panel.removeEventListener('way-select', this.handlePanelSelect);
     document.addEventListener('keydown', this.handleDocumentKeyDown);
     document.removeEventListener('mousedown', this.handleDocumentMouseDown);
 
@@ -227,10 +216,7 @@ export class WayDropdown {
       // If the dropdown is used within a shadow DOM, we need to obtain the activeElement within that shadowRoot,
       // otherwise `document.activeElement` will only return the name of the parent shadow DOM element.
       setTimeout(() => {
-        const activeElement =
-          this.containingElement.getRootNode() instanceof ShadowRoot
-            ? document.activeElement.shadowRoot?.activeElement
-            : document.activeElement;
+        const activeElement = this.containingElement.getRootNode() instanceof ShadowRoot ? document.activeElement.shadowRoot?.activeElement : document.activeElement;
 
         if (activeElement?.closest(this.containingElement.tagName.toLowerCase()) !== this.containingElement) {
           this.hide();
@@ -357,34 +343,21 @@ export class WayDropdown {
       <Host
         id={this.componentId}
         class={{
-          'dropdown-open': this.open
+          'dropdown-open': this.open,
         }}
       >
-        <span
-          class="dropdown-trigger"
-          ref={el => (this.trigger = el)}
-          onClick={this.handleTriggerClick}
-          onKeyDown={this.handleTriggerKeyDown}
-          onKeyUp={this.handleTriggerKeyUp}
-        >
+        <span class="dropdown-trigger" ref={el => (this.trigger = el)} onClick={this.handleTriggerClick} onKeyDown={this.handleTriggerKeyDown} onKeyUp={this.handleTriggerKeyUp}>
           <slot name="trigger" onSlotchange={this.handleTriggerSlotChange} />
         </span>
 
         {/* Position the panel with a wrapper since the popover makes use of `translate`. This let's us add transitions
         on the panel without interfering with the position. */}
         <div ref={el => (this.positioner = el)} class="dropdown-positioner">
-          <div
-            ref={el => (this.panel = el)}
-            class="dropdown-panel"
-            role="menu"
-            aria-hidden={this.open ? 'false' : 'true'}
-            aria-labelledby={this.componentId}
-          >
+          <div ref={el => (this.panel = el)} class="dropdown-panel" role="menu" aria-hidden={this.open ? 'false' : 'true'} aria-labelledby={this.componentId}>
             <slot></slot>
           </div>
         </div>
       </Host>
     );
   }
-
 }

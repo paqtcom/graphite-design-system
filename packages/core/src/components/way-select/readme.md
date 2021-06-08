@@ -27,11 +27,11 @@
 
 ## Events
 
-| Event       | Description                               | Type               |
-| ----------- | ----------------------------------------- | ------------------ |
-| `wayBlur`   | Emitted when the control loses focus.     | `CustomEvent<any>` |
-| `wayChange` | Emitted when the control's value changes. | `CustomEvent<any>` |
-| `wayFocus`  | Emitted when the control gains focus.     | `CustomEvent<any>` |
+| Event        | Description                               | Type               |
+| ------------ | ----------------------------------------- | ------------------ |
+| `way-blur`   | Emitted when the control loses focus.     | `CustomEvent<any>` |
+| `way-change` | Emitted when the control's value changes. | `CustomEvent<any>` |
+| `way-focus`  | Emitted when the control gains focus.     | `CustomEvent<any>` |
 
 
 ## Methods

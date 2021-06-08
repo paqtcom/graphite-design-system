@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event      | Description                                 | Type               |
-| ---------- | ------------------------------------------- | ------------------ |
-| `wayClear` | Emitted when the clear button is activated. | `CustomEvent<any>` |
+| Event       | Description                                 | Type               |
+| ----------- | ------------------------------------------- | ------------------ |
+| `way-clear` | Emitted when the clear button is activated. | `CustomEvent<any>` |
 
 
 ## CSS Custom Properties

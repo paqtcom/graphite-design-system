@@ -111,13 +111,13 @@ export class WaySelect {
   }
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'wayChange' }) wayChange: EventEmitter;
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'wayFocus' }) wayFocus: EventEmitter;
+  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'wayBlur' }) wayBlur: EventEmitter;
+  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
 
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
@@ -249,9 +249,7 @@ export class WaySelect {
     const item = event.detail.item;
 
     if (this.multiple) {
-      this.value = this.value.includes(item.value)
-        ? (this.value as []).filter(v => v !== item.value)
-        : [...this.value, item.value];
+      this.value = this.value.includes(item.value) ? (this.value as []).filter(v => v !== item.value) : [...this.value, item.value];
     } else {
       this.value = item.value;
     }
@@ -332,7 +330,7 @@ export class WaySelect {
             clearable
             onClick={this.handleTagInteraction}
             onKeyDown={this.handleTagInteraction}
-            onWayClear={event => {
+            onWay-clear={event => {
               event.stopPropagation();
               if (!this.disabled) {
                 item.checked = false;
@@ -352,7 +350,7 @@ export class WaySelect {
         this.displayTags.push(
           <way-tag type="info" size={this.size} pill={this.pill}>
             +{total - this.maxTagsVisible}
-          </way-tag>
+          </way-tag>,
         );
       }
     } else {
@@ -397,7 +395,7 @@ export class WaySelect {
           closeOnSelect={!this.multiple}
           containingElement={this.el}
           class={{
-            select: true,
+            'select': true,
             'select-open': this.isOpen,
             'select-empty': this.value?.length === 0,
             'select-focused': this.hasFocus,
@@ -408,10 +406,10 @@ export class WaySelect {
             'select-placeholder-visible': this.displayLabel === '',
             [`select-${this.size}`]: true,
             'select-pill': this.pill,
-            'select-invalid': this.invalid
+            'select-invalid': this.invalid,
           }}
-          onWayShow={this.handleMenuShow}
-          onWayHide={this.handleMenuHide}
+          onWay-show={this.handleMenuShow}
+          onWay-hide={this.handleMenuHide}
         >
           <div
             slot="trigger"
@@ -428,47 +426,33 @@ export class WaySelect {
             onFocus={this.handleFocus}
             onKeyDown={this.handleKeyDown}
           >
-            <div class="select-label">
-              {this.displayTags.length ? (
-                <span class="select-tags">
-                  {this.displayTags}
-                </span>
-              ) : (
-                this.displayLabel || this.placeholder
-              )}
-            </div>
+            <div class="select-label">{this.displayTags.length ? <span class="select-tags">{this.displayTags}</span> : this.displayLabel || this.placeholder}</div>
 
             {this.clearable && hasSelection && (
-              <way-button
-                variant="plain"
-                size="small"
-                class="select-clear"
-                onClick={this.handleClearClick}
-                tabindex="-1"
-              >
-                <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Close Circle</title><path d='M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M320 320L192 192M192 320l128-128'/></svg>
+              <way-button variant="plain" size="small" class="select-clear" onClick={this.handleClearClick} tabindex="-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                  <title>Close Circle</title>
+                  <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128" />
+                </svg>
               </way-button>
             )}
 
             <span class="caret">
-              <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Chevron Down</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 184l144 144 144-144'/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <title>Chevron Down</title>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+              </svg>
             </span>
 
             {/*
               The hidden input tricks the browser's built-in validation so it works as expected. We use an input instead
               of a select because, otherwise, iOS will show a list of options during validation.
             */}
-            <input
-              ref={el => (this.input = el)}
-              class="select-hidden-select"
-              aria-hidden="true"
-              required={this.required}
-              value={hasSelection ? '1' : ''}
-              tabIndex={-1}
-            />
+            <input ref={el => (this.input = el)} class="select-hidden-select" aria-hidden="true" required={this.required} value={hasSelection ? '1' : ''} tabIndex={-1} />
           </div>
 
-          <way-menu ref={el => (this.menu = el)} class="select-menu" onWaySelect={this.handleMenuSelect}>
+          <way-menu ref={el => (this.menu = el)} class="select-menu" onWay-select={this.handleMenuSelect}>
             <slot onSlotchange={this.handleSlotChange} />
           </way-menu>
         </way-dropdown>

@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Event, EventEmitter, Method } from '@stencil/core';
-import { getTextContent } from '../../utils/slot'
+import { getTextContent } from '../../utils/slot';
 
 /**
  * @slot - The menu's content, including menu items, and later on: menu dividers, and menu labels.
@@ -16,7 +16,7 @@ export class WayMenu {
   @Element() el!: HTMLWayMenuElement;
 
   /** Emitted when a menu item is selected. */
-  @Event({ eventName: 'waySelect' }) waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
+  @Event({ eventName: 'way-select' }) waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
@@ -29,27 +29,25 @@ export class WayMenu {
    * internal query is cleared automatically. This method is intended to be used with the keydown event. Useful for
    * enabling type-to-select when the menu doesn't have focus.
    */
-   @Method()
-   async typeToSelect(key: string) {
-     clearTimeout(this.typeToSelectTimeout);
-     this.typeToSelectTimeout = setTimeout(() => (this.typeToSelectString = ''), 750);
-     this.typeToSelectString += key.toLowerCase();
-     const items = this.getItems();
-     for (const item of items) {
-       const slot = item.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
-       const label = getTextContent(slot).toLowerCase().trim();
-       if (label.substring(0, this.typeToSelectString.length) === this.typeToSelectString) {
-         item.setFocus();
-         break;
-       }
-     }
-   }
+  @Method()
+  async typeToSelect(key: string) {
+    clearTimeout(this.typeToSelectTimeout);
+    this.typeToSelectTimeout = setTimeout(() => (this.typeToSelectString = ''), 750);
+    this.typeToSelectString += key.toLowerCase();
+    const items = this.getItems();
+    for (const item of items) {
+      const slot = item.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
+      const label = getTextContent(slot).toLowerCase().trim();
+      if (label.substring(0, this.typeToSelectString.length) === this.typeToSelectString) {
+        item.setFocus();
+        break;
+      }
+    }
+  }
 
   getItems() {
     const slot = this.el.querySelector('slot');
-    return [...slot.assignedElements({ flatten: true })].filter(
-      (el: any) => el.tagName.toLowerCase() === 'way-menu-item' && !el.disabled
-    ) as [HTMLWayMenuItemElement];
+    return [...slot.assignedElements({ flatten: true })].filter((el: any) => el.tagName.toLowerCase() === 'way-menu-item' && !el.disabled) as [HTMLWayMenuItemElement];
   }
 
   getActiveItem() {
@@ -118,16 +116,9 @@ export class WayMenu {
 
   render() {
     return (
-      <Host
-        class="menu"
-        role="menu"
-        onClick={this.handleClick}
-        onKeyDown={this.handleKeyDown}
-        tabIndex={0}
-      >
+      <Host class="menu" role="menu" onClick={this.handleClick} onKeyDown={this.handleKeyDown} tabIndex={0}>
         <slot></slot>
       </Host>
     );
   }
-
 }
