@@ -80,7 +80,7 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
 {
   "modelProp": "value",
   "modelUpdateEvent": "v-way-change",
-  "externalModelUpdateEvent": "wayChange"
+  "externalModelUpdateEvent": "way-change"
 });
 
 
