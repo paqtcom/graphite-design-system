@@ -44,8 +44,14 @@ import { WayButton } from "@w2wds/vue";
 Use it in your template as any Vue component:
 
 ```jsx
+// In kebab-case
+<way-button href="https://www.way2web.nl">Way2Web</way-button>
+
+// Or PascalCase
 <WayButton href="https://www.way2web.nl">Way2Web</WayButton>
 ```
+
+We recommend using kebab-case for our components and KebabCase for your own Vue components to make them visible distinct.
 
 ### CodeSandbox example
 

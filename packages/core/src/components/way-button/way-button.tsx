@@ -19,9 +19,9 @@ export class WayButton {
 
   /**
    * The different variants.
-   * The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
    */
-  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'text' = 'default';
+  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain' = 'default';
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -32,6 +32,16 @@ export class WayButton {
    * The button's size.
    */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
+   * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
+   */
+  @Prop() caret = false;
+
+  /**
+   * Set to true to draw a pill-style button with rounded edges.
+   */
+  @Prop({ reflect: true }) pill = false;
 
   /**
    * Set to `"block"` for a full-width button or to `"full"` for a full-width button
@@ -126,7 +136,9 @@ export class WayButton {
           [`button-${variant}`]: true,
           [`button-${size}`]: true,
           [`button-${expand}`]: expand !== undefined,
+          'button-caret': this.caret,
           'button-circle': this.circle,
+          'button-pill': this.pill,
           'button-disabled': disabled,
         }}
       >
@@ -143,6 +155,11 @@ export class WayButton {
             <slot name="start"></slot>
             <slot></slot>
             <slot name="end"></slot>
+            {this.caret && (
+              <span class="caret">
+                <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Chevron Down</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 184l144 144 144-144'/></svg>
+              </span>
+            )}
           </span>
         </TagType>
       </Host>

@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description                                                                                                                                                                            | Type                                                          | Default     |
 | ---------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------- |
+| `caret`    | `caret`    | Set to true to draw the button with a caret for use with dropdowns, popovers, etc.                                                                                                     | `boolean`                                                     | `false`     |
 | `circle`   | `circle`   | Set to true to draw a circle button.                                                                                                                                                   | `boolean`                                                     | `false`     |
 | `disabled` | `disabled` | If `true`, the user cannot interact with the button.                                                                                                                                   | `boolean`                                                     | `false`     |
 | `expand`   | `expand`   | Set to `"block"` for a full-width button or to `"full"` for a full-width button without left and right borders.                                                                        | `"block" \| "full"`                                           | `undefined` |
@@ -17,7 +18,7 @@
 | `size`     | `size`     | The button's size.                                                                                                                                                                     | `"large" \| "medium" \| "small"`                              | `'medium'`  |
 | `target`   | `target`   | Specifies where to display the linked URL. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.                                                                             | `string`                                                      | `undefined` |
 | `type`     | `type`     | The type of the button.                                                                                                                                                                | `"button" \| "reset" \| "submit"`                             | `'button'`  |
-| `variant`  | `variant`  | The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, "danger", and `"text"`.                                                                              | `"danger" \| "default" \| "primary" \| "secondary" \| "text"` | `'default'` |
+| `variant`  | `variant`  | The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"text"`.                                                                            | `"danger" \| "default" \| "primary" \| "secondary" \| "text"` | `'default'` |
 
 
 ## Events
@@ -58,6 +59,19 @@
 | `--padding-top`        | Top padding of the button                                                                  |
 | `--transition`         | Transition of the button                                                                   |
 
+
+## Dependencies
+
+### Used by
+
+ - [way-select](../way-select)
+
+### Graph
+```mermaid
+graph TD;
+  way-select --> way-button
+  style way-button fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
