@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event       | Description                         | Type                                          |
-| ----------- | ----------------------------------- | --------------------------------------------- |
-| `wayChange` | Emitted when the value has changed. | `CustomEvent<WayRadioGroupChangeEventDetail>` |
+| Event        | Description                         | Type                                          |
+| ------------ | ----------------------------------- | --------------------------------------------- |
+| `way-change` | Emitted when the value has changed. | `CustomEvent<WayRadioGroupChangeEventDetail>` |
 
 
 ----------------------------------------------

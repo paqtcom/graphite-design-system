@@ -21,7 +21,7 @@ export const config: Config = {
       includePolyfills: false,
       componentModels: [
         {
-          elements: ['way-select'],
+          elements: ['way-select', 'way-radio-group'],
           targetAttr: 'value',
           event: 'v-way-change',
           externalEvent: 'way-change',

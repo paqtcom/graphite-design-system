@@ -45,7 +45,7 @@ export class WayRadioGroup {
   /**
    * Emitted when the value has changed.
    */
-  @Event() wayChange!: EventEmitter<WayRadioGroupChangeEventDetail>;
+  @Event({ eventName: 'way-change' }) wayChange!: EventEmitter<WayRadioGroupChangeEventDetail>;
 
   componentDidLoad() {
     this.setRadioTabindex(this.value);

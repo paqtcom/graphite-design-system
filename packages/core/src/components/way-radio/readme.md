@@ -16,10 +16,10 @@
 
 ## Events
 
-| Event      | Description                           | Type               |
-| ---------- | ------------------------------------- | ------------------ |
-| `wayBlur`  | Emitted when the control loses focus. | `CustomEvent<any>` |
-| `wayFocus` | Emitted when the control gains focus. | `CustomEvent<any>` |
+| Event       | Description                           | Type               |
+| ----------- | ------------------------------------- | ------------------ |
+| `way-blur`  | Emitted when the control loses focus. | `CustomEvent<any>` |
+| `way-focus` | Emitted when the control gains focus. | `CustomEvent<any>` |
 
 
 ## Methods

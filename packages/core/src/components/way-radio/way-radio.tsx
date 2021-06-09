@@ -34,10 +34,10 @@ export class WayRadio {
   @State() buttonTabindex = -1;
 
   /** Emitted when the control loses focus. */
-  @Event() wayBlur: EventEmitter;
+  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
 
   /** Emitted when the control gains focus. */
-  @Event() wayFocus: EventEmitter;
+  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
 
   /** @internal */
   @Method()
@@ -55,14 +55,14 @@ export class WayRadio {
     const radioGroup = (this.radioGroup = this.el.closest('way-radio-group'));
     if (radioGroup) {
       this.updateState();
-      addEventListener(radioGroup, 'wayChange', this.updateState);
+      addEventListener(radioGroup, 'way-change', this.updateState);
     }
   }
 
   disconnectedCallback() {
     const radioGroup = this.radioGroup;
     if (radioGroup) {
-      removeEventListener(radioGroup, 'wayChange', this.updateState);
+      removeEventListener(radioGroup, 'way-change', this.updateState);
       this.radioGroup = null;
     }
   }

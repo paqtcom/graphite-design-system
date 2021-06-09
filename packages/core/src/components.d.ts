@@ -464,11 +464,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWayBlur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWayFocus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
         /**
           * The radio's value attribute.
          */
@@ -494,7 +494,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onWayChange"?: (event: CustomEvent<WayRadioGroupChangeEventDetail>) => void;
+        "onWay-change"?: (event: CustomEvent<WayRadioGroupChangeEventDetail>) => void;
         /**
           * the value of the radio group.
          */
