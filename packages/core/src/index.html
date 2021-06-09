@@ -231,13 +231,7 @@
       <h2>way-menu</h2>
       <p>Including way-menu-item & way-menu-divider & way-menu-label</p>
 
-      <way-menu
-        style="
-          max-width: 200px;
-          border: solid 1px var(--way-color-light);
-          border-radius: var(--way-border-radius-medium);
-        "
-      >
+      <way-menu style="max-width: 200px; border: solid 1px var(--way-color-light); border-radius: var(--way-border-radius-medium)">
         <way-menu-label>Timetravel</way-menu-label>
         <way-menu-item value="undo" checked>Undo</way-menu-item>
         <way-menu-item value="redo">Redo</way-menu-item>
@@ -376,17 +370,17 @@
 
         const focusBlurExampleElement = document.getElementById('focusBlurExample');
 
-        focusBlurExampleElement.addEventListener('wayFocus', () => {
-          console.log('wayFocus');
+        focusBlurExampleElement.addEventListener('way-focus', () => {
+          console.log('way-focus');
         });
 
-        focusBlurExampleElement.addEventListener('wayBlur', () => {
-          console.log('wayBlur');
+        focusBlurExampleElement.addEventListener('way-blur', () => {
+          console.log('way-blur');
         });
 
         const tagsClearable = document.querySelector('.tags-clearable');
 
-        tagsClearable.addEventListener('wayClear', event => {
+        tagsClearable.addEventListener('way-clear', event => {
           const tag = event.target;
           tag.style.opacity = '0';
           setTimeout(() => (tag.style.opacity = '1'), 2000);

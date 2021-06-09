@@ -81,18 +81,7 @@ export namespace Components {
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
          */
-        "placement": | 'top'
-   | 'top-start'
-   | 'top-end'
-   | 'bottom'
-   | 'bottom-start'
-   | 'bottom-end'
-   | 'right'
-   | 'right-start'
-   | 'right-end'
-   | 'left'
-   | 'left-start'
-   | 'left-end';
+        "placement": 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end';
         /**
           * Shows the dropdown panel
          */
@@ -363,11 +352,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style button with rounded edges.
          */
@@ -413,19 +402,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onWayAfterHide"?: (event: CustomEvent<any>) => void;
+        "onWay-after-hide"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onWayAfterShow"?: (event: CustomEvent<any>) => void;
+        "onWay-after-show"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onWayHide"?: (event: CustomEvent<any>) => void;
+        "onWay-hide"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onWayShow"?: (event: CustomEvent<any>) => void;
+        "onWay-show"?: (event: CustomEvent<any>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -433,18 +422,7 @@ declare namespace LocalJSX {
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
          */
-        "placement"?: | 'top'
-   | 'top-start'
-   | 'top-end'
-   | 'bottom'
-   | 'bottom-start'
-   | 'bottom-end'
-   | 'right'
-   | 'right-start'
-   | 'right-end'
-   | 'left'
-   | 'left-start'
-   | 'left-end';
+        "placement"?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end';
         /**
           * The distance in pixels from which to offset the panel along its trigger.
          */
@@ -454,7 +432,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a menu item is selected.
          */
-        "onWaySelect"?: (event: CustomEvent<{ item: HTMLWayMenuItemElement }>) => void;
+        "onWay-select"?: (event: CustomEvent<{ item: HTMLWayMenuItemElement }>) => void;
     }
     interface WayMenuDivider {
     }
@@ -562,15 +540,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWayBlur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWayChange"?: (event: CustomEvent<any>) => void;
+        "onWay-change"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWayFocus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
         /**
           * Set to true to draw a pill-style select with rounded edges.
          */
@@ -600,7 +578,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onWayClear"?: (event: CustomEvent<any>) => void;
+        "onWay-clear"?: (event: CustomEvent<any>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */

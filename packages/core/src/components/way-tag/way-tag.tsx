@@ -19,7 +19,7 @@ export class WayTag {
   @Prop({ reflect: true }) clearable = false;
 
   /** Emitted when the clear button is activated. */
-  @Event({ eventName: 'wayClear' }) wayClear: EventEmitter;
+  @Event({ eventName: 'way-clear' }) wayClear: EventEmitter;
 
   connectedCallback() {
     this.handleClearClick = this.handleClearClick.bind(this);
@@ -36,21 +36,18 @@ export class WayTag {
           [`tag-${this.type}`]: true,
           [`tag-${this.size}`]: true,
           'tag-pill': this.pill,
-          'tag-clearable': this.clearable
+          'tag-clearable': this.clearable,
         }}
       >
         <span class="tag">
           <slot></slot>
 
           {this.clearable && (
-            <way-button
-              variant="plain"
-              size="small"
-              class="tag-clear"
-              onClick={this.handleClearClick}
-              tabindex="-1"
-            >
-              <svg slot="icon-only" xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>Close</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/></svg>
+            <way-button variant="plain" size="small" class="tag-clear" onClick={this.handleClearClick} tabindex="-1">
+              <svg slot="icon-only" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <title>Close</title>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368" />
+              </svg>
             </way-button>
           )}
         </span>
