@@ -16,6 +16,10 @@
   --border-color: var(--way-color-light);
 
   display: block;
+  box-sizing: border-box;
+}
+
+.menu-divider {
   border-top: solid 1px var(--border-color);
 
   margin-top: var(--margin-top);

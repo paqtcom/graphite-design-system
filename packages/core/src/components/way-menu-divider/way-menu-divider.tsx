@@ -6,11 +6,11 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class WayMenuDivider {
-
   render() {
     return (
-      <Host />
+      <Host>
+        <div class="menu-divider" role="separator" aria-hidden="true" />
+      </Host>
     );
   }
-
 }
