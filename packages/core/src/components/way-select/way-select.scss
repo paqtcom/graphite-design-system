@@ -60,6 +60,14 @@
   --tags-margin-end: var(--way-spacing-xx-small);
 
   display: block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 // Size modifiers

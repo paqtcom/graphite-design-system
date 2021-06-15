@@ -46,4 +46,12 @@
   padding-right: var(--padding-end);
   padding-bottom: var(--padding-bottom);
   user-select: none;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }

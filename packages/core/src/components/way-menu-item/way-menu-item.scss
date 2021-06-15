@@ -56,6 +56,14 @@
   user-select: none;
   white-space: nowrap;
   cursor: pointer;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 :host(.menu-item-focused:not(.menu-item-disabled)) {

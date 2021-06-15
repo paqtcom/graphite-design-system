@@ -16,7 +16,14 @@
   --border-color: var(--way-color-light);
 
   display: block;
+
   box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 .menu-divider {

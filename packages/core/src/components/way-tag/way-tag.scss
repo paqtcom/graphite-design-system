@@ -47,6 +47,14 @@
   --clear-margin-right: calc(-1 * var(--way-spacing-xxx-small));
 
   display: inline-block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 // Types
