@@ -108,11 +108,11 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Removes focus from the button.
+          * Removes focus from the menu item.
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Sets focus on the button.
+          * Sets focus on the menu item.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**

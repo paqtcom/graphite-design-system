@@ -8,7 +8,7 @@ import { Component, Method, Prop, State, h, Host, Element } from '@stencil/core'
 @Component({
   tag: 'way-menu-item',
   styleUrl: 'way-menu-item.scss',
-  shadow: true
+  shadow: true,
 })
 export class WayMenuItem {
   @Element() el!: HTMLElement;
@@ -31,13 +31,13 @@ export class WayMenuItem {
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  /** Sets focus on the button. */
+  /** Sets focus on the menu item. */
   @Method()
   async setFocus(options?: FocusOptions) {
     this.el.focus(options);
   }
 
-  /** Removes focus from the button. */
+  /** Removes focus from the menu item. */
   @Method()
   async removeFocus() {
     this.el.blur();
@@ -65,7 +65,7 @@ export class WayMenuItem {
         class={{
           'menu-item-checked': this.checked,
           'menu-item-disabled': this.disabled,
-          'menu-item-focused': this.hasFocus
+          'menu-item-focused': this.hasFocus,
         }}
         role="menuitem"
         aria-disabled={this.disabled ? 'true' : 'false'}
@@ -77,7 +77,10 @@ export class WayMenuItem {
         onMouseLeave={this.handleMouseLeave}
       >
         <span class="checkmark">
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' aria-hidden="true"><title>Checkmark</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M416 128L192 384l-96-96'/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+            <title>Checkmark</title>
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M416 128L192 384l-96-96" />
+          </svg>
         </span>
 
         <span class="start">

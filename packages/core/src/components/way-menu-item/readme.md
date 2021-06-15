@@ -18,7 +18,7 @@
 
 ### `removeFocus() => Promise<void>`
 
-Removes focus from the button.
+Removes focus from the menu item.
 
 #### Returns
 
@@ -28,7 +28,7 @@ Type: `Promise<void>`
 
 ### `setFocus(options?: FocusOptions) => Promise<void>`
 
-Sets focus on the button.
+Sets focus on the menu item.
 
 #### Returns
 

@@ -2,7 +2,7 @@ import { Component, Host, h, Element, Event, EventEmitter, Method } from '@stenc
 import { getTextContent } from '../../utils/slot';
 
 /**
- * @slot - The menu's content, including menu items, and later on: menu dividers, and menu labels.
+ * @slot - The menu's content, including menu items, menu dividers, and menu labels.
  */
 @Component({
   tag: 'way-menu',
