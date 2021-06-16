@@ -195,6 +195,23 @@ way-button {
 }
 ```
 
+## Flash Of Unstyled Content (FOUC)
+
+The default dist works with lazy loading the components when the browser needs them, because of this the content in slots can temporarily be unstyled until the component is loaded (Flash Of Unstyled Content).
+
+To get around this you can add css like this (depending on the components you use) in a static css file/block in the head:
+
+```css
+way-button:not(.hydrated),
+way-dropdown:not(.hydrated),
+way-menu:not(.hydrated),
+way-menu-label:not(.hydrated),
+way-select:not(.hydrated),
+way-tag:not(.hydrated) {
+  visibility: hidden;
+}
+```
+
 ## Development
 
 Follow the [instructions in the root of this repo](../../README.md).

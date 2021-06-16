@@ -167,12 +167,3 @@
 
   --way-z-index-dropdown: 900;
 }
-
-way-button:not(.hydrated),
-way-dropdown:not(.hydrated),
-way-menu:not(.hydrated),
-way-menu-label:not(.hydrated),
-way-select:not(.hydrated),
-way-tag:not(.hydrated) {
-  visibility: hidden;
-}
