@@ -1,7 +1,7 @@
 {
   "name": "@w2wds/vue",
   "sideEffects": false,
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Vue specific wrapper for the components of the Way2Web Design System",
   "license": "MIT",
   "repository": {
@@ -32,7 +32,7 @@
     "vue": "^3.1.1"
   },
   "dependencies": {
-    "@w2wds/core": "^0.5.0"
+    "@w2wds/core": "^0.5.1"
   },
   "jest": {
     "preset": "ts-jest",
