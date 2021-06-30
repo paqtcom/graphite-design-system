@@ -1,6 +1,47 @@
 @import '../../themes/w2wds.globals';
 
 :host {
+  /**
+   * @prop --label-color: Color of the label
+   *
+   * @prop --control-size: Size of the control
+   *
+   * @prop --control-border-color: Border color of the control
+   * @prop --control-background-color: Background color of the control
+   *
+   * @prop --control-border-color-hover: Border color of the control on hover
+   * @prop --control-background-color-hover: Background color of the control on hover
+   *
+   * @prop --control-color-checked: Color of the control when checked (the small circle)
+   * @prop --control-border-color-checked: Border color of the control when checked
+   * @prop --control-background-color-checked: Background color of the control when checked
+   *
+   * @prop --control-border-color-checked-hover: Border color of the control when checked on hover
+   * @prop --control-background-color-checked-hover: Background color of the control when checked on hover
+   *
+   * @prop --control-border-color-checked-hover: Border color of the control when checked on focus
+   * @prop --control-background-color-checked-hover: Background color of the control when checked on focus
+   */
+  --label-color: var(--way-color-dark-tint);
+
+  --control-size: var(--way-toggle-size);
+
+  --control-border-color: var(--way-color-light);
+  --control-background-color: var(--way-color-white);
+
+  --control-border-color-hover: var(--way-color-medium);
+  --control-background-color-hover: var(--way-color-white);
+
+  --control-color-checked: var(--way-color-white);
+  --control-border-color-checked: var(--way-color-primary);
+  --control-background-color-checked: var(--way-color-primary);
+
+  --control-border-color-checked-hover: var(--way-color-primary-tint);
+  --control-background-color-checked-hover: var(--way-color-primary-tint);
+
+  --control-border-color-checked-focus: var(--way-color-primary-tint);
+  --control-background-color-checked-focus: var(--way-color-primary-tint);
+
   display: inline-block;
   box-sizing: border-box;
 }
@@ -13,17 +54,17 @@
   display: inline-flex;
   align-items: center;
   font-family: var(--way-font-family);
-  font-size: var(--way-font-size-medium);
+  font-size: var(--way-form-element-font-size-medium);
   font-weight: var(--way-font-weight-normal);
-  color: var(--way-color-dark-tint);
+  color: var(--label-color);
   vertical-align: middle;
   cursor: pointer;
 }
 
 .radio-icon {
   display: inline-flex;
-  width: var(--way-toggle-size);
-  height: var(--way-toggle-size);
+  width: var(--control-size);
+  height: var(--control-size);
 
   svg {
     width: 100%;
@@ -36,11 +77,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--way-toggle-size);
-  height: var(--way-toggle-size);
-  border: solid 1px var(--way-color-light);
+  width: var(--control-size);
+  height: var(--control-size);
+  border: solid 1px var(--control-border-color);
   border-radius: 50%;
-  background-color: var(--way-color-white);
+  background-color: var(--control-background-color);
   color: transparent;
   transition: 150ms border-color, 150ms background-color, 150ms color, 150ms box-shadow;
 
@@ -55,8 +96,8 @@
 
 // Hover
 .radio:not(.radio-checked):not(.radio-disabled) .radio-control:hover {
-  border-color: var(--way-color-medium);
-  background-color: var(--way-color-white);
+  border-color: var(--control-border-color-hover);
+  background-color: var(--control-background-color-hover);
 }
 
 // Focus
@@ -66,21 +107,21 @@
 
 // Checked
 .radio-checked .radio-control {
-  color: var(--way-color-white);
-  border-color: var(--way-color-primary);
-  background-color: var(--way-color-primary);
+  color: var(--control-color-checked);
+  border-color: var(--control-border-color-checked);
+  background-color: var(--control-background-color-checked);
 }
 
 // Checked + hover
 .radio.radio-checked:not(.radio-disabled) .radio-control:hover {
-  border-color: var(--way-color-primary-tint);
-  background-color: var(--way-color-primary-tint);
+  border-color: var(--control-border-color-checked-hover);
+  background-color: var(--control-background-color-checked-hover);
 }
 
 // Checked + focus
 .radio.radio-checked:not(.radio-disabled).radio-focused .radio-control {
-  border-color: var(--way-color-primary-tint);
-  background-color: var(--way-color-primary-tint);
+  border-color: var(--control-border-color-checked-focus);
+  background-color: var(--control-background-color-checked-focus);
   outline: none;
 }
 
@@ -90,7 +131,7 @@
 }
 
 .radio-label {
-  line-height: var(--way-toggle-size);
+  line-height: var(--control-size);
   margin-left: 0.5em;
   user-select: none;
 }
