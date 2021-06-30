@@ -30,7 +30,7 @@
   "devDependencies": {
     "@stencil/react-output-target": "0.0.9",
     "@stencil/sass": "^1.4.1",
-    "@stencil/vue-output-target": "^0.4.3",
+    "@stencil/vue-output-target": "^0.5.0",
     "@types/jest": "^26.0.23",
     "@types/puppeteer": "2.0.1",
     "@types/resize-observer-browser": "^0.1.5",
