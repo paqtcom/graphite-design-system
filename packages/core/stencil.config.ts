@@ -33,6 +33,12 @@ export const config: Config = {
       esmLoaderPath: '../loader',
     },
     {
+      type: 'dist-custom-elements-bundle',
+    },
+    {
+      type: 'dist-custom-elements',
+    },
+    {
       type: 'dist-hydrate-script',
     },
     {
@@ -41,6 +47,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null, // disable service workers
+      baseUrl: 'https://example.com/',
     },
   ],
 };

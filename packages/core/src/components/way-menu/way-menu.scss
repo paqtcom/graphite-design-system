@@ -18,6 +18,14 @@
   padding-left: 0;
   padding-right: 0;
   padding-bottom: var(--padding-bottom);
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 :host:focus {

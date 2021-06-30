@@ -26,6 +26,14 @@
   display: inline-block;
   box-sizing: border-box;
   position: relative;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 .dropdown-trigger {

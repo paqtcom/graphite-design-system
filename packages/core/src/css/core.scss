@@ -128,10 +128,15 @@
   --way-font-size-xxxx-large: 4.5rem; // 72px
 
   // Font weights
+  --way-font-weight-thin: 100;
+  --way-font-weight-extra-light: 200;
   --way-font-weight-light: 300;
   --way-font-weight-normal: 400;
-  --way-font-weight-semibold: 500;
+  --way-font-weight-medium: 500;
+  --way-font-weight-semi-bold: 600;
   --way-font-weight-bold: 700;
+  --way-font-weight-extra-bold: 800;
+  --way-font-weight-black: 900;
 
   // Form tokens
   // -------------------------------------------------

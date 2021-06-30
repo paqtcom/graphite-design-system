@@ -5,10 +5,10 @@
 
 :host {
   /**
-   * @prop --font-style: Font style of the menu item
-   * @prop --font-weight: Font weight of the menu item
+   * @prop --font-style: Font style of the menu item label
+   * @prop --font-weight: Font weight of the menu item label
    *
-   * @prop --line-height: Line height of the menu item
+   * @prop --line-height: Line height of the menu item label
    *
    * @prop --background-color: Background color of the menu item label
    *
@@ -48,4 +48,12 @@
   padding-bottom: var(--padding-bottom);
   user-select: none;
   text-align: left;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }

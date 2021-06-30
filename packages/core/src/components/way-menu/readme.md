@@ -30,9 +30,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot | Description                                                                             |
-| ---- | --------------------------------------------------------------------------------------- |
-|      | The menu's content, including menu items, and later on: menu dividers, and menu labels. |
+| Slot | Description                                                               |
+| ---- | ------------------------------------------------------------------------- |
+|      | The menu's content, including menu items, menu dividers, and menu labels. |
 
 
 ## CSS Custom Properties

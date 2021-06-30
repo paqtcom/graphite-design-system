@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Method, Build } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { getTextContent, hasSlot } from '../../utils/slot';
 import { renderHiddenInput } from '../../utils/utils';
@@ -139,7 +139,10 @@ export class WaySelect {
   }
 
   componentDidLoad() {
-    this.resizeObserver = new ResizeObserver(() => this.resizeMenu());
+    if (Build.isBrowser) {
+      this.resizeObserver = new ResizeObserver(() => this.resizeMenu());
+    }
+
     this.reportDuplicateItemValues();
 
     // We need to do an initial sync after the component has rendered, so this will suppress the re-render warning
