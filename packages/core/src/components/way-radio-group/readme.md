@@ -23,6 +23,22 @@
 | `way-change` | Emitted when the value has changed. | `CustomEvent<WayRadioGroupChangeEventDetail>` |
 
 
+## CSS Custom Properties
+
+| Name                      | Description                                                                                  |
+| ------------------------- | -------------------------------------------------------------------------------------------- |
+| `--border-color`          | Border color of the fieldset                                                                 |
+| `--border-radius`         | Border radius of the fieldset                                                                |
+| `--label-color`           | Color of the label                                                                           |
+| `--label-padding-end`     | Right padding of the label (will be left padding when we support right-to-left direction)    |
+| `--label-padding-start`   | Left padding of the label (will be right padding when we support right-to-left direction)    |
+| `--margin-between-radios` | Margin between the way-radio children                                                        |
+| `--padding-bottom`        | Bottom padding of the fieldset                                                               |
+| `--padding-end`           | Right padding of the fieldset (will be left padding when we support right-to-left direction) |
+| `--padding-start`         | Left padding of the fieldset (will be right padding when we support right-to-left direction) |
+| `--padding-top`           | Top padding of the fieldset                                                                  |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
