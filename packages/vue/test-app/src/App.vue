@@ -14,7 +14,13 @@
   </section>
 
   <section>
-    <way-select placeholder="Select multiple" v-model="selectedValues" multiple pill clearable>
+    <way-select
+      placeholder="Select multiple"
+      v-model="selectedValues"
+      multiple
+      pill
+      clearable
+    >
       <way-menu-label>Group 1</way-menu-label>
       <way-menu-item value="option-1">Option 1</way-menu-item>
       <way-menu-item value="option-2">Option 2</way-menu-item>
@@ -51,16 +57,16 @@ export default defineComponent({
     WayMenuDivider,
   },
   setup() {
-    const variant = ref<'primary' | 'default'>('primary');
-    const selectedValue = ref('option-3');
+    const variant = ref<"primary" | "default">("primary");
+    const selectedValue = ref("option-3");
     const selectedValues = ref(["option-1", "option-2", "option-6"]);
 
     const doSomething = () => {
       variant.value = variant.value === "primary" ? "default" : "primary";
-    }
+    };
 
-    return { variant, selectedValue, selectedValues, doSomething }
-  }
+    return { variant, selectedValue, selectedValues, doSomething };
+  },
 });
 </script>
 

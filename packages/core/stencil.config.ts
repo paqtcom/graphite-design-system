@@ -7,6 +7,7 @@ export const config: Config = {
   namespace: 'core',
   plugins: [sass()],
   globalStyle: 'src/css/core.scss',
+  globalScript: 'src/global/w2wds-global.ts',
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@w2wds/core',
@@ -16,15 +17,16 @@ export const config: Config = {
     }),
     vueOutputTarget({
       componentCorePackage: '@w2wds/core',
-      proxiesFile: '../vue/src/proxies.ts',
-      includeDefineCustomElements: false,
+      includeImportCustomElements: true,
       includePolyfills: false,
+      includeDefineCustomElements: false,
+      proxiesFile: '../vue/src/proxies.ts',
       componentModels: [
         {
           elements: ['way-select'],
           targetAttr: 'value',
           event: 'v-way-change',
-          externalEvent: 'way-change',
+          externalEvent: 'wayChange',
         },
       ],
     }),
@@ -37,6 +39,15 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
+      dir: 'components',
+      copy: [
+        {
+          src: '../scripts/custom-elements',
+          dest: 'components',
+          warn: true,
+        },
+      ],
+      includeGlobalScripts: false,
     },
     {
       type: 'dist-hydrate-script',
@@ -50,4 +61,5 @@ export const config: Config = {
       baseUrl: 'https://example.com/',
     },
   ],
+  preamble: '(C) Way2Web https://www.way2web.nl - MIT License',
 };

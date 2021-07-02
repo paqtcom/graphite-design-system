@@ -111,13 +111,13 @@ export class WaySelect {
   }
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
+  @Event() wayChange!: EventEmitter<void>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
+  @Event() wayFocus!: EventEmitter<void>;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
+  @Event() wayBlur!: EventEmitter<void>;
 
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
@@ -411,8 +411,8 @@ export class WaySelect {
             'select-pill': this.pill,
             'select-invalid': this.invalid,
           }}
-          onWay-show={this.handleMenuShow}
-          onWay-hide={this.handleMenuHide}
+          onWayShow={this.handleMenuShow}
+          onWayHide={this.handleMenuHide}
         >
           <div
             slot="trigger"

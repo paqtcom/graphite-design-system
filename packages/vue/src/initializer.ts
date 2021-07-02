@@ -1,4 +1,4 @@
-import { defineCustomElements } from "@w2wds/core/loader";
+import { initialize } from "@w2wds/core/components";
 
 /**
  * We need to make sure that the web component fires an event
@@ -6,28 +6,28 @@ import { defineCustomElements } from "@w2wds/core/loader";
  * otherwise the binding's callback will fire before any
  * v-model values have been updated.
  */
-const transformEventName = (eventName: string) =>
-  eventName === "way-change" ? "v-way-change" : eventName;
+const toKebabCase = (eventName: string) =>
+  eventName === "wayChange"
+    ? "v-way-change"
+    : eventName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
 
 const getHelperFunctions = () => {
   return {
     ael: (el: any, eventName: string, cb: any, opts: any) =>
-      el.addEventListener(transformEventName(eventName), cb, opts),
+      el.addEventListener(toKebabCase(eventName), cb, opts),
     rel: (el: any, eventName: string, cb: any, opts: any) =>
-      el.removeEventListener(transformEventName(eventName), cb, opts),
+      el.removeEventListener(toKebabCase(eventName), cb, opts),
     ce: (eventName: string, opts: any) =>
-      new CustomEvent(transformEventName(eventName), opts),
+      new CustomEvent(toKebabCase(eventName), opts),
   };
 };
 
 export const initializeWay2WebDesignSystem = async () => {
-  if (typeof (window as any) !== "undefined") {
-    const { ael, rel, ce } = getHelperFunctions();
+  const { ael, rel, ce } = getHelperFunctions();
 
-    await defineCustomElements(window, {
-      ce,
-      ael,
-      rel,
-    } as any);
-  }
+  initialize({
+    _ael: ael,
+    _rel: rel,
+    _ce: ce,
+  });
 };

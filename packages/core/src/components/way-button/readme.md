@@ -24,10 +24,10 @@
 
 ## Events
 
-| Event       | Description                          | Type                |
-| ----------- | ------------------------------------ | ------------------- |
-| `way-blur`  | Emitted when the button loses focus. | `CustomEvent<void>` |
-| `way-focus` | Emitted when the button has focus.   | `CustomEvent<void>` |
+| Event      | Description                          | Type                |
+| ---------- | ------------------------------------ | ------------------- |
+| `wayBlur`  | Emitted when the button loses focus. | `CustomEvent<void>` |
+| `wayFocus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 
 
 ## Slots

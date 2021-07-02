@@ -3,12 +3,19 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@w2wds/core';
+import type { JSX } from '@w2wds/core/components';
+
+import { WayButton as WayButtonCmp } from '@w2wds/core/components/way-button.js';
+import { WayDropdown as WayDropdownCmp } from '@w2wds/core/components/way-dropdown.js';
+import { WayMenu as WayMenuCmp } from '@w2wds/core/components/way-menu.js';
+import { WayMenuDivider as WayMenuDividerCmp } from '@w2wds/core/components/way-menu-divider.js';
+import { WayMenuItem as WayMenuItemCmp } from '@w2wds/core/components/way-menu-item.js';
+import { WayMenuLabel as WayMenuLabelCmp } from '@w2wds/core/components/way-menu-label.js';
+import { WaySelect as WaySelectCmp } from '@w2wds/core/components/way-select.js';
+import { WayTag as WayTagCmp } from '@w2wds/core/components/way-tag.js';
 
 
-
-
-export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', undefined, [
+export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', WayButtonCmp, [
   'variant',
   'disabled',
   'size',
@@ -20,12 +27,12 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'target',
   'rel',
   'type',
-  'way-focus',
-  'way-blur'
+  'wayFocus',
+  'wayBlur'
 ]);
 
 
-export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-dropdown', undefined, [
+export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-dropdown', WayDropdownCmp, [
   'open',
   'placement',
   'closeOnSelect',
@@ -33,32 +40,32 @@ export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-d
   'distance',
   'skidding',
   'hoist',
-  'way-show',
-  'way-after-show',
-  'way-hide',
-  'way-after-hide'
+  'wayShow',
+  'wayAfterShow',
+  'wayHide',
+  'wayAfterHide'
 ]);
 
 
-export const WayMenu = /*@__PURE__*/ defineContainer<JSX.WayMenu>('way-menu', undefined, [
-  'way-select'
+export const WayMenu = /*@__PURE__*/ defineContainer<JSX.WayMenu>('way-menu', WayMenuCmp, [
+  'waySelect'
 ]);
 
 
-export const WayMenuDivider = /*@__PURE__*/ defineContainer<JSX.WayMenuDivider>('way-menu-divider', undefined);
+export const WayMenuDivider = /*@__PURE__*/ defineContainer<JSX.WayMenuDivider>('way-menu-divider', WayMenuDividerCmp);
 
 
-export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-menu-item', undefined, [
+export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-menu-item', WayMenuItemCmp, [
   'checked',
   'value',
   'disabled'
 ]);
 
 
-export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way-menu-label', undefined);
+export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way-menu-label', WayMenuLabelCmp);
 
 
-export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', undefined, [
+export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', WaySelectCmp, [
   'multiple',
   'maxTagsVisible',
   'disabled',
@@ -73,14 +80,14 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'required',
   'clearable',
   'invalid',
-  'way-change',
-  'way-focus',
-  'way-blur'
+  'wayChange',
+  'wayFocus',
+  'wayBlur'
 ],
-'value', 'v-way-change', 'way-change');
+'value', 'v-way-change', 'wayChange');
 
 
-export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', undefined, [
+export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTagCmp, [
   'type',
   'size',
   'pill',

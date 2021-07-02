@@ -292,11 +292,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style button with rounded edges.
          */
@@ -342,19 +342,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onWay-after-hide"?: (event: CustomEvent<any>) => void;
+        "onWayAfterHide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onWay-after-show"?: (event: CustomEvent<any>) => void;
+        "onWayAfterShow"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onWay-hide"?: (event: CustomEvent<any>) => void;
+        "onWayHide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onWay-show"?: (event: CustomEvent<any>) => void;
+        "onWayShow"?: (event: CustomEvent<void>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -372,7 +372,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a menu item is selected.
          */
-        "onWay-select"?: (event: CustomEvent<{ item: HTMLWayMenuItemElement }>) => void;
+        "onWaySelect"?: (event: CustomEvent<{ item: HTMLWayMenuItemElement }>) => void;
     }
     interface WayMenuDivider {
     }
@@ -432,15 +432,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<any>) => void;
+        "onWayChange"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style select with rounded edges.
          */
