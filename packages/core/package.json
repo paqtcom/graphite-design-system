@@ -20,7 +20,7 @@
     "hydrate/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "stencil build --docs --docs-json dist/docs.json",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
