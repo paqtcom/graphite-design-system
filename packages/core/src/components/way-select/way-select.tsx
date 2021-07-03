@@ -120,8 +120,6 @@ export class WaySelect {
   @Event() wayBlur!: EventEmitter<void>;
 
   connectedCallback() {
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
     this.handleClearClick = this.handleClearClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleLabelClick = this.handleLabelClick.bind(this);
@@ -179,15 +177,15 @@ export class WaySelect {
     return Array.isArray(this.value) ? this.value : [this.value];
   }
 
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.wayBlur.emit();
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.wayFocus.emit();
-  }
+  };
 
   handleClearClick(event: MouseEvent) {
     event.stopPropagation();
@@ -333,7 +331,7 @@ export class WaySelect {
             clearable
             onClick={this.handleTagInteraction}
             onKeyDown={this.handleTagInteraction}
-            onWay-clear={event => {
+            onWayClear={event => {
               event.stopPropagation();
               if (!this.disabled) {
                 item.checked = false;
@@ -455,7 +453,7 @@ export class WaySelect {
             <input ref={el => (this.input = el)} class="select-hidden-select" aria-hidden="true" required={this.required} value={hasSelection ? '1' : ''} tabIndex={-1} />
           </div>
 
-          <way-menu ref={el => (this.menu = el)} class="select-menu" onWay-select={this.handleMenuSelect}>
+          <way-menu ref={el => (this.menu = el)} class="select-menu" onWaySelect={this.handleMenuSelect}>
             <slot onSlotchange={this.handleSlotChange} />
           </way-menu>
         </way-dropdown>

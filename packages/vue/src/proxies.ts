@@ -92,6 +92,6 @@ export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTa
   'size',
   'pill',
   'clearable',
-  'way-clear'
+  'wayClear'
 ]);
 

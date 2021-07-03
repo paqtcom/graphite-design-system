@@ -140,8 +140,8 @@ export class WayDropdown {
       return;
     }
 
-    this.panel.addEventListener('way-activate', this.handleMenuItemActivate);
-    this.panel.addEventListener('way-select', this.handlePanelSelect);
+    this.panel.addEventListener('wayActivate', this.handleMenuItemActivate);
+    this.panel.addEventListener('waySelect', this.handlePanelSelect);
     document.addEventListener('keydown', this.handleDocumentKeyDown);
     document.addEventListener('mousedown', this.handleDocumentMouseDown);
 

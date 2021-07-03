@@ -17,9 +17,9 @@
     <way-select
       placeholder="Select multiple"
       v-model="selectedValues"
-      multiple
-      pill
-      clearable
+      :multiple="true"
+      :pill="true"
+      :clearable="true"
     >
       <way-menu-label>Group 1</way-menu-label>
       <way-menu-item value="option-1">Option 1</way-menu-item>

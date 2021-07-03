@@ -470,7 +470,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onWay-clear"?: (event: CustomEvent<any>) => void;
+        "onWayClear"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */

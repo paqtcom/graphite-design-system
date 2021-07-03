@@ -1,8 +1,9 @@
+import { App, Plugin } from "vue";
 import { initialize } from "@w2wds/core/components";
 
 /**
  * We need to make sure that the web component fires an event
- * that will not conflict with the user's @way-change binding,
+ * that will not conflict with the user's @ionChange binding,
  * otherwise the binding's callback will fire before any
  * v-model values have been updated.
  */
@@ -22,12 +23,15 @@ const getHelperFunctions = () => {
   };
 };
 
-export const initializeWay2WebDesignSystem = async () => {
-  const { ael, rel, ce } = getHelperFunctions();
-
-  initialize({
-    _ael: ael,
-    _rel: rel,
-    _ce: ce,
-  });
+export const Way2WebDesignSystemVue: Plugin = {
+  async install(_: App) {
+    if (typeof (window as any) !== "undefined") {
+      const { ael, rel, ce } = getHelperFunctions();
+      initialize({
+        _ael: ael,
+        _rel: rel,
+        _ce: ce,
+      });
+    }
+  },
 };
