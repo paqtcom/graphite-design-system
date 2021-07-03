@@ -84,7 +84,7 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'way-focus',
   'way-blur'
 ],
-'value', 'v-way-change', 'wayChange');
+'value', 'v-way-change', 'way-change');
 
 
 export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTagCmp, [

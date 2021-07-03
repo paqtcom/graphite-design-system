@@ -26,7 +26,7 @@ export const config: Config = {
           elements: ['way-select'],
           targetAttr: 'value',
           event: 'v-way-change',
-          externalEvent: 'wayChange',
+          externalEvent: 'way-change',
         },
       ],
     }),

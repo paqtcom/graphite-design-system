@@ -8,7 +8,7 @@ import { initialize } from "@w2wds/core/components";
  * v-model values have been updated.
  */
 const toKebabCase = (eventName: string) =>
-  eventName === "wayChange"
+  eventName === "way-change"
     ? "v-way-change"
     : eventName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
 

@@ -4,7 +4,11 @@
   </section>
 
   <section>
-    <way-select placeholder="Select one" v-model="selectedValue">
+    <way-select
+      placeholder="Select one"
+      v-model="selectedValue"
+      @way-change="onSelectChange()"
+    >
       <way-menu-item value="option-1">Option 1</way-menu-item>
       <way-menu-item value="option-2">Option 2</way-menu-item>
       <way-menu-item value="option-3">Option 3</way-menu-item>
