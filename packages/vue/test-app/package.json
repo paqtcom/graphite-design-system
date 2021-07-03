@@ -13,7 +13,7 @@
   "dependencies": {
     "@w2wds/vue": "^0.4.8",
     "core-js": "^3.6.5",
-    "vue": "^3.1.4"
+    "vue": "3.0.11"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",

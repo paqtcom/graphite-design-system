@@ -27,8 +27,8 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'target',
   'rel',
   'type',
-  'wayFocus',
-  'wayBlur'
+  'way-focus',
+  'way-blur'
 ]);
 
 
@@ -40,15 +40,15 @@ export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-d
   'distance',
   'skidding',
   'hoist',
-  'wayShow',
-  'wayAfterShow',
-  'wayHide',
-  'wayAfterHide'
+  'way-show',
+  'way-after-show',
+  'way-hide',
+  'way-after-hide'
 ]);
 
 
 export const WayMenu = /*@__PURE__*/ defineContainer<JSX.WayMenu>('way-menu', WayMenuCmp, [
-  'waySelect'
+  'way-select'
 ]);
 
 
@@ -80,9 +80,9 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'required',
   'clearable',
   'invalid',
-  'wayChange',
-  'wayFocus',
-  'wayBlur'
+  'way-change',
+  'way-focus',
+  'way-blur'
 ],
 'value', 'v-way-change', 'wayChange');
 
@@ -92,6 +92,6 @@ export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTa
   'size',
   'pill',
   'clearable',
-  'wayClear'
+  'way-clear'
 ]);
 

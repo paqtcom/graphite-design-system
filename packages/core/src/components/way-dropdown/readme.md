@@ -20,12 +20,12 @@
 
 ## Events
 
-| Event          | Description                                                                                           | Type                |
-| -------------- | ----------------------------------------------------------------------------------------------------- | ------------------- |
-| `wayAfterHide` | Emitted after the dropdown closes and all transitions are complete.                                   | `CustomEvent<void>` |
-| `wayAfterShow` | Emitted after the dropdown opens and all transitions are complete.                                    | `CustomEvent<void>` |
-| `wayHide`      | Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed. | `CustomEvent<void>` |
-| `wayShow`      | Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.  | `CustomEvent<void>` |
+| Event            | Description                                                                                           | Type                |
+| ---------------- | ----------------------------------------------------------------------------------------------------- | ------------------- |
+| `way-after-hide` | Emitted after the dropdown closes and all transitions are complete.                                   | `CustomEvent<void>` |
+| `way-after-show` | Emitted after the dropdown opens and all transitions are complete.                                    | `CustomEvent<void>` |
+| `way-hide`       | Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed. | `CustomEvent<void>` |
+| `way-show`       | Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.  | `CustomEvent<void>` |
 
 
 ## Methods

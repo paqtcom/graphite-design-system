@@ -111,13 +111,13 @@ export class WaySelect {
   }
 
   /** Emitted when the control's value changes. */
-  @Event() wayChange!: EventEmitter<void>;
+  @Event({ eventName: 'way-change' }) wayChange!: EventEmitter<void>;
 
   /** Emitted when the control gains focus. */
-  @Event() wayFocus!: EventEmitter<void>;
+  @Event({ eventName: 'way-focus' }) wayFocus!: EventEmitter<void>;
 
   /** Emitted when the control loses focus. */
-  @Event() wayBlur!: EventEmitter<void>;
+  @Event({ eventName: 'way-blur' }) wayBlur!: EventEmitter<void>;
 
   connectedCallback() {
     this.handleClearClick = this.handleClearClick.bind(this);
@@ -331,7 +331,7 @@ export class WaySelect {
             clearable
             onClick={this.handleTagInteraction}
             onKeyDown={this.handleTagInteraction}
-            onWayClear={event => {
+            onWay-clear={event => {
               event.stopPropagation();
               if (!this.disabled) {
                 item.checked = false;
@@ -409,8 +409,8 @@ export class WaySelect {
             'select-pill': this.pill,
             'select-invalid': this.invalid,
           }}
-          onWayShow={this.handleMenuShow}
-          onWayHide={this.handleMenuHide}
+          onWay-show={this.handleMenuShow}
+          onWay-hide={this.handleMenuHide}
         >
           <div
             slot="trigger"
@@ -453,7 +453,7 @@ export class WaySelect {
             <input ref={el => (this.input = el)} class="select-hidden-select" aria-hidden="true" required={this.required} value={hasSelection ? '1' : ''} tabIndex={-1} />
           </div>
 
-          <way-menu ref={el => (this.menu = el)} class="select-menu" onWaySelect={this.handleMenuSelect}>
+          <way-menu ref={el => (this.menu = el)} class="select-menu" onWay-select={this.handleMenuSelect}>
             <slot onSlotchange={this.handleSlotChange} />
           </way-menu>
         </way-dropdown>

@@ -79,12 +79,12 @@ export class WayButton {
   /**
    * Emitted when the button has focus.
    */
-  @Event() wayFocus!: EventEmitter<void>;
+  @Event({ eventName: 'way-focus' }) wayFocus!: EventEmitter<void>;
 
   /**
    * Emitted when the button loses focus.
    */
-  @Event() wayBlur!: EventEmitter<void>;
+  @Event({ eventName: 'way-blur' }) wayBlur!: EventEmitter<void>;
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);

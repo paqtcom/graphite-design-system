@@ -16,7 +16,7 @@ export class WayMenu {
   @Element() el!: HTMLWayMenuElement;
 
   /** Emitted when a menu item is selected. */
-  @Event() waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
+  @Event({ eventName: 'way-select' }) waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);

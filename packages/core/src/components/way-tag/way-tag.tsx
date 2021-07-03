@@ -19,7 +19,7 @@ export class WayTag {
   @Prop({ reflect: true }) clearable = false;
 
   /** Emitted when the clear button is activated. */
-  @Event() wayClear: EventEmitter<void>;
+  @Event({ eventName: 'way-clear' }) wayClear: EventEmitter<void>;
 
   connectedCallback() {
     this.handleClearClick = this.handleClearClick.bind(this);

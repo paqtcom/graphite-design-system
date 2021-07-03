@@ -54,16 +54,16 @@ export class WayDropdown {
   @Prop() hoist = false;
 
   /** Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event() wayShow: EventEmitter<void>;
+  @Event({ eventName: 'way-show' }) wayShow: EventEmitter<void>;
 
   /** Emitted after the dropdown opens and all transitions are complete. */
-  @Event() wayAfterShow: EventEmitter<void>;
+  @Event({ eventName: 'way-after-show' }) wayAfterShow: EventEmitter<void>;
 
   /** Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event() wayHide: EventEmitter<void>;
+  @Event({ eventName: 'way-hide' }) wayHide: EventEmitter<void>;
 
   /** Emitted after the dropdown closes and all transitions are complete. */
-  @Event() wayAfterHide: EventEmitter<void>;
+  @Event({ eventName: 'way-after-hide' }) wayAfterHide: EventEmitter<void>;
 
   @Watch('open')
   handleOpenChange() {
@@ -140,8 +140,8 @@ export class WayDropdown {
       return;
     }
 
-    this.panel.addEventListener('wayActivate', this.handleMenuItemActivate);
-    this.panel.addEventListener('waySelect', this.handlePanelSelect);
+    this.panel.addEventListener('way-activate', this.handleMenuItemActivate);
+    this.panel.addEventListener('way-select', this.handlePanelSelect);
     document.addEventListener('keydown', this.handleDocumentKeyDown);
     document.addEventListener('mousedown', this.handleDocumentMouseDown);
 

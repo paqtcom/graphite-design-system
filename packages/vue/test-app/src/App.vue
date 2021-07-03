@@ -65,7 +65,17 @@ export default defineComponent({
       variant.value = variant.value === "primary" ? "default" : "primary";
     };
 
-    return { variant, selectedValue, selectedValues, doSomething };
+    const onSelectChange = () => {
+      console.log("changed");
+    };
+
+    return {
+      variant,
+      selectedValue,
+      selectedValues,
+      doSomething,
+      onSelectChange,
+    };
   },
 });
 </script>

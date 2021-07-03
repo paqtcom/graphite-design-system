@@ -7,9 +7,9 @@
 
 ## Events
 
-| Event       | Description                           | Type                                             |
-| ----------- | ------------------------------------- | ------------------------------------------------ |
-| `waySelect` | Emitted when a menu item is selected. | `CustomEvent<{ item: HTMLWayMenuItemElement; }>` |
+| Event        | Description                           | Type                                             |
+| ------------ | ------------------------------------- | ------------------------------------------------ |
+| `way-select` | Emitted when a menu item is selected. | `CustomEvent<{ item: HTMLWayMenuItemElement; }>` |
 
 
 ## Methods
