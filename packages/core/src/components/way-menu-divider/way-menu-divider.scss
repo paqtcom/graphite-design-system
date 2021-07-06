@@ -1,0 +1,36 @@
+@import '../../themes/w2wds.globals';
+
+// Menu Divider
+// --------------------------------------------------
+
+:host {
+  /**
+   * @prop --margin-top: Top margin of the menu item divider
+   * @prop --margin-bottom: Bottom margin of the menu item divider
+   *
+   * @prop --border-color: Border color of the menu item divider
+   */
+  --margin-top: var(--way-spacing-x-small);
+  --margin-bottom: var(--way-spacing-x-small);
+
+  --border-color: var(--way-color-light);
+
+  display: block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}
+
+.menu-divider {
+  border-top: solid 1px var(--border-color);
+
+  margin-top: var(--margin-top);
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: var(--margin-bottom);
+}

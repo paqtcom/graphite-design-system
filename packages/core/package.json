@@ -1,6 +1,6 @@
 {
   "name": "@w2wds/core",
-  "version": "0.3.1",
+  "version": "0.6.0",
   "description": "Base components for the Way2Web Design System",
   "repository": {
     "type": "git",
@@ -28,14 +28,18 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/core": "^2.3.0",
     "@stencil/react-output-target": "0.0.9",
     "@stencil/sass": "^1.4.1",
-    "@stencil/vue-output-target": "^0.1.8",
-    "@types/jest": "^26.0.15",
+    "@stencil/vue-output-target": "^0.4.3",
+    "@types/jest": "^26.0.23",
     "@types/puppeteer": "2.0.1",
+    "@types/resize-observer-browser": "^0.1.5",
     "jest": "26.0.1",
     "jest-cli": "26.0.1",
     "puppeteer": "2.1.1"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "@stencil/core": "^2.6.0"
   }
 }

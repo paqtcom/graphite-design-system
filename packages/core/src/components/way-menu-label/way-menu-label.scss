@@ -1,0 +1,58 @@
+@import '../../themes/w2wds.globals';
+
+// Menu Label
+// --------------------------------------------------
+
+:host {
+  /**
+   * @prop --font-style: Font style of the menu item label
+   * @prop --font-weight: Font weight of the menu item label
+   *
+   * @prop --line-height: Line height of the menu item label
+   *
+   * @prop --background-color: Background color of the menu item label
+   *
+   * @prop --color: Text color of the menu item label
+   *
+   * @prop --padding-top: Top padding of the menu item label
+   * @prop --padding-end: Right padding of the menu item label (will be left padding when we support right-to-left direction)
+   * @prop --padding-bottom: Bottom padding of the menu item label
+   * @prop --padding-start: Left padding of the menu item label (will be right padding when we support right-to-left direction)
+   */
+  --font-style: normal;
+  --font-weight: var(--way-font-weight-normal);
+
+  --line-height: var(--way-line-height-normal);
+
+  --background-color: transparent;
+
+  --color: var(--way-color-medium-tint);
+
+  --padding-top: var(--way-spacing-xx-small);
+  --padding-start: var(--way-spacing-x-large);
+  --padding-end: var(--way-spacing-x-large);
+  --padding-bottom: var(--way-spacing-xx-small);
+
+  display: block;
+  font-family: var(--way-font-family);
+  font-size: var(--way-font-size-small);
+  font-weight: var(--font-weight);
+  font-style: var(--font-style);
+  line-height: var(--line-height);
+  letter-spacing: var(--way-letter-spacing-normal);
+  color: var(--color);
+  padding-top: var(--padding-top);
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: var(--padding-bottom);
+  user-select: none;
+  text-align: left;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}

@@ -9,7 +9,7 @@
    * @prop --background-hover: Background of the button on hover
    *
    * @prop --color: Text color of the button
-   * @prop --color-hover: Text color of the button when hover
+   * @prop --color-hover: Text color of the button on hover
    *
    * @prop --transition: Transition of the button
    *
@@ -17,7 +17,7 @@
    * @prop --border-width: Border width of the button
    * @prop --border-style: Border style of the button
    * @prop --border-color: Border color of the button
-   * @prop --border-color-hover: Border color of the button when hover
+   * @prop --border-color-hover: Border color of the button on hover
    *
    * @prop --padding-top: Top padding of the button
    * @prop --padding-end: Right padding of the button (will be left padding when we support right-to-left direction)
@@ -30,8 +30,8 @@
 
   width: auto;
 
-  font-family: var(--way-font-family, inherit);
-  font-weight: var(--way-font-weight-semibold);
+  font-family: var(--way-font-family);
+  font-weight: var(--way-font-weight-medium);
   font-size: var(--way-form-element-font-size-medium);
   font-kerning: none;
 
@@ -43,7 +43,7 @@
   --height: var(--way-form-element-height-medium);
 
   --border-radius: var(--way-form-element-border-radius-medium);
-  --border-width: var(--way-form-element-border-width);
+  --border-width: 1px;
   --border-style: solid;
 
   --background: transparent;
@@ -64,9 +64,12 @@
 }
 
 :host(.button-disabled) {
-  cursor: default;
+  cursor: not-allowed;
   opacity: 0.5;
-  pointer-events: none;
+
+  .button-native {
+    pointer-events: none;
+  }
 }
 
 // Primary variant
@@ -223,7 +226,6 @@
   cursor: pointer;
 
   z-index: 0;
-  box-sizing: border-box;
 
   text-decoration: none;
 
@@ -233,6 +235,14 @@
 
   &:focus {
     outline: none;
+  }
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
   }
 }
 
@@ -267,11 +277,32 @@
 // --------------------------------------------------
 
 @media (any-hover: hover) {
-  :host(:hover) .button-native {
+  .button-native:hover {
     color: var(--color-hover);
     background: var(--background-hover);
     border-color: var(--border-color-hover);
   }
+}
+
+// Caret modifier
+// --------------------------------------------------
+
+:host(.button-caret) .caret {
+  display: flex;
+  align-items: center;
+  margin-left: 0.3em;
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+// Pill modifier
+// --------------------------------------------------
+
+:host(.button-pill) .button-native {
+  border-radius: var(--height);
 }
 
 // Button Icons
