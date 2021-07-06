@@ -38,6 +38,14 @@
 
     <p>{{ selectedValues }}</p>
   </section>
+
+  <section>
+    <way-radio-group label="Select an option" v-model="selectedValue">
+      <way-radio value="option-1">Option 1</way-radio>
+      <way-radio value="option-2">Option 2</way-radio>
+      <way-radio value="option-3">Option 3</way-radio>
+    </way-radio-group>
+  </section>
 </template>
 
 <script lang="ts">
@@ -47,6 +55,8 @@ import {
   WayMenuItem,
   WayMenuLabel,
   WayMenuDivider,
+  WayRadioGroup,
+  WayRadio,
 } from "@w2wds/vue";
 
 import { ref, defineComponent } from "vue";
@@ -59,6 +69,8 @@ export default defineComponent({
     WayMenuItem,
     WayMenuLabel,
     WayMenuDivider,
+    WayRadioGroup,
+    WayRadio,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");

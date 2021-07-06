@@ -11,6 +11,8 @@ import { WayMenu as WayMenuCmp } from '@w2wds/core/components/way-menu.js';
 import { WayMenuDivider as WayMenuDividerCmp } from '@w2wds/core/components/way-menu-divider.js';
 import { WayMenuItem as WayMenuItemCmp } from '@w2wds/core/components/way-menu-item.js';
 import { WayMenuLabel as WayMenuLabelCmp } from '@w2wds/core/components/way-menu-label.js';
+import { WayRadio as WayRadioCmp } from '@w2wds/core/components/way-radio.js';
+import { WayRadioGroup as WayRadioGroupCmp } from '@w2wds/core/components/way-radio-group.js';
 import { WaySelect as WaySelectCmp } from '@w2wds/core/components/way-select.js';
 import { WayTag as WayTagCmp } from '@w2wds/core/components/way-tag.js';
 
@@ -63,6 +65,26 @@ export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-m
 
 
 export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way-menu-label', WayMenuLabelCmp);
+
+
+export const WayRadio = /*@__PURE__*/ defineContainer<JSX.WayRadio>('way-radio', WayRadioCmp, [
+  'value',
+  'disabled',
+  'checked',
+  'way-blur',
+  'way-focus'
+]);
+
+
+export const WayRadioGroup = /*@__PURE__*/ defineContainer<JSX.WayRadioGroup>('way-radio-group', WayRadioGroupCmp, [
+  'allowEmptySelection',
+  'label',
+  'noFieldset',
+  'name',
+  'value',
+  'way-change'
+],
+'value', 'v-way-change', 'way-change');
 
 
 export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', WaySelectCmp, [
