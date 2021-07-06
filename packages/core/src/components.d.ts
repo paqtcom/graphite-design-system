@@ -104,21 +104,45 @@ export namespace Components {
     }
     interface WayInput {
         /**
-          * If `true`, the user cannot interact with the input.
+          * Set to true to disable the input control.
          */
         "disabled": boolean;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
         /**
           * Specifies what if label and input must be inline.
          */
         "inline": boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
          */
-        "label": string | undefined;
+        "invalid": boolean;
         /**
-          * The input's name attribute.
+          * The inputs's label. Alternatively, you can use the label slot.
          */
-        "name": string | undefined;
+        "label": string;
+        /**
+          * The input's name.
+         */
+        "name": string;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Checks for validity and shows the browser's validation message if the control is invalid.
+         */
+        "reportValidity": () => Promise<boolean>;
+        /**
+          * The input's required attribute.
+         */
+        "required": boolean;
+        /**
+          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
+         */
+        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * The input's size.
          */
@@ -126,7 +150,7 @@ export namespace Components {
         /**
           * Specifies what type of input to use.
          */
-        "type": string | undefined;
+        "type": string;
     }
     interface WayMenu {
         /**
@@ -485,29 +509,49 @@ declare namespace LocalJSX {
     }
     interface WayInput {
         /**
-          * If `true`, the user cannot interact with the input.
+          * Set to true to disable the input control.
          */
         "disabled"?: boolean;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
         /**
           * Specifies what if label and input must be inline.
          */
         "inline"?: boolean;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
          */
-        "label"?: string | undefined;
+        "invalid"?: boolean;
         /**
-          * The input's name attribute.
+          * The inputs's label. Alternatively, you can use the label slot.
          */
-        "name"?: string | undefined;
+        "label"?: string;
         /**
-          * Emitted when the input loses focus.
+          * The input's name.
          */
-        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        "name"?: string;
         /**
-          * Emitted when the input has focus.
+          * Emitted when the control loses focus.
          */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onWay-change"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * The input's required attribute.
+         */
+        "required"?: boolean;
         /**
           * The input's size.
          */
@@ -515,7 +559,7 @@ declare namespace LocalJSX {
         /**
           * Specifies what type of input to use.
          */
-        "type"?: string | undefined;
+        "type"?: string;
     }
     interface WayMenu {
         /**
