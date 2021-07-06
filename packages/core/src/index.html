@@ -362,8 +362,68 @@
         <way-button variant="plain" disabled> Plain </way-button>
       </section>
 
-      <script>
-        const clickExampleElement = document.getElementById('clickExample');
+     <section>
+      <h2>way-input</h2>
+
+      <section>
+          <h3>Sizes</h3>
+
+          <way-input type="text" name="input" size="small" label="label"></way-input>
+
+          <way-input type="text" name="input" size="medium" label="label"></way-input>
+
+          <way-input type="text" name="input" size="large" label="label"></way-input>
+      </section>
+
+      <section>
+          <h3>Inline</h3>
+
+          <way-input type="text" name="input" size="medium" label="label" inline>
+            <ion-icon class="icon" name="settings-outline" slot="start"></ion-icon>
+          </way-input>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-input type="text" name="input" size="medium" label="label" disabled></way-input>
+      </section>
+    </section>
+
+    <section>
+      <h2>way-textarea</h2>
+
+      <section>
+        <h3>Autofocus</h3>
+
+        <way-textarea type="text" name="textarea" label="label" rows="10" autofocus></way-textarea>
+      </section>
+
+      <section>
+          <h3>Rows</h3>
+
+          <way-textarea type="text" name="textarea" label="label" rows="5"></way-textarea>
+
+          <way-textarea type="text" name="textarea" label="label" rows="10"></way-textarea>
+
+          <way-textarea type="text" name="textarea" label="label" rows="15"></way-textarea>
+      </section>
+
+      <section>
+          <h3>Max Characters</h3>
+
+          <way-textarea type="text" name="textarea" label="label" rows="10" maxlength="20"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-textarea type="text" name="textarea" label="label" rows="10" disabled></way-textarea>
+      </section>
+    </section>
+
+    <script>
+      let clickExampleElement = document.getElementById('clickExample');
 
         clickExampleElement.addEventListener('click', () => {
           console.log('clicked');
