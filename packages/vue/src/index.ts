@@ -1,1 +1,2 @@
-export * from './proxies';
+export * from "./proxies";
+export * from "./initializer";

@@ -1,0 +1,56 @@
+.form-control {
+  .form-control-label {
+    display: none;
+  }
+
+  .form-control-help-text {
+    display: none;
+  }
+}
+
+// Label
+.form-control-has-label {
+  .form-control-label {
+    display: inline-block;
+    line-height: var(--way-line-height-normal);
+    color: var(--way-form-element-label-color);
+    margin-bottom: var(--way-spacing-xxx-small);
+  }
+
+  &.form-control-small .form-control-label {
+    font-size: var(--way-form-element-label-font-size-small);
+  }
+
+  &.form-control-medium .form-control-label {
+    font-size: var(--way-form-element-label-font-size-medium);
+  }
+
+  &.form-control-large .form-control-label {
+    font-size: var(--way-form-element-label-font-size-large);
+  }
+}
+
+// Help text
+.form-control-has-help-text {
+  .form-control-help-text {
+    display: block;
+    line-height: var(--way-line-height-normal);
+    color: var(--way-form-element-help-text-color);
+
+    ::slotted(*) {
+      margin-top: var(--way-spacing-xxx-small);
+    }
+  }
+
+  &.form-control-small .form-control-help-text {
+    font-size: var(--way-form-element-help-text-font-size-small);
+  }
+
+  &.form-control-medium .form-control-help-text {
+    font-size: var(--way-form-element-help-text-font-size-medium);
+  }
+
+  &.form-control-large .form-control-help-text {
+    font-size: var(--way-form-element-help-text-font-size-large);
+  }
+}
