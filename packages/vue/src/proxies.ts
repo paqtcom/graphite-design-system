@@ -58,6 +58,30 @@ export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-m
 export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way-menu-label');
 
 
+export const WayRadio = /*@__PURE__*/ defineContainer<JSX.WayRadio>('way-radio', [
+  'value',
+  'disabled',
+  'checked',
+  'way-blur',
+  'way-focus'
+]);
+
+
+export const WayRadioGroup = /*@__PURE__*/ defineContainer<JSX.WayRadioGroup>('way-radio-group', [
+  'allowEmptySelection',
+  'label',
+  'noFieldset',
+  'name',
+  'value',
+  'way-change'
+],
+{
+  "modelProp": "value",
+  "modelUpdateEvent": "v-way-change",
+  "externalModelUpdateEvent": "way-change"
+});
+
+
 export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', [
   'multiple',
   'maxTagsVisible',

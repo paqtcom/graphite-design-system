@@ -12,11 +12,37 @@
     <style>
       body {
         font-family: sans-serif;
+        background-color: #f3f8fb;
       }
     </style>
   </head>
   <body>
     <way-menu-divider></way-menu-divider>
+    <section>
+      <h2>way-radio & way-radio-group</h2>
+
+      <section>
+        <h3>With fieldset</h3>
+
+        <way-radio-group label="Select an option" value="3">
+          <way-radio value="1">Option 1</way-radio>
+          <way-radio value="2">Option 2</way-radio>
+          <way-radio value="3">Option 3</way-radio>
+        </way-radio-group>
+      </section>
+
+      <section>
+        <h3>No-fieldset & disabled option</h3>
+
+        <way-radio-group label="Select an option" value="2" no-fieldset>
+          <way-radio value="1">Option 1</way-radio>
+          <way-radio value="2">Option 2</way-radio>
+          <way-radio value="3">Option 3</way-radio>
+          <way-radio value="4" disabled>Disabled</way-radio>
+        </way-radio-group>
+      </section>
+    </section>
+
     <section>
       <h2>way-select</h2>
 
@@ -63,7 +89,7 @@
       <section>
         <h3>Multiple</h3>
 
-        <way-select placeholder="Select multiple" multiple id="fiets" pill>
+        <way-select placeholder="Select multiple" multiple pill>
           <way-menu-item value="option-1">Option 1</way-menu-item>
           <way-menu-item value="option-2">Option 2</way-menu-item>
           <way-menu-item value="option-3">Option 3</way-menu-item>
