@@ -25,6 +25,32 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
 ]);
 
 
+export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-checkbox', [
+  'value',
+  'disabled',
+  'checked',
+  'variant',
+  'size',
+  'way-blur',
+  'way-focus'
+]);
+
+
+export const WayCheckboxGroup = /*@__PURE__*/ defineContainer<JSX.WayCheckboxGroup>('way-checkbox-group', [
+  'allowEmptySelection',
+  'label',
+  'noFieldset',
+  'name',
+  'value',
+  'way-change'
+],
+{
+  "modelProp": "value",
+  "modelUpdateEvent": "v-way-change",
+  "externalModelUpdateEvent": "way-change"
+});
+
+
 export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-dropdown', [
   'open',
   'placement',
@@ -37,6 +63,18 @@ export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-d
   'way-after-show',
   'way-hide',
   'way-after-hide'
+]);
+
+
+export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
+  'type',
+  'name',
+  'disabled',
+  'inline',
+  'size',
+  'label',
+  'wayFocus',
+  'wayBlur'
 ]);
 
 
@@ -114,31 +152,6 @@ export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', [
   'pill',
   'clearable',
   'way-clear'
-]);
-
-
-export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-checkbox', [
-  'name',
-  'value',
-  'disabled',
-  'required',
-  'checked',
-  'indeterminate',
-  'variant',
-  'wayBlur',
-  'wayChange'
-]);
-
-
-export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
-  'type',
-  'name',
-  'disabled',
-  'inline',
-  'size',
-  'label',
-  'wayFocus',
-  'wayBlur'
 ]);
 
 

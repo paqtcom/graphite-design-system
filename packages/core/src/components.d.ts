@@ -54,6 +54,59 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
+    interface WayCheckbox {
+        /**
+          * Set to true to draw the checkbox in a checked state.
+         */
+        "checked": boolean;
+        /**
+          * Set to true to disable the checkbox.
+         */
+        "disabled": boolean;
+        /**
+          * Removes focus from the checkbox.
+         */
+        "removeFocus": () => Promise<void>;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        /**
+          * Sets focus on the checkbox.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The checkbox icon size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The checkbox's value attribute.
+         */
+        "value": string;
+        /**
+          * The checkbox variants.
+         */
+        "variant": 'circle' | 'square';
+    }
+    interface WayCheckboxGroup {
+        /**
+          * If `true`, the checkboxs can be deselected.
+         */
+        "allowEmptySelection": boolean;
+        /**
+          * The checkbox group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Hides the fieldset and legend that surrounds the checkbox group. The label will still be read by screen readers.
+         */
+        "noFieldset": boolean;
+        /**
+          * the value of the checkbox group.
+         */
+        "value"?: any | null;
+    }
     interface WayDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
@@ -102,6 +155,32 @@ export namespace Components {
           * The distance in pixels from which to offset the panel along its trigger.
          */
         "skidding": number;
+    }
+    interface WayInput {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled": boolean;
+        /**
+          * Specifies what if label and input must be inline.
+         */
+        "inline": boolean;
+        /**
+          * The input's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * The input's name attribute.
+         */
+        "name": string | undefined;
+        /**
+          * The input's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of input to use.
+         */
+        "type": string | undefined;
     }
     interface WayMenu {
         /**
@@ -264,6 +343,36 @@ export namespace Components {
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    interface WayTextarea {
+        /**
+          * If `true`, the textarea should autofocus.
+         */
+        "autofocus": boolean;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength": number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name": string | undefined;
+        /**
+          * Specifies how many textarea rows to use.
+         */
+        "rows": number | undefined;
+        /**
+          * Specifies what type of textarea to use.
+         */
+        "type": string | undefined;
+    }
 }
 declare global {
     interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
@@ -272,11 +381,29 @@ declare global {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
     };
+    interface HTMLWayCheckboxElement extends Components.WayCheckbox, HTMLStencilElement {
+    }
+    var HTMLWayCheckboxElement: {
+        prototype: HTMLWayCheckboxElement;
+        new (): HTMLWayCheckboxElement;
+    };
+    interface HTMLWayCheckboxGroupElement extends Components.WayCheckboxGroup, HTMLStencilElement {
+    }
+    var HTMLWayCheckboxGroupElement: {
+        prototype: HTMLWayCheckboxGroupElement;
+        new (): HTMLWayCheckboxGroupElement;
+    };
     interface HTMLWayDropdownElement extends Components.WayDropdown, HTMLStencilElement {
     }
     var HTMLWayDropdownElement: {
         prototype: HTMLWayDropdownElement;
         new (): HTMLWayDropdownElement;
+    };
+    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
+    }
+    var HTMLWayInputElement: {
+        prototype: HTMLWayInputElement;
+        new (): HTMLWayInputElement;
     };
     interface HTMLWayMenuElement extends Components.WayMenu, HTMLStencilElement {
     }
@@ -326,9 +453,18 @@ declare global {
         prototype: HTMLWayTagElement;
         new (): HTMLWayTagElement;
     };
+    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
+    }
+    var HTMLWayTextareaElement: {
+        prototype: HTMLWayTextareaElement;
+        new (): HTMLWayTextareaElement;
+    };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
+        "way-checkbox": HTMLWayCheckboxElement;
+        "way-checkbox-group": HTMLWayCheckboxGroupElement;
         "way-dropdown": HTMLWayDropdownElement;
+        "way-input": HTMLWayInputElement;
         "way-menu": HTMLWayMenuElement;
         "way-menu-divider": HTMLWayMenuDividerElement;
         "way-menu-item": HTMLWayMenuItemElement;
@@ -337,6 +473,7 @@ declare global {
         "way-radio-group": HTMLWayRadioGroupElement;
         "way-select": HTMLWaySelectElement;
         "way-tag": HTMLWayTagElement;
+        "way-textarea": HTMLWayTextareaElement;
     }
 }
 declare namespace LocalJSX {
@@ -394,6 +531,62 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
+    interface WayCheckbox {
+        /**
+          * Set to true to draw the checkbox in a checked state.
+         */
+        "checked"?: boolean;
+        /**
+          * Set to true to disable the checkbox.
+         */
+        "disabled"?: boolean;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The checkbox icon size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The checkbox's value attribute.
+         */
+        "value"?: string;
+        /**
+          * The checkbox variants.
+         */
+        "variant"?: 'circle' | 'square';
+    }
+    interface WayCheckboxGroup {
+        /**
+          * If `true`, the checkboxs can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
+        /**
+          * The checkbox group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Hides the fieldset and legend that surrounds the checkbox group. The label will still be read by screen readers.
+         */
+        "noFieldset"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onWay-change"?: (event: CustomEvent<WayCheckboxGroupChangeEventDetail>) => void;
+        /**
+          * the value of the checkbox group.
+         */
+        "value"?: any | null;
+    }
     interface WayDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
@@ -450,6 +643,40 @@ declare namespace LocalJSX {
           * The distance in pixels from which to offset the panel along its trigger.
          */
         "skidding"?: number;
+    }
+    interface WayInput {
+        /**
+          * If `true`, the user cannot interact with the input.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies what if label and input must be inline.
+         */
+        "inline"?: boolean;
+        /**
+          * The input's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * The input's name attribute.
+         */
+        "name"?: string | undefined;
+        /**
+          * Emitted when the input loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the input has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * The input's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of input to use.
+         */
+        "type"?: string | undefined;
     }
     interface WayMenu {
         /**
@@ -615,9 +842,50 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    interface WayTextarea {
+        /**
+          * If `true`, the textarea should autofocus.
+         */
+        "autofocus"?: boolean;
+        /**
+          * If `true`, the user cannot interact with the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength"?: number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name"?: string | undefined;
+        /**
+          * Emitted when the textarea loses focus.
+         */
+        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has focus.
+         */
+        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Specifies how many textarea rows to use.
+         */
+        "rows"?: number | undefined;
+        /**
+          * Specifies what type of textarea to use.
+         */
+        "type"?: string | undefined;
+    }
     interface IntrinsicElements {
         "way-button": WayButton;
+        "way-checkbox": WayCheckbox;
+        "way-checkbox-group": WayCheckboxGroup;
         "way-dropdown": WayDropdown;
+        "way-input": WayInput;
         "way-menu": WayMenu;
         "way-menu-divider": WayMenuDivider;
         "way-menu-item": WayMenuItem;
@@ -626,6 +894,7 @@ declare namespace LocalJSX {
         "way-radio-group": WayRadioGroup;
         "way-select": WaySelect;
         "way-tag": WayTag;
+        "way-textarea": WayTextarea;
     }
 }
 export { LocalJSX as JSX };
@@ -633,7 +902,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
+            "way-checkbox-group": LocalJSX.WayCheckboxGroup & JSXBase.HTMLAttributes<HTMLWayCheckboxGroupElement>;
             "way-dropdown": LocalJSX.WayDropdown & JSXBase.HTMLAttributes<HTMLWayDropdownElement>;
+            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
             "way-menu-divider": LocalJSX.WayMenuDivider & JSXBase.HTMLAttributes<HTMLWayMenuDividerElement>;
             "way-menu-item": LocalJSX.WayMenuItem & JSXBase.HTMLAttributes<HTMLWayMenuItemElement>;
@@ -642,6 +914,7 @@ declare module "@stencil/core" {
             "way-radio-group": LocalJSX.WayRadioGroup & JSXBase.HTMLAttributes<HTMLWayRadioGroupElement>;
             "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
             "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
+            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }
     }
 }

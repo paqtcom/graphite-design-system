@@ -7,44 +7,44 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                   | Type                   | Default     |
-| --------------- | --------------- | --------------------------------------------- | ---------------------- | ----------- |
-| `checked`       | `checked`       | Draws the checkbox in a checked state.        | `boolean`              | `false`     |
-| `disabled`      | `disabled`      | Disables the checkbox.                        | `boolean`              | `false`     |
-| `indeterminate` | `indeterminate` | Draws the checkbox in an indeterminate state. | `boolean`              | `false`     |
-| `name`          | `name`          | The checkbox's name attribute.                | `string`               | `undefined` |
-| `required`      | `required`      | Makes the checkbox a required field.          | `boolean`              | `false`     |
-| `value`         | `value`         | The checkbox's value attribute.               | `string`               | `undefined` |
-| `variant`       | `variant`       | The checkbox variants.                        | `"circle" \| "square"` | `'square'`  |
+| Property   | Attribute  | Description                                          | Type                             | Default     |
+| ---------- | ---------- | ---------------------------------------------------- | -------------------------------- | ----------- |
+| `checked`  | `checked`  | Set to true to draw the checkbox in a checked state. | `boolean`                        | `false`     |
+| `disabled` | `disabled` | Set to true to disable the checkbox.                 | `boolean`                        | `false`     |
+| `size`     | `size`     | The checkbox icon size.                              | `"large" \| "medium" \| "small"` | `'medium'`  |
+| `value`    | `value`    | The checkbox's value attribute.                      | `string`                         | `undefined` |
+| `variant`  | `variant`  | The checkbox variants.                               | `"circle" \| "square"`           | `'square'`  |
 
 
 ## Events
 
-| Event       | Description                           | Type                |
-| ----------- | ------------------------------------- | ------------------- |
-| `wayBlur`   | Emitted when the checkbox loses blur. | `CustomEvent<void>` |
-| `wayChange` | Emitted when the checkbox changes.    | `CustomEvent<void>` |
+| Event       | Description                           | Type               |
+| ----------- | ------------------------------------- | ------------------ |
+| `way-blur`  | Emitted when the control loses focus. | `CustomEvent<any>` |
+| `way-focus` | Emitted when the control gains focus. | `CustomEvent<any>` |
 
 
-## Slots
+## Methods
 
-| Slot          | Description                                                                                                       |
-| ------------- | ----------------------------------------------------------------------------------------------------------------- |
-|               | Content is placed between the named slots if provided without a slot.                                             |
-| `"end"`       | Content is placed to the right of the checkbox text (will be to the left when we support right-to-left direction) |
-| `"icon-only"` | Should be used on an icon in a checkbox that has no text.                                                         |
-| `"start"`     | Content is placed to the left of the checkbox text (will be to the right when we support right-to-left direction) |
+### `removeFocus() => Promise<void>`
+
+Removes focus from the checkbox.
+
+#### Returns
+
+Type: `Promise<void>`
 
 
-## Shadow Parts
 
-| Part                   | Description |
-| ---------------------- | ----------- |
-| `"base"`               |             |
-| `"checked-icon"`       |             |
-| `"control"`            |             |
-| `"indeterminate-icon"` |             |
-| `"label"`              |             |
+### `setFocus(options?: FocusOptions) => Promise<void>`
+
+Sets focus on the checkbox.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## CSS Custom Properties
