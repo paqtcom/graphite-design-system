@@ -252,7 +252,9 @@ export class WaySelect {
     const item = event.detail.item;
 
     if (this.multiple) {
-      this.value = this.value.includes(item.value) ? (this.value as []).filter(v => v !== item.value) : [...this.value, item.value];
+      this.value = this.value.includes(item.value)
+        ? (this.value as []).filter(v => v !== item.value)
+        : [...this.value, item.value];
     } else {
       this.value = item.value;
     }
@@ -304,7 +306,9 @@ export class WaySelect {
     // Report duplicate values since they can break selection logic
     const duplicateValues = items.map(item => item.value).filter((e, i, a) => a.indexOf(e) !== i);
     if (duplicateValues.length) {
-      throw new Error('Duplicate value found on <way-menu-item> in <way-select>: "' + duplicateValues.join('", "') + '"');
+      throw new Error(
+        'Duplicate value found on <way-menu-item> in <way-select>: "' + duplicateValues.join('", "') + '"',
+      );
     }
   }
 
@@ -429,14 +433,39 @@ export class WaySelect {
             onFocus={this.handleFocus}
             onKeyDown={this.handleKeyDown}
           >
-            <div class="select-label">{this.displayTags.length ? <span class="select-tags">{this.displayTags}</span> : this.displayLabel || this.placeholder}</div>
+            <div class="select-label">
+              {this.displayTags.length ? (
+                <span class="select-tags">{this.displayTags}</span>
+              ) : (
+                this.displayLabel || this.placeholder
+              )}
+            </div>
 
             {this.clearable && hasSelection && (
-              <way-button variant="plain" size="small" class="select-clear" onClick={this.handleClearClick} tabindex="-1">
+              <way-button
+                variant="plain"
+                size="small"
+                class="select-clear"
+                onClick={this.handleClearClick}
+                tabindex="-1"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
                   <title>Close Circle</title>
-                  <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 320L192 192M192 320l128-128" />
+                  <path
+                    d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-miterlimit="10"
+                    stroke-width="32"
+                  />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="32"
+                    d="M320 320L192 192M192 320l128-128"
+                  />
                 </svg>
               </way-button>
             )}
@@ -444,7 +473,14 @@ export class WaySelect {
             <span class="caret">
               <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
                 <title>Chevron Down</title>
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="48"
+                  d="M112 184l144 144 144-144"
+                />
               </svg>
             </span>
 
@@ -452,7 +488,14 @@ export class WaySelect {
               The hidden input tricks the browser's built-in validation so it works as expected. We use an input instead
               of a select because, otherwise, iOS will show a list of options during validation.
             */}
-            <input ref={el => (this.input = el)} class="select-hidden-select" aria-hidden="true" required={this.required} value={hasSelection ? '1' : ''} tabIndex={-1} />
+            <input
+              ref={el => (this.input = el)}
+              class="select-hidden-select"
+              aria-hidden="true"
+              required={this.required}
+              value={hasSelection ? '1' : ''}
+              tabIndex={-1}
+            />
           </div>
 
           <way-menu ref={el => (this.menu = el)} class="select-menu" onWay-select={this.handleMenuSelect}>

@@ -1,7 +1,5 @@
 # way-select
 
-
-
 <!-- Auto Generated Below -->
 
 

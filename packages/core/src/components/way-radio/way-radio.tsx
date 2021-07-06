@@ -3,6 +3,9 @@ import { addEventListener, removeEventListener } from '../../utils/utils';
 
 let id = 0;
 
+/**
+ * @slot - The radio's label.
+ */
 @Component({
   tag: 'way-radio',
   styleUrl: 'way-radio.scss',

@@ -45,6 +45,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot | Description        |
+| ---- | ------------------ |
+|      | The radio's label. |
+
+
 ## CSS Custom Properties
 
 | Name                                       | Description                                           |

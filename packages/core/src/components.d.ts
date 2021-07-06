@@ -81,7 +81,18 @@ export namespace Components {
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
          */
-        "placement": 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end';
+        "placement": | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
         /**
           * Shows the dropdown panel
          */
@@ -422,7 +433,18 @@ declare namespace LocalJSX {
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
          */
-        "placement"?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end';
+        "placement"?: | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
         /**
           * The distance in pixels from which to offset the panel along its trigger.
          */

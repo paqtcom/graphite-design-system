@@ -6,8 +6,8 @@ import Popover from '../../utils/popover';
 let id = 0;
 
 /**
- * @slot trigger - The dropdown's trigger, usually a `<way-button>` element.
  * @slot - The dropdown's content.
+ * @slot trigger - The dropdown's trigger, usually a `<way-button>` element.
  */
 @Component({
   tag: 'way-dropdown',
@@ -32,8 +32,19 @@ export class WayDropdown {
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
    * inside of the viewport.
    */
-  @Prop() placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end' =
-    'bottom-start';
+  @Prop() placement:
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end' = 'bottom-start';
 
   /** Determines whether the dropdown should hide when a menu item is selected. */
   @Prop() closeOnSelect = true;
@@ -216,7 +227,10 @@ export class WayDropdown {
       // If the dropdown is used within a shadow DOM, we need to obtain the activeElement within that shadowRoot,
       // otherwise `document.activeElement` will only return the name of the parent shadow DOM element.
       setTimeout(() => {
-        const activeElement = this.containingElement.getRootNode() instanceof ShadowRoot ? document.activeElement.shadowRoot?.activeElement : document.activeElement;
+        const activeElement =
+          this.containingElement.getRootNode() instanceof ShadowRoot
+            ? document.activeElement.shadowRoot?.activeElement
+            : document.activeElement;
 
         if (activeElement?.closest(this.containingElement.tagName.toLowerCase()) !== this.containingElement) {
           this.hide();
@@ -346,14 +360,26 @@ export class WayDropdown {
           'dropdown-open': this.open,
         }}
       >
-        <span class="dropdown-trigger" ref={el => (this.trigger = el)} onClick={this.handleTriggerClick} onKeyDown={this.handleTriggerKeyDown} onKeyUp={this.handleTriggerKeyUp}>
+        <span
+          class="dropdown-trigger"
+          ref={el => (this.trigger = el)}
+          onClick={this.handleTriggerClick}
+          onKeyDown={this.handleTriggerKeyDown}
+          onKeyUp={this.handleTriggerKeyUp}
+        >
           <slot name="trigger" onSlotchange={this.handleTriggerSlotChange} />
         </span>
 
         {/* Position the panel with a wrapper since the popover makes use of `translate`. This let's us add transitions
         on the panel without interfering with the position. */}
         <div ref={el => (this.positioner = el)} class="dropdown-positioner">
-          <div ref={el => (this.panel = el)} class="dropdown-panel" role="menu" aria-hidden={this.open ? 'false' : 'true'} aria-labelledby={this.componentId}>
+          <div
+            ref={el => (this.panel = el)}
+            class="dropdown-panel"
+            role="menu"
+            aria-hidden={this.open ? 'false' : 'true'}
+            aria-labelledby={this.componentId}
+          >
             <slot></slot>
           </div>
         </div>

@@ -4,6 +4,10 @@ import { WayRadioGroupChangeEventDetail } from './way-radio-group-interface';
 
 let id = 0;
 
+/**
+ * @slot - The default slot where radio controls are placed.
+ * @slot label - The radio group label. Required for proper accessibility. Alternatively, you can use the label prop.
+ */
 @Component({
   tag: 'way-radio-group',
   styleUrl: 'way-radio-group.scss',
