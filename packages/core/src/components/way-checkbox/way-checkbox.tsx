@@ -2,6 +2,10 @@ import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method }
 import { addEventListener, removeEventListener } from '../../utils/utils';
 
 let id = 0;
+
+/**
+ * @slot - The checkboxes label.
+ */
 @Component({
   tag: 'way-checkbox',
   styleUrl: 'way-checkbox.scss',
@@ -13,7 +17,7 @@ export class WayCheckbox {
   private input: HTMLInputElement;
   private checkboxGroup: HTMLWayCheckboxGroupElement | null = null;
 
-  @Element() el: HTMLWayCheckboxGroupElement;
+  @Element() el: HTMLWayCheckboxElement;
 
   @State() hasFocus = false;
 
@@ -25,16 +29,6 @@ export class WayCheckbox {
 
   /** Set to true to draw the checkbox in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
-
-  /**
-   * The checkbox variants.
-   */
-  @Prop({ reflect: true }) variant: 'circle' | 'square' = 'square';
-
-  /**
-   * The checkbox icon size.
-   */
-  @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
   /**
    * The tabindex of the checkbox
@@ -61,7 +55,7 @@ export class WayCheckbox {
     if (this.value === undefined) {
       this.value = this.inputId;
     }
-    const checkboxGroup = (this.checkboxGroup = this.el.closest('way-radio-group'));
+    const checkboxGroup = (this.checkboxGroup = this.el.closest('way-checkbox-group'));
     if (checkboxGroup) {
       this.updateState();
       addEventListener(checkboxGroup, 'way-change', this.updateState);
@@ -113,21 +107,14 @@ export class WayCheckbox {
       >
         <label
           class={{
-            checkbox: true,
-
-            // States
+            'checkbox': true,
             'checkbox-checked': this.checked,
             'checkbox-disabled': this.disabled,
             'checkbox-focused': this.hasFocus,
           }}
           htmlFor={this.inputId}
         >
-          <span class={{
-            'checkbox-control': true,
-
-            // Variant
-            'checkbox-control-circle': this.variant === 'circle',
-          }}>
+          <span class='checkbox-control'>
             <span class="checkbox-icon">
               <svg viewBox="0 0 16 16">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">

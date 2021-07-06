@@ -73,17 +73,9 @@ export namespace Components {
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * The checkbox icon size.
-         */
-        "size": 'small' | 'medium' | 'large';
-        /**
           * The checkbox's value attribute.
          */
         "value": string;
-        /**
-          * The checkbox variants.
-         */
-        "variant": 'circle' | 'square';
     }
     interface WayCheckboxGroup {
         /**
@@ -549,17 +541,9 @@ declare namespace LocalJSX {
          */
         "onWay-focus"?: (event: CustomEvent<any>) => void;
         /**
-          * The checkbox icon size.
-         */
-        "size"?: 'small' | 'medium' | 'large';
-        /**
           * The checkbox's value attribute.
          */
         "value"?: string;
-        /**
-          * The checkbox variants.
-         */
-        "variant"?: 'circle' | 'square';
     }
     interface WayCheckboxGroup {
         /**
