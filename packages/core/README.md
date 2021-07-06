@@ -137,7 +137,9 @@ CSS variables can be set globally in an application in the :root selector.
 :root {
   /* Changes the primary color palette to purple */
   --way-color-primary: #a855f7;
+  --way-color-primary-rgb: 168, 85, 247;
   --way-color-primary-contrast: #ffffff;
+  --way-color-primary-contrast-rgb: 255, 255, 255;
   --way-color-primary-shade: #7e22ce;
   --way-color-primary-tint: #d8b4fe;
 
@@ -150,25 +152,32 @@ For a complete list of these global variables, [refer to core.scss in the projec
 
 #### Colors
 
-There are six colors used throughout the Way2Web Design System components:
+There are nine colors used throughout the Way2Web Design System components:
 
 - primary
 - secondary
+- tertiary
+- success
+- warning
 - danger
 - dark
 - medium
 - light
 
-Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`.
+Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`. The `base` and `contrast` colors also require a `rgb` property which is the same color, just in [rgb format](https://developer.mozilla.org/en-US/docs/Glossary/RGB). The Way2Web Design System uses colors with an opacity (alpha) in several components. In order for this to work, those properties must be provided in RGB format. When changing any of the properties that have a variation ending in `-rgb`, it is important they are also provided in a comma separated format without parentheses.
 
-| Name     | Property                       | Description                                                              |
-| :------- | :----------------------------- | ------------------------------------------------------------------------ |
-| Base     | `--ion-color-primary`          | The main color that all variations are derived from                      |
-| Contrast | `--ion-color-primary-contrast` | The opposite of the base color, should be visible against the base color |
-| Shade    | `--ion-color-primary-shade`    | A slightly darker version of the base color                              |
-| Tint     | `--ion-color-primary-tint`     | A slightly lighter version of the base color                             |
+| Name           | Property                           | Description                                                              |
+| :------------- | :--------------------------------- | ------------------------------------------------------------------------ |
+| Base           | `--way-color-primary`              | The main color that all variations are derived from                      |
+| Base (rgb)     | `--way-color-primary-rgb`          | The base color in red, green, blue format                                |
+| Contrast       | `--way-color-primary-contrast`     | The opposite of the base color, should be visible against the base color |
+| Contrast (rgb) | `--way-color-primary-contrast-rgb` | The contrast color in red, green, blue format                            |
+| Shade          | `--way-color-primary-shade`        | A slightly darker version of the base color                              |
+| Tint           | `--way-color-primary-tint`         | A slightly lighter version of the base color                             |
 
 Please use [this contrast checker](https://webaim.org/resources/contrastchecker/) for accessiblity.
+
+You could use this [Color Generator](https://ionicframework.com/docs/theming/color-generator) from Ionic and simply replace `--ion` with `--way`.
 
 ### Component Variables
 
@@ -183,6 +192,23 @@ way-button {
 /* Set the background on a way-button with the .fancy-button class */
 .fancy-button {
   --background: #00ff00;
+}
+```
+
+## Flash Of Unstyled Content (FOUC)
+
+The default dist works with lazy loading the components when the browser needs them, because of this the content in slots can temporarily be unstyled until the component is loaded (Flash Of Unstyled Content).
+
+To get around this you can add css like this (depending on the components you use) in a static css file/block in the head:
+
+```css
+way-button:not(.hydrated),
+way-dropdown:not(.hydrated),
+way-menu:not(.hydrated),
+way-menu-label:not(.hydrated),
+way-select:not(.hydrated),
+way-tag:not(.hydrated) {
+  visibility: hidden;
 }
 ```
 
@@ -224,6 +250,34 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+### Ionicons
+
+We used some SVG's from [Ionicons](https://ionicons.com/).
+
+```
+The MIT License (MIT)
+
+Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 ```
 
 ### Shoelace
