@@ -47,7 +47,9 @@ export class WayMenu {
 
   getItems() {
     const slot = this.el.querySelector('slot');
-    return [...slot.assignedElements({ flatten: true })].filter((el: any) => el.tagName.toLowerCase() === 'way-menu-item' && !el.disabled) as [HTMLWayMenuItemElement];
+    return [...slot.assignedElements({ flatten: true })].filter(
+      (el: any) => el.tagName.toLowerCase() === 'way-menu-item' && !el.disabled,
+    ) as [HTMLWayMenuItemElement];
   }
 
   getActiveItem() {

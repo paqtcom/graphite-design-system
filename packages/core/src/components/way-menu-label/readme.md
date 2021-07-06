@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Slots
+
+| Slot | Description               |
+| ---- | ------------------------- |
+|      | The menu label's content. |
+
+
 ## CSS Custom Properties
 
 | Name                 | Description                                                                                         |

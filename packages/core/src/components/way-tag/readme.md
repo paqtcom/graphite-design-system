@@ -22,6 +22,13 @@
 | `way-clear` | Emitted when the clear button is activated. | `CustomEvent<void>` |
 
 
+## Slots
+
+| Slot | Description        |
+| ---- | ------------------ |
+|      | The tag's content. |
+
+
 ## CSS Custom Properties
 
 | Name                   | Description                                                                             |

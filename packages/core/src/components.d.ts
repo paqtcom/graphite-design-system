@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { WayRadioGroupChangeEventDetail } from "./components/way-radio-group/way-radio-group-interface";
 export namespace Components {
     interface WayButton {
         /**
@@ -80,7 +81,18 @@ export namespace Components {
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
          */
-        "placement": 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end';
+        "placement": | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
         /**
           * Shows the dropdown panel
          */
@@ -121,6 +133,51 @@ export namespace Components {
         "value": string;
     }
     interface WayMenuLabel {
+    }
+    interface WayRadio {
+        /**
+          * Set to true to draw the radio in a checked state.
+         */
+        "checked": boolean;
+        /**
+          * Set to true to disable the radio.
+         */
+        "disabled": boolean;
+        /**
+          * Removes focus from the radio.
+         */
+        "removeFocus": () => Promise<void>;
+        "setButtonTabindex": (value: number) => Promise<void>;
+        /**
+          * Sets focus on the radio.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The radio's value attribute.
+         */
+        "value": string;
+    }
+    interface WayRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection": boolean;
+        /**
+          * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
+         */
+        "noFieldset": boolean;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
     }
     interface WaySelect {
         /**
@@ -244,6 +301,18 @@ declare global {
         prototype: HTMLWayMenuLabelElement;
         new (): HTMLWayMenuLabelElement;
     };
+    interface HTMLWayRadioElement extends Components.WayRadio, HTMLStencilElement {
+    }
+    var HTMLWayRadioElement: {
+        prototype: HTMLWayRadioElement;
+        new (): HTMLWayRadioElement;
+    };
+    interface HTMLWayRadioGroupElement extends Components.WayRadioGroup, HTMLStencilElement {
+    }
+    var HTMLWayRadioGroupElement: {
+        prototype: HTMLWayRadioGroupElement;
+        new (): HTMLWayRadioGroupElement;
+    };
     interface HTMLWaySelectElement extends Components.WaySelect, HTMLStencilElement {
     }
     var HTMLWaySelectElement: {
@@ -263,6 +332,8 @@ declare global {
         "way-menu-divider": HTMLWayMenuDividerElement;
         "way-menu-item": HTMLWayMenuItemElement;
         "way-menu-label": HTMLWayMenuLabelElement;
+        "way-radio": HTMLWayRadioElement;
+        "way-radio-group": HTMLWayRadioGroupElement;
         "way-select": HTMLWaySelectElement;
         "way-tag": HTMLWayTagElement;
     }
@@ -362,7 +433,18 @@ declare namespace LocalJSX {
         /**
           * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel inside of the viewport.
          */
-        "placement"?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'right' | 'right-start' | 'right-end' | 'left' | 'left-start' | 'left-end';
+        "placement"?: | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
         /**
           * The distance in pixels from which to offset the panel along its trigger.
          */
@@ -391,6 +473,54 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface WayMenuLabel {
+    }
+    interface WayRadio {
+        /**
+          * Set to true to draw the radio in a checked state.
+         */
+        "checked"?: boolean;
+        /**
+          * Set to true to disable the radio.
+         */
+        "disabled"?: boolean;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The radio's value attribute.
+         */
+        "value"?: string;
+    }
+    interface WayRadioGroup {
+        /**
+          * If `true`, the radios can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
+        /**
+          * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
+         */
+        "noFieldset"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onWay-change"?: (event: CustomEvent<WayRadioGroupChangeEventDetail>) => void;
+        /**
+          * the value of the radio group.
+         */
+        "value"?: any | null;
     }
     interface WaySelect {
         /**
@@ -491,6 +621,8 @@ declare namespace LocalJSX {
         "way-menu-divider": WayMenuDivider;
         "way-menu-item": WayMenuItem;
         "way-menu-label": WayMenuLabel;
+        "way-radio": WayRadio;
+        "way-radio-group": WayRadioGroup;
         "way-select": WaySelect;
         "way-tag": WayTag;
     }
@@ -505,6 +637,8 @@ declare module "@stencil/core" {
             "way-menu-divider": LocalJSX.WayMenuDivider & JSXBase.HTMLAttributes<HTMLWayMenuDividerElement>;
             "way-menu-item": LocalJSX.WayMenuItem & JSXBase.HTMLAttributes<HTMLWayMenuItemElement>;
             "way-menu-label": LocalJSX.WayMenuLabel & JSXBase.HTMLAttributes<HTMLWayMenuLabelElement>;
+            "way-radio": LocalJSX.WayRadio & JSXBase.HTMLAttributes<HTMLWayRadioElement>;
+            "way-radio-group": LocalJSX.WayRadioGroup & JSXBase.HTMLAttributes<HTMLWayRadioGroupElement>;
             "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
             "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
         }
