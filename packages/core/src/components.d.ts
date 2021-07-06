@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { WayCheckboxGroupChangeEventDetail } from "./components/way-checkbox-group/way-checkbox-group-interface";
 export namespace Components {
     interface WayButton {
         /**
@@ -46,25 +47,26 @@ export namespace Components {
     }
     interface WayCheckbox {
         /**
-          * Draws the checkbox in a checked state.
+          * Set to true to draw the checkbox in a checked state.
          */
         "checked": boolean;
         /**
-          * Disables the checkbox.
+          * Set to true to disable the checkbox.
          */
         "disabled": boolean;
         /**
-          * Draws the checkbox in an indeterminate state.
+          * Removes focus from the checkbox.
          */
-        "indeterminate": boolean;
+        "removeFocus": () => Promise<void>;
+        "setButtonTabindex": (value: number) => Promise<void>;
         /**
-          * The checkbox's name attribute.
+          * Sets focus on the checkbox.
          */
-        "name": string;
+        "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * Makes the checkbox a required field.
+          * The checkbox icon size.
          */
-        "required": boolean;
+        "size": 'small' | 'medium' | 'large';
         /**
           * The checkbox's value attribute.
          */
@@ -73,6 +75,28 @@ export namespace Components {
           * The checkbox variants.
          */
         "variant": 'circle' | 'square';
+    }
+    interface WayCheckboxGroup {
+        /**
+          * If `true`, the checkboxs can be deselected.
+         */
+        "allowEmptySelection": boolean;
+        /**
+          * The checkbox group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Hides the fieldset and legend that surrounds the checkbox group. The label will still be read by screen readers.
+         */
+        "noFieldset": boolean;
+        /**
+          * the value of the checkbox group.
+         */
+        "value"?: any | null;
     }
     interface WayInput {
         /**
@@ -144,6 +168,12 @@ declare global {
         prototype: HTMLWayCheckboxElement;
         new (): HTMLWayCheckboxElement;
     };
+    interface HTMLWayCheckboxGroupElement extends Components.WayCheckboxGroup, HTMLStencilElement {
+    }
+    var HTMLWayCheckboxGroupElement: {
+        prototype: HTMLWayCheckboxGroupElement;
+        new (): HTMLWayCheckboxGroupElement;
+    };
     interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
     }
     var HTMLWayInputElement: {
@@ -159,6 +189,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
         "way-checkbox": HTMLWayCheckboxElement;
+        "way-checkbox-group": HTMLWayCheckboxGroupElement;
         "way-input": HTMLWayInputElement;
         "way-textarea": HTMLWayTextareaElement;
     }
@@ -212,33 +243,25 @@ declare namespace LocalJSX {
     }
     interface WayCheckbox {
         /**
-          * Draws the checkbox in a checked state.
+          * Set to true to draw the checkbox in a checked state.
          */
         "checked"?: boolean;
         /**
-          * Disables the checkbox.
+          * Set to true to disable the checkbox.
          */
         "disabled"?: boolean;
         /**
-          * Draws the checkbox in an indeterminate state.
+          * Emitted when the control loses focus.
          */
-        "indeterminate"?: boolean;
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
         /**
-          * The checkbox's name attribute.
+          * Emitted when the control gains focus.
          */
-        "name"?: string;
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
         /**
-          * Emitted when the checkbox loses blur.
+          * The checkbox icon size.
          */
-        "onWayBlur"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the checkbox changes.
-         */
-        "onWayChange"?: (event: CustomEvent<void>) => void;
-        /**
-          * Makes the checkbox a required field.
-         */
-        "required"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
         /**
           * The checkbox's value attribute.
          */
@@ -247,6 +270,32 @@ declare namespace LocalJSX {
           * The checkbox variants.
          */
         "variant"?: 'circle' | 'square';
+    }
+    interface WayCheckboxGroup {
+        /**
+          * If `true`, the checkboxs can be deselected.
+         */
+        "allowEmptySelection"?: boolean;
+        /**
+          * The checkbox group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Hides the fieldset and legend that surrounds the checkbox group. The label will still be read by screen readers.
+         */
+        "noFieldset"?: boolean;
+        /**
+          * Emitted when the value has changed.
+         */
+        "onWay-change"?: (event: CustomEvent<WayCheckboxGroupChangeEventDetail>) => void;
+        /**
+          * the value of the checkbox group.
+         */
+        "value"?: any | null;
     }
     interface WayInput {
         /**
@@ -323,6 +372,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "way-button": WayButton;
         "way-checkbox": WayCheckbox;
+        "way-checkbox-group": WayCheckboxGroup;
         "way-input": WayInput;
         "way-textarea": WayTextarea;
     }
@@ -333,6 +383,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
             "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
+            "way-checkbox-group": LocalJSX.WayCheckboxGroup & JSXBase.HTMLAttributes<HTMLWayCheckboxGroupElement>;
             "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }

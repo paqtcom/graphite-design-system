@@ -1,0 +1,75 @@
+@import '../../themes/w2wds.globals';
+
+:host {
+  /**
+   * @prop --border-radius: Border radius of the fieldset
+   * @prop --border-color: Border color of the fieldset
+   *
+   * @prop --padding-top: Top padding of the fieldset
+   * @prop --padding-end: Right padding of the fieldset (will be left padding when we support right-to-left direction)
+   * @prop --padding-bottom: Bottom padding of the fieldset
+   * @prop --padding-start: Left padding of the fieldset (will be right padding when we support right-to-left direction)
+   *
+   * @prop --label-color: Color of the label
+   *
+   * @prop --label-padding-end: Right padding of the label (will be left padding when we support right-to-left direction)
+   * @prop --label-padding-start: Left padding of the label (will be right padding when we support right-to-left direction)
+   *
+   * @prop --margin-between-checkboxs: Margin between the way-checkbox children
+   */
+  --border-radius: var(--way-form-element-border-radius-medium);
+  --border-color: var(--way-color-light);
+
+  --padding-top: var(--way-spacing-x-small);
+  --padding-start: var(--way-spacing-large);
+  --padding-end: var(--way-spacing-large);
+  --padding-bottom: var(--way-spacing-small);
+
+  --label-color: var(--way-color-dark-tint);
+
+  --label-padding-start: var(--way-spacing-xx-small);
+  --label-padding-end: var(--way-spacing-xx-small);
+
+  --margin-between-checkboxs: var(--way-spacing-xx-small);
+
+  display: block;
+  box-sizing: border-box;
+}
+
+.checkbox-group {
+  border: solid 1px var(--border-color);
+  border-radius: var(--border-radius);
+
+  padding-top: var(--padding-top);
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: var(--padding-bottom);
+
+  .checkbox-group-label {
+    font-family: var(--way-font-family);
+    font-size: var(--way-form-element-font-size-medium);
+    font-weight: var(--way-font-weight-normal);
+    color: var(--label-color);
+
+    padding-top: 0;
+    padding-left: var(--label-padding-start);
+    padding-right: var(--label-padding-end);
+    padding-bottom: 0;
+  }
+}
+
+::slotted(way-checkbox:not(:last-of-type)) {
+  display: block;
+  margin-bottom: var(--margin-between-checkboxs);
+}
+
+.checkbox-group-no-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+
+  .checkbox-group-label {
+    @include visually-hidden();
+  }
+}
