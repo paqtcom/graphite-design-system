@@ -3,7 +3,7 @@ import { initialize } from "@w2wds/core/components";
 
 /**
  * We need to make sure that the web component fires an event
- * that will not conflict with the user's @ionChange binding,
+ * that will not conflict with the user's @way-change binding,
  * otherwise the binding's callback will fire before any
  * v-model values have been updated.
  */

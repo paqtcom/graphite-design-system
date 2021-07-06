@@ -40,7 +40,11 @@
   </section>
 
   <section>
-    <way-radio-group label="Select an option" v-model="selectedValue">
+    <way-radio-group
+      label="Select an option"
+      v-model="selectedValue"
+      @way-change="onRadioChange()"
+    >
       <way-radio value="option-1">Option 1</way-radio>
       <way-radio value="option-2">Option 2</way-radio>
       <way-radio value="option-3">Option 3</way-radio>
@@ -82,7 +86,11 @@ export default defineComponent({
     };
 
     const onSelectChange = () => {
-      console.log("changed");
+      console.log("select changed");
+    };
+
+    const onRadioChange = () => {
+      console.log("radio changed");
     };
 
     return {
@@ -91,6 +99,7 @@ export default defineComponent({
       selectedValues,
       doSomething,
       onSelectChange,
+      onRadioChange,
     };
   },
 });
