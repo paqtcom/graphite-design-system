@@ -15,6 +15,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "files": [
+    "components/",
     "dist/",
     "loader/",
     "hydrate/"
