@@ -1,2 +1,2 @@
 export * from "./proxies";
-export * from "./initializer";
+export * from "./w2wds-vue";
