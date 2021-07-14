@@ -1,19 +1,35 @@
 :host {
-  font-family: var(--way-font-family, inherit);
-  font-weight: var(--way-font-weight-semibold);
-  font-size: var(--way-button-font-size-medium);
-  font-kerning: none;
-
+  /**
+   * @prop --border-radius: Border radius of the autoguggest
+   * @prop --border-color: Border color of the autoguggest
+   * @prop --border-width: Border width of the autoguggest
+   *
+   * @prop --color-selected: Color of a selected option
+   * @prop --color-highlighted: Color of a focused option
+   * @prop --color-highlighted-selected: Color of a focused & selected option
+   *
+   * @prop --height: Height of the autoguggest
+   *
+   * @prop --tag-color: Color of a tag
+   * @prop --max-tag-width: Max width of a tag
+   */
   --border-radius: var(--way-form-element-border-radius-medium);
   --border-color: var(--way-color-light);
+  --border-width: var(--way-form-element-border-width);
 
   --color-selected: var(--way-color-primary);
   --color-highlighted: rgba(0, 0, 0, 0.1);
   --color-highlighted-selected: var(--way-color-primary-shade);
-  --border-width: var(--way-form-element-border-width);
+
   --height: var(--way-form-element-height-medium);
+
   --tag-color: var(--way-color-primary);
   --max-tag-width: calc(100% - 20px);
+
+  font-family: var(--way-font-family);
+  font-weight: var(--way-font-weight-normal);
+  font-size: var(--way-form-element-font-size-medium);
+  font-kerning: none;
 }
 
 .way-autosuggest {

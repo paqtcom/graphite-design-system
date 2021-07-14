@@ -12,11 +12,17 @@ export namespace Components {
     interface WayAutosuggest {
         "config"?: WayAutosuggestConfig;
         "name": string;
+        /**
+          * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`. The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
+         */
         "options"?: Array<WayAutosuggestOption>;
         "placeholder"?: string;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
-        "valueSelector": string | ((item: unknown, index: number)=>string[]);
+        /**
+          * With a valueSelector you can decide which property should be placed in the hidden input. The return values will be a comma separated string. When given a string, the autosuggest will search for the top level properties.
+         */
+        "valueSelector": string | ((item: unknown, index: number) => string[]);
     }
     interface WayButton {
         /**
@@ -361,11 +367,17 @@ declare namespace LocalJSX {
         "config"?: WayAutosuggestConfig;
         "name"?: string;
         "onWayChange"?: (event: CustomEvent<FormElementData>) => void;
+        /**
+          * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`. The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
+         */
         "options"?: Array<WayAutosuggestOption>;
         "placeholder"?: string;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
-        "valueSelector"?: string | ((item: unknown, index: number)=>string[]);
+        /**
+          * With a valueSelector you can decide which property should be placed in the hidden input. The return values will be a comma separated string. When given a string, the autosuggest will search for the top level properties.
+         */
+        "valueSelector"?: string | ((item: unknown, index: number) => string[]);
     }
     interface WayButton {
         /**

@@ -14,17 +14,36 @@ export class WayAutoselect {
   @Element() el!: HTMLWayAutosuggestElement;
 
   @Prop() config?: WayAutosuggestConfig = {};
+
   @Prop() name: string;
+
+  /**
+   * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`.
+   * The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
+   */
   @Prop() options?: Array<WayAutosuggestOption> = [];
+
   @Prop() placeholder?: string;
+
   @Prop() validation?: (value: any) => string[];
-  @Prop() valueSelector: string | ((item: unknown, index: number)=>string[]);
+
+  /**
+   * With a valueSelector you can decide which property should be placed in the hidden input.
+   * The return values will be a comma separated string.
+   * When given a string, the autosuggest will search for the top level properties.
+   */
+  @Prop() valueSelector: string | ((item: unknown, index: number) => string[]);
+
   @Prop() value?: string | Array<{ label: string; value: any }>;
 
   @State() filteredOptions: Array<WayAutosuggestOption> = this.options;
+
   @State() hasFocus = false;
+
   @State() inputValue: string = '';
+
   @State() localSelected = [];
+
   @State() localConfig: WayAutosuggestConfig = {
     backspaceDelete: true,
     maxTags: 0,
@@ -32,6 +51,7 @@ export class WayAutoselect {
     selectedText: 'selected',
     ...this.config,
   };
+
   @State() highlightIndex: number = 0;
 
   // use until clicking outside works
@@ -52,7 +72,7 @@ export class WayAutoselect {
    * Listens to keydown events on whole document to open / close / select options.
    * In the future we want to be more dynamic and add / remove eventListener based on this.hasFocus.
    *
-   * @param event 
+   * @param event
    */
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
@@ -68,35 +88,37 @@ export class WayAutoselect {
     }
 
     if (event.key === 'ArrowDown') {
-      this.highlightIndex < this.filteredOptions.length -1 ? this.highlightIndex++ : this.filteredOptions.length;
+      this.highlightIndex < this.filteredOptions.length - 1 ? this.highlightIndex++ : this.filteredOptions.length;
       this.setScrollPosition('down', this.highlightIndex);
       return;
     }
 
     if (event.key === 'Enter' && this.hasFocus) {
-      this.filteredOptions[this.highlightIndex] 
-      && this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
+      this.filteredOptions[this.highlightIndex] &&
+        this.optionSelectedListener(this.filteredOptions[this.highlightIndex]);
     }
 
-    if(
+    if (
       event.key === 'Backspace' &&
       this.localConfig.backspaceDelete &&
       this.hasFocus &&
       !this.inputValue &&
       this.localSelected.length > 0 &&
       !this.maxTagsReached()
-    ){
-      this.removeTag(this.localSelected[this.localSelected.length -1]);
+    ) {
+      this.removeTag(this.localSelected[this.localSelected.length - 1]);
     }
   }
 
   private renderHiddenInput() {
     // if a valueSelector callback function prop is given, return comma separated string instead of JSON
-    if(this.localSelected && typeof this.valueSelector === 'function') {
+    if (this.localSelected && typeof this.valueSelector === 'function') {
       const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
-    } else if(this.localSelected && typeof this.valueSelector === 'string') {
-      const commaSeparatedString = this.cleanData().map((local) => local[`${this.valueSelector}`]).join();
+    } else if (this.localSelected && typeof this.valueSelector === 'string') {
+      const commaSeparatedString = this.cleanData()
+        .map(local => local[`${this.valueSelector}`])
+        .join();
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
     } else {
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.cleanData()));
@@ -109,8 +131,8 @@ export class WayAutoselect {
 
   /**
    * Determine if optionListEl has to scroll down or up, depending on the highlighted option.
-   * @param direction 
-   * @param highlightIndex 
+   * @param direction
+   * @param highlightIndex
    */
   private setScrollPosition(direction: string, highlightIndex: number) {
     const firstOption = this.optionListEl.querySelector('.option') as HTMLElement;
@@ -120,11 +142,10 @@ export class WayAutoselect {
     const top = this.optionListEl.scrollTop;
     const bottom = this.optionListEl.scrollTop + this.optionListEl.offsetHeight;
 
-    if(direction === 'down' && firstOption.offsetHeight * highlightIndex > bottom - marginOfError) {
+    if (direction === 'down' && firstOption.offsetHeight * highlightIndex > bottom - marginOfError) {
       this.optionListEl.scrollTop += firstOption.offsetHeight;
-      
     } else if (direction === 'up' && firstOption.offsetHeight * highlightIndex + 10 < top + marginOfError) {
-      this.optionListEl.scrollTop -=firstOption.offsetHeight;
+      this.optionListEl.scrollTop -= firstOption.offsetHeight;
     }
   }
   /**
@@ -159,24 +180,25 @@ export class WayAutoselect {
   // When value is being changed from inside this component, the watch will also get triggered.
   // Starting to wonder if is the right decision to always keep the value prop updated with latest changes.
   @Watch('value')
-  private watchValue() {
+  watchValue() {
     this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     this.updateOptions();
   }
 
   @Watch('options')
-  private updateOptions() {
+  updateOptions() {
     if (!this.options || this.options.length < 1) return;
-    this.filteredOptions = [...this.options]
-      .filter(option => 
-        option.label.toLowerCase()
-        // Take care of diacritical marks with normalize and replace:
-        // https://thread.engineering/2018-08-29-searching-and-sorting-text-with-diacritical-marks-in-javascript/
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .indexOf(this.inputValue.toLowerCase()) !== -1
-      );
-      
+    this.filteredOptions = [...this.options].filter(
+      option =>
+        option.label
+          .toLowerCase()
+          // Take care of diacritical marks with normalize and replace:
+          // https://thread.engineering/2018-08-29-searching-and-sorting-text-with-diacritical-marks-in-javascript/
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .indexOf(this.inputValue.toLowerCase()) !== -1,
+    );
+
     this.value = this.localSelected;
     this.markSelectedOptions();
     this.sortFilteredOptions();
@@ -184,8 +206,9 @@ export class WayAutoselect {
   }
 
   private sortFilteredOptions() {
-    this.filteredOptions = 
-      [...this.filteredOptions].sort((a, b) => a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }));
+    this.filteredOptions = [...this.filteredOptions].sort((a, b) =>
+      a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
+    );
   }
 
   private markSelectedOptions() {
@@ -220,10 +243,9 @@ export class WayAutoselect {
    * @param {WayAutosuggestOption} option
    */
   private removeTag(option) {
-
     if (!this.localSelected) return;
     // Cannot use simple Array.filter() because setting refference to new array will trigger @watch on value
-    const index = this.localSelected.findIndex((selectedOption)=> selectedOption.value === option.value);
+    const index = this.localSelected.findIndex(selectedOption => selectedOption.value === option.value);
     this.localSelected.splice(index, 1);
     this.updateOptions();
   }
@@ -257,7 +279,7 @@ export class WayAutoselect {
     // No tags
     if (this.localSelected.length === 0) {
       return null;
-    // If tags not exceeds maxTags
+      // If tags not exceeds maxTags
     } else if (!this.maxTagsReached()) {
       return (
         <this.Fragment>
@@ -283,13 +305,13 @@ export class WayAutoselect {
   /**
    * Used to render multiple HTMLElements without using a wrapper element.
    * In React JSX we can use '<> <div/><div/><div/> </>' but is not allowed in TS for StencilJS.
-   * 
+   *
    * @param { any } _
-   * @param { HTMLElement[] } children 
-   * 
+   * @param { HTMLElement[] } children
+   *
    * @returns HTMLElement[]
    */
-  private Fragment = (_: any, children: HTMLElement[]): HTMLElement[] => [ ...children ];
+  private Fragment = (_: any, children: HTMLElement[]): HTMLElement[] => [...children];
 
   componentWillLoad() {
     if (this.value) {
@@ -302,10 +324,12 @@ export class WayAutoselect {
   render() {
     return (
       <Host>
-        <div class={{ 
+        <div
+          class={{
             'way-autosuggest': true,
-            'has-error': this.validationErrors().length > 0 
-          }} onClick={() => this.inputEl && this.inputEl.focus()}
+            'has-error': this.validationErrors().length > 0,
+          }}
+          onClick={() => this.inputEl && this.inputEl.focus()}
         >
           <div class="input-container">
             {this.renderTags()}
@@ -321,19 +345,19 @@ export class WayAutoselect {
               placeholder={this.placeholder}
             />
           </div>
-          <div 
+          <div
             class={{ 'option-list': true, 'has-focus': this.hasFocus }}
             ref={el => (this.optionListEl = el as HTMLInputElement)}
           >
             {this.filteredOptions.length < 1 && <p>No options available</p>}
             {this.filteredOptions.length > 0 &&
               this.filteredOptions.map((option, i) => (
-                <div 
+                <div
                   onClick={() => this.optionSelectedListener(option)}
-                  class={{ 
+                  class={{
                     'option': true,
                     'option-selected': option.selected,
-                    'option--highlighted': i === this.highlightIndex 
+                    'option--highlighted': i === this.highlightIndex,
                   }}
                 >
                   {option.label}
