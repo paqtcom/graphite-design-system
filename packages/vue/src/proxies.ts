@@ -19,14 +19,17 @@ import { WayTag as WayTagCmp } from '@w2wds/core/components/way-tag.js';
 
 
 export const WayAutosuggest = /*@__PURE__*/ defineContainer<JSX.WayAutosuggest>('way-autosuggest', WayAutosuggestCmp, [
-  'config',
   'name',
   'options',
   'placeholder',
   'validation',
   'valueSelector',
   'value',
-  'wayChange'
+  'maxTags',
+  'backspaceDelete',
+  'multiple',
+  'selectedText',
+  'way-change'
 ]);
 
 

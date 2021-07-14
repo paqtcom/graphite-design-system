@@ -5,18 +5,32 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { WayAutosuggestConfig, WayAutosuggestOption } from "@/types/autosuggest";
-import { FormElementData } from "@/types/form";
+import { WayAutosuggestChangeEventDetail, WayAutosuggestOption } from "./components/way-autosuggest/way-autosuggest-interface";
 import { WayRadioGroupChangeEventDetail } from "./components/way-radio-group/way-radio-group-interface";
 export namespace Components {
     interface WayAutosuggest {
-        "config"?: WayAutosuggestConfig;
+        /**
+          * Enable or disable deleting tags by backspace key  Important: `backspaceDelete` will be disabled when maxTags is reached.
+         */
+        "backspaceDelete": boolean;
+        /**
+          * When selected tags are greater than maxTags, they will be grouped in one tag with a counter. Text is configurable in the `selectedText` attribute
+         */
+        "maxTags": number;
+        /**
+          * Being able to select multiple values
+         */
+        "multiple": boolean;
         "name": string;
         /**
           * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`. The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
          */
         "options"?: Array<WayAutosuggestOption>;
         "placeholder"?: string;
+        /**
+          * The text which shows when tags are grouped due to maxTags reached.  Related to the `maxTags` attribute
+         */
+        "selectedText": string;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
         /**
@@ -364,14 +378,29 @@ declare global {
 }
 declare namespace LocalJSX {
     interface WayAutosuggest {
-        "config"?: WayAutosuggestConfig;
+        /**
+          * Enable or disable deleting tags by backspace key  Important: `backspaceDelete` will be disabled when maxTags is reached.
+         */
+        "backspaceDelete"?: boolean;
+        /**
+          * When selected tags are greater than maxTags, they will be grouped in one tag with a counter. Text is configurable in the `selectedText` attribute
+         */
+        "maxTags"?: number;
+        /**
+          * Being able to select multiple values
+         */
+        "multiple"?: boolean;
         "name"?: string;
-        "onWayChange"?: (event: CustomEvent<FormElementData>) => void;
+        "onWay-change"?: (event: CustomEvent<WayAutosuggestChangeEventDetail>) => void;
         /**
           * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`. The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
          */
         "options"?: Array<WayAutosuggestOption>;
         "placeholder"?: string;
+        /**
+          * The text which shows when tags are grouped due to maxTags reached.  Related to the `maxTags` attribute
+         */
+        "selectedText"?: string;
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
         /**

@@ -1,7 +1,6 @@
 import { Component, Host, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
-import { FormElementData } from '@/types/form';
-import { WayAutosuggestOption, WayAutosuggestConfig } from '@/types/autosuggest';
 import { renderInputOutsideShadowRoot } from '@/utils/utils';
+import { WayAutosuggestChangeEventDetail, WayAutosuggestOption } from './way-autosuggest-interface';
 
 @Component({
   tag: 'way-autosuggest',
@@ -11,9 +10,8 @@ import { renderInputOutsideShadowRoot } from '@/utils/utils';
 export class WayAutoselect {
   private optionListEl?: HTMLInputElement;
   private inputEl?: HTMLInputElement;
-  @Element() el!: HTMLWayAutosuggestElement;
 
-  @Prop() config?: WayAutosuggestConfig = {};
+  @Element() el!: HTMLWayAutosuggestElement;
 
   @Prop() name: string;
 
@@ -36,26 +34,39 @@ export class WayAutoselect {
 
   @Prop() value?: string | Array<{ label: string; value: any }>;
 
+  /**
+   * When selected tags are greater than maxTags, they will be grouped in one tag with a counter.
+   * Text is configurable in the `selectedText` attribute
+   */
+  @Prop() maxTags = 3;
+
+  /**
+   * Enable or disable deleting tags by backspace key
+   *
+   * Important: `backspaceDelete` will be disabled when maxTags is reached.
+   */
+  @Prop() backspaceDelete = true;
+
+  /**
+   * Being able to select multiple values
+   */
+  @Prop() multiple = true;
+
+  /**
+   * The text which shows when tags are grouped due to maxTags reached.
+   *
+   * Related to the `maxTags` attribute
+   */
+  @Prop() selectedText = 'selected';
+
   @State() filteredOptions: Array<WayAutosuggestOption> = this.options;
-
   @State() hasFocus = false;
-
   @State() inputValue: string = '';
-
   @State() localSelected = [];
-
-  @State() localConfig: WayAutosuggestConfig = {
-    backspaceDelete: true,
-    maxTags: 0,
-    multi: true,
-    selectedText: 'selected',
-    ...this.config,
-  };
-
   @State() highlightIndex: number = 0;
 
-  // use until clicking outside works
-  @State() scrollPos: number = 0;
+  // FIXME: Use until clicking outside works
+  @State() scrollPosition: number = 0;
 
   @Listen('click', { target: 'window' })
   handleOutsideClick(event: MouseEvent) {
@@ -100,7 +111,7 @@ export class WayAutoselect {
 
     if (
       event.key === 'Backspace' &&
-      this.localConfig.backspaceDelete &&
+      this.backspaceDelete &&
       this.hasFocus &&
       !this.inputValue &&
       this.localSelected.length > 0 &&
@@ -114,11 +125,13 @@ export class WayAutoselect {
     // if a valueSelector callback function prop is given, return comma separated string instead of JSON
     if (this.localSelected && typeof this.valueSelector === 'function') {
       const commaSeparatedString = this.localSelected.map(this.valueSelector).join();
+
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
     } else if (this.localSelected && typeof this.valueSelector === 'string') {
       const commaSeparatedString = this.cleanData()
         .map(local => local[`${this.valueSelector}`])
         .join();
+
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, commaSeparatedString);
     } else {
       renderInputOutsideShadowRoot(this.el.parentElement, this.name, JSON.stringify(this.cleanData()));
@@ -126,7 +139,7 @@ export class WayAutoselect {
   }
 
   private maxTagsReached(): boolean {
-    return this.localConfig.maxTags && this.localSelected.length > this.localConfig.maxTags;
+    return this.localSelected.length > this.maxTags;
   }
 
   /**
@@ -139,6 +152,7 @@ export class WayAutoselect {
     const marginOfError = 10;
 
     if (!firstOption) return;
+
     const top = this.optionListEl.scrollTop;
     const bottom = this.optionListEl.scrollTop + this.optionListEl.offsetHeight;
 
@@ -166,10 +180,11 @@ export class WayAutoselect {
     this.optionListEl.scrollTop = 0;
   }
 
-  @Event({ bubbles: true }) wayChange: EventEmitter<FormElementData>;
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter<WayAutosuggestChangeEventDetail>;
 
   private valueSelectedHandler() {
     this.renderHiddenInput();
+
     this.wayChange.emit({
       name: this.name,
       value: this.cleanData(),
@@ -182,12 +197,14 @@ export class WayAutoselect {
   @Watch('value')
   watchValue() {
     this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
+
     this.updateOptions();
   }
 
   @Watch('options')
   updateOptions() {
     if (!this.options || this.options.length < 1) return;
+
     this.filteredOptions = [...this.options].filter(
       option =>
         option.label
@@ -200,6 +217,7 @@ export class WayAutoselect {
     );
 
     this.value = this.localSelected;
+
     this.markSelectedOptions();
     this.sortFilteredOptions();
     this.valueSelectedHandler();
@@ -225,7 +243,7 @@ export class WayAutoselect {
    * @param {WayAutosuggestOption} option
    */
   private optionSelectedListener(option: WayAutosuggestOption) {
-    if (!this.localConfig.multi) {
+    if (!this.multiple) {
       this.localSelected = [option];
       this.updateOptions();
       this.unFocus();
@@ -235,6 +253,7 @@ export class WayAutoselect {
     } else {
       this.removeTag(option);
     }
+
     this.value = this.localSelected;
   }
 
@@ -244,9 +263,12 @@ export class WayAutoselect {
    */
   private removeTag(option) {
     if (!this.localSelected) return;
+
     // Cannot use simple Array.filter() because setting refference to new array will trigger @watch on value
     const index = this.localSelected.findIndex(selectedOption => selectedOption.value === option.value);
+
     this.localSelected.splice(index, 1);
+
     this.updateOptions();
   }
 
@@ -255,6 +277,7 @@ export class WayAutoselect {
 
     this.hasFocus = true;
     this.inputValue = input.value;
+
     this.updateOptions();
   };
 
@@ -266,6 +289,7 @@ export class WayAutoselect {
     if (!this.inputEl) return '7em';
 
     const calculation = this.inputEl.value.length * 0.7;
+
     if (calculation < 7) {
       return '7em';
     } else if (calculation < 15) {
@@ -276,11 +300,11 @@ export class WayAutoselect {
   }
 
   private renderTags() {
-    // No tags
     if (this.localSelected.length === 0) {
+      // No tags
       return null;
-      // If tags not exceeds maxTags
     } else if (!this.maxTagsReached()) {
+      // If tags don't exceeds maxTags
       return (
         <this.Fragment>
           {this.localSelected.length > 0 &&
@@ -291,9 +315,10 @@ export class WayAutoselect {
             ))}
         </this.Fragment>
       );
-      // If maxTags is not set or If tags exceed maxTags
     } else {
-      const text = `${this.localSelected.length} ${this.localConfig.selectedText}`;
+      // If tags exceed maxTags
+      const text = `${this.localSelected.length} ${this.selectedText}`;
+
       return (
         <div class="tag counter" title={text}>
           <span>{text}</span>
@@ -317,6 +342,7 @@ export class WayAutoselect {
     if (this.value) {
       this.localSelected = typeof this.value === 'string' ? JSON.parse(this.value) : this.value;
     }
+
     this.updateOptions();
     this.renderHiddenInput();
   }
@@ -345,6 +371,7 @@ export class WayAutoselect {
               placeholder={this.placeholder}
             />
           </div>
+
           <div
             class={{ 'option-list': true, 'has-focus': this.hasFocus }}
             ref={el => (this.optionListEl = el as HTMLInputElement)}

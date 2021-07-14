@@ -403,45 +403,47 @@
     </section>
 
     <section>
-      <script>
-        const selectOptions = [
-          { label: 'Arthur Benjamin Dickinson', value: 1001, age: 32 },
-          { label: 'Alexa van der Borre', value: 301, age: 29 },
-          { label: 'Benny Balotelli', value: 2 },
-          { label: 'Eddy Masters', value: 451 },
-          { label: 'Dennis Lei', value: 123 },
-          { label: 'Lynn Kwan', value: 4 },
-          { label: 'Mai Nguyễn', value: 39 },
-          { label: 'Michael Sigþórsson', value: 35 },
-        ];
-      </script>
       <h2>way-autosuggest</h2>
+
       <section>
         <h3>Basic usage</h3>
+
         <way-autosuggest
           name="autosuggest"
           placeholder="Start typing"
           value='[{ "label": "Benny Balotelli", "value": 2 }]'
         ></way-autosuggest>
+
         <div>
           <p>autosuggest data:</p>
           <code class="code-autosuggest-basic"></code>
           <p>hidden input data:</p>
           <code class="code-autosuggest-basic-hidden"></code>
         </div>
+
         <script>
+          const selectOptions = [
+            { label: 'Arthur Benjamin Dickinson', value: 1001, age: 32 },
+            { label: 'Alexa van der Borre', value: 301, age: 29 },
+            { label: 'Benny Balotelli', value: 2 },
+            { label: 'Eddy Masters', value: 451 },
+            { label: 'Dennis Lei', value: 123 },
+            { label: 'Lynn Kwan', value: 4 },
+            { label: 'Mai Nguyễn', value: 39 },
+            { label: 'Michael Sigþórsson', value: 35 },
+          ];
+
           (function () {
             const autosuggest = document.querySelector('way-autosuggest');
 
             autosuggest.options = selectOptions;
             autosuggest.config = {
-              maxTags: 6,
               selectedText: 'selected',
             };
             // If value is set in HTML, this js will be ignored.
             autosuggest.value = [{ label: 'Benny Balotelli', value: 2 }];
 
-            autosuggest.addEventListener('wayChange', event => {
+            autosuggest.addEventListener('way-change', event => {
               // we get the value both in the event.detail
               document.querySelector('.code-autosuggest-basic').innerHTML = JSON.stringify(event.detail.value);
 
@@ -453,14 +455,19 @@
           })();
         </script>
       </section>
+
       <section>
+        <h3>Using valueSelector</h3>
+
         <way-autosuggest class="as-value-selector" name="autosuggest-value-selector"></way-autosuggest>
+
         <div>
           <p>autosuggest data:</p>
           <code class="code-as-value-selector"></code>
           <p>hidden input data</p>
           <code class="code-as-value-selector-2"></code>
         </div>
+
         <script>
           (function () {
             const autosuggest = document.querySelector('.as-value-selector');
@@ -474,7 +481,7 @@
             // <way-autosuggest value-selector="value"></way-autosuggest
             autosuggest.valueSelector = 'value';
 
-            autosuggest.addEventListener('wayChange', event => {
+            autosuggest.addEventListener('way-change', event => {
               // we get the value both in the event.detail
               document.querySelector('.code-as-value-selector').innerHTML = JSON.stringify(event.detail.value);
               const hiddenInput = document.querySelector('input[name=autosuggest-value-selector]');
@@ -484,21 +491,6 @@
             });
           })();
         </script>
-        <h3>Prop: config?: Object</h3>
-        <h4>config.backspaceDelete? : boolean = true</h4>
-        <p>Enable or disable deleting tags by backspace key</p>
-        <h4>config.maxTags? : number = 0</h4>
-        <p>
-          When selected tags are greater than maxTags, they will be grouped in one tag with a counter. <br />
-          Value 0 means no maximum.
-          <small>text is configurable in <strong>config.selectedText</strong></small>
-        </p>
-        <small>important: <strong>backspaceDelete</strong> will be disabled when maxTags is reached.</small>
-        <h4>config.multi? : boolean = true</h4>
-        <p>Being able to select multiple values</p>
-        <h4>config.selectedText? : string = 'selected'</h4>
-        <p>The text which shows when tags are grouped due to maxTags reached.</p>
-        <small>Check <strong>config.maxTags</strong></small>
       </section>
     </section>
   </body>

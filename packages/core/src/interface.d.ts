@@ -1,6 +1,8 @@
 // Components interfaces
 export * from './components';
 export * from './index';
+export * from './components/way-radio-group/way-radio-group-interface';
+export * from './components/way-autosuggest/way-autosuggest-interface';
 
 // Types from utils
 export * from './utils/popover';
@@ -69,7 +71,19 @@ export type AutocompleteTypes =
   | 'url'
   | 'photo';
 
-export type TextFieldTypes = 'date' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' | 'time' | 'week' | 'month' | 'datetime-local';
+export type TextFieldTypes =
+  | 'date'
+  | 'email'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'url'
+  | 'time'
+  | 'week'
+  | 'month'
+  | 'datetime-local';
 export type ComponentTags = string;
 export type ComponentRef = Function | HTMLElement | string | null;
 export type ComponentProps<T = null> = { [key: string]: any };
