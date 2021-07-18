@@ -1,6 +1,10 @@
-import { Component, Host, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Listen, State, Prop, Watch, h } from '@stencil/core';
 import { renderInputOutsideShadowRoot } from '@/utils/utils';
 import { WayAutosuggestChangeEventDetail, WayAutosuggestOption } from './way-autosuggest-interface';
+import FormControl from '@/functional-components/form-control/form-control';
+import { hasSlot } from '@/utils/slot';
+
+let id = 0;
 
 @Component({
   tag: 'way-autosuggest',
@@ -8,8 +12,11 @@ import { WayAutosuggestChangeEventDetail, WayAutosuggestOption } from './way-aut
   shadow: true,
 })
 export class WayAutoselect {
-  private optionListEl?: HTMLInputElement;
-  private inputEl?: HTMLInputElement;
+  optionListEl?: HTMLInputElement;
+  inputEl?: HTMLInputElement;
+  inputId = `autosuggest-${++id}`;
+  labelId = `autosuggest-label-${id}`;
+  helpTextId = `autosuggest-help-text-${id}`;
 
   @Element() el!: HTMLWayAutosuggestElement;
 
@@ -21,7 +28,11 @@ export class WayAutoselect {
    */
   @Prop() options?: Array<WayAutosuggestOption> = [];
 
+  /** The autosuggest's placeholder text. */
   @Prop() placeholder?: string;
+
+  /** The autosuggest's size. */
+  @Prop() size: 'small' | 'medium' | 'large' = 'medium';
 
   @Prop() validation?: (value: any) => string[];
 
@@ -59,14 +70,28 @@ export class WayAutoselect {
    */
   @Prop() selectedText = 'selected';
 
+  /** The autosuggest's label. Alternatively, you can use the label slot. */
+  @Prop() label = '';
+
+  /** The autosuggest's help text. Alternatively, you can use the help-text slot. */
+  @Prop() helpText = '';
+
   @State() filteredOptions: Array<WayAutosuggestOption> = this.options;
   @State() hasFocus = false;
   @State() inputValue: string = '';
   @State() localSelected = [];
   @State() highlightIndex: number = 0;
+  @State() hasHelpTextSlot = false;
+  @State() hasLabelSlot = false;
 
   // FIXME: Use until clicking outside works
   @State() scrollPosition: number = 0;
+
+  @Watch('helpText')
+  @Watch('label')
+  handleLabelChange() {
+    this.handleSlotChange();
+  }
 
   @Listen('click', { target: 'window' })
   handleOutsideClick(event: MouseEvent) {
@@ -345,11 +370,43 @@ export class WayAutoselect {
 
     this.updateOptions();
     this.renderHiddenInput();
+    this.handleSlotChange();
+  }
+
+  handleSlotChange() {
+    this.hasHelpTextSlot = hasSlot(this.el, 'help-text');
+    this.hasLabelSlot = hasSlot(this.el, 'label');
+  }
+
+  connectedCallback() {
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleSlotChange = this.handleSlotChange.bind(this);
+    this.handleLabelClick = this.handleLabelClick.bind(this);
+
+    this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+  }
+
+  disconnectedCallback() {
+    this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+  }
+
+  handleLabelClick() {
+    // this.box.focus();
   }
 
   render() {
     return (
-      <Host>
+      <FormControl
+        inputId={this.inputId}
+        label={this.label}
+        labelId={this.labelId}
+        hasLabelSlot={this.hasLabelSlot}
+        helpTextId={this.helpTextId}
+        helpText={this.helpText}
+        hasHelpTextSlot={this.hasHelpTextSlot}
+        size={this.size}
+        onLabelClick={this.handleLabelClick}
+      >
         <div
           class={{
             'way-autosuggest': true,
@@ -392,7 +449,7 @@ export class WayAutoselect {
               ))}
           </div>
         </div>
-      </Host>
+      </FormControl>
     );
   }
 }

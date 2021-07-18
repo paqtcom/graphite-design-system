@@ -14,6 +14,14 @@ export namespace Components {
          */
         "backspaceDelete": boolean;
         /**
+          * The autosuggest's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * The autosuggest's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
           * When selected tags are greater than maxTags, they will be grouped in one tag with a counter. Text is configurable in the `selectedText` attribute
          */
         "maxTags": number;
@@ -26,11 +34,18 @@ export namespace Components {
           * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`. The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
          */
         "options"?: Array<WayAutosuggestOption>;
+        /**
+          * The autosuggest's placeholder text.
+         */
         "placeholder"?: string;
         /**
           * The text which shows when tags are grouped due to maxTags reached.  Related to the `maxTags` attribute
          */
         "selectedText": string;
+        /**
+          * The autosuggest's size.
+         */
+        "size": 'small' | 'medium' | 'large';
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
         /**
@@ -383,6 +398,14 @@ declare namespace LocalJSX {
          */
         "backspaceDelete"?: boolean;
         /**
+          * The autosuggest's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * The autosuggest's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
           * When selected tags are greater than maxTags, they will be grouped in one tag with a counter. Text is configurable in the `selectedText` attribute
          */
         "maxTags"?: number;
@@ -396,11 +419,18 @@ declare namespace LocalJSX {
           * An array of WayAutosuggestOption. Which is an object with at least a `label:string` and a `value: string | number`. The value has to be of type string or number because it needs to be able to be rendered in the hidden input.
          */
         "options"?: Array<WayAutosuggestOption>;
+        /**
+          * The autosuggest's placeholder text.
+         */
         "placeholder"?: string;
         /**
           * The text which shows when tags are grouped due to maxTags reached.  Related to the `maxTags` attribute
          */
         "selectedText"?: string;
+        /**
+          * The autosuggest's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
         "validation"?: (value: any) => string[];
         "value"?: string | Array<{ label: string; value: any }>;
         /**
