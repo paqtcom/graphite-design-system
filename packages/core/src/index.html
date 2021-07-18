@@ -33,7 +33,8 @@
         <way-autosuggest
           name="autosuggest"
           placeholder="Start typing"
-          value='[{ "label": "Benny Balotelli", "value": 2 }]'
+          selectedText="selected"
+          id="autosuggest1"
         ></way-autosuggest>
 
         <div>
@@ -56,17 +57,13 @@
           ];
 
           (function () {
-            const autosuggest = document.querySelector('way-autosuggest');
+            const autosuggest = document.querySelector('#autosuggest1');
 
             autosuggest.options = selectOptions;
-            autosuggest.config = {
-              selectedText: 'selected',
-            };
-            // If value is set in HTML, this js will be ignored.
             autosuggest.value = [{ label: 'Benny Balotelli', value: 2 }];
 
             autosuggest.addEventListener('way-change', event => {
-              // we get the value both in the event.detail
+              // we get the value in the event.detail
               document.querySelector('.code-autosuggest-basic').innerHTML = JSON.stringify(event.detail.value);
 
               const hiddenInput = document.querySelector('input[name=autosuggest]');
@@ -81,7 +78,7 @@
       <section>
         <h3>Using valueSelector</h3>
 
-        <way-autosuggest class="as-value-selector" name="autosuggest-value-selector"></way-autosuggest>
+        <way-autosuggest id="autosuggest2" name="autosuggest-value-selector"></way-autosuggest>
 
         <div>
           <p>autosuggest data:</p>
@@ -92,7 +89,7 @@
 
         <script>
           (function () {
-            const autosuggest = document.querySelector('.as-value-selector');
+            const autosuggest = document.querySelector('#autosuggest2');
 
             autosuggest.options = selectOptions;
             // JS examples:
@@ -100,11 +97,11 @@
             // autosuggest.valueSelector = (item, index) => item.value;
 
             // HTML example:
-            // <way-autosuggest value-selector="value"></way-autosuggest
+            // <way-autosuggest value-selector="value"></way-autosuggest>
             autosuggest.valueSelector = 'value';
 
             autosuggest.addEventListener('way-change', event => {
-              // we get the value both in the event.detail
+              // we get the value in the event.detail
               document.querySelector('.code-as-value-selector').innerHTML = JSON.stringify(event.detail.value);
               const hiddenInput = document.querySelector('input[name=autosuggest-value-selector]');
               if (hiddenInput) {
