@@ -330,16 +330,11 @@ export class WayAutoselect {
       return null;
     } else if (!this.maxTagsReached()) {
       // If tags don't exceeds maxTags
-      return (
-        <this.Fragment>
-          {this.localSelected.length > 0 &&
-            this.localSelected.map(tag => (
-              <div title={tag.label} onClick={() => this.removeTag(tag)} class="tag">
-                <span>{tag.label}</span>
-              </div>
-            ))}
-        </this.Fragment>
-      );
+      return this.localSelected.map(tag => (
+        <div title={tag.label} onClick={() => this.removeTag(tag)} class="tag">
+          <span>{tag.label}</span>
+        </div>
+      ));
     } else {
       // If tags exceed maxTags
       const text = `${this.localSelected.length} ${this.selectedText}`;
@@ -351,17 +346,6 @@ export class WayAutoselect {
       );
     }
   }
-
-  /**
-   * Used to render multiple HTMLElements without using a wrapper element.
-   * In React JSX we can use '<> <div/><div/><div/> </>' but is not allowed in TS for StencilJS.
-   *
-   * @param { any } _
-   * @param { HTMLElement[] } children
-   *
-   * @returns HTMLElement[]
-   */
-  private Fragment = (_: any, children: HTMLElement[]): HTMLElement[] => [...children];
 
   componentWillLoad() {
     if (this.value) {
