@@ -13,7 +13,7 @@ export class WayMenu {
   typeToSelectString = '';
   typeToSelectTimeout: any;
 
-  @Element() el!: HTMLWayMenuElement;
+  menu: HTMLElement;
 
   /** Emitted when a menu item is selected. */
   @Event({ eventName: 'way-select' }) waySelect: EventEmitter<{ item: HTMLWayMenuItemElement }>;
@@ -46,7 +46,7 @@ export class WayMenu {
   }
 
   getItems() {
-    const slot = this.el.querySelector('slot');
+    const slot = this.menu.querySelector('slot');
     return [...slot.assignedElements({ flatten: true })].filter(
       (el: any) => el.tagName.toLowerCase() === 'way-menu-item' && !el.disabled,
     ) as [HTMLWayMenuItemElement];
@@ -118,9 +118,15 @@ export class WayMenu {
 
   render() {
     return (
-      <Host class="menu" role="menu" onClick={this.handleClick} onKeyDown={this.handleKeyDown} tabIndex={0}>
+      <div
+        ref={el => (this.menu = el)}
+        class="menu"
+        role="menu"
+        onClick={this.handleClick}
+        onKeyDown={this.handleKeyDown}
+      >
         <slot></slot>
-      </Host>
+      </div>
     );
   }
 }
