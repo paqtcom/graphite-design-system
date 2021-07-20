@@ -160,8 +160,10 @@
   margin-left: var(--clear-margin-left);
   margin-right: var(--clear-margin-right);
 
+  --height: 1em;
+
   svg {
-    font-size: var(--font-size);
+    font-size: 0.7em;
   }
 }
 

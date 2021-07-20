@@ -46,7 +46,7 @@ export class WayTag {
           <slot></slot>
 
           {this.clearable && (
-            <way-button variant="plain" size="small" class="tag-clear" onClick={this.handleClearClick} tabindex="-1">
+            <way-button variant="plain" size={this.size} class="tag-clear" onClick={this.handleClearClick}>
               <svg slot="icon-only" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
                 <title>Close</title>
                 <path

@@ -178,13 +178,18 @@ export class WaySelect {
   }
 
   private handleBlur = () => {
-    this.hasFocus = false;
-    this.wayBlur.emit();
+    // Don't blur if the control is open. We'll move focus back once it closes.
+    if (!this.isOpen) {
+      this.hasFocus = false;
+      this.wayBlur.emit();
+    }
   };
 
   private handleFocus = () => {
-    this.hasFocus = true;
-    this.wayFocus.emit();
+    if (!this.hasFocus) {
+      this.hasFocus = true;
+      this.wayFocus.emit();
+    }
   };
 
   handleClearClick(event: MouseEvent) {
@@ -233,8 +238,8 @@ export class WaySelect {
       }
     }
 
-    // All other keys open the menu and initiate type to select
-    if (!this.isOpen) {
+    // All other "printable" keys open the menu and initiate type to select
+    if (!this.isOpen && event.key.length === 1) {
       event.stopPropagation();
       event.preventDefault();
       this.dropdown.show();
@@ -274,6 +279,9 @@ export class WaySelect {
   handleMenuHide() {
     this.resizeObserver.unobserve(this.el);
     this.isOpen = false;
+
+    // Restore focus on the box after the menu is hidden
+    this.box.focus();
   }
 
   handleSlotChange() {
