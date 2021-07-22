@@ -65,16 +65,16 @@ export class WayDropdown {
   @Prop() hoist = false;
 
   /** Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened. */
-  @Event({ eventName: 'way-show' }) wayShow: EventEmitter;
+  @Event({ eventName: 'way-show' }) wayShow: EventEmitter<void>;
 
   /** Emitted after the dropdown opens and all transitions are complete. */
-  @Event({ eventName: 'way-after-show' }) wayAfterShow: EventEmitter;
+  @Event({ eventName: 'way-after-show' }) wayAfterShow: EventEmitter<void>;
 
   /** Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed. */
-  @Event({ eventName: 'way-hide' }) wayHide: EventEmitter;
+  @Event({ eventName: 'way-hide' }) wayHide: EventEmitter<void>;
 
   /** Emitted after the dropdown closes and all transitions are complete. */
-  @Event({ eventName: 'way-after-hide' }) wayAfterHide: EventEmitter;
+  @Event({ eventName: 'way-after-hide' }) wayAfterHide: EventEmitter<void>;
 
   @Watch('open')
   handleOpenChange() {

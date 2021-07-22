@@ -1,6 +1,6 @@
 {
   "name": "@w2wds/core",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "description": "Base components for the Way2Web Design System",
   "repository": {
     "type": "git",
@@ -11,26 +11,28 @@
   "es2015": "dist/esm/index.js",
   "es2017": "dist/esm/index.js",
   "jsnext:main": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/types/interface.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "files": [
+    "components/",
     "dist/",
     "loader/",
     "hydrate/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "npm run clean && stencil build --docs --docs-json dist/docs.json",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "clean": "node scripts/clean.js"
   },
   "license": "MIT",
   "devDependencies": {
     "@stencil/react-output-target": "0.0.9",
     "@stencil/sass": "^1.4.1",
-    "@stencil/vue-output-target": "^0.4.3",
+    "@stencil/vue-output-target": "^0.5.0",
     "@types/jest": "^26.0.23",
     "@types/puppeteer": "2.0.1",
     "@types/resize-observer-browser": "^0.1.5",

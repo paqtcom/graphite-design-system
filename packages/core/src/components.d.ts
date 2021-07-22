@@ -470,19 +470,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onWay-after-hide"?: (event: CustomEvent<any>) => void;
+        "onWay-after-hide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onWay-after-show"?: (event: CustomEvent<any>) => void;
+        "onWay-after-show"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onWay-hide"?: (event: CustomEvent<any>) => void;
+        "onWay-hide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onWay-show"?: (event: CustomEvent<any>) => void;
+        "onWay-show"?: (event: CustomEvent<void>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -673,15 +673,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<any>) => void;
+        "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style select with rounded edges.
          */
@@ -711,7 +711,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onWay-clear"?: (event: CustomEvent<any>) => void;
+        "onWay-clear"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */

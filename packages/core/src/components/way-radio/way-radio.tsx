@@ -59,6 +59,9 @@ export class WayRadio {
     if (radioGroup) {
       this.updateState();
       addEventListener(radioGroup, 'way-change', this.updateState);
+
+      // Needed for the Vue wrappers
+      addEventListener(radioGroup, 'v-way-change', this.updateState);
     }
   }
 
@@ -66,6 +69,9 @@ export class WayRadio {
     const radioGroup = this.radioGroup;
     if (radioGroup) {
       removeEventListener(radioGroup, 'way-change', this.updateState);
+
+      // Needed for the Vue wrappers
+      removeEventListener(radioGroup, 'v-way-change', this.updateState);
       this.radioGroup = null;
     }
   }

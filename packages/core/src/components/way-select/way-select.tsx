@@ -111,17 +111,15 @@ export class WaySelect {
   }
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
+  @Event({ eventName: 'way-change' }) wayChange!: EventEmitter<void>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
+  @Event({ eventName: 'way-focus' }) wayFocus!: EventEmitter<void>;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
+  @Event({ eventName: 'way-blur' }) wayBlur!: EventEmitter<void>;
 
   connectedCallback() {
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
     this.handleClearClick = this.handleClearClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleLabelClick = this.handleLabelClick.bind(this);
@@ -179,15 +177,15 @@ export class WaySelect {
     return Array.isArray(this.value) ? this.value : [this.value];
   }
 
-  handleBlur() {
+  private handleBlur = () => {
     this.hasFocus = false;
     this.wayBlur.emit();
-  }
+  };
 
-  handleFocus() {
+  private handleFocus = () => {
     this.hasFocus = true;
     this.wayFocus.emit();
-  }
+  };
 
   handleClearClick(event: MouseEvent) {
     event.stopPropagation();

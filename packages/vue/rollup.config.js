@@ -1,19 +1,15 @@
-import { terser } from "rollup-plugin-terser";
+const external = ["vue"];
 
 export default {
-  input: 'dist-transpiled/index.js',
+  input: "dist-transpiled/index.js",
   output: [
     {
-      file: 'dist/index.js',
-      format: 'esm',
-      sourcemap: true
-    },
-    {
-      file: 'dist/index.min.js',
-      format: 'esm',
+      dir: "dist/",
+      entryFileNames: "[name].js",
+      chunkFileNames: "[name]-[hash].js",
+      format: "es",
       sourcemap: true,
-      plugins: [terser()]
-    }
+    },
   ],
-  external: ['@w2wds/core', '@w2wds/core/loader', 'vue']
+  external: (id) => external.includes(id) || id.startsWith("@w2wds/core"),
 };
