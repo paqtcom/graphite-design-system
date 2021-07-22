@@ -7,13 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                          | Type                             | Default     |
-| ---------- | ---------- | ---------------------------------------------------- | -------------------------------- | ----------- |
-| `checked`  | `checked`  | Set to true to draw the checkbox in a checked state. | `boolean`                        | `false`     |
-| `disabled` | `disabled` | Set to true to disable the checkbox.                 | `boolean`                        | `false`     |
-| `size`     | `size`     | The checkbox icon size.                              | `"large" \| "medium" \| "small"` | `'medium'`  |
-| `value`    | `value`    | The checkbox's value attribute.                      | `string`                         | `undefined` |
-| `variant`  | `variant`  | The checkbox variants.                               | `"circle" \| "square"`           | `'square'`  |
+| Property   | Attribute  | Description                                          | Type      | Default     |
+| ---------- | ---------- | ---------------------------------------------------- | --------- | ----------- |
+| `checked`  | `checked`  | Set to true to draw the checkbox in a checked state. | `boolean` | `false`     |
+| `disabled` | `disabled` | Set to true to disable the checkbox.                 | `boolean` | `false`     |
+| `value`    | `value`    | The checkbox's value attribute.                      | `string`  | `undefined` |
 
 
 ## Events
@@ -45,6 +43,13 @@ Sets focus on the checkbox.
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot | Description           |
+| ---- | --------------------- |
+|      | The checkboxes label. |
 
 
 ## CSS Custom Properties

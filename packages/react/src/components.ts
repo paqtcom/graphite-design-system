@@ -10,7 +10,6 @@ import { defineCustomElements } from '@w2wds/core/loader';
 defineCustomElements();
 export const WayButton = /*@__PURE__*/createReactComponent<JSX.WayButton, HTMLWayButtonElement>('way-button');
 export const WayCheckbox = /*@__PURE__*/createReactComponent<JSX.WayCheckbox, HTMLWayCheckboxElement>('way-checkbox');
-export const WayCheckboxGroup = /*@__PURE__*/createReactComponent<JSX.WayCheckboxGroup, HTMLWayCheckboxGroupElement>('way-checkbox-group');
 export const WayDropdown = /*@__PURE__*/createReactComponent<JSX.WayDropdown, HTMLWayDropdownElement>('way-dropdown');
 export const WayInput = /*@__PURE__*/createReactComponent<JSX.WayInput, HTMLWayInputElement>('way-input');
 export const WayMenu = /*@__PURE__*/createReactComponent<JSX.WayMenu, HTMLWayMenuElement>('way-menu');

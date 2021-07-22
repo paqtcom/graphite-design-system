@@ -15,7 +15,6 @@ export class WayCheckbox {
   private inputId = `checkbox-${++id}`;
   private labelId = `checkbox-label-${id}`;
   private input: HTMLInputElement;
-  private checkboxGroup: HTMLWayCheckboxGroupElement | null = null;
 
   @Element() el: HTMLWayCheckboxElement;
 
@@ -55,18 +54,17 @@ export class WayCheckbox {
     if (this.value === undefined) {
       this.value = this.inputId;
     }
-    const checkboxGroup = (this.checkboxGroup = this.el.closest('way-checkbox-group'));
-    if (checkboxGroup) {
-      this.updateState();
-      addEventListener(checkboxGroup, 'way-change', this.updateState);
+    const checkbox = this.el.closest('way-checkbox');
+    if (checkbox) {
+      addEventListener(checkbox, 'way-change', this.updateState);
     }
   }
 
-   disconnectedCallback() {
-    const checkboxGroup = this.checkboxGroup;
-    if (checkboxGroup) {
-      removeEventListener(checkboxGroup, 'way-change', this.updateState);
-      this.checkboxGroup = null;
+  disconnectedCallback() {
+    const checkbox = this.el;
+    if (checkbox) {
+      removeEventListener(checkbox, 'way-change', this.updateState);
+      this.el = null;
     }
   }
 
@@ -83,8 +81,8 @@ export class WayCheckbox {
   }
 
   private updateState = () => {
-    if (this.checkboxGroup) {
-      this.checked = this.checkboxGroup.value === this.value;
+    if (this.el) {
+      this.checked = this.el.value === this.value;
     }
   };
 

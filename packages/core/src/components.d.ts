@@ -5,7 +5,6 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { WayCheckboxGroupChangeEventDetail } from "./components/way-checkbox-group/way-checkbox-group-interface";
 import { WayRadioGroupChangeEventDetail } from "./components/way-radio-group/way-radio-group-interface";
 export namespace Components {
     interface WayButton {
@@ -76,28 +75,6 @@ export namespace Components {
           * The checkbox's value attribute.
          */
         "value": string;
-    }
-    interface WayCheckboxGroup {
-        /**
-          * If `true`, the checkboxs can be deselected.
-         */
-        "allowEmptySelection": boolean;
-        /**
-          * The checkbox group label. Required for proper accessibility. Alternatively, you can use the label slot.
-         */
-        "label": string;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name": string;
-        /**
-          * Hides the fieldset and legend that surrounds the checkbox group. The label will still be read by screen readers.
-         */
-        "noFieldset": boolean;
-        /**
-          * the value of the checkbox group.
-         */
-        "value"?: any | null;
     }
     interface WayDropdown {
         /**
@@ -379,12 +356,6 @@ declare global {
         prototype: HTMLWayCheckboxElement;
         new (): HTMLWayCheckboxElement;
     };
-    interface HTMLWayCheckboxGroupElement extends Components.WayCheckboxGroup, HTMLStencilElement {
-    }
-    var HTMLWayCheckboxGroupElement: {
-        prototype: HTMLWayCheckboxGroupElement;
-        new (): HTMLWayCheckboxGroupElement;
-    };
     interface HTMLWayDropdownElement extends Components.WayDropdown, HTMLStencilElement {
     }
     var HTMLWayDropdownElement: {
@@ -454,7 +425,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
         "way-checkbox": HTMLWayCheckboxElement;
-        "way-checkbox-group": HTMLWayCheckboxGroupElement;
         "way-dropdown": HTMLWayDropdownElement;
         "way-input": HTMLWayInputElement;
         "way-menu": HTMLWayMenuElement;
@@ -544,32 +514,6 @@ declare namespace LocalJSX {
           * The checkbox's value attribute.
          */
         "value"?: string;
-    }
-    interface WayCheckboxGroup {
-        /**
-          * If `true`, the checkboxs can be deselected.
-         */
-        "allowEmptySelection"?: boolean;
-        /**
-          * The checkbox group label. Required for proper accessibility. Alternatively, you can use the label slot.
-         */
-        "label"?: string;
-        /**
-          * The name of the control, which is submitted with the form data.
-         */
-        "name"?: string;
-        /**
-          * Hides the fieldset and legend that surrounds the checkbox group. The label will still be read by screen readers.
-         */
-        "noFieldset"?: boolean;
-        /**
-          * Emitted when the value has changed.
-         */
-        "onWay-change"?: (event: CustomEvent<WayCheckboxGroupChangeEventDetail>) => void;
-        /**
-          * the value of the checkbox group.
-         */
-        "value"?: any | null;
     }
     interface WayDropdown {
         /**
@@ -867,7 +811,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "way-button": WayButton;
         "way-checkbox": WayCheckbox;
-        "way-checkbox-group": WayCheckboxGroup;
         "way-dropdown": WayDropdown;
         "way-input": WayInput;
         "way-menu": WayMenu;
@@ -887,7 +830,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
             "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
-            "way-checkbox-group": LocalJSX.WayCheckboxGroup & JSXBase.HTMLAttributes<HTMLWayCheckboxGroupElement>;
             "way-dropdown": LocalJSX.WayDropdown & JSXBase.HTMLAttributes<HTMLWayDropdownElement>;
             "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
