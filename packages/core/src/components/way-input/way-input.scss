@@ -1,3 +1,6 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/w2wds.globals';
+
 :host {
   /**
    * @prop --font-size: Font size of the select
@@ -102,16 +105,12 @@
   padding: var(--way-spacing-x-small) var(--way-spacing-small);
 }
 
-.input:not(.input-disabled) .input:hover {
+.input:hover:not(.input-disabled) {
   background-color: var(--background-color-hover);
   border-color: var(--border-color-hover);
 }
 
-.input:not(.input-disabled) .input:focus {
-  outline: none;
-}
-
-.input:focus {
+.input:focus:not(.input-disabled) {
   outline: none;
   box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
   border-color: var(--border-color-focus);

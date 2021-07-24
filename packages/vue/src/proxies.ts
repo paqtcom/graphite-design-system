@@ -7,6 +7,7 @@ import type { JSX } from '@w2wds/core/components';
 
 import { WayButton as WayButtonCmp } from '@w2wds/core/components/way-button.js';
 import { WayDropdown as WayDropdownCmp } from '@w2wds/core/components/way-dropdown.js';
+import { WayInput as WayInputCmp } from '@w2wds/core/components/way-input.js';
 import { WayMenu as WayMenuCmp } from '@w2wds/core/components/way-menu.js';
 import { WayMenuDivider as WayMenuDividerCmp } from '@w2wds/core/components/way-menu-divider.js';
 import { WayMenuItem as WayMenuItemCmp } from '@w2wds/core/components/way-menu-item.js';
@@ -49,21 +50,23 @@ export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-d
 ]);
 
 
-export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', [
+export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', WayInputCmp, [
+  'value',
   'type',
   'disabled',
   'name',
-  'inline',
   'placeholder',
   'size',
   'label',
   'helpText',
   'required',
   'invalid',
+  'inputmode',
   'way-change',
   'way-focus',
   'way-blur'
-]);
+],
+'value', 'v-way-change', 'way-change');
 
 
 export const WayMenu = /*@__PURE__*/ defineContainer<JSX.WayMenu>('way-menu', WayMenuCmp, [

@@ -112,11 +112,11 @@ export namespace Components {
          */
         "helpText": string;
         /**
-          * Specifies what if label and input must be inline.
+          * The input's inputmode attribute.
          */
-        "inline": boolean;
+        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
          */
         "invalid": boolean;
         /**
@@ -150,7 +150,11 @@ export namespace Components {
         /**
           * Specifies what type of input to use.
          */
-        "type": string;
+        "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        /**
+          * The input's value attribute.
+         */
+        "value": string;
     }
     interface WayMenu {
         /**
@@ -517,11 +521,11 @@ declare namespace LocalJSX {
          */
         "helpText"?: string;
         /**
-          * Specifies what if label and input must be inline.
+          * The input's inputmode attribute.
          */
-        "inline"?: boolean;
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
          */
         "invalid"?: boolean;
         /**
@@ -559,7 +563,11 @@ declare namespace LocalJSX {
         /**
           * Specifies what type of input to use.
          */
-        "type"?: string;
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        /**
+          * The input's value attribute.
+         */
+        "value"?: string;
     }
     interface WayMenu {
         /**

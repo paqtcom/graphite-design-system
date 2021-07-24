@@ -7,18 +7,19 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                                               | Type                             | Default    |
-| ------------- | ------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------- | ---------- |
-| `disabled`    | `disabled`    | Set to true to disable the input control.                                                                 | `boolean`                        | `false`    |
-| `helpText`    | `help-text`   | The input's help text. Alternatively, you can use the help-text slot.                                     | `string`                         | `''`       |
-| `inline`      | `inline`      | Specifies what if label and input must be inline.                                                         | `boolean`                        | `false`    |
-| `invalid`     | `invalid`     | This will be true when the control is in an invalid state. Validity is determined by the `required` prop. | `boolean`                        | `false`    |
-| `label`       | `label`       | The inputs's label. Alternatively, you can use the label slot.                                            | `string`                         | `''`       |
-| `name`        | `name`        | The input's name.                                                                                         | `string`                         | `''`       |
-| `placeholder` | `placeholder` | The input's placeholder text.                                                                             | `string`                         | `''`       |
-| `required`    | `required`    | The input's required attribute.                                                                           | `boolean`                        | `false`    |
-| `size`        | `size`        | The input's size.                                                                                         | `"large" \| "medium" \| "small"` | `'medium'` |
-| `type`        | `type`        | Specifies what type of input to use.                                                                      | `string`                         | `'text'`   |
+| Property      | Attribute     | Description                                                                                                                | Type                                                                                  | Default     |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------- |
+| `disabled`    | `disabled`    | Set to true to disable the input control.                                                                                  | `boolean`                                                                             | `false`     |
+| `helpText`    | `help-text`   | The input's help text. Alternatively, you can use the help-text slot.                                                      | `string`                                                                              | `''`        |
+| `inputmode`   | `inputmode`   | The input's inputmode attribute.                                                                                           | `"decimal" \| "email" \| "none" \| "numeric" \| "search" \| "tel" \| "text" \| "url"` | `undefined` |
+| `invalid`     | `invalid`     | This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`. | `boolean`                                                                             | `false`     |
+| `label`       | `label`       | The inputs's label. Alternatively, you can use the label slot.                                                             | `string`                                                                              | `''`        |
+| `name`        | `name`        | The input's name.                                                                                                          | `string`                                                                              | `''`        |
+| `placeholder` | `placeholder` | The input's placeholder text.                                                                                              | `string`                                                                              | `''`        |
+| `required`    | `required`    | The input's required attribute.                                                                                            | `boolean`                                                                             | `false`     |
+| `size`        | `size`        | The input's size.                                                                                                          | `"large" \| "medium" \| "small"`                                                      | `'medium'`  |
+| `type`        | `type`        | Specifies what type of input to use.                                                                                       | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"`           | `'text'`    |
+| `value`       | `value`       | The input's value attribute.                                                                                               | `string`                                                                              | `''`        |
 
 
 ## Events

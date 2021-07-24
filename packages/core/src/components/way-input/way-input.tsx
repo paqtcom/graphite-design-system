@@ -28,26 +28,19 @@ export class WayInput {
   @State() hasLabelSlot = false;
   @State() displayLabel = '';
 
-  /**
-   * The state of the input's value attribute.
-   */
-  @State() value: string;
+  /** The input's value attribute. */
+  @Prop({ mutable: true, reflect: true }) value: string = '';
 
   /**
    * Specifies what type of input to use.
    */
-  @Prop() type = 'text'
+  @Prop({ reflect: true }) type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
 
   /** Set to true to disable the input control. */
   @Prop() disabled = false;
 
   /** The input's name. */
-  @Prop() name = '';
-
-  /**
-   * Specifies what if label and input must be inline.
-   */
-  @Prop() inline = false;
+  @Prop({ reflect: true }) name = '';
 
   /** The input's placeholder text. */
   @Prop() placeholder = '';
@@ -66,9 +59,14 @@ export class WayInput {
   /** The input's required attribute. */
   @Prop() required = false;
 
-  /** This will be true when the control is in an invalid state. Validity is determined by the `required` prop. */
+  /**
+   * This will be true when the control is in an invalid state. Validity is determined by props such as `type`,
+   * and `required`.
+   */
   @Prop({ mutable: true }) invalid = false;
 
+  /** The input's inputmode attribute. */
+  @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
   @Watch('helpText')
   @Watch('label')
@@ -78,7 +76,8 @@ export class WayInput {
 
   @Watch('value')
   handleValueChange() {
-    this.wayChange.emit();
+    // In rare cases, the watcher may be called before render so we need to make sure the input exists
+    this.invalid = this.input ? !this.input.checkValidity() : false;
   }
 
   /** Emitted when the control's value changes. */
@@ -93,6 +92,8 @@ export class WayInput {
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleLabelClick = this.handleLabelClick.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
 
@@ -120,6 +121,16 @@ export class WayInput {
     this.invalid = !this.input.checkValidity();
   }
 
+  handleChange() {
+    this.value = this.input.value;
+    this.wayChange.emit();
+  }
+
+  handleInput() {
+    this.value = this.input.value;
+    this.wayChange.emit();
+  }
+
   handleBlur() {
     this.hasFocus = false;
     this.wayBlur.emit();
@@ -140,13 +151,6 @@ export class WayInput {
   }
 
   render() {
-    const { type, name, disabled } = this;
-    const attrs = {
-      type,
-      name,
-      disabled,
-    }
-
     renderHiddenInput(this.el, this.name, parseValue(this.value), this.disabled);
 
     return (
@@ -161,20 +165,27 @@ export class WayInput {
         size={this.size}
         onLabelClick={this.handleLabelClick}
       >
-        <div class="input-label">
-          {this.displayLabel}
-        </div>
+        <div class="input-label">{this.displayLabel}</div>
 
         <input
           ref={el => (this.input = el)}
-          {...attrs}
           id={this.name}
+          name={this.name}
           value={this.value}
+          type={this.type}
           placeholder={this.placeholder}
+          disabled={this.disabled}
+          required={this.required}
+          inputMode={this.inputmode}
+          aria-labelledby={this.labelId}
+          aria-describedby={this.helpTextId}
+          aria-invalid={this.invalid ? 'true' : 'false'}
+          onChange={this.handleChange}
+          onInput={this.handleInput}
           onBlur={this.handleBlur}
           onFocus={this.handleFocus}
           class={{
-            input: true,
+            'input': true,
 
             'input-placeholder-visible': this.displayLabel === '',
 
@@ -185,8 +196,6 @@ export class WayInput {
             'input-small': this.size === 'small',
             'input-large': this.size === 'large',
           }}
-          aria-labelledby={this.labelId}
-          aria-describedby={this.helpTextId}
         />
       </FormControl>
     );
