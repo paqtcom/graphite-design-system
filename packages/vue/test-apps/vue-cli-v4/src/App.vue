@@ -50,6 +50,12 @@
       <way-radio value="option-3">Option 3</way-radio>
     </way-radio-group>
   </section>
+
+  <section>
+    <way-input v-model="inputValue"></way-input>
+
+    <p>{{ inputValue }}</p>
+  </section>
 </template>
 
 <script lang="ts">
@@ -61,6 +67,7 @@ import {
   WayMenuDivider,
   WayRadioGroup,
   WayRadio,
+  WayInput,
 } from "@w2wds/vue";
 
 import { ref, defineComponent } from "vue";
@@ -75,11 +82,13 @@ export default defineComponent({
     WayMenuDivider,
     WayRadioGroup,
     WayRadio,
+    WayInput,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");
     const selectedValue = ref("option-3");
     const selectedValues = ref(["option-1", "option-2", "option-6"]);
+    const inputValue = ref("input value");
 
     const doSomething = () => {
       variant.value = variant.value === "primary" ? "default" : "primary";
@@ -97,6 +106,7 @@ export default defineComponent({
       variant,
       selectedValue,
       selectedValues,
+      inputValue,
       doSomething,
       onSelectChange,
       onRadioChange,

@@ -232,7 +232,13 @@
       <h2>way-menu</h2>
       <p>Including way-menu-item & way-menu-divider & way-menu-label</p>
 
-      <way-menu style="max-width: 200px; border: solid 1px var(--way-color-light); border-radius: var(--way-border-radius-medium)">
+      <way-menu
+        style="
+          max-width: 200px;
+          border: solid 1px var(--way-color-light);
+          border-radius: var(--way-border-radius-medium);
+        "
+      >
         <way-menu-label>Timetravel</way-menu-label>
         <way-menu-item value="undo" checked>Undo</way-menu-item>
         <way-menu-item value="redo">Redo</way-menu-item>
@@ -362,8 +368,32 @@
         <way-button variant="plain" disabled> Plain </way-button>
       </section>
 
+      <section>
+        <h2>way-input</h2>
+
+        <section>
+          <h3>Sizes</h3>
+
+          <way-input type="text" name="input" size="small" placeholder="Small"></way-input>
+
+          <br />
+
+          <way-input type="text" name="input" size="medium" placeholder="Medium"></way-input>
+
+          <br />
+
+          <way-input type="text" name="input" size="large" placeholder="Large"></way-input>
+        </section>
+
+        <section>
+          <h3>Disabled</h3>
+
+          <way-input type="text" name="input" size="medium" disabled></way-input>
+        </section>
+      </section>
+
       <script>
-        const clickExampleElement = document.getElementById('clickExample');
+        let clickExampleElement = document.getElementById('clickExample');
 
         clickExampleElement.addEventListener('click', () => {
           console.log('clicked');

@@ -23,7 +23,7 @@ export const config: Config = {
       proxiesFile: '../vue/src/proxies.ts',
       componentModels: [
         {
-          elements: ['way-select', 'way-radio-group'],
+          elements: ['way-select', 'way-radio-group', 'way-input'],
           targetAttr: 'value',
           event: 'v-way-change',
           externalEvent: 'way-change',
