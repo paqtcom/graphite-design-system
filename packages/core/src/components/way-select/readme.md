@@ -69,13 +69,16 @@ Type: `Promise<void>`
 | Name                       | Description                                                                                  |
 | -------------------------- | -------------------------------------------------------------------------------------------- |
 | `--background-color`       | Background color of the select                                                               |
+| `--background-color-focus` | Background color of the select on focus                                                      |
 | `--background-color-hover` | Background color of the select on hover                                                      |
 | `--border-color`           | Border color of the select                                                                   |
+| `--border-color-focus`     | Border color of the select on focus                                                          |
 | `--border-color-hover`     | Border color of the select on hover                                                          |
 | `--border-radius`          | Border radius of the select                                                                  |
 | `--caret-margin-end`       | Right margin of the caret (will be left margin when we support right-to-left direction)      |
 | `--clear-icon-margin-end`  | Right margin of the clear icon (will be left margin when we support right-to-left direction) |
 | `--color`                  | Text color of the select                                                                     |
+| `--focus-ring`             | The focus ring style to use when the control receives focus, a `box-shadow` property.        |
 | `--font-size`              | Font size of the select                                                                      |
 | `--font-weight`            | Font weight of the select                                                                    |
 | `--label-margin-end`       | Right margin of the label (will be left margin when we support right-to-left direction)      |

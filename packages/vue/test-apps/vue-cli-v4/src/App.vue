@@ -8,6 +8,7 @@
       placeholder="Select one"
       v-model="selectedValue"
       @way-change="onSelectChange()"
+      label="Example"
     >
       <way-menu-item value="option-1">Option 1</way-menu-item>
       <way-menu-item value="option-2">Option 2</way-menu-item>
