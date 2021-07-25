@@ -8,10 +8,12 @@
    *
    * @prop --background-color: Background color of the select
    * @prop --background-color-hover: Background color of the select on hover
+   * @prop --background-color-focus: Background color of the select on focus
    *
    * @prop --border-radius: Border radius of the select
    * @prop --border-color: Border color of the select
    * @prop --border-color-hover: Border color of the select on hover
+   * @prop --border-color-focus: Border color of the select on focus
    *
    * @prop --color: Text color of the select
    *
@@ -22,24 +24,19 @@
    * @prop --label-margin-start: Left margin of the label (will be right margin when we support right-to-left direction)
    * @prop --label-margin-end: Right margin of the label (will be left margin when we support right-to-left direction)
    *
-   * @prop --clear-icon-margin-end: Right margin of the clear icon (will be left margin when we support right-to-left direction)
-   *
-   * @prop --caret-margin-end: Right margin of the caret (will be left margin when we support right-to-left direction)
-   *
-   * @prop --tags-padding-top: Top padding of the tags
-   * @prop --tags-padding-bottom: Bottom padding of the tags
-   *
-   * @prop --tags-margin-end: Right margin of the tags (will be left margin when we support right-to-left direction)
+   * @prop --focus-ring: The focus ring style to use when the input receives focus, a `box-shadow` property.
    */
   --font-size: var(--way-form-element-font-size-medium);
   --font-weight: var(--way-font-weight-normal);
 
   --background-color: var(--way-color-white);
   --background-color-hover: var(--way-color-white);
+  --background-color-focus: var(--way-color-white);
 
   --border-radius: var(--way-form-element-border-radius-small);
   --border-color: var(--way-color-light);
   --border-color-hover: var(--way-color-medium);
+  --border-color-focus: var(--way-color-primary);
 
   --color: var(--way-color-dark-tint);
 
@@ -50,14 +47,7 @@
   --label-margin-start: var(--way-spacing-medium);
   --label-margin-end: var(--way-spacing-medium);
 
-  --clear-icon-margin-end: var(--way-spacing-medium);
-
-  --caret-margin-end: var(--way-spacing-medium);
-
-  --tags-padding-top: 3px;
-  --tags-padding-bottom: 3px;
-
-  --tags-margin-end: var(--way-spacing-xx-small);
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 
   display: block;
 
@@ -112,8 +102,9 @@
 
 .input:focus:not(.input-disabled) {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
+  box-shadow: var(--focus-ring);
   border-color: var(--border-color-focus);
+  background-color: var(--background-color-focus);
 }
 
 .input-label {

@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, h, Event, EventEmitter, Method } from '@stencil/core';
 import { getTextContent } from '../../utils/slot';
 
 /**
