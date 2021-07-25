@@ -102,6 +102,60 @@ export namespace Components {
          */
         "skidding": number;
     }
+    interface WayInput {
+        /**
+          * Set to true to disable the input control.
+         */
+        "disabled": boolean;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * The input's inputmode attribute.
+         */
+        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        /**
+          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
+         */
+        "invalid": boolean;
+        /**
+          * The inputs's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * The input's name.
+         */
+        "name": string;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Checks for validity and shows the browser's validation message if the control is invalid.
+         */
+        "reportValidity": () => Promise<boolean>;
+        /**
+          * The input's required attribute.
+         */
+        "required": boolean;
+        /**
+          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
+         */
+        "setCustomValidity": (message: string) => Promise<void>;
+        /**
+          * The input's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of input to use.
+         */
+        "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        /**
+          * The input's value attribute.
+         */
+        "value": string;
+    }
     interface WayMenu {
         /**
           * Initiates type-to-select logic, which automatically selects an option based on what the user is currently typing. The key passed will be appended to the internal query and the selection will be updated. After a brief period, the internal query is cleared automatically. This method is intended to be used with the keydown event. Useful for enabling type-to-select when the menu doesn't have focus.
@@ -277,6 +331,12 @@ declare global {
         prototype: HTMLWayDropdownElement;
         new (): HTMLWayDropdownElement;
     };
+    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
+    }
+    var HTMLWayInputElement: {
+        prototype: HTMLWayInputElement;
+        new (): HTMLWayInputElement;
+    };
     interface HTMLWayMenuElement extends Components.WayMenu, HTMLStencilElement {
     }
     var HTMLWayMenuElement: {
@@ -328,6 +388,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
         "way-dropdown": HTMLWayDropdownElement;
+        "way-input": HTMLWayInputElement;
         "way-menu": HTMLWayMenuElement;
         "way-menu-divider": HTMLWayMenuDividerElement;
         "way-menu-item": HTMLWayMenuItemElement;
@@ -449,6 +510,64 @@ declare namespace LocalJSX {
           * The distance in pixels from which to offset the panel along its trigger.
          */
         "skidding"?: number;
+    }
+    interface WayInput {
+        /**
+          * Set to true to disable the input control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * The input's inputmode attribute.
+         */
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        /**
+          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
+         */
+        "invalid"?: boolean;
+        /**
+          * The inputs's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * The input's name.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onWay-change"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * The input's required attribute.
+         */
+        "required"?: boolean;
+        /**
+          * The input's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Specifies what type of input to use.
+         */
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        /**
+          * The input's value attribute.
+         */
+        "value"?: string;
     }
     interface WayMenu {
         /**
@@ -617,6 +736,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "way-button": WayButton;
         "way-dropdown": WayDropdown;
+        "way-input": WayInput;
         "way-menu": WayMenu;
         "way-menu-divider": WayMenuDivider;
         "way-menu-item": WayMenuItem;
@@ -633,6 +753,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
             "way-dropdown": LocalJSX.WayDropdown & JSXBase.HTMLAttributes<HTMLWayDropdownElement>;
+            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
             "way-menu-divider": LocalJSX.WayMenuDivider & JSXBase.HTMLAttributes<HTMLWayMenuDividerElement>;
             "way-menu-item": LocalJSX.WayMenuItem & JSXBase.HTMLAttributes<HTMLWayMenuItemElement>;
