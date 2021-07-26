@@ -5,26 +5,25 @@
 
 :host {
   /**
-   * @prop --background: Background of the checkbox
-   * @prop --background-hover: Background of the checkbox on hover
+   * @prop --label-color: Color of the label
    *
-   * @prop --color: Text color of the checkbox
-   * @prop --color-hover: Text color of the checkbox when hover
+   * @prop --control-size: Size of the control
    *
-   * @prop --transition: Transition of the checkbox
+   * @prop --control-border-color: Border color of the control
+   * @prop --control-background-color: Background color of the control
    *
-   * @prop --border-radius: Border radius of the checkbox
-   * @prop --border-width: Border width of the checkbox
-   * @prop --border-style: Border style of the checkbox
-   * @prop --border-color: Border color of the checkbox
-   * @prop --border-color-hover: Border color of the checkbox when hover
+   * @prop --control-border-color-hover: Border color of the control on hover
+   * @prop --control-background-color-hover: Background color of the control on hover
    *
-   * @prop --padding-top: Top padding of the checkbox
-   * @prop --padding-end: Right padding of the checkbox (will be left padding when we support right-to-left direction)
-   * @prop --padding-bottom: Bottom padding of the checkbox
-   * @prop --padding-start: Left padding of the checkbox (will be right padding when we support right-to-left direction)
+   * @prop --control-color-checked: Color of the control when checked (the checkmark icon)
+   * @prop --control-border-color-checked: Border color of the control when checked
+   * @prop --control-background-color-checked: Background color of the control when checked
    *
-   * @prop --height: Height of the checkbox
+   * @prop --control-border-color-checked-hover: Border color of the control when checked on hover
+   * @prop --control-background-color-checked-hover: Background color of the control when checked on hover
+   *
+   * @prop --control-border-color-checked-hover: Border color of the control when checked on focus
+   * @prop --control-background-color-checked-hover: Background color of the control when checked on focus
    */
 
   --label-color: var(--way-color-dark-tint);
@@ -109,6 +108,7 @@
 .checkbox-control-circle {
   border-radius: var(--border-radius-circle);
 }
+
 // Hover
 .checkbox:not(.checkbox-checked):not(.checkbox-disabled) .checkbox-control:hover {
   border-color: var(--control-border-color-hover);

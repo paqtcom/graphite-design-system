@@ -1,5 +1,5 @@
-import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core';
-import { addEventListener, removeEventListener } from '../../utils/utils';
+import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core';
+import { renderHiddenInput } from '../../utils/utils';
 
 let id = 0;
 
@@ -20,20 +20,23 @@ export class WayCheckbox {
 
   @State() hasFocus = false;
 
-  /** The checkbox's value attribute. */
+  /**
+   * The checkbox's value attribute.
+   */
   @Prop() value: string;
 
-  /** Set to true to disable the checkbox. */
+  /**
+   * Set to true to disable the checkbox.
+   */
   @Prop() disabled = false;
+
+  /**
+   * The name of the control, which is submitted with the form data.
+   */
+  @Prop() name: string = this.inputId;
 
   /** Set to true to draw the checkbox in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
-
-  /**
-   * The tabindex of the checkbox
-   * @internal
-   */
-  @State() buttonTabindex = -1;
 
   /** Emitted when the control loses focus. */
   @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
@@ -41,34 +44,23 @@ export class WayCheckbox {
   /** Emitted when the control gains focus. */
   @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
 
-  /** @internal */
-  @Method()
-  async setButtonTabindex(value: number) {
-    this.buttonTabindex = value;
+  /** Emitted when the control's checked state changes. */
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
+
+  @Watch('checked')
+  handleCheckedChange() {
+    this.input.checked = this.checked;
+    this.wayChange.emit();
   }
 
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
-
-    if (this.value === undefined) {
-      this.value = this.inputId;
-    }
-    const checkbox = this.el.closest('way-checkbox');
-    if (checkbox) {
-      addEventListener(checkbox, 'way-change', this.updateState);
-    }
+    this.handleClick = this.handleClick.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
   }
 
-  disconnectedCallback() {
-    const checkbox = this.el;
-    if (checkbox) {
-      removeEventListener(checkbox, 'way-change', this.updateState);
-      this.el = null;
-    }
-  }
-
-    /** Sets focus on the checkbox. */
+  /** Sets focus on the checkbox. */
   @Method()
   async setFocus(options?: FocusOptions) {
     this.input.focus(options);
@@ -80,11 +72,9 @@ export class WayCheckbox {
     this.input.blur();
   }
 
-  private updateState = () => {
-    if (this.el) {
-      this.checked = this.el.value === this.value;
-    }
-  };
+  handleClick() {
+    this.checked = this.input.checked;
+  }
 
   handleBlur() {
     this.hasFocus = false;
@@ -96,7 +86,15 @@ export class WayCheckbox {
     this.wayFocus.emit();
   }
 
+  handleMouseDown(event: MouseEvent) {
+    // Prevent clicks on the label from briefly blurring the input
+    event.preventDefault();
+    this.input.focus();
+  }
+
   render() {
+    renderHiddenInput(this.el, this.name, this.checked ? this.value : '', this.disabled);
+
     return (
       <Host
         class={{
@@ -111,8 +109,9 @@ export class WayCheckbox {
             'checkbox-focused': this.hasFocus,
           }}
           htmlFor={this.inputId}
+          onMouseDown={this.handleMouseDown}
         >
-          <span class='checkbox-control'>
+          <span class="checkbox-control">
             <span class="checkbox-icon">
               <svg viewBox="0 0 16 16">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
@@ -136,6 +135,7 @@ export class WayCheckbox {
               role="checkbox"
               aria-checked={this.checked ? 'true' : 'false'}
               aria-labelledby={this.labelId}
+              onClick={this.handleClick}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
             />

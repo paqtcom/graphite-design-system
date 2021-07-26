@@ -63,10 +63,13 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
           * Removes focus from the checkbox.
          */
         "removeFocus": () => Promise<void>;
-        "setButtonTabindex": (value: number) => Promise<void>;
         /**
           * Sets focus on the checkbox.
          */
@@ -503,9 +506,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
           * Emitted when the control loses focus.
          */
         "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's checked state changes.
+         */
+        "onWay-change"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the control gains focus.
          */
