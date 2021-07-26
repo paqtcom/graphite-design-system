@@ -7,19 +7,22 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                          | Type      | Default     |
-| ---------- | ---------- | ---------------------------------------------------- | --------- | ----------- |
-| `checked`  | `checked`  | Set to true to draw the checkbox in a checked state. | `boolean` | `false`     |
-| `disabled` | `disabled` | Set to true to disable the checkbox.                 | `boolean` | `false`     |
-| `value`    | `value`    | The checkbox's value attribute.                      | `string`  | `undefined` |
+| Property        | Attribute       | Description                                                     | Type      | Default        |
+| --------------- | --------------- | --------------------------------------------------------------- | --------- | -------------- |
+| `checked`       | `checked`       | Set to true to draw the checkbox in a checked state.            | `boolean` | `false`        |
+| `disabled`      | `disabled`      | Set to true to disable the checkbox.                            | `boolean` | `false`        |
+| `indeterminate` | `indeterminate` | Set to true to draw the checkbox in an indeterminate state.     | `boolean` | `false`        |
+| `name`          | `name`          | The name of the control, which is submitted with the form data. | `string`  | `this.inputId` |
+| `value`         | `value`         | The checkbox's value attribute.                                 | `string`  | `undefined`    |
 
 
 ## Events
 
-| Event       | Description                           | Type               |
-| ----------- | ------------------------------------- | ------------------ |
-| `way-blur`  | Emitted when the control loses focus. | `CustomEvent<any>` |
-| `way-focus` | Emitted when the control gains focus. | `CustomEvent<any>` |
+| Event        | Description                                       | Type               |
+| ------------ | ------------------------------------------------- | ------------------ |
+| `way-blur`   | Emitted when the control loses focus.             | `CustomEvent<any>` |
+| `way-change` | Emitted when the control's checked state changes. | `CustomEvent<any>` |
+| `way-focus`  | Emitted when the control gains focus.             | `CustomEvent<any>` |
 
 
 ## Methods
@@ -54,23 +57,19 @@ Type: `Promise<void>`
 
 ## CSS Custom Properties
 
-| Name                   | Description                                                                                  |
-| ---------------------- | -------------------------------------------------------------------------------------------- |
-| `--background`         | Background of the checkbox                                                                   |
-| `--background-hover`   | Background of the checkbox on hover                                                          |
-| `--border-color`       | Border color of the checkbox                                                                 |
-| `--border-color-hover` | Border color of the checkbox when hover                                                      |
-| `--border-radius`      | Border radius of the checkbox                                                                |
-| `--border-style`       | Border style of the checkbox                                                                 |
-| `--border-width`       | Border width of the checkbox                                                                 |
-| `--color`              | Text color of the checkbox                                                                   |
-| `--color-hover`        | Text color of the checkbox when hover                                                        |
-| `--height`             | Height of the checkbox                                                                       |
-| `--padding-bottom`     | Bottom padding of the checkbox                                                               |
-| `--padding-end`        | Right padding of the checkbox (will be left padding when we support right-to-left direction) |
-| `--padding-start`      | Left padding of the checkbox (will be right padding when we support right-to-left direction) |
-| `--padding-top`        | Top padding of the checkbox                                                                  |
-| `--transition`         | Transition of the checkbox                                                                   |
+| Name                                       | Description                                            |
+| ------------------------------------------ | ------------------------------------------------------ |
+| `--control-background-color`               | Background color of the control                        |
+| `--control-background-color-checked`       | Background color of the control when checked           |
+| `--control-background-color-checked-hover` | Background color of the control when checked on hover  |
+| `--control-background-color-hover`         | Background color of the control on hover               |
+| `--control-border-color`                   | Border color of the control                            |
+| `--control-border-color-checked`           | Border color of the control when checked               |
+| `--control-border-color-checked-hover`     | Border color of the control when checked on hover      |
+| `--control-border-color-hover`             | Border color of the control on hover                   |
+| `--control-color-checked`                  | Color of the control when checked (the checkmark icon) |
+| `--control-size`                           | Size of the control                                    |
+| `--label-color`                            | Color of the label                                     |
 
 
 ----------------------------------------------

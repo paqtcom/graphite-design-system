@@ -63,6 +63,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Set to true to draw the checkbox in an indeterminate state.
+         */
+        "indeterminate": boolean;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -505,6 +509,10 @@ declare namespace LocalJSX {
           * Set to true to disable the checkbox.
          */
         "disabled"?: boolean;
+        /**
+          * Set to true to draw the checkbox in an indeterminate state.
+         */
+        "indeterminate"?: boolean;
         /**
           * The name of the control, which is submitted with the form data.
          */

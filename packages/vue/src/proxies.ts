@@ -28,10 +28,18 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
 export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-checkbox', [
   'value',
   'disabled',
+  'name',
   'checked',
+  'indeterminate',
   'way-blur',
-  'way-focus'
-]);
+  'way-focus',
+  'way-change'
+],
+{
+  "modelProp": "checked",
+  "modelUpdateEvent": "v-way-change",
+  "externalModelUpdateEvent": "way-change"
+});
 
 
 export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-dropdown', [
