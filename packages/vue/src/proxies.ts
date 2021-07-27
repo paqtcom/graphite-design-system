@@ -6,6 +6,7 @@ import { defineContainer } from './vue-component-lib/utils';
 import type { JSX } from '@w2wds/core/components';
 
 import { WayButton as WayButtonCmp } from '@w2wds/core/components/way-button.js';
+import { WayCheckbox as WayCheckboxCmp } from '@w2wds/core/components/way-checkbox.js';
 import { WayDropdown as WayDropdownCmp } from '@w2wds/core/components/way-dropdown.js';
 import { WayInput as WayInputCmp } from '@w2wds/core/components/way-input.js';
 import { WayMenu as WayMenuCmp } from '@w2wds/core/components/way-menu.js';
@@ -16,6 +17,7 @@ import { WayRadio as WayRadioCmp } from '@w2wds/core/components/way-radio.js';
 import { WayRadioGroup as WayRadioGroupCmp } from '@w2wds/core/components/way-radio-group.js';
 import { WaySelect as WaySelectCmp } from '@w2wds/core/components/way-select.js';
 import { WayTag as WayTagCmp } from '@w2wds/core/components/way-tag.js';
+import { WayTextarea as WayTextareaCmp } from '@w2wds/core/components/way-textarea.js';
 
 
 export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', WayButtonCmp, [
@@ -33,6 +35,19 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'way-focus',
   'way-blur'
 ]);
+
+
+export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-checkbox', WayCheckboxCmp, [
+  'value',
+  'disabled',
+  'name',
+  'checked',
+  'indeterminate',
+  'way-blur',
+  'way-focus',
+  'way-change'
+],
+'checked', 'v-way-change', 'way-change');
 
 
 export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-dropdown', WayDropdownCmp, [
@@ -62,8 +77,22 @@ export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input',
   'helpText',
   'invalidText',
   'invalid',
+  'clearable',
   'inputmode',
+  'readonly',
+  'spellcheck',
+  'min',
+  'max',
+  'step',
+  'enterkeyhint',
+  'autocapitalize',
+  'autocomplete',
+  'autocorrect',
+  'autofocus',
+  'debounce',
   'way-change',
+  'way-clear',
+  'way-input',
   'way-focus',
   'way-blur'
 ],
@@ -141,15 +170,31 @@ export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTa
 ]);
 
 
-export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', [
-  'type',
+export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', WayTextareaCmp, [
+  'size',
   'name',
-  'disabled',
-  'maxlength',
+  'value',
   'label',
+  'helpText',
+  'invalidText',
+  'invalid',
+  'placeholder',
   'rows',
+  'resize',
+  'disabled',
+  'readonly',
+  'maxlength',
+  'inputmode',
+  'spellcheck',
+  'enterkeyhint',
+  'autocapitalize',
+  'autocorrect',
   'autofocus',
-  'wayFocus',
-  'wayBlur'
-]);
+  'debounce',
+  'way-change',
+  'way-input',
+  'way-focus',
+  'way-blur'
+],
+'value', 'v-way-change', 'way-change');
 

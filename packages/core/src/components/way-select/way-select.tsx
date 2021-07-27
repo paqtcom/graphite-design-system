@@ -1,7 +1,7 @@
 import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Build } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { getTextContent, hasSlot } from '../../utils/slot';
-import { renderHiddenInput } from '../../utils/utils';
+import { renderHiddenInput } from '../../utils/helpers';
 
 let id = 0;
 
@@ -445,13 +445,7 @@ export class WaySelect {
             </div>
 
             {this.clearable && hasSelection && (
-              <way-button
-                variant="plain"
-                size="small"
-                class="select-clear"
-                onClick={this.handleClearClick}
-                tabindex="-1"
-              >
+              <button class="select-clear" type="button" onClick={this.handleClearClick} tabindex="-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
                   <title>Close Circle</title>
                   <path
@@ -470,7 +464,7 @@ export class WaySelect {
                     d="M320 320L192 192M192 320l128-128"
                   />
                 </svg>
-              </way-button>
+              </button>
             )}
 
             <span class="caret">

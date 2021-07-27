@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core';
-import { addEventListener, removeEventListener } from '../../utils/utils';
+import { addEventListener, removeEventListener } from '../../utils/helpers';
 
 let id = 0;
 
@@ -22,7 +22,7 @@ export class WayRadio {
   @State() hasFocus = false;
 
   /** The radio's value attribute. */
-  @Prop() value: string;
+  @Prop({ mutable: true, reflect: true }) value: string;
 
   /** Set to true to disable the radio. */
   @Prop() disabled = false;
