@@ -14,7 +14,7 @@ Stencil components are just Web Components, so they work in any major framework 
 
 ## Browser Support
 
-We support these browsers: https://browserslist.dev/?q=ZGVmYXVsdHMsIG5vdCBpZSAxMQ%3D%3D
+We support only modern browsers: https://browserslist.dev/?q=ZGVmYXVsdHMsIG5vdCBpZSAxMQ%3D%3D
 
 ```bash
 npx browserslist "defaults, not ie 11"
@@ -24,7 +24,7 @@ So it doesn't run on legacy browsers: IE11, Edge 18 & below (Edge before it move
 
 The advantage of this is we have less runtime within our builds, and having faster production builds by not having to also downlevel to es5. Plus you don't need any polyfills.
 
-If you really need support for these legacy browsers, let us know, and we might consider it.
+If you really need support for these legacy browsers, let us know, and we might consider it (but no guarantees).
 
 ## Using these components
 

@@ -2,7 +2,25 @@
 
 # @w2wds/vue
 
-These are Vue 3 specific building blocks on top of [@w2wds/core](../core/README.md) components.
+These are [Vue 3](https://v3.vuejs.org/) specific building blocks on top of [@w2wds/core](../core/README.md) components.
+
+We recommend using [vite](https://vitejs.dev/) or otherwise [vue-cli v5](https://next.cli.vuejs.org/) (with Webpack 5) for the best bundle sizes (due to tree-shaking). If you want to migrate from vue-cli v4 to v5: [follow this guide](https://next.cli.vuejs.org/migrations/migrate-from-v4.html)].
+
+Tested on:
+
+- [vite](https://vitejs.dev/)
+- [vue-cli v5](https://next.cli.vuejs.org/)
+- [vue-cli v4](https://cli.vuejs.org/)
+
+**Important**: Because of a breaking change in `vue@3.1.0`, you have to set `"vue": "3.0.11"` in the `package.json` of your project (and run `npm install`) until this is resolved.
+
+## Browser Support
+
+We support only modern browsers: https://browserslist.dev/?q=ZGVmYXVsdHMsIG5vdCBpZSAxMQ%3D%3D
+
+```bash
+npx browserslist "defaults, not ie 11"
+```
 
 ## Using these components
 
@@ -18,21 +36,17 @@ Or:
 yarn add @w2wds/vue
 ```
 
-Edit the `main.js` file of a Vue 3 project like this:
+Edit the `main.js` / `main.ts` file of a Vue 3 project like this:
 
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
-import { initializeWay2WebDesignSystem } from "@w2wds/vue";
+import { Way2WebDesignSystemVue } from "@w2wds/vue";
 
 /* Core CSS required for Way2Web Design System components to work properly */
 import "@w2wds/core/dist/core/core.css";
 
-const app = createApp(App);
-
-initializeWay2WebDesignSystem().then(() => {
-  app.mount("#app");
-});
+createApp(App).use(Way2WebDesignSystemVue).mount("#app");
 ```
 
 Import the component(s) you want to use:
@@ -55,10 +69,20 @@ We recommend using kebab-case for our components and KebabCase for your own Vue 
 
 ### CodeSandbox example
 
-An example of this setup: https://codesandbox.io/s/w2wds-vue3-example-5p787
+An example of this setup using vue-cli v4: https://codesandbox.io/s/w2wds-vue3-example-5p787
 
-## How to release a new version
+## Development
 
-- Build the core package
-- Run build on this package
-- Publish
+Follow the [instructions in the root of this repo](../../README.md).
+
+### Test apps
+
+In `packages/vue/test-apps` there are test apps for [vite](https://vitejs.dev/), [vue-cli v5](https://next.cli.vuejs.org/), and [vue-cli v4](https://cli.vuejs.org/)
+
+In order to run them:
+
+- Make sure you've run `npm run bootstrap` & `npm run build` in the root of this repo
+- Navigate to a test app, for example `cd packages/vue/test-apps/vite`
+- Run `npm install`
+- Run `npm run sync` (this copies the relevant core & vue dist files to the node_modules of the test-app)
+- Run the project, for example `npm run dev` for vite or `npm run serve` for vue-cli

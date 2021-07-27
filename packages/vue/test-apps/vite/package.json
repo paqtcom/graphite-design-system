@@ -1,0 +1,20 @@
+{
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "sync": "sh ./scripts/sync.sh"
+  },
+  "dependencies": {
+    "@w2wds/vue": "^0.4.8",
+    "vue": "3.0.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.2",
+    "vue-tsc": "^0.0.24"
+  }
+}

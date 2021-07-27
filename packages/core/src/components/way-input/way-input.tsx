@@ -1,134 +1,215 @@
-import { Component, Host, h, Prop, Element, Event, EventEmitter, State } from '@stencil/core';
-import { inheritAttributes } from '../../utils/utils';
+import { Component, h, Element, Prop, Watch, Event, EventEmitter, Method, State } from '@stencil/core';
+import FormControl from '../../functional-components/form-control/form-control';
+import { hasSlot } from '../../utils/slot';
+import { renderHiddenInput } from '../../utils/utils';
+
+let id = 0;
+
+/**
+ * @slot label - The select's label. Alternatively, you can use the label prop.
+ * @slot help-text - Help text that describes how to use the select.
+ */
 @Component({
   tag: 'way-input',
   styleUrl: 'way-input.scss',
   shadow: true,
 })
 export class WayInput {
-  private inheritedAttributes: { [k: string]: any } = {};
+  box: HTMLElement;
+  input: HTMLInputElement;
+  inputId = `input-${++id}`;
+  labelId = `input-label-${id}`;
+  helpTextId = `input-help-text-${id}`;
 
-  @Element() el!: HTMLElement;
+  @Element() el!: HTMLWayInputElement;
 
-  /**
-   * The state of the input's value attribute.
-   */
-  @State() value: string;
+  @State() hasFocus = false;
+  @State() hasHelpTextSlot = false;
+  @State() hasLabelSlot = false;
+  @State() displayLabel = '';
+
+  /** The input's value attribute. */
+  @Prop({ mutable: true, reflect: true }) value: string = '';
 
   /**
    * Specifies what type of input to use.
    */
-  @Prop() type: string | undefined;
+  @Prop({ reflect: true }) type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
 
-  /**
-   * The input's name attribute.
-   */
-  @Prop({ reflect: true }) name: string | undefined;
+  /** Set to true to disable the input control. */
+  @Prop() disabled = false;
 
-  /**
-   * If `true`, the user cannot interact with the input.
-   */
-  @Prop({ reflect: true }) disabled = false;
+  /** The input's name. */
+  @Prop({ reflect: true }) name = '';
 
-  /**
-   * Specifies what if label and input must be inline.
-   */
-  @Prop() inline: boolean;
+  /** The input's placeholder text. */
+  @Prop() placeholder = '';
 
   /**
    * The input's size.
    */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
-  /**
-   * The input's label. Alternatively, you can use the label slot.
-   */
-  @Prop() label: string | undefined;
+  /** The inputs's label. Alternatively, you can use the label slot. */
+  @Prop() label = '';
 
+  /** The input's help text. Alternatively, you can use the help-text slot. */
+  @Prop() helpText = '';
 
-  /**
-   * Emitted when the input has focus.
-   */
-  @Event() wayFocus!: EventEmitter<void>;
+  /** The input's required attribute. */
+  @Prop() required = false;
 
   /**
-   * Emitted when the input loses focus.
+   * This will be true when the control is in an invalid state. Validity is determined by props such as `type`,
+   * and `required`.
    */
-  @Event() wayBlur!: EventEmitter<void>;
+  @Prop({ mutable: true }) invalid = false;
+
+  /** The input's inputmode attribute. */
+  @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+
+  @Watch('helpText')
+  @Watch('label')
+  handleLabelChange() {
+    this.handleSlotChange();
+  }
+
+  @Watch('value')
+  handleValueChange() {
+    // In rare cases, the watcher may be called before render so we need to make sure the input exists
+    this.invalid = this.input ? !this.input.checkValidity() : false;
+  }
+
+  /** Emitted when the control's value changes. */
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
+
+  /** Emitted when the control gains focus. */
+  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
+
+  /** Emitted when the control loses focus. */
+  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
+
+  connectedCallback() {
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleLabelClick = this.handleLabelClick.bind(this);
+    this.handleSlotChange = this.handleSlotChange.bind(this);
+
+    this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+  }
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
+    this.handleSlotChange();
   }
 
-  private onFocus = () => {
-    this.wayFocus.emit();
+  disconnectedCallback() {
+    this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
   }
 
-  private onBlur = () => {
+  /** Checks for validity and shows the browser's validation message if the control is invalid. */
+  @Method()
+  async reportValidity() {
+    return this.input.reportValidity();
+  }
+
+  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
+  @Method()
+  async setCustomValidity(message: string) {
+    this.input.setCustomValidity(message);
+    this.invalid = !this.input.checkValidity();
+  }
+
+  handleChange() {
+    this.value = this.input.value;
+    this.wayChange.emit();
+  }
+
+  handleInput() {
+    this.value = this.input.value;
+    this.wayChange.emit();
+  }
+
+  handleBlur() {
+    this.hasFocus = false;
     this.wayBlur.emit();
   }
 
-  handleChange(event) {
-    this.value = event.target.value;
+  handleFocus() {
+    this.hasFocus = true;
+    this.wayFocus.emit();
+  }
 
-    // let error = this.error;
-    // if (event.target.validity.typeMismatch) {
-    //   error = true;
-    // }
+  handleLabelClick() {
+    this.box.focus();
+  }
+
+  handleSlotChange() {
+    this.hasHelpTextSlot = hasSlot(this.el, 'help-text');
+    this.hasLabelSlot = hasSlot(this.el, 'label');
   }
 
   render() {
-    const { type, name, disabled, inheritedAttributes } = this;
-    const attrs = {
-      type,
-      name,
-      disabled,
-    }
+    renderHiddenInput(this.el, this.name, parseValue(this.value), this.disabled);
 
     return (
-      <Host
-        aria-disabled={disabled ? 'true' : null}
-        class={{
-          'input-inline': this.inline,
-        }}
+      <FormControl
+        inputId={this.inputId}
+        label={this.label}
+        labelId={this.labelId}
+        hasLabelSlot={this.hasLabelSlot}
+        helpTextId={this.helpTextId}
+        helpText={this.helpText}
+        hasHelpTextSlot={this.hasHelpTextSlot}
+        size={this.size}
+        onLabelClick={this.handleLabelClick}
       >
-        {this.label ? (
-          <label
-            class={{
-              label: true,
-
-              // Sizes
-              'label-small': this.size === 'small',
-              'label-large': this.size === 'large',
-              'label-inline': this.inline,
-            }}
-            htmlFor={this.name}
-          >
-            { this.label }
-          </label>
-        ) : null }
+        <div class="input-label">{this.displayLabel}</div>
 
         <input
-          {...attrs}
+          ref={el => (this.input = el)}
           id={this.name}
+          name={this.name}
           value={this.value}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          disabled={disabled}
-          {...inheritedAttributes}
-          onInput={(event) => this.handleChange(event)}
+          type={this.type}
+          placeholder={this.placeholder}
+          disabled={this.disabled}
+          required={this.required}
+          inputMode={this.inputmode}
+          aria-labelledby={this.labelId}
+          aria-describedby={this.helpTextId}
+          aria-invalid={this.invalid ? 'true' : 'false'}
+          onChange={this.handleChange}
+          onInput={this.handleInput}
+          onBlur={this.handleBlur}
+          onFocus={this.handleFocus}
           class={{
-            input: true,
+            'input': true,
+
+            'input-placeholder-visible': this.displayLabel === '',
 
             // States
-            'input-disabled': disabled,
+            'input-disabled': this.disabled,
 
             // Sizes
             'input-small': this.size === 'small',
             'input-large': this.size === 'large',
           }}
         />
-      </Host>
+      </FormControl>
     );
   }
 }
+
+const parseValue = (value: any) => {
+  if (value == null) {
+    return undefined;
+  }
+
+  if (Array.isArray(value)) {
+    return value.join(',');
+  }
+
+  return value.toString();
+};

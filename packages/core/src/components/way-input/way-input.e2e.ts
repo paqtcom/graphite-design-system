@@ -16,7 +16,7 @@ describe('way-input', () => {
       `
     });
     const input = await page.find('way-input');
-    const wayFocus = await input.spyOnEvent('wayFocus');
+    const wayFocus = await input.spyOnEvent('way-focus');
 
     await input.click();
 
@@ -32,7 +32,7 @@ describe('way-input', () => {
     });
     const input = await page.find('way-input');
     const nativeButton = await page.find('button');
-    const wayBlur = await input.spyOnEvent('wayBlur');
+    const wayBlur = await input.spyOnEvent('way-blur');
 
     await input.click();
     await nativeButton.click();

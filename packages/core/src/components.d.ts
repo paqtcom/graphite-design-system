@@ -134,21 +134,45 @@ export namespace Components {
     }
     interface WayInput {
         /**
-          * If `true`, the user cannot interact with the input.
+          * Set to true to disable the input control.
          */
         "disabled": boolean;
         /**
-          * Specifies what if label and input must be inline.
+          * The input's help text. Alternatively, you can use the help-text slot.
          */
-        "inline": boolean;
+        "helpText": string;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * The input's inputmode attribute.
          */
-        "label": string | undefined;
+        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * The input's name attribute.
+          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
          */
-        "name": string | undefined;
+        "invalid": boolean;
+        /**
+          * The inputs's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * The input's name.
+         */
+        "name": string;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Checks for validity and shows the browser's validation message if the control is invalid.
+         */
+        "reportValidity": () => Promise<boolean>;
+        /**
+          * The input's required attribute.
+         */
+        "required": boolean;
+        /**
+          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
+         */
+        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * The input's size.
          */
@@ -156,7 +180,11 @@ export namespace Components {
         /**
           * Specifies what type of input to use.
          */
-        "type": string | undefined;
+        "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        /**
+          * The input's value attribute.
+         */
+        "value": string;
     }
     interface WayMenu {
         /**
@@ -554,19 +582,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onWay-after-hide"?: (event: CustomEvent<any>) => void;
+        "onWay-after-hide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onWay-after-show"?: (event: CustomEvent<any>) => void;
+        "onWay-after-show"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onWay-hide"?: (event: CustomEvent<any>) => void;
+        "onWay-hide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onWay-show"?: (event: CustomEvent<any>) => void;
+        "onWay-show"?: (event: CustomEvent<void>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -593,29 +621,49 @@ declare namespace LocalJSX {
     }
     interface WayInput {
         /**
-          * If `true`, the user cannot interact with the input.
+          * Set to true to disable the input control.
          */
         "disabled"?: boolean;
         /**
-          * Specifies what if label and input must be inline.
+          * The input's help text. Alternatively, you can use the help-text slot.
          */
-        "inline"?: boolean;
+        "helpText"?: string;
         /**
-          * The input's label. Alternatively, you can use the label slot.
+          * The input's inputmode attribute.
          */
-        "label"?: string | undefined;
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * The input's name attribute.
+          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
          */
-        "name"?: string | undefined;
+        "invalid"?: boolean;
         /**
-          * Emitted when the input loses focus.
+          * The inputs's label. Alternatively, you can use the label slot.
          */
-        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        "label"?: string;
         /**
-          * Emitted when the input has focus.
+          * The input's name.
          */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onWay-change"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * The input's required attribute.
+         */
+        "required"?: boolean;
         /**
           * The input's size.
          */
@@ -623,7 +671,11 @@ declare namespace LocalJSX {
         /**
           * Specifies what type of input to use.
          */
-        "type"?: string | undefined;
+        "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        /**
+          * The input's value attribute.
+         */
+        "value"?: string;
     }
     interface WayMenu {
         /**
@@ -737,15 +789,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<any>) => void;
+        "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style select with rounded edges.
          */
@@ -775,7 +827,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onWay-clear"?: (event: CustomEvent<any>) => void;
+        "onWay-clear"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */
