@@ -78,7 +78,6 @@
 
 - [way-tag](../way-tag)
 - [way-dropdown](../way-dropdown)
-- [way-button](../way-button)
 - [way-menu](../way-menu)
 
 ### Graph
@@ -86,7 +85,6 @@
 graph TD;
   way-select --> way-tag
   way-select --> way-dropdown
-  way-select --> way-button
   way-select --> way-menu
   way-tag --> way-button
   style way-select fill:#f9f,stroke:#333,stroke-width:4px

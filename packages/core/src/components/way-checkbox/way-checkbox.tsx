@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core';
-import { renderHiddenInput } from '../../utils/utils';
+import { renderHiddenInput } from '../../utils/helpers';
 
 let id = 0;
 

@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AutocompleteTypes, TextFieldTypes } from "./interface";
 import { WayRadioGroupChangeEventDetail } from "./components/way-radio-group/way-radio-group-interface";
 export namespace Components {
     interface WayButton {
@@ -134,13 +135,37 @@ export namespace Components {
     }
     interface WayInput {
         /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize": string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete": AutocompleteTypes;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect": 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
           * Set to true to add a clear button when the input is populated.
          */
         "clearable": boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * Set to true to disable the input control.
          */
         "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
@@ -162,6 +187,14 @@ export namespace Components {
          */
         "label": string;
         /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
+        /**
           * The input's name.
          */
         "name": string;
@@ -174,13 +207,45 @@ export namespace Components {
          */
         "placeholder": string;
         /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus from the input.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Selects all the text in the input.
+         */
+        "select": () => Promise<void>;
+        /**
+          * Sets focus on the input.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Replaces a range of text with a new string.
+         */
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        /**
+          * Sets the start and end positions of the text selection (0-based).
+         */
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        /**
           * The input's size.
          */
         "size": 'small' | 'medium' | 'large';
         /**
-          * Specifies what type of input to use.
+          * If `true`, the element will have its spelling and grammar checked.
          */
-        "type": 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        "spellcheck": boolean;
+        /**
+          * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
+         */
+        "step"?: string;
+        /**
+          * The type of control to display. The default type is text.
+         */
+        "type": TextFieldTypes;
         /**
           * The input's value attribute.
          */
@@ -349,9 +414,29 @@ export namespace Components {
     }
     interface WayTextarea {
         /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize": string;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect": 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus": boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
           * Set to true to disable the textarea.
          */
         "disabled": boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
          */
@@ -385,7 +470,7 @@ export namespace Components {
          */
         "placeholder": string;
         /**
-          * Set to true for a readonly textarea.
+          * If `true`, the user cannot modify the value.
          */
         "readonly": boolean;
         /**
@@ -420,6 +505,10 @@ export namespace Components {
           * The textarea's size.
          */
         "size": 'small' | 'medium' | 'large';
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck": boolean;
         /**
           * The textarea's value attribute.
          */
@@ -669,13 +758,37 @@ declare namespace LocalJSX {
     }
     interface WayInput {
         /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize"?: string;
+        /**
+          * Indicates whether the value of the control can be automatically completed by the browser.
+         */
+        "autocomplete"?: AutocompleteTypes;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect"?: 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
           * Set to true to add a clear button when the input is populated.
          */
         "clearable"?: boolean;
         /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * Set to true to disable the input control.
          */
         "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
           * The input's help text. Alternatively, you can use the help-text slot.
          */
@@ -696,6 +809,14 @@ declare namespace LocalJSX {
           * The inputs's label. Alternatively, you can use the label slot.
          */
         "label"?: string;
+        /**
+          * The maximum value, which must not be less than its minimum (min attribute) value.
+         */
+        "max"?: string;
+        /**
+          * The minimum value, which must not be greater than its maximum (max attribute) value.
+         */
+        "min"?: string;
         /**
           * The input's name.
          */
@@ -729,13 +850,25 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
+          * If `true`, the user cannot modify the value.
+         */
+        "readonly"?: boolean;
+        /**
           * The input's size.
          */
         "size"?: 'small' | 'medium' | 'large';
         /**
-          * Specifies what type of input to use.
+          * If `true`, the element will have its spelling and grammar checked.
          */
-        "type"?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
+        "spellcheck"?: boolean;
+        /**
+          * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
+         */
+        "step"?: string;
+        /**
+          * The type of control to display. The default type is text.
+         */
+        "type"?: TextFieldTypes;
         /**
           * The input's value attribute.
          */
@@ -915,9 +1048,29 @@ declare namespace LocalJSX {
     }
     interface WayTextarea {
         /**
+          * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+         */
+        "autocapitalize"?: string;
+        /**
+          * Whether auto correction should be enabled when the user is entering/editing the text value.
+         */
+        "autocorrect"?: 'on' | 'off';
+        /**
+          * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        "autofocus"?: boolean;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
           * Set to true to disable the textarea.
          */
         "disabled"?: boolean;
+        /**
+          * A hint to the browser for which enter key to display. Possible values: `"enter"`, `"done"`, `"go"`, `"next"`, `"previous"`, `"search"`, and `"send"`.
+         */
+        "enterkeyhint"?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
         /**
           * The textarea's help text. Alternatively, you can use the help-text slot.
          */
@@ -967,7 +1120,7 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Set to true for a readonly textarea.
+          * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
         /**
@@ -982,6 +1135,10 @@ declare namespace LocalJSX {
           * The textarea's size.
          */
         "size"?: 'small' | 'medium' | 'large';
+        /**
+          * If `true`, the element will have its spelling and grammar checked.
+         */
+        "spellcheck"?: boolean;
         /**
           * The textarea's value attribute.
          */

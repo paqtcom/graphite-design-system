@@ -60,6 +60,12 @@
 
     <p>{{ inputValue }}</p>
   </section>
+
+  <section>
+    <way-textarea v-model="textareaValue"></way-textarea>
+
+    <p>{{ textareaValue }}</p>
+  </section>
 </template>
 
 <script lang="ts">
@@ -72,6 +78,7 @@ import {
   WayRadioGroup,
   WayRadio,
   WayInput,
+  WayTextarea,
 } from "@w2wds/vue";
 
 import { ref, defineComponent } from "vue";
@@ -87,12 +94,14 @@ export default defineComponent({
     WayRadioGroup,
     WayRadio,
     WayInput,
+    WayTextarea,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");
     const selectedValue = ref("option-3");
     const selectedValues = ref(["option-1", "option-2", "option-6"]);
     const inputValue = ref("input value");
+    const textareaValue = ref("textarea value");
 
     const doSomething = () => {
       variant.value = variant.value === "primary" ? "default" : "primary";
@@ -111,6 +120,7 @@ export default defineComponent({
       selectedValue,
       selectedValues,
       inputValue,
+      textareaValue,
       doSomething,
       onSelectChange,
       onRadioChange,

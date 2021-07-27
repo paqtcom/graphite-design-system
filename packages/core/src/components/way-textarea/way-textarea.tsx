@@ -1,5 +1,6 @@
 import { Component, h, Prop, Element, Event, EventEmitter, State, Watch, Method } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
+import { debounceEvent } from '../../utils/helpers';
 import { hasSlot } from '../../utils/slot';
 
 let id = 0;
@@ -62,7 +63,7 @@ export class WayTextarea {
   /** Set to true to disable the textarea. */
   @Prop({ reflect: true }) disabled = false;
 
-  /** Set to true for a readonly textarea. */
+  /** If `true`, the user cannot modify the value. */
   @Prop({ reflect: true }) readonly = false;
 
   /** Specifies how many characters are allowed. */
@@ -71,17 +72,54 @@ export class WayTextarea {
   /** The textarea's inputmode attribute. */
   @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
-  /** Emitted when the textarea's value changes. */
-  @Event({ eventName: 'way-change' }) wayChange: EventEmitter<void>;
+  /** If `true`, the element will have its spelling and grammar checked. */
+  @Prop() spellcheck = false;
 
-  /** Emitted when the textarea receives input. */
-  @Event({ eventName: 'way-input' }) wayInput: EventEmitter<void>;
+  /**
+   * A hint to the browser for which enter key to display.
+   * Possible values: `"enter"`, `"done"`, `"go"`, `"next"`,
+   * `"previous"`, `"search"`, and `"send"`.
+   */
+  @Prop() enterkeyhint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 
-  /** Emitted when the textarea has focus. */
-  @Event({ eventName: 'way-focus' }) wayFocus!: EventEmitter<void>;
+  /**
+   * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+   * Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+   */
+  @Prop() autocapitalize = 'off';
 
-  /** Emitted when the textarea loses focus. */
-  @Event({ eventName: 'way-blur' }) wayBlur!: EventEmitter<void>;
+  /**
+   * Whether auto correction should be enabled when the user is entering/editing the text value.
+   */
+  @Prop() autocorrect: 'on' | 'off' = 'off';
+
+  /**
+   * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+   */
+  @Prop() autofocus = false;
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0;
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.wayChange = debounceEvent(this.wayChange, this.debounce);
+  }
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged() {
+    const nativeInput = this.textarea;
+    const value = this.value;
+    if (nativeInput && nativeInput.value !== value) {
+      nativeInput.value = value;
+    }
+    this.wayChange.emit();
+  }
 
   @Watch('helpText')
   @Watch('invalidText')
@@ -95,6 +133,18 @@ export class WayTextarea {
     this.setTextareaHeight();
   }
 
+  /** Emitted when the textarea's value changes. */
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter<void>;
+
+  /** Emitted when the textarea receives input. */
+  @Event({ eventName: 'way-input' }) wayInput: EventEmitter<void>;
+
+  /** Emitted when the textarea has focus. */
+  @Event({ eventName: 'way-focus' }) wayFocus!: EventEmitter<void>;
+
+  /** Emitted when the textarea loses focus. */
+  @Event({ eventName: 'way-blur' }) wayBlur!: EventEmitter<void>;
+
   connectedCallback() {
     this.handleChange = this.handleChange.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -104,6 +154,8 @@ export class WayTextarea {
     this.handleSlotChange = this.handleSlotChange.bind(this);
 
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+
+    this.debounceChanged();
   }
 
   /** Sets focus on the textarea. */
@@ -229,8 +281,13 @@ export class WayTextarea {
             readOnly={this.readonly}
             rows={this.rows}
             maxlength={this.maxlength}
-            value={this.value}
+            autoCapitalize={this.autocapitalize}
+            autoCorrect={this.autocorrect}
+            autoFocus={this.autofocus}
+            enterKeyHint={this.enterkeyhint}
             inputMode={this.inputmode}
+            value={this.value}
+            spellcheck={this.spellcheck}
             aria-labelledby={this.labelId}
             aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-invalid={this.invalid ? 'true' : 'false'}

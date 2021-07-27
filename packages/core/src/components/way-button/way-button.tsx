@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { inheritAttributes } from '../../utils/utils';
+import { inheritAttributes } from '../../utils/helpers';
 
 /**
  * @slot - Content is placed between the named slots if provided without a slot.
@@ -143,7 +143,14 @@ export class WayButton {
           'button-disabled': disabled,
         }}
       >
-        <TagType {...attrs} class="button-native" disabled={disabled} onFocus={this.onFocus} onBlur={this.onBlur} {...inheritedAttributes}>
+        <TagType
+          {...attrs}
+          class="button-native"
+          disabled={disabled}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          {...inheritedAttributes}
+        >
           <span class="button-inner">
             <slot name="icon-only"></slot>
             <slot name="start"></slot>
@@ -153,7 +160,14 @@ export class WayButton {
               <span class="caret">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
                   <title>Chevron Down</title>
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144" />
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="48"
+                    d="M112 184l144 144 144-144"
+                  />
                 </svg>
               </span>
             )}

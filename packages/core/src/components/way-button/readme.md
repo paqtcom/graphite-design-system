@@ -67,13 +67,11 @@
 
 ### Used by
 
- - [way-select](../way-select)
  - [way-tag](../way-tag)
 
 ### Graph
 ```mermaid
 graph TD;
-  way-select --> way-button
   way-tag --> way-button
   style way-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

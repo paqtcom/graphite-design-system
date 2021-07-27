@@ -1,7 +1,8 @@
-import { Component, h, Element, Prop, Watch, Event, EventEmitter, State } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, Event, EventEmitter, State, Method } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
+import { AutocompleteTypes, TextFieldTypes } from '../../interface';
 import { hasSlot } from '../../utils/slot';
-import { renderHiddenInput } from '../../utils/utils';
+import { debounceEvent, renderHiddenInput } from '../../utils/helpers';
 
 let id = 0;
 
@@ -32,8 +33,8 @@ export class WayInput {
   /** The input's value attribute. */
   @Prop({ mutable: true, reflect: true }) value: string = '';
 
-  /** Specifies what type of input to use. */
-  @Prop({ reflect: true }) type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
+  /** The type of control to display. The default type is text. */
+  @Prop({ reflect: true }) type: TextFieldTypes = 'text';
 
   /** Set to true to draw a pill-style input with rounded edges. */
   @Prop() pill = false;
@@ -47,9 +48,7 @@ export class WayInput {
   /** The input's placeholder text. */
   @Prop() placeholder = '';
 
-  /**
-   * The input's size.
-   */
+  /** The input's size. */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
 
   /** The inputs's label. Alternatively, you can use the label slot. */
@@ -70,11 +69,79 @@ export class WayInput {
   /** The input's inputmode attribute. */
   @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
+  /** If `true`, the user cannot modify the value. */
+  @Prop({ reflect: true }) readonly = false;
+
+  /** If `true`, the element will have its spelling and grammar checked. */
+  @Prop() spellcheck = false;
+
+  /**
+   * The minimum value, which must not be greater than its maximum (max attribute) value.
+   */
+  @Prop() min?: string;
+
+  /**
+   * The maximum value, which must not be less than its minimum (min attribute) value.
+   */
+  @Prop() max?: string;
+
+  /**
+   * Works with the min and max attributes to limit the increments at which a value can be set.
+   * Possible values are: `"any"` or a positive floating point number.
+   */
+  @Prop() step?: string;
+
+  /**
+   * A hint to the browser for which enter key to display.
+   * Possible values: `"enter"`, `"done"`, `"go"`, `"next"`,
+   * `"previous"`, `"search"`, and `"send"`.
+   */
+  @Prop() enterkeyhint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+
+  /**
+   * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+   * Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+   */
+  @Prop() autocapitalize = 'off';
+
+  /**
+   * Indicates whether the value of the control can be automatically completed by the browser.
+   */
+  @Prop() autocomplete: AutocompleteTypes = 'off';
+
+  /**
+   * Whether auto correction should be enabled when the user is entering/editing the text value.
+   */
+  @Prop() autocorrect: 'on' | 'off' = 'off';
+
+  /**
+   * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+   */
+  @Prop() autofocus = false;
+
+  /**
+   * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+   */
+  @Prop() debounce = 0;
+
+  @Watch('debounce')
+  protected debounceChanged() {
+    this.wayChange = debounceEvent(this.wayChange, this.debounce);
+  }
+
   @Watch('helpText')
   @Watch('invalidText')
   @Watch('label')
   handleLabelChange() {
     this.handleSlotChange();
+  }
+
+  /**
+   * Update the native input element when the value changes
+   */
+  @Watch('value')
+  protected valueChanged() {
+    this.wayChange.emit();
   }
 
   /** Emitted when the control's value changes. */
@@ -102,6 +169,8 @@ export class WayInput {
     this.handleClearClick = this.handleClearClick.bind(this);
 
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+
+    this.debounceChanged();
   }
 
   componentWillLoad() {
@@ -110,6 +179,51 @@ export class WayInput {
 
   disconnectedCallback() {
     this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+  }
+
+  /** Sets focus on the input. */
+  @Method()
+  async setFocus(options?: FocusOptions) {
+    this.input.focus(options);
+  }
+
+  /** Removes focus from the input. */
+  @Method()
+  async removeFocus() {
+    this.input.blur();
+  }
+
+  /** Selects all the text in the input. */
+  @Method()
+  async select() {
+    return this.input.select();
+  }
+
+  /** Sets the start and end positions of the text selection (0-based). */
+  @Method()
+  async setSelectionRange(
+    selectionStart: number,
+    selectionEnd: number,
+    selectionDirection: 'forward' | 'backward' | 'none' = 'none',
+  ) {
+    return this.input.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+  }
+
+  /** Replaces a range of text with a new string. */
+  @Method()
+  async setRangeText(
+    replacement: string,
+    start: number,
+    end: number,
+    selectMode: 'select' | 'start' | 'end' | 'preserve' = 'preserve',
+  ) {
+    this.input.setRangeText(replacement, start, end, selectMode);
+
+    if (this.value !== this.input.value) {
+      this.value = this.input.value;
+      this.wayChange.emit();
+      this.wayInput.emit();
+    }
   }
 
   handleChange() {
@@ -187,10 +301,20 @@ export class WayInput {
             id={this.name}
             name={this.name}
             type={this.type}
-            value={this.value}
             placeholder={this.placeholder}
             disabled={this.disabled}
+            readonly={this.readonly}
+            autoCorrect={this.autocorrect}
+            autoFocus={this.autofocus}
+            enterKeyHint={this.enterkeyhint}
             inputMode={this.inputmode}
+            min={this.min}
+            max={this.max}
+            step={this.step}
+            value={this.value}
+            autoCapitalize={this.autocapitalize}
+            autoComplete={this.autocomplete}
+            spellcheck={this.spellcheck}
             aria-labelledby={this.labelId}
             aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-invalid={this.invalid ? 'true' : 'false'}
