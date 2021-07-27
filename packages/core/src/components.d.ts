@@ -134,6 +134,10 @@ export namespace Components {
     }
     interface WayInput {
         /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable": boolean;
+        /**
           * Set to true to disable the input control.
          */
         "disabled": boolean;
@@ -665,6 +669,10 @@ declare namespace LocalJSX {
     }
     interface WayInput {
         /**
+          * Set to true to add a clear button when the input is populated.
+         */
+        "clearable"?: boolean;
+        /**
           * Set to true to disable the input control.
          */
         "disabled"?: boolean;
@@ -701,9 +709,17 @@ declare namespace LocalJSX {
          */
         "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
+          * Emitted when the clear button is activated.
+         */
+        "onWay-clear"?: (event: CustomEvent<void>) => void;
+        /**
           * Emitted when the control gains focus.
          */
         "onWay-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the control receives input.
+         */
+        "onWay-input"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style input with rounded edges.
          */

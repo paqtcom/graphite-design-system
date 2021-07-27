@@ -200,11 +200,24 @@
 }
 
 .select-clear {
-  --color: var(--way-color-medium);
-  --color-hover: var(--way-color-dark);
-  flex: 0 0 auto;
-
+  display: inline-flex;
+  align-items: center;
+  font-size: inherit;
+  color: var(--way-color-medium);
+  border: none;
+  background: none;
+  padding: 0;
+  transition: 150ms color;
+  cursor: pointer;
   margin-right: var(--clear-icon-margin-end);
+
+  &:hover {
+    color: var(--way-color-dark);
+  }
+
+  &:focus {
+    outline: none;
+  }
 
   svg {
     width: 1.2em;

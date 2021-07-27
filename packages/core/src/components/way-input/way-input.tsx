@@ -64,6 +64,9 @@ export class WayInput {
   /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
   @Prop({ reflect: true }) invalid = false;
 
+  /** Set to true to add a clear button when the input is populated. */
+  @Prop() clearable = false;
+
   /** The input's inputmode attribute. */
   @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
@@ -76,6 +79,12 @@ export class WayInput {
 
   /** Emitted when the control's value changes. */
   @Event({ eventName: 'way-change' }) wayChange: EventEmitter<void>;
+
+  /** Emitted when the clear button is activated. */
+  @Event({ eventName: 'way-clear' }) wayClear: EventEmitter<void>;
+
+  /** Emitted when the control receives input. */
+  @Event({ eventName: 'way-input' }) wayInput: EventEmitter<void>;
 
   /** Emitted when the control gains focus. */
   @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter<void>;
@@ -90,6 +99,7 @@ export class WayInput {
     this.handleInput = this.handleInput.bind(this);
     this.handleLabelClick = this.handleLabelClick.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
+    this.handleClearClick = this.handleClearClick.bind(this);
 
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
   }
@@ -109,7 +119,7 @@ export class WayInput {
 
   handleInput() {
     this.value = this.input.value;
-    this.wayChange.emit();
+    this.wayInput.emit();
   }
 
   handleBlur() {
@@ -120,6 +130,16 @@ export class WayInput {
   handleFocus() {
     this.hasFocus = true;
     this.wayFocus.emit();
+  }
+
+  handleClearClick(event: MouseEvent) {
+    this.value = '';
+    this.wayClear.emit();
+    this.wayInput.emit();
+    this.wayChange.emit();
+    this.input.focus();
+
+    event.stopPropagation();
   }
 
   handleLabelClick() {
@@ -151,31 +171,59 @@ export class WayInput {
         size={this.size}
         onLabelClick={this.handleLabelClick}
       >
-        <input
-          ref={el => (this.input = el)}
-          id={this.name}
-          name={this.name}
-          type={this.type}
-          value={this.value}
-          placeholder={this.placeholder}
-          disabled={this.disabled}
-          inputMode={this.inputmode}
-          aria-labelledby={this.labelId}
-          aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
-          aria-invalid={this.invalid ? 'true' : 'false'}
-          onChange={this.handleChange}
-          onInput={this.handleInput}
-          onBlur={this.handleBlur}
-          onFocus={this.handleFocus}
+        <div
           class={{
             'input': true,
             'input-pill': this.pill,
             'input-disabled': this.disabled,
             'input-invalid': this.invalid,
             'input-focused': this.hasFocus,
+            'input-empty': this.value?.length === 0,
             [`input-${this.size}`]: true,
           }}
-        />
+        >
+          <input
+            ref={el => (this.input = el)}
+            id={this.name}
+            name={this.name}
+            type={this.type}
+            value={this.value}
+            placeholder={this.placeholder}
+            disabled={this.disabled}
+            inputMode={this.inputmode}
+            aria-labelledby={this.labelId}
+            aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
+            aria-invalid={this.invalid ? 'true' : 'false'}
+            onChange={this.handleChange}
+            onInput={this.handleInput}
+            onBlur={this.handleBlur}
+            onFocus={this.handleFocus}
+            class="input-control"
+          />
+
+          {this.clearable && (
+            <button class="input-clear" type="button" onClick={this.handleClearClick} tabindex="-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <title>Close Circle</title>
+                <path
+                  d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="32"
+                />
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                  d="M320 320L192 192M192 320l128-128"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
       </FormControl>
     );
   }
