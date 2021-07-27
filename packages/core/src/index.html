@@ -41,6 +41,70 @@
           <way-radio value="4" disabled>Disabled</way-radio>
         </way-radio-group>
       </section>
+
+      <section>
+        <h3>Invalid</h3>
+
+        <way-radio-group label="Select an option" invalid-text="Select an option" invalid>
+          <way-radio value="1">Option 1</way-radio>
+          <way-radio value="2">Option 2</way-radio>
+          <way-radio value="3">Option 3</way-radio>
+        </way-radio-group>
+      </section>
+    </section>
+
+    <section>
+      <h2>way-input</h2>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-input size="small" placeholder="Small"></way-input>
+        <br />
+        <way-input size="medium" placeholder="Medium"></way-input>
+        <br />
+        <way-input size="large" placeholder="Large"></way-input>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-input disabled></way-input>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <way-input size="small" pill></way-input>
+        <br />
+        <way-input size="medium" pill></way-input>
+        <br />
+        <way-input size="large" pill></way-input>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <way-input type="password" label="Password"></way-input>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <way-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></way-input>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <way-input
+          type="password"
+          label="Password"
+          help-text="Passwords must be at least 8 characters."
+          invalid-text="Create a password with at least 8 characters."
+          invalid
+        ></way-input>
+      </section>
     </section>
 
     <section>
@@ -156,6 +220,21 @@
         <h3>Help Text</h3>
 
         <way-select label="Experience" help-text="Please tell us your skill level.">
+          <way-menu-item value="option-1">Novice</way-menu-item>
+          <way-menu-item value="option-2">Intermediate</way-menu-item>
+          <way-menu-item value="option-3">Advanced</way-menu-item>
+        </way-select>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <way-select
+          label="Experience"
+          help-text="Please tell us your skill level."
+          invalid-text="Select your skill level"
+          invalid
+        >
           <way-menu-item value="option-1">Novice</way-menu-item>
           <way-menu-item value="option-2">Intermediate</way-menu-item>
           <way-menu-item value="option-3">Advanced</way-menu-item>
@@ -367,56 +446,32 @@
 
         <way-button variant="plain" disabled> Plain </way-button>
       </section>
-
-      <section>
-        <h2>way-input</h2>
-
-        <section>
-          <h3>Sizes</h3>
-
-          <way-input type="text" name="input" size="small" placeholder="Small"></way-input>
-
-          <br />
-
-          <way-input type="text" name="input" size="medium" placeholder="Medium"></way-input>
-
-          <br />
-
-          <way-input type="text" name="input" size="large" placeholder="Large"></way-input>
-        </section>
-
-        <section>
-          <h3>Disabled</h3>
-
-          <way-input type="text" name="input" size="medium" disabled></way-input>
-        </section>
-      </section>
-
-      <script>
-        let clickExampleElement = document.getElementById('clickExample');
-
-        clickExampleElement.addEventListener('click', () => {
-          console.log('clicked');
-        });
-
-        const focusBlurExampleElement = document.getElementById('focusBlurExample');
-
-        focusBlurExampleElement.addEventListener('way-focus', () => {
-          console.log('way-focus');
-        });
-
-        focusBlurExampleElement.addEventListener('way-blur', () => {
-          console.log('way-blur');
-        });
-
-        const tagsClearable = document.querySelector('.tags-clearable');
-
-        tagsClearable.addEventListener('way-clear', event => {
-          const tag = event.target;
-          tag.style.opacity = '0';
-          setTimeout(() => (tag.style.opacity = '1'), 2000);
-        });
-      </script>
     </section>
+
+    <script>
+      let clickExampleElement = document.getElementById('clickExample');
+
+      clickExampleElement.addEventListener('click', () => {
+        console.log('clicked');
+      });
+
+      const focusBlurExampleElement = document.getElementById('focusBlurExample');
+
+      focusBlurExampleElement.addEventListener('way-focus', () => {
+        console.log('way-focus');
+      });
+
+      focusBlurExampleElement.addEventListener('way-blur', () => {
+        console.log('way-blur');
+      });
+
+      const tagsClearable = document.querySelector('.tags-clearable');
+
+      tagsClearable.addEventListener('way-clear', event => {
+        const tag = event.target;
+        tag.style.opacity = '0';
+        setTimeout(() => (tag.style.opacity = '1'), 2000);
+      });
+    </script>
   </body>
 </html>

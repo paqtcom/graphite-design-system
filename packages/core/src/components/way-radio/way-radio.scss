@@ -12,6 +12,9 @@
    * @prop --control-border-color-hover: Border color of the control on hover
    * @prop --control-background-color-hover: Background color of the control on hover
    *
+   * @prop --control-border-color-focus: Border color of the control on focus
+   * @prop --control-background-color-focus: Background color of the control on focus
+   *
    * @prop --control-color-checked: Color of the control when checked (the small circle)
    * @prop --control-border-color-checked: Border color of the control when checked
    * @prop --control-background-color-checked: Background color of the control when checked
@@ -32,6 +35,9 @@
   --control-border-color-hover: var(--way-color-medium);
   --control-background-color-hover: var(--way-color-white);
 
+  --control-border-color-focus: var(--way-color-medium);
+  --control-background-color-focus: var(--way-color-medium);
+
   --control-color-checked: var(--way-color-white);
   --control-border-color-checked: var(--way-color-primary);
   --control-background-color-checked: var(--way-color-primary);
@@ -41,6 +47,8 @@
 
   --control-border-color-checked-focus: var(--way-color-primary-tint);
   --control-background-color-checked-focus: var(--way-color-primary-tint);
+
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 
   display: inline-block;
   box-sizing: border-box;
@@ -102,7 +110,9 @@
 
 // Focus
 .radio.radio-focused:not(.radio-checked):not(.radio-disabled) .radio-control {
-  outline: none;
+  border-color: var(--control-border-color-hover);
+  background-color: var(--control-background-color-hover);
+  box-shadow: var(--focus-ring);
 }
 
 // Checked
@@ -122,7 +132,7 @@
 .radio.radio-checked:not(.radio-disabled).radio-focused .radio-control {
   border-color: var(--control-border-color-checked-focus);
   background-color: var(--control-background-color-checked-focus);
-  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
 // Disabled

@@ -8,6 +8,10 @@
       placeholder="Select one"
       v-model="selectedValue"
       @way-change="onSelectChange()"
+      label="Example"
+      help-text="test"
+      invalid-text="invalid"
+      :invalid="true"
     >
       <way-menu-item value="option-1">Option 1</way-menu-item>
       <way-menu-item value="option-2">Option 2</way-menu-item>
@@ -52,7 +56,7 @@
   </section>
 
   <section>
-    <way-input v-model="inputValue"></way-input>
+    <way-input v-model="inputValue" :pill="true"></way-input>
 
     <p>{{ inputValue }}</p>
   </section>

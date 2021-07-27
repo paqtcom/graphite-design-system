@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Watch, Event, EventEmitter, Method, State } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, Event, EventEmitter, State } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { renderHiddenInput } from '../../utils/utils';
@@ -6,8 +6,9 @@ import { renderHiddenInput } from '../../utils/utils';
 let id = 0;
 
 /**
- * @slot label - The select's label. Alternatively, you can use the label prop.
- * @slot help-text - Help text that describes how to use the select.
+ * @slot label - The input's label. Alternatively, you can use the label prop.
+ * @slot help-text - Help text that describes how to use the input.
+ * @slot invalid-text - Invalid text that describes how to use the input. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-input',
@@ -20,21 +21,24 @@ export class WayInput {
   inputId = `input-${++id}`;
   labelId = `input-label-${id}`;
   helpTextId = `input-help-text-${id}`;
+  invalidTextId = `input-invalid-text-${id}`;
 
   @Element() el!: HTMLWayInputElement;
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
+  @State() hasInvalidTextSlot = false;
   @State() hasLabelSlot = false;
   @State() displayLabel = '';
 
   /** The input's value attribute. */
   @Prop({ mutable: true, reflect: true }) value: string = '';
 
-  /**
-   * Specifies what type of input to use.
-   */
+  /** Specifies what type of input to use. */
   @Prop({ reflect: true }) type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
+
+  /** Set to true to draw a pill-style input with rounded edges. */
+  @Prop() pill = false;
 
   /** Set to true to disable the input control. */
   @Prop() disabled = false;
@@ -56,28 +60,20 @@ export class WayInput {
   /** The input's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
-  /** The input's required attribute. */
-  @Prop() required = false;
+  /** The input's invalid text. Alternatively, you can use the invalid-text slot. */
+  @Prop() invalidText = '';
 
-  /**
-   * This will be true when the control is in an invalid state. Validity is determined by props such as `type`,
-   * and `required`.
-   */
-  @Prop({ mutable: true }) invalid = false;
+  /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The input's inputmode attribute. */
   @Prop() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
   @Watch('helpText')
+  @Watch('invalidText')
   @Watch('label')
   handleLabelChange() {
     this.handleSlotChange();
-  }
-
-  @Watch('value')
-  handleValueChange() {
-    // In rare cases, the watcher may be called before render so we need to make sure the input exists
-    this.invalid = this.input ? !this.input.checkValidity() : false;
   }
 
   /** Emitted when the control's value changes. */
@@ -108,19 +104,6 @@ export class WayInput {
     this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
   }
 
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.input.reportValidity();
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
-  }
-
   handleChange() {
     this.value = this.input.value;
     this.wayChange.emit();
@@ -148,6 +131,7 @@ export class WayInput {
   handleSlotChange() {
     this.hasHelpTextSlot = hasSlot(this.el, 'help-text');
     this.hasLabelSlot = hasSlot(this.el, 'label');
+    this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
   }
 
   render() {
@@ -162,6 +146,10 @@ export class WayInput {
         helpTextId={this.helpTextId}
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
+        invalidTextId={this.invalidTextId}
+        invalidText={this.invalidText}
+        invalid={this.invalid}
+        hasInvalidTextSlot={this.hasInvalidTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
       >
@@ -175,7 +163,6 @@ export class WayInput {
           type={this.type}
           placeholder={this.placeholder}
           disabled={this.disabled}
-          required={this.required}
           inputMode={this.inputmode}
           aria-labelledby={this.labelId}
           aria-describedby={this.helpTextId}
@@ -186,15 +173,11 @@ export class WayInput {
           onFocus={this.handleFocus}
           class={{
             'input': true,
-
             'input-placeholder-visible': this.displayLabel === '',
-
-            // States
+            'input-pill': this.pill,
             'input-disabled': this.disabled,
-
-            // Sizes
-            'input-small': this.size === 'small',
-            'input-large': this.size === 'large',
+            'input-invalid': this.invalid,
+            [`input-${this.size}`]: true,
           }}
         />
       </FormControl>
