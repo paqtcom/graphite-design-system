@@ -53,6 +53,36 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
+    interface WayCheckbox {
+        /**
+          * Set to true to draw the checkbox in a checked state.
+         */
+        "checked": boolean;
+        /**
+          * Set to true to disable the checkbox.
+         */
+        "disabled": boolean;
+        /**
+          * Set to true to draw the checkbox in an indeterminate state.
+         */
+        "indeterminate": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Removes focus from the checkbox.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the checkbox.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The checkbox's value attribute.
+         */
+        "value": string;
+    }
     interface WayDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
@@ -313,6 +343,84 @@ export namespace Components {
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    interface WayTextarea {
+        /**
+          * Set to true to disable the textarea.
+         */
+        "disabled": boolean;
+        /**
+          * The textarea's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * The textarea's inputmode attribute.
+         */
+        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The input's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label": string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength": number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name": string;
+        /**
+          * The textarea's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Set to true for a readonly textarea.
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus fromt the textarea.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Controls how the textarea can be resized.
+         */
+        "resize": 'none' | 'vertical' | 'auto';
+        /**
+          * The number of rows to display by default.
+         */
+        "rows": number;
+        /**
+          * Selects all the text in the input.
+         */
+        "select": () => Promise<void>;
+        /**
+          * Sets focus on the textarea.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Replaces a range of text with a new string.
+         */
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        /**
+          * Sets the start and end positions of the text selection (0-based).
+         */
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        /**
+          * The textarea's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The textarea's value attribute.
+         */
+        "value": string;
+    }
 }
 declare global {
     interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
@@ -320,6 +428,12 @@ declare global {
     var HTMLWayButtonElement: {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
+    };
+    interface HTMLWayCheckboxElement extends Components.WayCheckbox, HTMLStencilElement {
+    }
+    var HTMLWayCheckboxElement: {
+        prototype: HTMLWayCheckboxElement;
+        new (): HTMLWayCheckboxElement;
     };
     interface HTMLWayDropdownElement extends Components.WayDropdown, HTMLStencilElement {
     }
@@ -381,8 +495,15 @@ declare global {
         prototype: HTMLWayTagElement;
         new (): HTMLWayTagElement;
     };
+    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
+    }
+    var HTMLWayTextareaElement: {
+        prototype: HTMLWayTextareaElement;
+        new (): HTMLWayTextareaElement;
+    };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
+        "way-checkbox": HTMLWayCheckboxElement;
         "way-dropdown": HTMLWayDropdownElement;
         "way-input": HTMLWayInputElement;
         "way-menu": HTMLWayMenuElement;
@@ -393,6 +514,7 @@ declare global {
         "way-radio-group": HTMLWayRadioGroupElement;
         "way-select": HTMLWaySelectElement;
         "way-tag": HTMLWayTagElement;
+        "way-textarea": HTMLWayTextareaElement;
     }
 }
 declare namespace LocalJSX {
@@ -449,6 +571,40 @@ declare namespace LocalJSX {
           * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
+    }
+    interface WayCheckbox {
+        /**
+          * Set to true to draw the checkbox in a checked state.
+         */
+        "checked"?: boolean;
+        /**
+          * Set to true to disable the checkbox.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to true to draw the checkbox in an indeterminate state.
+         */
+        "indeterminate"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's checked state changes.
+         */
+        "onWay-change"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The checkbox's value attribute.
+         */
+        "value"?: string;
     }
     interface WayDropdown {
         /**
@@ -539,15 +695,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<any>) => void;
+        "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style input with rounded edges.
          */
@@ -741,8 +897,83 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
+    interface WayTextarea {
+        /**
+          * Set to true to disable the textarea.
+         */
+        "disabled"?: boolean;
+        /**
+          * The textarea's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * The textarea's inputmode attribute.
+         */
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The input's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
+        /**
+          * The textarea's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string | undefined;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength"?: number;
+        /**
+          * The textarea's name attribute.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the textarea loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea's value changes.
+         */
+        "onWay-change"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea has focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea receives input.
+         */
+        "onWay-input"?: (event: CustomEvent<void>) => void;
+        /**
+          * The textarea's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Set to true for a readonly textarea.
+         */
+        "readonly"?: boolean;
+        /**
+          * Controls how the textarea can be resized.
+         */
+        "resize"?: 'none' | 'vertical' | 'auto';
+        /**
+          * The number of rows to display by default.
+         */
+        "rows"?: number;
+        /**
+          * The textarea's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The textarea's value attribute.
+         */
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "way-button": WayButton;
+        "way-checkbox": WayCheckbox;
         "way-dropdown": WayDropdown;
         "way-input": WayInput;
         "way-menu": WayMenu;
@@ -753,6 +984,7 @@ declare namespace LocalJSX {
         "way-radio-group": WayRadioGroup;
         "way-select": WaySelect;
         "way-tag": WayTag;
+        "way-textarea": WayTextarea;
     }
 }
 export { LocalJSX as JSX };
@@ -760,6 +992,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
             "way-dropdown": LocalJSX.WayDropdown & JSXBase.HTMLAttributes<HTMLWayDropdownElement>;
             "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
@@ -770,6 +1003,7 @@ declare module "@stencil/core" {
             "way-radio-group": LocalJSX.WayRadioGroup & JSXBase.HTMLAttributes<HTMLWayRadioGroupElement>;
             "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
             "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
+            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }
     }
 }

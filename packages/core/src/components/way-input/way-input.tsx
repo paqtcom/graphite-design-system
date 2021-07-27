@@ -16,7 +16,6 @@ let id = 0;
   shadow: true,
 })
 export class WayInput {
-  box: HTMLElement;
   input: HTMLInputElement;
   inputId = `input-${++id}`;
   labelId = `input-label-${id}`;
@@ -29,7 +28,6 @@ export class WayInput {
   @State() hasHelpTextSlot = false;
   @State() hasInvalidTextSlot = false;
   @State() hasLabelSlot = false;
-  @State() displayLabel = '';
 
   /** The input's value attribute. */
   @Prop({ mutable: true, reflect: true }) value: string = '';
@@ -77,13 +75,13 @@ export class WayInput {
   }
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter<void>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
+  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter<void>;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
+  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter<void>;
 
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
@@ -125,7 +123,7 @@ export class WayInput {
   }
 
   handleLabelClick() {
-    this.box.focus();
+    this.input.focus();
   }
 
   handleSlotChange() {
@@ -153,19 +151,17 @@ export class WayInput {
         size={this.size}
         onLabelClick={this.handleLabelClick}
       >
-        <div class="input-label">{this.displayLabel}</div>
-
         <input
           ref={el => (this.input = el)}
           id={this.name}
           name={this.name}
-          value={this.value}
           type={this.type}
+          value={this.value}
           placeholder={this.placeholder}
           disabled={this.disabled}
           inputMode={this.inputmode}
           aria-labelledby={this.labelId}
-          aria-describedby={this.helpTextId}
+          aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
           aria-invalid={this.invalid ? 'true' : 'false'}
           onChange={this.handleChange}
           onInput={this.handleInput}
@@ -173,10 +169,10 @@ export class WayInput {
           onFocus={this.handleFocus}
           class={{
             'input': true,
-            'input-placeholder-visible': this.displayLabel === '',
             'input-pill': this.pill,
             'input-disabled': this.disabled,
             'input-invalid': this.invalid,
+            'input-focused': this.hasFocus,
             [`input-${this.size}`]: true,
           }}
         />

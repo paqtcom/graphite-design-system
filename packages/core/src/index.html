@@ -17,7 +17,81 @@
     </style>
   </head>
   <body>
-    <way-menu-divider></way-menu-divider>
+    <section>
+      <h2>way-textarea</h2>
+
+      <way-textarea></way-textarea>
+
+      <section>
+        <h3>Rows</h3>
+
+        <way-textarea rows="3"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Placeholder</h3>
+
+        <way-textarea placeholder="Type something"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Max Characters (20)</h3>
+
+        <way-textarea maxlength="20"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-textarea disabled></way-textarea>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-textarea placeholder="Small" size="small"></way-textarea>
+        <br />
+        <way-textarea placeholder="Medium" size="medium"></way-textarea>
+        <br />
+        <way-textarea placeholder="Large" size="large"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <way-textarea label="Comments"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <way-textarea label="Feedback" help-text="Please tell us what you think."></way-textarea>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <way-textarea
+          label="Feedback"
+          help-text="Please tell us what you think."
+          invalid-text="Enter what you think"
+          invalid
+        ></way-textarea>
+      </section>
+
+      <section>
+        <h3>Prevent Resizing</h3>
+
+        <way-textarea resize="none"></way-textarea>
+      </section>
+
+      <section>
+        <h3>Expand with Content</h3>
+
+        <way-textarea resize="auto"></way-textarea>
+      </section>
+    </section>
+
     <section>
       <h2>way-radio & way-radio-group</h2>
 
@@ -104,6 +178,25 @@
           invalid-text="Create a password with at least 8 characters."
           invalid
         ></way-input>
+      </section>
+    </section>
+
+    <section>
+      <h2>way-checkbox</h2>
+
+      <section>
+        <h3>Checked</h3>
+        <way-checkbox>Option</way-checkbox>
+      </section>
+
+      <section>
+        <h3>Indeterminate</h3>
+        <way-checkbox indeterminate>Indeterminate</way-checkbox>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+        <way-checkbox disabled>Disabled</way-checkbox>
       </section>
     </section>
 
@@ -286,7 +379,7 @@
       <h2>way-dropdown</h2>
 
       <way-dropdown placement="right-start">
-        <way-button slot="trigger" caret>Dropdown</way-button>
+        <way-button wayot="trigger" caret>Dropdown</way-button>
         <way-menu>
           <way-menu-item>Dropdown Item 1</way-menu-item>
           <way-menu-item>Dropdown Item 2</way-menu-item>
@@ -297,11 +390,11 @@
           <way-menu-divider></way-menu-divider>
           <way-menu-item>
             Prefix
-            <ion-icon slot="start" name="gift-outline"></ion-icon>
+            <ion-icon wayot="start" name="gift-outline"></ion-icon>
           </way-menu-item>
           <way-menu-item>
             Suffix Icon
-            <ion-icon slot="end" name="heart-outline"></ion-icon>
+            <ion-icon wayot="end" name="heart-outline"></ion-icon>
           </way-menu-item>
         </way-menu>
       </way-dropdown>
@@ -326,10 +419,10 @@
         <way-menu-item value="cut" disabled>Cut</way-menu-item>
         <way-menu-item value="copy" checked>
           Copy
-          <ion-icon slot="end" name="copy-outline"></ion-icon>
+          <ion-icon wayot="end" name="copy-outline"></ion-icon>
         </way-menu-item>
         <way-menu-item value="paste">
-          <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+          <ion-icon wayot="start" name="clipboard-outline"></ion-icon>
           Paste
         </way-menu-item>
         <way-menu-item value="delete">Delete</way-menu-item>
@@ -367,19 +460,19 @@
         <h3>Icons</h3>
 
         <way-button>
-          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-icon name="settings-outline" wayot="start"></ion-icon>
           Settings
         </way-button>
 
         <way-button>
-          <ion-icon name="refresh-outline" slot="end"></ion-icon>
+          <ion-icon name="refresh-outline" wayot="end"></ion-icon>
           Refresh
         </way-button>
 
         <way-button>
-          <ion-icon name="link-outline" slot="start"></ion-icon>
+          <ion-icon name="link-outline" wayot="start"></ion-icon>
           Open
-          <ion-icon name="exit-outline" slot="end"></ion-icon>
+          <ion-icon name="exit-outline" wayot="end"></ion-icon>
         </way-button>
       </section>
 
@@ -387,15 +480,15 @@
         <h3>Circle Buttons</h3>
 
         <way-button variant="primary" size="small" circle>
-          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+          <ion-icon name="add-outline" wayot="icon-only"></ion-icon>
         </way-button>
 
         <way-button variant="primary" circle>
-          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+          <ion-icon name="add-outline" wayot="icon-only"></ion-icon>
         </way-button>
 
         <way-button variant="primary" size="large" circle>
-          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+          <ion-icon name="add-outline" wayot="icon-only"></ion-icon>
         </way-button>
       </section>
 

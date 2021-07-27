@@ -1,0 +1,189 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/w2wds.globals';
+
+:host {
+  /**
+   * @prop --font-size: Font size of the textarea
+   * @prop --font-weight: Font weight of the textarea
+   *
+   * @prop --background-color: Background color of the textarea
+   * @prop --background-color-hover: Background color of the textarea on hover
+   * @prop --background-color-focus: Background color of the textarea on focus
+   * @prop --background-color-invalid: Background color of the textarea when invalid
+   * @prop --background-color-invalid-hover: Background color of the textarea when invalid on focus
+   *
+   * @prop --border-radius: Border radius of the textarea
+   * @prop --border-color: Border color of the textarea
+   * @prop --border-color-hover: Border color of the textarea on hover
+   * @prop --border-color-focus: Border color of the textarea on focus
+   * @prop --border-color-invalid: Border color of the textarea when invalid
+   * @prop --border-color-invalid-hover: Border color of the textarea when invalid on focus
+   *
+   * @prop --color: Text color of the textarea
+   *
+   * @prop --placeholder-color: Text color of the placeholder
+   *
+   * @prop --min-height: Minimum height of the textarea
+   *
+   * @prop --padding-start: Left padding of the textarea (will be right padding when we support right-to-left direction)
+   * @prop --padding-end: Right padding of the textarea (will be left padding when we support right-to-left direction)
+   *
+   * @prop --focus-ring: The focus ring style to use when the textarea receives focus, a `box-shadow` property.
+   */
+  --font-size: var(--way-form-element-font-size-medium);
+  --font-weight: var(--way-font-weight-normal);
+
+  --background-color: var(--way-color-white);
+  --background-color-hover: var(--way-color-white);
+  --background-color-focus: var(--way-color-white);
+  --background-color-invalid: var(--way-color-white);
+  --background-color-invalid-hover: var(--way-color-white);
+
+  --border-radius: var(--way-form-element-border-radius-small);
+  --border-color: var(--way-color-light);
+  --border-color-hover: var(--way-color-medium);
+  --border-color-focus: var(--way-color-primary);
+  --border-color-invalid: var(--way-color-danger);
+  --border-color-invalid-hover: var(--way-color-danger-shade);
+
+  --color: var(--way-color-dark-tint);
+
+  --placeholder-color: var(--way-color-medium-tint);
+
+  --min-height: var(--way-form-element-height-medium);
+
+  --padding-start: var(--way-spacing-medium);
+  --padding-end: var(--way-spacing-medium);
+
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
+
+  display: block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}
+
+// Size modifiers
+// --------------------------------------------------
+.textarea-small {
+  --font-size: var(--way-form-element-font-size-small);
+  --min-height: var(--way-form-element-height-small);
+
+  --padding-start: var(--way-spacing-small);
+  --padding-end: var(--way-spacing-small);
+}
+
+.textarea-large {
+  --font-size: var(--way-form-element-font-size-large);
+  --min-height: var(--way-form-element-height-large);
+
+  --padding-start: var(--way-spacing-large);
+  --padding-end: var(--way-spacing-large);
+}
+
+.textarea {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  font-family: var(--way-font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--way-line-height-normal);
+  letter-spacing: var(--way-letter-spacing-normal);
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  border-radius: var(--border-radius);
+  vertical-align: middle;
+  transition: 150ms color, 150ms border, 150ms box-shadow;
+  cursor: text;
+
+  &.textarea-invalid:not(.textarea-disabled) {
+    background-color: var(--background-color-invalid);
+    border-color: var(--border-color-invalid);
+  }
+
+  &:hover.textarea-invalid:not(.textarea-disabled):not(.textarea-focused) {
+    background-color: var(--background-color-invalid-hover);
+    border-color: var(--border-color-invalid-hover);
+  }
+
+  &.textarea-invalid:not(.textarea-disabled) {
+    background-color: var(--background-color-invalid);
+    border-color: var(--border-color-invalid);
+  }
+
+  &:hover:not(.textarea-disabled) {
+    background-color: var(--background-color-hover);
+    border-color: var(--border-color-hover);
+  }
+
+  &.textarea-focused:not(.textarea-disabled) {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-color: var(--border-color-focus);
+    background-color: var(--background-color-focus);
+  }
+
+  &.textarea-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    outline: none;
+  }
+}
+
+.textarea-control {
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.4;
+  color: var(--way-color-dark-tint);
+  border: none;
+  background: none;
+  box-shadow: none;
+  cursor: inherit;
+  -webkit-appearance: none;
+
+  padding-top: 0.5em;
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: 0.5em;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  &::placeholder {
+    color: var(--way-color-medium-tint);
+    user-select: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Resize types
+// --------------------------------------------------
+
+.textarea-resize-none .textarea-control {
+  resize: none;
+}
+
+.textarea-resize-vertical .textarea-control {
+  resize: vertical;
+}
+
+.textarea-resize-auto .textarea-control {
+  height: auto;
+  resize: none;
+}
