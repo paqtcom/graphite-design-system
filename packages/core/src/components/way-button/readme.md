@@ -43,14 +43,18 @@
 | Name                   | Description                                                                                |
 | ---------------------- | ------------------------------------------------------------------------------------------ |
 | `--background`         | Background of the button                                                                   |
+| `--background-focus`   | Background of the button on focus                                                          |
 | `--background-hover`   | Background of the button on hover                                                          |
 | `--border-color`       | Border color of the button                                                                 |
+| `--border-color-focus` | Border color of the button on focus                                                        |
 | `--border-color-hover` | Border color of the button on hover                                                        |
 | `--border-radius`      | Border radius of the button                                                                |
 | `--border-style`       | Border style of the button                                                                 |
 | `--border-width`       | Border width of the button                                                                 |
 | `--color`              | Text color of the button                                                                   |
+| `--color-focus`        | Text color of the button on focus                                                          |
 | `--color-hover`        | Text color of the button on hover                                                          |
+| `--focus-ring`         | The focus ring style to use when the button receives focus, a `box-shadow` property.       |
 | `--height`             | Height of the button                                                                       |
 | `--padding-bottom`     | Bottom padding of the button                                                               |
 | `--padding-end`        | Right padding of the button (will be left padding when we support right-to-left direction) |

@@ -4,6 +4,7 @@
   /**
    * @prop --border-radius: Border radius of the fieldset
    * @prop --border-color: Border color of the fieldset
+   * @prop --border-color-invalid: Border color of the fieldset when invalid
    *
    * @prop --padding-top: Top padding of the fieldset
    * @prop --padding-end: Right padding of the fieldset (will be left padding when we support right-to-left direction)
@@ -19,6 +20,7 @@
    */
   --border-radius: var(--way-form-element-border-radius-medium);
   --border-color: var(--way-color-light);
+  --border-color-invalid: var(--way-color-danger);
 
   --padding-top: var(--way-spacing-x-small);
   --padding-start: var(--way-spacing-large);
@@ -45,6 +47,8 @@
   padding-right: var(--padding-end);
   padding-bottom: var(--padding-bottom);
 
+  margin: 0;
+
   .radio-group-label {
     font-family: var(--way-font-family);
     font-size: var(--way-form-element-font-size-medium);
@@ -56,6 +60,10 @@
     padding-right: var(--label-padding-end);
     padding-bottom: 0;
   }
+}
+
+.radio-group-invalid {
+  border: solid 1px var(--border-color-invalid);
 }
 
 ::slotted(way-radio:not(:last-of-type)) {
@@ -71,5 +79,36 @@
 
   .radio-group-label {
     @include visually-hidden();
+  }
+}
+
+// Invalid text
+.invalid-text {
+  display: none;
+}
+
+.radio-group-has-invalid-text {
+  .invalid-text {
+    display: flex;
+    line-height: var(--way-line-height-normal);
+    color: var(--way-form-element-invalid-text-color);
+    margin-top: var(--way-spacing-x-small);
+    font-size: var(--way-form-element-invalid-text-font-size-medium);
+
+    .icon {
+      flex: 0 0 auto;
+
+      margin-top: var(--way-spacing-xxx-small);
+      margin-right: var(--way-spacing-xx-small);
+
+      svg {
+        width: 1.4em;
+        height: 1.4em;
+      }
+    }
+
+    .text {
+      flex: 1 0 auto;
+    }
   }
 }

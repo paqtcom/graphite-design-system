@@ -7,9 +7,11 @@
   /**
    * @prop --background: Background of the button
    * @prop --background-hover: Background of the button on hover
+   * @prop --background-focus: Background of the button on focus
    *
    * @prop --color: Text color of the button
    * @prop --color-hover: Text color of the button on hover
+   * @prop --color-focus: Text color of the button on focus
    *
    * @prop --transition: Transition of the button
    *
@@ -18,6 +20,7 @@
    * @prop --border-style: Border style of the button
    * @prop --border-color: Border color of the button
    * @prop --border-color-hover: Border color of the button on hover
+   * @prop --border-color-focus: Border color of the button on focus
    *
    * @prop --padding-top: Top padding of the button
    * @prop --padding-end: Right padding of the button (will be left padding when we support right-to-left direction)
@@ -25,6 +28,8 @@
    * @prop --padding-start: Left padding of the button (will be right padding when we support right-to-left direction)
    *
    * @prop --height: Height of the button
+   *
+   * @prop --focus-ring: The focus ring style to use when the button receives focus, a `box-shadow` property.
    */
   display: inline-block;
 
@@ -48,17 +53,22 @@
 
   --background: transparent;
   --background-hover: transparent;
+  --background-focus: transparent;
 
   --color: var(--way-color-dark-tint);
   --color-hover: var(--way-color-dark-tint);
+  --color-focus: var(--way-color-dark-tint);
 
   --border-color: var(--way-color-light);
   --border-color-hover: var(--way-color-medium);
+  --border-color-focus: var(--way-color-primary);
 
   --padding-top: 0;
   --padding-start: var(--way-spacing-medium);
   --padding-end: var(--way-spacing-medium);
   --padding-bottom: 0;
+
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 
   --transition: background-color 150ms linear, opacity 150ms linear, border 150ms linear, color 150ms linear;
 }
@@ -83,6 +93,11 @@
   --border-color-hover: var(--way-color-primary-shade);
   --background-hover: var(--way-color-primary-shade);
   --color-hover: var(--way-color-primary-contrast);
+
+  --border-color-focus: var(--way-color-primary);
+  --background-focus: var(--way-color-primary-shade);
+  --color-focus: var(--way-color-primary-contrast);
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 }
 
 // Secondary variant
@@ -96,6 +111,11 @@
   --border-color-hover: var(--way-color-primary);
   --background-hover: transparent;
   --color-hover: var(--way-color-primary);
+
+  --border-color-focus: var(--way-color-primary);
+  --background-focus: transparent;
+  --color-focus: var(--way-color-primary);
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 }
 
 // Danger variant
@@ -109,6 +129,11 @@
   --border-color-hover: var(--way-color-danger);
   --background-hover: var(--way-color-danger);
   --color-hover: var(--way-color-danger-contrast);
+
+  --border-color-focus: var(--way-color-danger);
+  --background-focus: var(--way-color-danger);
+  --color-focus: var(--way-color-danger-contrast);
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-danger-rgb), 0.33);
 }
 
 // Plain variant
@@ -122,6 +147,11 @@
   --border-color-hover: transparent;
   --background-hover: transparent;
   --color-hover: var(--way-color-primary-shade);
+
+  --border-color-focus: transparent;
+  --background-focus: transparent;
+  --color-focus: var(--way-color-primary-shade);
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 }
 
 // Sizes
@@ -235,6 +265,10 @@
 
   &:focus {
     outline: none;
+    box-shadow: var(--focus-ring);
+    border-color: var(--border-color-focus);
+    background-color: var(--background-focus);
+    color: var(--color-focus);
   }
 
   box-sizing: border-box;

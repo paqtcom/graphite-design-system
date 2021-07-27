@@ -146,9 +146,13 @@ export namespace Components {
          */
         "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
          */
         "invalid": boolean;
+        /**
+          * The input's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
         /**
           * The inputs's label. Alternatively, you can use the label slot.
          */
@@ -158,21 +162,13 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Set to true to draw a pill-style input with rounded edges.
+         */
+        "pill": boolean;
+        /**
           * The input's placeholder text.
          */
         "placeholder": string;
-        /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean>;
-        /**
-          * The input's required attribute.
-         */
-        "required": boolean;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * The input's size.
          */
@@ -247,6 +243,14 @@ export namespace Components {
          */
         "allowEmptySelection": boolean;
         /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
@@ -281,9 +285,13 @@ export namespace Components {
          */
         "hoist": boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
          */
         "invalid": boolean;
+        /**
+          * The select's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
         /**
           * The select's label. Alternatively, you can use the label slot.
          */
@@ -308,18 +316,6 @@ export namespace Components {
           * The select's placeholder text.
          */
         "placeholder": string;
-        /**
-          * Checks for validity and shows the browser's validation message if the control is invalid.
-         */
-        "reportValidity": () => Promise<boolean>;
-        /**
-          * The select's required attribute.
-         */
-        "required": boolean;
-        /**
-          * Sets a custom validation message. If `message` is not empty, the field will be considered invalid.
-         */
-        "setCustomValidity": (message: string) => Promise<void>;
         /**
           * The select's size.
          */
@@ -673,9 +669,13 @@ declare namespace LocalJSX {
          */
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by props such as `type`, and `required`.
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
          */
         "invalid"?: boolean;
+        /**
+          * The input's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The inputs's label. Alternatively, you can use the label slot.
          */
@@ -697,13 +697,13 @@ declare namespace LocalJSX {
          */
         "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
+          * Set to true to draw a pill-style input with rounded edges.
+         */
+        "pill"?: boolean;
+        /**
           * The input's placeholder text.
          */
         "placeholder"?: string;
-        /**
-          * The input's required attribute.
-         */
-        "required"?: boolean;
         /**
           * The input's size.
          */
@@ -769,6 +769,14 @@ declare namespace LocalJSX {
          */
         "allowEmptySelection"?: boolean;
         /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
+        /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
@@ -807,9 +815,13 @@ declare namespace LocalJSX {
          */
         "hoist"?: boolean;
         /**
-          * This will be true when the control is in an invalid state. Validity is determined by the `required` prop.
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
          */
         "invalid"?: boolean;
+        /**
+          * The select's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The select's label. Alternatively, you can use the label slot.
          */
@@ -846,10 +858,6 @@ declare namespace LocalJSX {
           * The select's placeholder text.
          */
         "placeholder"?: string;
-        /**
-          * The select's required attribute.
-         */
-        "required"?: boolean;
         /**
           * The select's size.
          */

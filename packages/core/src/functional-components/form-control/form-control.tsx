@@ -25,6 +25,18 @@ export interface FormControlProps {
   /** Whether or not a help text slot has been provided. */
   hasHelpTextSlot?: boolean;
 
+  /** The invalid text id, used to map the input to the invalid text */
+  invalidTextId?: string;
+
+  /** The invalid text (if the invalid-text slot isn't used) */
+  invalidText?: string;
+
+  /** Whether or not a invalid text slot has been provided. */
+  hasInvalidTextSlot?: boolean;
+
+  /** Whether or not the invalid text should be shown instead of the help text */
+  invalid?: boolean;
+
   /** A function that gets called when the label is clicked. */
   onLabelClick?: (event: MouseEvent) => void;
 }
@@ -32,6 +44,9 @@ export interface FormControlProps {
 const FormControl: FunctionalComponent<FormControlProps> = (props, children) => {
   const hasLabel = props.label ? true : props.hasLabelSlot;
   const hasHelpText = props.helpText ? true : props.hasHelpTextSlot;
+  const hasInvalidText = props.invalidText ? true : props.hasInvalidTextSlot;
+  const showHelpText = props.invalid ? false : true;
+  const showInvalidText = props.invalid ? true : false;
 
   return (
     <div
@@ -39,7 +54,8 @@ const FormControl: FunctionalComponent<FormControlProps> = (props, children) => 
         'form-control': true,
         [`form-control-${props.size}`]: true,
         'form-control-has-label': hasLabel,
-        'form-control-has-help-text': hasHelpText
+        'form-control-has-help-text': hasHelpText,
+        'form-control-has-invalid-text': hasInvalidText,
       }}
     >
       <label
@@ -54,13 +70,28 @@ const FormControl: FunctionalComponent<FormControlProps> = (props, children) => 
 
       <div class="form-control-input">{children}</div>
 
-      <div
-        id={props.helpTextId}
-        class="form-control-help-text"
-        aria-hidden={hasHelpText ? 'false' : 'true'}
-      >
-        <slot name="help-text">{props.helpText}</slot>
-      </div>
+      {showHelpText && (
+        <div id={props.helpTextId} class="form-control-help-text" aria-hidden={hasHelpText ? 'false' : 'true'}>
+          <slot name="help-text">{props.helpText}</slot>
+        </div>
+      )}
+
+      {showInvalidText && (
+        <div id={props.invalidTextId} class="form-control-invalid-text" aria-hidden={hasInvalidText ? 'false' : 'true'}>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <title>Alert Circle</title>
+              <path
+                d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm0,319.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Zm21.72-201.15-5.74,122a16,16,0,0,1-32,0l-5.74-121.94v-.05a21.74,21.74,0,1,1,43.44,0Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <div class="text">
+            <slot name="invalid-text">{props.invalidText}</slot>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

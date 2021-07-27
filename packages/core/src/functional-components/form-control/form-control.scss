@@ -6,6 +6,10 @@
   .form-control-help-text {
     display: none;
   }
+
+  .form-control-invalid-text {
+    display: none;
+  }
 }
 
 // Label
@@ -36,10 +40,7 @@
     display: block;
     line-height: var(--way-line-height-normal);
     color: var(--way-form-element-help-text-color);
-
-    ::slotted(*) {
-      margin-top: var(--way-spacing-xxx-small);
-    }
+    margin-top: var(--way-spacing-xxx-small);
   }
 
   &.form-control-small .form-control-help-text {
@@ -52,5 +53,43 @@
 
   &.form-control-large .form-control-help-text {
     font-size: var(--way-form-element-help-text-font-size-large);
+  }
+}
+
+// Invalid text
+.form-control-has-invalid-text {
+  .form-control-invalid-text {
+    display: flex;
+    line-height: var(--way-line-height-normal);
+    color: var(--way-form-element-invalid-text-color);
+    margin-top: var(--way-spacing-xxx-small);
+
+    .icon {
+      flex: 0 0 auto;
+
+      margin-top: var(--way-spacing-xxx-small);
+      margin-right: var(--way-spacing-xx-small);
+
+      svg {
+        width: 1.4em;
+        height: 1.4em;
+      }
+    }
+
+    .text {
+      flex: 1 0 auto;
+    }
+  }
+
+  &.form-control-small .form-control-invalid-text {
+    font-size: var(--way-form-element-invalid-text-font-size-small);
+  }
+
+  &.form-control-medium .form-control-invalid-text {
+    font-size: var(--way-form-element-invalid-text-font-size-medium);
+  }
+
+  &.form-control-large .form-control-invalid-text {
+    font-size: var(--way-form-element-invalid-text-font-size-large);
   }
 }
