@@ -9,11 +9,11 @@ describe('way-input', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  it('should emit wayFocus when gaining focus', async () => {
+  it('should emit way-focus when gaining focus', async () => {
     const page = await newE2EPage({
       html: `
         <way-input></way-input>
-      `
+      `,
     });
     const input = await page.find('way-input');
     const wayFocus = await input.spyOnEvent('way-focus');
@@ -23,12 +23,12 @@ describe('way-input', () => {
     expect(wayFocus).toHaveReceivedEventTimes(1);
   });
 
-  it('should emit wayBlur when losing focus', async () => {
+  it('should emit way-blur when losing focus', async () => {
     const page = await newE2EPage({
       html: `
         <way-input></way-input>
         <button>Native Button</button>
-      `
+      `,
     });
     const input = await page.find('way-input');
     const nativeButton = await page.find('button');
