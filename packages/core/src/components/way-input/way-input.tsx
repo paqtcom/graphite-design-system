@@ -5,7 +5,7 @@ import { inheritAttributes } from '../../utils/utils';
   styleUrl: 'way-input.scss',
   shadow: true,
 })
-export class Wayinput {
+export class WayInput {
   private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLElement;

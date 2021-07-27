@@ -53,6 +53,36 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
+    interface WayCheckbox {
+        /**
+          * Set to true to draw the checkbox in a checked state.
+         */
+        "checked": boolean;
+        /**
+          * Set to true to disable the checkbox.
+         */
+        "disabled": boolean;
+        /**
+          * Set to true to draw the checkbox in an indeterminate state.
+         */
+        "indeterminate": boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name": string;
+        /**
+          * Removes focus from the checkbox.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the checkbox.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The checkbox's value attribute.
+         */
+        "value": string;
+    }
     interface WayDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
@@ -327,6 +357,12 @@ declare global {
         prototype: HTMLWayButtonElement;
         new (): HTMLWayButtonElement;
     };
+    interface HTMLWayCheckboxElement extends Components.WayCheckbox, HTMLStencilElement {
+    }
+    var HTMLWayCheckboxElement: {
+        prototype: HTMLWayCheckboxElement;
+        new (): HTMLWayCheckboxElement;
+    };
     interface HTMLWayDropdownElement extends Components.WayDropdown, HTMLStencilElement {
     }
     var HTMLWayDropdownElement: {
@@ -395,6 +431,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "way-button": HTMLWayButtonElement;
+        "way-checkbox": HTMLWayCheckboxElement;
         "way-dropdown": HTMLWayDropdownElement;
         "way-input": HTMLWayInputElement;
         "way-menu": HTMLWayMenuElement;
@@ -462,6 +499,40 @@ declare namespace LocalJSX {
           * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
+    }
+    interface WayCheckbox {
+        /**
+          * Set to true to draw the checkbox in a checked state.
+         */
+        "checked"?: boolean;
+        /**
+          * Set to true to disable the checkbox.
+         */
+        "disabled"?: boolean;
+        /**
+          * Set to true to draw the checkbox in an indeterminate state.
+         */
+        "indeterminate"?: boolean;
+        /**
+          * The name of the control, which is submitted with the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control's checked state changes.
+         */
+        "onWay-change"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * The checkbox's value attribute.
+         */
+        "value"?: string;
     }
     interface WayDropdown {
         /**
@@ -758,6 +829,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "way-button": WayButton;
+        "way-checkbox": WayCheckbox;
         "way-dropdown": WayDropdown;
         "way-input": WayInput;
         "way-menu": WayMenu;
@@ -776,6 +848,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
+            "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
             "way-dropdown": LocalJSX.WayDropdown & JSXBase.HTMLAttributes<HTMLWayDropdownElement>;
             "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
             "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
