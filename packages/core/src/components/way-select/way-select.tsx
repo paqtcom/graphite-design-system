@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Method, Build } from '@stencil/core';
+import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Build } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { getTextContent, hasSlot } from '../../utils/slot';
 import { renderHiddenInput } from '../../utils/utils';
@@ -8,7 +8,8 @@ let id = 0;
 /**
  * @slot - The select's options in the form of menu items.
  * @slot label - The select's label. Alternatively, you can use the label prop.
- * @slot help-text - Help text that describes how to use the select.
+ * @slot help-text - Help text that describes how to use the select. Alternatively, you can use the help-text prop.
+ * @slot invalid-text - Invalid text that describes how to use the select. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-select',
@@ -22,6 +23,7 @@ export class WaySelect {
   inputId = `select-${++id}`;
   labelId = `select-label-${id}`;
   helpTextId = `select-help-text-${id}`;
+  invalidTextId = `select-invalid-text-${id}`;
   menu: HTMLWayMenuElement;
   resizeObserver: ResizeObserver;
 
@@ -29,6 +31,7 @@ export class WaySelect {
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
+  @State() hasInvalidTextSlot = false;
   @State() hasLabelSlot = false;
   @State() isOpen = false;
   @State() items = [];
@@ -74,14 +77,14 @@ export class WaySelect {
   /** The select's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
-  /** The select's required attribute. */
-  @Prop() required = false;
+  /** The select's invalid text. Alternatively, you can use the invalid-text slot. */
+  @Prop() invalidText = '';
+
+  /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
+  @Prop({ reflect: true }) invalid = false;
 
   /** Set to true to add a clear button when the select is populated. */
   @Prop() clearable = false;
-
-  /** This will be true when the control is in an invalid state. Validity is determined by the `required` prop. */
-  @Prop({ mutable: true }) invalid = false;
 
   @Watch('disabled')
   handleDisabledChange() {
@@ -91,6 +94,7 @@ export class WaySelect {
   }
 
   @Watch('helpText')
+  @Watch('invalidText')
   @Watch('label')
   handleLabelChange() {
     this.handleSlotChange();
@@ -149,19 +153,6 @@ export class WaySelect {
 
   disconnectedCallback() {
     this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
-  }
-
-  /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  @Method()
-  async reportValidity() {
-    return this.input.reportValidity();
-  }
-
-  /** Sets a custom validation message. If `message` is not empty, the field will be considered invalid. */
-  @Method()
-  async setCustomValidity(message: string) {
-    this.input.setCustomValidity(message);
-    this.invalid = !this.input.checkValidity();
   }
 
   getItemLabel(item: HTMLWayMenuItemElement) {
@@ -286,6 +277,7 @@ export class WaySelect {
 
   handleSlotChange() {
     this.hasHelpTextSlot = hasSlot(this.el, 'help-text');
+    this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
     this.hasLabelSlot = hasSlot(this.el, 'label');
     this.syncItemsFromValue();
     this.reportDuplicateItemValues();
@@ -399,6 +391,10 @@ export class WaySelect {
         helpTextId={this.helpTextId}
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
+        invalidTextId={this.invalidTextId}
+        invalidText={this.invalidText}
+        invalid={this.invalid}
+        hasInvalidTextSlot={this.hasInvalidTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
       >
@@ -431,9 +427,10 @@ export class WaySelect {
             class="select-box"
             role="combobox"
             aria-labelledby={this.labelId}
-            aria-describedby={this.helpTextId}
+            aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-haspopup="true"
             aria-expanded={this.isOpen ? 'true' : 'false'}
+            aria-invalid={this.invalid ? 'true' : 'false'}
             tabIndex={this.disabled ? -1 : 0}
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
@@ -489,19 +486,6 @@ export class WaySelect {
                 />
               </svg>
             </span>
-
-            {/*
-              The hidden input tricks the browser's built-in validation so it works as expected. We use an input instead
-              of a select because, otherwise, iOS will show a list of options during validation.
-            */}
-            <input
-              ref={el => (this.input = el)}
-              class="select-hidden-select"
-              aria-hidden="true"
-              required={this.required}
-              value={hasSelection ? '1' : ''}
-              tabIndex={-1}
-            />
           </div>
 
           <way-menu ref={el => (this.menu = el)} class="select-menu" onWay-select={this.handleMenuSelect}>

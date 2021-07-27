@@ -9,11 +9,15 @@
    * @prop --background-color: Background color of the select
    * @prop --background-color-hover: Background color of the select on hover
    * @prop --background-color-focus: Background color of the select on focus
+   * @prop --background-color-invalid: Background color of the select when invalid
+   * @prop --background-color-invalid-hover: Background color of the select when invalid on focus
    *
    * @prop --border-radius: Border radius of the select
    * @prop --border-color: Border color of the select
    * @prop --border-color-hover: Border color of the select on hover
    * @prop --border-color-focus: Border color of the select on focus
+   * @prop --border-color-invalid: Border color of the select when invalid
+   * @prop --border-color-invalid-hover: Border color of the select when invalid on focus
    *
    * @prop --color: Text color of the select
    *
@@ -32,11 +36,15 @@
   --background-color: var(--way-color-white);
   --background-color-hover: var(--way-color-white);
   --background-color-focus: var(--way-color-white);
+  --background-color-invalid: var(--way-color-white);
+  --background-color-invalid-hover: var(--way-color-white);
 
   --border-radius: var(--way-form-element-border-radius-small);
   --border-color: var(--way-color-light);
   --border-color-hover: var(--way-color-medium);
   --border-color-focus: var(--way-color-primary);
+  --border-color-invalid: var(--way-color-danger);
+  --border-color-invalid-hover: var(--way-color-danger-shade);
 
   --color: var(--way-color-dark-tint);
 
@@ -93,6 +101,21 @@
   overflow: hidden;
   transition: 150ms color, 150ms border, 150ms box-shadow;
   padding: var(--way-spacing-x-small) var(--way-spacing-small);
+}
+
+.input.input-invalid:not(.input-disabled) {
+  background-color: var(--background-color-invalid);
+  border-color: var(--border-color-invalid);
+}
+
+.input:hover.input-invalid:not(.input-disabled):not(:focus) {
+  background-color: var(--background-color-invalid-hover);
+  border-color: var(--border-color-invalid-hover);
+}
+
+.input.input-invalid:not(.input-disabled) {
+  background-color: var(--background-color-invalid);
+  border-color: var(--border-color-invalid);
 }
 
 .input:hover:not(.input-disabled) {

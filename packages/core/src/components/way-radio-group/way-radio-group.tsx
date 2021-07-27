@@ -1,4 +1,5 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Watch, Element, Listen } from '@stencil/core';
+import { Component, Host, h, Prop, Event, EventEmitter, Watch, Element, Listen, State } from '@stencil/core';
+import { hasSlot } from '../../utils/slot';
 import { renderHiddenInput } from '../../utils/utils';
 import { WayRadioGroupChangeEventDetail } from './way-radio-group-interface';
 
@@ -7,6 +8,7 @@ let id = 0;
 /**
  * @slot - The default slot where radio controls are placed.
  * @slot label - The radio group label. Required for proper accessibility. Alternatively, you can use the label prop.
+ * @slot invalid-text - Invalid text that describes how to use the select. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-radio-group',
@@ -15,28 +17,31 @@ let id = 0;
 })
 export class WayRadioGroup {
   private inputId = `radio-group-${id++}`;
+  private invalidTextId = `radio-group-invalid-text-${id}`;
 
   @Element() el!: HTMLElement;
 
-  /**
-   * If `true`, the radios can be deselected.
-   */
+  @State() hasInvalidTextSlot = false;
+
+  /** If `true`, the radios can be deselected. */
   @Prop() allowEmptySelection = false;
 
   /** The radio group label. Required for proper accessibility. Alternatively, you can use the label slot. */
   @Prop() label = '';
 
+  /** The radio group's invalid text. Alternatively, you can use the invalid-text slot. */
+  @Prop() invalidText = '';
+
+  /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
+  @Prop({ reflect: true }) invalid = false;
+
   /** Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers. */
   @Prop({ reflect: true }) noFieldset = false;
 
-  /**
-   * The name of the control, which is submitted with the form data.
-   */
+  /** The name of the control, which is submitted with the form data. */
   @Prop() name: string = this.inputId;
 
-  /**
-   * the value of the radio group.
-   */
+  /** the value of the radio group. */
   @Prop({ mutable: true }) value?: any | null;
 
   @Watch('value')
@@ -46,13 +51,21 @@ export class WayRadioGroup {
     this.wayChange.emit({ value });
   }
 
-  /**
-   * Emitted when the value has changed.
-   */
+  @Watch('invalidText')
+  @Watch('label')
+  handleLabelChange() {
+    this.handleSlotChange();
+  }
+
+  /** Emitted when the value has changed. */
   @Event({ eventName: 'way-change' }) wayChange!: EventEmitter<WayRadioGroupChangeEventDetail>;
 
   componentDidLoad() {
     this.setRadioTabindex(this.value);
+  }
+
+  handleSlotChange() {
+    this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
   }
 
   private setRadioTabindex = (value: any | undefined) => {
@@ -151,18 +164,39 @@ export class WayRadioGroup {
   render() {
     renderHiddenInput(this.el, this.name, this.value, false);
 
+    const hasInvalidText = this.invalidText ? true : this.hasInvalidTextSlot;
+    const showInvalidText = this.invalid ? true : false;
+
     return (
-      <Host onClick={this.onClick} role="radiogroup">
+      <Host onClick={this.onClick} role="radiogroup" aria-invalid={this.invalid}>
         <fieldset
           class={{
             'radio-group': true,
             'radio-group-no-fieldset': this.noFieldset,
+            'radio-group-invalid': this.invalid,
+            'radio-group-has-invalid-text': hasInvalidText,
           }}
         >
           <legend class="radio-group-label">
             <slot name="label">{this.label}</slot>
           </legend>
           <slot></slot>
+          {showInvalidText && (
+            <div id={this.invalidTextId} class="invalid-text" aria-hidden={hasInvalidText ? 'false' : 'true'}>
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <title>Alert Circle</title>
+                  <path
+                    d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm0,319.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Zm21.72-201.15-5.74,122a16,16,0,0,1-32,0l-5.74-121.94v-.05a21.74,21.74,0,1,1,43.44,0Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div class="text">
+                <slot name="invalid-text">{this.invalidText}</slot>
+              </div>
+            </div>
+          )}
         </fieldset>
       </Host>
     );

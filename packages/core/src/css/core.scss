@@ -41,8 +41,8 @@
   --way-color-danger-rgb: 255, 83, 99;
   --way-color-danger-contrast: #051f2c;
   --way-color-danger-contrast-rgb: 5, 31, 44;
-  --way-color-danger-shade: #ff1f35;
-  --way-color-danger-tint: #ff8591;
+  --way-color-danger-shade: #cc0014;
+  --way-color-danger-tint: #ff99a3;
 
   --way-color-light: #dbe5eb;
   --way-color-light-rgb: 219, 229, 235;
@@ -171,6 +171,13 @@
   --way-form-element-help-text-font-size-large: var(--way-font-size-medium);
 
   --way-form-element-help-text-color: var(--way-color-medium-tint);
+
+  // Invalid text
+  --way-form-element-invalid-text-font-size-small: var(--way-font-size-x-small);
+  --way-form-element-invalid-text-font-size-medium: var(--way-font-size-small);
+  --way-form-element-invalid-text-font-size-large: var(--way-font-size-medium);
+
+  --way-form-element-invalid-text-color: var(--way-color-danger);
 
   // Toggles (checkboxes, radios, switches)
   --way-toggle-size: 1rem;
