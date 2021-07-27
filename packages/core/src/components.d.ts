@@ -357,6 +357,14 @@ export namespace Components {
          */
         "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The input's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
           * The textarea's label. Alternatively, you can use the label slot.
          */
         "label": string | undefined;
@@ -902,6 +910,14 @@ declare namespace LocalJSX {
           * The textarea's inputmode attribute.
          */
         "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The input's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The textarea's label. Alternatively, you can use the label slot.
          */

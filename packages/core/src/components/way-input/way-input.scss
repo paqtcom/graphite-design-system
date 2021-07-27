@@ -28,9 +28,6 @@
    * @prop --padding-start: Left padding of the input (will be right padding when we support right-to-left direction)
    * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
    *
-   * @prop --label-margin-start: Left margin of the label (will be right margin when we support right-to-left direction)
-   * @prop --label-margin-end: Right margin of the label (will be left margin when we support right-to-left direction)
-   *
    * @prop --focus-ring: The focus ring style to use when the input receives focus, a `box-shadow` property.
    */
   --font-size: var(--way-form-element-font-size-medium);
@@ -58,9 +55,6 @@
   --padding-start: var(--way-spacing-medium);
   --padding-end: var(--way-spacing-medium);
 
-  --label-margin-start: var(--way-spacing-medium);
-  --label-margin-end: var(--way-spacing-medium);
-
   --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 
   display: block;
@@ -80,9 +74,6 @@
   --font-size: var(--way-form-element-font-size-small);
   --min-height: var(--way-form-element-height-small);
 
-  --label-margin-start: var(--way-spacing-small);
-  --label-margin-end: var(--way-spacing-small);
-
   --padding-start: var(--way-spacing-small);
   --padding-end: var(--way-spacing-small);
 }
@@ -90,9 +81,6 @@
 .input-large {
   --font-size: var(--way-form-element-font-size-large);
   --min-height: var(--way-form-element-height-large);
-
-  --label-margin-start: var(--way-spacing-large);
-  --label-margin-end: var(--way-spacing-large);
 
   --padding-start: var(--way-spacing-large);
   --padding-end: var(--way-spacing-large);
@@ -103,7 +91,8 @@
   font-family: var(--way-font-family);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
-  letter-spacing: normal;
+  line-height: var(--way-line-height-normal);
+  letter-spacing: var(--way-letter-spacing-normal);
   background-color: var(--background-color);
   width: 100%;
   border: solid 1px var(--border-color);
@@ -112,11 +101,16 @@
   color: var(--color);
   overflow: hidden;
   transition: 150ms color, 150ms border, 150ms box-shadow;
+  cursor: text;
 
   padding-top: 0;
   padding-left: var(--padding-start);
   padding-right: var(--padding-end);
   padding-bottom: 0;
+
+  &::placeholder {
+    color: var(--placeholder-color);
+  }
 }
 
 .input.input-invalid:not(.input-disabled) {
@@ -124,7 +118,7 @@
   border-color: var(--border-color-invalid);
 }
 
-.input:hover.input-invalid:not(.input-disabled):not(:focus) {
+.input:hover.input-invalid:not(.input-disabled):not(.input-focused) {
   background-color: var(--background-color-invalid-hover);
   border-color: var(--border-color-invalid-hover);
 }
@@ -139,28 +133,11 @@
   border-color: var(--border-color-hover);
 }
 
-.input:focus:not(.input-disabled) {
+.input.input-focused:not(.input-disabled) {
   outline: none;
   box-shadow: var(--focus-ring);
   border-color: var(--border-color-focus);
   background-color: var(--background-color-focus);
-}
-
-.input-label {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  user-select: none;
-
-  margin-top: 0;
-  margin-left: var(--label-margin-start);
-  margin-right: var(--label-margin-end);
-  margin-bottom: 0;
-}
-
-// Placeholder
-.input-placeholder-visible .input-label {
-  color: var(--placeholder-color);
 }
 
 .input-disabled {

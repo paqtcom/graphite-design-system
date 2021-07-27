@@ -6,7 +6,8 @@ let id = 0;
 
 /**
  * @slot label - The textarea's label. Alternatively, you can use the label prop.
- * @slot help-text - Help text that describes how to use the input.
+ * @slot help-text - Help text that describes how to use the textarea.
+ * @slot invalid-text - Invalid text that describes how to use the textarea. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-textarea',
@@ -17,6 +18,7 @@ export class WayTextarea {
   inputId = `textarea-${++id}`;
   labelId = `textarea-label-${id}`;
   helpTextId = `textarea-help-text-${id}`;
+  invalidTextId = `textarea-invalid-text-${id}`;
   resizeObserver: ResizeObserver;
   textarea: HTMLTextAreaElement;
 
@@ -24,6 +26,7 @@ export class WayTextarea {
 
   @State() hasFocus = false;
   @State() hasHelpTextSlot = false;
+  @State() hasInvalidTextSlot = false;
   @State() hasLabelSlot = false;
 
   /** The textarea's size. */
@@ -40,6 +43,12 @@ export class WayTextarea {
 
   /** The textarea's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
+
+  /** The input's invalid text. Alternatively, you can use the invalid-text slot. */
+  @Prop() invalidText = '';
+
+  /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The textarea's placeholder text. */
   @Prop() placeholder: string;
@@ -75,6 +84,7 @@ export class WayTextarea {
   @Event({ eventName: 'way-blur' }) wayBlur!: EventEmitter<void>;
 
   @Watch('helpText')
+  @Watch('invalidText')
   @Watch('label')
   handleLabelChange() {
     this.handleSlotChange();
@@ -90,6 +100,7 @@ export class WayTextarea {
     this.handleInput = this.handleInput.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
+    this.handleLabelClick = this.handleLabelClick.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
 
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
@@ -161,9 +172,14 @@ export class WayTextarea {
     this.wayFocus.emit();
   }
 
+  handleLabelClick() {
+    this.textarea.focus();
+  }
+
   handleSlotChange() {
     this.hasLabelSlot = hasSlot(this.el, 'label');
     this.hasHelpTextSlot = hasSlot(this.el, 'help-text');
+    this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
   }
 
   setTextareaHeight() {
@@ -185,13 +201,19 @@ export class WayTextarea {
         helpTextId={this.helpTextId}
         helpText={this.helpText}
         hasHelpTextSlot={this.hasHelpTextSlot}
+        invalidTextId={this.invalidTextId}
+        invalidText={this.invalidText}
+        invalid={this.invalid}
+        hasInvalidTextSlot={this.hasInvalidTextSlot}
         size={this.size}
+        onLabelClick={this.handleLabelClick}
       >
         <div
           class={{
             'textarea': true,
             [`textarea-${this.size}`]: true,
             'textarea-disabled': this.disabled,
+            'textarea-invalid': this.invalid,
             'textarea-focused': this.hasFocus,
             'textarea-empty': this.value?.length === 0,
             [`textarea-resize-${this.resize}`]: true,
@@ -210,6 +232,8 @@ export class WayTextarea {
             value={this.value}
             inputMode={this.inputmode}
             aria-labelledby={this.labelId}
+            aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
+            aria-invalid={this.invalid ? 'true' : 'false'}
             onChange={this.handleChange}
             onInput={this.handleInput}
             onFocus={this.handleFocus}
