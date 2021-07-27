@@ -1,68 +1,87 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/w2wds.globals';
+
 :host {
-  /**
-    * @prop --border-radius: Border radius of the textarea
-    * @prop --border-width: Border width of the button
-    * @prop --border-style: Border style of the button
-    * @prop --border-color: Border color of the button
-    */
-  display: inline-block;
-
-  width: auto;
-
-  font-family: var(--way-font-family, inherit);
-  font-size: var(--way-font-size);
-  line-height: 1.25rem;
-
-  user-select: none;
-  vertical-align: top;
-  vertical-align: -webkit-baseline-middle;
-  pointer-events: auto;
-
-  font-kerning: none;
-
-  --border-radius: var(--way-form-element-border-radius-medium);
-  --border-width: var(--way-form-element-input-border-width);
-  --border-color: var(--way-color-medium-tint);
-  --border-color-focus: var(--way-color-light);
-  --border-style: solid;
-  --font-size: var(--way-form-element-font-size-small);
-  --background-color: var(--way-color-white);
+  display: block;
 }
 
 .textarea {
-  display: block;
-  appearance: none;
-  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  position: relative;
   width: 100%;
-
-  font-size: var(--font-size);
-
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-
-  border: var(--border-style) var(--border-width) var(--border-color);
-  border-radius: var(--border-radius);
-
+  font-family: var(--way-font-family);
+  font-weight: var(--way-font-weight-normal);
+  line-height: var(--way-line-height-normal);
+  letter-spacing: var(--way-letter-spacing-normal);
+  background-color: var(--way-color-white);
+  border: solid 1px var(--way-color-light);
+  border-radius: var(--way-form-element-border-radius-small);
+  vertical-align: middle;
+  transition: 150ms color, 150ms border, 150ms box-shadow;
+  cursor: text;
   padding: var(--way-spacing-x-small) var(--way-spacing-small);
+
+  &:hover:not(.textarea-disabled) {
+    background-color: var(--way-color-white);
+    border-color: var(--way-color-medium);
+  }
+
+  &.textarea-focused:not(.textarea-disabled) {
+    background-color: var(--way-color-white);
+    border-color: var(--way-color-primary);
+    box-shadow: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
+  }
+
+  &.textarea-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    outline: none;
+  }
 }
 
-.textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(164, 202, 254, 0.45);
-  border-color: var(--border-color-focus);
+.textarea-control {
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.4;
+  color: var(--way-color-dark-tint);
+  border: none;
+  background: none;
+  box-shadow: none;
+  cursor: inherit;
+  -webkit-appearance: none;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  &::placeholder {
+    color: var(--way-color-medium-tint);
+    user-select: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.label {
-  font-weight: var(--way-label-font-weight);
-  font-size: var(--way-label-font-size);
-  text-align: left;
-  display: block;
-  margin-bottom: var(--way-spacing-xx-small);
+// Resize types
+// --------------------------------------------------
+
+.textarea-resize-none .textarea-control {
+  resize: none;
 }
 
-.textarea-disabled {
-  cursor: default;
-  opacity: 0.5;
-  pointer-events: none;
+.textarea-resize-vertical .textarea-control {
+  resize: vertical;
+}
+
+.textarea-resize-auto .textarea-control {
+  height: auto;
+  resize: none;
 }

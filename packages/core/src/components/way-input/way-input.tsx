@@ -81,13 +81,13 @@ export class WayInput {
   }
 
   /** Emitted when the control's value changes. */
-  @Event({ eventName: 'way-change' }) wayChange: EventEmitter;
+  @Event({ eventName: 'way-change' }) wayChange: EventEmitter<void>;
 
   /** Emitted when the control gains focus. */
-  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter;
+  @Event({ eventName: 'way-focus' }) wayFocus: EventEmitter<void>;
 
   /** Emitted when the control loses focus. */
-  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter;
+  @Event({ eventName: 'way-blur' }) wayBlur: EventEmitter<void>;
 
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
@@ -171,8 +171,8 @@ export class WayInput {
           ref={el => (this.input = el)}
           id={this.name}
           name={this.name}
-          value={this.value}
           type={this.type}
+          value={this.value}
           placeholder={this.placeholder}
           disabled={this.disabled}
           required={this.required}

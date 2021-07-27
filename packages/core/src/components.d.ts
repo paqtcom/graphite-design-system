@@ -349,13 +349,17 @@ export namespace Components {
     }
     interface WayTextarea {
         /**
-          * If `true`, the textarea should autofocus.
-         */
-        "autofocus": boolean;
-        /**
-          * If `true`, the user cannot interact with the textarea.
+          * Set to true to disable the textarea.
          */
         "disabled": boolean;
+        /**
+          * The textarea's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * The textarea's inputmode attribute.
+         */
+        "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * The textarea's label. Alternatively, you can use the label slot.
          */
@@ -367,15 +371,51 @@ export namespace Components {
         /**
           * The textarea's name attribute.
          */
-        "name": string | undefined;
+        "name": string;
         /**
-          * Specifies how many textarea rows to use.
+          * The textarea's placeholder text.
          */
-        "rows": number | undefined;
+        "placeholder": string;
         /**
-          * Specifies what type of textarea to use.
+          * Set to true for a readonly textarea.
          */
-        "type": string | undefined;
+        "readonly": boolean;
+        /**
+          * Removes focus fromt the textarea.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Controls how the textarea can be resized.
+         */
+        "resize": 'none' | 'vertical' | 'auto';
+        /**
+          * The number of rows to display by default.
+         */
+        "rows": number;
+        /**
+          * Selects all the text in the input.
+         */
+        "select": () => Promise<void>;
+        /**
+          * Sets focus on the textarea.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * Replaces a range of text with a new string.
+         */
+        "setRangeText": (replacement: string, start: number, end: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') => Promise<void>;
+        /**
+          * Sets the start and end positions of the text selection (0-based).
+         */
+        "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        /**
+          * The textarea's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The textarea's value attribute.
+         */
+        "value": string;
     }
 }
 declare global {
@@ -647,15 +687,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<any>) => void;
+        "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
           * The input's placeholder text.
          */
@@ -843,13 +883,17 @@ declare namespace LocalJSX {
     }
     interface WayTextarea {
         /**
-          * If `true`, the textarea should autofocus.
-         */
-        "autofocus"?: boolean;
-        /**
-          * If `true`, the user cannot interact with the textarea.
+          * Set to true to disable the textarea.
          */
         "disabled"?: boolean;
+        /**
+          * The textarea's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * The textarea's inputmode attribute.
+         */
+        "inputmode"?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
         /**
           * The textarea's label. Alternatively, you can use the label slot.
          */
@@ -861,23 +905,47 @@ declare namespace LocalJSX {
         /**
           * The textarea's name attribute.
          */
-        "name"?: string | undefined;
+        "name"?: string;
         /**
           * Emitted when the textarea loses focus.
          */
-        "onWayBlur"?: (event: CustomEvent<void>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the textarea's value changes.
+         */
+        "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the textarea has focus.
          */
-        "onWayFocus"?: (event: CustomEvent<void>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
-          * Specifies how many textarea rows to use.
+          * Emitted when the textarea receives input.
          */
-        "rows"?: number | undefined;
+        "onWay-input"?: (event: CustomEvent<void>) => void;
         /**
-          * Specifies what type of textarea to use.
+          * The textarea's placeholder text.
          */
-        "type"?: string | undefined;
+        "placeholder"?: string;
+        /**
+          * Set to true for a readonly textarea.
+         */
+        "readonly"?: boolean;
+        /**
+          * Controls how the textarea can be resized.
+         */
+        "resize"?: 'none' | 'vertical' | 'auto';
+        /**
+          * The number of rows to display by default.
+         */
+        "rows"?: number;
+        /**
+          * The textarea's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The textarea's value attribute.
+         */
+        "value"?: string;
     }
     interface IntrinsicElements {
         "way-button": WayButton;

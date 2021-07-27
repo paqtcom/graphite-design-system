@@ -29,7 +29,7 @@ export const config: Config = {
           externalEvent: 'way-change',
         },
         {
-          elements: ['way-select', 'way-radio-group', 'way-input'],
+          elements: ['way-select', 'way-radio-group', 'way-input', 'way-textarea'],
           targetAttr: 'value',
           event: 'v-way-change',
           externalEvent: 'way-change',
