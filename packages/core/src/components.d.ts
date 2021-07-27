@@ -132,6 +132,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Set to true to draw a pill-style input with rounded edges.
+         */
+        "pill": boolean;
+        /**
           * The input's placeholder text.
          */
         "placeholder": string;
@@ -544,6 +548,10 @@ declare namespace LocalJSX {
           * Emitted when the control gains focus.
          */
         "onWay-focus"?: (event: CustomEvent<any>) => void;
+        /**
+          * Set to true to draw a pill-style input with rounded edges.
+         */
+        "pill"?: boolean;
         /**
           * The input's placeholder text.
          */

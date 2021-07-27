@@ -54,6 +54,60 @@
     </section>
 
     <section>
+      <h2>way-input</h2>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <way-input size="small" placeholder="Small"></way-input>
+        <br />
+        <way-input size="medium" placeholder="Medium"></way-input>
+        <br />
+        <way-input size="large" placeholder="Large"></way-input>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <way-input disabled></way-input>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <way-input size="small" pill></way-input>
+        <br />
+        <way-input size="medium" pill></way-input>
+        <br />
+        <way-input size="large" pill></way-input>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <way-input type="password" label="Password"></way-input>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <way-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></way-input>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <way-input
+          type="password"
+          label="Password"
+          help-text="Passwords must be at least 8 characters."
+          invalid-text="Create a password with at least 8 characters."
+          invalid
+        ></way-input>
+      </section>
+    </section>
+
+    <section>
       <h2>way-select</h2>
 
       <section>
@@ -392,80 +446,32 @@
 
         <way-button variant="plain" disabled> Plain </way-button>
       </section>
-
-      <section>
-        <h2>way-input</h2>
-
-        <section>
-          <h3>Sizes</h3>
-
-          <way-input size="small" placeholder="Small"></way-input>
-
-          <br />
-
-          <way-input size="medium" placeholder="Medium"></way-input>
-
-          <br />
-
-          <way-input size="large" placeholder="Large"></way-input>
-        </section>
-
-        <section>
-          <h3>Disabled</h3>
-
-          <way-input disabled></way-input>
-        </section>
-
-        <section>
-          <h3>Labels</h3>
-
-          <way-input type="password" label="Password"></way-input>
-        </section>
-
-        <section>
-          <h3>Help Text</h3>
-
-          <way-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></way-input>
-        </section>
-
-        <section>
-          <h3>Invalid Text</h3>
-
-          <way-input
-            type="password"
-            label="Password"
-            help-text="Passwords must be at least 8 characters."
-            invalid-text="Create a password with at least 8 characters."
-            invalid
-          ></way-input>
-        </section>
-      </section>
-
-      <script>
-        let clickExampleElement = document.getElementById('clickExample');
-
-        clickExampleElement.addEventListener('click', () => {
-          console.log('clicked');
-        });
-
-        const focusBlurExampleElement = document.getElementById('focusBlurExample');
-
-        focusBlurExampleElement.addEventListener('way-focus', () => {
-          console.log('way-focus');
-        });
-
-        focusBlurExampleElement.addEventListener('way-blur', () => {
-          console.log('way-blur');
-        });
-
-        const tagsClearable = document.querySelector('.tags-clearable');
-
-        tagsClearable.addEventListener('way-clear', event => {
-          const tag = event.target;
-          tag.style.opacity = '0';
-          setTimeout(() => (tag.style.opacity = '1'), 2000);
-        });
-      </script>
     </section>
+
+    <script>
+      let clickExampleElement = document.getElementById('clickExample');
+
+      clickExampleElement.addEventListener('click', () => {
+        console.log('clicked');
+      });
+
+      const focusBlurExampleElement = document.getElementById('focusBlurExample');
+
+      focusBlurExampleElement.addEventListener('way-focus', () => {
+        console.log('way-focus');
+      });
+
+      focusBlurExampleElement.addEventListener('way-blur', () => {
+        console.log('way-blur');
+      });
+
+      const tagsClearable = document.querySelector('.tags-clearable');
+
+      tagsClearable.addEventListener('way-clear', event => {
+        const tag = event.target;
+        tag.style.opacity = '0';
+        setTimeout(() => (tag.style.opacity = '1'), 2000);
+      });
+    </script>
   </body>
 </html>

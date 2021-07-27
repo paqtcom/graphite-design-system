@@ -3,27 +3,30 @@
 
 :host {
   /**
-   * @prop --font-size: Font size of the select
-   * @prop --font-weight: Font weight of the select
+   * @prop --font-size: Font size of the input
+   * @prop --font-weight: Font weight of the input
    *
-   * @prop --background-color: Background color of the select
-   * @prop --background-color-hover: Background color of the select on hover
-   * @prop --background-color-focus: Background color of the select on focus
-   * @prop --background-color-invalid: Background color of the select when invalid
-   * @prop --background-color-invalid-hover: Background color of the select when invalid on focus
+   * @prop --background-color: Background color of the input
+   * @prop --background-color-hover: Background color of the input on hover
+   * @prop --background-color-focus: Background color of the input on focus
+   * @prop --background-color-invalid: Background color of the input when invalid
+   * @prop --background-color-invalid-hover: Background color of the input when invalid on focus
    *
-   * @prop --border-radius: Border radius of the select
-   * @prop --border-color: Border color of the select
-   * @prop --border-color-hover: Border color of the select on hover
-   * @prop --border-color-focus: Border color of the select on focus
-   * @prop --border-color-invalid: Border color of the select when invalid
-   * @prop --border-color-invalid-hover: Border color of the select when invalid on focus
+   * @prop --border-radius: Border radius of the input
+   * @prop --border-color: Border color of the input
+   * @prop --border-color-hover: Border color of the input on hover
+   * @prop --border-color-focus: Border color of the input on focus
+   * @prop --border-color-invalid: Border color of the input when invalid
+   * @prop --border-color-invalid-hover: Border color of the input when invalid on focus
    *
-   * @prop --color: Text color of the select
+   * @prop --color: Text color of the input
    *
    * @prop --placeholder-color: Text color of the placeholder
    *
-   * @prop --min-height: Minimum height of the select
+   * @prop --min-height: Minimum height of the input
+   *
+   * @prop --padding-start: Left padding of the input (will be right padding when we support right-to-left direction)
+   * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
    *
    * @prop --label-margin-start: Left margin of the label (will be right margin when we support right-to-left direction)
    * @prop --label-margin-end: Right margin of the label (will be left margin when we support right-to-left direction)
@@ -52,6 +55,9 @@
 
   --min-height: var(--way-form-element-height-medium);
 
+  --padding-start: var(--way-spacing-medium);
+  --padding-end: var(--way-spacing-medium);
+
   --label-margin-start: var(--way-spacing-medium);
   --label-margin-end: var(--way-spacing-medium);
 
@@ -76,6 +82,9 @@
 
   --label-margin-start: var(--way-spacing-small);
   --label-margin-end: var(--way-spacing-small);
+
+  --padding-start: var(--way-spacing-small);
+  --padding-end: var(--way-spacing-small);
 }
 
 .input-large {
@@ -84,6 +93,9 @@
 
   --label-margin-start: var(--way-spacing-large);
   --label-margin-end: var(--way-spacing-large);
+
+  --padding-start: var(--way-spacing-large);
+  --padding-end: var(--way-spacing-large);
 }
 
 .input {
@@ -100,7 +112,11 @@
   color: var(--color);
   overflow: hidden;
   transition: 150ms color, 150ms border, 150ms box-shadow;
-  padding: var(--way-spacing-x-small) var(--way-spacing-small);
+
+  padding-top: 0;
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: 0;
 }
 
 .input.input-invalid:not(.input-disabled) {
@@ -151,4 +167,11 @@
   cursor: not-allowed;
   opacity: 0.5;
   outline: none;
+}
+
+// Pill modifier
+// --------------------------------------------------
+
+.input.input-pill {
+  border-radius: var(--min-height);
 }

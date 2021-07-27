@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Watch, Event, EventEmitter, Method, State } from '@stencil/core';
+import { Component, h, Element, Prop, Watch, Event, EventEmitter, State } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { hasSlot } from '../../utils/slot';
 import { renderHiddenInput } from '../../utils/utils';
@@ -34,10 +34,11 @@ export class WayInput {
   /** The input's value attribute. */
   @Prop({ mutable: true, reflect: true }) value: string = '';
 
-  /**
-   * Specifies what type of input to use.
-   */
+  /** Specifies what type of input to use. */
   @Prop({ reflect: true }) type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' = 'text';
+
+  /** Set to true to draw a pill-style input with rounded edges. */
+  @Prop() pill = false;
 
   /** Set to true to disable the input control. */
   @Prop() disabled = false;
@@ -172,16 +173,11 @@ export class WayInput {
           onFocus={this.handleFocus}
           class={{
             'input': true,
-
             'input-placeholder-visible': this.displayLabel === '',
-
-            // States
+            'input-pill': this.pill,
             'input-disabled': this.disabled,
             'input-invalid': this.invalid,
-
-            // Sizes
-            'input-small': this.size === 'small',
-            'input-large': this.size === 'large',
+            [`input-${this.size}`]: true,
           }}
         />
       </FormControl>
