@@ -22,7 +22,7 @@ export class WayRadio {
   @State() hasFocus = false;
 
   /** The radio's value attribute. */
-  @Prop() value: string;
+  @Prop({ mutable: true, reflect: true }) value: string;
 
   /** Set to true to disable the radio. */
   @Prop() disabled = false;
