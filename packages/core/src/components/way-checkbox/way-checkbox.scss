@@ -48,7 +48,7 @@
 
   --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
 
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
 
   --height-icon-small: 20px;
@@ -156,4 +156,39 @@
   line-height: var(--control-size);
   margin-left: 0.5em;
   user-select: none;
+}
+
+// Invalid text
+.invalid-text {
+  display: none;
+}
+
+.checkbox-invalid:not(.checkbox-has-invalid-text) {
+  color: var(--way-form-element-invalid-text-color);
+}
+
+:host(.checkbox-has-invalid-text) {
+  .invalid-text {
+    display: flex;
+    line-height: var(--way-line-height-normal);
+    color: var(--way-form-element-invalid-text-color);
+    margin-top: var(--way-spacing-x-small);
+    font-size: var(--way-form-element-invalid-text-font-size-medium);
+
+    .icon {
+      flex: 0 0 auto;
+
+      margin-top: var(--way-spacing-xxx-small);
+      margin-right: var(--way-spacing-xx-small);
+
+      svg {
+        width: 1.4em;
+        height: 1.4em;
+      }
+    }
+
+    .text {
+      flex: 1 0 auto;
+    }
+  }
 }

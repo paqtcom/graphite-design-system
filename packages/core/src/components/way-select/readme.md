@@ -34,12 +34,12 @@
 
 ## Slots
 
-| Slot             | Description                                                                                          |
-| ---------------- | ---------------------------------------------------------------------------------------------------- |
-|                  | The select's options in the form of menu items.                                                      |
-| `"help-text"`    | Help text that describes how to use the select. Alternatively, you can use the help-text prop.       |
-| `"invalid-text"` | Invalid text that describes how to use the select. Alternatively, you can use the invalid-text prop. |
-| `"label"`        | The select's label. Alternatively, you can use the label prop.                                       |
+| Slot             | Description                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------- |
+|                  | The select's options in the form of menu items.                                                   |
+| `"help-text"`    | Help text that describes how to use the select. Alternatively, you can use the help-text prop.    |
+| `"invalid-text"` | Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop. |
+| `"label"`        | The select's label. Alternatively, you can use the label prop.                                    |
 
 
 ## CSS Custom Properties

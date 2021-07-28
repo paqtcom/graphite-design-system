@@ -8,7 +8,7 @@ let id = 0;
 /**
  * @slot - The default slot where radio controls are placed.
  * @slot label - The radio group label. Required for proper accessibility. Alternatively, you can use the label prop.
- * @slot invalid-text - Invalid text that describes how to use the select. Alternatively, you can use the invalid-text prop.
+ * @slot invalid-text - Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-radio-group',

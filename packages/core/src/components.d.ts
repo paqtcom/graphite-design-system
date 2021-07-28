@@ -68,6 +68,14 @@ export namespace Components {
          */
         "indeterminate": boolean;
         /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The checkbox's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
@@ -678,6 +686,14 @@ declare namespace LocalJSX {
           * Set to true to draw the checkbox in an indeterminate state.
          */
         "indeterminate"?: boolean;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The checkbox's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */

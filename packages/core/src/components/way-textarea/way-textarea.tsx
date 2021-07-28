@@ -8,7 +8,7 @@ let id = 0;
 /**
  * @slot label - The textarea's label. Alternatively, you can use the label prop.
  * @slot help-text - Help text that describes how to use the textarea.
- * @slot invalid-text - Invalid text that describes how to use the textarea. Alternatively, you can use the invalid-text prop.
+ * @slot invalid-text - Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-textarea',

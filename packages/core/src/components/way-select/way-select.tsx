@@ -9,7 +9,7 @@ let id = 0;
  * @slot - The select's options in the form of menu items.
  * @slot label - The select's label. Alternatively, you can use the label prop.
  * @slot help-text - Help text that describes how to use the select. Alternatively, you can use the help-text prop.
- * @slot invalid-text - Invalid text that describes how to use the select. Alternatively, you can use the invalid-text prop.
+ * @slot invalid-text - Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'way-select',

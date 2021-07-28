@@ -30,7 +30,7 @@
 | Slot             | Description                                                                                          |
 | ---------------- | ---------------------------------------------------------------------------------------------------- |
 |                  | The default slot where radio controls are placed.                                                    |
-| `"invalid-text"` | Invalid text that describes how to use the select. Alternatively, you can use the invalid-text prop. |
+| `"invalid-text"` | Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.    |
 | `"label"`        | The radio group label. Required for proper accessibility. Alternatively, you can use the label prop. |
 
 

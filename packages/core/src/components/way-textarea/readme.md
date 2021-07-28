@@ -96,11 +96,11 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot             | Description                                                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------------ |
-| `"help-text"`    | Help text that describes how to use the textarea.                                                      |
-| `"invalid-text"` | Invalid text that describes how to use the textarea. Alternatively, you can use the invalid-text prop. |
-| `"label"`        | The textarea's label. Alternatively, you can use the label prop.                                       |
+| Slot             | Description                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------------- |
+| `"help-text"`    | Help text that describes how to use the textarea.                                                 |
+| `"invalid-text"` | Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop. |
+| `"label"`        | The textarea's label. Alternatively, you can use the label prop.                                  |
 
 
 ## CSS Custom Properties
