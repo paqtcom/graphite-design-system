@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, Event, EventEmitter, State, Watch, Method } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
-import { debounceEvent } from '../../utils/helpers';
+import { debounceEvent, renderHiddenInput } from '../../utils/helpers';
 import { hasSlot } from '../../utils/slot';
 
 let id = 0;
@@ -244,6 +244,8 @@ export class WayTextarea {
   }
 
   render() {
+    renderHiddenInput(this.el, this.name, this.value, this.disabled);
+
     return (
       <FormControl
         inputId={this.inputId}

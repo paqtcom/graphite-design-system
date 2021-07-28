@@ -267,7 +267,7 @@ export class WayInput {
   }
 
   render() {
-    renderHiddenInput(this.el, this.name, parseValue(this.value), this.disabled);
+    renderHiddenInput(this.el, this.name, this.value, this.disabled);
 
     return (
       <FormControl
@@ -352,15 +352,3 @@ export class WayInput {
     );
   }
 }
-
-const parseValue = (value: any) => {
-  if (value == null) {
-    return undefined;
-  }
-
-  if (Array.isArray(value)) {
-    return value.join(',');
-  }
-
-  return value.toString();
-};
