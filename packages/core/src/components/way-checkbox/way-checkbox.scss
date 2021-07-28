@@ -46,6 +46,8 @@
   --control-border-color-checked-focus: var(--way-color-primary-tint);
   --control-background-color-checked-focus: var(--way-color-primary-tint);
 
+  --focus-ring: 0 0 0 var(--way-focus-ring-width) rgb(var(--way-color-primary-rgb), 0.33);
+
   display: inline-block;
   box-sizing: border-box;
 
@@ -117,7 +119,9 @@
 
 // Focus
 .checkbox.checkbox-focused:not(.checkbox-checked):not(.checkbox-disabled) .checkbox-control {
-  outline: none;
+  border-color: var(--control-border-color-hover);
+  background-color: var(--control-background-color-hover);
+  box-shadow: var(--focus-ring);
 }
 
 // Checked/indeterminate
