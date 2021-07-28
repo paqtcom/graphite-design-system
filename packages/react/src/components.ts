@@ -19,5 +19,6 @@ export const WayMenuLabel = /*@__PURE__*/createReactComponent<JSX.WayMenuLabel, 
 export const WayRadio = /*@__PURE__*/createReactComponent<JSX.WayRadio, HTMLWayRadioElement>('way-radio');
 export const WayRadioGroup = /*@__PURE__*/createReactComponent<JSX.WayRadioGroup, HTMLWayRadioGroupElement>('way-radio-group');
 export const WaySelect = /*@__PURE__*/createReactComponent<JSX.WaySelect, HTMLWaySelectElement>('way-select');
+export const WaySpinner = /*@__PURE__*/createReactComponent<JSX.WaySpinner, HTMLWaySpinnerElement>('way-spinner');
 export const WayTag = /*@__PURE__*/createReactComponent<JSX.WayTag, HTMLWayTagElement>('way-tag');
 export const WayTextarea = /*@__PURE__*/createReactComponent<JSX.WayTextarea, HTMLWayTextareaElement>('way-textarea');

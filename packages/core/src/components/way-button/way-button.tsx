@@ -29,6 +29,11 @@ export class WayButton {
   @Prop({ reflect: true }) disabled = false;
 
   /**
+   * Set to true to draw the button in a loading state.
+   */
+  @Prop({ reflect: true }) loading = false;
+
+  /**
    * The button's size.
    */
   @Prop({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -90,7 +95,7 @@ export class WayButton {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
   }
 
-  private handleClick = (ev: Event) => {
+  private handleClick = (ev: MouseEvent) => {
     if (this.type !== 'button') {
       // this button wants to specifically submit/reset a form
       // climb up the dom to see if we're in a <form>
@@ -141,6 +146,7 @@ export class WayButton {
           'button-circle': this.circle,
           'button-pill': this.pill,
           'button-disabled': disabled,
+          'button-loading': this.loading,
         }}
       >
         <TagType
@@ -152,10 +158,18 @@ export class WayButton {
           {...inheritedAttributes}
         >
           <span class="button-inner">
-            <slot name="icon-only"></slot>
-            <slot name="start"></slot>
-            <slot></slot>
-            <slot name="end"></slot>
+            <span class="button-icon-only">
+              <slot name="icon-only"></slot>
+            </span>
+            <span class="button-start">
+              <slot name="start"></slot>
+            </span>
+            <span class="button-label">
+              <slot></slot>
+            </span>
+            <span class="button-end">
+              <slot name="end"></slot>
+            </span>
             {this.caret && (
               <span class="caret">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
@@ -172,6 +186,8 @@ export class WayButton {
               </span>
             )}
           </span>
+
+          {this.loading && <way-spinner />}
         </TagType>
       </Host>
     );

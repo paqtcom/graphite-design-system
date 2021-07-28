@@ -74,12 +74,8 @@
 }
 
 :host(.button-disabled) {
-  cursor: not-allowed;
+  pointer-events: none;
   opacity: 0.5;
-
-  .button-native {
-    pointer-events: none;
-  }
 }
 
 // Primary variant
@@ -364,4 +360,29 @@
 ::slotted([slot='icon-only']) {
   font-size: 1.4em;
   pointer-events: none;
+}
+
+// Loading modifier
+// --------------------------------------------------
+
+:host(.button-loading) {
+  position: relative;
+  pointer-events: none;
+
+  .button-start,
+  .button-label,
+  .button-end,
+  .button-icon-only,
+  .caret {
+    visibility: hidden;
+  }
+
+  way-spinner {
+    --indicator-color: currentColor;
+    position: absolute;
+    height: 1em;
+    width: 1em;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+  }
 }

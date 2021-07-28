@@ -66,6 +66,7 @@
 ```mermaid
 graph TD;
   way-tag --> way-button
+  way-button --> way-spinner
   way-select --> way-tag
   style way-tag fill:#f9f,stroke:#333,stroke-width:4px
 ```

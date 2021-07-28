@@ -84,6 +84,32 @@
     </section>
 
     <section>
+      <h2>way-spinner</h2>
+
+      <way-spinner></way-spinner>
+
+      <section>
+        <h3>Size</h3>
+
+        <way-spinner></way-spinner>
+        <way-spinner style="font-size: 2rem"></way-spinner>
+        <way-spinner style="font-size: 3rem"></way-spinner>
+      </section>
+
+      <section>
+        <h3>Stroke Width</h3>
+
+        <way-spinner style="font-size: 2rem; --stroke-width: 6px"></way-spinner>
+      </section>
+
+      <section>
+        <h3>Color</h3>
+
+        <way-spinner style="font-size: 2rem; --indicator-color: tomato"></way-spinner>
+      </section>
+    </section>
+
+    <section>
       <h2>way-textarea</h2>
 
       <way-textarea></way-textarea>
@@ -462,25 +488,19 @@
       <section>
         <h3>Variants</h3>
 
-        <way-button id="clickExample"> Default </way-button>
-
-        <way-button variant="primary" id="focusBlurExample"> Primary </way-button>
-
-        <way-button variant="secondary"> Secondary </way-button>
-
-        <way-button variant="danger"> Danger </way-button>
-
-        <way-button variant="plain"> Plain </way-button>
+        <way-button>Default</way-button>
+        <way-button variant="primary" id="focusBlurExample">Primary</way-button>
+        <way-button variant="secondary">Secondary</way-button>
+        <way-button variant="danger">Danger</way-button>
+        <way-button variant="plain">Plain</way-button>
       </section>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-button size="small"> Small </way-button>
-
-        <way-button> Medium </way-button>
-
-        <way-button size="large"> Large </way-button>
+        <way-button size="small">Small</way-button>
+        <way-button>Medium</way-button>
+        <way-button size="large">Large</way-button>
       </section>
 
       <section>
@@ -546,6 +566,16 @@
       </section>
 
       <section>
+        <h3>Loading</h3>
+
+        <way-button loading>Default</way-button>
+        <way-button variant="primary" loading>Primary</way-button>
+        <way-button variant="secondary" loading>Secondary</way-button>
+        <way-button variant="danger" loading>Danger</way-button>
+        <way-button variant="plain" loading>Plain</way-button>
+      </section>
+
+      <section>
         <h3>Pill</h3>
 
         <way-button size="small" pill variant="danger">Small</way-button>
@@ -556,7 +586,7 @@
       <section>
         <h3>Disabled</h3>
 
-        <way-button disabled> Default </way-button>
+        <way-button id="clickExample" disabled> Default </way-button>
 
         <way-button variant="primary" disabled> Primary </way-button>
 

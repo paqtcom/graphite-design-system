@@ -30,6 +30,10 @@ export namespace Components {
          */
         "href": string | undefined;
         /**
+          * Set to true to draw the button in a loading state.
+         */
+        "loading": boolean;
+        /**
           * Set to true to draw a pill-style button with rounded edges.
          */
         "pill": boolean;
@@ -394,6 +398,8 @@ export namespace Components {
          */
         "value": string | Array<string>;
     }
+    interface WaySpinner {
+    }
     interface WayTag {
         /**
           * Set to true to make the tag clearable.
@@ -582,6 +588,12 @@ declare global {
         prototype: HTMLWaySelectElement;
         new (): HTMLWaySelectElement;
     };
+    interface HTMLWaySpinnerElement extends Components.WaySpinner, HTMLStencilElement {
+    }
+    var HTMLWaySpinnerElement: {
+        prototype: HTMLWaySpinnerElement;
+        new (): HTMLWaySpinnerElement;
+    };
     interface HTMLWayTagElement extends Components.WayTag, HTMLStencilElement {
     }
     var HTMLWayTagElement: {
@@ -606,6 +618,7 @@ declare global {
         "way-radio": HTMLWayRadioElement;
         "way-radio-group": HTMLWayRadioGroupElement;
         "way-select": HTMLWaySelectElement;
+        "way-spinner": HTMLWaySpinnerElement;
         "way-tag": HTMLWayTagElement;
         "way-textarea": HTMLWayTextareaElement;
     }
@@ -632,6 +645,10 @@ declare namespace LocalJSX {
           * Contains a URL or a URL fragment that the hyperlink points to.
          */
         "href"?: string | undefined;
+        /**
+          * Set to true to draw the button in a loading state.
+         */
+        "loading"?: boolean;
         /**
           * Emitted when the button loses focus.
          */
@@ -1024,6 +1041,8 @@ declare namespace LocalJSX {
          */
         "value"?: string | Array<string>;
     }
+    interface WaySpinner {
+    }
     interface WayTag {
         /**
           * Set to true to make the tag clearable.
@@ -1156,6 +1175,7 @@ declare namespace LocalJSX {
         "way-radio": WayRadio;
         "way-radio-group": WayRadioGroup;
         "way-select": WaySelect;
+        "way-spinner": WaySpinner;
         "way-tag": WayTag;
         "way-textarea": WayTextarea;
     }
@@ -1175,6 +1195,7 @@ declare module "@stencil/core" {
             "way-radio": LocalJSX.WayRadio & JSXBase.HTMLAttributes<HTMLWayRadioElement>;
             "way-radio-group": LocalJSX.WayRadioGroup & JSXBase.HTMLAttributes<HTMLWayRadioGroupElement>;
             "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
+            "way-spinner": LocalJSX.WaySpinner & JSXBase.HTMLAttributes<HTMLWaySpinnerElement>;
             "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
             "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
         }

@@ -87,6 +87,7 @@ graph TD;
   way-select --> way-dropdown
   way-select --> way-menu
   way-tag --> way-button
+  way-button --> way-spinner
   style way-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

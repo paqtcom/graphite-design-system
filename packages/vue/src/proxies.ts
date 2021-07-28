@@ -16,6 +16,7 @@ import { WayMenuLabel as WayMenuLabelCmp } from '@w2wds/core/components/way-menu
 import { WayRadio as WayRadioCmp } from '@w2wds/core/components/way-radio.js';
 import { WayRadioGroup as WayRadioGroupCmp } from '@w2wds/core/components/way-radio-group.js';
 import { WaySelect as WaySelectCmp } from '@w2wds/core/components/way-select.js';
+import { WaySpinner as WaySpinnerCmp } from '@w2wds/core/components/way-spinner.js';
 import { WayTag as WayTagCmp } from '@w2wds/core/components/way-tag.js';
 import { WayTextarea as WayTextareaCmp } from '@w2wds/core/components/way-textarea.js';
 
@@ -23,6 +24,7 @@ import { WayTextarea as WayTextareaCmp } from '@w2wds/core/components/way-textar
 export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', WayButtonCmp, [
   'variant',
   'disabled',
+  'loading',
   'size',
   'caret',
   'pill',
@@ -159,6 +161,9 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'way-blur'
 ],
 'value', 'v-way-change', 'way-change');
+
+
+export const WaySpinner = /*@__PURE__*/ defineContainer<JSX.WaySpinner>('way-spinner', WaySpinnerCmp);
 
 
 export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTagCmp, [
