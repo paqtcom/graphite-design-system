@@ -56,6 +56,12 @@
   </section>
 
   <section>
+    <way-checkbox v-model="booleanValue">Option</way-checkbox>
+
+    <p>{{ booleanValue }}</p>
+  </section>
+
+  <section>
     <way-input v-model="inputValue" :pill="true"></way-input>
 
     <p>{{ inputValue }}</p>
@@ -79,6 +85,7 @@ import {
   WayRadio,
   WayInput,
   WayTextarea,
+  WayCheckbox,
 } from "@w2wds/vue";
 
 import { ref, defineComponent } from "vue";
@@ -95,6 +102,7 @@ export default defineComponent({
     WayRadio,
     WayInput,
     WayTextarea,
+    WayCheckbox,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");
@@ -102,6 +110,7 @@ export default defineComponent({
     const selectedValues = ref(["option-1", "option-2", "option-6"]);
     const inputValue = ref("input value");
     const textareaValue = ref("textarea value");
+    const booleanValue = ref(true);
 
     const doSomething = () => {
       variant.value = variant.value === "primary" ? "default" : "primary";
@@ -121,6 +130,7 @@ export default defineComponent({
       selectedValues,
       inputValue,
       textareaValue,
+      booleanValue,
       doSomething,
       onSelectChange,
       onRadioChange,
