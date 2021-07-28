@@ -65,7 +65,7 @@ Use it in your template as any Vue component:
 <WayButton href="https://www.way2web.nl">Way2Web</WayButton>
 ```
 
-We recommend using kebab-case for our components and KebabCase for your own Vue components to make them visible distinct.
+We recommend using kebab-case for our components and PascalCase for your own Vue components to make them visible distinct.
 
 ### CodeSandbox example
 
