@@ -17,6 +17,8 @@
    * @prop --label-padding-start: Left padding of the label (will be right padding when we support right-to-left direction)
    *
    * @prop --margin-between-radios: Margin between the way-radio children
+   *
+   * @prop --radio-label-color-invalid: Color of the radio label's when invalid
    */
   --border-radius: var(--way-form-element-border-radius-medium);
   --border-color: var(--way-color-light);
@@ -33,6 +35,8 @@
   --label-padding-end: var(--way-spacing-xx-small);
 
   --margin-between-radios: var(--way-spacing-xx-small);
+
+  --radio-label-color-invalid: var(--way-color-danger);
 
   display: block;
   box-sizing: border-box;
@@ -71,6 +75,12 @@
   margin-bottom: var(--margin-between-radios);
 }
 
+.radio-group-invalid.radio-group-no-fieldset {
+  ::slotted(way-radio) {
+    --label-color: var(--radio-label-color-invalid);
+  }
+}
+
 .radio-group-no-fieldset {
   border: none;
   padding: 0;
@@ -85,30 +95,4 @@
 // Invalid text
 .invalid-text {
   display: none;
-}
-
-.radio-group-has-invalid-text {
-  .invalid-text {
-    display: flex;
-    line-height: var(--way-line-height-normal);
-    color: var(--way-form-element-invalid-text-color);
-    margin-top: var(--way-spacing-x-small);
-    font-size: var(--way-form-element-invalid-text-font-size-medium);
-
-    .icon {
-      flex: 0 0 auto;
-
-      margin-top: var(--way-spacing-xxx-small);
-      margin-right: var(--way-spacing-xx-small);
-
-      svg {
-        width: 1.4em;
-        height: 1.4em;
-      }
-    }
-
-    .text {
-      flex: 1 0 auto;
-    }
-  }
 }

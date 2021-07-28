@@ -68,13 +68,9 @@ export namespace Components {
          */
         "indeterminate": boolean;
         /**
-          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+          * Set to true to indicate this field is invalid.
          */
         "invalid": boolean;
-        /**
-          * The checkbox's invalid text. Alternatively, you can use the invalid-text slot.
-         */
-        "invalidText": string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -320,13 +316,9 @@ export namespace Components {
          */
         "allowEmptySelection": boolean;
         /**
-          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+          * Set to true to indicate this field is invalid.
          */
         "invalid": boolean;
-        /**
-          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
-         */
-        "invalidText": string;
         /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
@@ -687,13 +679,9 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
-          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+          * Set to true to indicate this field is invalid.
          */
         "invalid"?: boolean;
-        /**
-          * The checkbox's invalid text. Alternatively, you can use the invalid-text slot.
-         */
-        "invalidText"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -701,15 +689,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onWay-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's checked state changes.
          */
-        "onWay-change"?: (event: CustomEvent<any>) => void;
+        "onWay-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onWay-focus"?: (event: CustomEvent<void>) => void;
         /**
           * The checkbox's value attribute.
          */
@@ -942,13 +930,9 @@ declare namespace LocalJSX {
          */
         "allowEmptySelection"?: boolean;
         /**
-          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+          * Set to true to indicate this field is invalid.
          */
         "invalid"?: boolean;
-        /**
-          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
-         */
-        "invalidText"?: string;
         /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */

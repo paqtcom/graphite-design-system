@@ -185,7 +185,13 @@
       <section>
         <h3>Invalid</h3>
 
-        <way-radio-group label="Select an option" invalid-text="Select an option" invalid>
+        <way-radio-group label="Select an option" invalid>
+          <way-radio value="1">Option 1</way-radio>
+          <way-radio value="2">Option 2</way-radio>
+          <way-radio value="3">Option 3</way-radio>
+        </way-radio-group>
+        <br />
+        <way-radio-group label="Select an option" invalid no-fieldset>
           <way-radio value="1">Option 1</way-radio>
           <way-radio value="2">Option 2</way-radio>
           <way-radio value="3">Option 3</way-radio>
@@ -198,7 +204,7 @@
 
       <section>
         <h3>Checked</h3>
-        <way-checkbox>Option</way-checkbox>
+        <way-checkbox id="checkbox-test">Option</way-checkbox>
       </section>
 
       <section>
@@ -212,12 +218,12 @@
       </section>
 
       <section>
-        <h3>Invalid Text</h3>
-        <way-checkbox invalid-text="You need to agree to be able to continue" invalid>Option 1</way-checkbox>
+        <h3>Invalid</h3>
+        <way-checkbox invalid>Option 1</way-checkbox>
         <br />
-        <way-checkbox>Option 2</way-checkbox>
+        <way-checkbox invalid>Option 2</way-checkbox>
         <br />
-        <way-checkbox>Option 3</way-checkbox>
+        <way-checkbox invalid>Option 3</way-checkbox>
       </section>
     </section>
 
@@ -585,6 +591,16 @@
         const tag = event.target;
         tag.style.opacity = '0';
         setTimeout(() => (tag.style.opacity = '1'), 2000);
+      });
+
+      const checkboxTest = document.querySelector('#checkbox-test');
+
+      checkboxTest.addEventListener('way-focus', () => {
+        console.log('way-focus');
+      });
+
+      checkboxTest.addEventListener('way-blur', () => {
+        console.log('way-blur');
       });
     </script>
   </body>

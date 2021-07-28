@@ -7,24 +7,23 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                                                                           | Type      | Default        |
-| --------------- | --------------- | ----------------------------------------------------------------------------------------------------- | --------- | -------------- |
-| `checked`       | `checked`       | Set to true to draw the checkbox in a checked state.                                                  | `boolean` | `false`        |
-| `disabled`      | `disabled`      | Set to true to disable the checkbox.                                                                  | `boolean` | `false`        |
-| `indeterminate` | `indeterminate` | Set to true to draw the checkbox in an indeterminate state.                                           | `boolean` | `false`        |
-| `invalid`       | `invalid`       | Set to true to indicate this field is invalid. Will display the invalid text instead of the help text | `boolean` | `false`        |
-| `invalidText`   | `invalid-text`  | The checkbox's invalid text. Alternatively, you can use the invalid-text slot.                        | `string`  | `''`           |
-| `name`          | `name`          | The name of the control, which is submitted with the form data.                                       | `string`  | `this.inputId` |
-| `value`         | `value`         | The checkbox's value attribute.                                                                       | `string`  | `undefined`    |
+| Property        | Attribute       | Description                                                     | Type      | Default        |
+| --------------- | --------------- | --------------------------------------------------------------- | --------- | -------------- |
+| `checked`       | `checked`       | Set to true to draw the checkbox in a checked state.            | `boolean` | `false`        |
+| `disabled`      | `disabled`      | Set to true to disable the checkbox.                            | `boolean` | `false`        |
+| `indeterminate` | `indeterminate` | Set to true to draw the checkbox in an indeterminate state.     | `boolean` | `false`        |
+| `invalid`       | `invalid`       | Set to true to indicate this field is invalid.                  | `boolean` | `false`        |
+| `name`          | `name`          | The name of the control, which is submitted with the form data. | `string`  | `this.inputId` |
+| `value`         | `value`         | The checkbox's value attribute.                                 | `string`  | `undefined`    |
 
 
 ## Events
 
-| Event        | Description                                       | Type               |
-| ------------ | ------------------------------------------------- | ------------------ |
-| `way-blur`   | Emitted when the control loses focus.             | `CustomEvent<any>` |
-| `way-change` | Emitted when the control's checked state changes. | `CustomEvent<any>` |
-| `way-focus`  | Emitted when the control gains focus.             | `CustomEvent<any>` |
+| Event        | Description                                       | Type                |
+| ------------ | ------------------------------------------------- | ------------------- |
+| `way-blur`   | Emitted when the control loses focus.             | `CustomEvent<void>` |
+| `way-change` | Emitted when the control's checked state changes. | `CustomEvent<void>` |
+| `way-focus`  | Emitted when the control gains focus.             | `CustomEvent<void>` |
 
 
 ## Methods
@@ -52,10 +51,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot             | Description                                                                                       |
-| ---------------- | ------------------------------------------------------------------------------------------------- |
-|                  | The checkboxes label.                                                                             |
-| `"invalid-text"` | Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop. |
+| Slot | Description           |
+| ---- | --------------------- |
+|      | The checkboxes label. |
 
 
 ## CSS Custom Properties
