@@ -144,7 +144,7 @@
 .checkbox.checkbox-indeterminate:not(.checkbox-disabled).checkbox-focused .checkbox-control {
   border-color: var(--control-border-color-checked-focus);
   background-color: var(--control-background-color-checked-focus);
-  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
 // Disabled
