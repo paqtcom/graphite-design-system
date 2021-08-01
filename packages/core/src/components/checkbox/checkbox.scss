@@ -40,11 +40,11 @@
   --control-border-color-checked: var(--gr-color-primary);
   --control-background-color-checked: var(--gr-color-primary);
 
-  --control-border-color-checked-hover: var(--gr-color-primary-tint);
-  --control-background-color-checked-hover: var(--gr-color-primary-tint);
+  --control-border-color-checked-hover: var(--gr-color-primary-shade);
+  --control-background-color-checked-hover: var(--gr-color-primary-shade);
 
-  --control-border-color-checked-focus: var(--gr-color-primary-tint);
-  --control-background-color-checked-focus: var(--gr-color-primary-tint);
+  --control-border-color-checked-focus: var(--gr-color-primary-shade);
+  --control-background-color-checked-focus: var(--gr-color-primary-shade);
 
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
 

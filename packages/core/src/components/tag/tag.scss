@@ -37,9 +37,9 @@
 
   --font-size: var(--gr-form-element-font-size-medium);
 
-  --background-color: rgba(var(--gr-color-primary-rgb), 0.1);
+  --background-color: rgba(var(--gr-color-primary-rgb), 0.05);
   --border-color: rgba(var(--gr-color-primary-rgb), 0.2);
-  --color: var(--gr-color-primary);
+  --color: var(--gr-color-primary-shade);
 
   --clear-color: var(--gr-color-primary);
   --clear-color-hover: var(--gr-color-primary-shade);
@@ -61,36 +61,36 @@
 // --------------------------------------------------
 
 :host(.tag-success) {
-  --background-color: rgba(var(--gr-color-success-rgb), 0.1);
+  --background-color: rgba(var(--gr-color-success-rgb), 0.05);
   --border-color: rgba(var(--gr-color-success-rgb), 0.2);
-  --color: var(--gr-color-success);
+  --color: var(--gr-color-success-shade);
 
   --clear-color: var(--gr-color-success);
   --clear-color-hover: var(--gr-color-success-shade);
 }
 
 :host(.tag-info) {
-  --background-color: rgba(var(--gr-color-medium-rgb), 0.1);
+  --background-color: rgba(var(--gr-color-medium-rgb), 0.05);
   --border-color: rgba(var(--gr-color-medium-rgb), 0.2);
-  --color: var(--gr-color-medium);
+  --color: var(--gr-color-medium-shade);
 
   --clear-color: var(--gr-color-medium);
   --clear-color-hover: var(--gr-color-medium-shade);
 }
 
 :host(.tag-warning) {
-  --background-color: rgba(var(--gr-color-warning-rgb), 0.1);
+  --background-color: rgba(var(--gr-color-warning-rgb), 0.05);
   --border-color: rgba(var(--gr-color-warning-rgb), 0.2);
-  --color: var(--gr-color-warning);
+  --color: var(--gr-color-warning-shade);
 
   --clear-color: var(--gr-color-warning);
   --clear-color-hover: var(--gr-color-warning-shade);
 }
 
 :host(.tag-danger) {
-  --background-color: rgba(var(--gr-color-danger-rgb), 0.1);
+  --background-color: rgba(var(--gr-color-danger-rgb), 0.05);
   --border-color: rgba(var(--gr-color-danger-rgb), 0.2);
-  --color: var(--gr-color-danger);
+  --color: var(--gr-color-danger-shade);
 
   --clear-color: var(--gr-color-danger);
   --clear-color-hover: var(--gr-color-danger-shade);
@@ -137,6 +137,7 @@
 
   font-family: var(--gr-font-family);
   font-size: var(--font-size);
+  font-weight: var(--gr-font-weight-normal);
   height: var(--height);
   line-height: var(--line-height);
 
