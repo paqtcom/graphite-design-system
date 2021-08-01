@@ -1,8 +1,8 @@
 ![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
 
-# @w2wds/core
+# @graphiteds/core
 
-The Way2Web Design System (w2wds) Core package contains the Web Components that make up the reusable UI building blocks of the Way2Web Design System. These components are designed to be used in traditional frontend view libraries/frameworks (such as Stencil, React, Angular, or Vue), or on their own through traditional JavaScript in the browser.
+The Graphite Design System (graphiteds) Core package contains the Web Components that make up the reusable UI building blocks of the Graphite Design System. These components are designed to be used in traditional frontend view libraries/frameworks (such as Stencil, React, Angular, or Vue), or on their own through traditional JavaScript in the browser.
 
 ## Stencil
 
@@ -32,13 +32,13 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 - Just add the following tags to your page.
   ```html
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@w2wds/core@latest/dist/core/core.esm.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@latest/dist/core/core.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@graphiteds/core@latest/dist/core/core.esm.js"></script>
   ```
 - Then you can use the elements anywhere in your template, JSX, html etc.
 - For example:
   ```html
-  <way-button href="https://www.way2web.nl">Way2Web</way-button>
+  <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
   ```
 
 #### CodeSandbox example
@@ -63,20 +63,20 @@ Use the [Vue bindings](../vue/README.md).
 
 ### Vue 2
 
-- Run `npm install @w2wds/core` or `yarn add @w2wds/core`
+- Run `npm install @graphiteds/core` or `yarn add @graphiteds/core`
 - Edit `src/main.js` to include:
 
   ```js
-  // Import Way2Web Design System components
-  import { defineCustomElements } from '@w2wds/core/loader';
+  // Import Graphite components
+  import { defineCustomElements } from '@graphiteds/core/loader';
 
-  /* Core CSS required for Way2Web Design System components to work properly */
-  import '@w2wds/core/dist/core/core.css';
+  /* Core CSS required for Graphite components to work properly */
+  import '@graphiteds/core/dist/core/core.css';
 
   // ...
-  // configure Vue.js to ignore Way2Web Design System components
-  Vue.config.ignoredElements = [/way-\w*/];
-  // Register Way2Web Design System components
+  // configure Vue.js to ignore Graphite components
+  Vue.config.ignoredElements = [/gr-\w*/];
+  // Register Graphite components
   defineCustomElements(window);
 
   new Vue({
@@ -89,7 +89,7 @@ Use the [Vue bindings](../vue/README.md).
   render() {
     return (
       <div>
-        <way-button href="https://www.way2web.nl">Way2Web</way-button>
+        <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
       </div>
     )
   }
@@ -106,7 +106,7 @@ An example of this setup: https://codesandbox.io/s/w2wds-vue2-example-mkbm4
 When binding complex data such as objects and arrays, use the `.prop` modifier to make Vue bind them as a property instead of an attribute:
 
 ```html
-<way-select :options.prop="myOptions" />
+<gr-select :options.prop="myOptions" />
 ```
 
 _[Based on the Shoelace docs](https://shoelace.style/getting-started/usage?id=binding-complex-data)_
@@ -117,17 +117,17 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 
 ```html
 <!-- This doesn't work -->
-<way-input v-model="name"></way-input>
+<gr-input v-model="name"></gr-input>
 
 <!-- This works, but it's a bit longer -->
-<way-input :value="name" @input="name = $event.target.value"></way-input>
+<gr-input :value="name" @input="name = $event.target.value"></gr-input>
 ```
 
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
 
 ## Customization
 
-Way2Web Design System components are built with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) for easy customization of an application. CSS variables allow a value to be stored in one place, then referenced in multiple other places. They also make it possible to change CSS dynamically at runtime (which previously required a CSS preprocessor), useful for a dark theme for example. CSS variables make it easier than ever to override Way2Web Design System components to match a brand or theme.
+Graphite components are built with [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) for easy customization of an application. CSS variables allow a value to be stored in one place, then referenced in multiple other places. They also make it possible to change CSS dynamically at runtime (which previously required a CSS preprocessor), useful for a dark theme for example. CSS variables make it easier than ever to override Graphite components to match a brand or theme.
 
 ### Global Variables
 
@@ -136,15 +136,15 @@ CSS variables can be set globally in an application in the :root selector.
 ```css
 :root {
   /* Changes the primary color palette to purple */
-  --way-color-primary: #a855f7;
-  --way-color-primary-rgb: 168, 85, 247;
-  --way-color-primary-contrast: #ffffff;
-  --way-color-primary-contrast-rgb: 255, 255, 255;
-  --way-color-primary-shade: #7e22ce;
-  --way-color-primary-tint: #d8b4fe;
+  --gr-color-primary: #a855f7;
+  --gr-color-primary-rgb: 168, 85, 247;
+  --gr-color-primary-contrast: #ffffff;
+  --gr-color-primary-contrast-rgb: 255, 255, 255;
+  --gr-color-primary-shade: #7e22ce;
+  --gr-color-primary-tint: #d8b4fe;
 
   /* Changes the font family */
-  --way-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --gr-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
 }
 ```
 
@@ -152,7 +152,7 @@ For a complete list of these global variables, [refer to core.scss in the projec
 
 #### Colors
 
-There are nine colors used throughout the Way2Web Design System components:
+There are nine colors used throughout the Graphite components:
 
 - primary
 - secondary
@@ -164,32 +164,32 @@ There are nine colors used throughout the Way2Web Design System components:
 - medium
 - light
 
-Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`. The `base` and `contrast` colors also require a `rgb` property which is the same color, just in [rgb format](https://developer.mozilla.org/en-US/docs/Glossary/RGB). The Way2Web Design System uses colors with an opacity (alpha) in several components. In order for this to work, those properties must be provided in RGB format. When changing any of the properties that have a variation ending in `-rgb`, it is important they are also provided in a comma separated format without parentheses.
+Each color consists of the following properties: a `base`, `contrast`, `shade`, and `tint`. The `base` and `contrast` colors also require a `rgb` property which is the same color, just in [rgb format](https://developer.mozilla.org/en-US/docs/Glossary/RGB). The Graphite Design System uses colors with an opacity (alpha) in several components. In order for this to work, those properties must be provided in RGB format. When changing any of the properties that have a variation ending in `-rgb`, it is important they are also provided in a comma separated format without parentheses.
 
-| Name           | Property                           | Description                                                              |
-| :------------- | :--------------------------------- | ------------------------------------------------------------------------ |
-| Base           | `--way-color-primary`              | The main color that all variations are derived from                      |
-| Base (rgb)     | `--way-color-primary-rgb`          | The base color in red, green, blue format                                |
-| Contrast       | `--way-color-primary-contrast`     | The opposite of the base color, should be visible against the base color |
-| Contrast (rgb) | `--way-color-primary-contrast-rgb` | The contrast color in red, green, blue format                            |
-| Shade          | `--way-color-primary-shade`        | A slightly darker version of the base color                              |
-| Tint           | `--way-color-primary-tint`         | A slightly lighter version of the base color                             |
+| Name           | Property                          | Description                                                              |
+| :------------- | :-------------------------------- | ------------------------------------------------------------------------ |
+| Base           | `--gr-color-primary`              | The main color that all variations are derived from                      |
+| Base (rgb)     | `--gr-color-primary-rgb`          | The base color in red, green, blue format                                |
+| Contrast       | `--gr-color-primary-contrast`     | The opposite of the base color, should be visible against the base color |
+| Contrast (rgb) | `--gr-color-primary-contrast-rgb` | The contrast color in red, green, blue format                            |
+| Shade          | `--gr-color-primary-shade`        | A slightly darker version of the base color                              |
+| Tint           | `--gr-color-primary-tint`         | A slightly lighter version of the base color                             |
 
 Please use [this contrast checker](https://webaim.org/resources/contrastchecker/) for accessiblity.
 
-You could use this [Color Generator](https://ionicframework.com/docs/theming/color-generator) from Ionic and simply replace `--ion` with `--way`.
+You could use this [Color Generator](https://ionicframework.com/docs/theming/color-generator) from Ionic and simply replace `--ion` with `--gr`.
 
 ### Component Variables
 
-The Way2Web Design System provides variables that exist at the component level, such as `--background` and `--color`. For a list of the custom properties a component accepts, view the CSS Custom Properties section of its API reference. For example, see the [Button CSS Custom Properties](./src/components/way-button/readme.md#css-custom-properties).
+The Graphite Design System provides variables that exist at the component level, such as `--background` and `--color`. For a list of the custom properties a component accepts, view the CSS Custom Properties section of its API reference. For example, see the [Button CSS Custom Properties](./src/components/gr-button/readme.md#css-custom-properties).
 
 ```css
-/* Set the color on all way-button elements */
-way-button {
+/* Set the color on all gr-button elements */
+gr-button {
   --color: #222;
 }
 
-/* Set the background on a way-button with the .fancy-button class */
+/* Set the background on a gr-button with the .fancy-button class */
 .fancy-button {
   --background: #00ff00;
 }
@@ -202,12 +202,12 @@ The default dist works with lazy loading the components when the browser needs t
 To get around this you can add css like this (depending on the components you use) in a static css file/block in the head:
 
 ```css
-way-button:not(.hydrated),
-way-dropdown:not(.hydrated),
-way-menu:not(.hydrated),
-way-menu-label:not(.hydrated),
-way-select:not(.hydrated),
-way-tag:not(.hydrated) {
+gr-button:not(.hydrated),
+gr-dropdown:not(.hydrated),
+gr-menu:not(.hydrated),
+gr-menu-label:not(.hydrated),
+gr-select:not(.hydrated),
+gr-tag:not(.hydrated) {
   visibility: hidden;
 }
 ```

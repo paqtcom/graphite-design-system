@@ -11,7 +11,7 @@
     "sync": "sh ./scripts/sync.sh"
   },
   "dependencies": {
-    "@w2wds/vue": "^0.4.8",
+    "@graphiteds/vue": "^0.4.8",
     "core-js": "^3.6.5",
     "vue": "3.0.11"
   },

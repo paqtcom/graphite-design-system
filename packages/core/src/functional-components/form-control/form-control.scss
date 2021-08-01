@@ -16,21 +16,21 @@
 .form-control-has-label {
   .form-control-label {
     display: inline-block;
-    line-height: var(--way-line-height-normal);
-    color: var(--way-form-element-label-color);
-    margin-bottom: var(--way-spacing-xxx-small);
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-label-color);
+    margin-bottom: var(--gr-spacing-xxx-small);
   }
 
   &.form-control-small .form-control-label {
-    font-size: var(--way-form-element-label-font-size-small);
+    font-size: var(--gr-form-element-label-font-size-small);
   }
 
   &.form-control-medium .form-control-label {
-    font-size: var(--way-form-element-label-font-size-medium);
+    font-size: var(--gr-form-element-label-font-size-medium);
   }
 
   &.form-control-large .form-control-label {
-    font-size: var(--way-form-element-label-font-size-large);
+    font-size: var(--gr-form-element-label-font-size-large);
   }
 }
 
@@ -38,21 +38,21 @@
 .form-control-has-help-text {
   .form-control-help-text {
     display: block;
-    line-height: var(--way-line-height-normal);
-    color: var(--way-form-element-help-text-color);
-    margin-top: var(--way-spacing-xxx-small);
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-help-text-color);
+    margin-top: var(--gr-spacing-xxx-small);
   }
 
   &.form-control-small .form-control-help-text {
-    font-size: var(--way-form-element-help-text-font-size-small);
+    font-size: var(--gr-form-element-help-text-font-size-small);
   }
 
   &.form-control-medium .form-control-help-text {
-    font-size: var(--way-form-element-help-text-font-size-medium);
+    font-size: var(--gr-form-element-help-text-font-size-medium);
   }
 
   &.form-control-large .form-control-help-text {
-    font-size: var(--way-form-element-help-text-font-size-large);
+    font-size: var(--gr-form-element-help-text-font-size-large);
   }
 }
 
@@ -60,15 +60,15 @@
 .form-control-has-invalid-text {
   .form-control-invalid-text {
     display: flex;
-    line-height: var(--way-line-height-normal);
-    color: var(--way-form-element-invalid-text-color);
-    margin-top: var(--way-spacing-xxx-small);
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-invalid-text-color);
+    margin-top: var(--gr-spacing-xxx-small);
 
     .icon {
       flex: 0 0 auto;
 
-      margin-top: var(--way-spacing-xxx-small);
-      margin-right: var(--way-spacing-xx-small);
+      margin-top: var(--gr-spacing-xxx-small);
+      margin-right: var(--gr-spacing-xx-small);
 
       svg {
         width: 1.4em;
@@ -82,14 +82,14 @@
   }
 
   &.form-control-small .form-control-invalid-text {
-    font-size: var(--way-form-element-invalid-text-font-size-small);
+    font-size: var(--gr-form-element-invalid-text-font-size-small);
   }
 
   &.form-control-medium .form-control-invalid-text {
-    font-size: var(--way-form-element-invalid-text-font-size-medium);
+    font-size: var(--gr-form-element-invalid-text-font-size-medium);
   }
 
   &.form-control-large .form-control-invalid-text {
-    font-size: var(--way-form-element-invalid-text-font-size-large);
+    font-size: var(--gr-form-element-invalid-text-font-size-large);
   }
 }

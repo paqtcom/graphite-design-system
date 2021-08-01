@@ -1,0 +1,278 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/graphite.globals';
+
+:host {
+  /**
+   * @prop --font-size: Font size of the select
+   * @prop --font-weight: Font weight of the select
+   *
+   * @prop --background-color: Background color of the select
+   * @prop --background-color-hover: Background color of the select on hover
+   * @prop --background-color-focus: Background color of the select on focus
+   * @prop --background-color-invalid: Background color of the select when invalid
+   * @prop --background-color-invalid-hover: Background color of the select when invalid on hover
+   *
+   * @prop --border-radius: Border radius of the select
+   * @prop --border-color: Border color of the select
+   * @prop --border-color-hover: Border color of the select on hover
+   * @prop --border-color-focus: Border color of the select on focus
+   * @prop --border-color-invalid: Border color of the select when invalid
+   * @prop --border-color-invalid-hover: Border color of the select when invalid on hover
+   *
+   * @prop --color: Text color of the select
+   *
+   * @prop --placeholder-color: Text color of the placeholder
+   *
+   * @prop --min-height: Minimum height of the select
+   *
+   * @prop --label-margin-start: Left margin of the label (will be right margin when we support right-to-left direction)
+   * @prop --label-margin-end: Right margin of the label (will be left margin when we support right-to-left direction)
+   *
+   * @prop --clear-icon-margin-end: Right margin of the clear icon (will be left margin when we support right-to-left direction)
+   *
+   * @prop --caret-margin-end: Right margin of the caret (will be left margin when we support right-to-left direction)
+   *
+   * @prop --tags-padding-top: Top padding of the tags
+   * @prop --tags-padding-bottom: Bottom padding of the tags
+   *
+   * @prop --tags-margin-end: Right margin of the tags (will be left margin when we support right-to-left direction)
+   *
+   * @prop --focus-ring: The focus ring style to use when the control receives focus, a `box-shadow` property.
+   */
+  --font-size: var(--gr-form-element-font-size-medium);
+  --font-weight: var(--gr-font-weight-normal);
+
+  --background-color: var(--gr-color-white);
+  --background-color-hover: var(--gr-color-white);
+  --background-color-focus: var(--gr-color-white);
+  --background-color-invalid: var(--gr-color-white);
+  --background-color-invalid-hover: var(--gr-color-white);
+
+  --border-radius: var(--gr-form-element-border-radius-small);
+  --border-color: var(--gr-color-light);
+  --border-color-hover: var(--gr-color-medium);
+  --border-color-focus: var(--gr-color-primary);
+  --border-color-invalid: var(--gr-color-danger);
+  --border-color-invalid-hover: var(--gr-color-danger-shade);
+
+  --color: var(--gr-color-dark-tint);
+
+  --placeholder-color: var(--gr-color-medium-tint);
+
+  --min-height: var(--gr-form-element-height-medium);
+
+  --label-margin-start: var(--gr-spacing-medium);
+  --label-margin-end: var(--gr-spacing-medium);
+
+  --clear-icon-margin-end: var(--gr-spacing-medium);
+
+  --caret-margin-end: var(--gr-spacing-medium);
+
+  --tags-padding-top: 3px;
+  --tags-padding-bottom: 3px;
+
+  --tags-margin-end: var(--gr-spacing-xx-small);
+
+  --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+
+  display: block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}
+
+// Size modifiers
+// --------------------------------------------------
+
+.select-small {
+  --font-size: var(--gr-form-element-font-size-small);
+  --min-height: var(--gr-form-element-height-small);
+
+  --label-margin-start: var(--gr-spacing-small);
+  --label-margin-end: var(--gr-spacing-small);
+  --clear-icon-margin-end: var(--gr-spacing-small);
+  --caret-margin-end: var(--gr-spacing-small);
+  --tags-padding-top: 2px;
+  --tags-padding-bottom: 2px;
+}
+
+.select-large {
+  --font-size: var(--gr-form-element-font-size-large);
+  --min-height: var(--gr-form-element-height-large);
+
+  --label-margin-start: var(--gr-spacing-large);
+  --label-margin-end: var(--gr-spacing-large);
+  --clear-icon-margin-end: var(--gr-spacing-large);
+  --caret-margin-end: var(--gr-spacing-large);
+  --tags-padding-top: 4px;
+  --tags-padding-bottom: 4px;
+}
+
+.select {
+  display: block;
+}
+
+.select-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  width: 100%;
+  font-family: var(--gr-font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: normal;
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  border-radius: var(--border-radius);
+  min-height: var(--min-height);
+  color: var(--color);
+  vertical-align: middle;
+  overflow: hidden;
+  transition: 150ms color, 150ms border, 150ms box-shadow;
+  cursor: pointer;
+}
+
+.select.select-invalid:not(.select-disabled) .select-box {
+  background-color: var(--background-color-invalid);
+  border-color: var(--border-color-invalid);
+}
+
+.select.select-invalid:not(.select-disabled):not(.select-focused) .select-box:hover {
+  background-color: var(--background-color-invalid-hover);
+  border-color: var(--border-color-invalid-hover);
+}
+
+.select.select-invalid:not(.select-disabled) .select-box {
+  background-color: var(--background-color-invalid);
+  border-color: var(--border-color-invalid);
+}
+
+.select:not(.select-disabled) .select-box:hover {
+  background-color: var(--background-color-hover);
+  border-color: var(--border-color-hover);
+}
+
+.select.select-focused:not(.select-disabled) .select-box {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--border-color-focus);
+  background-color: var(--background-color-focus);
+}
+
+.select-disabled {
+  .select-box {
+    opacity: 0.5;
+    cursor: not-allowed;
+    outline: none;
+  }
+
+  .select-tags,
+  .select-clear {
+    pointer-events: none;
+  }
+}
+
+.select-label {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  margin-top: 0;
+  margin-left: var(--label-margin-start);
+  margin-right: var(--label-margin-end);
+  margin-bottom: 0;
+
+  @include hide-scrollbar;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.select-has-tags .select-label {
+  margin-left: 0;
+}
+
+.select-clear {
+  display: inline-flex;
+  align-items: center;
+  font-size: inherit;
+  color: var(--gr-color-medium);
+  border: none;
+  background: none;
+  padding: 0;
+  transition: 150ms color;
+  cursor: pointer;
+  margin-right: var(--clear-icon-margin-end);
+
+  &:hover {
+    color: var(--gr-color-dark);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+
+    font-size: var(--font-size);
+  }
+}
+
+.caret {
+  flex: 0 0 auto;
+  display: inline-flex;
+  transition: 250ms transform ease;
+
+  margin-right: var(--caret-margin-end);
+
+  svg {
+    width: 1em;
+    height: 1em;
+
+    font-size: var(--font-size);
+  }
+}
+
+.select-open .caret {
+  transform: rotate(-180deg);
+}
+
+// Placeholder
+.select-placeholder-visible .select-label {
+  color: var(--placeholder-color);
+}
+
+// Tags
+.select-tags {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-left: var(--gr-spacing-xx-small);
+
+  padding-bottom: var(--tags-padding-bottom);
+
+  gr-tag {
+    padding-top: var(--tags-padding-top);
+  }
+
+  gr-tag:not(:last-of-type) {
+    margin-right: var(--tags-margin-end);
+  }
+}
+
+// Pill modifier
+// --------------------------------------------------
+
+.select-pill .select-box {
+  border-radius: var(--min-height);
+}

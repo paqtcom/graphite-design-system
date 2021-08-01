@@ -1,12 +1,12 @@
 {
-  "name": "@w2wds/vue",
+  "name": "@graphiteds/vue",
   "sideEffects": false,
   "version": "0.10.1",
-  "description": "Vue specific wrapper for the components of the Way2Web Design System",
+  "description": "Vue specific wrapper for the components of the Graphite Design System",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Way2Web/way2web-design-system.git"
+    "url": "https://github.com/way2web/graphiteds.git"
   },
   "scripts": {
     "lint": "echo add linter",
@@ -36,7 +36,7 @@
     "vue": "3.0.0"
   },
   "dependencies": {
-    "@w2wds/core": "^0.11.1"
+    "@graphiteds/core": "^0.11.1"
   },
   "jest": {
     "preset": "ts-jest",

@@ -1,11 +1,11 @@
 {
-  "name": "@w2wds/react",
+  "name": "@graphiteds/react",
   "sideEffects": false,
   "version": "0.9.1",
-  "description": "React specific wrapper for the components of the Way2Web Design System",
+  "description": "React specific wrapper for the components of the Graphite Design System",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Way2Web/way2web-design-system.git"
+    "url": "https://github.com/way2web/graphiteds.git"
   },
   "license": "MIT",
   "scripts": {
@@ -34,7 +34,7 @@
     "typescript": "^3.9.9"
   },
   "dependencies": {
-    "@w2wds/core": "^0.11.1"
+    "@graphiteds/core": "^0.11.1"
   },
   "peerDependencies": {
     "react": "^16.7.0",

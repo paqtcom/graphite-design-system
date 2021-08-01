@@ -1,0 +1,235 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/graphite.globals';
+
+:host {
+  /**
+   * @prop --font-size: Font size of the input
+   * @prop --font-weight: Font weight of the input
+   *
+   * @prop --background-color: Background color of the input
+   * @prop --background-color-hover: Background color of the input on hover
+   * @prop --background-color-focus: Background color of the input on focus
+   * @prop --background-color-invalid: Background color of the input when invalid
+   * @prop --background-color-invalid-hover: Background color of the input when invalid on focus
+   *
+   * @prop --border-radius: Border radius of the input
+   * @prop --border-color: Border color of the input
+   * @prop --border-color-hover: Border color of the input on hover
+   * @prop --border-color-focus: Border color of the input on focus
+   * @prop --border-color-invalid: Border color of the input when invalid
+   * @prop --border-color-invalid-hover: Border color of the input when invalid on focus
+   *
+   * @prop --color: Text color of the input
+   *
+   * @prop --placeholder-color: Text color of the placeholder
+   *
+   * @prop --min-height: Minimum height of the input
+   *
+   * @prop --clear-icon-margin-end: Right margin of the clear icon (will be left margin when we support right-to-left direction)
+   *
+   * @prop --padding-start: Left padding of the input (will be right padding when we support right-to-left direction)
+   * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
+   *
+   * @prop --focus-ring: The focus ring style to use when the input receives focus, a `box-shadow` property.
+   */
+  --font-size: var(--gr-form-element-font-size-medium);
+  --font-weight: var(--gr-font-weight-normal);
+
+  --background-color: var(--gr-color-white);
+  --background-color-hover: var(--gr-color-white);
+  --background-color-focus: var(--gr-color-white);
+  --background-color-invalid: var(--gr-color-white);
+  --background-color-invalid-hover: var(--gr-color-white);
+
+  --border-radius: var(--gr-form-element-border-radius-small);
+  --border-color: var(--gr-color-light);
+  --border-color-hover: var(--gr-color-medium);
+  --border-color-focus: var(--gr-color-primary);
+  --border-color-invalid: var(--gr-color-danger);
+  --border-color-invalid-hover: var(--gr-color-danger-shade);
+
+  --color: var(--gr-color-dark-tint);
+
+  --placeholder-color: var(--gr-color-medium-tint);
+
+  --min-height: var(--gr-form-element-height-medium);
+
+  --clear-icon-margin-end: var(--gr-spacing-medium);
+
+  --padding-start: var(--gr-spacing-medium);
+  --padding-end: var(--gr-spacing-medium);
+
+  --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+
+  display: block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}
+
+// Size modifiers
+// --------------------------------------------------
+.input-small {
+  --font-size: var(--gr-form-element-font-size-small);
+  --min-height: var(--gr-form-element-height-small);
+
+  --padding-start: var(--gr-spacing-small);
+  --padding-end: var(--gr-spacing-small);
+}
+
+.input-large {
+  --font-size: var(--gr-form-element-font-size-large);
+  --min-height: var(--gr-form-element-height-large);
+
+  --padding-start: var(--gr-spacing-large);
+  --padding-end: var(--gr-spacing-large);
+}
+
+.input {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: start;
+  position: relative;
+  width: 100%;
+  font-family: var(--gr-font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--gr-line-height-normal);
+  letter-spacing: var(--gr-letter-spacing-normal);
+  background-color: var(--background-color);
+  border: solid 1px var(--border-color);
+  border-radius: var(--border-radius);
+  vertical-align: middle;
+  overflow: hidden;
+  transition: 150ms color, 150ms border, 150ms box-shadow;
+  cursor: text;
+
+  &.input-invalid:not(.input-disabled) {
+    background-color: var(--background-color-invalid);
+    border-color: var(--border-color-invalid);
+  }
+
+  &:hover.input-invalid:not(.input-disabled):not(.input-focused) {
+    background-color: var(--background-color-invalid-hover);
+    border-color: var(--border-color-invalid-hover);
+  }
+
+  &.input-invalid:not(.input-disabled) {
+    background-color: var(--background-color-invalid);
+    border-color: var(--border-color-invalid);
+  }
+
+  &:hover:not(.input-disabled) {
+    background-color: var(--background-color-hover);
+    border-color: var(--border-color-hover);
+  }
+
+  &.input-focused:not(.input-disabled) {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-color: var(--border-color-focus);
+    background-color: var(--background-color-focus);
+  }
+
+  &.input-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    outline: none;
+  }
+}
+
+.input-control {
+  flex: 1 1 auto;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  min-width: 0;
+  height: 100%;
+  color: var(--color);
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  cursor: inherit;
+  -webkit-appearance: none;
+
+  min-height: var(--min-height);
+
+  padding-top: 0;
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: 0;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0 var(--min-height) var(--background-color-hover) inset !important;
+    -webkit-text-fill-color: var(--gr-color-primary);
+  }
+
+  &::placeholder {
+    color: var(--placeholder-color);
+    user-select: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Pill modifier
+// --------------------------------------------------
+
+.input-pill {
+  border-radius: var(--min-height);
+}
+
+// Clearable
+// --------------------------------------------------
+
+.input-clear {
+  display: inline-flex;
+  align-items: center;
+  font-size: inherit;
+  color: var(--gr-color-medium);
+  border: none;
+  background: none;
+  padding: 0;
+  transition: 150ms color;
+  cursor: pointer;
+  margin-right: var(--clear-icon-margin-end);
+
+  &:hover {
+    color: var(--gr-color-dark);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+
+    font-size: var(--font-size);
+  }
+}
+
+.input-empty .input-clear {
+  visibility: hidden;
+}

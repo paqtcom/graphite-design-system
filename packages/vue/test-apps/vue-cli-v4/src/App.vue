@@ -1,74 +1,74 @@
 <template>
   <section>
-    <way-button @click="doSomething()" :variant="variant">Vue 3</way-button>
+    <gr-button @click="doSomething()" :variant="variant">Vue 3</gr-button>
   </section>
 
   <section>
-    <way-select
+    <gr-select
       placeholder="Select one"
       v-model="selectedValue"
-      @way-change="onSelectChange()"
+      @gr-change="onSelectChange()"
       label="Example"
       help-text="test"
       invalid-text="invalid"
       :invalid="true"
     >
-      <way-menu-item value="option-1">Option 1</way-menu-item>
-      <way-menu-item value="option-2">Option 2</way-menu-item>
-      <way-menu-item value="option-3">Option 3</way-menu-item>
-    </way-select>
+      <gr-menu-item value="option-1">Option 1</gr-menu-item>
+      <gr-menu-item value="option-2">Option 2</gr-menu-item>
+      <gr-menu-item value="option-3">Option 3</gr-menu-item>
+    </gr-select>
 
     <p>{{ selectedValue }}</p>
   </section>
 
   <section>
-    <way-select
+    <gr-select
       placeholder="Select multiple"
       v-model="selectedValues"
       :multiple="true"
       :pill="true"
       :clearable="true"
     >
-      <way-menu-label>Group 1</way-menu-label>
-      <way-menu-item value="option-1">Option 1</way-menu-item>
-      <way-menu-item value="option-2">Option 2</way-menu-item>
-      <way-menu-item value="option-3">Option 3</way-menu-item>
-      <way-menu-divider></way-menu-divider>
-      <way-menu-label>Group 2</way-menu-label>
-      <way-menu-item value="option-4">Option 4</way-menu-item>
-      <way-menu-item value="option-5">Option 5</way-menu-item>
-      <way-menu-item value="option-6">Option 6</way-menu-item>
-    </way-select>
+      <gr-menu-label>Group 1</gr-menu-label>
+      <gr-menu-item value="option-1">Option 1</gr-menu-item>
+      <gr-menu-item value="option-2">Option 2</gr-menu-item>
+      <gr-menu-item value="option-3">Option 3</gr-menu-item>
+      <gr-menu-divider></gr-menu-divider>
+      <gr-menu-label>Group 2</gr-menu-label>
+      <gr-menu-item value="option-4">Option 4</gr-menu-item>
+      <gr-menu-item value="option-5">Option 5</gr-menu-item>
+      <gr-menu-item value="option-6">Option 6</gr-menu-item>
+    </gr-select>
 
     <p>{{ selectedValues }}</p>
   </section>
 
   <section>
-    <way-radio-group
+    <gr-radio-group
       label="Select an option"
       v-model="selectedValue"
-      @way-change="onRadioChange()"
+      @gr-change="onRadioChange()"
     >
-      <way-radio value="option-1">Option 1</way-radio>
-      <way-radio value="option-2">Option 2</way-radio>
-      <way-radio value="option-3">Option 3</way-radio>
-    </way-radio-group>
+      <gr-radio value="option-1">Option 1</gr-radio>
+      <gr-radio value="option-2">Option 2</gr-radio>
+      <gr-radio value="option-3">Option 3</gr-radio>
+    </gr-radio-group>
   </section>
 
   <section>
-    <way-checkbox v-model="booleanValue">Option</way-checkbox>
+    <gr-checkbox v-model="booleanValue">Option</gr-checkbox>
 
     <p>{{ booleanValue }}</p>
   </section>
 
   <section>
-    <way-input v-model="inputValue" :pill="true"></way-input>
+    <gr-input v-model="inputValue" :pill="true"></gr-input>
 
     <p>{{ inputValue }}</p>
   </section>
 
   <section>
-    <way-textarea v-model="textareaValue"></way-textarea>
+    <gr-textarea v-model="textareaValue"></gr-textarea>
 
     <p>{{ textareaValue }}</p>
   </section>
@@ -76,33 +76,33 @@
 
 <script lang="ts">
 import {
-  WayButton,
-  WaySelect,
-  WayMenuItem,
-  WayMenuLabel,
-  WayMenuDivider,
-  WayRadioGroup,
-  WayRadio,
-  WayInput,
-  WayTextarea,
-  WayCheckbox,
-} from "@w2wds/vue";
+  GrButton,
+  GrSelect,
+  GrMenuItem,
+  GrMenuLabel,
+  GrMenuDivider,
+  GrRadioGroup,
+  GrRadio,
+  GrInput,
+  GrTextarea,
+  GrCheckbox,
+} from "@graphiteds/vue";
 
 import { ref, defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    WayButton,
-    WaySelect,
-    WayMenuItem,
-    WayMenuLabel,
-    WayMenuDivider,
-    WayRadioGroup,
-    WayRadio,
-    WayInput,
-    WayTextarea,
-    WayCheckbox,
+    GrButton,
+    GrSelect,
+    GrMenuItem,
+    GrMenuLabel,
+    GrMenuDivider,
+    GrRadioGroup,
+    GrRadio,
+    GrInput,
+    GrTextarea,
+    GrCheckbox,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");

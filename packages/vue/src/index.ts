@@ -1,2 +1,2 @@
 export * from "./proxies";
-export * from "./w2wds-vue";
+export * from "./graphite-vue";

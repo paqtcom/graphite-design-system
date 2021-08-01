@@ -1,7 +1,7 @@
 {
-  "name": "@w2wds/core/components",
+  "name": "@graphiteds/core/components",
   "version": "0.0.0",
-  "description": "Way2Web Design System Components exported as custom elements, extending HTMLElement.",
+  "description": "Graphite components exported as custom elements, extending HTMLElement.",
   "main": "./index.js",
   "types": "./custom-elements.d.ts",
   "private": true,

@@ -3,7 +3,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Way2Web/way2web-design-system.git"
+    "url": "https://github.com/way2web/graphiteds.git"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",

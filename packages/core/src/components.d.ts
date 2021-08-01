@@ -6,9 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AutocompleteTypes, TextFieldTypes } from "./interface";
-import { WayRadioGroupChangeEventDetail } from "./components/way-radio-group/way-radio-group-interface";
+import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
-    interface WayButton {
+    interface GrButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
          */
@@ -58,7 +58,7 @@ export namespace Components {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
-    interface WayCheckbox {
+    interface GrCheckbox {
         /**
           * Set to true to draw the checkbox in a checked state.
          */
@@ -92,7 +92,7 @@ export namespace Components {
          */
         "value": string;
     }
-    interface WayDropdown {
+    interface GrDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
          */
@@ -141,7 +141,7 @@ export namespace Components {
          */
         "skidding": number;
     }
-    interface WayInput {
+    interface GrInput {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -163,7 +163,7 @@ export namespace Components {
          */
         "clearable": boolean;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
         /**
@@ -259,15 +259,15 @@ export namespace Components {
          */
         "value": string;
     }
-    interface WayMenu {
+    interface GrMenu {
         /**
           * Initiates type-to-select logic, which automatically selects an option based on what the user is currently typing. The key passed will be appended to the internal query and the selection will be updated. After a brief period, the internal query is cleared automatically. This method is intended to be used with the keydown event. Useful for enabling type-to-select when the menu doesn't have focus.
          */
         "typeToSelect": (key: string) => Promise<void>;
     }
-    interface WayMenuDivider {
+    interface GrMenuDivider {
     }
-    interface WayMenuItem {
+    interface GrMenuItem {
         /**
           * Set to true to draw the item in a checked state.
          */
@@ -289,9 +289,9 @@ export namespace Components {
          */
         "value": string;
     }
-    interface WayMenuLabel {
+    interface GrMenuLabel {
     }
-    interface WayRadio {
+    interface GrRadio {
         /**
           * Set to true to draw the radio in a checked state.
          */
@@ -314,7 +314,7 @@ export namespace Components {
          */
         "value": string;
     }
-    interface WayRadioGroup {
+    interface GrRadioGroup {
         /**
           * If `true`, the radios can be deselected.
          */
@@ -340,7 +340,7 @@ export namespace Components {
          */
         "value"?: any | null;
     }
-    interface WaySelect {
+    interface GrSelect {
         /**
           * Set to true to add a clear button when the select is populated.
          */
@@ -398,9 +398,9 @@ export namespace Components {
          */
         "value": string | Array<string>;
     }
-    interface WaySpinner {
+    interface GrSpinner {
     }
-    interface WayTag {
+    interface GrTag {
         /**
           * Set to true to make the tag clearable.
          */
@@ -418,7 +418,7 @@ export namespace Components {
          */
         "type": 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
-    interface WayTextarea {
+    interface GrTextarea {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -432,7 +432,7 @@ export namespace Components {
          */
         "autofocus": boolean;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
         /**
@@ -522,109 +522,109 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLWayButtonElement extends Components.WayButton, HTMLStencilElement {
+    interface HTMLGrButtonElement extends Components.GrButton, HTMLStencilElement {
     }
-    var HTMLWayButtonElement: {
-        prototype: HTMLWayButtonElement;
-        new (): HTMLWayButtonElement;
+    var HTMLGrButtonElement: {
+        prototype: HTMLGrButtonElement;
+        new (): HTMLGrButtonElement;
     };
-    interface HTMLWayCheckboxElement extends Components.WayCheckbox, HTMLStencilElement {
+    interface HTMLGrCheckboxElement extends Components.GrCheckbox, HTMLStencilElement {
     }
-    var HTMLWayCheckboxElement: {
-        prototype: HTMLWayCheckboxElement;
-        new (): HTMLWayCheckboxElement;
+    var HTMLGrCheckboxElement: {
+        prototype: HTMLGrCheckboxElement;
+        new (): HTMLGrCheckboxElement;
     };
-    interface HTMLWayDropdownElement extends Components.WayDropdown, HTMLStencilElement {
+    interface HTMLGrDropdownElement extends Components.GrDropdown, HTMLStencilElement {
     }
-    var HTMLWayDropdownElement: {
-        prototype: HTMLWayDropdownElement;
-        new (): HTMLWayDropdownElement;
+    var HTMLGrDropdownElement: {
+        prototype: HTMLGrDropdownElement;
+        new (): HTMLGrDropdownElement;
     };
-    interface HTMLWayInputElement extends Components.WayInput, HTMLStencilElement {
+    interface HTMLGrInputElement extends Components.GrInput, HTMLStencilElement {
     }
-    var HTMLWayInputElement: {
-        prototype: HTMLWayInputElement;
-        new (): HTMLWayInputElement;
+    var HTMLGrInputElement: {
+        prototype: HTMLGrInputElement;
+        new (): HTMLGrInputElement;
     };
-    interface HTMLWayMenuElement extends Components.WayMenu, HTMLStencilElement {
+    interface HTMLGrMenuElement extends Components.GrMenu, HTMLStencilElement {
     }
-    var HTMLWayMenuElement: {
-        prototype: HTMLWayMenuElement;
-        new (): HTMLWayMenuElement;
+    var HTMLGrMenuElement: {
+        prototype: HTMLGrMenuElement;
+        new (): HTMLGrMenuElement;
     };
-    interface HTMLWayMenuDividerElement extends Components.WayMenuDivider, HTMLStencilElement {
+    interface HTMLGrMenuDividerElement extends Components.GrMenuDivider, HTMLStencilElement {
     }
-    var HTMLWayMenuDividerElement: {
-        prototype: HTMLWayMenuDividerElement;
-        new (): HTMLWayMenuDividerElement;
+    var HTMLGrMenuDividerElement: {
+        prototype: HTMLGrMenuDividerElement;
+        new (): HTMLGrMenuDividerElement;
     };
-    interface HTMLWayMenuItemElement extends Components.WayMenuItem, HTMLStencilElement {
+    interface HTMLGrMenuItemElement extends Components.GrMenuItem, HTMLStencilElement {
     }
-    var HTMLWayMenuItemElement: {
-        prototype: HTMLWayMenuItemElement;
-        new (): HTMLWayMenuItemElement;
+    var HTMLGrMenuItemElement: {
+        prototype: HTMLGrMenuItemElement;
+        new (): HTMLGrMenuItemElement;
     };
-    interface HTMLWayMenuLabelElement extends Components.WayMenuLabel, HTMLStencilElement {
+    interface HTMLGrMenuLabelElement extends Components.GrMenuLabel, HTMLStencilElement {
     }
-    var HTMLWayMenuLabelElement: {
-        prototype: HTMLWayMenuLabelElement;
-        new (): HTMLWayMenuLabelElement;
+    var HTMLGrMenuLabelElement: {
+        prototype: HTMLGrMenuLabelElement;
+        new (): HTMLGrMenuLabelElement;
     };
-    interface HTMLWayRadioElement extends Components.WayRadio, HTMLStencilElement {
+    interface HTMLGrRadioElement extends Components.GrRadio, HTMLStencilElement {
     }
-    var HTMLWayRadioElement: {
-        prototype: HTMLWayRadioElement;
-        new (): HTMLWayRadioElement;
+    var HTMLGrRadioElement: {
+        prototype: HTMLGrRadioElement;
+        new (): HTMLGrRadioElement;
     };
-    interface HTMLWayRadioGroupElement extends Components.WayRadioGroup, HTMLStencilElement {
+    interface HTMLGrRadioGroupElement extends Components.GrRadioGroup, HTMLStencilElement {
     }
-    var HTMLWayRadioGroupElement: {
-        prototype: HTMLWayRadioGroupElement;
-        new (): HTMLWayRadioGroupElement;
+    var HTMLGrRadioGroupElement: {
+        prototype: HTMLGrRadioGroupElement;
+        new (): HTMLGrRadioGroupElement;
     };
-    interface HTMLWaySelectElement extends Components.WaySelect, HTMLStencilElement {
+    interface HTMLGrSelectElement extends Components.GrSelect, HTMLStencilElement {
     }
-    var HTMLWaySelectElement: {
-        prototype: HTMLWaySelectElement;
-        new (): HTMLWaySelectElement;
+    var HTMLGrSelectElement: {
+        prototype: HTMLGrSelectElement;
+        new (): HTMLGrSelectElement;
     };
-    interface HTMLWaySpinnerElement extends Components.WaySpinner, HTMLStencilElement {
+    interface HTMLGrSpinnerElement extends Components.GrSpinner, HTMLStencilElement {
     }
-    var HTMLWaySpinnerElement: {
-        prototype: HTMLWaySpinnerElement;
-        new (): HTMLWaySpinnerElement;
+    var HTMLGrSpinnerElement: {
+        prototype: HTMLGrSpinnerElement;
+        new (): HTMLGrSpinnerElement;
     };
-    interface HTMLWayTagElement extends Components.WayTag, HTMLStencilElement {
+    interface HTMLGrTagElement extends Components.GrTag, HTMLStencilElement {
     }
-    var HTMLWayTagElement: {
-        prototype: HTMLWayTagElement;
-        new (): HTMLWayTagElement;
+    var HTMLGrTagElement: {
+        prototype: HTMLGrTagElement;
+        new (): HTMLGrTagElement;
     };
-    interface HTMLWayTextareaElement extends Components.WayTextarea, HTMLStencilElement {
+    interface HTMLGrTextareaElement extends Components.GrTextarea, HTMLStencilElement {
     }
-    var HTMLWayTextareaElement: {
-        prototype: HTMLWayTextareaElement;
-        new (): HTMLWayTextareaElement;
+    var HTMLGrTextareaElement: {
+        prototype: HTMLGrTextareaElement;
+        new (): HTMLGrTextareaElement;
     };
     interface HTMLElementTagNameMap {
-        "way-button": HTMLWayButtonElement;
-        "way-checkbox": HTMLWayCheckboxElement;
-        "way-dropdown": HTMLWayDropdownElement;
-        "way-input": HTMLWayInputElement;
-        "way-menu": HTMLWayMenuElement;
-        "way-menu-divider": HTMLWayMenuDividerElement;
-        "way-menu-item": HTMLWayMenuItemElement;
-        "way-menu-label": HTMLWayMenuLabelElement;
-        "way-radio": HTMLWayRadioElement;
-        "way-radio-group": HTMLWayRadioGroupElement;
-        "way-select": HTMLWaySelectElement;
-        "way-spinner": HTMLWaySpinnerElement;
-        "way-tag": HTMLWayTagElement;
-        "way-textarea": HTMLWayTextareaElement;
+        "gr-button": HTMLGrButtonElement;
+        "gr-checkbox": HTMLGrCheckboxElement;
+        "gr-dropdown": HTMLGrDropdownElement;
+        "gr-input": HTMLGrInputElement;
+        "gr-menu": HTMLGrMenuElement;
+        "gr-menu-divider": HTMLGrMenuDividerElement;
+        "gr-menu-item": HTMLGrMenuItemElement;
+        "gr-menu-label": HTMLGrMenuLabelElement;
+        "gr-radio": HTMLGrRadioElement;
+        "gr-radio-group": HTMLGrRadioGroupElement;
+        "gr-select": HTMLGrSelectElement;
+        "gr-spinner": HTMLGrSpinnerElement;
+        "gr-tag": HTMLGrTagElement;
+        "gr-textarea": HTMLGrTextareaElement;
     }
 }
 declare namespace LocalJSX {
-    interface WayButton {
+    interface GrButton {
         /**
           * Set to true to draw the button with a caret for use with dropdowns, popovers, etc.
          */
@@ -652,11 +652,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style button with rounded edges.
          */
@@ -682,7 +682,7 @@ declare namespace LocalJSX {
          */
         "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
     }
-    interface WayCheckbox {
+    interface GrCheckbox {
         /**
           * Set to true to draw the checkbox in a checked state.
          */
@@ -706,21 +706,21 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's checked state changes.
          */
-        "onWay-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * The checkbox's value attribute.
          */
         "value"?: string;
     }
-    interface WayDropdown {
+    interface GrDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
          */
@@ -740,19 +740,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onWay-after-hide"?: (event: CustomEvent<void>) => void;
+        "onGr-after-hide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onWay-after-show"?: (event: CustomEvent<void>) => void;
+        "onGr-after-show"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onWay-hide"?: (event: CustomEvent<void>) => void;
+        "onGr-hide"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onWay-show"?: (event: CustomEvent<void>) => void;
+        "onGr-show"?: (event: CustomEvent<void>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -777,7 +777,7 @@ declare namespace LocalJSX {
          */
         "skidding"?: number;
     }
-    interface WayInput {
+    interface GrInput {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -799,7 +799,7 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
         /**
@@ -845,23 +845,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the clear button is activated.
          */
-        "onWay-clear"?: (event: CustomEvent<void>) => void;
+        "onGr-clear"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control receives input.
          */
-        "onWay-input"?: (event: CustomEvent<void>) => void;
+        "onGr-input"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style input with rounded edges.
          */
@@ -895,15 +895,15 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
-    interface WayMenu {
+    interface GrMenu {
         /**
           * Emitted when a menu item is selected.
          */
-        "onWay-select"?: (event: CustomEvent<{ item: HTMLWayMenuItemElement }>) => void;
+        "onGr-select"?: (event: CustomEvent<{ item: HTMLGrMenuItemElement }>) => void;
     }
-    interface WayMenuDivider {
+    interface GrMenuDivider {
     }
-    interface WayMenuItem {
+    interface GrMenuItem {
         /**
           * Set to true to draw the item in a checked state.
          */
@@ -917,9 +917,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
-    interface WayMenuLabel {
+    interface GrMenuLabel {
     }
-    interface WayRadio {
+    interface GrRadio {
         /**
           * Set to true to draw the radio in a checked state.
          */
@@ -931,17 +931,17 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<any>) => void;
+        "onGr-blur"?: (event: CustomEvent<any>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<any>) => void;
+        "onGr-focus"?: (event: CustomEvent<any>) => void;
         /**
           * The radio's value attribute.
          */
         "value"?: string;
     }
-    interface WayRadioGroup {
+    interface GrRadioGroup {
         /**
           * If `true`, the radios can be deselected.
          */
@@ -965,13 +965,13 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onWay-change"?: (event: CustomEvent<WayRadioGroupChangeEventDetail>) => void;
+        "onGr-change"?: (event: CustomEvent<RadioGroupChangeEventDetail>) => void;
         /**
           * the value of the radio group.
          */
         "value"?: any | null;
     }
-    interface WaySelect {
+    interface GrSelect {
         /**
           * Set to true to add a clear button when the select is populated.
          */
@@ -1015,15 +1015,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style select with rounded edges.
          */
@@ -1041,9 +1041,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | Array<string>;
     }
-    interface WaySpinner {
+    interface GrSpinner {
     }
-    interface WayTag {
+    interface GrTag {
         /**
           * Set to true to make the tag clearable.
          */
@@ -1051,7 +1051,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onWay-clear"?: (event: CustomEvent<void>) => void;
+        "onGr-clear"?: (event: CustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */
@@ -1065,7 +1065,7 @@ declare namespace LocalJSX {
          */
         "type"?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
     }
-    interface WayTextarea {
+    interface GrTextarea {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
          */
@@ -1079,7 +1079,7 @@ declare namespace LocalJSX {
          */
         "autofocus"?: boolean;
         /**
-          * Set the amount of time, in milliseconds, to wait to trigger the `way-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+          * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
         /**
@@ -1121,19 +1121,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea loses focus.
          */
-        "onWay-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the textarea's value changes.
          */
-        "onWay-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the textarea has focus.
          */
-        "onWay-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the textarea receives input.
          */
-        "onWay-input"?: (event: CustomEvent<void>) => void;
+        "onGr-input"?: (event: CustomEvent<void>) => void;
         /**
           * The textarea's placeholder text.
          */
@@ -1164,40 +1164,40 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
-        "way-button": WayButton;
-        "way-checkbox": WayCheckbox;
-        "way-dropdown": WayDropdown;
-        "way-input": WayInput;
-        "way-menu": WayMenu;
-        "way-menu-divider": WayMenuDivider;
-        "way-menu-item": WayMenuItem;
-        "way-menu-label": WayMenuLabel;
-        "way-radio": WayRadio;
-        "way-radio-group": WayRadioGroup;
-        "way-select": WaySelect;
-        "way-spinner": WaySpinner;
-        "way-tag": WayTag;
-        "way-textarea": WayTextarea;
+        "gr-button": GrButton;
+        "gr-checkbox": GrCheckbox;
+        "gr-dropdown": GrDropdown;
+        "gr-input": GrInput;
+        "gr-menu": GrMenu;
+        "gr-menu-divider": GrMenuDivider;
+        "gr-menu-item": GrMenuItem;
+        "gr-menu-label": GrMenuLabel;
+        "gr-radio": GrRadio;
+        "gr-radio-group": GrRadioGroup;
+        "gr-select": GrSelect;
+        "gr-spinner": GrSpinner;
+        "gr-tag": GrTag;
+        "gr-textarea": GrTextarea;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "way-button": LocalJSX.WayButton & JSXBase.HTMLAttributes<HTMLWayButtonElement>;
-            "way-checkbox": LocalJSX.WayCheckbox & JSXBase.HTMLAttributes<HTMLWayCheckboxElement>;
-            "way-dropdown": LocalJSX.WayDropdown & JSXBase.HTMLAttributes<HTMLWayDropdownElement>;
-            "way-input": LocalJSX.WayInput & JSXBase.HTMLAttributes<HTMLWayInputElement>;
-            "way-menu": LocalJSX.WayMenu & JSXBase.HTMLAttributes<HTMLWayMenuElement>;
-            "way-menu-divider": LocalJSX.WayMenuDivider & JSXBase.HTMLAttributes<HTMLWayMenuDividerElement>;
-            "way-menu-item": LocalJSX.WayMenuItem & JSXBase.HTMLAttributes<HTMLWayMenuItemElement>;
-            "way-menu-label": LocalJSX.WayMenuLabel & JSXBase.HTMLAttributes<HTMLWayMenuLabelElement>;
-            "way-radio": LocalJSX.WayRadio & JSXBase.HTMLAttributes<HTMLWayRadioElement>;
-            "way-radio-group": LocalJSX.WayRadioGroup & JSXBase.HTMLAttributes<HTMLWayRadioGroupElement>;
-            "way-select": LocalJSX.WaySelect & JSXBase.HTMLAttributes<HTMLWaySelectElement>;
-            "way-spinner": LocalJSX.WaySpinner & JSXBase.HTMLAttributes<HTMLWaySpinnerElement>;
-            "way-tag": LocalJSX.WayTag & JSXBase.HTMLAttributes<HTMLWayTagElement>;
-            "way-textarea": LocalJSX.WayTextarea & JSXBase.HTMLAttributes<HTMLWayTextareaElement>;
+            "gr-button": LocalJSX.GrButton & JSXBase.HTMLAttributes<HTMLGrButtonElement>;
+            "gr-checkbox": LocalJSX.GrCheckbox & JSXBase.HTMLAttributes<HTMLGrCheckboxElement>;
+            "gr-dropdown": LocalJSX.GrDropdown & JSXBase.HTMLAttributes<HTMLGrDropdownElement>;
+            "gr-input": LocalJSX.GrInput & JSXBase.HTMLAttributes<HTMLGrInputElement>;
+            "gr-menu": LocalJSX.GrMenu & JSXBase.HTMLAttributes<HTMLGrMenuElement>;
+            "gr-menu-divider": LocalJSX.GrMenuDivider & JSXBase.HTMLAttributes<HTMLGrMenuDividerElement>;
+            "gr-menu-item": LocalJSX.GrMenuItem & JSXBase.HTMLAttributes<HTMLGrMenuItemElement>;
+            "gr-menu-label": LocalJSX.GrMenuLabel & JSXBase.HTMLAttributes<HTMLGrMenuLabelElement>;
+            "gr-radio": LocalJSX.GrRadio & JSXBase.HTMLAttributes<HTMLGrRadioElement>;
+            "gr-radio-group": LocalJSX.GrRadioGroup & JSXBase.HTMLAttributes<HTMLGrRadioGroupElement>;
+            "gr-select": LocalJSX.GrSelect & JSXBase.HTMLAttributes<HTMLGrSelectElement>;
+            "gr-spinner": LocalJSX.GrSpinner & JSXBase.HTMLAttributes<HTMLGrSpinnerElement>;
+            "gr-tag": LocalJSX.GrTag & JSXBase.HTMLAttributes<HTMLGrTagElement>;
+            "gr-textarea": LocalJSX.GrTextarea & JSXBase.HTMLAttributes<HTMLGrTextareaElement>;
         }
     }
 }

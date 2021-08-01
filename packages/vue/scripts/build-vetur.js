@@ -1,4 +1,4 @@
-const DocsJson = require("@w2wds/core/dist/docs.json");
+const DocsJson = require("@graphiteds/core/dist/docs.json");
 const fs = require("fs");
 const { paramCase } = require("change-case");
 

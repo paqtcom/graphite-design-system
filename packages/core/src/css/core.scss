@@ -2,189 +2,189 @@
   // Theme color tokens
   // --------------------------------------------------
 
-  --way-color-primary: #1799de;
-  --way-color-primary-rgb: 23, 153, 222;
-  --way-color-primary-contrast: #ffffff;
-  --way-color-primary-contrast-rgb: 255, 255, 255;
-  --way-color-primary-shade: #00679e;
-  --way-color-primary-tint: #46b2ec;
+  --gr-color-primary: #1799de;
+  --gr-color-primary-rgb: 23, 153, 222;
+  --gr-color-primary-contrast: #ffffff;
+  --gr-color-primary-contrast-rgb: 255, 255, 255;
+  --gr-color-primary-shade: #00679e;
+  --gr-color-primary-tint: #46b2ec;
 
-  --way-color-secondary: #051f2c;
-  --way-color-secondary-rgb: 5, 31, 44;
-  --way-color-secondary-contrast: #ffffff;
-  --way-color-secondary-contrast-rgb: 255, 255, 255;
-  --way-color-secondary-shade: #000;
-  --way-color-secondary-tint: #0a415c;
+  --gr-color-secondary: #051f2c;
+  --gr-color-secondary-rgb: 5, 31, 44;
+  --gr-color-secondary-contrast: #ffffff;
+  --gr-color-secondary-contrast-rgb: 255, 255, 255;
+  --gr-color-secondary-shade: #000;
+  --gr-color-secondary-tint: #0a415c;
 
-  --way-color-tertiary: #0c4a6e;
-  --way-color-tertiary-rgb: 12, 74, 110;
-  --way-color-tertiary-contrast: #ffffff;
-  --way-color-tertiary-contrast-rgb: 255, 255, 255;
-  --way-color-tertiary-shade: #083249;
-  --way-color-tertiary-tint: #106393;
+  --gr-color-tertiary: #0c4a6e;
+  --gr-color-tertiary-rgb: 12, 74, 110;
+  --gr-color-tertiary-contrast: #ffffff;
+  --gr-color-tertiary-contrast-rgb: 255, 255, 255;
+  --gr-color-tertiary-shade: #083249;
+  --gr-color-tertiary-tint: #106393;
 
-  --way-color-success: #0fbe78;
-  --way-color-success-rgb: 15, 190, 120;
-  --way-color-success-contrast: #000000;
-  --way-color-success-contrast-rgb: 0, 0, 0;
-  --way-color-success-shade: #0c975f;
-  --way-color-success-tint: #12e28f;
+  --gr-color-success: #0fbe78;
+  --gr-color-success-rgb: 15, 190, 120;
+  --gr-color-success-contrast: #000000;
+  --gr-color-success-contrast-rgb: 0, 0, 0;
+  --gr-color-success-shade: #0c975f;
+  --gr-color-success-tint: #12e28f;
 
-  --way-color-warning: #fbbc4e;
-  --way-color-warning-rgb: 251, 188, 78;
-  --way-color-warning-contrast: #051f2c;
-  --way-color-warning-contrast-rgb: 5, 31, 44;
-  --way-color-warning-shade: #fbb337;
-  --way-color-warning-tint: #fdd187;
+  --gr-color-warning: #fbbc4e;
+  --gr-color-warning-rgb: 251, 188, 78;
+  --gr-color-warning-contrast: #051f2c;
+  --gr-color-warning-contrast-rgb: 5, 31, 44;
+  --gr-color-warning-shade: #fbb337;
+  --gr-color-warning-tint: #fdd187;
 
-  --way-color-danger: #ff5363;
-  --way-color-danger-rgb: 255, 83, 99;
-  --way-color-danger-contrast: #051f2c;
-  --way-color-danger-contrast-rgb: 5, 31, 44;
-  --way-color-danger-shade: #cc0014;
-  --way-color-danger-tint: #ff99a3;
+  --gr-color-danger: #ff5363;
+  --gr-color-danger-rgb: 255, 83, 99;
+  --gr-color-danger-contrast: #051f2c;
+  --gr-color-danger-contrast-rgb: 5, 31, 44;
+  --gr-color-danger-shade: #cc0014;
+  --gr-color-danger-tint: #ff99a3;
 
-  --way-color-light: #dbe5eb;
-  --way-color-light-rgb: 219, 229, 235;
-  --way-color-light-contrast: #051f2c;
-  --way-color-light-contrast-rgb: 5, 31, 44;
-  --way-color-light-shade: #c1d1db;
-  --way-color-light-tint: #e7eef4;
+  --gr-color-light: #dbe5eb;
+  --gr-color-light-rgb: 219, 229, 235;
+  --gr-color-light-contrast: #051f2c;
+  --gr-color-light-contrast-rgb: 5, 31, 44;
+  --gr-color-light-shade: #c1d1db;
+  --gr-color-light-tint: #e7eef4;
 
-  --way-color-medium: #697886;
-  --way-color-medium-rgb: 105, 120, 134;
-  --way-color-medium-contrast: #ffffff;
-  --way-color-medium-contrast-rgb: 255, 255, 255;
-  --way-color-medium-shade: #4c5960;
-  --way-color-medium-tint: #9eaeb7;
+  --gr-color-medium: #697886;
+  --gr-color-medium-rgb: 105, 120, 134;
+  --gr-color-medium-contrast: #ffffff;
+  --gr-color-medium-contrast-rgb: 255, 255, 255;
+  --gr-color-medium-shade: #4c5960;
+  --gr-color-medium-tint: #9eaeb7;
 
-  --way-color-dark: #02131b;
-  --way-color-dark-rgb: 2, 19, 27;
-  --way-color-dark-contrast: #ffffff;
-  --way-color-dark-contrast-rgb: 255, 255, 255;
-  --way-color-dark-shade: #000000;
-  --way-color-dark-tint: #051f2c;
+  --gr-color-dark: #02131b;
+  --gr-color-dark-rgb: 2, 19, 27;
+  --gr-color-dark-contrast: #ffffff;
+  --gr-color-dark-contrast-rgb: 255, 255, 255;
+  --gr-color-dark-shade: #000000;
+  --gr-color-dark-tint: #051f2c;
 
-  --way-color-white: #ffffff;
-  --way-color-black: #000000;
+  --gr-color-white: #ffffff;
+  --gr-color-black: #000000;
 
   // Border radius tokens
   // --------------------------------------------------
-  --way-border-radius-small: 0.125rem; // 2px
-  --way-border-radius-medium: 0.25rem; // 4px
-  --way-border-radius-large: 0.5rem; // 8px
-  --way-border-radius-x-large: 1rem; // 16px
+  --gr-border-radius-small: 0.125rem; // 2px
+  --gr-border-radius-medium: 0.25rem; // 4px
+  --gr-border-radius-large: 0.5rem; // 8px
+  --gr-border-radius-x-large: 1rem; // 16px
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Elevation tokens
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  --way-shadow-x-small: 0 1px 0 #0d131e0d;
-  --way-shadow-small: 0 1px 2px #0d131e1a;
-  --way-shadow-medium: 0 2px 4px #0d131e1a;
-  --way-shadow-large: 0 2px 8px #0d131e1a;
-  --way-shadow-x-large: 0 4px 16px #0d131e1a;
+  --gr-shadow-x-small: 0 1px 0 #0d131e0d;
+  --gr-shadow-small: 0 1px 2px #0d131e1a;
+  --gr-shadow-medium: 0 2px 4px #0d131e1a;
+  --gr-shadow-large: 0 2px 8px #0d131e1a;
+  --gr-shadow-x-large: 0 4px 16px #0d131e1a;
 
   // Spacing tokens
   // --------------------------------------------------
 
-  --way-spacing-xxx-small: 0.125rem; // 2px
-  --way-spacing-xx-small: 0.25rem; // 4px
-  --way-spacing-x-small: 0.5rem; // 8px
-  --way-spacing-small: 0.75rem; // 12px
-  --way-spacing-medium: 1rem; // 16px
-  --way-spacing-large: 1.25rem; // 20px
-  --way-spacing-x-large: 1.75rem; // 28px
-  --way-spacing-xx-large: 2.25rem; // 36px
-  --way-spacing-xxx-large: 3rem; // 48px
-  --way-spacing-xxxx-large: 4.5rem; // 72px
+  --gr-spacing-xxx-small: 0.125rem; // 2px
+  --gr-spacing-xx-small: 0.25rem; // 4px
+  --gr-spacing-x-small: 0.5rem; // 8px
+  --gr-spacing-small: 0.75rem; // 12px
+  --gr-spacing-medium: 1rem; // 16px
+  --gr-spacing-large: 1.25rem; // 20px
+  --gr-spacing-x-large: 1.75rem; // 28px
+  --gr-spacing-xx-large: 2.25rem; // 36px
+  --gr-spacing-xxx-large: 3rem; // 48px
+  --gr-spacing-xxxx-large: 4.5rem; // 72px
 
   // Typography tokens
   // --------------------------------------------------
 
   // Fonts
-  --way-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  --gr-font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     sans-serif;
 
   // Letter spacings
-  --way-letter-spacing-dense: -0.015em;
-  --way-letter-spacing-normal: normal;
-  --way-letter-spacing-loose: 0.075em;
+  --gr-letter-spacing-dense: -0.015em;
+  --gr-letter-spacing-normal: normal;
+  --gr-letter-spacing-loose: 0.075em;
 
   // Line heights
-  --way-line-height-dense: 1.4;
-  --way-line-height-normal: 1.8;
-  --way-line-height-loose: 2.2;
+  --gr-line-height-dense: 1.4;
+  --gr-line-height-normal: 1.8;
+  --gr-line-height-loose: 2.2;
 
   // Font sizes
-  --way-font-size-xx-small: 0.625rem; // 10px
-  --way-font-size-x-small: 0.75rem; // 12px
-  --way-font-size-small: 0.875rem; // 14px
-  --way-font-size-medium: 1rem; // 16px
-  --way-font-size-large: 1.25rem; // 20px
-  --way-font-size-x-large: 1.5rem; // 24px
-  --way-font-size-xx-large: 2.25rem; // 36px
-  --way-font-size-xxx-large: 3rem; // 48px
-  --way-font-size-xxxx-large: 4.5rem; // 72px
+  --gr-font-size-xx-small: 0.625rem; // 10px
+  --gr-font-size-x-small: 0.75rem; // 12px
+  --gr-font-size-small: 0.875rem; // 14px
+  --gr-font-size-medium: 1rem; // 16px
+  --gr-font-size-large: 1.25rem; // 20px
+  --gr-font-size-x-large: 1.5rem; // 24px
+  --gr-font-size-xx-large: 2.25rem; // 36px
+  --gr-font-size-xxx-large: 3rem; // 48px
+  --gr-font-size-xxxx-large: 4.5rem; // 72px
 
   // Font weights
-  --way-font-weight-thin: 100;
-  --way-font-weight-extra-light: 200;
-  --way-font-weight-light: 300;
-  --way-font-weight-normal: 400;
-  --way-font-weight-medium: 500;
-  --way-font-weight-semi-bold: 600;
-  --way-font-weight-bold: 700;
-  --way-font-weight-extra-bold: 800;
-  --way-font-weight-black: 900;
+  --gr-font-weight-thin: 100;
+  --gr-font-weight-extra-light: 200;
+  --gr-font-weight-light: 300;
+  --gr-font-weight-normal: 400;
+  --gr-font-weight-medium: 500;
+  --gr-font-weight-semi-bold: 600;
+  --gr-font-weight-bold: 700;
+  --gr-font-weight-extra-bold: 800;
+  --gr-font-weight-black: 900;
 
   // Form tokens
   // -------------------------------------------------
 
-  --way-form-element-font-size-x-small: var(--way-font-size-x-small);
-  --way-form-element-font-size-small: var(--way-font-size-small);
-  --way-form-element-font-size-medium: var(--way-font-size-medium);
-  --way-form-element-font-size-large: var(--way-font-size-large);
+  --gr-form-element-font-size-x-small: var(--gr-font-size-x-small);
+  --gr-form-element-font-size-small: var(--gr-font-size-small);
+  --gr-form-element-font-size-medium: var(--gr-font-size-medium);
+  --gr-form-element-font-size-large: var(--gr-font-size-large);
 
-  --way-form-element-height-small: 2.188rem; // 35px
-  --way-form-element-height-medium: 3.125rem; // 50px
-  --way-form-element-height-large: 4.063rem; // 65px
+  --gr-form-element-height-small: 2.188rem; // 35px
+  --gr-form-element-height-medium: 3.125rem; // 50px
+  --gr-form-element-height-large: 4.063rem; // 65px
 
-  --way-form-element-border-radius-small: var(--way-border-radius-medium);
-  --way-form-element-border-radius-medium: var(--way-border-radius-medium);
-  --way-form-element-border-radius-large: var(--way-border-radius-medium);
+  --gr-form-element-border-radius-small: var(--gr-border-radius-medium);
+  --gr-form-element-border-radius-medium: var(--gr-border-radius-medium);
+  --gr-form-element-border-radius-large: var(--gr-border-radius-medium);
 
   // Focus ring
 
-  --way-focus-ring-width: 2px;
+  --gr-focus-ring-width: 2px;
 
   // Labels
-  --way-form-element-label-font-size-small: var(--way-font-size-small);
-  --way-form-element-label-font-size-medium: var(--way-font-size-medium);
-  --way-form-element-label-font-size-large: var(--way-font-size-large);
+  --gr-form-element-label-font-size-small: var(--gr-font-size-small);
+  --gr-form-element-label-font-size-medium: var(--gr-font-size-medium);
+  --gr-form-element-label-font-size-large: var(--gr-font-size-large);
 
-  --way-form-element-label-color: inherit;
+  --gr-form-element-label-color: inherit;
 
   // Help text
-  --way-form-element-help-text-font-size-small: var(--way-font-size-x-small);
-  --way-form-element-help-text-font-size-medium: var(--way-font-size-small);
-  --way-form-element-help-text-font-size-large: var(--way-font-size-medium);
+  --gr-form-element-help-text-font-size-small: var(--gr-font-size-x-small);
+  --gr-form-element-help-text-font-size-medium: var(--gr-font-size-small);
+  --gr-form-element-help-text-font-size-large: var(--gr-font-size-medium);
 
-  --way-form-element-help-text-color: var(--way-color-medium-tint);
+  --gr-form-element-help-text-color: var(--gr-color-medium-tint);
 
   // Invalid text
-  --way-form-element-invalid-text-font-size-small: var(--way-font-size-x-small);
-  --way-form-element-invalid-text-font-size-medium: var(--way-font-size-small);
-  --way-form-element-invalid-text-font-size-large: var(--way-font-size-medium);
+  --gr-form-element-invalid-text-font-size-small: var(--gr-font-size-x-small);
+  --gr-form-element-invalid-text-font-size-medium: var(--gr-font-size-small);
+  --gr-form-element-invalid-text-font-size-large: var(--gr-font-size-medium);
 
-  --way-form-element-invalid-text-color: var(--way-color-danger);
+  --gr-form-element-invalid-text-color: var(--gr-color-danger);
 
   // Toggles (checkboxes, radios, switches)
-  --way-toggle-size: 1rem;
+  --gr-toggle-size: 1rem;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Z-index tokens
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  --way-z-index-dropdown: 900;
+  --gr-z-index-dropdown: 900;
 }

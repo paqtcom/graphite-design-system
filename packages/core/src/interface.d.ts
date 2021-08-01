@@ -5,7 +5,7 @@ export * from './index';
 // Types from utils
 export * from './utils/popover';
 
-export interface Way2WebDesignSystemConfig {
+export interface GraphiteConfig {
   _ael?: (el: any, name: string, cb: any, opts: any) => any;
   _rel?: (el: any, name: string, cb: any, opts: any) => any;
   _ce?: (eventName: string, opts: any) => any;
@@ -69,7 +69,19 @@ export type AutocompleteTypes =
   | 'url'
   | 'photo';
 
-export type TextFieldTypes = 'date' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url' | 'time' | 'week' | 'month' | 'datetime-local';
+export type TextFieldTypes =
+  | 'date'
+  | 'email'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'url'
+  | 'time'
+  | 'week'
+  | 'month'
+  | 'datetime-local';
 export type ComponentTags = string;
 export type ComponentRef = Function | HTMLElement | string | null;
 export type ComponentProps<T = null> = { [key: string]: any };
