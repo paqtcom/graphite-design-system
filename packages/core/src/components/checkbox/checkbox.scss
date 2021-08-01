@@ -51,6 +51,12 @@
   display: inline-block;
   box-sizing: border-box;
 
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+
   --height-icon-small: 20px;
   --width-icon-small: 20px;
   --height-icon-medium: 20px;

@@ -141,6 +141,20 @@ export namespace Components {
          */
         "skidding": number;
     }
+    interface GrFieldGroup {
+        /**
+          * Render the fields horizontal instead of vertical
+         */
+        "horizontal": boolean;
+        /**
+          * The field group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * Hides the fieldset and legend that surrounds the field group. The label will still be read by screen readers.
+         */
+        "noFieldset": boolean;
+    }
     interface GrInput {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
@@ -319,6 +333,10 @@ export namespace Components {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection": boolean;
+        /**
+          * Render the radios horizontal instead of vertical
+         */
+        "horizontal": boolean;
         /**
           * Set to true to indicate this field is invalid.
          */
@@ -540,6 +558,12 @@ declare global {
         prototype: HTMLGrDropdownElement;
         new (): HTMLGrDropdownElement;
     };
+    interface HTMLGrFieldGroupElement extends Components.GrFieldGroup, HTMLStencilElement {
+    }
+    var HTMLGrFieldGroupElement: {
+        prototype: HTMLGrFieldGroupElement;
+        new (): HTMLGrFieldGroupElement;
+    };
     interface HTMLGrInputElement extends Components.GrInput, HTMLStencilElement {
     }
     var HTMLGrInputElement: {
@@ -610,6 +634,7 @@ declare global {
         "gr-button": HTMLGrButtonElement;
         "gr-checkbox": HTMLGrCheckboxElement;
         "gr-dropdown": HTMLGrDropdownElement;
+        "gr-field-group": HTMLGrFieldGroupElement;
         "gr-input": HTMLGrInputElement;
         "gr-menu": HTMLGrMenuElement;
         "gr-menu-divider": HTMLGrMenuDividerElement;
@@ -776,6 +801,20 @@ declare namespace LocalJSX {
           * The distance in pixels from which to offset the panel along its trigger.
          */
         "skidding"?: number;
+    }
+    interface GrFieldGroup {
+        /**
+          * Render the fields horizontal instead of vertical
+         */
+        "horizontal"?: boolean;
+        /**
+          * The field group label. Required for proper accessibility. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * Hides the fieldset and legend that surrounds the field group. The label will still be read by screen readers.
+         */
+        "noFieldset"?: boolean;
     }
     interface GrInput {
         /**
@@ -946,6 +985,10 @@ declare namespace LocalJSX {
           * If `true`, the radios can be deselected.
          */
         "allowEmptySelection"?: boolean;
+        /**
+          * Render the radios horizontal instead of vertical
+         */
+        "horizontal"?: boolean;
         /**
           * Set to true to indicate this field is invalid.
          */
@@ -1167,6 +1210,7 @@ declare namespace LocalJSX {
         "gr-button": GrButton;
         "gr-checkbox": GrCheckbox;
         "gr-dropdown": GrDropdown;
+        "gr-field-group": GrFieldGroup;
         "gr-input": GrInput;
         "gr-menu": GrMenu;
         "gr-menu-divider": GrMenuDivider;
@@ -1187,6 +1231,7 @@ declare module "@stencil/core" {
             "gr-button": LocalJSX.GrButton & JSXBase.HTMLAttributes<HTMLGrButtonElement>;
             "gr-checkbox": LocalJSX.GrCheckbox & JSXBase.HTMLAttributes<HTMLGrCheckboxElement>;
             "gr-dropdown": LocalJSX.GrDropdown & JSXBase.HTMLAttributes<HTMLGrDropdownElement>;
+            "gr-field-group": LocalJSX.GrFieldGroup & JSXBase.HTMLAttributes<HTMLGrFieldGroupElement>;
             "gr-input": LocalJSX.GrInput & JSXBase.HTMLAttributes<HTMLGrInputElement>;
             "gr-menu": LocalJSX.GrMenu & JSXBase.HTMLAttributes<HTMLGrMenuElement>;
             "gr-menu-divider": LocalJSX.GrMenuDivider & JSXBase.HTMLAttributes<HTMLGrMenuDividerElement>;

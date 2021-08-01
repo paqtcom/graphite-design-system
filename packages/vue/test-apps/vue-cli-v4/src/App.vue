@@ -48,6 +48,7 @@
       label="Select an option"
       v-model="selectedValue"
       @gr-change="onRadioChange()"
+      :horizontal="true"
     >
       <gr-radio value="option-1">Option 1</gr-radio>
       <gr-radio value="option-2">Option 2</gr-radio>

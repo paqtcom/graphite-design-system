@@ -8,6 +8,7 @@ import type { JSX } from '@graphiteds/core/components';
 import { GrButton as GrButtonCmp } from '@graphiteds/core/components/gr-button.js';
 import { GrCheckbox as GrCheckboxCmp } from '@graphiteds/core/components/gr-checkbox.js';
 import { GrDropdown as GrDropdownCmp } from '@graphiteds/core/components/gr-dropdown.js';
+import { GrFieldGroup as GrFieldGroupCmp } from '@graphiteds/core/components/gr-field-group.js';
 import { GrInput as GrInputCmp } from '@graphiteds/core/components/gr-input.js';
 import { GrMenu as GrMenuCmp } from '@graphiteds/core/components/gr-menu.js';
 import { GrMenuDivider as GrMenuDividerCmp } from '@graphiteds/core/components/gr-menu-divider.js';
@@ -65,6 +66,13 @@ export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-drop
   'gr-after-show',
   'gr-hide',
   'gr-after-hide'
+]);
+
+
+export const GrFieldGroup = /*@__PURE__*/ defineContainer<JSX.GrFieldGroup>('gr-field-group', GrFieldGroupCmp, [
+  'label',
+  'noFieldset',
+  'horizontal'
 ]);
 
 
@@ -134,6 +142,7 @@ export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-
   'label',
   'invalid',
   'noFieldset',
+  'horizontal',
   'name',
   'value',
   'gr-change'

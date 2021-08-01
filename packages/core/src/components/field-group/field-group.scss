@@ -16,8 +16,6 @@
    * @prop --label-padding-start: Left padding of the label (will be right padding when we support right-to-left direction)
    *
    * @prop --margin-between-radios: Margin between the gr-radio children
-   *
-   * @prop --radio-label-color-invalid: Color of the radio label's when invalid
    */
   --border-radius: var(--gr-form-element-border-radius-medium);
   --border-color: var(--gr-color-light);
@@ -32,10 +30,8 @@
   --label-padding-start: var(--gr-spacing-x-small);
   --label-padding-end: var(--gr-spacing-x-small);
 
-  --margin-between-radios: var(--gr-spacing-x-small);
-  --margin-between-radios-horizontal: var(--gr-spacing-medium);
-
-  --radio-label-color-invalid: var(--gr-color-danger);
+  --margin-between-fields: var(--gr-spacing-x-small);
+  --margin-between-fields-horizontal: var(--gr-spacing-medium);
 
   display: block;
   box-sizing: border-box;
@@ -47,7 +43,7 @@
   }
 }
 
-.radio-group {
+.field-group {
   border: solid 1px var(--border-color);
   border-radius: var(--border-radius);
 
@@ -58,7 +54,7 @@
 
   margin: 0;
 
-  .radio-group-label {
+  .field-group-label {
     font-family: var(--gr-font-family);
     font-size: var(--gr-form-element-font-size-medium);
     font-weight: var(--gr-font-weight-normal);
@@ -71,37 +67,26 @@
   }
 }
 
-:not(.radio-group-horizontal) {
-  ::slotted(gr-radio:not(:last-of-type)) {
+:not(.field-group-horizontal) {
+  ::slotted(*:not(:last-of-type)) {
     display: block;
-    margin-bottom: var(--margin-between-radios);
+    margin-bottom: var(--margin-between-fields);
   }
 }
 
-.radio-group-invalid {
-  ::slotted(gr-radio) {
-    --label-color: var(--radio-label-color-invalid);
+.field-group-horizontal {
+  ::slotted(*:not(:last-of-type)) {
+    margin-right: var(--margin-between-fields-horizontal);
   }
 }
 
-.radio-group-horizontal {
-  ::slotted(gr-radio:not(:last-of-type)) {
-    margin-right: var(--margin-between-radios-horizontal);
-  }
-}
-
-.radio-group-no-fieldset {
+.field-group-no-fieldset {
   border: none;
   padding: 0;
   margin: 0;
   min-width: 0;
 
-  .radio-group-label {
+  .field-group-label {
     @include visually-hidden();
   }
-}
-
-// Invalid text
-.invalid-text {
-  display: none;
 }

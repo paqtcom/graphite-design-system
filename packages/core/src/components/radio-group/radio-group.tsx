@@ -30,6 +30,9 @@ export class RadioGroup {
   /** Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers. */
   @Prop({ reflect: true }) noFieldset = false;
 
+  /** Render the radios horizontal instead of vertical */
+  @Prop({ reflect: true }) horizontal = false;
+
   /** The name of the control, which is submitted with the form data. */
   @Prop() name: string = this.inputId;
 
@@ -152,6 +155,7 @@ export class RadioGroup {
           class={{
             'radio-group': true,
             'radio-group-no-fieldset': this.noFieldset,
+            'radio-group-horizontal': this.horizontal,
             'radio-group-invalid': this.invalid,
           }}
         >

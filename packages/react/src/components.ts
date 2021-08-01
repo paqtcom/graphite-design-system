@@ -11,6 +11,7 @@ defineCustomElements();
 export const GrButton = /*@__PURE__*/createReactComponent<JSX.GrButton, HTMLGrButtonElement>('gr-button');
 export const GrCheckbox = /*@__PURE__*/createReactComponent<JSX.GrCheckbox, HTMLGrCheckboxElement>('gr-checkbox');
 export const GrDropdown = /*@__PURE__*/createReactComponent<JSX.GrDropdown, HTMLGrDropdownElement>('gr-dropdown');
+export const GrFieldGroup = /*@__PURE__*/createReactComponent<JSX.GrFieldGroup, HTMLGrFieldGroupElement>('gr-field-group');
 export const GrInput = /*@__PURE__*/createReactComponent<JSX.GrInput, HTMLGrInputElement>('gr-input');
 export const GrMenu = /*@__PURE__*/createReactComponent<JSX.GrMenu, HTMLGrMenuElement>('gr-menu');
 export const GrMenuDivider = /*@__PURE__*/createReactComponent<JSX.GrMenuDivider, HTMLGrMenuDividerElement>('gr-menu-divider');

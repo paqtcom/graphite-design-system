@@ -52,6 +52,12 @@
 
   display: inline-block;
   box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
 }
 
 :host(.radio-disabled) {

@@ -198,6 +198,16 @@
       </section>
 
       <section>
+        <h3>Horizontal</h3>
+
+        <gr-radio-group label="Select an option" value="3" horizontal>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
         <h3>No-fieldset & disabled option</h3>
 
         <gr-radio-group label="Select an option" value="2" no-fieldset>
@@ -216,21 +226,28 @@
           <gr-radio value="2">Option 2</gr-radio>
           <gr-radio value="3">Option 3</gr-radio>
         </gr-radio-group>
-        <br />
-        <gr-radio-group label="Select an option" invalid no-fieldset>
-          <gr-radio value="1">Option 1</gr-radio>
-          <gr-radio value="2">Option 2</gr-radio>
-          <gr-radio value="3">Option 3</gr-radio>
-        </gr-radio-group>
       </section>
     </section>
 
     <section>
-      <h2>gr-checkbox</h2>
+      <h2>gr-checkbox & gr-field-group</h2>
 
       <section>
         <h3>Checked</h3>
-        <gr-checkbox id="checkbox-test">Option</gr-checkbox>
+        <gr-field-group label="Select options">
+          <gr-checkbox id="checkbox-test" checked>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+        <gr-field-group label="Select options" horizontal>
+          <gr-checkbox>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
       </section>
 
       <section>
