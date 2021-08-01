@@ -17,8 +17,8 @@ Library of components for the Graphite Design System
 To start building the components using [Stencil](https://stenciljs.com/), clone this repo to a new directory:
 
 ```bash
-git clone https://github.com/way2web/graphiteds.git graphiteds
-cd graphiteds
+git clone https://github.com/way2web/graphite-design-system.git graphite-design-system
+cd graphite-design-system
 ```
 
 Run these commands to setup this project:
