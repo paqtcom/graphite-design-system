@@ -223,7 +223,6 @@
 }
 
 .button-native {
-  @include font-smoothing();
   @include text-inherit();
 
   display: block;

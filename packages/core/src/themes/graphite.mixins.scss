@@ -13,11 +13,6 @@
   color: inherit;
 }
 
-@mixin font-smoothing() {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-}
-
 @mixin hide-scrollbar() {
   scrollbar-width: none; // Firefox
   -ms-overflow-style: none; // IE 10+
