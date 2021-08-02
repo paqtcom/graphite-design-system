@@ -158,18 +158,10 @@ export class Button {
           {...inheritedAttributes}
         >
           <span class="button-inner">
-            <span class="button-icon-only">
-              <slot name="icon-only"></slot>
-            </span>
-            <span class="button-start">
-              <slot name="start"></slot>
-            </span>
-            <span class="button-label">
-              <slot></slot>
-            </span>
-            <span class="button-end">
-              <slot name="end"></slot>
-            </span>
+            <slot name="icon-only"></slot>
+            <slot name="start"></slot>
+            <slot></slot>
+            <slot name="end"></slot>
             {this.caret && (
               <span class="caret">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">

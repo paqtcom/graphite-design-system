@@ -369,11 +369,14 @@
   position: relative;
   pointer-events: none;
 
-  .button-start,
-  .button-label,
-  .button-end,
-  .button-icon-only,
   .caret {
+    visibility: hidden;
+  }
+
+  slot[name='start'],
+  slot[name='end'],
+  slot[name='icon-only'],
+  slot:not([name]) {
     visibility: hidden;
   }
 
