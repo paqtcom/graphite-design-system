@@ -32,8 +32,8 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 - Just add the following tags to your page.
   ```html
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@latest/dist/core/core.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@graphiteds/core@latest/dist/core/core.esm.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/dist/core/core.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/dist/core/core.esm.js"></script>
   ```
 - Then you can use the elements anywhere in your template, JSX, html etc.
 - For example:
@@ -43,7 +43,7 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 #### CodeSandbox example
 
-An example of this setup: https://codesandbox.io/s/w2wds-script-tag-example-zx09l
+An example of this setup: https://codesandbox.io/s/graphiteds-script-tag-example-9foz6
 
 ### Angular
 
@@ -99,7 +99,7 @@ _Vue provides several different ways to install and use the framework in an appl
 
 #### CodeSandbox example
 
-An example of this setup: https://codesandbox.io/s/w2wds-vue2-example-mkbm4
+An example of this setup: https://codesandbox.io/s/graphiteds-vue2-example-q7o2c
 
 #### Binding Complex Data
 

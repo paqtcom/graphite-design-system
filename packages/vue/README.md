@@ -69,7 +69,7 @@ We recommend using kebab-case for our components and PascalCase for your own Vue
 
 ### CodeSandbox example
 
-An example of this setup using vue-cli v4: https://codesandbox.io/s/w2wds-vue3-example-5p787
+An example of this setup using vue-cli v4: https://codesandbox.io/s/graphiteds-vue3-example-jhk03
 
 ## Development
 

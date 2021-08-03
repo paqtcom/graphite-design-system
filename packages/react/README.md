@@ -38,7 +38,7 @@ Use it in your JSX as any React component:
 
 ### CodeSandbox example
 
-An example of this setup: https://codesandbox.io/s/w2wds-react-example-i3w25
+An example of this setup: https://codesandbox.io/s/graphiteds-react-example-yhr9p
 
 ## How to release a new version
 
