@@ -16,6 +16,7 @@
    * @prop --label-padding-start: Left padding of the label (will be right padding when we support right-to-left direction)
    *
    * @prop --margin-between-radios: Margin between the gr-radio children
+   * @prop --margin-between-radios-horizontal: Margin between the gr-radio children when layout is horizontal
    *
    * @prop --radio-label-color-invalid: Color of the radio label's when invalid
    */
@@ -32,7 +33,7 @@
   --label-padding-start: var(--gr-spacing-x-small);
   --label-padding-end: var(--gr-spacing-x-small);
 
-  --margin-between-radios: var(--gr-spacing-x-small);
+  --margin-between-radios: var(--gr-spacing-xx-small);
   --margin-between-radios-horizontal: var(--gr-spacing-medium);
 
   --radio-label-color-invalid: var(--gr-color-danger);

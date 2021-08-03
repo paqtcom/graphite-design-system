@@ -147,7 +147,7 @@ export namespace Components {
          */
         "horizontal": boolean;
         /**
-          * The field group label. Required for proper accessibility. Alternatively, you can use the label slot.
+          * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
         /**
@@ -808,7 +808,7 @@ declare namespace LocalJSX {
          */
         "horizontal"?: boolean;
         /**
-          * The field group label. Required for proper accessibility. Alternatively, you can use the label slot.
+          * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
         /**

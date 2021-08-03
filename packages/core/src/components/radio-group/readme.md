@@ -35,19 +35,20 @@
 
 ## CSS Custom Properties
 
-| Name                          | Description                                                                                  |
-| ----------------------------- | -------------------------------------------------------------------------------------------- |
-| `--border-color`              | Border color of the fieldset                                                                 |
-| `--border-radius`             | Border radius of the fieldset                                                                |
-| `--label-color`               | Color of the label                                                                           |
-| `--label-padding-end`         | Right padding of the label (will be left padding when we support right-to-left direction)    |
-| `--label-padding-start`       | Left padding of the label (will be right padding when we support right-to-left direction)    |
-| `--margin-between-radios`     | Margin between the gr-radio children                                                         |
-| `--padding-bottom`            | Bottom padding of the fieldset                                                               |
-| `--padding-end`               | Right padding of the fieldset (will be left padding when we support right-to-left direction) |
-| `--padding-start`             | Left padding of the fieldset (will be right padding when we support right-to-left direction) |
-| `--padding-top`               | Top padding of the fieldset                                                                  |
-| `--radio-label-color-invalid` | Color of the radio label's when invalid                                                      |
+| Name                                 | Description                                                                                  |
+| ------------------------------------ | -------------------------------------------------------------------------------------------- |
+| `--border-color`                     | Border color of the fieldset                                                                 |
+| `--border-radius`                    | Border radius of the fieldset                                                                |
+| `--label-color`                      | Color of the label                                                                           |
+| `--label-padding-end`                | Right padding of the label (will be left padding when we support right-to-left direction)    |
+| `--label-padding-start`              | Left padding of the label (will be right padding when we support right-to-left direction)    |
+| `--margin-between-radios`            | Margin between the gr-radio children                                                         |
+| `--margin-between-radios-horizontal` | Margin between the gr-radio children when layout is horizontal                               |
+| `--padding-bottom`                   | Bottom padding of the fieldset                                                               |
+| `--padding-end`                      | Right padding of the fieldset (will be left padding when we support right-to-left direction) |
+| `--padding-start`                    | Left padding of the fieldset (will be right padding when we support right-to-left direction) |
+| `--padding-top`                      | Top padding of the fieldset                                                                  |
+| `--radio-label-color-invalid`        | Color of the radio label's when invalid                                                      |
 
 
 ----------------------------------------------

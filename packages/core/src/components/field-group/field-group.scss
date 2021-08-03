@@ -15,7 +15,8 @@
    * @prop --label-padding-end: Right padding of the label (will be left padding when we support right-to-left direction)
    * @prop --label-padding-start: Left padding of the label (will be right padding when we support right-to-left direction)
    *
-   * @prop --margin-between-radios: Margin between the gr-radio children
+   * @prop --margin-between-fields: Margin between the children
+   * @prop --margin-between-fields-horizontal: Margin between the children when layout is horizontal
    */
   --border-radius: var(--gr-form-element-border-radius-medium);
   --border-color: var(--gr-color-light);
@@ -30,7 +31,7 @@
   --label-padding-start: var(--gr-spacing-x-small);
   --label-padding-end: var(--gr-spacing-x-small);
 
-  --margin-between-fields: var(--gr-spacing-x-small);
+  --margin-between-fields: var(--gr-spacing-xx-small);
   --margin-between-fields-horizontal: var(--gr-spacing-medium);
 
   display: block;
