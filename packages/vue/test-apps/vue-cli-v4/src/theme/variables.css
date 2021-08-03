@@ -1,11 +1,11 @@
-/** Way2Web Design System CSS Variables overrides **/
+/** Graphite Design System CSS Variables overrides **/
 :root {
-  --way-font-family: Avenir, Helvetica, Arial, sans-serif;
+  --gr-font-family: Avenir, Helvetica, Arial, sans-serif;
 
-  --way-color-primary: #42b983;
-  --way-color-primary-rgb: 66, 185, 131;
-  --way-color-primary-contrast: #ffffff;
-  --way-color-primary-contrast-rgb: 255, 255, 255;
-  --way-color-primary-shade: #3ba575;
-  --way-color-primary-tint: #69c99e;
+  --gr-color-primary: #42b983;
+  --gr-color-primary-rgb: 66, 185, 131;
+  --gr-color-primary-contrast: #ffffff;
+  --gr-color-primary-contrast-rgb: 255, 255, 255;
+  --gr-color-primary-shade: #3ba575;
+  --gr-color-primary-tint: #69c99e;
 }

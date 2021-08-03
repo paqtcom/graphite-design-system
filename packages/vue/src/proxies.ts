@@ -3,25 +3,26 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from '@w2wds/core/components';
+import type { JSX } from '@graphiteds/core/components';
 
-import { WayButton as WayButtonCmp } from '@w2wds/core/components/way-button.js';
-import { WayCheckbox as WayCheckboxCmp } from '@w2wds/core/components/way-checkbox.js';
-import { WayDropdown as WayDropdownCmp } from '@w2wds/core/components/way-dropdown.js';
-import { WayInput as WayInputCmp } from '@w2wds/core/components/way-input.js';
-import { WayMenu as WayMenuCmp } from '@w2wds/core/components/way-menu.js';
-import { WayMenuDivider as WayMenuDividerCmp } from '@w2wds/core/components/way-menu-divider.js';
-import { WayMenuItem as WayMenuItemCmp } from '@w2wds/core/components/way-menu-item.js';
-import { WayMenuLabel as WayMenuLabelCmp } from '@w2wds/core/components/way-menu-label.js';
-import { WayRadio as WayRadioCmp } from '@w2wds/core/components/way-radio.js';
-import { WayRadioGroup as WayRadioGroupCmp } from '@w2wds/core/components/way-radio-group.js';
-import { WaySelect as WaySelectCmp } from '@w2wds/core/components/way-select.js';
-import { WaySpinner as WaySpinnerCmp } from '@w2wds/core/components/way-spinner.js';
-import { WayTag as WayTagCmp } from '@w2wds/core/components/way-tag.js';
-import { WayTextarea as WayTextareaCmp } from '@w2wds/core/components/way-textarea.js';
+import { GrButton as GrButtonCmp } from '@graphiteds/core/components/gr-button.js';
+import { GrCheckbox as GrCheckboxCmp } from '@graphiteds/core/components/gr-checkbox.js';
+import { GrDropdown as GrDropdownCmp } from '@graphiteds/core/components/gr-dropdown.js';
+import { GrFieldGroup as GrFieldGroupCmp } from '@graphiteds/core/components/gr-field-group.js';
+import { GrInput as GrInputCmp } from '@graphiteds/core/components/gr-input.js';
+import { GrMenu as GrMenuCmp } from '@graphiteds/core/components/gr-menu.js';
+import { GrMenuDivider as GrMenuDividerCmp } from '@graphiteds/core/components/gr-menu-divider.js';
+import { GrMenuItem as GrMenuItemCmp } from '@graphiteds/core/components/gr-menu-item.js';
+import { GrMenuLabel as GrMenuLabelCmp } from '@graphiteds/core/components/gr-menu-label.js';
+import { GrRadio as GrRadioCmp } from '@graphiteds/core/components/gr-radio.js';
+import { GrRadioGroup as GrRadioGroupCmp } from '@graphiteds/core/components/gr-radio-group.js';
+import { GrSelect as GrSelectCmp } from '@graphiteds/core/components/gr-select.js';
+import { GrSpinner as GrSpinnerCmp } from '@graphiteds/core/components/gr-spinner.js';
+import { GrTag as GrTagCmp } from '@graphiteds/core/components/gr-tag.js';
+import { GrTextarea as GrTextareaCmp } from '@graphiteds/core/components/gr-textarea.js';
 
 
-export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-button', WayButtonCmp, [
+export const GrButton = /*@__PURE__*/ defineContainer<JSX.GrButton>('gr-button', GrButtonCmp, [
   'variant',
   'disabled',
   'loading',
@@ -34,26 +35,26 @@ export const WayButton = /*@__PURE__*/ defineContainer<JSX.WayButton>('way-butto
   'target',
   'rel',
   'type',
-  'way-focus',
-  'way-blur'
+  'gr-focus',
+  'gr-blur'
 ]);
 
 
-export const WayCheckbox = /*@__PURE__*/ defineContainer<JSX.WayCheckbox>('way-checkbox', WayCheckboxCmp, [
+export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-checkbox', GrCheckboxCmp, [
   'value',
   'disabled',
   'name',
   'checked',
   'indeterminate',
   'invalid',
-  'way-blur',
-  'way-focus',
-  'way-change'
+  'gr-blur',
+  'gr-focus',
+  'gr-change'
 ],
-'checked', 'v-way-change', 'way-change');
+'checked', 'v-gr-change', 'gr-change');
 
 
-export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-dropdown', WayDropdownCmp, [
+export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-dropdown', GrDropdownCmp, [
   'open',
   'placement',
   'closeOnSelect',
@@ -61,14 +62,21 @@ export const WayDropdown = /*@__PURE__*/ defineContainer<JSX.WayDropdown>('way-d
   'distance',
   'skidding',
   'hoist',
-  'way-show',
-  'way-after-show',
-  'way-hide',
-  'way-after-hide'
+  'gr-show',
+  'gr-after-show',
+  'gr-hide',
+  'gr-after-hide'
 ]);
 
 
-export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input', WayInputCmp, [
+export const GrFieldGroup = /*@__PURE__*/ defineContainer<JSX.GrFieldGroup>('gr-field-group', GrFieldGroupCmp, [
+  'label',
+  'noFieldset',
+  'horizontal'
+]);
+
+
+export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', GrInputCmp, [
   'value',
   'type',
   'pill',
@@ -93,55 +101,56 @@ export const WayInput = /*@__PURE__*/ defineContainer<JSX.WayInput>('way-input',
   'autocorrect',
   'autofocus',
   'debounce',
-  'way-change',
-  'way-clear',
-  'way-input',
-  'way-focus',
-  'way-blur'
+  'gr-change',
+  'gr-clear',
+  'gr-input',
+  'gr-focus',
+  'gr-blur'
 ],
-'value', 'v-way-change', 'way-change');
+'value', 'v-gr-change', 'gr-change');
 
 
-export const WayMenu = /*@__PURE__*/ defineContainer<JSX.WayMenu>('way-menu', WayMenuCmp, [
-  'way-select'
+export const GrMenu = /*@__PURE__*/ defineContainer<JSX.GrMenu>('gr-menu', GrMenuCmp, [
+  'gr-select'
 ]);
 
 
-export const WayMenuDivider = /*@__PURE__*/ defineContainer<JSX.WayMenuDivider>('way-menu-divider', WayMenuDividerCmp);
+export const GrMenuDivider = /*@__PURE__*/ defineContainer<JSX.GrMenuDivider>('gr-menu-divider', GrMenuDividerCmp);
 
 
-export const WayMenuItem = /*@__PURE__*/ defineContainer<JSX.WayMenuItem>('way-menu-item', WayMenuItemCmp, [
+export const GrMenuItem = /*@__PURE__*/ defineContainer<JSX.GrMenuItem>('gr-menu-item', GrMenuItemCmp, [
   'checked',
   'value',
   'disabled'
 ]);
 
 
-export const WayMenuLabel = /*@__PURE__*/ defineContainer<JSX.WayMenuLabel>('way-menu-label', WayMenuLabelCmp);
+export const GrMenuLabel = /*@__PURE__*/ defineContainer<JSX.GrMenuLabel>('gr-menu-label', GrMenuLabelCmp);
 
 
-export const WayRadio = /*@__PURE__*/ defineContainer<JSX.WayRadio>('way-radio', WayRadioCmp, [
+export const GrRadio = /*@__PURE__*/ defineContainer<JSX.GrRadio>('gr-radio', GrRadioCmp, [
   'value',
   'disabled',
   'checked',
-  'way-blur',
-  'way-focus'
+  'gr-blur',
+  'gr-focus'
 ]);
 
 
-export const WayRadioGroup = /*@__PURE__*/ defineContainer<JSX.WayRadioGroup>('way-radio-group', WayRadioGroupCmp, [
+export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-radio-group', GrRadioGroupCmp, [
   'allowEmptySelection',
   'label',
   'invalid',
   'noFieldset',
+  'horizontal',
   'name',
   'value',
-  'way-change'
+  'gr-change'
 ],
-'value', 'v-way-change', 'way-change');
+'value', 'v-gr-change', 'gr-change');
 
 
-export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-select', WaySelectCmp, [
+export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select', GrSelectCmp, [
   'multiple',
   'maxTagsVisible',
   'disabled',
@@ -156,26 +165,26 @@ export const WaySelect = /*@__PURE__*/ defineContainer<JSX.WaySelect>('way-selec
   'invalidText',
   'invalid',
   'clearable',
-  'way-change',
-  'way-focus',
-  'way-blur'
+  'gr-change',
+  'gr-focus',
+  'gr-blur'
 ],
-'value', 'v-way-change', 'way-change');
+'value', 'v-gr-change', 'gr-change');
 
 
-export const WaySpinner = /*@__PURE__*/ defineContainer<JSX.WaySpinner>('way-spinner', WaySpinnerCmp);
+export const GrSpinner = /*@__PURE__*/ defineContainer<JSX.GrSpinner>('gr-spinner', GrSpinnerCmp);
 
 
-export const WayTag = /*@__PURE__*/ defineContainer<JSX.WayTag>('way-tag', WayTagCmp, [
+export const GrTag = /*@__PURE__*/ defineContainer<JSX.GrTag>('gr-tag', GrTagCmp, [
   'type',
   'size',
   'pill',
   'clearable',
-  'way-clear'
+  'gr-clear'
 ]);
 
 
-export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-textarea', WayTextareaCmp, [
+export const GrTextarea = /*@__PURE__*/ defineContainer<JSX.GrTextarea>('gr-textarea', GrTextareaCmp, [
   'size',
   'name',
   'value',
@@ -196,10 +205,10 @@ export const WayTextarea = /*@__PURE__*/ defineContainer<JSX.WayTextarea>('way-t
   'autocorrect',
   'autofocus',
   'debounce',
-  'way-change',
-  'way-input',
-  'way-focus',
-  'way-blur'
+  'gr-change',
+  'gr-input',
+  'gr-focus',
+  'gr-blur'
 ],
-'value', 'v-way-change', 'way-change');
+'value', 'v-gr-change', 'gr-change');
 

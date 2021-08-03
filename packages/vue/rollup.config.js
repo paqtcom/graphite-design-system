@@ -11,5 +11,5 @@ export default {
       sourcemap: true,
     },
   ],
-  external: (id) => external.includes(id) || id.startsWith("@w2wds/core"),
+  external: (id) => external.includes(id) || id.startsWith("@graphiteds/core"),
 };

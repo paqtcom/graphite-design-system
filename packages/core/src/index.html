@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Way2Web Design System</title>
+    <title>Graphite Design System</title>
 
     <link rel="stylesheet" href="/build/core.css" />
     <script type="module" src="/build/core.esm.js"></script>
@@ -12,589 +12,598 @@
     <style>
       body {
         font-family: sans-serif;
-        background-color: #f3f8fb;
+        background-color: #f9f9f9;
       }
     </style>
   </head>
   <body>
     <section>
-      <h2>way-input</h2>
+      <h2>gr-input</h2>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-input size="small" placeholder="Small"></way-input>
+        <gr-input size="small" placeholder="Small"></gr-input>
         <br />
-        <way-input size="medium" placeholder="Medium"></way-input>
+        <gr-input size="medium" placeholder="Medium"></gr-input>
         <br />
-        <way-input size="large" placeholder="Large"></way-input>
+        <gr-input size="large" placeholder="Large"></gr-input>
       </section>
 
       <section>
         <h3>Disabled</h3>
 
-        <way-input disabled></way-input>
+        <gr-input disabled></gr-input>
       </section>
 
       <section>
         <h3>Clearable</h3>
 
-        <way-input placeholder="Clearable" clearable></way-input>
+        <gr-input placeholder="Clearable" clearable></gr-input>
       </section>
 
       <section>
         <h3>Pill</h3>
 
-        <way-input size="small" pill></way-input>
+        <gr-input size="small" pill></gr-input>
         <br />
-        <way-input size="medium" pill></way-input>
+        <gr-input size="medium" pill></gr-input>
         <br />
-        <way-input size="large" pill></way-input>
+        <gr-input size="large" pill></gr-input>
       </section>
 
       <section>
         <h3>Number input with min, max, step</h3>
 
-        <way-input type="number" min="0" max="100" step="2" value="34"></way-input>
+        <gr-input type="number" min="0" max="100" step="2" value="34"></gr-input>
       </section>
 
       <section>
         <h3>Labels</h3>
 
-        <way-input type="password" label="Password"></way-input>
+        <gr-input type="password" label="Password"></gr-input>
       </section>
 
       <section>
         <h3>Help Text</h3>
 
-        <way-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></way-input>
+        <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></gr-input>
       </section>
 
       <section>
         <h3>Invalid Text</h3>
 
-        <way-input
+        <gr-input
           type="password"
           label="Password"
           help-text="Passwords must be at least 8 characters."
           invalid-text="Create a password with at least 8 characters."
           invalid
-        ></way-input>
+        ></gr-input>
       </section>
     </section>
 
     <section>
-      <h2>way-spinner</h2>
+      <h2>gr-spinner</h2>
 
-      <way-spinner></way-spinner>
+      <gr-spinner></gr-spinner>
 
       <section>
         <h3>Size</h3>
 
-        <way-spinner></way-spinner>
-        <way-spinner style="font-size: 2rem"></way-spinner>
-        <way-spinner style="font-size: 3rem"></way-spinner>
+        <gr-spinner></gr-spinner>
+        <gr-spinner style="font-size: 2rem"></gr-spinner>
+        <gr-spinner style="font-size: 3rem"></gr-spinner>
       </section>
 
       <section>
         <h3>Stroke Width</h3>
 
-        <way-spinner style="font-size: 2rem; --stroke-width: 6px"></way-spinner>
+        <gr-spinner style="font-size: 2rem; --stroke-width: 6px"></gr-spinner>
       </section>
 
       <section>
         <h3>Color</h3>
 
-        <way-spinner style="font-size: 2rem; --indicator-color: tomato"></way-spinner>
+        <gr-spinner style="font-size: 2rem; --indicator-color: tomato"></gr-spinner>
       </section>
     </section>
 
     <section>
-      <h2>way-textarea</h2>
+      <h2>gr-textarea</h2>
 
-      <way-textarea></way-textarea>
+      <gr-textarea></gr-textarea>
 
       <section>
         <h3>Rows</h3>
 
-        <way-textarea rows="3"></way-textarea>
+        <gr-textarea rows="3"></gr-textarea>
       </section>
 
       <section>
         <h3>Placeholder</h3>
 
-        <way-textarea placeholder="Type something"></way-textarea>
+        <gr-textarea placeholder="Type something"></gr-textarea>
       </section>
 
       <section>
         <h3>Max Characters (20)</h3>
 
-        <way-textarea maxlength="20"></way-textarea>
+        <gr-textarea maxlength="20"></gr-textarea>
       </section>
 
       <section>
         <h3>Disabled</h3>
 
-        <way-textarea disabled></way-textarea>
+        <gr-textarea disabled></gr-textarea>
       </section>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-textarea placeholder="Small" size="small"></way-textarea>
+        <gr-textarea placeholder="Small" size="small"></gr-textarea>
         <br />
-        <way-textarea placeholder="Medium" size="medium"></way-textarea>
+        <gr-textarea placeholder="Medium" size="medium"></gr-textarea>
         <br />
-        <way-textarea placeholder="Large" size="large"></way-textarea>
+        <gr-textarea placeholder="Large" size="large"></gr-textarea>
       </section>
 
       <section>
         <h3>Labels</h3>
 
-        <way-textarea label="Comments"></way-textarea>
+        <gr-textarea label="Comments"></gr-textarea>
       </section>
 
       <section>
         <h3>Help Text</h3>
 
-        <way-textarea label="Feedback" help-text="Please tell us what you think."></way-textarea>
+        <gr-textarea label="Feedback" help-text="Please tell us what you think."></gr-textarea>
       </section>
 
       <section>
         <h3>Invalid Text</h3>
 
-        <way-textarea
+        <gr-textarea
           label="Feedback"
           help-text="Please tell us what you think."
           invalid-text="Enter what you think"
           invalid
-        ></way-textarea>
+        ></gr-textarea>
       </section>
 
       <section>
         <h3>Prevent Resizing</h3>
 
-        <way-textarea resize="none"></way-textarea>
+        <gr-textarea resize="none"></gr-textarea>
       </section>
 
       <section>
         <h3>Expand with Content</h3>
 
-        <way-textarea resize="auto"></way-textarea>
+        <gr-textarea resize="auto"></gr-textarea>
       </section>
     </section>
 
     <section>
-      <h2>way-radio & way-radio-group</h2>
+      <h2>gr-radio & gr-radio-group</h2>
 
       <section>
         <h3>With fieldset</h3>
 
-        <way-radio-group label="Select an option" value="3">
-          <way-radio value="1">Option 1</way-radio>
-          <way-radio value="2">Option 2</way-radio>
-          <way-radio value="3">Option 3</way-radio>
-        </way-radio-group>
+        <gr-radio-group label="Select an option" value="3">
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+
+        <gr-radio-group label="Select an option" value="3" horizontal>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
       </section>
 
       <section>
         <h3>No-fieldset & disabled option</h3>
 
-        <way-radio-group label="Select an option" value="2" no-fieldset>
-          <way-radio value="1">Option 1</way-radio>
-          <way-radio value="2">Option 2</way-radio>
-          <way-radio value="3">Option 3</way-radio>
-          <way-radio value="4" disabled>Disabled</way-radio>
-        </way-radio-group>
+        <gr-radio-group label="Select an option" value="2" no-fieldset>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+          <gr-radio value="4" disabled>Disabled</gr-radio>
+        </gr-radio-group>
       </section>
 
       <section>
         <h3>Invalid</h3>
 
-        <way-radio-group label="Select an option" invalid>
-          <way-radio value="1">Option 1</way-radio>
-          <way-radio value="2">Option 2</way-radio>
-          <way-radio value="3">Option 3</way-radio>
-        </way-radio-group>
-        <br />
-        <way-radio-group label="Select an option" invalid no-fieldset>
-          <way-radio value="1">Option 1</way-radio>
-          <way-radio value="2">Option 2</way-radio>
-          <way-radio value="3">Option 3</way-radio>
-        </way-radio-group>
+        <gr-radio-group label="Select an option" invalid>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
       </section>
     </section>
 
     <section>
-      <h2>way-checkbox</h2>
+      <h2>gr-checkbox & gr-field-group</h2>
 
       <section>
         <h3>Checked</h3>
-        <way-checkbox id="checkbox-test">Option</way-checkbox>
+        <gr-field-group label="Select options">
+          <gr-checkbox id="checkbox-test" checked>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+        <gr-field-group label="Select options" horizontal>
+          <gr-checkbox>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
       </section>
 
       <section>
         <h3>Indeterminate</h3>
-        <way-checkbox indeterminate>Indeterminate</way-checkbox>
+        <gr-checkbox indeterminate>Indeterminate</gr-checkbox>
       </section>
 
       <section>
         <h3>Disabled</h3>
-        <way-checkbox disabled>Disabled</way-checkbox>
+        <gr-checkbox disabled>Disabled</gr-checkbox>
       </section>
 
       <section>
         <h3>Invalid</h3>
-        <way-checkbox invalid>Option 1</way-checkbox>
-        <br />
-        <way-checkbox invalid>Option 2</way-checkbox>
-        <br />
-        <way-checkbox invalid>Option 3</way-checkbox>
+        <gr-checkbox invalid>Option 1</gr-checkbox>
       </section>
     </section>
 
     <section>
-      <h2>way-select</h2>
+      <h2>gr-select</h2>
 
       <section>
         <h3>Placeholders</h3>
 
-        <way-select placeholder="Select one">
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Clearable</h3>
 
-        <way-select placeholder="Clearable" clearable>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Clearable" clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Pill</h3>
 
-        <way-select pill>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select pill>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Disabled</h3>
 
-        <way-select placeholder="Disabled" disabled>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Disabled" disabled>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Multiple</h3>
 
-        <way-select placeholder="Select multiple" multiple pill>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-          <way-menu-divider></way-menu-divider>
-          <way-menu-item value="option-4">Option 4</way-menu-item>
-          <way-menu-item value="option-5">Option 5</way-menu-item>
-          <way-menu-item value="option-6">Option 6</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Select multiple" multiple pill>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item value="option-4">Option 4</gr-menu-item>
+          <gr-menu-item value="option-5">Option 5</gr-menu-item>
+          <gr-menu-item value="option-6">Option 6</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Grouping Options</h3>
 
-        <way-select placeholder="Select one">
-          <way-menu-label>Group 1</way-menu-label>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-          <way-menu-divider></way-menu-divider>
-          <way-menu-label>Group 2</way-menu-label>
-          <way-menu-item value="option-4">Option 4</way-menu-item>
-          <way-menu-item value="option-5">Option 5</way-menu-item>
-          <way-menu-item value="option-6">Option 6</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Select one">
+          <gr-menu-label>Group 1</gr-menu-label>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-label>Group 2</gr-menu-label>
+          <gr-menu-item value="option-4">Option 4</gr-menu-item>
+          <gr-menu-item value="option-5">Option 5</gr-menu-item>
+          <gr-menu-item value="option-6">Option 6</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-select placeholder="Small" size="small" multiple clearable>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Small" size="small" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
 
         <br />
 
-        <way-select placeholder="Medium" size="medium" multiple clearable>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Medium" size="medium" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
 
         <br />
 
-        <way-select placeholder="Large" size="large" multiple clearable>
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select placeholder="Large" size="large" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Labels</h3>
 
-        <way-select label="Select one">
-          <way-menu-item value="option-1">Option 1</way-menu-item>
-          <way-menu-item value="option-2">Option 2</way-menu-item>
-          <way-menu-item value="option-3">Option 3</way-menu-item>
-        </way-select>
+        <gr-select label="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Help Text</h3>
 
-        <way-select label="Experience" help-text="Please tell us your skill level.">
-          <way-menu-item value="option-1">Novice</way-menu-item>
-          <way-menu-item value="option-2">Intermediate</way-menu-item>
-          <way-menu-item value="option-3">Advanced</way-menu-item>
-        </way-select>
+        <gr-select label="Experience" help-text="Please tell us your skill level.">
+          <gr-menu-item value="option-1">Novice</gr-menu-item>
+          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
+          <gr-menu-item value="option-3">Advanced</gr-menu-item>
+        </gr-select>
       </section>
 
       <section>
         <h3>Invalid Text</h3>
 
-        <way-select
+        <gr-select
           label="Experience"
           help-text="Please tell us your skill level."
           invalid-text="Select your skill level"
           invalid
         >
-          <way-menu-item value="option-1">Novice</way-menu-item>
-          <way-menu-item value="option-2">Intermediate</way-menu-item>
-          <way-menu-item value="option-3">Advanced</way-menu-item>
-        </way-select>
+          <gr-menu-item value="option-1">Novice</gr-menu-item>
+          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
+          <gr-menu-item value="option-3">Advanced</gr-menu-item>
+        </gr-select>
       </section>
     </section>
 
     <section>
-      <h2>way-tag</h2>
+      <h2>gr-tag</h2>
 
       <section>
         <h3>Types</h3>
 
-        <way-tag type="primary">Primary</way-tag>
-        <way-tag type="success">Success</way-tag>
-        <way-tag type="info">Info</way-tag>
-        <way-tag type="warning">Warning</way-tag>
-        <way-tag type="danger">Danger</way-tag>
+        <gr-tag type="primary">Primary</gr-tag>
+        <gr-tag type="success">Success</gr-tag>
+        <gr-tag type="info">Info</gr-tag>
+        <gr-tag type="warning">Warning</gr-tag>
+        <gr-tag type="danger">Danger</gr-tag>
       </section>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-tag size="small">Small</way-tag>
-        <way-tag size="medium">Medium</way-tag>
-        <way-tag size="large">Large</way-tag>
+        <gr-tag size="small">Small</gr-tag>
+        <gr-tag size="medium">Medium</gr-tag>
+        <gr-tag size="large">Large</gr-tag>
       </section>
 
       <section>
         <h3>Pill</h3>
 
-        <way-tag size="small" pill>Small</way-tag>
-        <way-tag size="medium" pill>Medium</way-tag>
-        <way-tag size="large" pill>Large</way-tag>
+        <gr-tag size="small" pill>Small</gr-tag>
+        <gr-tag size="medium" pill>Medium</gr-tag>
+        <gr-tag size="large" pill>Large</gr-tag>
       </section>
 
       <section>
         <h3>Clearable</h3>
 
         <div class="tags-clearable">
-          <way-tag type="info" size="small" clearable>Small</way-tag>
-          <way-tag size="medium" clearable>Medium</way-tag>
-          <way-tag type="danger" size="large" clearable>Large</way-tag>
+          <gr-tag type="info" size="small" clearable>Small</gr-tag>
+          <gr-tag size="medium" clearable>Medium</gr-tag>
+          <gr-tag type="danger" size="large" clearable>Large</gr-tag>
         </div>
       </section>
     </section>
 
     <section>
-      <h2>way-dropdown</h2>
+      <h2>gr-dropdown</h2>
 
-      <way-dropdown placement="right-start">
-        <way-button wayot="trigger" caret>Dropdown</way-button>
-        <way-menu>
-          <way-menu-item>Dropdown Item 1</way-menu-item>
-          <way-menu-item>Dropdown Item 2</way-menu-item>
-          <way-menu-item>Dropdown Item 3</way-menu-item>
-          <way-menu-divider></way-menu-divider>
-          <way-menu-item checked>Checked</way-menu-item>
-          <way-menu-item disabled>Disabled</way-menu-item>
-          <way-menu-divider></way-menu-divider>
-          <way-menu-item>
+      <gr-dropdown placement="right-start">
+        <gr-button slot="trigger" caret>Dropdown</gr-button>
+        <gr-menu>
+          <gr-menu-item>Dropdown Item 1</gr-menu-item>
+          <gr-menu-item>Dropdown Item 2</gr-menu-item>
+          <gr-menu-item>Dropdown Item 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item checked>Checked</gr-menu-item>
+          <gr-menu-item disabled>Disabled</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item>
             Prefix
-            <ion-icon wayot="start" name="gift-outline"></ion-icon>
-          </way-menu-item>
-          <way-menu-item>
+            <ion-icon slot="start" name="gift-outline"></ion-icon>
+          </gr-menu-item>
+          <gr-menu-item>
             Suffix Icon
-            <ion-icon wayot="end" name="heart-outline"></ion-icon>
-          </way-menu-item>
-        </way-menu>
-      </way-dropdown>
+            <ion-icon slot="end" name="heart-outline"></ion-icon>
+          </gr-menu-item>
+        </gr-menu>
+      </gr-dropdown>
     </section>
 
     <section>
-      <h2>way-menu</h2>
-      <p>Including way-menu-item & way-menu-divider & way-menu-label</p>
+      <h2>gr-menu</h2>
+      <p>Including gr-menu-item & gr-menu-divider & gr-menu-label</p>
 
-      <way-menu
-        style="
-          max-width: 200px;
-          border: solid 1px var(--way-color-light);
-          border-radius: var(--way-border-radius-medium);
-        "
+      <gr-menu
+        style="max-width: 200px; border: solid 1px var(--gr-color-light); border-radius: var(--gr-border-radius-medium)"
       >
-        <way-menu-label>Timetravel</way-menu-label>
-        <way-menu-item value="undo" checked>Undo</way-menu-item>
-        <way-menu-item value="redo">Redo</way-menu-item>
-        <way-menu-divider></way-menu-divider>
-        <way-menu-label>Transformation</way-menu-label>
-        <way-menu-item value="cut" disabled>Cut</way-menu-item>
-        <way-menu-item value="copy" checked>
+        <gr-menu-label>Timetravel</gr-menu-label>
+        <gr-menu-item value="undo" checked>Undo</gr-menu-item>
+        <gr-menu-item value="redo">Redo</gr-menu-item>
+        <gr-menu-divider></gr-menu-divider>
+        <gr-menu-label>Transformation</gr-menu-label>
+        <gr-menu-item value="cut" disabled>Cut</gr-menu-item>
+        <gr-menu-item value="copy" checked>
           Copy
-          <ion-icon wayot="end" name="copy-outline"></ion-icon>
-        </way-menu-item>
-        <way-menu-item value="paste">
-          <ion-icon wayot="start" name="clipboard-outline"></ion-icon>
+          <ion-icon slot="end" name="copy-outline"></ion-icon>
+        </gr-menu-item>
+        <gr-menu-item value="paste">
+          <ion-icon slot="start" name="clipboard-outline"></ion-icon>
           Paste
-        </way-menu-item>
-        <way-menu-item value="delete">Delete</way-menu-item>
-      </way-menu>
+        </gr-menu-item>
+        <gr-menu-item value="delete">Delete</gr-menu-item>
+      </gr-menu>
     </section>
 
     <section>
-      <h2>way-button</h2>
+      <h2>gr-button</h2>
 
       <section>
         <h3>Variants</h3>
 
-        <way-button>Default</way-button>
-        <way-button variant="primary" id="focusBlurExample">Primary</way-button>
-        <way-button variant="secondary">Secondary</way-button>
-        <way-button variant="danger">Danger</way-button>
-        <way-button variant="plain">Plain</way-button>
+        <gr-button>Default</gr-button>
+        <gr-button variant="primary" id="focusBlurExample">Primary</gr-button>
+        <gr-button variant="secondary">Secondary</gr-button>
+        <gr-button variant="danger">Danger</gr-button>
+        <gr-button variant="plain">Plain</gr-button>
       </section>
 
       <section>
         <h3>Sizes</h3>
 
-        <way-button size="small">Small</way-button>
-        <way-button>Medium</way-button>
-        <way-button size="large">Large</way-button>
+        <gr-button size="small">Small</gr-button>
+        <gr-button>Medium</gr-button>
+        <gr-button size="large">Large</gr-button>
       </section>
 
       <section>
         <h3>Icons</h3>
 
-        <way-button>
-          <ion-icon name="settings-outline" wayot="start"></ion-icon>
+        <gr-button>
+          <ion-icon name="settings-outline" slot="start"></ion-icon>
           Settings
-        </way-button>
+        </gr-button>
 
-        <way-button>
-          <ion-icon name="refresh-outline" wayot="end"></ion-icon>
+        <gr-button>
+          <ion-icon name="refresh-outline" slot="end"></ion-icon>
           Refresh
-        </way-button>
+        </gr-button>
 
-        <way-button>
-          <ion-icon name="link-outline" wayot="start"></ion-icon>
+        <gr-button>
+          <ion-icon name="link-outline" slot="start"></ion-icon>
           Open
-          <ion-icon name="exit-outline" wayot="end"></ion-icon>
-        </way-button>
+          <ion-icon name="exit-outline" slot="end"></ion-icon>
+        </gr-button>
       </section>
 
       <section>
         <h3>Circle Buttons</h3>
 
-        <way-button variant="primary" size="small" circle>
-          <ion-icon name="add-outline" wayot="icon-only"></ion-icon>
-        </way-button>
+        <gr-button variant="primary" size="small" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </gr-button>
 
-        <way-button variant="primary" circle>
-          <ion-icon name="add-outline" wayot="icon-only"></ion-icon>
-        </way-button>
+        <gr-button variant="primary" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </gr-button>
 
-        <way-button variant="primary" size="large" circle>
-          <ion-icon name="add-outline" wayot="icon-only"></ion-icon>
-        </way-button>
+        <gr-button variant="primary" size="large" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </gr-button>
       </section>
 
       <section>
         <h3>Link Buttons</h3>
 
-        <way-button href="https://www.way2web.nl" target="_blank"> Link </way-button>
+        <gr-button href="https://www.way2web.nl" target="_blank"> Link </gr-button>
       </section>
 
       <section>
         <h3>Block Button</h3>
 
-        <way-button expand="block"> Block </way-button>
+        <gr-button expand="block"> Block </gr-button>
       </section>
 
       <section>
         <h3>Full Button</h3>
 
-        <way-button expand="full" aria-label="aria label test"> Block </way-button>
+        <gr-button expand="full" aria-label="aria label test"> Block </gr-button>
       </section>
 
       <section>
         <h3>Caret</h3>
 
-        <way-button size="small" caret>Small</way-button>
-        <way-button size="medium" caret>Medium</way-button>
-        <way-button size="large" caret>Large</way-button>
+        <gr-button size="small" caret>Small</gr-button>
+        <gr-button size="medium" caret>Medium</gr-button>
+        <gr-button size="large" caret>Large</gr-button>
       </section>
 
       <section>
         <h3>Loading</h3>
 
-        <way-button loading>Default</way-button>
-        <way-button variant="primary" loading>Primary</way-button>
-        <way-button variant="secondary" loading>Secondary</way-button>
-        <way-button variant="danger" loading>Danger</way-button>
-        <way-button variant="plain" loading>Plain</way-button>
+        <gr-button loading>Default</gr-button>
+        <gr-button variant="primary" loading>Primary</gr-button>
+        <gr-button variant="secondary" loading>Secondary</gr-button>
+        <gr-button variant="danger" loading>Danger</gr-button>
+        <gr-button variant="plain" loading>Plain</gr-button>
       </section>
 
       <section>
         <h3>Pill</h3>
 
-        <way-button size="small" pill variant="danger">Small</way-button>
-        <way-button size="medium" pill>Medium</way-button>
-        <way-button size="large" pill variant="primary">Large</way-button>
+        <gr-button size="small" pill variant="danger">Small</gr-button>
+        <gr-button size="medium" pill>Medium</gr-button>
+        <gr-button size="large" pill variant="primary">Large</gr-button>
       </section>
 
       <section>
         <h3>Disabled</h3>
 
-        <way-button id="clickExample" disabled> Default </way-button>
+        <gr-button id="clickExample" disabled> Default </gr-button>
 
-        <way-button variant="primary" disabled> Primary </way-button>
+        <gr-button variant="primary" disabled> Primary </gr-button>
 
-        <way-button variant="secondary" disabled> Secondary </way-button>
+        <gr-button variant="secondary" disabled> Secondary </gr-button>
 
-        <way-button variant="danger" disabled> Danger </way-button>
+        <gr-button variant="danger" disabled> Danger </gr-button>
 
-        <way-button variant="plain" disabled> Plain </way-button>
+        <gr-button variant="plain" disabled> Plain </gr-button>
       </section>
     </section>
 
@@ -607,17 +616,17 @@
 
       const focusBlurExampleElement = document.getElementById('focusBlurExample');
 
-      focusBlurExampleElement.addEventListener('way-focus', () => {
-        console.log('way-focus');
+      focusBlurExampleElement.addEventListener('gr-focus', () => {
+        console.log('gr-focus');
       });
 
-      focusBlurExampleElement.addEventListener('way-blur', () => {
-        console.log('way-blur');
+      focusBlurExampleElement.addEventListener('gr-blur', () => {
+        console.log('gr-blur');
       });
 
       const tagsClearable = document.querySelector('.tags-clearable');
 
-      tagsClearable.addEventListener('way-clear', event => {
+      tagsClearable.addEventListener('gr-clear', event => {
         const tag = event.target;
         tag.style.opacity = '0';
         setTimeout(() => (tag.style.opacity = '1'), 2000);
@@ -625,12 +634,12 @@
 
       const checkboxTest = document.querySelector('#checkbox-test');
 
-      checkboxTest.addEventListener('way-focus', () => {
-        console.log('way-focus');
+      checkboxTest.addEventListener('gr-focus', () => {
+        console.log('gr-focus');
       });
 
-      checkboxTest.addEventListener('way-blur', () => {
-        console.log('way-blur');
+      checkboxTest.addEventListener('gr-blur', () => {
+        console.log('gr-blur');
       });
     </script>
   </body>

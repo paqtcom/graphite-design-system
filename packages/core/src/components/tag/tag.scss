@@ -1,0 +1,181 @@
+:host {
+  /**
+   * @prop --height: Height of the tag
+   * @prop --line-height: Line height of the tag
+   *
+   * @prop --border-radius: Border radius of the tag
+   * @prop --border-width: Border width of the tag
+   * @prop --border-style: Border style of the tag
+   *
+   * @prop --padding-top: Top padding of the tag
+   * @prop --padding-end: Right padding of the tag (will be left padding when we support right-to-left direction)
+   * @prop --padding-bottom: Bottom padding of the tag
+   * @prop --padding-start: Left padding of the tag (will be right padding when we support right-to-left direction)
+   *
+   * @prop --font-size: Font size of the tag
+   *
+   * @prop --background-color: Background color of the tag
+   * @prop --border-color: Border color of the tag
+   * @prop --color: Text color of the tag
+   *
+   * @prop --clear-color: Color of the clear icon
+   * @prop --clear-color-hover: Color of the clear icon on hover
+   * @prop --clear-margin-left: Margin left of the clear icon
+   * @prop --clear-margin-right: Margin right of the clear icon
+   */
+  --height: calc(var(--gr-form-element-height-medium) * 0.8);
+  --line-height: calc(var(--gr-form-element-height-medium) - 1px * 2);
+
+  --border-radius: var(--gr-form-element-border-radius-medium);
+  --border-width: 1px;
+  --border-style: solid;
+
+  --padding-top: 0;
+  --padding-start: var(--gr-spacing-small);
+  --padding-end: var(--gr-spacing-small);
+  --padding-bottom: 0;
+
+  --font-size: var(--gr-form-element-font-size-medium);
+
+  --background-color: rgba(var(--gr-color-primary-rgb), 0.05);
+  --border-color: rgba(var(--gr-color-primary-rgb), 0.2);
+  --color: var(--gr-color-primary-shade);
+
+  --clear-color: var(--gr-color-primary);
+  --clear-color-hover: var(--gr-color-primary-shade);
+  --clear-margin-left: var(--gr-spacing-xx-small);
+  --clear-margin-right: calc(-1 * var(--gr-spacing-xxx-small));
+
+  display: inline-block;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}
+
+// Types
+// --------------------------------------------------
+
+:host(.tag-success) {
+  --background-color: rgba(var(--gr-color-success-rgb), 0.05);
+  --border-color: rgba(var(--gr-color-success-rgb), 0.2);
+  --color: var(--gr-color-success-shade);
+
+  --clear-color: var(--gr-color-success);
+  --clear-color-hover: var(--gr-color-success-shade);
+}
+
+:host(.tag-info) {
+  --background-color: rgba(var(--gr-color-medium-rgb), 0.05);
+  --border-color: rgba(var(--gr-color-medium-rgb), 0.2);
+  --color: var(--gr-color-medium-shade);
+
+  --clear-color: var(--gr-color-medium);
+  --clear-color-hover: var(--gr-color-medium-shade);
+}
+
+:host(.tag-warning) {
+  --background-color: rgba(var(--gr-color-warning-rgb), 0.05);
+  --border-color: rgba(var(--gr-color-warning-rgb), 0.2);
+  --color: var(--gr-color-warning-shade);
+
+  --clear-color: var(--gr-color-warning);
+  --clear-color-hover: var(--gr-color-warning-shade);
+}
+
+:host(.tag-danger) {
+  --background-color: rgba(var(--gr-color-danger-rgb), 0.05);
+  --border-color: rgba(var(--gr-color-danger-rgb), 0.2);
+  --color: var(--gr-color-danger-shade);
+
+  --clear-color: var(--gr-color-danger);
+  --clear-color-hover: var(--gr-color-danger-shade);
+}
+
+// Sizes
+// --------------------------------------------------
+
+:host(.tag-small) {
+  --font-size: var(--gr-form-element-font-size-small);
+  --height: calc(var(--gr-form-element-height-small) * 0.8);
+  --line-height: calc(var(--gr-form-element-height-small) - 1px * 2);
+  --border-radius: var(--gr-form-element-border-radius-small);
+  --padding-start: var(--gr-spacing-x-small);
+  --padding-end: var(--gr-spacing-x-small);
+
+  --clear-margin-left: var(--gr-spacing-xx-small);
+  --clear-margin-right: calc(-1 * var(--gr-spacing-xxx-small));
+}
+
+:host(.tag-large) {
+  --font-size: var(--gr-form-element-font-size-large);
+  --height: calc(var(--gr-form-element-height-large) * 0.8);
+  --line-height: calc(var(--gr-form-element-height-large) - 1px * 2);
+  --border-radius: var(--gr-form-element-border-radius-large);
+  --padding: 0 var(--gr-spacing-medium);
+
+  --clear-margin-left: var(--gr-spacing-xx-small);
+  --clear-margin-right: calc(-1 * var(--gr-spacing-x-small));
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+
+  border-style: var(--border-style);
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+
+  white-space: nowrap;
+
+  user-select: none;
+  cursor: default;
+
+  font-family: var(--gr-font-family);
+  font-size: var(--font-size);
+  font-weight: var(--gr-font-weight-normal);
+  height: var(--height);
+  line-height: var(--line-height);
+
+  padding-top: var(--padding-top);
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: var(--padding-bottom);
+
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+  color: var(--color);
+}
+
+.tag-clear {
+  --color: var(--clear-color);
+  --color-hover: var(--clear-color-hover);
+
+  --padding-start: 0;
+  --padding-end: 0;
+
+  margin-left: var(--clear-margin-left);
+  margin-right: var(--clear-margin-right);
+
+  --height: 1em;
+
+  svg {
+    font-size: 0.7em;
+  }
+}
+
+.tag-clear svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+// Pill modifier
+// --------------------------------------------------
+
+:host(.tag-pill) .tag {
+  border-radius: var(--height);
+}
