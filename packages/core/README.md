@@ -175,9 +175,11 @@ Each color consists of the following properties: a `base`, `contrast`, `shade`, 
 | Shade          | `--gr-color-primary-shade`        | A slightly darker version of the base color                              |
 | Tint           | `--gr-color-primary-tint`         | A slightly lighter version of the base color                             |
 
+You could use this [Color Generator](https://ionicframework.com/docs/theming/color-generator) from Ionic and simply replace `--ion` with `--gr`.
+
 Please use [this contrast checker](https://webaim.org/resources/contrastchecker/) for accessiblity.
 
-You could use this [Color Generator](https://ionicframework.com/docs/theming/color-generator) from Ionic and simply replace `--ion` with `--gr`.
+Ensure `--gr-color-primary`, `--gr-color-medium`, `--gr-color-dark`, `--gr-color-danger`, `--gr-color-success-shade`, and `--gr-color-warning-shade` (plus corresponding rgb values) have a minimum contrast ratio of `4:5:1` with the background color of your application.
 
 ### Component Variables
 
