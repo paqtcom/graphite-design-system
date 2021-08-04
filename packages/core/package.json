@@ -1,6 +1,6 @@
 {
   "name": "@graphiteds/core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Base components for the Graphite Design System",
   "repository": {
     "type": "git",
