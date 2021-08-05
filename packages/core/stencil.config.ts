@@ -62,6 +62,11 @@ export const config: Config = {
       type: 'docs-readme',
     },
     {
+      type: 'docs-vscode',
+      file: 'dist/html.html-data.json',
+      sourceCodeBaseUrl: 'https://github.com/way2web/graphite-design-system/tree/master/packages/core/',
+    },
+    {
       type: 'www',
       serviceWorker: null, // disable service workers
       baseUrl: 'https://example.com/',
