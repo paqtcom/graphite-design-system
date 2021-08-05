@@ -11,11 +11,12 @@
   "scripts": {
     "lint": "echo add linter",
     "test": "echo 'vue no tests yet'",
-    "build": "npm run clean && npm run compile && npm run bundle && npm run build.vetur",
+    "build": "npm run clean && npm run compile && npm run bundle && npm run build.vetur && npm run build.web-types",
     "bundle": "rollup --config rollup.config.js",
     "clean": "rimraf dist dist-transpiled",
     "compile": "npm run tsc",
     "tsc": "tsc -p .",
+    "build.web-types": "node ./scripts/build-web-types.js",
     "build.vetur": "node ./scripts/build-vetur.js"
   },
   "main": "./dist/index.js",
@@ -52,5 +53,6 @@
   "vetur": {
     "tags": "dist/vetur/tags.json",
     "attributes": "dist/vetur/attributes.json"
-  }
+  },
+  "web-types": "dist/web-types.json"
 }
