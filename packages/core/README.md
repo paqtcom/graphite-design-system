@@ -32,7 +32,7 @@ If you really need support for these legacy browsers, let us know, and we might 
 
 - Just add the following tags to your page.
   ```html
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/dist/core/core.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/css/graphite.bundle.css" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/dist/core/core.esm.js"></script>
   ```
 - Then you can use the elements anywhere in your template, JSX, html etc.
@@ -71,7 +71,7 @@ Use the [Vue bindings](../vue/README.md).
   import { defineCustomElements } from '@graphiteds/core/loader';
 
   /* Core CSS required for Graphite components to work properly */
-  import '@graphiteds/core/dist/core/core.css';
+  import '@graphiteds/core/css/core.css';
 
   // ...
   // configure Vue.js to ignore Graphite components
@@ -194,23 +194,6 @@ gr-button {
 /* Set the background on a gr-button with the .fancy-button class */
 .fancy-button {
   --background: #00ff00;
-}
-```
-
-## Flash Of Unstyled Content (FOUC)
-
-The default dist works with lazy loading the components when the browser needs them, because of this the content in slots can temporarily be unstyled until the component is loaded (Flash Of Unstyled Content).
-
-To get around this you can add css like this (depending on the components you use) in a static css file/block in the head:
-
-```css
-gr-button:not(.hydrated),
-gr-dropdown:not(.hydrated),
-gr-menu:not(.hydrated),
-gr-menu-label:not(.hydrated),
-gr-select:not(.hydrated),
-gr-tag:not(.hydrated) {
-  visibility: hidden;
 }
 ```
 

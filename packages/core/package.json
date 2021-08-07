@@ -16,12 +16,16 @@
   "collection:main": "dist/collection/index.js",
   "files": [
     "components/",
+    "css/",
     "dist/",
     "loader/",
     "hydrate/"
   ],
   "scripts": {
-    "build": "npm run clean && stencil build --docs --docs-json dist/docs.json",
+    "build": "npm run clean && npm run build.css && stencil build --docs --docs-json dist/docs.json",
+    "build.css": "npm run css.sass && npm run css.minify",
+    "css.minify": "cleancss -O2 -o ./css/graphite.bundle.css ./css/graphite.bundle.css",
+    "css.sass": "sass src/css:./css",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -36,9 +40,11 @@
     "@types/jest": "^26.0.23",
     "@types/puppeteer": "2.0.1",
     "@types/resize-observer-browser": "^0.1.5",
+    "clean-css-cli": "^5.3.3",
     "jest": "26.0.1",
     "jest-cli": "26.0.1",
-    "puppeteer": "2.1.1"
+    "puppeteer": "2.1.1",
+    "sass": "^1.37.5"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",

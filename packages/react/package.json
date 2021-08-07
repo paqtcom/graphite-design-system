@@ -1,6 +1,5 @@
 {
   "name": "@graphiteds/react",
-  "sideEffects": false,
   "version": "1.0.3",
   "description": "React specific wrapper for the components of the Graphite Design System",
   "repository": {
@@ -9,17 +8,19 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "npm run clean && npm run copy && npm run compile",
     "clean": "rm -rf dist",
     "compile": "npm run tsc",
     "test": "echo 'react no tests yet'",
-    "tsc": "tsc -p ."
+    "tsc": "tsc -p .",
+    "copy": "node ./scripts/copy-css.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "css/"
   ],
   "devDependencies": {
     "@types/jest": "^23.3.14",
@@ -39,5 +40,8 @@
   "peerDependencies": {
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
-  }
+  },
+  "sideEffects": [
+    "css/*.css"
+  ]
 }

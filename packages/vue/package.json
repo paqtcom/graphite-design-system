@@ -1,6 +1,5 @@
 {
   "name": "@graphiteds/vue",
-  "sideEffects": false,
   "version": "1.0.3",
   "description": "Vue specific wrapper for the components of the Graphite Design System",
   "license": "MIT",
@@ -11,19 +10,21 @@
   "scripts": {
     "lint": "echo add linter",
     "test": "echo 'vue no tests yet'",
-    "build": "npm run clean && npm run compile && npm run bundle && npm run build.vetur && npm run build.web-types",
+    "build": "npm run clean && npm run copy && npm run compile && npm run bundle && npm run build.vetur && npm run build.web-types",
     "bundle": "rollup --config rollup.config.js",
     "clean": "rimraf dist dist-transpiled",
     "compile": "npm run tsc",
     "tsc": "tsc -p .",
     "build.web-types": "node ./scripts/build-web-types.js",
-    "build.vetur": "node ./scripts/build-vetur.js"
+    "build.vetur": "node ./scripts/build-vetur.js",
+    "copy": "node ./scripts/copy-css.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "css/"
   ],
   "devDependencies": {
     "@stencil/core": "^2.6.0",
@@ -54,5 +55,8 @@
     "tags": "dist/vetur/tags.json",
     "attributes": "dist/vetur/attributes.json"
   },
-  "web-types": "dist/web-types.json"
+  "web-types": "dist/web-types.json",
+  "sideEffects": [
+    "css/*.css"
+  ]
 }

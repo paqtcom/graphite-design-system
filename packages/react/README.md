@@ -18,10 +18,14 @@ Or:
 yarn add @graphiteds/react
 ```
 
-Import the Core CSS required for Graphite components to work properly:
+In your index.js add the following code:
 
 ```js
-import "@graphiteds/core/dist/core/core.css";
+/* Core CSS required for Graphite components to work properly */
+import "@graphiteds/react/css/core.css";
+
+/* CSS to prevent FOUC */
+import "@graphiteds/react/css/prevent-fuoc.css";
 ```
 
 Import the component(s) you want to use:
