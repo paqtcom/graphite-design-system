@@ -6,6 +6,7 @@ import { sass } from '@stencil/sass';
 export const config: Config = {
   namespace: 'core',
   plugins: [sass()],
+  globalStyle: 'src/css/core.scss',
   globalScript: 'src/global/graphite-global.ts',
   outputTargets: [
     reactOutputTarget({
