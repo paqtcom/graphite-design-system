@@ -49,7 +49,7 @@
   --gr-color-light-contrast: #051f2c;
   --gr-color-light-contrast-rgb: 5, 31, 44;
   --gr-color-light-shade: #d7d8da;
-  --gr-color-light-tint: #f5f6f9;
+  --gr-color-light-tint: #f9fafb;
 
   --gr-color-medium: #5e6c78;
   --gr-color-medium-rgb: 94, 108, 120;
@@ -181,6 +181,9 @@
 
   // Toggles (checkboxes, radios, switches)
   --gr-toggle-size: 1rem;
+
+  // Pannels
+  --gr-panel-border-color: var(--gr-color-light-shade);
 
   // Z-index tokens
   // -------------------------------------------------
