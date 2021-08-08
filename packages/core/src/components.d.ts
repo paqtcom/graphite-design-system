@@ -72,9 +72,13 @@ export namespace Components {
          */
         "indeterminate": boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid": boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -150,10 +154,6 @@ export namespace Components {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
-        /**
-          * Hides the fieldset and legend that surrounds the field group. The label will still be read by screen readers.
-         */
-        "noFieldset": boolean;
     }
     interface GrInput {
         /**
@@ -338,9 +338,13 @@ export namespace Components {
          */
         "horizontal": boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid": boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
         /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
@@ -349,10 +353,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
-         */
-        "noFieldset": boolean;
         /**
           * the value of the radio group.
          */
@@ -721,9 +721,13 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid"?: boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -811,10 +815,6 @@ declare namespace LocalJSX {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
-        /**
-          * Hides the fieldset and legend that surrounds the field group. The label will still be read by screen readers.
-         */
-        "noFieldset"?: boolean;
     }
     interface GrInput {
         /**
@@ -990,9 +990,13 @@ declare namespace LocalJSX {
          */
         "horizontal"?: boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid"?: boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
@@ -1001,10 +1005,6 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
-         */
-        "noFieldset"?: boolean;
         /**
           * Emitted when the value has changed.
          */

@@ -153,6 +153,18 @@
   box-shadow: var(--focus-ring);
 }
 
+// Invalid
+.checkbox:not(.checkbox-disabled).checkbox-invalid .checkbox-control {
+  border-color: var(--gr-form-element-invalid-text-color);
+}
+
+// Checked/indeterminate + invalid
+.checkbox.checkbox-checked:not(.checkbox-disabled).checkbox-invalid .checkbox-control,
+.checkbox.checkbox-indeterminate:not(.checkbox-disabled).checkbox-invalid .checkbox-control {
+  border-color: var(--gr-form-element-invalid-text-color);
+  background-color: var(--gr-form-element-invalid-text-color);
+}
+
 // Disabled
 .checkbox-disabled {
   opacity: 0.5;
@@ -169,6 +181,34 @@
   display: none;
 }
 
-.checkbox-invalid {
-  color: var(--gr-form-element-invalid-text-color);
+// Invalid text
+.checkbox-invalid-text {
+  display: none;
+}
+
+:host(.checkbox-has-invalid-text) {
+  display: block;
+
+  .checkbox-invalid-text {
+    display: flex;
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-invalid-text-color);
+    margin-top: var(--gr-spacing-xxx-small);
+
+    .icon {
+      flex: 0 0 auto;
+
+      margin-top: var(--gr-spacing-xxx-small);
+      margin-right: var(--gr-spacing-xx-small);
+
+      svg {
+        width: 1.4em;
+        height: 1.4em;
+      }
+    }
+
+    .text {
+      flex: 1 0 auto;
+    }
+  }
 }

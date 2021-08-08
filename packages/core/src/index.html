@@ -190,7 +190,7 @@
       <h2>gr-radio & gr-radio-group</h2>
 
       <section>
-        <h3>With fieldset</h3>
+        <h3>Default (vertical)</h3>
 
         <gr-radio-group label="Select an option" value="3">
           <gr-radio value="1">Option 1</gr-radio>
@@ -210,9 +210,9 @@
       </section>
 
       <section>
-        <h3>No-fieldset & disabled option</h3>
+        <h3>Disabled option</h3>
 
-        <gr-radio-group label="Select an option" value="2" no-fieldset>
+        <gr-radio-group label="Select an option" value="2">
           <gr-radio value="1">Option 1</gr-radio>
           <gr-radio value="2">Option 2</gr-radio>
           <gr-radio value="3">Option 3</gr-radio>
@@ -223,7 +223,7 @@
       <section>
         <h3>Invalid</h3>
 
-        <gr-radio-group label="Select an option" invalid>
+        <gr-radio-group label="Select an option" invalid-text="Select an option" invalid>
           <gr-radio value="1">Option 1</gr-radio>
           <gr-radio value="2">Option 2</gr-radio>
           <gr-radio value="3">Option 3</gr-radio>
@@ -237,9 +237,9 @@
       <section>
         <h3>Checked</h3>
         <gr-field-group label="Select options">
-          <gr-checkbox id="checkbox-test" checked>Option 1</gr-checkbox>
-          <gr-checkbox>Option 2</gr-checkbox>
-          <gr-checkbox>Option 3</gr-checkbox>
+          <gr-checkbox id="checkbox-test" checked invalid>Option 1</gr-checkbox>
+          <gr-checkbox invalid>Option 2</gr-checkbox>
+          <gr-checkbox invalid-text="Select at least one option" invalid>Option 3</gr-checkbox>
         </gr-field-group>
       </section>
 
@@ -264,7 +264,9 @@
 
       <section>
         <h3>Invalid</h3>
-        <gr-checkbox invalid>Option 1</gr-checkbox>
+        <gr-checkbox invalid-text="You have to agree with our terms to continue" invalid>
+          I agree with the terms
+        </gr-checkbox>
       </section>
     </section>
 

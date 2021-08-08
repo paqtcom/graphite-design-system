@@ -58,11 +58,13 @@ Type: `Promise<void>`
 | ------------------------------------------ | ----------------------------------------------------- |
 | `--control-background-color`               | Background color of the control                       |
 | `--control-background-color-checked`       | Background color of the control when checked          |
+| `--control-background-color-checked-focus` | Background color of the control when checked on focus |
 | `--control-background-color-checked-hover` | Background color of the control when checked on hover |
 | `--control-background-color-focus`         | Background color of the control on focus              |
 | `--control-background-color-hover`         | Background color of the control on hover              |
 | `--control-border-color`                   | Border color of the control                           |
 | `--control-border-color-checked`           | Border color of the control when checked              |
+| `--control-border-color-checked-focus`     | Border color of the control when checked on focus     |
 | `--control-border-color-checked-hover`     | Border color of the control when checked on hover     |
 | `--control-border-color-focus`             | Border color of the control on focus                  |
 | `--control-border-color-hover`             | Border color of the control on hover                  |
