@@ -1,10 +1,12 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core';
 import { renderHiddenInput } from '../../utils/helpers';
+import { hasSlot } from '../../utils/slot';
 
 let id = 0;
 
 /**
  * @slot - The checkboxes label.
+ * @slot invalid-text - Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'gr-checkbox',
@@ -14,6 +16,7 @@ let id = 0;
 export class Checkbox {
   private inputId = `checkbox-${++id}`;
   private labelId = `checkbox-label-${id}`;
+  private invalidTextId = `checkbox-invalid-text-${id}`;
   private input: HTMLInputElement;
 
   @Element() el: HTMLGrCheckboxElement;
@@ -43,7 +46,10 @@ export class Checkbox {
   /** Set to true to draw the checkbox in an indeterminate state. */
   @Prop({ mutable: true, reflect: true }) indeterminate = false;
 
-  /** Set to true to indicate this field is invalid. */
+  /** The radio group's invalid text. Alternatively, you can use the invalid-text slot. */
+  @Prop() invalidText = '';
+
+  /** Set to true to indicate this field is invalid. Will display the invalid text. */
   @Prop({ reflect: true }) invalid = false;
 
   /** Emitted when the control loses focus. */
@@ -63,15 +69,31 @@ export class Checkbox {
     this.grChange.emit();
   }
 
+  @Watch('invalidText')
+  handleInvalidTextChange() {
+    this.handleSlotChange();
+  }
+
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleSlotChange = this.handleSlotChange.bind(this);
+
+    this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+  }
+
+  componentWillLoad() {
+    this.handleSlotChange();
   }
 
   componentDidLoad() {
     this.input.indeterminate = this.indeterminate;
+  }
+
+  disconnectedCallback() {
+    this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
   }
 
   /** Sets focus on the checkbox. */
@@ -107,13 +129,21 @@ export class Checkbox {
     this.input.focus();
   }
 
+  handleSlotChange() {
+    this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
+  }
+
   render() {
     renderHiddenInput(this.el, this.name, this.checked ? this.value : '', this.disabled);
+
+    const hasInvalidText = this.invalidText ? true : this.hasInvalidTextSlot;
+    const showInvalidText = this.invalid ? true : false;
 
     return (
       <Host
         class={{
           'checkbox-disabled': this.disabled,
+          'checkbox-has-invalid-text': hasInvalidText,
         }}
       >
         <label
@@ -169,6 +199,7 @@ export class Checkbox {
               aria-invalid={this.invalid}
               aria-checked={this.checked ? 'true' : 'false'}
               aria-labelledby={this.labelId}
+              aria-describedby={this.invalid ? this.invalidTextId : ''}
               onClick={this.handleClick}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
@@ -179,6 +210,22 @@ export class Checkbox {
             <slot></slot>
           </span>
         </label>
+        {showInvalidText && (
+          <div id={this.invalidTextId} class="checkbox-invalid-text" aria-hidden={hasInvalidText ? 'false' : 'true'}>
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <title>Alert Circle</title>
+                <path
+                  d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm0,319.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Zm21.72-201.15-5.74,122a16,16,0,0,1-32,0l-5.74-121.94v-.05a21.74,21.74,0,1,1,43.44,0Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div class="text">
+              <slot name="invalid-text">{this.invalidText}</slot>
+            </div>
+          </div>
+        )}
       </Host>
     );
   }

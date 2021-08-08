@@ -11,7 +11,8 @@
 | --------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------- | --------- | -------------- |
 | `allowEmptySelection` | `allow-empty-selection` | If `true`, the radios can be deselected.                                                             | `boolean` | `false`        |
 | `horizontal`          | `horizontal`            | Render the radios horizontal instead of vertical                                                     | `boolean` | `false`        |
-| `invalid`             | `invalid`               | Set to true to indicate this field is invalid.                                                       | `boolean` | `false`        |
+| `invalid`             | `invalid`               | Set to true to indicate this field is invalid. Will display the invalid text.                        | `boolean` | `false`        |
+| `invalidText`         | `invalid-text`          | The radio group's invalid text. Alternatively, you can use the invalid-text slot.                    | `string`  | `''`           |
 | `label`               | `label`                 | The radio group label. Required for proper accessibility. Alternatively, you can use the label slot. | `string`  | `''`           |
 | `name`                | `name`                  | The name of the control, which is submitted with the form data.                                      | `string`  | `this.inputId` |
 | `value`               | `value`                 | the value of the radio group.                                                                        | `any`     | `undefined`    |
@@ -26,10 +27,11 @@
 
 ## Slots
 
-| Slot      | Description                                                                                          |
-| --------- | ---------------------------------------------------------------------------------------------------- |
-|           | The default slot where radio controls are placed.                                                    |
-| `"label"` | The radio group label. Required for proper accessibility. Alternatively, you can use the label prop. |
+| Slot             | Description                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------- |
+|                  | The default slot where radio controls are placed.                                                    |
+| `"invalid-text"` | Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.    |
+| `"label"`        | The radio group label. Required for proper accessibility. Alternatively, you can use the label prop. |
 
 
 ## CSS Custom Properties
@@ -38,7 +40,6 @@
 | ------------------------------------ | -------------------------------------------------------------- |
 | `--margin-between-radios`            | Margin between the gr-radio children                           |
 | `--margin-between-radios-horizontal` | Margin between the gr-radio children when layout is horizontal |
-| `--radio-label-color-invalid`        | Color of the radio label's when invalid                        |
 
 
 ----------------------------------------------

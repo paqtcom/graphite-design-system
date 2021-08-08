@@ -8,6 +8,7 @@ let id = 0;
 /**
  * @slot - The default slot where radio controls are placed.
  * @slot label - The radio group label. Required for proper accessibility. Alternatively, you can use the label prop.
+ * @slot invalid-text - Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.
  */
 @Component({
   tag: 'gr-radio-group',
@@ -16,10 +17,12 @@ let id = 0;
 })
 export class RadioGroup {
   private inputId = `radio-group-${id++}`;
+  private invalidTextId = `radio-group-invalid-text-${id++}`;
 
   @Element() el!: HTMLElement;
 
   @State() hasLabelSlot = false;
+  @State() hasInvalidTextSlot = false;
 
   /** If `true`, the radios can be deselected. */
   @Prop() allowEmptySelection = false;
@@ -27,7 +30,10 @@ export class RadioGroup {
   /** The radio group label. Required for proper accessibility. Alternatively, you can use the label slot. */
   @Prop() label = '';
 
-  /** Set to true to indicate this field is invalid. */
+  /** The radio group's invalid text. Alternatively, you can use the invalid-text slot. */
+  @Prop() invalidText = '';
+
+  /** Set to true to indicate this field is invalid. Will display the invalid text. */
   @Prop({ reflect: true }) invalid = false;
 
   /** Render the radios horizontal instead of vertical */
@@ -47,6 +53,7 @@ export class RadioGroup {
   }
 
   @Watch('label')
+  @Watch('invalidText')
   handleLabelChange() {
     this.handleSlotChange();
   }
@@ -167,12 +174,15 @@ export class RadioGroup {
 
   handleSlotChange() {
     this.hasLabelSlot = hasSlot(this.el, 'label');
+    this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
   }
 
   render() {
     renderHiddenInput(this.el, this.name, this.value, false);
 
     const hasLabel = this.label ? true : this.hasLabelSlot;
+    const hasInvalidText = this.invalidText ? true : this.hasInvalidTextSlot;
+    const showInvalidText = this.invalid ? true : false;
 
     return (
       <fieldset
@@ -181,15 +191,33 @@ export class RadioGroup {
           'radio-group-horizontal': this.horizontal,
           'radio-group-invalid': this.invalid,
           'radio-group-has-label': hasLabel,
+          'radio-group-has-invalid-text': hasInvalidText,
         }}
         role="radiogroup"
         aria-invalid={this.invalid}
+        aria-describedby={this.invalid ? this.invalidTextId : ''}
         onClick={this.onClick}
       >
         <legend class="radio-group-label" aria-hidden={hasLabel ? 'false' : 'true'}>
           <slot name="label">{this.label}</slot>
         </legend>
         <slot></slot>
+        {showInvalidText && (
+          <div id={this.invalidTextId} class="radio-group-invalid-text" aria-hidden={hasInvalidText ? 'false' : 'true'}>
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <title>Alert Circle</title>
+                <path
+                  d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm0,319.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Zm21.72-201.15-5.74,122a16,16,0,0,1-32,0l-5.74-121.94v-.05a21.74,21.74,0,1,1,43.44,0Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div class="text">
+              <slot name="invalid-text">{this.invalidText}</slot>
+            </div>
+          </div>
+        )}
       </fieldset>
     );
   }

@@ -72,9 +72,13 @@ export namespace Components {
          */
         "indeterminate": boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid": boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -334,9 +338,13 @@ export namespace Components {
          */
         "horizontal": boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid": boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
         /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */
@@ -713,9 +721,13 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid"?: boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The name of the control, which is submitted with the form data.
          */
@@ -978,9 +990,13 @@ declare namespace LocalJSX {
          */
         "horizontal"?: boolean;
         /**
-          * Set to true to indicate this field is invalid.
+          * Set to true to indicate this field is invalid. Will display the invalid text.
          */
         "invalid"?: boolean;
+        /**
+          * The radio group's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
         /**
           * The radio group label. Required for proper accessibility. Alternatively, you can use the label slot.
          */

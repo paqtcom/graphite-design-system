@@ -4,13 +4,9 @@
   /**
    * @prop --margin-between-radios: Margin between the gr-radio children
    * @prop --margin-between-radios-horizontal: Margin between the gr-radio children when layout is horizontal
-   *
-   * @prop --radio-label-color-invalid: Color of the radio label's when invalid
    */
   --margin-between-radios: var(--gr-spacing-xx-small);
   --margin-between-radios-horizontal: var(--gr-spacing-medium);
-
-  --radio-label-color-invalid: var(--gr-color-danger);
 
   display: block;
   box-sizing: border-box;
@@ -54,7 +50,8 @@
 
 .radio-group-invalid {
   ::slotted(gr-radio) {
-    --label-color: var(--radio-label-color-invalid);
+    --control-border-color: var(--gr-form-element-invalid-text-color);
+    --control-background-color-checked: var(--gr-form-element-invalid-text-color);
   }
 }
 
@@ -65,6 +62,31 @@
 }
 
 // Invalid text
-.invalid-text {
+.radio-group-invalid-text {
   display: none;
+}
+
+.radio-group-has-invalid-text {
+  .radio-group-invalid-text {
+    display: flex;
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-invalid-text-color);
+    margin-top: var(--gr-spacing-xxx-small);
+
+    .icon {
+      flex: 0 0 auto;
+
+      margin-top: var(--gr-spacing-xxx-small);
+      margin-right: var(--gr-spacing-xx-small);
+
+      svg {
+        width: 1.4em;
+        height: 1.4em;
+      }
+    }
+
+    .text {
+      flex: 1 0 auto;
+    }
+  }
 }

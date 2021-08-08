@@ -46,6 +46,7 @@ export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-chec
   'name',
   'checked',
   'indeterminate',
+  'invalidText',
   'invalid',
   'gr-blur',
   'gr-focus',
@@ -139,6 +140,7 @@ export const GrRadio = /*@__PURE__*/ defineContainer<JSX.GrRadio>('gr-radio', Gr
 export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-radio-group', GrRadioGroupCmp, [
   'allowEmptySelection',
   'label',
+  'invalidText',
   'invalid',
   'horizontal',
   'name',
