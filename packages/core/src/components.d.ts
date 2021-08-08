@@ -150,10 +150,6 @@ export namespace Components {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
-        /**
-          * Hides the fieldset and legend that surrounds the field group. The label will still be read by screen readers.
-         */
-        "noFieldset": boolean;
     }
     interface GrInput {
         /**
@@ -349,10 +345,6 @@ export namespace Components {
           * The name of the control, which is submitted with the form data.
          */
         "name": string;
-        /**
-          * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
-         */
-        "noFieldset": boolean;
         /**
           * the value of the radio group.
          */
@@ -811,10 +803,6 @@ declare namespace LocalJSX {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
-        /**
-          * Hides the fieldset and legend that surrounds the field group. The label will still be read by screen readers.
-         */
-        "noFieldset"?: boolean;
     }
     interface GrInput {
         /**
@@ -1001,10 +989,6 @@ declare namespace LocalJSX {
           * The name of the control, which is submitted with the form data.
          */
         "name"?: string;
-        /**
-          * Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers.
-         */
-        "noFieldset"?: boolean;
         /**
           * Emitted when the value has changed.
          */

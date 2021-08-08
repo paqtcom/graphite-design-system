@@ -2,35 +2,9 @@
 
 :host {
   /**
-   * @prop --border-radius: Border radius of the fieldset
-   * @prop --border-color: Border color of the fieldset
-   *
-   * @prop --padding-top: Top padding of the fieldset
-   * @prop --padding-end: Right padding of the fieldset (will be left padding when we support right-to-left direction)
-   * @prop --padding-bottom: Bottom padding of the fieldset
-   * @prop --padding-start: Left padding of the fieldset (will be right padding when we support right-to-left direction)
-   *
-   * @prop --label-color: Color of the label
-   *
-   * @prop --label-padding-end: Right padding of the label (will be left padding when we support right-to-left direction)
-   * @prop --label-padding-start: Left padding of the label (will be right padding when we support right-to-left direction)
-   *
    * @prop --margin-between-fields: Margin between the children
    * @prop --margin-between-fields-horizontal: Margin between the children when layout is horizontal
    */
-  --border-radius: var(--gr-form-element-border-radius-medium);
-  --border-color: var(--gr-color-light);
-
-  --padding-top: var(--gr-spacing-x-small);
-  --padding-start: var(--gr-spacing-large);
-  --padding-end: var(--gr-spacing-large);
-  --padding-bottom: var(--gr-spacing-small);
-
-  --label-color: var(--gr-color-dark-tint);
-
-  --label-padding-start: var(--gr-spacing-x-small);
-  --label-padding-end: var(--gr-spacing-x-small);
-
   --margin-between-fields: var(--gr-spacing-xx-small);
   --margin-between-fields-horizontal: var(--gr-spacing-medium);
 
@@ -45,26 +19,27 @@
 }
 
 .field-group {
-  border: solid 1px var(--border-color);
-  border-radius: var(--border-radius);
-
-  padding-top: var(--padding-top);
-  padding-left: var(--padding-start);
-  padding-right: var(--padding-end);
-  padding-bottom: var(--padding-bottom);
-
   margin: 0;
+  padding: 0;
+  border: none;
+}
 
+.field-group-label {
+  display: none;
+}
+
+.field-group-has-label {
   .field-group-label {
-    font-family: var(--gr-font-family);
-    font-size: var(--gr-form-element-font-size-medium);
-    font-weight: var(--gr-font-weight-normal);
-    color: var(--label-color);
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-label-color);
+    margin-bottom: var(--gr-spacing-xxx-small);
+    font-size: var(--gr-form-element-label-font-size-medium);
 
-    padding-top: 0;
-    padding-left: var(--label-padding-start);
-    padding-right: var(--label-padding-end);
-    padding-bottom: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+
+    margin-bottom: var(--gr-spacing-xxx-small);
   }
 }
 
@@ -78,16 +53,5 @@
 .field-group-horizontal {
   ::slotted(*:not(:last-of-type)) {
     margin-right: var(--margin-between-fields-horizontal);
-  }
-}
-
-.field-group-no-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-  min-width: 0;
-
-  .field-group-label {
-    @include visually-hidden();
   }
 }

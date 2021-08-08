@@ -71,7 +71,6 @@ export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-drop
 
 export const GrFieldGroup = /*@__PURE__*/ defineContainer<JSX.GrFieldGroup>('gr-field-group', GrFieldGroupCmp, [
   'label',
-  'noFieldset',
   'horizontal'
 ]);
 
@@ -141,7 +140,6 @@ export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-
   'allowEmptySelection',
   'label',
   'invalid',
-  'noFieldset',
   'horizontal',
   'name',
   'value',

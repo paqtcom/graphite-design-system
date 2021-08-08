@@ -1,5 +1,6 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Watch, Element, Listen } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Watch, Element, Listen, State } from '@stencil/core';
 import { renderHiddenInput } from '../../utils/helpers';
+import { hasSlot } from '../../utils/slot';
 import { RadioGroupChangeEventDetail } from './radio-group-interface';
 
 let id = 0;
@@ -18,6 +19,8 @@ export class RadioGroup {
 
   @Element() el!: HTMLElement;
 
+  @State() hasLabelSlot = false;
+
   /** If `true`, the radios can be deselected. */
   @Prop() allowEmptySelection = false;
 
@@ -26,9 +29,6 @@ export class RadioGroup {
 
   /** Set to true to indicate this field is invalid. */
   @Prop({ reflect: true }) invalid = false;
-
-  /** Hides the fieldset and legend that surrounds the radio group. The label will still be read by screen readers. */
-  @Prop({ reflect: true }) noFieldset = false;
 
   /** Render the radios horizontal instead of vertical */
   @Prop({ reflect: true }) horizontal = false;
@@ -46,11 +46,30 @@ export class RadioGroup {
     this.grChange.emit({ value });
   }
 
+  @Watch('label')
+  handleLabelChange() {
+    this.handleSlotChange();
+  }
+
   /** Emitted when the value has changed. */
   @Event({ eventName: 'gr-change' }) grChange!: EventEmitter<RadioGroupChangeEventDetail>;
 
+  connectedCallback() {
+    this.handleSlotChange = this.handleSlotChange.bind(this);
+
+    this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+  }
+
+  componentWillLoad() {
+    this.handleSlotChange();
+  }
+
   componentDidLoad() {
     this.setRadioTabindex(this.value);
+  }
+
+  disconnectedCallback() {
+    this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
   }
 
   private setRadioTabindex = (value: any | undefined) => {
@@ -146,25 +165,32 @@ export class RadioGroup {
     }
   }
 
+  handleSlotChange() {
+    this.hasLabelSlot = hasSlot(this.el, 'label');
+  }
+
   render() {
     renderHiddenInput(this.el, this.name, this.value, false);
 
+    const hasLabel = this.label ? true : this.hasLabelSlot;
+
     return (
-      <Host onClick={this.onClick} role="radiogroup" aria-invalid={this.invalid}>
-        <fieldset
-          class={{
-            'radio-group': true,
-            'radio-group-no-fieldset': this.noFieldset,
-            'radio-group-horizontal': this.horizontal,
-            'radio-group-invalid': this.invalid,
-          }}
-        >
-          <legend class="radio-group-label">
-            <slot name="label">{this.label}</slot>
-          </legend>
-          <slot></slot>
-        </fieldset>
-      </Host>
+      <fieldset
+        class={{
+          'radio-group': true,
+          'radio-group-horizontal': this.horizontal,
+          'radio-group-invalid': this.invalid,
+          'radio-group-has-label': hasLabel,
+        }}
+        role="radiogroup"
+        aria-invalid={this.invalid}
+        onClick={this.onClick}
+      >
+        <legend class="radio-group-label" aria-hidden={hasLabel ? 'false' : 'true'}>
+          <slot name="label">{this.label}</slot>
+        </legend>
+        <slot></slot>
+      </fieldset>
     );
   }
 }
