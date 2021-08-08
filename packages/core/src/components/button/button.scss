@@ -59,7 +59,7 @@
   --color-hover: var(--gr-color-dark-tint);
   --color-focus: var(--gr-color-dark-tint);
 
-  --border-color: var(--gr-color-light);
+  --border-color: var(--gr-color-light-shade);
   --border-color-hover: var(--gr-color-medium);
   --border-color-focus: var(--gr-color-primary);
 
@@ -100,7 +100,7 @@
 // --------------------------------------------------
 
 :host(.button-secondary) {
-  --border-color: var(--gr-color-light);
+  --border-color: var(--gr-color-light-shade);
   --background: transparent;
   --color: var(--gr-color-primary);
 

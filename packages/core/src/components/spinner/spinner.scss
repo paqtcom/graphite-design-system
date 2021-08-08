@@ -4,7 +4,7 @@
  * @prop --stroke-width: The width of the indicator.
  */
 :host {
-  --track-color: var(--gr-color-light);
+  --track-color: var(--gr-color-light-shade);
   --indicator-color: var(--gr-color-primary);
   --stroke-width: 2px;
 

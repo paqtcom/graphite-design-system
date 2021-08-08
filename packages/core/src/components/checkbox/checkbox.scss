@@ -30,7 +30,7 @@
 
   --control-size: var(--gr-toggle-size);
 
-  --control-border-color: var(--gr-color-light);
+  --control-border-color: var(--gr-color-light-shade);
   --control-background-color: var(--gr-color-white);
 
   --control-border-color-hover: var(--gr-color-medium);
@@ -191,24 +191,19 @@
 
   .checkbox-invalid-text {
     display: flex;
+    margin-left: -2px;
     line-height: var(--gr-line-height-normal);
     color: var(--gr-form-element-invalid-text-color);
     margin-top: var(--gr-spacing-xxx-small);
 
     .icon {
-      flex: 0 0 auto;
-
       margin-top: var(--gr-spacing-xxx-small);
       margin-right: var(--gr-spacing-xx-small);
 
       svg {
-        width: 1.4em;
-        height: 1.4em;
+        width: 1.3em;
+        height: 1.3em;
       }
-    }
-
-    .text {
-      flex: 1 0 auto;
     }
   }
 }
