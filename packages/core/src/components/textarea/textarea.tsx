@@ -42,6 +42,9 @@ export class Textarea {
   /** The textarea's label. Alternatively, you can use the label slot. */
   @Prop() label: string | undefined;
 
+  /** Set to true to display a required indicator, adds an asterisk to label */
+  @Prop() requiredIndicator = false;
+
   /** The textarea's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
@@ -261,6 +264,7 @@ export class Textarea {
         hasInvalidTextSlot={this.hasInvalidTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
+        requiredIndicator={this.requiredIndicator}
       >
         <div
           class={{
@@ -293,6 +297,7 @@ export class Textarea {
             aria-labelledby={this.labelId}
             aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-invalid={this.invalid ? 'true' : 'false'}
+            aria-required={this.requiredIndicator ? 'true' : 'false'}
             onChange={this.handleChange}
             onInput={this.handleInput}
             onFocus={this.handleFocus}

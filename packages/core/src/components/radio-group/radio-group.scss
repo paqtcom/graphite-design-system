@@ -28,17 +28,29 @@
   display: none;
 }
 
-.radio-group-has-label .radio-group-label {
-  line-height: var(--gr-line-height-normal);
-  color: var(--gr-form-element-label-color);
-  margin-bottom: var(--gr-spacing-xxx-small);
-  font-size: var(--gr-form-element-label-font-size-medium);
+.radio-group-has-label {
+  .radio-group-label {
+    line-height: var(--gr-line-height-normal);
+    color: var(--gr-form-element-label-color);
+    margin-bottom: var(--gr-spacing-xxx-small);
+    font-size: var(--gr-form-element-label-font-size-medium);
 
-  margin: 0;
-  padding: 0;
-  display: block;
+    margin: 0;
+    padding: 0;
+    display: flex;
 
-  margin-bottom: var(--gr-spacing-xxx-small);
+    margin-bottom: var(--gr-spacing-xxx-small);
+  }
+
+  .radio-group-label .asterisk {
+    margin-left: var(--gr-spacing-xx-small);
+    color: var(--gr-color-medium);
+
+    svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
+  }
 }
 
 :not(.radio-group-horizontal) {

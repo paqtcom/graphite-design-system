@@ -15,7 +15,7 @@
 // Label
 .form-control-has-label {
   .form-control-label {
-    display: inline-block;
+    display: flex;
     line-height: var(--gr-line-height-normal);
     color: var(--gr-form-element-label-color);
     margin-bottom: var(--gr-spacing-xxx-small);
@@ -31,6 +31,16 @@
 
   &.form-control-large .form-control-label {
     font-size: var(--gr-form-element-label-font-size-large);
+  }
+
+  .form-control-label .asterisk {
+    margin-left: var(--gr-spacing-xx-small);
+    color: var(--gr-color-medium);
+
+    svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
   }
 }
 

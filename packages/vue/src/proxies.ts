@@ -72,6 +72,7 @@ export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-drop
 
 export const GrFieldGroup = /*@__PURE__*/ defineContainer<JSX.GrFieldGroup>('gr-field-group', GrFieldGroupCmp, [
   'label',
+  'requiredIndicator',
   'horizontal'
 ]);
 
@@ -85,6 +86,7 @@ export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', Gr
   'placeholder',
   'size',
   'label',
+  'requiredIndicator',
   'helpText',
   'invalidText',
   'invalid',
@@ -140,6 +142,7 @@ export const GrRadio = /*@__PURE__*/ defineContainer<JSX.GrRadio>('gr-radio', Gr
 export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-radio-group', GrRadioGroupCmp, [
   'allowEmptySelection',
   'label',
+  'requiredIndicator',
   'invalidText',
   'invalid',
   'horizontal',
@@ -161,6 +164,7 @@ export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select',
   'value',
   'pill',
   'label',
+  'requiredIndicator',
   'helpText',
   'invalidText',
   'invalid',
@@ -189,6 +193,7 @@ export const GrTextarea = /*@__PURE__*/ defineContainer<JSX.GrTextarea>('gr-text
   'name',
   'value',
   'label',
+  'requiredIndicator',
   'helpText',
   'invalidText',
   'invalid',

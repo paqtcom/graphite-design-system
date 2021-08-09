@@ -37,9 +37,19 @@
 
     margin: 0;
     padding: 0;
-    display: block;
+    display: flex;
 
     margin-bottom: var(--gr-spacing-xxx-small);
+  }
+
+  .field-group-label .asterisk {
+    margin-left: var(--gr-spacing-xx-small);
+    color: var(--gr-color-medium);
+
+    svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
   }
 }
 

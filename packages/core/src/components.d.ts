@@ -154,6 +154,10 @@ export namespace Components {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
     }
     interface GrInput {
         /**
@@ -236,6 +240,10 @@ export namespace Components {
           * Removes focus from the input.
          */
         "removeFocus": () => Promise<void>;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
         /**
           * Selects all the text in the input.
          */
@@ -354,6 +362,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
+        /**
           * the value of the radio group.
          */
         "value"?: any | null;
@@ -407,6 +419,10 @@ export namespace Components {
           * The select's placeholder text.
          */
         "placeholder": string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
         /**
           * The select's size.
          */
@@ -501,6 +517,10 @@ export namespace Components {
           * Removes focus fromt the textarea.
          */
         "removeFocus": () => Promise<void>;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
         /**
           * Controls how the textarea can be resized.
          */
@@ -815,6 +835,10 @@ declare namespace LocalJSX {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
     }
     interface GrInput {
         /**
@@ -914,6 +938,10 @@ declare namespace LocalJSX {
          */
         "readonly"?: boolean;
         /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
+        /**
           * The input's size.
          */
         "size"?: 'small' | 'medium' | 'large';
@@ -1010,6 +1038,10 @@ declare namespace LocalJSX {
          */
         "onGr-change"?: (event: CustomEvent<RadioGroupChangeEventDetail>) => void;
         /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
+        /**
           * the value of the radio group.
          */
         "value"?: any | null;
@@ -1075,6 +1107,10 @@ declare namespace LocalJSX {
           * The select's placeholder text.
          */
         "placeholder"?: string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
         /**
           * The select's size.
          */
@@ -1185,6 +1221,10 @@ declare namespace LocalJSX {
           * If `true`, the user cannot modify the value.
          */
         "readonly"?: boolean;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
         /**
           * Controls how the textarea can be resized.
          */

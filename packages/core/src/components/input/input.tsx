@@ -54,6 +54,9 @@ export class Input {
   /** The inputs's label. Alternatively, you can use the label slot. */
   @Prop() label = '';
 
+  /** Set to true to display a required indicator, adds an asterisk to label */
+  @Prop() requiredIndicator = false;
+
   /** The input's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
@@ -284,6 +287,7 @@ export class Input {
         hasInvalidTextSlot={this.hasInvalidTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
+        requiredIndicator={this.requiredIndicator}
       >
         <div
           class={{
@@ -318,6 +322,7 @@ export class Input {
             aria-labelledby={this.labelId}
             aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-invalid={this.invalid ? 'true' : 'false'}
+            aria-required={this.requiredIndicator ? 'true' : 'false'}
             onChange={this.handleChange}
             onInput={this.handleInput}
             onBlur={this.handleBlur}

@@ -15,6 +15,7 @@
 | `invalidText`         | `invalid-text`          | The radio group's invalid text. Alternatively, you can use the invalid-text slot.                    | `string`  | `''`           |
 | `label`               | `label`                 | The radio group label. Required for proper accessibility. Alternatively, you can use the label slot. | `string`  | `''`           |
 | `name`                | `name`                  | The name of the control, which is submitted with the form data.                                      | `string`  | `this.inputId` |
+| `requiredIndicator`   | `required-indicator`    | Set to true to display a required indicator, adds an asterisk to label                               | `boolean` | `false`        |
 | `value`               | `value`                 | the value of the radio group.                                                                        | `any`     | `undefined`    |
 
 

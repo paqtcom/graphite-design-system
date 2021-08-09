@@ -74,6 +74,9 @@ export class Select {
   /** The select's label. Alternatively, you can use the label slot. */
   @Prop() label = '';
 
+  /** Set to true to display a required indicator, adds an asterisk to label */
+  @Prop() requiredIndicator = false;
+
   /** The select's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = '';
 
@@ -395,6 +398,7 @@ export class Select {
         hasInvalidTextSlot={this.hasInvalidTextSlot}
         size={this.size}
         onLabelClick={this.handleLabelClick}
+        requiredIndicator={this.requiredIndicator}
       >
         <gr-dropdown
           ref={el => (this.dropdown = el)}
@@ -429,6 +433,7 @@ export class Select {
             aria-haspopup="true"
             aria-expanded={this.isOpen ? 'true' : 'false'}
             aria-invalid={this.invalid ? 'true' : 'false'}
+            aria-required={this.requiredIndicator ? 'true' : 'false'}
             tabIndex={this.disabled ? -1 : 0}
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}

@@ -67,6 +67,12 @@
       </section>
 
       <section>
+        <h3>Required indicator</h3>
+
+        <gr-input type="password" label="Password" required-indicator></gr-input>
+      </section>
+
+      <section>
         <h3>Help Text</h3>
 
         <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></gr-input>
@@ -157,6 +163,12 @@
       </section>
 
       <section>
+        <h3>Required indicator</h3>
+
+        <gr-textarea label="Comments" required-indicator></gr-textarea>
+      </section>
+
+      <section>
         <h3>Help Text</h3>
 
         <gr-textarea label="Feedback" help-text="Please tell us what you think."></gr-textarea>
@@ -229,6 +241,16 @@
           <gr-radio value="3">Option 3</gr-radio>
         </gr-radio-group>
       </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-radio-group label="Select an option" required-indicator>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
     </section>
 
     <section>
@@ -246,6 +268,15 @@
       <section>
         <h3>Horizontal</h3>
         <gr-field-group label="Select options" horizontal>
+          <gr-checkbox>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+        <gr-field-group label="Select options" required-indicator>
           <gr-checkbox>Option 1</gr-checkbox>
           <gr-checkbox>Option 2</gr-checkbox>
           <gr-checkbox>Option 3</gr-checkbox>
@@ -373,6 +404,16 @@
         <h3>Labels</h3>
 
         <gr-select label="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-select label="Select one" required-indicator>
           <gr-menu-item value="option-1">Option 1</gr-menu-item>
           <gr-menu-item value="option-2">Option 2</gr-menu-item>
           <gr-menu-item value="option-3">Option 3</gr-menu-item>
