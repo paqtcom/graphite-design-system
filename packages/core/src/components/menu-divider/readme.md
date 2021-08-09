@@ -1,6 +1,4 @@
-# way-menu-divider
-
-
+# gr-menu-divider
 
 <!-- Auto Generated Below -->
 

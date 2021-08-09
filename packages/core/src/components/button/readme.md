@@ -1,4 +1,4 @@
-# way-button
+# gr-button
 
 <!-- Auto Generated Below -->
 

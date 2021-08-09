@@ -1,4 +1,4 @@
-# way-menu
+# gr-menu
 
 <!-- Auto Generated Below -->
 

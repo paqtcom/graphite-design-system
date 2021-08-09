@@ -1,6 +1,4 @@
-# way-spinner
-
-
+# gr-spinner
 
 <!-- Auto Generated Below -->
 
