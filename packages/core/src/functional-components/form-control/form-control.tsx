@@ -71,10 +71,10 @@ const FormControl: FunctionalComponent<FormControlProps> = (props, children) => 
         <slot name="label">{props.label}</slot>
         {props.requiredIndicator && (
           <div class="asterisk">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
               <path
                 fill="currentColor"
-                d="M 17.699219 17 L 23.898438 25.398438 L 21.5 27 L 16 18.300781 L 10.5 27 L 8.199219 25.398438 L 14.398438 17 L 5.101563 14.601563 L 6 12 L 15.101563 15.199219 L 14.5 5 L 17.5 5 L 17 15.199219 L 26 12 L 26.800781 14.699219 Z"
+                d="M489.838 29.354v443.603L68.032 335.894 0 545.285l421.829 137.086-260.743 358.876 178.219 129.398L600.048 811.84l260.673 358.806 178.146-129.398-260.766-358.783L1200 545.379l-68.032-209.403-421.899 137.07V29.443H489.84l-.002-.089z"
               />
             </svg>
           </div>

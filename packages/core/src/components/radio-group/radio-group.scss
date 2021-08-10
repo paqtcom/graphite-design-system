@@ -42,12 +42,13 @@
   }
 
   .radio-group-label .asterisk {
-    margin-left: var(--gr-spacing-xx-small);
+    margin-left: var(--gr-spacing-x-small);
     color: var(--gr-color-medium);
 
     svg {
-      width: 0.8em;
-      height: 0.8em;
+      width: 0.6em;
+      height: 0.6em;
+      margin-bottom: var(--gr-spacing-xxx-small);
     }
   }
 }
