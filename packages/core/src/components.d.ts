@@ -154,10 +154,6 @@ export namespace Components {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label": string;
-        /**
-          * Set to true to display a required indicator, adds an asterisk to label
-         */
-        "requiredIndicator": boolean;
     }
     interface GrInput {
         /**
@@ -835,10 +831,6 @@ declare namespace LocalJSX {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
-        /**
-          * Set to true to display a required indicator, adds an asterisk to label
-         */
-        "requiredIndicator"?: boolean;
     }
     interface GrInput {
         /**
