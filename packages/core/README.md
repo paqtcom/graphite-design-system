@@ -85,14 +85,11 @@ Use the [Vue bindings](../vue/README.md).
   ```
 
 - The components should then be available in any of the Vue components:
-  ```js
-  render() {
-    return (
-      <div>
-        <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
-      </div>
-    )
-  }
+
+  ```html
+  <template>
+    <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+  </template>
   ```
 
 _Vue provides several different ways to install and use the framework in an application. The above technique for integrating a Stencil custom element library has been tested on a Vue 2 application that was created using the vue-cli with ES2015 and WebPack as primary options. A similar technique should work if the application was generated using other options._
@@ -124,6 +121,53 @@ One caveat is there's [no support for v-model on custom elements in Vue 2](https
 ```
 
 If that's too verbose, [you can use this Directive from Shoelace](https://shoelace.style/getting-started/usage?id=using-a-custom-directive).
+
+### Nuxt 2
+
+- Run `npm install @graphiteds/core` or `yarn add @graphiteds/core`
+- Edit `nuxt.config.js` to include:
+
+  ```js
+  module.exports = {
+    vue: {
+      config: {
+        ignoredElements: [/gr-\w*/],
+      },
+    },
+  };
+  ```
+
+- Add `plugins/graphiteds.js` with the following content:
+
+  ```js
+  // Import Graphite components
+  import { defineCustomElements } from '@graphiteds/core/loader';
+
+  /* Core CSS required for Graphite components to work properly */
+  import '@graphiteds/core/css/core.css';
+
+  export default function () {
+    defineCustomElements(window);
+  }
+  ```
+
+- Add the plugin to the project configuration (`nuxt.config.js`):
+
+  ```js
+  module.exports = {
+    plugins: ['~/plugins/graphiteds.js'],
+  };
+  ```
+
+- The components should then be available in any of the Nuxt pages & components:
+
+  ```html
+  <template>
+    <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+  </template>
+  ```
+
+Since Nuxt uses Vue 2 the instructions above about [Binding Complex Data](#binding-complex-data) & [Two-way Binding](#two-way-binding) also apply here.
 
 ## Customization
 
