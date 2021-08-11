@@ -12,8 +12,6 @@ Tested on:
 - [vue-cli v5](https://next.cli.vuejs.org/)
 - [vue-cli v4](https://cli.vuejs.org/)
 
-**Important**: Because of a breaking change in `vue@3.1.0`, you have to set `"vue": "3.0.11"` in the `package.json` of your project (and run `npm install`) until this is resolved.
-
 ## Browser Support
 
 We support only modern browsers: https://browserslist.dev/?q=ZGVmYXVsdHMsIG5vdCBpZSAxMQ%3D%3D

@@ -1,6 +1,7 @@
 # Copy graphiteds vue dist
-rm -rf node_modules/@graphiteds/vue/dist
+rm -rf node_modules/@graphiteds/vue/dist node_modules/@graphiteds/vue/css
 cp -a ../../dist node_modules/@graphiteds/vue/dist
+cp -a ../../css node_modules/@graphiteds/vue/css
 cp -a ../../package.json node_modules/@graphiteds/vue/package.json
 
 # Copy graphiteds core dist
