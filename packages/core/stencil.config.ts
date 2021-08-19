@@ -5,6 +5,16 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'core',
+  bundles: [
+    { components: ['gr-button', 'gr-spinner'] },
+    { components: ['gr-checkbox', 'gr-field-group'] },
+    { components: ['gr-input'] },
+    { components: ['gr-textarea'] },
+    {
+      components: ['gr-select', 'gr-dropdown', 'gr-menu', 'gr-menu-item', 'gr-menu-divider', 'gr-menu-label', 'gr-tag'],
+    },
+    { components: ['gr-radio', 'gr-radio-group'] },
+  ],
   plugins: [sass()],
   globalStyle: 'src/css/core.scss',
   globalScript: 'src/global/graphite-global.ts',
