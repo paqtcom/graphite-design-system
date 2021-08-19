@@ -4,25 +4,34 @@
 
 These are React specific building blocks on top of [@graphiteds/core](../core/README.md) components.
 
+## Browser Support
+
+We support only [modern browsers](https://browserslist.dev/?q=PiAxJSwgbGFzdCAyIHZlcnNpb25zLCBub3QgZGVhZCwgbm90IGllIDEx).
+
+```bash
+npx browserslist "> 1%, last 2 versions, not dead, not ie 11"
+```
+
+So it doesn't run on legacy browsers: IE11, Edge 18 & below (Edge before it moved to Chromium), and Safari 10.
+
+The advantage of this is we have less runtime within our builds, and having faster production builds by not having to also downlevel to es5. Plus you don't need any polyfills.
+
 ## Using these components
 
 Add this package to your project:
 
-```shell
-npm install @graphiteds/react --save
-```
-
-Or:
-
-```shell
-yarn add @graphiteds/react
+```sh
+npm install @graphiteds/react
 ```
 
 In your index.js add the following code:
 
 ```js
-/* Core CSS required for Graphite components to work properly */
+// Core CSS required for Graphite components to work properly
 import "@graphiteds/react/css/core.css";
+
+// Optional CSS to prevent Flash Of Unstyled Content (FOUC)
+import "@graphiteds/react/css/prevent-fouc.css";
 ```
 
 Import the component(s) you want to use:
@@ -37,9 +46,7 @@ Use it in your JSX as any React component:
 <GrButton href="https://www.way2web.nl">Way2Web</GrButton>
 ```
 
-### CodeSandbox example
-
-An example of this setup: https://codesandbox.io/s/graphiteds-react-example-yhr9p
+An example of this setup: https://codesandbox.io/s/graphiteds-react-example-yhr9p.
 
 ## How to release a new version
 

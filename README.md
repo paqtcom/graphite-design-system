@@ -65,6 +65,4 @@ You can then publish all the packages to npm (with lerna):
 npm run publish
 ```
 
-This will ask what the next version of each package should be, changes all the package.json's, creates all the tags in the repo and publishes it to npm (if your terminal has GitHub and npm access).
-
-Or you can navigate to the packages yourself, change the `package.json`, create the tag in the repo, and run `npm publish`.
+This will ask what the next version should be, changes all the package.json's, creates a tag in the repo and publishes it to npm (if your terminal has GitHub and npm access).

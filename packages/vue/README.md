@@ -4,7 +4,7 @@
 
 These are [Vue 3](https://v3.vuejs.org/) specific building blocks on top of [@graphiteds/core](../core/README.md) components.
 
-We recommend using [vite](https://vitejs.dev/) or otherwise [vue-cli v5](https://next.cli.vuejs.org/) (with Webpack 5) for the best bundle sizes (due to tree-shaking). If you want to migrate from vue-cli v4 to v5: [follow this guide](https://next.cli.vuejs.org/migrations/migrate-from-v4.html)].
+We recommend using [vite](https://vitejs.dev/) or otherwise [vue-cli v5](https://next.cli.vuejs.org/) (with Webpack 5) for the best bundle sizes (due to tree-shaking). If you want to migrate from vue-cli v4 to v5: [follow this guide](https://next.cli.vuejs.org/migrations/migrate-from-v4.html).
 
 Tested on:
 
@@ -14,24 +14,22 @@ Tested on:
 
 ## Browser Support
 
-We support only modern browsers: https://browserslist.dev/?q=ZGVmYXVsdHMsIG5vdCBpZSAxMQ%3D%3D
+We support only [modern browsers](https://browserslist.dev/?q=PiAxJSwgbGFzdCAyIHZlcnNpb25zLCBub3QgZGVhZCwgbm90IGllIDEx).
 
 ```bash
-npx browserslist "defaults, not ie 11"
+npx browserslist "> 1%, last 2 versions, not dead, not ie 11"
 ```
+
+So it doesn't run on legacy browsers: IE11, Edge 18 & below (Edge before it moved to Chromium), and Safari 10.
+
+The advantage of this is we have less runtime within our builds, and having faster production builds by not having to also downlevel to es5. Plus you don't need any polyfills.
 
 ## Using these components
 
 Add this package to your project:
 
-```shell
-npm install @graphiteds/vue --save
-```
-
-Or:
-
-```shell
-yarn add @graphiteds/vue
+```sh
+npm install @graphiteds/vue
 ```
 
 Edit the `main.js` / `main.ts` file of a Vue 3 project like this:
@@ -41,7 +39,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { GraphiteVue } from "@graphiteds/vue";
 
-/* Core CSS required for Graphite components to work properly */
+// Core CSS required for Graphite components to work properly
 import "@graphiteds/vue/css/core.css";
 
 createApp(App).use(GraphiteVue).mount("#app");
@@ -65,9 +63,7 @@ Use it in your template as any Vue component:
 
 We recommend using kebab-case for our components and PascalCase for your own Vue components to make them visible distinct.
 
-### CodeSandbox example
-
-An example of this setup using vue-cli v4: https://codesandbox.io/s/graphiteds-vue3-example-jhk03
+An example of this setup using vue-cli v4: https://codesandbox.io/s/graphiteds-vue3-example-jhk03.
 
 ## Development
 

@@ -13,7 +13,7 @@
   --gr-color-secondary-rgb: 5, 31, 44;
   --gr-color-secondary-contrast: #ffffff;
   --gr-color-secondary-contrast-rgb: 255, 255, 255;
-  --gr-color-secondary-shade: #000;
+  --gr-color-secondary-shade: #000000;
   --gr-color-secondary-tint: #0a415c;
 
   --gr-color-tertiary: #0c4a6e;
@@ -155,7 +155,6 @@
   --gr-form-element-border-radius-large: var(--gr-border-radius-medium);
 
   // Focus ring
-
   --gr-focus-ring-width: 2px;
 
   // Labels
@@ -182,7 +181,9 @@
   // Toggles (checkboxes, radios, switches)
   --gr-toggle-size: 1rem;
 
-  // Pannels
+  // Panel tokens
+  // -------------------------------------------------
+
   --gr-panel-border-color: var(--gr-color-light-shade);
 
   // Z-index tokens
