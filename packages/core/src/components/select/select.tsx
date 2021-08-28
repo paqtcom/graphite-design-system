@@ -17,15 +17,14 @@ let id = 0;
   shadow: true,
 })
 export class Select {
-  box: HTMLElement;
-  dropdown: HTMLGrDropdownElement;
-  input: HTMLInputElement;
-  inputId = `select-${++id}`;
-  labelId = `select-label-${id}`;
-  helpTextId = `select-help-text-${id}`;
-  invalidTextId = `select-invalid-text-${id}`;
-  menu: HTMLGrMenuElement;
-  resizeObserver: ResizeObserver;
+  private box: HTMLElement;
+  private dropdown: HTMLGrDropdownElement;
+  private inputId = `select-${++id}`;
+  private labelId = `select-label-${id}`;
+  private helpTextId = `select-help-text-${id}`;
+  private invalidTextId = `select-invalid-text-${id}`;
+  private menu: HTMLGrMenuElement;
+  private resizeObserver: ResizeObserver;
 
   @Element() el: HTMLGrSelectElement;
 
@@ -449,7 +448,7 @@ export class Select {
 
             {this.clearable && hasSelection && (
               <button class="select-clear" type="button" onClick={this.handleClearClick} tabindex="-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
                   <title>Close Circle</title>
                   <path
                     d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"
@@ -471,7 +470,7 @@ export class Select {
             )}
 
             <span class="caret">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+              <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
                 <title>Chevron Down</title>
                 <path
                   fill="none"

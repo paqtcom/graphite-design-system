@@ -92,7 +92,7 @@ export class Button {
   @Event({ eventName: 'gr-blur' }) grBlur!: EventEmitter<void>;
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title']);
   }
 
   private handleClick = (ev: MouseEvent) => {
@@ -164,7 +164,7 @@ export class Button {
             <slot name="end"></slot>
             {this.caret && (
               <span class="caret">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
                   <title>Chevron Down</title>
                   <path
                     fill="none"

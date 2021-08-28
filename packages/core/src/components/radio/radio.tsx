@@ -122,7 +122,7 @@ export class Radio {
         >
           <span class="radio-control">
             <span class="radio-icon">
-              <svg viewBox="0 0 16 16">
+              <svg role="img" aria-hidden="true" viewBox="0 0 16 16">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g fill="currentColor">
                     <circle cx="8" cy="8" r="3.42857143"></circle>

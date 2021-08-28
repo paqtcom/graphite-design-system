@@ -492,11 +492,11 @@
           <gr-menu-divider></gr-menu-divider>
           <gr-menu-item>
             Prefix
-            <ion-icon slot="start" name="gift-outline"></ion-icon>
+            <ion-icon slot="start" name="gift-outline" aria-hidden="true"></ion-icon>
           </gr-menu-item>
           <gr-menu-item>
             Suffix Icon
-            <ion-icon slot="end" name="heart-outline"></ion-icon>
+            <ion-icon slot="end" name="heart-outline" aria-hidden="true"></ion-icon>
           </gr-menu-item>
         </gr-menu>
       </gr-dropdown>
@@ -521,10 +521,10 @@
         <gr-menu-item value="cut" disabled>Cut</gr-menu-item>
         <gr-menu-item value="copy" checked>
           Copy
-          <ion-icon slot="end" name="copy-outline"></ion-icon>
+          <ion-icon slot="end" name="copy-outline" aria-hidden="true"></ion-icon>
         </gr-menu-item>
         <gr-menu-item value="paste">
-          <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+          <ion-icon slot="start" name="clipboard-outline" aria-hidden="true"></ion-icon>
           Paste
         </gr-menu-item>
         <gr-menu-item value="delete">Delete</gr-menu-item>
@@ -556,34 +556,34 @@
         <h3>Icons</h3>
 
         <gr-button>
-          <ion-icon name="settings-outline" slot="start"></ion-icon>
+          <ion-icon name="settings-outline" slot="start" aria-hidden="true"></ion-icon>
           Settings
         </gr-button>
 
         <gr-button>
-          <ion-icon name="refresh-outline" slot="end"></ion-icon>
+          <ion-icon name="refresh-outline" slot="end" aria-hidden="true"></ion-icon>
           Refresh
         </gr-button>
 
         <gr-button>
-          <ion-icon name="link-outline" slot="start"></ion-icon>
+          <ion-icon name="link-outline" slot="start" aria-hidden="true"></ion-icon>
           Open
-          <ion-icon name="exit-outline" slot="end"></ion-icon>
+          <ion-icon name="exit-outline" slot="end" aria-hidden="true"></ion-icon>
         </gr-button>
       </section>
 
       <section>
         <h3>Circle Buttons</h3>
 
-        <gr-button variant="primary" size="small" circle>
+        <gr-button variant="primary" size="small" aria-label="Add" circle>
           <ion-icon name="add-outline" slot="icon-only"></ion-icon>
         </gr-button>
 
-        <gr-button variant="primary" circle>
+        <gr-button variant="primary" aria-label="Add" circle>
           <ion-icon name="add-outline" slot="icon-only"></ion-icon>
         </gr-button>
 
-        <gr-button variant="primary" size="large" circle>
+        <gr-button variant="primary" aria-label="Add" size="large" circle>
           <ion-icon name="add-outline" slot="icon-only"></ion-icon>
         </gr-button>
       </section>
@@ -597,13 +597,13 @@
       <section>
         <h3>Block Button</h3>
 
-        <gr-button expand="block"> Block </gr-button>
+        <gr-button expand="block">Block</gr-button>
       </section>
 
       <section>
         <h3>Full Button</h3>
 
-        <gr-button expand="full" aria-label="aria label test"> Block </gr-button>
+        <gr-button expand="full">Full</gr-button>
       </section>
 
       <section>

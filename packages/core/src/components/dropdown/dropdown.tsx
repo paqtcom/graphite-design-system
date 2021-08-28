@@ -15,13 +15,12 @@ let id = 0;
   shadow: true,
 })
 export class Dropdown {
-  accessibleTrigger: HTMLElement;
-  componentId = `dropdown-${++id}`;
-  isVisible = false;
-  panel: HTMLElement;
-  positioner: HTMLElement;
-  popover: Popover;
-  trigger: HTMLElement;
+  private componentId = `dropdown-${++id}`;
+  private isVisible = false;
+  private panel: HTMLElement;
+  private positioner: HTMLElement;
+  private popover: Popover;
+  private trigger: HTMLElement;
 
   @Element() el: HTMLGrDropdownElement;
 

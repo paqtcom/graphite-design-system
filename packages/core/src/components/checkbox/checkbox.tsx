@@ -161,7 +161,7 @@ export class Checkbox {
           <span class="checkbox-control">
             {this.checked && (
               <span class="checkbox-icon">
-                <svg viewBox="0 0 16 16">
+                <svg role="img" aria-hidden="true" viewBox="0 0 16 16">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
                     <g stroke="currentColor" stroke-width="2">
                       <g transform="translate(3.428571, 3.428571)">
@@ -176,7 +176,7 @@ export class Checkbox {
 
             {!this.checked && this.indeterminate && (
               <span class="checkbox-icon">
-                <svg viewBox="0 0 16 16">
+                <svg role="img" aria-hidden="true" viewBox="0 0 16 16">
                   <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
                     <g stroke="currentColor" stroke-width="2">
                       <g transform="translate(2.285714, 6.857143)">
@@ -213,7 +213,7 @@ export class Checkbox {
         {showInvalidText && (
           <div id={this.invalidTextId} class="checkbox-invalid-text" aria-hidden={hasInvalidText ? 'false' : 'true'}>
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
                 <title>Alert Circle</title>
                 <path
                   d="M256,48C141.31,48,48,141.31,48,256s93.31,208,208,208,208-93.31,208-208S370.69,48,256,48Zm0,319.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Zm21.72-201.15-5.74,122a16,16,0,0,1-32,0l-5.74-121.94v-.05a21.74,21.74,0,1,1,43.44,0Z"

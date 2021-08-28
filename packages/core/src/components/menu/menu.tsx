@@ -10,10 +10,10 @@ import { getTextContent } from '../../utils/slot';
   shadow: true,
 })
 export class Menu {
-  typeToSelectString = '';
-  typeToSelectTimeout: any;
+  private typeToSelectString = '';
+  private typeToSelectTimeout: any;
 
-  menu: HTMLElement;
+  private menu: HTMLElement;
 
   /** Emitted when a menu item is selected. */
   @Event({ eventName: 'gr-select' }) grSelect: EventEmitter<{ item: HTMLGrMenuItemElement }>;

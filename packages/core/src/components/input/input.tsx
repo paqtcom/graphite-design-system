@@ -2,7 +2,7 @@ import { Component, h, Element, Prop, Watch, Event, EventEmitter, State, Method 
 import FormControl from '../../functional-components/form-control/form-control';
 import { AutocompleteTypes, TextFieldTypes } from '../../interface';
 import { hasSlot } from '../../utils/slot';
-import { debounceEvent, renderHiddenInput } from '../../utils/helpers';
+import { debounceEvent, inheritAttributes, renderHiddenInput } from '../../utils/helpers';
 
 let id = 0;
 
@@ -17,11 +17,12 @@ let id = 0;
   shadow: true,
 })
 export class Input {
-  input: HTMLInputElement;
-  inputId = `input-${++id}`;
-  labelId = `input-label-${id}`;
-  helpTextId = `input-help-text-${id}`;
-  invalidTextId = `input-invalid-text-${id}`;
+  private input: HTMLInputElement;
+  private inputId = `input-${++id}`;
+  private labelId = `input-label-${id}`;
+  private helpTextId = `input-help-text-${id}`;
+  private invalidTextId = `input-invalid-text-${id}`;
+  private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLGrInputElement;
 
@@ -178,6 +179,7 @@ export class Input {
 
   componentWillLoad() {
     this.handleSlotChange();
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title']);
   }
 
   disconnectedCallback() {
@@ -328,11 +330,12 @@ export class Input {
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
             class="input-control"
+            {...this.inheritedAttributes}
           />
 
           {this.clearable && (
             <button class="input-clear" type="button" onClick={this.handleClearClick} tabindex="-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+              <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
                 <title>Close Circle</title>
                 <path
                   d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z"

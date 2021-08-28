@@ -46,8 +46,14 @@ export class Tag {
           <slot></slot>
 
           {this.clearable && (
-            <gr-button variant="plain" size={this.size} class="tag-clear" onClick={this.handleClearClick}>
-              <svg slot="icon-only" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+            <gr-button
+              variant="plain"
+              size={this.size}
+              class="tag-clear"
+              aria-label="clear"
+              onClick={this.handleClearClick}
+            >
+              <svg slot="icon-only" role="img" aria-hidden="true" viewBox="0 0 512 512">
                 <title>Close</title>
                 <path
                   fill="none"

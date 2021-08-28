@@ -77,7 +77,7 @@ export class MenuItem {
         onMouseLeave={this.handleMouseLeave}
       >
         <span class="checkmark">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+          <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
             <title>Checkmark</title>
             <path
               fill="none"

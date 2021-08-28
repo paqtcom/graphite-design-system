@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, Event, EventEmitter, State, Watch, Method } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
-import { debounceEvent, renderHiddenInput } from '../../utils/helpers';
+import { debounceEvent, inheritAttributes, renderHiddenInput } from '../../utils/helpers';
 import { hasSlot } from '../../utils/slot';
 
 let id = 0;
@@ -16,12 +16,12 @@ let id = 0;
   shadow: true,
 })
 export class Textarea {
-  inputId = `textarea-${++id}`;
-  labelId = `textarea-label-${id}`;
-  helpTextId = `textarea-help-text-${id}`;
-  invalidTextId = `textarea-invalid-text-${id}`;
-  resizeObserver: ResizeObserver;
-  textarea: HTMLTextAreaElement;
+  private inputId = `textarea-${++id}`;
+  private labelId = `textarea-label-${id}`;
+  private helpTextId = `textarea-help-text-${id}`;
+  private invalidTextId = `textarea-invalid-text-${id}`;
+  private textarea: HTMLTextAreaElement;
+  private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLGrTextareaElement;
 
@@ -159,6 +159,10 @@ export class Textarea {
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
 
     this.debounceChanged();
+  }
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title']);
   }
 
   /** Sets focus on the textarea. */
@@ -302,6 +306,7 @@ export class Textarea {
             onInput={this.handleInput}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
+            {...this.inheritedAttributes}
           />
         </div>
       </FormControl>
