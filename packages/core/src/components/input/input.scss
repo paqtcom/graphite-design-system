@@ -25,8 +25,6 @@
    *
    * @prop --min-height: Minimum height of the input
    *
-   * @prop --clear-icon-margin-end: Right margin of the clear icon (will be left margin when we support right-to-left direction)
-   *
    * @prop --padding-start: Left padding of the input (will be right padding when we support right-to-left direction)
    * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
    *
@@ -53,8 +51,6 @@
   --placeholder-color: var(--gr-color-medium-tint);
 
   --min-height: var(--gr-form-element-height-medium);
-
-  --clear-icon-margin-end: var(--gr-spacing-medium);
 
   --padding-start: var(--gr-spacing-medium);
   --padding-end: var(--gr-spacing-medium);
@@ -199,10 +195,11 @@
   border-radius: var(--min-height);
 }
 
-// Clearable
+// Clearable + Password Toggle
 // --------------------------------------------------
 
-.input-clear {
+.input-clear,
+.input-password-toggle {
   display: inline-flex;
   align-items: center;
   font-size: inherit;
@@ -212,7 +209,7 @@
   padding: 0;
   transition: 150ms color;
   cursor: pointer;
-  margin-right: var(--clear-icon-margin-end);
+  margin-right: var(--gr-spacing-medium);
 
   &:hover {
     color: var(--gr-color-dark);
@@ -228,6 +225,11 @@
 
     font-size: var(--font-size);
   }
+}
+
+/* Don't show the browser's password toggle in Edge */
+::-ms-reveal {
+  display: none;
 }
 
 .input-empty .input-clear {
