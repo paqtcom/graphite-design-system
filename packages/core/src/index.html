@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/build/core.css" />
     <script type="module" src="/build/core.esm.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.css" />
 
     <style>
       body {
@@ -59,7 +60,7 @@
         </gr-input>
         <br />
         <gr-input placeholder="Medium" size="medium">
-          <ion-icon name="search-outline" slot="start"></ion-icon>
+          <i class="fas fa-search" slot="start"></i>
           <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
         </gr-input>
         <br />
@@ -581,19 +582,20 @@
         <h3>Icons</h3>
 
         <gr-button>
-          <ion-icon name="settings-outline" slot="start" aria-hidden="true"></ion-icon>
+          <!-- <ion-icon name="settings-outline" slot="start" aria-hidden="true"></ion-icon> -->
+          <i class="fas fa-cog" slot="start"></i>
           Settings
         </gr-button>
 
         <gr-button>
-          <ion-icon name="refresh-outline" slot="end" aria-hidden="true"></ion-icon>
+          <ion-icon name="refresh-outline" slot="end" style="font-size: 1.4em" aria-hidden="true"></ion-icon>
           Refresh
         </gr-button>
 
         <gr-button>
-          <ion-icon name="link-outline" slot="start" aria-hidden="true"></ion-icon>
+          <ion-icon name="link-outline" slot="start" style="font-size: 1.3em" aria-hidden="true"></ion-icon>
           Open
-          <ion-icon name="exit-outline" slot="end" aria-hidden="true"></ion-icon>
+          <ion-icon name="exit-outline" slot="end" style="font-size: 1.3em" aria-hidden="true"></ion-icon>
         </gr-button>
       </section>
 

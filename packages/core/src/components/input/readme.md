@@ -127,6 +127,8 @@ Type: `Promise<void>`
 | `--focus-ring`                     | The focus ring style to use when the input receives focus, a `box-shadow` property.       |
 | `--font-size`                      | Font size of the input                                                                    |
 | `--font-weight`                    | Font weight of the input                                                                  |
+| `--icon-color`                     | Color of the icons (start & end slots, clearable & password toggle)                       |
+| `--icon-color-hover`               | Color of the icons (clearable & password toggle) on hover                                 |
 | `--min-height`                     | Minimum height of the input                                                               |
 | `--padding-end`                    | Right padding of the input (will be left padding when we support right-to-left direction) |
 | `--padding-start`                  | Left padding of the input (will be right padding when we support right-to-left direction) |
