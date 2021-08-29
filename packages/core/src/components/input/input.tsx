@@ -313,6 +313,10 @@ export class Input {
             [`input-${this.size}`]: true,
           }}
         >
+          <span class="start">
+            <slot name="start" />
+          </span>
+
           <input
             ref={el => (this.input = el)}
             id={this.name}
@@ -399,6 +403,10 @@ export class Input {
               )}
             </button>
           )}
+
+          <span class="end">
+            <slot name="end" />
+          </span>
         </div>
       </FormControl>
     );

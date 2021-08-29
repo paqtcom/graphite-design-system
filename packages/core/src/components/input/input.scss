@@ -25,6 +25,9 @@
    *
    * @prop --min-height: Minimum height of the input
    *
+   * @prop --icon-color: Color of the icons (start & end slots, clearable & password toggle)
+   * @prop --icon-color-hover: Color of the icons (clearable & password toggle) on hover
+   *
    * @prop --padding-start: Left padding of the input (will be right padding when we support right-to-left direction)
    * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
    *
@@ -51,6 +54,9 @@
   --placeholder-color: var(--gr-color-medium-tint);
 
   --min-height: var(--gr-form-element-height-medium);
+
+  --icon-color: var(--gr-color-medium);
+  --icon-color-hover: var(--gr-color-dark);
 
   --padding-start: var(--gr-spacing-medium);
   --padding-end: var(--gr-spacing-medium);
@@ -195,6 +201,35 @@
   border-radius: var(--min-height);
 }
 
+// Input Icons
+// --------------------------------------------------
+
+.start {
+  font-size: 1.1em;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  cursor: default;
+
+  ::slotted(*) {
+    margin-left: var(--padding-start);
+    color: var(--icon-color);
+  }
+}
+
+.end {
+  font-size: 1.1em;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  cursor: default;
+
+  ::slotted(*) {
+    margin-right: var(--padding-end);
+    color: var(--icon-color);
+  }
+}
+
 // Clearable + Password Toggle
 // --------------------------------------------------
 
@@ -203,16 +238,16 @@
   display: inline-flex;
   align-items: center;
   font-size: inherit;
-  color: var(--gr-color-medium);
+  color: var(--icon-color);
   border: none;
   background: none;
   padding: 0;
   transition: 150ms color;
   cursor: pointer;
-  margin-right: var(--gr-spacing-medium);
+  margin-right: var(--padding-end);
 
   &:hover {
-    color: var(--gr-color-dark);
+    color: var(--icon-color-hover);
   }
 
   &:focus {
