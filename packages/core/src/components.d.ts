@@ -269,6 +269,10 @@ export namespace Components {
          */
         "step"?: string;
         /**
+          * Set to true to add a password toggle button for password inputs.
+         */
+        "togglePassword": boolean;
+        /**
           * The type of control to display. The default type is text.
          */
         "type": TextFieldTypes;
@@ -945,6 +949,10 @@ declare namespace LocalJSX {
           * Works with the min and max attributes to limit the increments at which a value can be set. Possible values are: `"any"` or a positive floating point number.
          */
         "step"?: string;
+        /**
+          * Set to true to add a password toggle button for password inputs.
+         */
+        "togglePassword"?: boolean;
         /**
           * The type of control to display. The default type is text.
          */
