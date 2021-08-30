@@ -10,6 +10,8 @@ let id = 0;
  * @slot label - The input's label. Alternatively, you can use the label prop.
  * @slot help-text - Help text that describes how to use the input.
  * @slot invalid-text - Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop.
+ * @slot start - Used to prepend an icon or similar element to the input.
+ * @slot end - Used to append an icon or similar element to the input.
  */
 @Component({
   tag: 'gr-input',

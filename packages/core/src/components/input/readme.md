@@ -103,9 +103,11 @@ Type: `Promise<void>`
 
 | Slot             | Description                                                                                       |
 | ---------------- | ------------------------------------------------------------------------------------------------- |
+| `"end"`          | Used to append an icon or similar element to the input.                                           |
 | `"help-text"`    | Help text that describes how to use the input.                                                    |
 | `"invalid-text"` | Invalid text tells a user how to fix the error. Alternatively, you can use the invalid-text prop. |
 | `"label"`        | The input's label. Alternatively, you can use the label prop.                                     |
+| `"start"`        | Used to prepend an icon or similar element to the input.                                          |
 
 
 ## CSS Custom Properties
