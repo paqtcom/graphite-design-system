@@ -119,39 +119,44 @@ If you use Vue with a direct script include, [look at this example](https://code
 
 Otherwise when using a bundler, follow these steps:
 
-- Run `npm install @graphiteds/core`
-- Edit `src/main.js` to include:
+Run:
 
-  ```js
-  // Import Graphite components
-  import { defineCustomElements } from '@graphiteds/core/loader';
+```sh
+npm install @graphiteds/core
+```
 
-  // Core CSS required for Graphite components to work properly
-  import '@graphiteds/core/css/core.css';
+Edit `src/main.js` to include:
 
-  // Optional CSS to prevent Flash Of Unstyled Content (FOUC)
-  import '@graphiteds/core/css/prevent-fouc.css';
+```js
+// Import Graphite components
+import { defineCustomElements } from '@graphiteds/core/loader';
 
-  // ...
+// Core CSS required for Graphite components to work properly
+import '@graphiteds/core/css/core.css';
 
-  // configure Vue.js to ignore Graphite components
-  Vue.config.ignoredElements = [/gr-\w*/];
+// Optional CSS to prevent Flash Of Unstyled Content (FOUC)
+import '@graphiteds/core/css/prevent-fouc.css';
 
-  // Register Graphite components
-  defineCustomElements(window);
+// ...
 
-  new Vue({
-    render: h => h(App),
-  }).$mount('#app');
-  ```
+// configure Vue.js to ignore Graphite components
+Vue.config.ignoredElements = [/gr-\w*/];
 
-- The components should then be available in any of the Vue components:
+// Register Graphite components
+defineCustomElements(window);
 
-  ```html
-  <template>
-    <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
-  </template>
-  ```
+new Vue({
+  render: h => h(App),
+}).$mount('#app');
+```
+
+The components should then be available in any of the Vue components:
+
+```html
+<template>
+  <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+</template>
+```
 
 _Vue provides several different ways to install and use the framework in an application. The above technique has been tested on a Vue 2 application that was created using the vue-cli. A similar technique should work if the application was generated using other options._
 
@@ -209,53 +214,56 @@ Now you can use the v-gr-model directive to keep your data in sync!
 
 #### Usage with Nuxt 2
 
-- Run `npm install @graphiteds/core`
-- Edit `nuxt.config.js` to include:
+```sh
+npm install @graphiteds/core
+```
 
-  ```js
-  module.exports = {
-    vue: {
-      config: {
-        ignoredElements: [/gr-\w*/],
-      },
+Edit `nuxt.config.js` to include:
+
+```js
+module.exports = {
+  vue: {
+    config: {
+      ignoredElements: [/gr-\w*/],
     },
-  };
-  ```
+  },
+};
+```
 
-- Add `plugins/graphiteds.js` with the following content:
+Add `plugins/graphiteds.js` with the following content:
 
-  ```js
-  // Import Graphite components
-  import { defineCustomElements } from '@graphiteds/core/loader';
+```js
+// Import Graphite components
+import { defineCustomElements } from '@graphiteds/core/loader';
 
-  // Core CSS required for Graphite components to work properly
-  import '@graphiteds/core/css/core.css';
+// Core CSS required for Graphite components to work properly
+import '@graphiteds/core/css/core.css';
 
-  // Optional CSS to prevent Flash Of Unstyled Content (FOUC)
-  import '@graphiteds/core/css/prevent-fouc.css';
+// Optional CSS to prevent Flash Of Unstyled Content (FOUC)
+import '@graphiteds/core/css/prevent-fouc.css';
 
-  export default function () {
-    if (process.client) {
-      defineCustomElements(window);
-    }
+export default function () {
+  if (process.client) {
+    defineCustomElements(window);
   }
-  ```
+}
+```
 
-- Add the plugin to the project configuration (`nuxt.config.js`):
+Add the plugin to the project configuration (`nuxt.config.js`):
 
-  ```js
-  module.exports = {
-    plugins: ['~/plugins/graphiteds.js'],
-  };
-  ```
+```js
+module.exports = {
+  plugins: ['~/plugins/graphiteds.js'],
+};
+```
 
-- The components should then be available in any of the Nuxt pages & components:
+The components should then be available in any of the Nuxt pages & components:
 
-  ```html
-  <template>
-    <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
-  </template>
-  ```
+```html
+<template>
+  <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+</template>
+```
 
 The instructions above about [Binding Complex Data](#binding-complex-data), [Two-way Binding](#two-way-binding), and [Using a Custom Directive](#using-a-custom-directive) also apply here (except you need to do the `Vue.use(GraphiteModelDirective)` in the `graphiteds.js` plugin).
 
@@ -320,16 +328,20 @@ An example of this setup: https://codesandbox.io/s/graphiteds-angular-example-e4
 
 ### Usage with Livewire
 
-- Just add the following tags to your page.
-  ```html
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/css/graphite.bundle.css" />
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/dist/core/core.esm.js"></script>
-  ```
-- Then you can use the elements anywhere in your blade templates, but you have to use `wire:ignore`
-- For example:
-  ```html
-  <gr-button wire:click="increment" variant="primary" circle wire:ignore><div slot="icon-only">+</div></gr-button>
-  ```
+Just add the following tags to your page:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/css/graphite.bundle.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/@graphiteds/core@1/dist/core/core.esm.js"></script>
+```
+
+Then you can use the elements anywhere in your blade templates, but you have to use `wire:ignore`.
+
+For example:
+
+```html
+<gr-button wire:click="increment" variant="primary" circle wire:ignore><div slot="icon-only">+</div></gr-button>
+```
 
 ## Customization
 
