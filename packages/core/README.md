@@ -2,7 +2,7 @@
 
 # @graphiteds/core
 
-The Graphite Design System (graphiteds) Core package contains the Web Components that make up the reusable UI building blocks of the Graphite Design System. These components are designed to be used in traditional frontend view libraries/frameworks (such as React, Angular, or Vue), or on their own through traditional JavaScript in the browser.
+The Graphite Design System (graphiteds) Core package contains the Web Components that make up the reusable UI building blocks of the [Graphite Design System](https://graphitedesignsystem.com). These components are designed to be used in traditional frontend view libraries/frameworks (such as React, Angular, or Vue), or on their own through traditional JavaScript in the browser.
 
 ## Browser Support
 
@@ -40,7 +40,7 @@ Then you can use the elements anywhere in your template, JSX, html etc.
 For example:
 
 ```html
-<gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+<gr-button href="https://paqt.com">PAQT</gr-button>
 ```
 
 An example of this setup: https://codesandbox.io/s/graphiteds-script-tag-example-9foz6.
@@ -154,7 +154,7 @@ The components should then be available in any of the Vue components:
 
 ```html
 <template>
-  <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+  <gr-button href="https://paqt.com">PAQT</gr-button>
 </template>
 ```
 
@@ -261,7 +261,7 @@ The components should then be available in any of the Nuxt pages & components:
 
 ```html
 <template>
-  <gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+  <gr-button href="https://paqt.com">PAQT</gr-button>
 </template>
 ```
 

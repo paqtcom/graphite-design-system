@@ -43,7 +43,7 @@ import { GrButton } from "@graphiteds/react";
 Use it in your JSX as any React component:
 
 ```html
-<GrButton href="https://www.way2web.nl">Way2Web</GrButton>
+<GrButton href="https://paqt.com">PAQT</GrButton>
 ```
 
 An example of this setup: https://codesandbox.io/s/graphiteds-react-example-yhr9p.

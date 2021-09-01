@@ -82,5 +82,5 @@ export const config: Config = {
       baseUrl: 'https://example.com/',
     },
   ],
-  preamble: '(C) Way2Web https://www.way2web.nl - MIT License',
+  preamble: '(C) PAQT.com B.V. https://paqt.com - MIT License',
 };

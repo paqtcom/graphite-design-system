@@ -55,10 +55,10 @@ Use it in your template as any Vue component:
 
 ```jsx
 // In kebab-case
-<gr-button href="https://www.way2web.nl">Way2Web</gr-button>
+<gr-button href="https://paqt.com">PAQT</gr-button>
 
 // Or PascalCase
-<GrButton href="https://www.way2web.nl">Way2Web</GrButton>
+<GrButton href="https://paqt.com">PAQT</GrButton>
 ```
 
 We recommend using kebab-case for our components and PascalCase for your own Vue components to make them visible distinct.
