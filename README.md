@@ -2,7 +2,7 @@
 
 # Graphite Design System
 
-Library of components for the Graphite Design System
+Library of components for the [Graphite Design System](https://graphitedesignsystem.com).
 
 ### Packages
 
