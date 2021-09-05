@@ -196,6 +196,7 @@
     color: var(--gr-form-element-invalid-text-color);
     margin-top: var(--gr-spacing-xxx-small);
     font-size: var(--gr-form-element-invalid-text-font-size-medium);
+    min-height: 1.875rem;
 
     .icon {
       margin-top: var(--gr-spacing-xxx-small);

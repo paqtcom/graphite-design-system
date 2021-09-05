@@ -56,14 +56,17 @@
 
   &.form-control-small .form-control-help-text {
     font-size: var(--gr-form-element-help-text-font-size-small);
+    min-height: 1.625rem;
   }
 
   &.form-control-medium .form-control-help-text {
     font-size: var(--gr-form-element-help-text-font-size-medium);
+    min-height: 1.875rem;
   }
 
   &.form-control-large .form-control-help-text {
     font-size: var(--gr-form-element-help-text-font-size-large);
+    min-height: 2.125rem;
   }
 }
 
@@ -89,13 +92,16 @@
 
   &.form-control-small .form-control-invalid-text {
     font-size: var(--gr-form-element-invalid-text-font-size-small);
+    min-height: 1.625rem;
   }
 
   &.form-control-medium .form-control-invalid-text {
     font-size: var(--gr-form-element-invalid-text-font-size-medium);
+    min-height: 1.875rem;
   }
 
   &.form-control-large .form-control-invalid-text {
     font-size: var(--gr-form-element-invalid-text-font-size-large);
+    min-height: 2.125rem;
   }
 }
