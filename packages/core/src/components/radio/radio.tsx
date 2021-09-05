@@ -139,6 +139,7 @@ export class Radio {
               checked={this.checked}
               disabled={this.disabled}
               role="radio"
+              tabindex={this.buttonTabindex}
               aria-checked={this.checked ? 'true' : 'false'}
               aria-labelledby={this.labelId}
               onBlur={this.handleBlur}

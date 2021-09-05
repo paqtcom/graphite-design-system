@@ -143,24 +143,17 @@ export class RadioGroup {
       // If we're on the last radio, move to the first radio
       if (['ArrowDown', 'ArrowRight'].includes(ev.code)) {
         next = index === radios.length - 1 ? radios[0] : radios[index + 1];
-
-        // Prevent browsers from jumping
-        // to the bottom of the screen
-        ev.preventDefault();
       }
 
       // If hitting arrow up or arrow left, move to the previous radio
       // If we're on the first radio, move to the last radio
       if (['ArrowUp', 'ArrowLeft'].includes(ev.code)) {
         next = index === 0 ? radios[radios.length - 1] : radios[index - 1];
-
-        // Prevent browsers from jumping
-        // to the bottom of the screen
-        ev.preventDefault();
       }
 
       if (next && radios.includes(next)) {
         next.setFocus(ev);
+        this.value = next.value;
       }
 
       // Update the radio group value when a user presses the
