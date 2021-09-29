@@ -482,6 +482,8 @@ export class Select {
                 />
               </svg>
             </span>
+
+            <input class="select-hidden-select" aria-hidden="true" value={hasSelection ? '1' : ''} tabIndex={-1} />
           </div>
 
           <gr-menu ref={el => (this.menu = el)} class="select-menu" onGr-select={this.handleMenuSelect}>
