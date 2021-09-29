@@ -17,13 +17,6 @@
         line-height: var(--gr-line-height-normal);
         color: var(--gr-color-dark);
       }
-
-      :root {
-        --gr-color-primary: #f7a91b;
-        --gr-color-primary-rgb: 247, 169, 27;
-        --gr-color-primary-contrast: #000000;
-        --gr-color-primary-contrast-rgb: 0, 0, 0;
-      }
     </style>
   </head>
   <body>
@@ -452,9 +445,7 @@
       <section style="width: 300px">
         <h3>Checked</h3>
         <gr-field-group label="Select options">
-          <gr-checkbox id="checkbox-test" checked invalid
-            >Option 1 with longer text with longer text with longer text with longer text</gr-checkbox
-          >
+          <gr-checkbox id="checkbox-test" checked invalid>Option 1</gr-checkbox>
           <gr-checkbox invalid>Option 2</gr-checkbox>
           <gr-checkbox invalid-text="Select at least one option" invalid>Option 3</gr-checkbox>
         </gr-field-group>
