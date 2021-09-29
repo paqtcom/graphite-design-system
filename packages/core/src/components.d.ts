@@ -213,6 +213,10 @@ export namespace Components {
          */
         "max"?: string;
         /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength": number;
+        /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */
         "min"?: string;
@@ -893,6 +897,10 @@ declare namespace LocalJSX {
           * The maximum value, which must not be less than its minimum (min attribute) value.
          */
         "max"?: string;
+        /**
+          * Specifies how many characters are allowed.
+         */
+        "maxlength"?: number;
         /**
           * The minimum value, which must not be greater than its maximum (max attribute) value.
          */

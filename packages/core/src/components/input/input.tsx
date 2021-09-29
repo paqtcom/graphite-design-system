@@ -79,6 +79,9 @@ export class Input {
   /** If `true`, the user cannot modify the value. */
   @Prop({ reflect: true }) readonly = false;
 
+  /** Specifies how many characters are allowed. */
+  @Prop() maxlength: number;
+
   /** If `true`, the element will have its spelling and grammar checked. */
   @Prop() spellcheck = false;
 
@@ -335,6 +338,7 @@ export class Input {
             max={this.max}
             step={this.step}
             value={this.value}
+            maxlength={this.maxlength}
             autoCapitalize={this.autocapitalize}
             autoComplete={this.autocomplete}
             spellcheck={this.spellcheck}
