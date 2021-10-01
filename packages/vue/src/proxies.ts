@@ -92,6 +92,7 @@ export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', Gr
   'clearable',
   'inputmode',
   'readonly',
+  'maxlength',
   'spellcheck',
   'min',
   'max',

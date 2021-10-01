@@ -21,6 +21,151 @@
   </head>
   <body>
     <section>
+      <h2>gr-select</h2>
+
+      <section>
+        <h3>Placeholders</h3>
+
+        <gr-select placeholder="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Clearable</h3>
+
+        <gr-select placeholder="Clearable" clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <gr-select pill>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-select placeholder="Disabled" disabled>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Multiple</h3>
+
+        <gr-select placeholder="Select multiple" multiple pill>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item value="option-4">Option 4</gr-menu-item>
+          <gr-menu-item value="option-5">Option 5</gr-menu-item>
+          <gr-menu-item value="option-6">Option 6</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Grouping Options</h3>
+
+        <gr-select placeholder="Select one">
+          <gr-menu-label>Group 1</gr-menu-label>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-label>Group 2</gr-menu-label>
+          <gr-menu-item value="option-4">Option 4</gr-menu-item>
+          <gr-menu-item value="option-5">Option 5</gr-menu-item>
+          <gr-menu-item value="option-6">Option 6</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <gr-select placeholder="Small" size="small" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+
+        <br />
+
+        <gr-select placeholder="Medium" size="medium" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+
+        <br />
+
+        <gr-select placeholder="Large" size="large" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <gr-select label="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-select label="Select one" required-indicator>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <gr-select label="Experience" help-text="Please tell us your skill level.">
+          <gr-menu-item value="option-1">Novice</gr-menu-item>
+          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
+          <gr-menu-item value="option-3">Advanced</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <gr-select
+          label="Experience"
+          help-text="Please tell us your skill level."
+          invalid-text="Select your skill level"
+          invalid
+        >
+          <gr-menu-item value="option-1">Novice</gr-menu-item>
+          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
+          <gr-menu-item value="option-3">Advanced</gr-menu-item>
+        </gr-select>
+      </section>
+    </section>
+
+    <section>
       <h2>gr-input</h2>
 
       <section>
@@ -297,7 +442,7 @@
     <section>
       <h2>gr-checkbox & gr-field-group</h2>
 
-      <section>
+      <section style="width: 300px">
         <h3>Checked</h3>
         <gr-field-group label="Select options">
           <gr-checkbox id="checkbox-test" checked invalid>Option 1</gr-checkbox>
@@ -330,151 +475,6 @@
         <gr-checkbox invalid-text="You have to agree with our terms to continue" invalid>
           I agree with the terms
         </gr-checkbox>
-      </section>
-    </section>
-
-    <section>
-      <h2>gr-select</h2>
-
-      <section>
-        <h3>Placeholders</h3>
-
-        <gr-select placeholder="Select one">
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Clearable</h3>
-
-        <gr-select placeholder="Clearable" clearable>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Pill</h3>
-
-        <gr-select pill>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Disabled</h3>
-
-        <gr-select placeholder="Disabled" disabled>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Multiple</h3>
-
-        <gr-select placeholder="Select multiple" multiple pill>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-          <gr-menu-divider></gr-menu-divider>
-          <gr-menu-item value="option-4">Option 4</gr-menu-item>
-          <gr-menu-item value="option-5">Option 5</gr-menu-item>
-          <gr-menu-item value="option-6">Option 6</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Grouping Options</h3>
-
-        <gr-select placeholder="Select one">
-          <gr-menu-label>Group 1</gr-menu-label>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-          <gr-menu-divider></gr-menu-divider>
-          <gr-menu-label>Group 2</gr-menu-label>
-          <gr-menu-item value="option-4">Option 4</gr-menu-item>
-          <gr-menu-item value="option-5">Option 5</gr-menu-item>
-          <gr-menu-item value="option-6">Option 6</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Sizes</h3>
-
-        <gr-select placeholder="Small" size="small" multiple clearable>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-
-        <br />
-
-        <gr-select placeholder="Medium" size="medium" multiple clearable>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-
-        <br />
-
-        <gr-select placeholder="Large" size="large" multiple clearable>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Labels</h3>
-
-        <gr-select label="Select one">
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Required indicator</h3>
-
-        <gr-select label="Select one" required-indicator>
-          <gr-menu-item value="option-1">Option 1</gr-menu-item>
-          <gr-menu-item value="option-2">Option 2</gr-menu-item>
-          <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Help Text</h3>
-
-        <gr-select label="Experience" help-text="Please tell us your skill level.">
-          <gr-menu-item value="option-1">Novice</gr-menu-item>
-          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
-          <gr-menu-item value="option-3">Advanced</gr-menu-item>
-        </gr-select>
-      </section>
-
-      <section>
-        <h3>Invalid Text</h3>
-
-        <gr-select
-          label="Experience"
-          help-text="Please tell us your skill level."
-          invalid-text="Select your skill level"
-          invalid
-        >
-          <gr-menu-item value="option-1">Novice</gr-menu-item>
-          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
-          <gr-menu-item value="option-3">Advanced</gr-menu-item>
-        </gr-select>
       </section>
     </section>
 
