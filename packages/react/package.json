@@ -4,7 +4,7 @@
   "description": "React specific wrapper for the components of the Graphite Design System",
   "repository": {
     "type": "git",
-    "url": "https://github.com/way2web/graphite-design-system.git"
+    "url": "https://github.com/paqtcom/graphite-design-system.git"
   },
   "license": "MIT",
   "scripts": {

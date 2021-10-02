@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/way2web/graphite-design-system.git"
+    "url": "https://github.com/paqtcom/graphite-design-system.git"
   },
   "scripts": {
     "lint": "echo add linter",
