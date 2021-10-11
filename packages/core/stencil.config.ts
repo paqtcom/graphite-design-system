@@ -27,7 +27,7 @@ export const config: Config = {
     }),
     vueOutputTarget({
       componentCorePackage: '@graphiteds/core',
-      includeImportCustomElements: true,
+      includeImportCustomElements: false,
       includePolyfills: false,
       includeDefineCustomElements: false,
       proxiesFile: '../vue/src/proxies.ts',
