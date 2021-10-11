@@ -18,6 +18,7 @@ export const config: Config = {
   plugins: [sass()],
   globalStyle: 'src/css/core.scss',
   globalScript: 'src/global/graphite-global.ts',
+  sourceMap: true,
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@graphiteds/core',
