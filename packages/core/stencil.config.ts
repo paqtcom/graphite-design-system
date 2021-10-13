@@ -65,6 +65,7 @@ export const config: Config = {
         },
       ],
       includeGlobalScripts: false,
+      autoDefineCustomElements: true,
     },
     {
       type: 'dist-hydrate-script',
