@@ -1,7 +1,7 @@
 import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Build } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { getTextContent, hasSlot } from '../../utils/slot';
-import { renderHiddenInput } from '../../utils/helpers';
+import { inheritAttributes, renderHiddenInput } from '../../utils/helpers';
 
 let id = 0;
 
@@ -25,6 +25,7 @@ export class Select {
   private invalidTextId = `select-invalid-text-${id}`;
   private menu: HTMLGrMenuElement;
   private resizeObserver: ResizeObserver;
+  private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el: HTMLGrSelectElement;
 
@@ -140,6 +141,7 @@ export class Select {
 
   componentWillLoad() {
     this.handleSlotChange();
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
   }
 
   componentDidLoad() {
@@ -380,6 +382,10 @@ export class Select {
   render() {
     const hasSelection = this.multiple ? this.value.length > 0 : this.value !== '';
 
+    const ariaLabelAttributes = this.inheritedAttributes['aria-label']
+      ? { 'aria-label': this.inheritedAttributes['aria-label'] }
+      : { 'aria-labelledby': this.labelId };
+
     renderHiddenInput(this.el, this.name, parseValue(this.value), this.disabled);
 
     return (
@@ -427,7 +433,7 @@ export class Select {
             id={this.inputId}
             class="select-box"
             role="combobox"
-            aria-labelledby={this.labelId}
+            {...ariaLabelAttributes}
             aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-haspopup="true"
             aria-expanded={this.isOpen ? 'true' : 'false'}
