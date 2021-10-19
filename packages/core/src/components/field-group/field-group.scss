@@ -22,6 +22,14 @@
   margin: 0;
   padding: 0;
   border: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--margin-between-fields);
+}
+
+.field-group.field-group-horizontal {
+  flex-direction: row;
+  gap: var(--margin-between-fields-horizontal);
 }
 
 .field-group-label {
@@ -40,18 +48,5 @@
     display: flex;
 
     margin-bottom: var(--gr-spacing-xxx-small);
-  }
-}
-
-:not(.field-group-horizontal) {
-  ::slotted(*:not(:last-of-type)) {
-    display: block;
-    margin-bottom: var(--margin-between-fields);
-  }
-}
-
-.field-group-horizontal {
-  ::slotted(*:not(:last-of-type)) {
-    margin-right: var(--margin-between-fields-horizontal);
   }
 }
