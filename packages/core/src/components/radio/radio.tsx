@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method } from '@stencil/core';
-import { addEventListener, removeEventListener } from '../../utils/helpers';
+import { addEventListener, inheritAttributes, removeEventListener } from '../../utils/helpers';
 
 let id = 0;
 
@@ -16,6 +16,7 @@ export class Radio {
   private labelId = `radio-label-${id}`;
   private input: HTMLInputElement;
   private radioGroup: HTMLGrRadioGroupElement | null = null;
+  private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el: HTMLGrRadioElement;
 
@@ -65,6 +66,10 @@ export class Radio {
     }
   }
 
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
+  }
+
   disconnectedCallback() {
     const radioGroup = this.radioGroup;
     if (radioGroup) {
@@ -105,6 +110,10 @@ export class Radio {
   }
 
   render() {
+    const ariaLabelAttributes = this.inheritedAttributes['aria-label']
+      ? { 'aria-label': this.inheritedAttributes['aria-label'] }
+      : { 'aria-labelledby': this.labelId };
+
     return (
       <Host
         class={{
@@ -141,7 +150,7 @@ export class Radio {
               role="radio"
               tabindex={this.buttonTabindex}
               aria-checked={this.checked ? 'true' : 'false'}
-              aria-labelledby={this.labelId}
+              {...ariaLabelAttributes}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
             />

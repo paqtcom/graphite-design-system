@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, State, Prop, Event, EventEmitter, Method, Watch } from '@stencil/core';
-import { renderHiddenInput } from '../../utils/helpers';
+import { inheritAttributes, renderHiddenInput } from '../../utils/helpers';
 import { hasSlot } from '../../utils/slot';
 
 let id = 0;
@@ -18,6 +18,7 @@ export class Checkbox {
   private labelId = `checkbox-label-${id}`;
   private invalidTextId = `checkbox-invalid-text-${id}`;
   private input: HTMLInputElement;
+  private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el: HTMLGrCheckboxElement;
 
@@ -86,6 +87,7 @@ export class Checkbox {
 
   componentWillLoad() {
     this.handleSlotChange();
+    this.inheritedAttributes = inheritAttributes(this.el, ['aria-label']);
   }
 
   componentDidLoad() {
@@ -138,6 +140,10 @@ export class Checkbox {
 
     const hasInvalidText = this.invalidText ? true : this.hasInvalidTextSlot;
     const showInvalidText = this.invalid ? true : false;
+
+    const ariaLabelAttributes = this.inheritedAttributes['aria-label']
+      ? { 'aria-label': this.inheritedAttributes['aria-label'] }
+      : { 'aria-labelledby': this.labelId };
 
     return (
       <Host
@@ -198,7 +204,7 @@ export class Checkbox {
               role="checkbox"
               aria-invalid={this.invalid}
               aria-checked={this.checked ? 'true' : 'false'}
-              aria-labelledby={this.labelId}
+              {...ariaLabelAttributes}
               aria-describedby={this.invalid ? this.invalidTextId : ''}
               onClick={this.handleClick}
               onBlur={this.handleBlur}
