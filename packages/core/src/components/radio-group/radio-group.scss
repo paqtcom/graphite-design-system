@@ -4,9 +4,11 @@
   /**
    * @prop --margin-between-radios: Margin between the gr-radio children
    * @prop --margin-between-radios-horizontal: Margin between the gr-radio children when layout is horizontal
+   * @prop --align-radios: Alignment of radio's on cross-axis, an `align-items` Flexbox property
    */
   --margin-between-radios: var(--gr-spacing-xx-small);
   --margin-between-radios-horizontal: var(--gr-spacing-medium);
+  --align-radios: flex-start;
 
   display: block;
   box-sizing: border-box;
@@ -22,8 +24,9 @@
   margin: 0;
   padding: 0;
   border: none;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
+  align-items: var(--align-radios);
   gap: var(--margin-between-radios);
 }
 

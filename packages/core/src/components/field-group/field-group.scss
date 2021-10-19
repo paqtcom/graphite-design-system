@@ -4,9 +4,11 @@
   /**
    * @prop --margin-between-fields: Margin between the children
    * @prop --margin-between-fields-horizontal: Margin between the children when layout is horizontal
+   * @prop --align-fields: Alignment of fields on cross-axis, an `align-items` Flexbox property
    */
   --margin-between-fields: var(--gr-spacing-xx-small);
   --margin-between-fields-horizontal: var(--gr-spacing-medium);
+  --align-fields: flex-start;
 
   display: block;
   box-sizing: border-box;
@@ -22,8 +24,9 @@
   margin: 0;
   padding: 0;
   border: none;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
+  align-items: var(--align-fields);
   gap: var(--margin-between-fields);
 }
 
