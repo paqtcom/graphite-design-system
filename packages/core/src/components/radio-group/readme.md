@@ -35,10 +35,11 @@
 
 ## CSS Custom Properties
 
-| Name                                 | Description                                                    |
-| ------------------------------------ | -------------------------------------------------------------- |
-| `--margin-between-radios`            | Margin between the gr-radio children                           |
-| `--margin-between-radios-horizontal` | Margin between the gr-radio children when layout is horizontal |
+| Name                                 | Description                                                           |
+| ------------------------------------ | --------------------------------------------------------------------- |
+| `--align-radios`                     | Alignment of radio's on cross-axis, an `align-items` Flexbox property |
+| `--margin-between-radios`            | Margin between the gr-radio children                                  |
+| `--margin-between-radios-horizontal` | Margin between the gr-radio children when layout is horizontal        |
 
 
 ----------------------------------------------
