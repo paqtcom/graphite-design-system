@@ -453,7 +453,13 @@ export class Select {
             </div>
 
             {this.clearable && hasSelection && (
-              <button class="select-clear" type="button" onClick={this.handleClearClick} tabindex="-1">
+              <button
+                class="select-clear"
+                type="button"
+                onClick={this.handleClearClick}
+                aria-label="clear"
+                tabindex="-1"
+              >
                 <svg role="img" aria-hidden="true" viewBox="0 0 512 512">
                   <title>Close Circle</title>
                   <path
