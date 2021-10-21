@@ -35,7 +35,7 @@
   "license": "MIT",
   "devDependencies": {
     "@stencil/react-output-target": "0.0.9",
-    "@stencil/sass": "^1.5.1",
+    "@stencil/sass": "^1.5.2",
     "@stencil/vue-output-target": "^0.5.1",
     "@types/jest": "^26.0.24",
     "@types/puppeteer": "2.0.1",
@@ -44,7 +44,7 @@
     "jest": "26.0.1",
     "jest-cli": "26.0.1",
     "puppeteer": "2.1.1",
-    "sass": "^1.42.1"
+    "sass": "^1.43.2"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.2",
