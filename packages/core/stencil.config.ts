@@ -19,12 +19,14 @@ export const config: Config = {
   globalStyle: 'src/css/core.scss',
   globalScript: 'src/global/graphite-global.ts',
   sourceMap: true,
+  minifyJs: true,
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@graphiteds/core',
-      proxiesFile: '../react/src/components.ts',
-      includeDefineCustomElements: true,
+      includeImportCustomElements: true,
       includePolyfills: false,
+      includeDefineCustomElements: false,
+      proxiesFile: '../react/src/components/proxies.ts',
     }),
     vueOutputTarget({
       componentCorePackage: '@graphiteds/core',
@@ -50,9 +52,6 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements-bundle',
     },
     {
       type: 'dist-custom-elements',

@@ -4,6 +4,10 @@
 
 These are React specific building blocks on top of [@graphiteds/core](../core/README.md) components.
 
+Tested on:
+
+- [create-react-app](https://github.com/facebook/create-react-app)
+
 ## Browser Support
 
 We support only [modern browsers](https://browserslist.dev/?q=PiAxJSwgbGFzdCAyIHZlcnNpb25zLCBub3QgZGVhZCwgbm90IGllIDEx).
@@ -29,9 +33,6 @@ In your index.js add the following code:
 ```js
 // Core CSS required for Graphite components to work properly
 import "@graphiteds/react/css/core.css";
-
-// Optional CSS to prevent Flash Of Unstyled Content (FOUC)
-import "@graphiteds/react/css/prevent-fouc.css";
 ```
 
 Import the component(s) you want to use:
@@ -48,8 +49,18 @@ Use it in your JSX as any React component:
 
 An example of this setup: https://codesandbox.io/s/graphiteds-react-example-yhr9p.
 
-## How to release a new version
+## Development
 
-- Build the core package
-- Run build on this package
-- Publish
+Follow the [instructions in the root of this repo](../../README.md).
+
+### Test apps
+
+In `packages/react/test-apps/react-app` there is a test app.
+
+In order to run it:
+
+- Make sure you've run `npm run bootstrap` & `npm run build` in the root of this repo
+- Navigate to the test app with `cd packages/react/test-apps/react-app`
+- Run `npm install`
+- Run `npm run sync` (this copies the relevant core & react dist files to the node_modules of the test-app)
+- Run the project with `npm start`

@@ -34,20 +34,20 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/react-output-target": "0.0.9",
+    "@stencil/react-output-target": "^0.1.0",
     "@stencil/sass": "^1.5.2",
     "@stencil/vue-output-target": "^0.5.1",
     "@types/jest": "^26.0.24",
     "@types/puppeteer": "2.0.1",
     "@types/resize-observer-browser": "^0.1.6",
-    "clean-css-cli": "^5.4.1",
-    "jest": "26.0.1",
-    "jest-cli": "26.0.1",
-    "puppeteer": "2.1.1",
-    "sass": "^1.43.2"
+    "clean-css-cli": "^5.4.2",
+    "jest": "^26.0.1",
+    "jest-cli": "^26.0.1",
+    "puppeteer": "^7.0.1",
+    "sass": "^1.43.4"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.2",
-    "@stencil/core": "^2.9.0"
+    "@stencil/core": "^2.10.0"
   }
 }
