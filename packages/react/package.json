@@ -43,7 +43,8 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@graphiteds/core": "^1.5.0"
+    "@graphiteds/core": "^1.5.0",
+    "tslib": "*"
   },
   "peerDependencies": {
     "react": ">=16.8.6",
