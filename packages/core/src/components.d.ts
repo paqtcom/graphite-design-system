@@ -96,6 +96,8 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GrDatePicker {
+    }
     interface GrDropdown {
         /**
           * Determines whether the dropdown should hide when a menu item is selected.
@@ -576,6 +578,12 @@ declare global {
         prototype: HTMLGrCheckboxElement;
         new (): HTMLGrCheckboxElement;
     };
+    interface HTMLGrDatePickerElement extends Components.GrDatePicker, HTMLStencilElement {
+    }
+    var HTMLGrDatePickerElement: {
+        prototype: HTMLGrDatePickerElement;
+        new (): HTMLGrDatePickerElement;
+    };
     interface HTMLGrDropdownElement extends Components.GrDropdown, HTMLStencilElement {
     }
     var HTMLGrDropdownElement: {
@@ -657,6 +665,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "gr-button": HTMLGrButtonElement;
         "gr-checkbox": HTMLGrCheckboxElement;
+        "gr-date-picker": HTMLGrDatePickerElement;
         "gr-dropdown": HTMLGrDropdownElement;
         "gr-field-group": HTMLGrFieldGroupElement;
         "gr-input": HTMLGrInputElement;
@@ -772,6 +781,8 @@ declare namespace LocalJSX {
           * The checkbox's value attribute.
          */
         "value"?: string;
+    }
+    interface GrDatePicker {
     }
     interface GrDropdown {
         /**
@@ -1257,6 +1268,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gr-button": GrButton;
         "gr-checkbox": GrCheckbox;
+        "gr-date-picker": GrDatePicker;
         "gr-dropdown": GrDropdown;
         "gr-field-group": GrFieldGroup;
         "gr-input": GrInput;
@@ -1278,6 +1290,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gr-button": LocalJSX.GrButton & JSXBase.HTMLAttributes<HTMLGrButtonElement>;
             "gr-checkbox": LocalJSX.GrCheckbox & JSXBase.HTMLAttributes<HTMLGrCheckboxElement>;
+            "gr-date-picker": LocalJSX.GrDatePicker & JSXBase.HTMLAttributes<HTMLGrDatePickerElement>;
             "gr-dropdown": LocalJSX.GrDropdown & JSXBase.HTMLAttributes<HTMLGrDropdownElement>;
             "gr-field-group": LocalJSX.GrFieldGroup & JSXBase.HTMLAttributes<HTMLGrFieldGroupElement>;
             "gr-input": LocalJSX.GrInput & JSXBase.HTMLAttributes<HTMLGrInputElement>;

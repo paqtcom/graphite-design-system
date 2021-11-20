@@ -56,6 +56,10 @@
 
     <p>{{ inputValue }}</p>
   </section>
+
+  <section>
+    <gr-date-picker></gr-date-picker>
+  </section>
 </template>
 
 <script lang="ts">
@@ -68,6 +72,7 @@ import {
   GrRadioGroup,
   GrRadio,
   GrInput,
+  GrDatePicker,
 } from "@graphiteds/vue";
 
 import { ref, defineComponent } from "vue";
@@ -83,6 +88,7 @@ export default defineComponent({
     GrRadioGroup,
     GrRadio,
     GrInput,
+    GrDatePicker,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");

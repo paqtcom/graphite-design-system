@@ -27,6 +27,7 @@ export const config: Config = {
       includePolyfills: false,
       includeDefineCustomElements: false,
       proxiesFile: '../react/src/components/proxies.ts',
+      excludeComponents: ['duet-date-picker'],
     }),
     vueOutputTarget({
       componentCorePackage: '@graphiteds/core',
@@ -34,6 +35,7 @@ export const config: Config = {
       includePolyfills: false,
       includeDefineCustomElements: false,
       proxiesFile: '../vue/src/proxies.ts',
+      excludeComponents: ['duet-date-picker'],
       componentModels: [
         {
           elements: ['gr-checkbox'],

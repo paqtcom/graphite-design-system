@@ -1,0 +1,27 @@
+:host {
+  display: block;
+
+  --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+}
+
+.duet-date {
+  --duet-color-primary: var(--gr-color-primary);
+  --duet-color-text: #333;
+  --duet-color-text-active: #fff;
+  --duet-color-placeholder: #666;
+  --duet-color-button: #f5f5f5;
+  --duet-color-surface: #fff;
+  --duet-color-overlay: rgba(0, 0, 0, 0.8);
+  --duet-color-border: #333;
+
+  --duet-font: var(--gr-font-family);
+  --duet-font-normal: var(--gr-font-weight-normal);
+  --duet-font-bold: var(--gr-font-weight-bold);
+
+  --duet-radius: var(--gr-form-element-border-radius-medium);
+  --duet-z-index: var(--gr-z-index-dropdown);
+
+  .duet-date__input:focus {
+    box-shadow: var(--focus-ring);
+  }
+}

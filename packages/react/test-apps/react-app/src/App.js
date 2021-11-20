@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { GrButton } from "@graphiteds/react";
+import { GrButton, GrDatePicker } from "@graphiteds/react";
 
 function App() {
   return (
@@ -8,6 +8,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <GrButton variant="primary">Send</GrButton>
+        <br />
+        <GrDatePicker></GrDatePicker>
       </header>
     </div>
   );
