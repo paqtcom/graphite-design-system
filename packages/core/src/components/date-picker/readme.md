@@ -19,6 +19,29 @@
 | `value`          | `value`             | Date value. Must be in IS0-8601 format: YYYY-MM-DD.                                                                                                                                                                            | `string`                                                                                                                                                  | `''`                |
 
 
+## CSS Custom Properties
+
+| Name                              | Description                                                                        |
+| --------------------------------- | ---------------------------------------------------------------------------------- |
+| `--backdrop-color`                | Background color of the backdrop (used on small viewports)                         |
+| `--button-background-color`       | Background color of the calendar button                                            |
+| `--button-color`                  | Text color of the calendar button                                                  |
+| `--focus-border-color`            | The border color to use when controls receives focus.                              |
+| `--focus-ring`                    | The focus ring style to use when controls receives focus, a `box-shadow` property. |
+| `--input-background-color`        | Background color of the input                                                      |
+| `--input-border-color`            | Border color of the input                                                          |
+| `--input-border-color-hover`      | Border color of the input on hover                                                 |
+| `--input-color`                   | Text color of the input                                                            |
+| `--min-height`                    | Minimum height of the input                                                        |
+| `--panel-background-color`        | Background color of the panel                                                      |
+| `--panel-border-color`            | Border color of the panel                                                          |
+| `--panel-border-radius`           | Border radius of the panel                                                         |
+| `--panel-box-shadow`              | Box shadow of the panel                                                            |
+| `--placeholder-color`             | Text color of the placeholder                                                      |
+| `--selected-day-background-color` | Background color of the selected day indicator                                     |
+| `--selected-day-color`            | Text color of the selected day indicator                                           |
+
+
 ## Dependencies
 
 ### Depends on

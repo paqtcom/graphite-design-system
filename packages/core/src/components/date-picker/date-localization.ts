@@ -3,7 +3,7 @@ import { DuetLocalizedText } from '@duetds/date-picker/dist/types/components/due
 const translations: { [lang: string]: DuetLocalizedText } = {
   en: {
     buttonLabel: 'Choose date',
-    placeholder: 'DD-MM-YYYY',
+    placeholder: 'dd-mm-yyyy',
     selectedDateMessage: 'Selected date is',
     prevMonthLabel: 'Previous month',
     nextMonthLabel: 'Next month',
