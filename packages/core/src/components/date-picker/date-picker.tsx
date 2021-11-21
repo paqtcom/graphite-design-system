@@ -2,6 +2,7 @@ import { Component, Host, h, Prop } from '@stencil/core';
 import { DuetDatePicker } from '@duetds/date-picker/custom-element';
 import { DaysOfWeek } from '../../enums';
 import { localization } from './date-localization';
+import dateAdapter from './date-adapter';
 import { DateDisabledPredicate, GrDatePickerDirection } from '../../interface';
 
 if (typeof customElements !== 'undefined' && !customElements.get('duet-date-picker')) {
@@ -73,6 +74,7 @@ export class DatePicker {
           max={this.max}
           firstDayOfWeek={this.firstDayOfWeek}
           localization={localization}
+          dateAdapter={dateAdapter}
           isDateDisabled={this.isDateDisabled}
         ></duet-date-picker>
       </Host>
