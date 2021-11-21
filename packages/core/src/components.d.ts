@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AutocompleteTypes, TextFieldTypes } from "./interface";
+import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerDirection, TextFieldTypes } from "./interface";
+import { DaysOfWeek } from "./enums";
 import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
     interface GrButton {
@@ -97,6 +98,38 @@ export namespace Components {
         "value": string;
     }
     interface GrDatePicker {
+        /**
+          * Forces the opening direction of the calendar modal to be always left or right. This setting can be useful when the input is smaller than the opening date picker would be as by default the picker always opens towards right.
+         */
+        "direction": GrDatePickerDirection;
+        /**
+          * Makes the date picker input component disabled. This prevents users from being able to interact with the input, and conveys its inactive state to assistive technologies.
+         */
+        "disabled": boolean;
+        /**
+          * Which day is considered first day of the week? `0` for Sunday, `1` for Monday, etc. Default is Monday.
+         */
+        "firstDayOfWeek": DaysOfWeek;
+        /**
+          * Controls which days are disabled and therefore disallowed. For example, this can be used to disallow selection of weekends.
+         */
+        "isDateDisabled": DateDisabledPredicate;
+        /**
+          * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
+         */
+        "max": string;
+        /**
+          * Minimum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the max property.
+         */
+        "min": string;
+        /**
+          * Name of the date picker input.
+         */
+        "name": string;
+        /**
+          * Date value. Must be in IS0-8601 format: YYYY-MM-DD.
+         */
+        "value": string;
     }
     interface GrDropdown {
         /**
@@ -783,6 +816,38 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface GrDatePicker {
+        /**
+          * Forces the opening direction of the calendar modal to be always left or right. This setting can be useful when the input is smaller than the opening date picker would be as by default the picker always opens towards right.
+         */
+        "direction"?: GrDatePickerDirection;
+        /**
+          * Makes the date picker input component disabled. This prevents users from being able to interact with the input, and conveys its inactive state to assistive technologies.
+         */
+        "disabled"?: boolean;
+        /**
+          * Which day is considered first day of the week? `0` for Sunday, `1` for Monday, etc. Default is Monday.
+         */
+        "firstDayOfWeek"?: DaysOfWeek;
+        /**
+          * Controls which days are disabled and therefore disallowed. For example, this can be used to disallow selection of weekends.
+         */
+        "isDateDisabled"?: DateDisabledPredicate;
+        /**
+          * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
+         */
+        "max"?: string;
+        /**
+          * Minimum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the max property.
+         */
+        "min"?: string;
+        /**
+          * Name of the date picker input.
+         */
+        "name"?: string;
+        /**
+          * Date value. Must be in IS0-8601 format: YYYY-MM-DD.
+         */
+        "value"?: string;
     }
     interface GrDropdown {
         /**

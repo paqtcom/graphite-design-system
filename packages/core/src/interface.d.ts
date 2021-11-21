@@ -11,6 +11,10 @@ export interface GraphiteConfig {
   _ce?: (eventName: string, opts: any) => any;
 }
 
+export type GrDatePickerDirection = 'left' | 'right';
+
+export type DateDisabledPredicate = (date: Date) => boolean;
+
 // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
 export type AutocompleteTypes =
   | 'on'
