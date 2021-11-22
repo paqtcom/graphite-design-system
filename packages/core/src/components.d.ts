@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerDirection, TextFieldTypes } from "./interface";
+import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
 import { DaysOfWeek } from "./enums";
 import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
@@ -111,9 +111,29 @@ export namespace Components {
          */
         "firstDayOfWeek": DaysOfWeek;
         /**
+          * The date picker's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * Hide the calendar modal. Set `moveFocusToButton` to false to prevent focus returning to the date picker's button. Default is true.
+         */
+        "hide": (moveFocusToButton?: boolean) => Promise<void>;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The date picker's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
           * Controls which days are disabled and therefore disallowed. For example, this can be used to disallow selection of weekends.
          */
         "isDateDisabled": DateDisabledPredicate;
+        /**
+          * The date picker's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
         /**
           * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
          */
@@ -126,6 +146,22 @@ export namespace Components {
           * Name of the date picker input.
          */
         "name": string;
+        /**
+          * The date picker input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
+        /**
+          * Sets focus on the date picker's input. Use this method instead of the global `focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Show the calendar modal, moving focus to the calendar inside.
+         */
+        "show": () => Promise<void>;
         /**
           * Date value. Must be in IS0-8601 format: YYYY-MM-DD.
          */
@@ -829,9 +865,25 @@ declare namespace LocalJSX {
          */
         "firstDayOfWeek"?: DaysOfWeek;
         /**
+          * The date picker's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The date picker's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
+        /**
           * Controls which days are disabled and therefore disallowed. For example, this can be used to disallow selection of weekends.
          */
         "isDateDisabled"?: DateDisabledPredicate;
+        /**
+          * The date picker's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
         /**
           * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
          */
@@ -844,6 +896,34 @@ declare namespace LocalJSX {
           * Name of the date picker input.
          */
         "name"?: string;
+        /**
+          * Emitted when the date picker input loses focus.
+         */
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when a date is selected.
+         */
+        "onGr-change"?: (event: CustomEvent<GrDatePickerChangeEvent>) => void;
+        /**
+          * Emitted when the panel closes.
+         */
+        "onGr-close"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the date picker input gains focus.
+         */
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the panel opens.
+         */
+        "onGr-open"?: (event: CustomEvent<void>) => void;
+        /**
+          * The date picker input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
         /**
           * Date value. Must be in IS0-8601 format: YYYY-MM-DD.
          */

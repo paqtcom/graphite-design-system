@@ -1,4 +1,4 @@
-const ISO_DATE_FORMAT = /^(\d{4})-(\d{2})-(\d{2})$/;
+const DAYMONTHYEAR_DATE_FORMAT = /^(\d{2})-(\d{2})-(\d{4})$/;
 
 export function createDate(year: string, month: string, day: string): Date {
   var dayInt = parseInt(day, 10);
@@ -21,44 +21,18 @@ export function createDate(year: string, month: string, day: string): Date {
 }
 
 /**
- * @param value date string in ISO format YYYY-MM-DD
+ * @param value date string in ISO format DD-MM-YYYY
  */
-export function parseISODate(value: string): Date {
+export function parseDayMonthYearDate(value: string): Date {
   if (!value) {
     return;
   }
 
-  const matches = value.match(ISO_DATE_FORMAT);
+  const matches = value.match(DAYMONTHYEAR_DATE_FORMAT);
 
   if (matches) {
-    return createDate(matches[1], matches[2], matches[3]);
+    return createDate(matches[3], matches[2], matches[1]);
   }
-}
-
-/**
- * print date in format YYYY-MM-DD
- * @param date
- */
-export function printISODate(date: Date): string {
-  if (!date) {
-    return '';
-  }
-
-  var d = date.getDate().toString(10);
-  var m = (date.getMonth() + 1).toString(10);
-  var y = date.getFullYear().toString(10);
-
-  // days are not zero-indexed, so pad if less than 10
-  if (date.getDate() < 10) {
-    d = `0${d}`;
-  }
-
-  // months *are* zero-indexed, pad if less than 9!
-  if (date.getMonth() < 9) {
-    m = `0${m}`;
-  }
-
-  return `${y}-${m}-${d}`;
 }
 
 /**

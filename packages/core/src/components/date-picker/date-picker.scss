@@ -1,9 +1,14 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/graphite.globals';
+
 :host {
   /**
    * @prop --selected-day-background-color: Background color of the selected day indicator
    * @prop --selected-day-color: Text color of the selected day indicator
    *
    * @prop --input-background-color: Background color of the input
+   * @prop --input-background-color-invalid: Background color of the input when invalid
+   *
    * @prop --input-color: Text color of the input
    *
    * @prop --button-background-color: Background color of the calendar button
@@ -11,6 +16,8 @@
    *
    * @prop --input-border-color: Border color of the input
    * @prop --input-border-color-hover: Border color of the input on hover
+   * @prop --input-border-color-invalid: Border color of the input when invalid
+   * @prop --input-border-color-invalid-hover: Border color of the input when invalid on hover
    *
    * @prop --placeholder-color: Text color of the placeholder
    *
@@ -32,14 +39,18 @@
   --selected-day-color: var(--gr-color-primary-contrast);
 
   --input-background-color: var(--gr-color-white);
+  --input-background-color-invalid: var(--gr-color-white);
+  --input-background-color-invalid-hover: var(--gr-color-white);
+
   --input-color: var(--gr-color-dark-tint);
 
   --button-background-color: var(--gr-color-light);
   --button-color: var(--gr-color-dark-tint);
-  --button-border-color-focus: var(--gr-color-primary);
 
   --input-border-color: var(--gr-color-light-shade);
   --input-border-color-hover: var(--gr-color-medium);
+  --input-border-color-invalid: var(--gr-color-danger);
+  --input-border-color-invalid-hover: var(--gr-color-danger-shade);
 
   --placeholder-color: var(--gr-color-medium-tint);
 
@@ -48,6 +59,7 @@
   --min-height: var(--gr-form-element-height-medium);
 
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+  --focus-border-color: var(--gr-color-primary);
 
   --panel-background-color: var(--gr-color-white);
   --panel-border-radius: var(--gr-border-radius-medium);
@@ -128,4 +140,43 @@
     border-radius: var(--panel-border-radius);
     background: var(--panel-background-color);
   }
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input {
+  background-color: var(--input-background-color-invalid);
+  border-color: var(--input-border-color-invalid);
+}
+
+.date-picker-invalid:not(.date-picker-disabled):not(.select-focused) .duet-date .duet-date__input:hover {
+  background-color: var(--input-background-color-invalid-hover);
+  border-color: var(--input-border-color-invalid-hover);
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input {
+  background-color: var(--input-background-color-invalid);
+  border-color: var(--input-border-color-invalid);
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input:focus {
+  border-color: var(--focus-border-color);
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input:focus:hover {
+  border-color: var(--focus-border-color);
+}
+
+.date-picker-disabled .duet-date .duet-date__input {
+  cursor: not-allowed;
+  opacity: 0.5;
+  outline: none;
+}
+
+.date-picker-disabled .duet-date .duet-date__toggle {
+  cursor: not-allowed;
+  opacity: 0.5;
+  outline: none;
+}
+
+.date-picker-disabled .duet-date .duet-date__input:hover {
+  border-color: var(--input-border-color);
 }

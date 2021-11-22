@@ -15,6 +15,12 @@ export type GrDatePickerDirection = 'left' | 'right';
 
 export type DateDisabledPredicate = (date: Date) => boolean;
 
+export type GrDatePickerChangeEvent = {
+  component: 'gr-date-picker';
+  valueAsDate: Date;
+  value: string;
+};
+
 // From: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
 export type AutocompleteTypes =
   | 'on'

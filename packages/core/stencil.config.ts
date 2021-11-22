@@ -44,7 +44,7 @@ export const config: Config = {
           externalEvent: 'gr-change',
         },
         {
-          elements: ['gr-select', 'gr-radio-group', 'gr-input', 'gr-textarea'],
+          elements: ['gr-select', 'gr-radio-group', 'gr-input', 'gr-textarea', 'gr-date-picker'],
           targetAttr: 'value',
           event: 'v-gr-change',
           externalEvent: 'gr-change',

@@ -58,7 +58,9 @@
   </section>
 
   <section>
-    <gr-date-picker></gr-date-picker>
+    <gr-date-picker v-model="dateValue"></gr-date-picker>
+
+    <p>{{ dateValue }}</p>
   </section>
 </template>
 
@@ -95,6 +97,7 @@ export default defineComponent({
     const selectedValue = ref("option-3");
     const selectedValues = ref(["option-1", "option-2", "option-6"]);
     const inputValue = ref("input value");
+    const dateValue = ref("1986-09-17");
 
     const doSomething = () => {
       variant.value = variant.value === "primary" ? "default" : "primary";
@@ -113,6 +116,7 @@ export default defineComponent({
       selectedValue,
       selectedValues,
       inputValue,
+      dateValue,
       doSomething,
       onSelectChange,
       onRadioChange,

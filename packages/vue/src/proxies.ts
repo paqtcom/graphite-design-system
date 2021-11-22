@@ -64,8 +64,19 @@ export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-
   'min',
   'max',
   'firstDayOfWeek',
-  'isDateDisabled'
-]);
+  'isDateDisabled',
+  'label',
+  'requiredIndicator',
+  'helpText',
+  'invalidText',
+  'invalid',
+  'gr-change',
+  'gr-focus',
+  'gr-blur',
+  'gr-open',
+  'gr-close'
+],
+'value', 'v-gr-change', 'gr-change');
 
 
 export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-dropdown', GrDropdownCmp, [

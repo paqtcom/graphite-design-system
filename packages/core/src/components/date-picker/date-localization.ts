@@ -1,9 +1,10 @@
 import { DuetLocalizedText } from '@duetds/date-picker/dist/types/components/duet-date-picker/date-localization';
 
-const translations: { [lang: string]: DuetLocalizedText } = {
+const translations: { [lang: string]: DuetLocalizedText & { helpText: string } } = {
   en: {
     buttonLabel: 'Choose date',
-    placeholder: 'dd-mm-yyyy',
+    placeholder: '',
+    helpText: 'Format: dd-mm-yyyy',
     selectedDateMessage: 'Selected date is',
     prevMonthLabel: 'Previous month',
     nextMonthLabel: 'Next month',
@@ -31,7 +32,8 @@ const translations: { [lang: string]: DuetLocalizedText } = {
   },
   nl: {
     buttonLabel: 'Kies datum',
-    placeholder: 'dd-mm-jjjj',
+    placeholder: '',
+    helpText: 'Formaat: DD-MM-JJJJ',
     selectedDateMessage: 'De gekozen datum is',
     prevMonthLabel: 'Vorige maand',
     nextMonthLabel: 'Volgende maand',
@@ -59,7 +61,8 @@ const translations: { [lang: string]: DuetLocalizedText } = {
   },
   de: {
     buttonLabel: 'Datum wählen',
-    placeholder: 'TT-MM-JJJJ',
+    placeholder: '',
+    helpText: 'Format: TT-MM-JJJJ',
     selectedDateMessage: 'Das gewählte Datum ist',
     prevMonthLabel: 'Letzter Monat',
     nextMonthLabel: 'Nächster Monat',
@@ -87,7 +90,8 @@ const translations: { [lang: string]: DuetLocalizedText } = {
   },
   fr: {
     buttonLabel: 'Choisir la date',
-    placeholder: 'jj-mm-aaaa',
+    placeholder: '',
+    helpText: 'Format: jj-mm-aaaa',
     selectedDateMessage: 'La date choisie est',
     prevMonthLabel: 'Mois précédent',
     nextMonthLabel: 'Le mois prochain',
@@ -150,4 +154,4 @@ const determineLanguage = (): string | undefined => {
   return extractLanguageSubtag(browserLang);
 };
 
-export const localization: DuetLocalizedText = translations[determineLanguage()];
+export const localization = translations[determineLanguage()];

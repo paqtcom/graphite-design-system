@@ -23,8 +23,111 @@
     <section>
       <h2>gr-date-picker</h2>
 
-      <gr-date-picker value="1986-09-17"></gr-date-picker>
+      <section>
+        <h3>Value</h3>
 
+        <gr-date-picker value="1986-09-17"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Placeholders</h3>
+
+        <gr-date-picker placeholder="Enter a date"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-date-picker placeholder="Enter a date" disabled></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <gr-date-picker label="Date picker"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-date-picker label="Enter a date" required-indicator></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <gr-date-picker
+          label="Enter a date"
+          help-text="Please tell us when you are available (format: dd-mm-yyyy)."
+        ></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <gr-date-picker
+          label="Enter a date"
+          help-text="Please tell us when you are available."
+          invalid-text="Enter a date when you are available."
+          invalid
+        ></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Control which days are selectable</h3>
+
+        <gr-date-picker id="no-weekends-date-picker"></gr-date-picker>
+
+        <script>
+          function isWeekend(date) {
+            return date.getDay() === 0 || date.getDay() === 6;
+          }
+
+          const pickerDisableWeekend = document.querySelector('#no-weekends-date-picker');
+          pickerDisableWeekend.isDateDisabled = isWeekend;
+        </script>
+      </section>
+
+      <section>
+        <h3>Using show() method</h3>
+
+        <gr-date-picker id="show-date-picker"></gr-date-picker>
+
+        <gr-button id="show-date-picker-button">Show date picker</gr-button>
+
+        <script>
+          const button = document.querySelector('#show-date-picker-button');
+
+          button.addEventListener('click', function () {
+            document.querySelector('#show-date-picker').show();
+          });
+        </script>
+      </section>
+
+      <section>
+        <h3>Minimum and maximum date</h3>
+
+        <gr-date-picker label="Enter a date" min="2021-11-03" max="2021-12-05"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Getting selected value</h3>
+
+        <gr-date-picker label="Enter a date" id="date-picker-value"></gr-date-picker>
+        <output id="date-picker-value-output">undefined</output>
+
+        <script>
+          const picker = document.querySelector('#date-picker-value');
+          const output = document.querySelector('#date-picker-value-output');
+
+          picker.addEventListener('gr-change', function (event) {
+            output.innerHTML = event.detail.valueAsDate;
+          });
+        </script>
+      </section>
+    </section>
+
+    <section>
       <h2>gr-select</h2>
 
       <section>
