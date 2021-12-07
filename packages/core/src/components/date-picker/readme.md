@@ -20,19 +20,54 @@
 | `max`               | `max`                | Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.                                                                                   | `string`                                                                                                                                                  | `''`                |
 | `min`               | `min`                | Minimum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the max property.                                                                                   | `string`                                                                                                                                                  | `''`                |
 | `name`              | `name`               | Name of the date picker input.                                                                                                                                                                                                 | `string`                                                                                                                                                  | `''`                |
+| `placeholder`       | `placeholder`        | The date picker input's placeholder text.                                                                                                                                                                                      | `string`                                                                                                                                                  | `''`                |
 | `requiredIndicator` | `required-indicator` | Set to true to display a required indicator, adds an asterisk to label                                                                                                                                                         | `boolean`                                                                                                                                                 | `false`             |
 | `value`             | `value`              | Date value. Must be in IS0-8601 format: YYYY-MM-DD.                                                                                                                                                                            | `string`                                                                                                                                                  | `''`                |
 
 
 ## Events
 
-| Event       | Description                               | Type                |
-| ----------- | ----------------------------------------- | ------------------- |
-| `gr-blur`   | Emitted when the control loses focus.     | `CustomEvent<void>` |
-| `gr-change` | Emitted when the control's value changes. | `CustomEvent<void>` |
-| `gr-close`  | Emitted when the panel closes.            | `CustomEvent<void>` |
-| `gr-focus`  | Emitted when the control gains focus.     | `CustomEvent<void>` |
-| `gr-open`   | Emitted when the panel opens.             | `CustomEvent<void>` |
+| Event       | Description                                     | Type                                                                              |
+| ----------- | ----------------------------------------------- | --------------------------------------------------------------------------------- |
+| `gr-blur`   | Emitted when the date picker input loses focus. | `CustomEvent<void>`                                                               |
+| `gr-change` | Emitted when a date is selected.                | `CustomEvent<{ component: "gr-date-picker"; valueAsDate: Date; value: string; }>` |
+| `gr-close`  | Emitted when the panel closes.                  | `CustomEvent<void>`                                                               |
+| `gr-focus`  | Emitted when the date picker input gains focus. | `CustomEvent<void>`                                                               |
+| `gr-open`   | Emitted when the panel opens.                   | `CustomEvent<void>`                                                               |
+
+
+## Methods
+
+### `hide(moveFocusToButton?: boolean) => Promise<void>`
+
+Hide the calendar modal. Set `moveFocusToButton` to false to prevent focus
+returning to the date picker's button. Default is true.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setFocus() => Promise<void>`
+
+Sets focus on the date picker's input. Use this method instead of the global `focus()`.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `show() => Promise<void>`
+
+Show the calendar modal, moving focus to the calendar inside.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## CSS Custom Properties

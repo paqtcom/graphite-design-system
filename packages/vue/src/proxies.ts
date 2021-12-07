@@ -58,6 +58,7 @@ export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-chec
 
 export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-date-picker', GrDatePickerCmp, [
   'name',
+  'placeholder',
   'disabled',
   'direction',
   'value',

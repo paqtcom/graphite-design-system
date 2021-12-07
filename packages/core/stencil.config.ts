@@ -14,6 +14,7 @@ export const config: Config = {
       components: ['gr-select', 'gr-dropdown', 'gr-menu', 'gr-menu-item', 'gr-menu-divider', 'gr-menu-label', 'gr-tag'],
     },
     { components: ['gr-radio', 'gr-radio-group'] },
+    { components: ['gr-date-picker'] },
   ],
   plugins: [sass()],
   globalStyle: 'src/css/core.scss',
