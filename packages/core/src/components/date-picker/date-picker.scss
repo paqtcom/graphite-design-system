@@ -1,0 +1,182 @@
+@import '../../functional-components/form-control/form-control';
+@import '../../themes/graphite.globals';
+
+:host {
+  /**
+   * @prop --selected-day-background-color: Background color of the selected day indicator
+   * @prop --selected-day-color: Text color of the selected day indicator
+   *
+   * @prop --input-background-color: Background color of the input
+   * @prop --input-background-color-invalid: Background color of the input when invalid
+   *
+   * @prop --input-color: Text color of the input
+   *
+   * @prop --button-background-color: Background color of the calendar button
+   * @prop --button-color: Text color of the calendar button
+   *
+   * @prop --input-border-color: Border color of the input
+   * @prop --input-border-color-hover: Border color of the input on hover
+   * @prop --input-border-color-invalid: Border color of the input when invalid
+   * @prop --input-border-color-invalid-hover: Border color of the input when invalid on hover
+   *
+   * @prop --placeholder-color: Text color of the placeholder
+   *
+   * @prop --backdrop-color: Background color of the backdrop (used on small viewports)
+   *
+   * @prop --min-height: Minimum height of the input
+   *
+   * @prop --focus-ring: The focus ring style to use when controls receives focus, a `box-shadow` property.
+   * @prop --focus-border-color: The border color to use when controls receives focus.
+   *
+   * @prop --panel-background-color: Background color of the panel
+   * @prop --panel-border-radius: Border radius of the panel
+   * @prop --panel-border-color: Border color of the panel
+   * @prop --panel-box-shadow: Box shadow of the panel
+   */
+  display: block;
+
+  --selected-day-background-color: var(--gr-color-primary);
+  --selected-day-color: var(--gr-color-primary-contrast);
+
+  --input-background-color: var(--gr-color-white);
+  --input-background-color-invalid: var(--gr-color-white);
+  --input-background-color-invalid-hover: var(--gr-color-white);
+
+  --input-color: var(--gr-color-dark-tint);
+
+  --button-background-color: var(--gr-color-light);
+  --button-color: var(--gr-color-dark-tint);
+
+  --input-border-color: var(--gr-color-light-shade);
+  --input-border-color-hover: var(--gr-color-medium);
+  --input-border-color-invalid: var(--gr-color-danger);
+  --input-border-color-invalid-hover: var(--gr-color-danger-shade);
+
+  --placeholder-color: var(--gr-color-medium-tint);
+
+  --backdrop-color: rgba(var(--gr-color-dark-rgb), 0.8);
+
+  --min-height: var(--gr-form-element-height-medium);
+
+  --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+  --focus-border-color: var(--gr-color-primary);
+
+  --panel-background-color: var(--gr-color-white);
+  --panel-border-radius: var(--gr-border-radius-medium);
+  --panel-border-color: var(--gr-panel-border-color);
+  --panel-box-shadow: var(--gr-shadow-large);
+}
+
+.duet-date {
+  --duet-color-primary: var(--gr-color-primary);
+  --duet-color-text: var(--input-color);
+  --duet-color-text-active: var(--gr-color-primary-contrast);
+  --duet-color-placeholder: var(--placeholder-color);
+  --duet-color-button: var(--button-background-color);
+  --duet-color-surface: var(--input-background-color);
+  --duet-color-overlay: var(--backdrop-color);
+  --duet-color-border: var(--input-border-color);
+
+  --duet-font: var(--gr-font-family);
+  --duet-font-normal: var(--gr-font-weight-normal);
+  --duet-font-bold: var(--gr-font-weight-bold);
+
+  --duet-radius: var(--gr-form-element-border-radius-medium);
+  --duet-z-index: var(--gr-z-index-dropdown);
+
+  .duet-date__input {
+    min-height: var(--min-height);
+  }
+
+  .duet-date__input:focus {
+    border-color: var(--focus-border-color);
+    box-shadow: var(--focus-ring);
+  }
+
+  .duet-date__input:hover {
+    border-color: var(--input-border-color-hover);
+  }
+
+  .duet-date__toggle {
+    color: var(--button-color);
+  }
+
+  .duet-date__toggle:focus {
+    box-shadow: var(--focus-ring);
+    border: 1px solid var(--focus-border-color);
+  }
+
+  .duet-date__prev:focus,
+  .duet-date__next:focus {
+    box-shadow: var(--focus-ring);
+    border: 1px solid var(--focus-border-color);
+  }
+
+  .duet-date__close:focus {
+    border: 1px solid var(--focus-border-color);
+    box-shadow: var(--focus-ring);
+  }
+
+  .duet-date__day[aria-pressed='true'],
+  .duet-date__day:focus {
+    background: var(--selected-day-background-color);
+    color: var(--selected-day-color);
+  }
+
+  .duet-date__day:focus {
+    box-shadow: var(--focus-ring);
+  }
+
+  .duet-date__select select {
+    &:focus + .duet-date__select-label {
+      box-shadow: var(--focus-ring);
+      border: 1px solid var(--focus-border-color);
+    }
+  }
+
+  .duet-date__dialog-content {
+    box-shadow: var(--panel-box-shadow);
+    border: 1px solid var(--panel-border-color);
+    border-radius: var(--panel-border-radius);
+    background: var(--panel-background-color);
+  }
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input {
+  background-color: var(--input-background-color-invalid);
+  border-color: var(--input-border-color-invalid);
+}
+
+.date-picker-invalid:not(.date-picker-disabled):not(.select-focused) .duet-date .duet-date__input:hover {
+  background-color: var(--input-background-color-invalid-hover);
+  border-color: var(--input-border-color-invalid-hover);
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input {
+  background-color: var(--input-background-color-invalid);
+  border-color: var(--input-border-color-invalid);
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input:focus {
+  border-color: var(--focus-border-color);
+}
+
+.date-picker-invalid:not(.date-picker-disabled) .duet-date .duet-date__input:focus:hover {
+  border-color: var(--focus-border-color);
+}
+
+.date-picker-disabled .duet-date .duet-date__input {
+  cursor: not-allowed;
+  opacity: 0.5;
+  outline: none;
+}
+
+.date-picker-disabled .duet-date .duet-date__toggle {
+  cursor: not-allowed;
+  opacity: 0.5;
+  outline: none;
+}
+
+.date-picker-disabled .duet-date .duet-date__input:hover {
+  border-color: var(--input-border-color);
+}

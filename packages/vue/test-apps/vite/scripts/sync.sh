@@ -1,3 +1,5 @@
+rm -rf node_modules/.vite
+
 # Copy graphiteds vue dist
 rm -rf node_modules/@graphiteds/vue/dist node_modules/@graphiteds/vue/css
 cp -a ../../dist node_modules/@graphiteds/vue/dist

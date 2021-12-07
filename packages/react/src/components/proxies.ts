@@ -7,6 +7,7 @@ import type { JSX } from '@graphiteds/core/components';
 
 import { GrButton as GrButtonCmp } from '@graphiteds/core/components/gr-button.js';
 import { GrCheckbox as GrCheckboxCmp } from '@graphiteds/core/components/gr-checkbox.js';
+import { GrDatePicker as GrDatePickerCmp } from '@graphiteds/core/components/gr-date-picker.js';
 import { GrDropdown as GrDropdownCmp } from '@graphiteds/core/components/gr-dropdown.js';
 import { GrFieldGroup as GrFieldGroupCmp } from '@graphiteds/core/components/gr-field-group.js';
 import { GrInput as GrInputCmp } from '@graphiteds/core/components/gr-input.js';
@@ -23,6 +24,7 @@ import { GrTextarea as GrTextareaCmp } from '@graphiteds/core/components/gr-text
 
 export const GrButton = /*@__PURE__*/createReactComponent<JSX.GrButton, HTMLGrButtonElement>('gr-button', undefined, undefined, GrButtonCmp);
 export const GrCheckbox = /*@__PURE__*/createReactComponent<JSX.GrCheckbox, HTMLGrCheckboxElement>('gr-checkbox', undefined, undefined, GrCheckboxCmp);
+export const GrDatePicker = /*@__PURE__*/createReactComponent<JSX.GrDatePicker, HTMLGrDatePickerElement>('gr-date-picker', undefined, undefined, GrDatePickerCmp);
 export const GrDropdown = /*@__PURE__*/createReactComponent<JSX.GrDropdown, HTMLGrDropdownElement>('gr-dropdown', undefined, undefined, GrDropdownCmp);
 export const GrFieldGroup = /*@__PURE__*/createReactComponent<JSX.GrFieldGroup, HTMLGrFieldGroupElement>('gr-field-group', undefined, undefined, GrFieldGroupCmp);
 export const GrInput = /*@__PURE__*/createReactComponent<JSX.GrInput, HTMLGrInputElement>('gr-input', undefined, undefined, GrInputCmp);

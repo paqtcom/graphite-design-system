@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { AutocompleteTypes, TextFieldTypes } from "./interface";
+import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
+import { DaysOfWeek } from "./enums";
 import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
     interface GrButton {
@@ -93,6 +94,76 @@ export namespace Components {
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
           * The checkbox's value attribute.
+         */
+        "value": string;
+    }
+    interface GrDatePicker {
+        /**
+          * Forces the opening direction of the calendar modal to be always left or right. This setting can be useful when the input is smaller than the opening date picker would be as by default the picker always opens towards right.
+         */
+        "direction": GrDatePickerDirection;
+        /**
+          * Makes the date picker input component disabled. This prevents users from being able to interact with the input, and conveys its inactive state to assistive technologies.
+         */
+        "disabled": boolean;
+        /**
+          * Which day is considered first day of the week? `0` for Sunday, `1` for Monday, etc. Default is Monday.
+         */
+        "firstDayOfWeek": DaysOfWeek;
+        /**
+          * The date picker's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * Hide the calendar modal. Set `moveFocusToButton` to false to prevent focus returning to the date picker's button. Default is true.
+         */
+        "hide": (moveFocusToButton?: boolean) => Promise<void>;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The date picker's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
+          * Controls which days are disabled and therefore disallowed. For example, this can be used to disallow selection of weekends.
+         */
+        "isDateDisabled": DateDisabledPredicate;
+        /**
+          * The date picker's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
+         */
+        "max": string;
+        /**
+          * Minimum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the max property.
+         */
+        "min": string;
+        /**
+          * Name of the date picker input.
+         */
+        "name": string;
+        /**
+          * The date picker input's placeholder text.
+         */
+        "placeholder": string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
+        /**
+          * Sets focus on the date picker's input. Use this method instead of the global `focus()`.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Show the calendar modal, moving focus to the calendar inside.
+         */
+        "show": () => Promise<void>;
+        /**
+          * Date value. Must be in IS0-8601 format: YYYY-MM-DD.
          */
         "value": string;
     }
@@ -576,6 +647,12 @@ declare global {
         prototype: HTMLGrCheckboxElement;
         new (): HTMLGrCheckboxElement;
     };
+    interface HTMLGrDatePickerElement extends Components.GrDatePicker, HTMLStencilElement {
+    }
+    var HTMLGrDatePickerElement: {
+        prototype: HTMLGrDatePickerElement;
+        new (): HTMLGrDatePickerElement;
+    };
     interface HTMLGrDropdownElement extends Components.GrDropdown, HTMLStencilElement {
     }
     var HTMLGrDropdownElement: {
@@ -657,6 +734,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "gr-button": HTMLGrButtonElement;
         "gr-checkbox": HTMLGrCheckboxElement;
+        "gr-date-picker": HTMLGrDatePickerElement;
         "gr-dropdown": HTMLGrDropdownElement;
         "gr-field-group": HTMLGrFieldGroupElement;
         "gr-input": HTMLGrInputElement;
@@ -770,6 +848,84 @@ declare namespace LocalJSX {
         "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * The checkbox's value attribute.
+         */
+        "value"?: string;
+    }
+    interface GrDatePicker {
+        /**
+          * Forces the opening direction of the calendar modal to be always left or right. This setting can be useful when the input is smaller than the opening date picker would be as by default the picker always opens towards right.
+         */
+        "direction"?: GrDatePickerDirection;
+        /**
+          * Makes the date picker input component disabled. This prevents users from being able to interact with the input, and conveys its inactive state to assistive technologies.
+         */
+        "disabled"?: boolean;
+        /**
+          * Which day is considered first day of the week? `0` for Sunday, `1` for Monday, etc. Default is Monday.
+         */
+        "firstDayOfWeek"?: DaysOfWeek;
+        /**
+          * The date picker's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The date picker's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
+        /**
+          * Controls which days are disabled and therefore disallowed. For example, this can be used to disallow selection of weekends.
+         */
+        "isDateDisabled"?: DateDisabledPredicate;
+        /**
+          * The date picker's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
+         */
+        "max"?: string;
+        /**
+          * Minimum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the max property.
+         */
+        "min"?: string;
+        /**
+          * Name of the date picker input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the date picker input loses focus.
+         */
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when a date is selected.
+         */
+        "onGr-change"?: (event: CustomEvent<GrDatePickerChangeEvent>) => void;
+        /**
+          * Emitted when the panel closes.
+         */
+        "onGr-close"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the date picker input gains focus.
+         */
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the panel opens.
+         */
+        "onGr-open"?: (event: CustomEvent<void>) => void;
+        /**
+          * The date picker input's placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
+        /**
+          * Date value. Must be in IS0-8601 format: YYYY-MM-DD.
          */
         "value"?: string;
     }
@@ -1257,6 +1413,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "gr-button": GrButton;
         "gr-checkbox": GrCheckbox;
+        "gr-date-picker": GrDatePicker;
         "gr-dropdown": GrDropdown;
         "gr-field-group": GrFieldGroup;
         "gr-input": GrInput;
@@ -1278,6 +1435,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "gr-button": LocalJSX.GrButton & JSXBase.HTMLAttributes<HTMLGrButtonElement>;
             "gr-checkbox": LocalJSX.GrCheckbox & JSXBase.HTMLAttributes<HTMLGrCheckboxElement>;
+            "gr-date-picker": LocalJSX.GrDatePicker & JSXBase.HTMLAttributes<HTMLGrDatePickerElement>;
             "gr-dropdown": LocalJSX.GrDropdown & JSXBase.HTMLAttributes<HTMLGrDropdownElement>;
             "gr-field-group": LocalJSX.GrFieldGroup & JSXBase.HTMLAttributes<HTMLGrFieldGroupElement>;
             "gr-input": LocalJSX.GrInput & JSXBase.HTMLAttributes<HTMLGrInputElement>;

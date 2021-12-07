@@ -7,6 +7,7 @@ import type { JSX } from '@graphiteds/core/components';
 
 import { GrButton as GrButtonCmp } from '@graphiteds/core/components/gr-button.js';
 import { GrCheckbox as GrCheckboxCmp } from '@graphiteds/core/components/gr-checkbox.js';
+import { GrDatePicker as GrDatePickerCmp } from '@graphiteds/core/components/gr-date-picker.js';
 import { GrDropdown as GrDropdownCmp } from '@graphiteds/core/components/gr-dropdown.js';
 import { GrFieldGroup as GrFieldGroupCmp } from '@graphiteds/core/components/gr-field-group.js';
 import { GrInput as GrInputCmp } from '@graphiteds/core/components/gr-input.js';
@@ -53,6 +54,29 @@ export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-chec
   'gr-change'
 ],
 'checked', 'v-gr-change', 'gr-change');
+
+
+export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-date-picker', GrDatePickerCmp, [
+  'name',
+  'disabled',
+  'direction',
+  'value',
+  'min',
+  'max',
+  'firstDayOfWeek',
+  'isDateDisabled',
+  'label',
+  'requiredIndicator',
+  'helpText',
+  'invalidText',
+  'invalid',
+  'gr-change',
+  'gr-focus',
+  'gr-blur',
+  'gr-open',
+  'gr-close'
+],
+'value', 'v-gr-change', 'gr-change');
 
 
 export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-dropdown', GrDropdownCmp, [

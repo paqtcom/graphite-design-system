@@ -73,6 +73,10 @@
 
     <p>{{ textareaValue }}</p>
   </section>
+
+  <section>
+    <gr-date-picker></gr-date-picker>
+  </section>
 </template>
 
 <script lang="ts">
@@ -87,6 +91,7 @@ import {
   GrInput,
   GrTextarea,
   GrCheckbox,
+  GrDatePicker,
 } from "@graphiteds/vue";
 
 import { ref, defineComponent } from "vue";
@@ -104,6 +109,7 @@ export default defineComponent({
     GrInput,
     GrTextarea,
     GrCheckbox,
+    GrDatePicker,
   },
   setup() {
     const variant = ref<"primary" | "default">("primary");
