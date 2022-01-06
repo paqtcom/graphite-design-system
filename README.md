@@ -1,18 +1,51 @@
-![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
+<p align="center">
+  <a href="https://graphitedesignsystem.com">
+    <img width="100" src="https://graphitedesignsystem.com/favicon.svg" alt="Graphite logo"></a>
+</p>
 
-# Graphite Design System
+<h1 align="center">
+  Graphite Design System
+</h1>
 
-Library of components for the [Graphite Design System](https://graphitedesignsystem.com).
+<p align="center">
+  Graphite is <a href="https://paqt.com/">PAQT</a>'s white-label design system for digital products and experiences. The system consists of working code, design kits, and human interface guidelines.
+</p>
+
+<p align="center">
+This repository contains the working code of the components. The core components are <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>, and we offer wrappers for React & Vue 3 for optimal DX.
+</p>
+
+<p align="center">
+  <a href="https://github.com/paqtcom/graphite-design-system/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Graphite Design System is released under the MIT license." />
+  </a>
+  <a href="https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace">
+    <img src="https://data.jsdelivr.com/v1/package/npm/@graphiteds/core/badge" alt="Graphite Design System is available on jsDelivr." />
+  </a>
+</p>
+
+<h2 align="center">
+  <a href="https://graphitedesignsystem.com/getting-started/developers/#quick-start">Quickstart</a>
+  <span> · </span>
+  <a href="https://graphitedesignsystem.com/">
+    Documentation
+  </a>
+</h2>
 
 ### Packages
 
-| Project             | Package                                                                | Version                                                                                                                  |                  Links                  |
-| ------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------: |
-| **Core components** | [`@graphiteds/core`](https://www.npmjs.com/package/@graphiteds/core)   | [![version](https://img.shields.io/npm/v/@graphiteds/core/latest.svg)](https://www.npmjs.com/package/@graphiteds/core)   | [`README.md`](packages/core/README.md)  |
-| **React bindings**  | [`@graphiteds/react`](https://www.npmjs.com/package/@graphiteds/react) | [![version](https://img.shields.io/npm/v/@graphiteds/react/latest.svg)](https://www.npmjs.com/package/@graphiteds/react) | [`README.md`](packages/react/README.md) |
-| **Vue 3 bindings**  | [`@graphiteds/vue`](https://www.npmjs.com/package/@graphiteds/vue)     | [![version](https://img.shields.io/npm/v/@graphiteds/vue/latest.svg)](https://www.npmjs.com/package/@graphiteds/vue)     |  [`README.md`](packages/vue/README.md)  |
+| Project   | Package                                                                | Version                                                                                                                  | Downloads                                                                                                                                                           |                  Links                  |
+| --------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------: |
+| **Core**  | [`@graphiteds/core`](https://www.npmjs.com/package/@graphiteds/core)   | [![version](https://img.shields.io/npm/v/@graphiteds/core/latest.svg)](https://www.npmjs.com/package/@graphiteds/core)   | <a href="https://www.npmjs.com/package/@graphiteds/core" target="_blank"><img src="https://img.shields.io/npm/dm/@graphiteds/core.svg" alt="NPM Downloads" /></a>   | [`README.md`](packages/core/README.md)  |
+| **React** | [`@graphiteds/react`](https://www.npmjs.com/package/@graphiteds/react) | [![version](https://img.shields.io/npm/v/@graphiteds/react/latest.svg)](https://www.npmjs.com/package/@graphiteds/react) | <a href="https://www.npmjs.com/package/@graphiteds/react" target="_blank"><img src="https://img.shields.io/npm/dm/@graphiteds/react.svg" alt="NPM Downloads" /></a> | [`README.md`](packages/react/README.md) |
+| **Vue 3** | [`@graphiteds/vue`](https://www.npmjs.com/package/@graphiteds/vue)     | [![version](https://img.shields.io/npm/v/@graphiteds/vue/latest.svg)](https://www.npmjs.com/package/@graphiteds/vue)     | <a href="https://www.npmjs.com/package/@graphiteds/vue" target="_blank"><img src="https://img.shields.io/npm/dm/@graphiteds/vue.svg" alt="NPM Downloads" /></a>     |  [`README.md`](packages/vue/README.md)  |
 
-## Development
+### Getting Started
+
+Start using our design system by following our quick [Getting Started guide](https://graphitedesignsystem.com/getting-started/developers/#quick-start).
+We would love to hear from you! If you have any feedback or run into issues using our design system, please file an [issue](https://github.com/paqtcom/graphite-design-system/issues/new) on this repository.
+
+### Development
 
 To start building the components using [Stencil](https://stenciljs.com/), clone this repo to a new directory:
 
@@ -37,7 +70,7 @@ npm start
 
 Now you can develop the components.
 
-Need help? Check out the docs [here](https://stenciljs.com/docs/my-first-component).
+Need help? Check out the [Stencil docs](https://stenciljs.com/docs/my-first-component).
 
 ## Automated tests
 
