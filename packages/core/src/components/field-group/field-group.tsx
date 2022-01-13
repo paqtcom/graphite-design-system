@@ -58,7 +58,9 @@ export class FieldGroup {
         <legend class="field-group-label" aria-hidden={hasLabel ? 'false' : 'true'}>
           <slot name="label">{this.label}</slot>
         </legend>
-        <slot></slot>
+        <div class="content">
+          <slot></slot>
+        </div>
       </fieldset>
     );
   }
