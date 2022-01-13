@@ -21,6 +21,110 @@
   </head>
   <body>
     <section>
+      <h2>gr-radio & gr-radio-group</h2>
+
+      <section>
+        <h3>Default (vertical)</h3>
+
+        <gr-radio-group label="Select an option" value="3">
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+
+        <gr-radio-group label="Select an option" value="3" horizontal>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Disabled option</h3>
+
+        <gr-radio-group label="Select an option" value="2">
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+          <gr-radio value="4" disabled>Disabled</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Invalid</h3>
+
+        <gr-radio-group label="Select an option" invalid-text="Select an option" invalid>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Invalid with horizontal</h3>
+
+        <gr-radio-group label="Select an option" invalid-text="Select an option" horizontal invalid>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-radio-group label="Select an option" required-indicator>
+          <gr-radio value="1" aria-label="Option one">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+    </section>
+
+    <section>
+      <h2>gr-checkbox & gr-field-group</h2>
+
+      <section style="width: 300px">
+        <h3>Checked</h3>
+        <gr-field-group label="Select options">
+          <gr-checkbox id="checkbox-test" checked invalid aria-label="Option one">Option 1</gr-checkbox>
+          <gr-checkbox invalid>Option 2</gr-checkbox>
+          <gr-checkbox invalid-text="Select at least one option" invalid>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+        <gr-field-group label="Select options" horizontal>
+          <gr-checkbox>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Indeterminate</h3>
+        <gr-checkbox indeterminate>Indeterminate</gr-checkbox>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+        <gr-checkbox disabled>Disabled</gr-checkbox>
+      </section>
+
+      <section>
+        <h3>Invalid</h3>
+        <gr-checkbox invalid-text="You have to agree with our terms to continue" invalid>
+          I agree with the terms
+        </gr-checkbox>
+      </section>
+    </section>
+
+    <section>
       <h2>gr-date-picker</h2>
 
       <section>
@@ -488,100 +592,6 @@
         <h3>Expand with Content</h3>
 
         <gr-textarea resize="auto"></gr-textarea>
-      </section>
-    </section>
-
-    <section>
-      <h2>gr-radio & gr-radio-group</h2>
-
-      <section>
-        <h3>Default (vertical)</h3>
-
-        <gr-radio-group label="Select an option" value="3">
-          <gr-radio value="1">Option 1</gr-radio>
-          <gr-radio value="2">Option 2</gr-radio>
-          <gr-radio value="3">Option 3</gr-radio>
-        </gr-radio-group>
-      </section>
-
-      <section>
-        <h3>Horizontal</h3>
-
-        <gr-radio-group label="Select an option" value="3" horizontal>
-          <gr-radio value="1">Option 1</gr-radio>
-          <gr-radio value="2">Option 2</gr-radio>
-          <gr-radio value="3">Option 3</gr-radio>
-        </gr-radio-group>
-      </section>
-
-      <section>
-        <h3>Disabled option</h3>
-
-        <gr-radio-group label="Select an option" value="2">
-          <gr-radio value="1">Option 1</gr-radio>
-          <gr-radio value="2">Option 2</gr-radio>
-          <gr-radio value="3">Option 3</gr-radio>
-          <gr-radio value="4" disabled>Disabled</gr-radio>
-        </gr-radio-group>
-      </section>
-
-      <section>
-        <h3>Invalid</h3>
-
-        <gr-radio-group label="Select an option" invalid-text="Select an option" invalid>
-          <gr-radio value="1">Option 1</gr-radio>
-          <gr-radio value="2">Option 2</gr-radio>
-          <gr-radio value="3">Option 3</gr-radio>
-        </gr-radio-group>
-      </section>
-
-      <section>
-        <h3>Required indicator</h3>
-
-        <gr-radio-group label="Select an option" required-indicator>
-          <gr-radio value="1" aria-label="Option one">Option 1</gr-radio>
-          <gr-radio value="2">Option 2</gr-radio>
-          <gr-radio value="3">Option 3</gr-radio>
-        </gr-radio-group>
-      </section>
-    </section>
-
-    <section>
-      <h2>gr-checkbox & gr-field-group</h2>
-
-      <section style="width: 300px">
-        <h3>Checked</h3>
-        <gr-field-group label="Select options">
-          <gr-checkbox id="checkbox-test" checked invalid aria-label="Option one">Option 1</gr-checkbox>
-          <gr-checkbox invalid>Option 2</gr-checkbox>
-          <gr-checkbox invalid-text="Select at least one option" invalid>Option 3</gr-checkbox>
-        </gr-field-group>
-      </section>
-
-      <section>
-        <h3>Horizontal</h3>
-        <gr-field-group label="Select options" horizontal>
-          <gr-checkbox>Option 1</gr-checkbox>
-          <gr-checkbox>Option 2</gr-checkbox>
-          <gr-checkbox>Option 3</gr-checkbox>
-        </gr-field-group>
-      </section>
-
-      <section>
-        <h3>Indeterminate</h3>
-        <gr-checkbox indeterminate>Indeterminate</gr-checkbox>
-      </section>
-
-      <section>
-        <h3>Disabled</h3>
-        <gr-checkbox disabled>Disabled</gr-checkbox>
-      </section>
-
-      <section>
-        <h3>Invalid</h3>
-        <gr-checkbox invalid-text="You have to agree with our terms to continue" invalid>
-          I agree with the terms
-        </gr-checkbox>
       </section>
     </section>
 

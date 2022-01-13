@@ -24,13 +24,16 @@
   margin: 0;
   padding: 0;
   border: none;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: var(--align-radios);
   gap: var(--margin-between-radios);
 }
 
-.radio-group.radio-group-horizontal {
+.radio-group-horizontal .content {
   flex-direction: row;
   gap: var(--margin-between-radios-horizontal);
 }

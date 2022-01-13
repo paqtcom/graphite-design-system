@@ -214,7 +214,9 @@ export class RadioGroup {
               </span>
             )}
           </legend>
-          <slot></slot>
+          <div class="content">
+            <slot></slot>
+          </div>
           {showInvalidText && (
             <div
               id={this.invalidTextId}
