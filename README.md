@@ -19,7 +19,7 @@ This repository contains the working code of the components. The core components
   <a href="https://github.com/paqtcom/graphite-design-system/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Graphite Design System is released under the MIT license." />
   </a>
-  <a href="https://www.jsdelivr.com/package/npm/@shoelace-style/shoelace">
+  <a href="https://www.jsdelivr.com/package/npm/@graphiteds/core">
     <img src="https://data.jsdelivr.com/v1/package/npm/@graphiteds/core/badge" alt="Graphite Design System is available on jsDelivr." />
   </a>
 </p>
