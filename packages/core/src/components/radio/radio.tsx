@@ -119,6 +119,13 @@ export class Radio {
         class={{
           'radio-disabled': this.disabled,
         }}
+        tabindex={this.buttonTabindex}
+        role="radio"
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
+        aria-checked={`${this.checked}`}
+        aria-hidden={this.disabled ? 'true' : null}
+        {...ariaLabelAttributes}
       >
         <label
           class={{
@@ -147,12 +154,7 @@ export class Radio {
               value={this.value}
               checked={this.checked}
               disabled={this.disabled}
-              role="radio"
-              tabindex={this.buttonTabindex}
-              aria-checked={this.checked ? 'true' : 'false'}
-              {...ariaLabelAttributes}
-              onBlur={this.handleBlur}
-              onFocus={this.handleFocus}
+              tabindex="-1"
             />
           </span>
 
