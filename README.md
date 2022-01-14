@@ -49,6 +49,8 @@ We would love to hear from you! If you have any feedback or run into issues usin
 
 To start building the components using [Stencil](https://stenciljs.com/), clone this repo to a new directory:
 
+Make sure you are using Node v16 (with npm v8). If you use `nvm`, you can run `nvm use`.
+
 ```bash
 git clone https://github.com/paqtcom/graphite-design-system.git graphite-design-system
 cd graphite-design-system
