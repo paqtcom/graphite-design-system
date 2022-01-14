@@ -34,9 +34,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/react-output-target": "^0.1.0",
+    "@stencil/react-output-target": "^0.2.1",
     "@stencil/sass": "^1.5.2",
-    "@stencil/vue-output-target": "^0.5.1",
+    "@stencil/vue-output-target": "^0.6.0",
     "@types/jest": "^26.0.24",
     "@types/puppeteer": "2.0.1",
     "@types/resize-observer-browser": "^0.1.6",
@@ -49,6 +49,6 @@
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
     "@popperjs/core": "^2.10.2",
-    "@stencil/core": "^2.10.0"
+    "@stencil/core": "2.10.0"
   }
 }

@@ -71,6 +71,8 @@ export const config: Config = {
     },
     {
       type: 'dist-hydrate-script',
+      dir: 'hydrate',
+      empty: false,
     },
     {
       type: 'docs-readme',

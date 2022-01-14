@@ -5,25 +5,25 @@ import { defineContainer } from './vue-component-lib/utils';
 
 import type { JSX } from '@graphiteds/core/components';
 
-import { GrButton as GrButtonCmp } from '@graphiteds/core/components/gr-button.js';
-import { GrCheckbox as GrCheckboxCmp } from '@graphiteds/core/components/gr-checkbox.js';
-import { GrDatePicker as GrDatePickerCmp } from '@graphiteds/core/components/gr-date-picker.js';
-import { GrDropdown as GrDropdownCmp } from '@graphiteds/core/components/gr-dropdown.js';
-import { GrFieldGroup as GrFieldGroupCmp } from '@graphiteds/core/components/gr-field-group.js';
-import { GrInput as GrInputCmp } from '@graphiteds/core/components/gr-input.js';
-import { GrMenu as GrMenuCmp } from '@graphiteds/core/components/gr-menu.js';
-import { GrMenuDivider as GrMenuDividerCmp } from '@graphiteds/core/components/gr-menu-divider.js';
-import { GrMenuItem as GrMenuItemCmp } from '@graphiteds/core/components/gr-menu-item.js';
-import { GrMenuLabel as GrMenuLabelCmp } from '@graphiteds/core/components/gr-menu-label.js';
-import { GrRadio as GrRadioCmp } from '@graphiteds/core/components/gr-radio.js';
-import { GrRadioGroup as GrRadioGroupCmp } from '@graphiteds/core/components/gr-radio-group.js';
-import { GrSelect as GrSelectCmp } from '@graphiteds/core/components/gr-select.js';
-import { GrSpinner as GrSpinnerCmp } from '@graphiteds/core/components/gr-spinner.js';
-import { GrTag as GrTagCmp } from '@graphiteds/core/components/gr-tag.js';
-import { GrTextarea as GrTextareaCmp } from '@graphiteds/core/components/gr-textarea.js';
+import { defineCustomElement as defineGrButton } from '@graphiteds/core/components/gr-button.js';
+import { defineCustomElement as defineGrCheckbox } from '@graphiteds/core/components/gr-checkbox.js';
+import { defineCustomElement as defineGrDatePicker } from '@graphiteds/core/components/gr-date-picker.js';
+import { defineCustomElement as defineGrDropdown } from '@graphiteds/core/components/gr-dropdown.js';
+import { defineCustomElement as defineGrFieldGroup } from '@graphiteds/core/components/gr-field-group.js';
+import { defineCustomElement as defineGrInput } from '@graphiteds/core/components/gr-input.js';
+import { defineCustomElement as defineGrMenu } from '@graphiteds/core/components/gr-menu.js';
+import { defineCustomElement as defineGrMenuDivider } from '@graphiteds/core/components/gr-menu-divider.js';
+import { defineCustomElement as defineGrMenuItem } from '@graphiteds/core/components/gr-menu-item.js';
+import { defineCustomElement as defineGrMenuLabel } from '@graphiteds/core/components/gr-menu-label.js';
+import { defineCustomElement as defineGrRadio } from '@graphiteds/core/components/gr-radio.js';
+import { defineCustomElement as defineGrRadioGroup } from '@graphiteds/core/components/gr-radio-group.js';
+import { defineCustomElement as defineGrSelect } from '@graphiteds/core/components/gr-select.js';
+import { defineCustomElement as defineGrSpinner } from '@graphiteds/core/components/gr-spinner.js';
+import { defineCustomElement as defineGrTag } from '@graphiteds/core/components/gr-tag.js';
+import { defineCustomElement as defineGrTextarea } from '@graphiteds/core/components/gr-textarea.js';
 
 
-export const GrButton = /*@__PURE__*/ defineContainer<JSX.GrButton>('gr-button', GrButtonCmp, [
+export const GrButton = /*@__PURE__*/ defineContainer<JSX.GrButton>('gr-button', defineGrButton, [
   'variant',
   'disabled',
   'loading',
@@ -41,7 +41,7 @@ export const GrButton = /*@__PURE__*/ defineContainer<JSX.GrButton>('gr-button',
 ]);
 
 
-export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-checkbox', GrCheckboxCmp, [
+export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-checkbox', defineGrCheckbox, [
   'value',
   'disabled',
   'name',
@@ -56,7 +56,7 @@ export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-chec
 'checked', 'v-gr-change', 'gr-change');
 
 
-export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-date-picker', GrDatePickerCmp, [
+export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-date-picker', defineGrDatePicker, [
   'name',
   'placeholder',
   'disabled',
@@ -80,7 +80,7 @@ export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-
 'value', 'v-gr-change', 'gr-change');
 
 
-export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-dropdown', GrDropdownCmp, [
+export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-dropdown', defineGrDropdown, [
   'open',
   'placement',
   'closeOnSelect',
@@ -95,13 +95,13 @@ export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-drop
 ]);
 
 
-export const GrFieldGroup = /*@__PURE__*/ defineContainer<JSX.GrFieldGroup>('gr-field-group', GrFieldGroupCmp, [
+export const GrFieldGroup = /*@__PURE__*/ defineContainer<JSX.GrFieldGroup>('gr-field-group', defineGrFieldGroup, [
   'label',
   'horizontal'
 ]);
 
 
-export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', GrInputCmp, [
+export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', defineGrInput, [
   'value',
   'type',
   'pill',
@@ -138,25 +138,25 @@ export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', Gr
 'value', 'v-gr-change', 'gr-change');
 
 
-export const GrMenu = /*@__PURE__*/ defineContainer<JSX.GrMenu>('gr-menu', GrMenuCmp, [
+export const GrMenu = /*@__PURE__*/ defineContainer<JSX.GrMenu>('gr-menu', defineGrMenu, [
   'gr-select'
 ]);
 
 
-export const GrMenuDivider = /*@__PURE__*/ defineContainer<JSX.GrMenuDivider>('gr-menu-divider', GrMenuDividerCmp);
+export const GrMenuDivider = /*@__PURE__*/ defineContainer<JSX.GrMenuDivider>('gr-menu-divider', defineGrMenuDivider);
 
 
-export const GrMenuItem = /*@__PURE__*/ defineContainer<JSX.GrMenuItem>('gr-menu-item', GrMenuItemCmp, [
+export const GrMenuItem = /*@__PURE__*/ defineContainer<JSX.GrMenuItem>('gr-menu-item', defineGrMenuItem, [
   'checked',
   'value',
   'disabled'
 ]);
 
 
-export const GrMenuLabel = /*@__PURE__*/ defineContainer<JSX.GrMenuLabel>('gr-menu-label', GrMenuLabelCmp);
+export const GrMenuLabel = /*@__PURE__*/ defineContainer<JSX.GrMenuLabel>('gr-menu-label', defineGrMenuLabel);
 
 
-export const GrRadio = /*@__PURE__*/ defineContainer<JSX.GrRadio>('gr-radio', GrRadioCmp, [
+export const GrRadio = /*@__PURE__*/ defineContainer<JSX.GrRadio>('gr-radio', defineGrRadio, [
   'value',
   'disabled',
   'checked',
@@ -165,7 +165,7 @@ export const GrRadio = /*@__PURE__*/ defineContainer<JSX.GrRadio>('gr-radio', Gr
 ]);
 
 
-export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-radio-group', GrRadioGroupCmp, [
+export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-radio-group', defineGrRadioGroup, [
   'allowEmptySelection',
   'label',
   'requiredIndicator',
@@ -179,7 +179,7 @@ export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-
 'value', 'v-gr-change', 'gr-change');
 
 
-export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select', GrSelectCmp, [
+export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select', defineGrSelect, [
   'multiple',
   'maxTagsVisible',
   'disabled',
@@ -202,10 +202,10 @@ export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select',
 'value', 'v-gr-change', 'gr-change');
 
 
-export const GrSpinner = /*@__PURE__*/ defineContainer<JSX.GrSpinner>('gr-spinner', GrSpinnerCmp);
+export const GrSpinner = /*@__PURE__*/ defineContainer<JSX.GrSpinner>('gr-spinner', defineGrSpinner);
 
 
-export const GrTag = /*@__PURE__*/ defineContainer<JSX.GrTag>('gr-tag', GrTagCmp, [
+export const GrTag = /*@__PURE__*/ defineContainer<JSX.GrTag>('gr-tag', defineGrTag, [
   'type',
   'size',
   'pill',
@@ -214,7 +214,7 @@ export const GrTag = /*@__PURE__*/ defineContainer<JSX.GrTag>('gr-tag', GrTagCmp
 ]);
 
 
-export const GrTextarea = /*@__PURE__*/ defineContainer<JSX.GrTextarea>('gr-textarea', GrTextareaCmp, [
+export const GrTextarea = /*@__PURE__*/ defineContainer<JSX.GrTextarea>('gr-textarea', defineGrTextarea, [
   'size',
   'name',
   'value',
