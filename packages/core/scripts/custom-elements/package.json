@@ -4,6 +4,5 @@
   "description": "Graphite components exported as custom elements, extending HTMLElement.",
   "main": "./index.js",
   "types": "./custom-elements.d.ts",
-  "private": true,
-  "sideEffects": false
+  "private": true
 }
