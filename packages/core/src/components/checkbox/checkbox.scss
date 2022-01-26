@@ -56,13 +56,6 @@
   & *:after {
     box-sizing: inherit;
   }
-
-  --height-icon-small: 20px;
-  --width-icon-small: 20px;
-  --height-icon-medium: 20px;
-  --width-icon-medium: 20px;
-  --height-icon-large: 20px;
-  --width-icon-large: 20px;
 }
 
 :host(.checkbox-disabled) {
