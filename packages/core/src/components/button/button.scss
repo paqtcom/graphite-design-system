@@ -30,6 +30,8 @@
    * @prop --height: Height of the button
    *
    * @prop --focus-ring: The focus ring style to use when the button receives focus, a `box-shadow` property.
+   *
+   * @prop --shadow: Shadow of the button, a `box-shadow` property. Please note this will be overwritted by `--focus-ring` on focus.
    */
   display: inline-block;
 
@@ -69,6 +71,8 @@
   --padding-bottom: 0;
 
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+
+  --shadow: none;
 
   --transition: background-color 150ms linear, opacity 150ms linear, border 150ms linear, color 150ms linear;
 }
@@ -245,6 +249,8 @@
 
   background: var(--background);
   color: var(--color);
+
+  box-shadow: var(--shadow);
 
   line-height: 1;
 
