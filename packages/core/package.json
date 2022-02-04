@@ -39,12 +39,12 @@
     "@stencil/vue-output-target": "^0.6.0",
     "@types/jest": "^26.0.24",
     "@types/puppeteer": "2.0.1",
-    "@types/resize-observer-browser": "^0.1.6",
-    "clean-css-cli": "^5.4.2",
+    "@types/resize-observer-browser": "^0.1.7",
+    "clean-css-cli": "^5.5.2",
     "jest": "^26.0.1",
     "jest-cli": "^26.0.1",
     "puppeteer": "^7.0.1",
-    "sass": "^1.43.4"
+    "sass": "^1.49.7"
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
