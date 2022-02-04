@@ -1,6 +1,6 @@
 {
   "name": "@graphiteds/vue",
-  "version": "1.6.3",
+  "version": "1.7.0",
   "description": "Vue specific wrapper for the components of the Graphite Design System",
   "license": "MIT",
   "repository": {
@@ -40,7 +40,7 @@
     "vue": "3.0.0"
   },
   "dependencies": {
-    "@graphiteds/core": "^1.6.3"
+    "@graphiteds/core": "^1.7.0"
   },
   "jest": {
     "preset": "ts-jest",
