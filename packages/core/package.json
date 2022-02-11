@@ -37,13 +37,13 @@
     "@stencil/react-output-target": "^0.3.1",
     "@stencil/sass": "^1.5.2",
     "@stencil/vue-output-target": "^0.6.0",
-    "@types/jest": "^26.0.24",
-    "@types/puppeteer": "2.0.1",
+    "@types/jest": "^27.4.0",
+    "@types/puppeteer": "^5.4.4",
     "@types/resize-observer-browser": "^0.1.7",
     "clean-css-cli": "^5.5.2",
-    "jest": "^26.0.1",
-    "jest-cli": "^26.0.1",
-    "puppeteer": "^7.0.1",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "puppeteer": "^13.3.1",
     "sass": "^1.49.7"
   },
   "dependencies": {
