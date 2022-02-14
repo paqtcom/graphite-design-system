@@ -2,6 +2,7 @@ import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Build }
 import FormControl from '../../functional-components/form-control/form-control';
 import { getTextContent, hasSlot } from '../../utils/slot';
 import { inheritAttributes, renderHiddenInput } from '../../utils/helpers';
+import { HTMLElementSSR } from '../../utils/HTMLElementSSR';
 
 let id = 0;
 
@@ -291,9 +292,8 @@ export class Select {
     // Don't toggle the menu when a tag's clear button is activated
     const path = event.composedPath() as Array<EventTarget>;
     const clearButton = path.find(el => {
-      if (el instanceof HTMLElement) {
-        const element = el as HTMLElement;
-        return element.classList.contains('tag-clear');
+      if (el instanceof HTMLElementSSR) {
+        return el.classList.contains('tag-clear');
       }
     });
 
