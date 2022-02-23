@@ -19,7 +19,6 @@
       }
     </style>
   </head>
-
   <body>
     <section>
       <h2>gr-radio & gr-radio-group</h2>
@@ -161,15 +160,21 @@
       <section>
         <h3>Help Text</h3>
 
-        <gr-date-picker label="Enter a date" help-text="Please tell us when you are available (format: dd-mm-yyyy).">
-        </gr-date-picker>
+        <gr-date-picker
+          label="Enter a date"
+          help-text="Please tell us when you are available (format: dd-mm-yyyy)."
+        ></gr-date-picker>
       </section>
 
       <section>
         <h3>Invalid Text</h3>
 
-        <gr-date-picker label="Enter a date" help-text="Please tell us when you are available."
-          invalid-text="Enter a date when you are available." invalid></gr-date-picker>
+        <gr-date-picker
+          label="Enter a date"
+          help-text="Please tell us when you are available."
+          invalid-text="Enter a date when you are available." 
+          invalid
+        ></gr-date-picker>
       </section>
 
       <section>
@@ -358,8 +363,12 @@
       <section>
         <h3>Invalid Text</h3>
 
-        <gr-select label="Experience" help-text="Please tell us your skill level." invalid-text="Select your skill level"
-          invalid>
+        <gr-select
+          label="Experience"
+          help-text="Please tell us your skill level."
+          invalid-text="Select your skill level"
+          invalid
+        >
           <gr-menu-item value="option-1">Novice</gr-menu-item>
           <gr-menu-item value="option-2">Intermediate</gr-menu-item>
           <gr-menu-item value="option-3">Advanced</gr-menu-item>
@@ -456,14 +465,23 @@
 
         <div style="display: flex; gap: 12px">
           <div>
-            <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
-              invalid-text="Create a password with at least 8 characters."></gr-input>
+            <gr-input
+              type="password"
+              label="Password"
+              help-text="Passwords must be at least 8 characters."
+              invalid-text="Create a password with at least 8 characters."
+            ></gr-input>
             <p>Test</p>
           </div>
 
           <div>
-            <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
-              invalid-text="Create a password with at least 8 characters." invalid></gr-input>
+            <gr-input
+              type="password"
+              label="Password"
+              help-text="Passwords must be at least 8 characters."
+              invalid-text="Create a password with at least 8 characters."
+              invalid
+            ></gr-input>
             <p>Test</p>
           </div>
         </div>
@@ -556,8 +574,12 @@
       <section>
         <h3>Invalid Text</h3>
 
-        <gr-textarea label="Feedback" help-text="Please tell us what you think." invalid-text="Enter what you think"
-          invalid></gr-textarea>
+        <gr-textarea
+          label="Feedback"
+          help-text="Please tell us what you think."
+          invalid-text="Enter what you think"
+          invalid
+        ></gr-textarea>
       </section>
 
       <section>
@@ -609,7 +631,6 @@
           <gr-tag type="info" size="small" clearable>Small</gr-tag>
           <gr-tag size="medium" clearable>Medium</gr-tag>
           <gr-tag type="danger" size="large" clearable>Large</gr-tag>
-          <gr-tag type="success" size="large" clearable>Large</gr-tag>
         </div>
       </section>
     </section>
@@ -644,10 +665,11 @@
       <p>Including gr-menu-item & gr-menu-divider & gr-menu-label</p>
 
       <gr-menu style="
-            max-width: 200px;
-            border: solid 1px var(--gr-panel-border-color);
-            border-radius: var(--gr-border-radius-medium);
-          ">
+          max-width: 200px;
+          border: solid 1px var(--gr-panel-border-color);
+          border-radius: var(--gr-border-radius-medium);
+        "
+      >
         <gr-menu-label>Timetravel</gr-menu-label>
         <gr-menu-item value="undo" checked>Undo</gr-menu-item>
         <gr-menu-item value="redo">Redo</gr-menu-item>
