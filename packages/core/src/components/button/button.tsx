@@ -129,10 +129,10 @@ export class Button {
       TagType === 'button'
         ? { type }
         : {
-          href,
-          rel,
-          target,
-        };
+            href,
+            rel,
+            target,
+          };
 
     return (
       <Host

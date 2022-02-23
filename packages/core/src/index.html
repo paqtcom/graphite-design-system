@@ -1,838 +1,836 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Graphite Design System</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Graphite Design System</title>
+    <link rel="stylesheet" href="/build/core.css" />
+    <script type="module" src="/build/core.esm.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.css" />
 
-  <link rel="stylesheet" href="/build/core.css" />
-  <script type="module" src="/build/core.esm.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.css" />
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: var(--gr-color-light-tint);
+        line-height: var(--gr-line-height-normal);
+        color: var(--gr-color-dark);
+      }
+    </style>
+  </head>
 
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: var(--gr-color-light-tint);
-      line-height: var(--gr-line-height-normal);
-      color: var(--gr-color-dark);
-    }
-  </style>
-</head>
-
-<body>
-  <section>
-    <h2>gr-radio & gr-radio-group</h2>
-
+  <body>
     <section>
-      <h3>Default (vertical)</h3>
+      <h2>gr-radio & gr-radio-group</h2>
 
-      <gr-radio-group label="Select an option" value="3">
-        <gr-radio value="1">Option 1</gr-radio>
-        <gr-radio value="2">Option 2</gr-radio>
-        <gr-radio value="3">Option 3</gr-radio>
-      </gr-radio-group>
+      <section>
+        <h3>Default (vertical)</h3>
+
+        <gr-radio-group label="Select an option" value="3">
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+
+        <gr-radio-group label="Select an option" value="3" horizontal>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Disabled option</h3>
+
+        <gr-radio-group label="Select an option" value="2">
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+          <gr-radio value="4" disabled>Disabled</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Invalid</h3>
+
+        <gr-radio-group label="Select an option" invalid-text="Select an option" invalid>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Invalid with horizontal</h3>
+
+        <gr-radio-group label="Select an option" invalid-text="Select an option" horizontal invalid>
+          <gr-radio value="1">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-radio-group label="Select an option" required-indicator>
+          <gr-radio value="1" aria-label="Option one">Option 1</gr-radio>
+          <gr-radio value="2">Option 2</gr-radio>
+          <gr-radio value="3">Option 3</gr-radio>
+        </gr-radio-group>
+      </section>
     </section>
 
     <section>
-      <h3>Horizontal</h3>
+      <h2>gr-checkbox & gr-field-group</h2>
 
-      <gr-radio-group label="Select an option" value="3" horizontal>
-        <gr-radio value="1">Option 1</gr-radio>
-        <gr-radio value="2">Option 2</gr-radio>
-        <gr-radio value="3">Option 3</gr-radio>
-      </gr-radio-group>
+      <section style="width: 300px">
+        <h3>Checked</h3>
+        <gr-field-group label="Select options">
+          <gr-checkbox id="checkbox-test" checked invalid aria-label="Option one">Option 1</gr-checkbox>
+          <gr-checkbox invalid>Option 2</gr-checkbox>
+          <gr-checkbox invalid-text="Select at least one option" invalid>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Horizontal</h3>
+        <gr-field-group label="Select options" horizontal>
+          <gr-checkbox>Option 1</gr-checkbox>
+          <gr-checkbox>Option 2</gr-checkbox>
+          <gr-checkbox>Option 3</gr-checkbox>
+        </gr-field-group>
+      </section>
+
+      <section>
+        <h3>Indeterminate</h3>
+        <gr-checkbox indeterminate>Indeterminate</gr-checkbox>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+        <gr-checkbox disabled>Disabled</gr-checkbox>
+      </section>
+
+      <section>
+        <h3>Invalid</h3>
+        <gr-checkbox invalid-text="You have to agree with our terms to continue" invalid>
+          I agree with the terms
+        </gr-checkbox>
+      </section>
     </section>
 
     <section>
-      <h3>Disabled option</h3>
+      <h2>gr-date-picker</h2>
 
-      <gr-radio-group label="Select an option" value="2">
-        <gr-radio value="1">Option 1</gr-radio>
-        <gr-radio value="2">Option 2</gr-radio>
-        <gr-radio value="3">Option 3</gr-radio>
-        <gr-radio value="4" disabled>Disabled</gr-radio>
-      </gr-radio-group>
+      <section>
+        <h3>Value</h3>
+
+        <gr-date-picker value="1986-09-17"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Placeholders</h3>
+
+        <gr-date-picker placeholder="Enter a date"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-date-picker placeholder="Enter a date" disabled></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <gr-date-picker label="Date picker"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-date-picker label="Enter a date" required-indicator></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <gr-date-picker label="Enter a date" help-text="Please tell us when you are available (format: dd-mm-yyyy).">
+        </gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <gr-date-picker label="Enter a date" help-text="Please tell us when you are available."
+          invalid-text="Enter a date when you are available." invalid></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Control which days are selectable</h3>
+
+        <gr-date-picker id="no-weekends-date-picker"></gr-date-picker>
+
+        <script>
+          function isWeekend(date) {
+            return date.getDay() === 0 || date.getDay() === 6;
+          }
+
+          const pickerDisableWeekend = document.querySelector('#no-weekends-date-picker');
+          pickerDisableWeekend.isDateDisabled = isWeekend;
+        </script>
+      </section>
+
+      <section>
+        <h3>Using show() method</h3>
+
+        <gr-date-picker id="show-date-picker"></gr-date-picker>
+
+        <gr-button id="show-date-picker-button">Show date picker</gr-button>
+
+        <script>
+          const button = document.querySelector('#show-date-picker-button');
+
+          button.addEventListener('click', function () {
+            document.querySelector('#show-date-picker').show();
+          });
+        </script>
+      </section>
+
+      <section>
+        <h3>Minimum and maximum date</h3>
+
+        <gr-date-picker label="Enter a date" min="2021-11-03" max="2021-12-05"></gr-date-picker>
+      </section>
+
+      <section>
+        <h3>Getting selected value</h3>
+
+        <gr-date-picker label="Enter a date" id="date-picker-value"></gr-date-picker>
+        <output id="date-picker-value-output">undefined</output>
+
+        <script>
+          const picker = document.querySelector('#date-picker-value');
+          const output = document.querySelector('#date-picker-value-output');
+
+          picker.addEventListener('gr-change', function (event) {
+            output.innerHTML = event.detail.valueAsDate;
+          });
+        </script>
+      </section>
     </section>
 
     <section>
-      <h3>Invalid</h3>
+      <h2>gr-select</h2>
 
-      <gr-radio-group label="Select an option" invalid-text="Select an option" invalid>
-        <gr-radio value="1">Option 1</gr-radio>
-        <gr-radio value="2">Option 2</gr-radio>
-        <gr-radio value="3">Option 3</gr-radio>
-      </gr-radio-group>
+      <section>
+        <h3>Placeholders</h3>
+
+        <gr-select placeholder="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Clearable</h3>
+
+        <gr-select placeholder="Clearable" clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <gr-select pill aria-label="Pill">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-select placeholder="Disabled" disabled>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Multiple</h3>
+
+        <gr-select placeholder="Select multiple" multiple pill>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item value="option-4">Option 4</gr-menu-item>
+          <gr-menu-item value="option-5">Option 5</gr-menu-item>
+          <gr-menu-item value="option-6">Option 6</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Grouping Options</h3>
+
+        <gr-select placeholder="Select one">
+          <gr-menu-label>Group 1</gr-menu-label>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-label>Group 2</gr-menu-label>
+          <gr-menu-item value="option-4">Option 4</gr-menu-item>
+          <gr-menu-item value="option-5">Option 5</gr-menu-item>
+          <gr-menu-item value="option-6">Option 6</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <gr-select placeholder="Small" size="small" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+
+        <br />
+
+        <gr-select placeholder="Medium" size="medium" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+
+        <br />
+
+        <gr-select placeholder="Large" size="large" multiple clearable>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <gr-select label="Select one">
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-select label="Select one" required-indicator>
+          <gr-menu-item value="option-1">Option 1</gr-menu-item>
+          <gr-menu-item value="option-2">Option 2</gr-menu-item>
+          <gr-menu-item value="option-3">Option 3</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <gr-select label="Experience" help-text="Please tell us your skill level.">
+          <gr-menu-item value="option-1">Novice</gr-menu-item>
+          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
+          <gr-menu-item value="option-3">Advanced</gr-menu-item>
+        </gr-select>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <gr-select label="Experience" help-text="Please tell us your skill level." invalid-text="Select your skill level"
+          invalid>
+          <gr-menu-item value="option-1">Novice</gr-menu-item>
+          <gr-menu-item value="option-2">Intermediate</gr-menu-item>
+          <gr-menu-item value="option-3">Advanced</gr-menu-item>
+        </gr-select>
+      </section>
     </section>
 
     <section>
-      <h3>Invalid with horizontal</h3>
-
-      <gr-radio-group label="Select an option" invalid-text="Select an option" horizontal invalid>
-        <gr-radio value="1">Option 1</gr-radio>
-        <gr-radio value="2">Option 2</gr-radio>
-        <gr-radio value="3">Option 3</gr-radio>
-      </gr-radio-group>
-    </section>
-
-    <section>
-      <h3>Required indicator</h3>
-
-      <gr-radio-group label="Select an option" required-indicator>
-        <gr-radio value="1" aria-label="Option one">Option 1</gr-radio>
-        <gr-radio value="2">Option 2</gr-radio>
-        <gr-radio value="3">Option 3</gr-radio>
-      </gr-radio-group>
-    </section>
-  </section>
-
-  <section>
-    <h2>gr-checkbox & gr-field-group</h2>
-
-    <section style="width: 300px">
-      <h3>Checked</h3>
-      <gr-field-group label="Select options">
-        <gr-checkbox id="checkbox-test" checked invalid aria-label="Option one">Option 1</gr-checkbox>
-        <gr-checkbox invalid>Option 2</gr-checkbox>
-        <gr-checkbox invalid-text="Select at least one option" invalid>Option 3</gr-checkbox>
-      </gr-field-group>
-    </section>
-
-    <section>
-      <h3>Horizontal</h3>
-      <gr-field-group label="Select options" horizontal>
-        <gr-checkbox>Option 1</gr-checkbox>
-        <gr-checkbox>Option 2</gr-checkbox>
-        <gr-checkbox>Option 3</gr-checkbox>
-      </gr-field-group>
-    </section>
-
-    <section>
-      <h3>Indeterminate</h3>
-      <gr-checkbox indeterminate>Indeterminate</gr-checkbox>
-    </section>
-
-    <section>
-      <h3>Disabled</h3>
-      <gr-checkbox disabled>Disabled</gr-checkbox>
-    </section>
-
-    <section>
-      <h3>Invalid</h3>
-      <gr-checkbox invalid-text="You have to agree with our terms to continue" invalid>
-        I agree with the terms
-      </gr-checkbox>
-    </section>
-  </section>
-
-  <section>
-    <h2>gr-date-picker</h2>
-
-    <section>
-      <h3>Value</h3>
-
-      <gr-date-picker value="1986-09-17"></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Placeholders</h3>
-
-      <gr-date-picker placeholder="Enter a date"></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Disabled</h3>
-
-      <gr-date-picker placeholder="Enter a date" disabled></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Labels</h3>
-
-      <gr-date-picker label="Date picker"></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Required indicator</h3>
-
-      <gr-date-picker label="Enter a date" required-indicator></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Help Text</h3>
-
-      <gr-date-picker label="Enter a date" help-text="Please tell us when you are available (format: dd-mm-yyyy).">
-      </gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Invalid Text</h3>
-
-      <gr-date-picker label="Enter a date" help-text="Please tell us when you are available."
-        invalid-text="Enter a date when you are available." invalid></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Control which days are selectable</h3>
-
-      <gr-date-picker id="no-weekends-date-picker"></gr-date-picker>
-
-      <script>
-        function isWeekend(date) {
-          return date.getDay() === 0 || date.getDay() === 6;
-        }
-
-        const pickerDisableWeekend = document.querySelector('#no-weekends-date-picker');
-        pickerDisableWeekend.isDateDisabled = isWeekend;
-      </script>
-    </section>
-
-    <section>
-      <h3>Using show() method</h3>
-
-      <gr-date-picker id="show-date-picker"></gr-date-picker>
-
-      <gr-button id="show-date-picker-button">Show date picker</gr-button>
-
-      <script>
-        const button = document.querySelector('#show-date-picker-button');
-
-        button.addEventListener('click', function () {
-          document.querySelector('#show-date-picker').show();
-        });
-      </script>
-    </section>
-
-    <section>
-      <h3>Minimum and maximum date</h3>
-
-      <gr-date-picker label="Enter a date" min="2021-11-03" max="2021-12-05"></gr-date-picker>
-    </section>
-
-    <section>
-      <h3>Getting selected value</h3>
-
-      <gr-date-picker label="Enter a date" id="date-picker-value"></gr-date-picker>
-      <output id="date-picker-value-output">undefined</output>
-
-      <script>
-        const picker = document.querySelector('#date-picker-value');
-        const output = document.querySelector('#date-picker-value-output');
-
-        picker.addEventListener('gr-change', function (event) {
-          output.innerHTML = event.detail.valueAsDate;
-        });
-      </script>
-    </section>
-  </section>
-
-  <section>
-    <h2>gr-select</h2>
-
-    <section>
-      <h3>Placeholders</h3>
-
-      <gr-select placeholder="Select one">
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Clearable</h3>
-
-      <gr-select placeholder="Clearable" clearable>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Pill</h3>
-
-      <gr-select pill aria-label="Pill">
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Disabled</h3>
-
-      <gr-select placeholder="Disabled" disabled>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Multiple</h3>
-
-      <gr-select placeholder="Select multiple" multiple pill>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        <gr-menu-divider></gr-menu-divider>
-        <gr-menu-item value="option-4">Option 4</gr-menu-item>
-        <gr-menu-item value="option-5">Option 5</gr-menu-item>
-        <gr-menu-item value="option-6">Option 6</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Grouping Options</h3>
-
-      <gr-select placeholder="Select one">
-        <gr-menu-label>Group 1</gr-menu-label>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-        <gr-menu-divider></gr-menu-divider>
-        <gr-menu-label>Group 2</gr-menu-label>
-        <gr-menu-item value="option-4">Option 4</gr-menu-item>
-        <gr-menu-item value="option-5">Option 5</gr-menu-item>
-        <gr-menu-item value="option-6">Option 6</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Sizes</h3>
-
-      <gr-select placeholder="Small" size="small" multiple clearable>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-
-      <br />
-
-      <gr-select placeholder="Medium" size="medium" multiple clearable>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-
-      <br />
-
-      <gr-select placeholder="Large" size="large" multiple clearable>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Labels</h3>
-
-      <gr-select label="Select one">
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Required indicator</h3>
-
-      <gr-select label="Select one" required-indicator>
-        <gr-menu-item value="option-1">Option 1</gr-menu-item>
-        <gr-menu-item value="option-2">Option 2</gr-menu-item>
-        <gr-menu-item value="option-3">Option 3</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Help Text</h3>
-
-      <gr-select label="Experience" help-text="Please tell us your skill level.">
-        <gr-menu-item value="option-1">Novice</gr-menu-item>
-        <gr-menu-item value="option-2">Intermediate</gr-menu-item>
-        <gr-menu-item value="option-3">Advanced</gr-menu-item>
-      </gr-select>
-    </section>
-
-    <section>
-      <h3>Invalid Text</h3>
-
-      <gr-select label="Experience" help-text="Please tell us your skill level." invalid-text="Select your skill level"
-        invalid>
-        <gr-menu-item value="option-1">Novice</gr-menu-item>
-        <gr-menu-item value="option-2">Intermediate</gr-menu-item>
-        <gr-menu-item value="option-3">Advanced</gr-menu-item>
-      </gr-select>
-    </section>
-  </section>
-
-  <section>
-    <h2>gr-input</h2>
-
-    <section>
-      <h3>Sizes</h3>
-
-      <gr-input size="small" placeholder="Small"></gr-input>
-      <br />
-      <gr-input size="medium" placeholder="Medium"></gr-input>
-      <br />
-      <gr-input size="large" placeholder="Large"></gr-input>
-    </section>
-
-    <section>
-      <h3>Disabled</h3>
-
-      <gr-input disabled></gr-input>
-    </section>
-
-    <section>
-      <h3>Clearable</h3>
-
-      <gr-input placeholder="Clearable" clearable></gr-input>
-    </section>
-
-    <section>
-      <h3>Toggle Password</h3>
-
-      <gr-input type="password" placeholder="Password Toggle" toggle-password></gr-input>
-    </section>
-
-    <section>
-      <h3>Icons</h3>
-
-      <gr-input placeholder="Medium" size="small">
-        <ion-icon name="search-outline" slot="start"></ion-icon>
-        <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
-      </gr-input>
-      <br />
-      <gr-input placeholder="Medium" size="medium">
-        <i class="fas fa-search" slot="start"></i>
-        <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
-      </gr-input>
-      <br />
-      <gr-input placeholder="Medium" size="large">
-        <ion-icon name="search-outline" slot="start"></ion-icon>
-        <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
-      </gr-input>
-    </section>
-
-    <section>
-      <h3>Pill</h3>
-
-      <gr-input size="small" pill></gr-input>
-      <br />
-      <gr-input size="medium" pill></gr-input>
-      <br />
-      <gr-input size="large" pill></gr-input>
-    </section>
-
-    <section>
-      <h3>Number input with min, max, step</h3>
-
-      <gr-input type="number" min="0" max="100" step="2" value="34"></gr-input>
-    </section>
-
-    <section>
-      <h3>Labels</h3>
-
-      <gr-input type="password" label="Password"></gr-input>
-    </section>
-
-    <section>
-      <h3>Required indicator</h3>
-
-      <gr-input type="password" label="Password" required-indicator></gr-input>
-    </section>
-
-    <section>
-      <h3>Help Text</h3>
-
-      <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></gr-input>
-    </section>
-
-    <section>
-      <h3>Invalid Text</h3>
-
-      <div style="display: flex; gap: 12px">
-        <div>
-          <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
-            invalid-text="Create a password with at least 8 characters."></gr-input>
-          <p>Test</p>
+      <h2>gr-input</h2>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <gr-input size="small" placeholder="Small"></gr-input>
+        <br />
+        <gr-input size="medium" placeholder="Medium"></gr-input>
+        <br />
+        <gr-input size="large" placeholder="Large"></gr-input>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-input disabled></gr-input>
+      </section>
+
+      <section>
+        <h3>Clearable</h3>
+
+        <gr-input placeholder="Clearable" clearable></gr-input>
+      </section>
+
+      <section>
+        <h3>Toggle Password</h3>
+
+        <gr-input type="password" placeholder="Password Toggle" toggle-password></gr-input>
+      </section>
+
+      <section>
+        <h3>Icons</h3>
+
+        <gr-input placeholder="Medium" size="small">
+          <ion-icon name="search-outline" slot="start"></ion-icon>
+          <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
+        </gr-input>
+        <br />
+        <gr-input placeholder="Medium" size="medium">
+          <i class="fas fa-search" slot="start"></i>
+          <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
+        </gr-input>
+        <br />
+        <gr-input placeholder="Medium" size="large">
+          <ion-icon name="search-outline" slot="start"></ion-icon>
+          <ion-icon name="chatbubble-outline" slot="end"></ion-icon>
+        </gr-input>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <gr-input size="small" pill></gr-input>
+        <br />
+        <gr-input size="medium" pill></gr-input>
+        <br />
+        <gr-input size="large" pill></gr-input>
+      </section>
+
+      <section>
+        <h3>Number input with min, max, step</h3>
+
+        <gr-input type="number" min="0" max="100" step="2" value="34"></gr-input>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <gr-input type="password" label="Password"></gr-input>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-input type="password" label="Password" required-indicator></gr-input>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."></gr-input>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <div style="display: flex; gap: 12px">
+          <div>
+            <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
+              invalid-text="Create a password with at least 8 characters."></gr-input>
+            <p>Test</p>
+          </div>
+
+          <div>
+            <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
+              invalid-text="Create a password with at least 8 characters." invalid></gr-input>
+            <p>Test</p>
+          </div>
         </div>
-
-        <div>
-          <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
-            invalid-text="Create a password with at least 8 characters." invalid></gr-input>
-          <p>Test</p>
-        </div>
-      </div>
+      </section>
     </section>
-  </section>
-
-  <section>
-    <h2>gr-spinner</h2>
-
-    <gr-spinner></gr-spinner>
 
     <section>
-      <h3>Size</h3>
+      <h2>gr-spinner</h2>
 
       <gr-spinner></gr-spinner>
-      <gr-spinner style="font-size: 2rem"></gr-spinner>
-      <gr-spinner style="font-size: 3rem"></gr-spinner>
+
+      <section>
+        <h3>Size</h3>
+
+        <gr-spinner></gr-spinner>
+        <gr-spinner style="font-size: 2rem"></gr-spinner>
+        <gr-spinner style="font-size: 3rem"></gr-spinner>
+      </section>
+
+      <section>
+        <h3>Stroke Width</h3>
+
+        <gr-spinner style="font-size: 2rem; --stroke-width: 6px"></gr-spinner>
+      </section>
+
+      <section>
+        <h3>Color</h3>
+
+        <gr-spinner style="font-size: 2rem; --indicator-color: tomato"></gr-spinner>
+      </section>
     </section>
 
     <section>
-      <h3>Stroke Width</h3>
+      <h2>gr-textarea</h2>
 
-      <gr-spinner style="font-size: 2rem; --stroke-width: 6px"></gr-spinner>
+      <gr-textarea></gr-textarea>
+
+      <section>
+        <h3>Rows</h3>
+
+        <gr-textarea rows="3"></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Placeholder</h3>
+
+        <gr-textarea placeholder="Type something"></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Max Characters (20)</h3>
+
+        <gr-textarea maxlength="20"></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-textarea disabled></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <gr-textarea placeholder="Small" size="small"></gr-textarea>
+        <br />
+        <gr-textarea placeholder="Medium" size="medium"></gr-textarea>
+        <br />
+        <gr-textarea placeholder="Large" size="large"></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Labels</h3>
+
+        <gr-textarea label="Comments"></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Required indicator</h3>
+
+        <gr-textarea label="Comments" required-indicator></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Help Text</h3>
+
+        <gr-textarea label="Feedback" help-text="Please tell us what you think."></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Invalid Text</h3>
+
+        <gr-textarea label="Feedback" help-text="Please tell us what you think." invalid-text="Enter what you think"
+          invalid></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Prevent Resizing</h3>
+
+        <gr-textarea resize="none"></gr-textarea>
+      </section>
+
+      <section>
+        <h3>Expand with Content</h3>
+
+        <gr-textarea resize="auto"></gr-textarea>
+      </section>
     </section>
 
     <section>
-      <h3>Color</h3>
+      <h2>gr-tag</h2>
 
-      <gr-spinner style="font-size: 2rem; --indicator-color: tomato"></gr-spinner>
-    </section>
-  </section>
+      <section>
+        <h3>Types</h3>
 
-  <section>
-    <h2>gr-textarea</h2>
+        <gr-tag type="primary">Primary</gr-tag>
+        <gr-tag type="success">Success</gr-tag>
+        <gr-tag type="info">Info</gr-tag>
+        <gr-tag type="warning">Warning</gr-tag>
+        <gr-tag type="danger">Danger</gr-tag>
+      </section>
 
-    <gr-textarea></gr-textarea>
+      <section>
+        <h3>Sizes</h3>
 
-    <section>
-      <h3>Rows</h3>
+        <gr-tag size="small">Small</gr-tag>
+        <gr-tag size="medium">Medium</gr-tag>
+        <gr-tag size="large">Large</gr-tag>
+      </section>
 
-      <gr-textarea rows="3"></gr-textarea>
-    </section>
+      <section>
+        <h3>Pill</h3>
 
-    <section>
-      <h3>Placeholder</h3>
+        <gr-tag size="small" pill>Small</gr-tag>
+        <gr-tag size="medium" pill>Medium</gr-tag>
+        <gr-tag size="large" pill>Large</gr-tag>
+      </section>
 
-      <gr-textarea placeholder="Type something"></gr-textarea>
-    </section>
+      <section>
+        <h3>Clearable</h3>
 
-    <section>
-      <h3>Max Characters (20)</h3>
-
-      <gr-textarea maxlength="20"></gr-textarea>
-    </section>
-
-    <section>
-      <h3>Disabled</h3>
-
-      <gr-textarea disabled></gr-textarea>
-    </section>
-
-    <section>
-      <h3>Sizes</h3>
-
-      <gr-textarea placeholder="Small" size="small"></gr-textarea>
-      <br />
-      <gr-textarea placeholder="Medium" size="medium"></gr-textarea>
-      <br />
-      <gr-textarea placeholder="Large" size="large"></gr-textarea>
+        <div class="tags-clearable">
+          <gr-tag type="info" size="small" clearable>Small</gr-tag>
+          <gr-tag size="medium" clearable>Medium</gr-tag>
+          <gr-tag type="danger" size="large" clearable>Large</gr-tag>
+          <gr-tag type="success" size="large" clearable>Large</gr-tag>
+        </div>
+      </section>
     </section>
 
     <section>
-      <h3>Labels</h3>
+      <h2>gr-dropdown</h2>
 
-      <gr-textarea label="Comments"></gr-textarea>
+      <gr-dropdown placement="right-start">
+        <gr-button slot="trigger" caret>Dropdown</gr-button>
+        <gr-menu>
+          <gr-menu-item>Dropdown Item 1</gr-menu-item>
+          <gr-menu-item>Dropdown Item 2</gr-menu-item>
+          <gr-menu-item>Dropdown Item 3</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item checked>Checked</gr-menu-item>
+          <gr-menu-item disabled>Disabled</gr-menu-item>
+          <gr-menu-divider></gr-menu-divider>
+          <gr-menu-item>
+            Prefix
+            <ion-icon slot="start" name="gift-outline" aria-hidden="true"></ion-icon>
+          </gr-menu-item>
+          <gr-menu-item>
+            Suffix Icon
+            <ion-icon slot="end" name="heart-outline" aria-hidden="true"></ion-icon>
+          </gr-menu-item>
+        </gr-menu>
+      </gr-dropdown>
     </section>
 
     <section>
-      <h3>Required indicator</h3>
+      <h2>gr-menu</h2>
+      <p>Including gr-menu-item & gr-menu-divider & gr-menu-label</p>
 
-      <gr-textarea label="Comments" required-indicator></gr-textarea>
-    </section>
-
-    <section>
-      <h3>Help Text</h3>
-
-      <gr-textarea label="Feedback" help-text="Please tell us what you think."></gr-textarea>
-    </section>
-
-    <section>
-      <h3>Invalid Text</h3>
-
-      <gr-textarea label="Feedback" help-text="Please tell us what you think." invalid-text="Enter what you think"
-        invalid></gr-textarea>
-    </section>
-
-    <section>
-      <h3>Prevent Resizing</h3>
-
-      <gr-textarea resize="none"></gr-textarea>
-    </section>
-
-    <section>
-      <h3>Expand with Content</h3>
-
-      <gr-textarea resize="auto"></gr-textarea>
-    </section>
-  </section>
-
-  <section>
-    <h2>gr-tag</h2>
-
-    <section>
-      <h3>Types</h3>
-
-      <gr-tag type="primary">Primary</gr-tag>
-      <gr-tag type="success">Success</gr-tag>
-      <gr-tag type="info">Info</gr-tag>
-      <gr-tag type="warning">Warning</gr-tag>
-      <gr-tag type="danger">Danger</gr-tag>
-    </section>
-
-    <section>
-      <h3>Sizes</h3>
-
-      <gr-tag size="small">Small</gr-tag>
-      <gr-tag size="medium">Medium</gr-tag>
-      <gr-tag size="large">Large</gr-tag>
-    </section>
-
-    <section>
-      <h3>Pill</h3>
-
-      <gr-tag size="small" pill>Small</gr-tag>
-      <gr-tag size="medium" pill>Medium</gr-tag>
-      <gr-tag size="large" pill>Large</gr-tag>
-    </section>
-
-    <section>
-      <h3>Clearable</h3>
-
-      <div class="tags-clearable">
-        <gr-tag type="info" size="small" clearable>Small</gr-tag>
-        <gr-tag size="medium" clearable>Medium</gr-tag>
-        <gr-tag type="danger" size="large" clearable>Large</gr-tag>
-        <gr-tag type="success" size="large" clearable>Large</gr-tag>
-      </div>
-    </section>
-  </section>
-
-  <section>
-    <h2>gr-dropdown</h2>
-
-    <gr-dropdown placement="right-start">
-      <gr-button slot="trigger" caret>Dropdown</gr-button>
-      <gr-menu>
-        <gr-menu-item>Dropdown Item 1</gr-menu-item>
-        <gr-menu-item>Dropdown Item 2</gr-menu-item>
-        <gr-menu-item>Dropdown Item 3</gr-menu-item>
+      <gr-menu style="
+            max-width: 200px;
+            border: solid 1px var(--gr-panel-border-color);
+            border-radius: var(--gr-border-radius-medium);
+          ">
+        <gr-menu-label>Timetravel</gr-menu-label>
+        <gr-menu-item value="undo" checked>Undo</gr-menu-item>
+        <gr-menu-item value="redo">Redo</gr-menu-item>
         <gr-menu-divider></gr-menu-divider>
-        <gr-menu-item checked>Checked</gr-menu-item>
-        <gr-menu-item disabled>Disabled</gr-menu-item>
-        <gr-menu-divider></gr-menu-divider>
-        <gr-menu-item>
-          Prefix
-          <ion-icon slot="start" name="gift-outline" aria-hidden="true"></ion-icon>
+        <gr-menu-label>Transformation</gr-menu-label>
+        <gr-menu-item value="cut" disabled>Cut</gr-menu-item>
+        <gr-menu-item value="copy" checked>
+          Copy
+          <ion-icon slot="end" name="copy-outline" aria-hidden="true"></ion-icon>
         </gr-menu-item>
-        <gr-menu-item>
-          Suffix Icon
-          <ion-icon slot="end" name="heart-outline" aria-hidden="true"></ion-icon>
+        <gr-menu-item value="paste">
+          <ion-icon slot="start" name="clipboard-outline" aria-hidden="true"></ion-icon>
+          Paste
         </gr-menu-item>
+        <gr-menu-item value="delete">Delete</gr-menu-item>
       </gr-menu>
-    </gr-dropdown>
-  </section>
-
-  <section>
-    <h2>gr-menu</h2>
-    <p>Including gr-menu-item & gr-menu-divider & gr-menu-label</p>
-
-    <gr-menu style="
-          max-width: 200px;
-          border: solid 1px var(--gr-panel-border-color);
-          border-radius: var(--gr-border-radius-medium);
-        ">
-      <gr-menu-label>Timetravel</gr-menu-label>
-      <gr-menu-item value="undo" checked>Undo</gr-menu-item>
-      <gr-menu-item value="redo">Redo</gr-menu-item>
-      <gr-menu-divider></gr-menu-divider>
-      <gr-menu-label>Transformation</gr-menu-label>
-      <gr-menu-item value="cut" disabled>Cut</gr-menu-item>
-      <gr-menu-item value="copy" checked>
-        Copy
-        <ion-icon slot="end" name="copy-outline" aria-hidden="true"></ion-icon>
-      </gr-menu-item>
-      <gr-menu-item value="paste">
-        <ion-icon slot="start" name="clipboard-outline" aria-hidden="true"></ion-icon>
-        Paste
-      </gr-menu-item>
-      <gr-menu-item value="delete">Delete</gr-menu-item>
-    </gr-menu>
-  </section>
-
-  <section>
-    <h2>gr-button</h2>
-
-    <section>
-      <h3>Variants</h3>
-
-      <gr-button>Default</gr-button>
-      <gr-button variant="primary" id="focusBlurExample">Primary</gr-button>
-      <gr-button variant="secondary">Secondary</gr-button>
-      <gr-button variant="danger">Danger</gr-button>
-      <gr-button variant="success">Success</gr-button>
-      <gr-button variant="plain">Plain</gr-button>
     </section>
 
     <section>
-      <h3>Custom</h3>
+      <h2>gr-button</h2>
 
-      <gr-button class="custom">Custom</gr-button>
+      <section>
+        <h3>Variants</h3>
 
-      <style>
-        gr-button.custom {
-          --shadow: 0px 0px 5px var(--gr-color-dark);
-          --focus-ring: 0px 0px 5px var(--gr-color-primary);
-        }
-      </style>
+        <gr-button>Default</gr-button>
+        <gr-button variant="primary" id="focusBlurExample">Primary</gr-button>
+        <gr-button variant="secondary">Secondary</gr-button>
+        <gr-button variant="danger">Danger</gr-button>
+        <gr-button variant="success">Success</gr-button>
+        <gr-button variant="plain">Plain</gr-button>
+      </section>
+
+      <section>
+        <h3>Custom</h3>
+
+        <gr-button class="custom">Custom</gr-button>
+
+        <style>
+          gr-button.custom {
+            --shadow: 0px 0px 5px var(--gr-color-dark);
+            --focus-ring: 0px 0px 5px var(--gr-color-primary);
+          }
+        </style>
+      </section>
+
+      <section>
+        <h3>Sizes</h3>
+
+        <gr-button size="small">Small</gr-button>
+        <gr-button>Medium</gr-button>
+        <gr-button size="large">Large</gr-button>
+      </section>
+
+      <section>
+        <h3>Icons</h3>
+
+        <gr-button>
+          <!-- <ion-icon name="settings-outline" slot="start" aria-hidden="true"></ion-icon> -->
+          <i class="fas fa-cog" slot="start"></i>
+          Settings
+        </gr-button>
+
+        <gr-button>
+          <ion-icon name="refresh-outline" slot="end" style="font-size: 1.4em" aria-hidden="true"></ion-icon>
+          Refresh
+        </gr-button>
+
+        <gr-button>
+          <ion-icon name="link-outline" slot="start" style="font-size: 1.3em" aria-hidden="true"></ion-icon>
+          Open
+          <ion-icon name="exit-outline" slot="end" style="font-size: 1.3em" aria-hidden="true"></ion-icon>
+        </gr-button>
+      </section>
+
+      <section>
+        <h3>Circle Buttons</h3>
+
+        <gr-button variant="primary" size="small" aria-label="Add" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </gr-button>
+
+        <gr-button variant="primary" aria-label="Add" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </gr-button>
+
+        <gr-button variant="primary" aria-label="Add" size="large" circle>
+          <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+        </gr-button>
+      </section>
+
+      <section>
+        <h3>Link Buttons</h3>
+
+        <gr-button href="https://paqt.com">PAQT</gr-button>
+      </section>
+
+      <section>
+        <h3>Block Button</h3>
+
+        <gr-button expand="block">Block</gr-button>
+      </section>
+
+      <section>
+        <h3>Full Button</h3>
+
+        <gr-button expand="full">Full</gr-button>
+      </section>
+
+      <section>
+        <h3>Caret</h3>
+
+        <gr-button size="small" caret>Small</gr-button>
+        <gr-button size="medium" caret>Medium</gr-button>
+        <gr-button size="large" caret>Large</gr-button>
+      </section>
+
+      <section>
+        <h3>Loading</h3>
+
+        <gr-button loading>Default</gr-button>
+        <gr-button variant="primary" loading>Primary</gr-button>
+        <gr-button variant="secondary" loading>Secondary</gr-button>
+        <gr-button variant="danger" loading>Danger</gr-button>
+        <gr-button variant="plain" loading>Plain</gr-button>
+      </section>
+
+      <section>
+        <h3>Pill</h3>
+
+        <gr-button size="small" pill variant="danger">Small</gr-button>
+        <gr-button size="medium" pill>Medium</gr-button>
+        <gr-button size="large" pill variant="primary">Large</gr-button>
+      </section>
+
+      <section>
+        <h3>Disabled</h3>
+
+        <gr-button id="clickExample" disabled> Default </gr-button>
+
+        <gr-button variant="primary" disabled> Primary </gr-button>
+
+        <gr-button variant="secondary" disabled> Secondary </gr-button>
+
+        <gr-button variant="danger" disabled> Danger </gr-button>
+
+        <gr-button variant="plain" disabled> Plain </gr-button>
+      </section>
     </section>
 
-    <section>
-      <h3>Sizes</h3>
+    <script>
+      let clickExampleElement = document.getElementById('clickExample');
 
-      <gr-button size="small">Small</gr-button>
-      <gr-button>Medium</gr-button>
-      <gr-button size="large">Large</gr-button>
-    </section>
+      clickExampleElement.addEventListener('click', () => {
+        console.log('clicked');
+      });
 
-    <section>
-      <h3>Icons</h3>
+      const focusBlurExampleElement = document.getElementById('focusBlurExample');
 
-      <gr-button>
-        <!-- <ion-icon name="settings-outline" slot="start" aria-hidden="true"></ion-icon> -->
-        <i class="fas fa-cog" slot="start"></i>
-        Settings
-      </gr-button>
+      focusBlurExampleElement.addEventListener('gr-focus', () => {
+        console.log('gr-focus');
+      });
 
-      <gr-button>
-        <ion-icon name="refresh-outline" slot="end" style="font-size: 1.4em" aria-hidden="true"></ion-icon>
-        Refresh
-      </gr-button>
+      focusBlurExampleElement.addEventListener('gr-blur', () => {
+        console.log('gr-blur');
+      });
 
-      <gr-button>
-        <ion-icon name="link-outline" slot="start" style="font-size: 1.3em" aria-hidden="true"></ion-icon>
-        Open
-        <ion-icon name="exit-outline" slot="end" style="font-size: 1.3em" aria-hidden="true"></ion-icon>
-      </gr-button>
-    </section>
+      const tagsClearable = document.querySelector('.tags-clearable');
 
-    <section>
-      <h3>Circle Buttons</h3>
+      tagsClearable.addEventListener('gr-clear', event => {
+        const tag = event.target;
+        tag.style.opacity = '0';
+        setTimeout(() => (tag.style.opacity = '1'), 2000);
+      });
 
-      <gr-button variant="primary" size="small" aria-label="Add" circle>
-        <ion-icon name="add-outline" slot="icon-only"></ion-icon>
-      </gr-button>
+      const checkboxTest = document.querySelector('#checkbox-test');
 
-      <gr-button variant="primary" aria-label="Add" circle>
-        <ion-icon name="add-outline" slot="icon-only"></ion-icon>
-      </gr-button>
+      checkboxTest.addEventListener('gr-focus', () => {
+        console.log('gr-focus');
+      });
 
-      <gr-button variant="primary" aria-label="Add" size="large" circle>
-        <ion-icon name="add-outline" slot="icon-only"></ion-icon>
-      </gr-button>
-    </section>
-
-    <section>
-      <h3>Link Buttons</h3>
-
-      <gr-button href="https://paqt.com">PAQT</gr-button>
-    </section>
-
-    <section>
-      <h3>Block Button</h3>
-
-      <gr-button expand="block">Block</gr-button>
-    </section>
-
-    <section>
-      <h3>Full Button</h3>
-
-      <gr-button expand="full">Full</gr-button>
-    </section>
-
-    <section>
-      <h3>Caret</h3>
-
-      <gr-button size="small" caret>Small</gr-button>
-      <gr-button size="medium" caret>Medium</gr-button>
-      <gr-button size="large" caret>Large</gr-button>
-    </section>
-
-    <section>
-      <h3>Loading</h3>
-
-      <gr-button loading>Default</gr-button>
-      <gr-button variant="primary" loading>Primary</gr-button>
-      <gr-button variant="secondary" loading>Secondary</gr-button>
-      <gr-button variant="danger" loading>Danger</gr-button>
-      <gr-button variant="plain" loading>Plain</gr-button>
-    </section>
-
-    <section>
-      <h3>Pill</h3>
-
-      <gr-button size="small" pill variant="danger">Small</gr-button>
-      <gr-button size="medium" pill>Medium</gr-button>
-      <gr-button size="large" pill variant="primary">Large</gr-button>
-    </section>
-
-    <section>
-      <h3>Disabled</h3>
-
-      <gr-button id="clickExample" disabled> Default </gr-button>
-
-      <gr-button variant="primary" disabled> Primary </gr-button>
-
-      <gr-button variant="secondary" disabled> Secondary </gr-button>
-
-      <gr-button variant="danger" disabled> Danger </gr-button>
-
-      <gr-button variant="plain" disabled> Plain </gr-button>
-    </section>
-  </section>
-
-  <script>
-    let clickExampleElement = document.getElementById('clickExample');
-
-    clickExampleElement.addEventListener('click', () => {
-      console.log('clicked');
-    });
-
-    const focusBlurExampleElement = document.getElementById('focusBlurExample');
-
-    focusBlurExampleElement.addEventListener('gr-focus', () => {
-      console.log('gr-focus');
-    });
-
-    focusBlurExampleElement.addEventListener('gr-blur', () => {
-      console.log('gr-blur');
-    });
-
-    const tagsClearable = document.querySelector('.tags-clearable');
-
-    tagsClearable.addEventListener('gr-clear', event => {
-      const tag = event.target;
-      tag.style.opacity = '0';
-      setTimeout(() => (tag.style.opacity = '1'), 2000);
-    });
-
-    const checkboxTest = document.querySelector('#checkbox-test');
-
-    checkboxTest.addEventListener('gr-focus', () => {
-      console.log('gr-focus');
-    });
-
-    checkboxTest.addEventListener('gr-blur', () => {
-      console.log('gr-blur');
-    });
-  </script>
-</body>
-
+      checkboxTest.addEventListener('gr-blur', () => {
+        console.log('gr-blur');
+      });
+    </script>
+  </body>
 </html>
