@@ -19,9 +19,9 @@ export class Button {
 
   /**
    * The different variants.
-   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, `"success"`, and `"plain"`.
    */
-  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain' = 'default';
+  @Prop({ reflect: true }) variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'plain' = 'default';
 
   /**
    * If `true`, the user cannot interact with the button.
@@ -129,10 +129,10 @@ export class Button {
       TagType === 'button'
         ? { type }
         : {
-            href,
-            rel,
-            target,
-          };
+          href,
+          rel,
+          target,
+        };
 
     return (
       <Host

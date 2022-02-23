@@ -136,6 +136,24 @@
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-danger-rgb), 0.33);
 }
 
+// Success variant
+// --------------------------------------------------
+
+:host(.button-success) {
+  --border-color: var(--gr-color-success);
+  --background: var(--gr-color-success);
+  --color: var(--gr-color-primary-contrast);
+
+  --border-color-hover: var(--gr-color-success-shade);
+  --background-hover: var(--gr-color-success-shade);
+  --color-hover: var(--gr-color-primary-contrast);
+
+  --border-color-focus: var(--gr-color-success);
+  --background-focus: var(--gr-color-success-shade);
+  --color-focus: var(--gr-color-success-contrast);
+  --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-success-rgb), 0.33);
+}
+
 // Plain variant
 // --------------------------------------------------
 

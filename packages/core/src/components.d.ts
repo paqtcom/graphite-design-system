@@ -55,9 +55,9 @@ export namespace Components {
          */
         "type": 'submit' | 'reset' | 'button';
         /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, `"success"`, and `"plain"`.
          */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'plain';
     }
     interface GrCheckbox {
         /**
@@ -805,9 +805,9 @@ declare namespace LocalJSX {
          */
         "type"?: 'submit' | 'reset' | 'button';
         /**
-          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, `"success"`, and `"plain"`.
          */
-        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
+        "variant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'plain';
     }
     interface GrCheckbox {
         /**
