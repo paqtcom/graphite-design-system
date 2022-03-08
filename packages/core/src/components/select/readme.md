@@ -37,7 +37,7 @@
 
 ### `setFocus() => Promise<void>`
 
-Sets focus on the input.
+Sets focus on the select.
 
 #### Returns
 

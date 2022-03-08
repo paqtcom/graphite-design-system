@@ -160,7 +160,7 @@ export class Select {
     this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
   }
 
-  /** Sets focus on the input. */
+  /** Sets focus on the select. */
   @Method()
   async setFocus() {
     this.hasFocus = true;

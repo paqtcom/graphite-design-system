@@ -29,6 +29,29 @@
 | `gr-focus` | Emitted when the button has focus.   | `CustomEvent<void>` |
 
 
+## Methods
+
+### `removeFocus() => Promise<void>`
+
+Removes focus from the button.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `setFocus(options?: FocusOptions) => Promise<void>`
+
+Sets focus on the button.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Slots
 
 | Slot          | Description                                                                                                     |

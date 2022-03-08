@@ -43,6 +43,14 @@ export namespace Components {
          */
         "rel": string | undefined;
         /**
+          * Removes focus from the button.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the button.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
           * The button's size.
          */
         "size": 'small' | 'medium' | 'large';
@@ -503,7 +511,7 @@ export namespace Components {
          */
         "requiredIndicator": boolean;
         /**
-          * Sets focus on the input.
+          * Sets focus on the select.
          */
         "setFocus": () => Promise<void>;
         /**
