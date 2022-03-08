@@ -184,7 +184,9 @@ export class Dropdown {
     this.popover.hide();
   }
 
-  focusOnTrigger() {
+  /** Sets focus on the trigger. */
+  @Method()
+  async focusOnTrigger() {
     const slot = this.trigger.querySelector('slot');
     const trigger = slot.assignedElements({ flatten: true })[0] as any;
     if (trigger) {

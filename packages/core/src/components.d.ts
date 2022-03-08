@@ -181,6 +181,10 @@ export namespace Components {
          */
         "distance": number;
         /**
+          * Sets focus on the trigger.
+         */
+        "focusOnTrigger": () => Promise<void>;
+        /**
           * Hides the dropdown panel
          */
         "hide": () => Promise<void>;
@@ -498,6 +502,10 @@ export namespace Components {
           * Set to true to display a required indicator, adds an asterisk to label
          */
         "requiredIndicator": boolean;
+        /**
+          * Sets focus on the input.
+         */
+        "setFocus": () => Promise<void>;
         /**
           * The select's size.
          */

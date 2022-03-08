@@ -28,6 +28,16 @@
 
 ## Methods
 
+### `focusOnTrigger() => Promise<void>`
+
+Sets focus on the trigger.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `hide() => Promise<void>`
 
 Hides the dropdown panel
