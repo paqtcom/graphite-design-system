@@ -49,6 +49,6 @@
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
     "@popperjs/core": "^2.10.2",
-    "@stencil/core": "^2.13.0"
+    "@stencil/core": "^2.14.0"
   }
 }
