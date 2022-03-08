@@ -32,6 +32,8 @@
    * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
    *
    * @prop --focus-ring: The focus ring style to use when the input receives focus, a `box-shadow` property.
+   *
+   * @prop --text-transform: Text transform of the input
    */
   --font-size: var(--gr-form-element-font-size-medium);
   --font-weight: var(--gr-font-weight-normal);
@@ -62,6 +64,8 @@
   --padding-end: var(--gr-spacing-medium);
 
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
+
+  --text-transform: none;
 
   display: block;
 
@@ -155,6 +159,7 @@
   min-width: 0;
   height: 100%;
   color: var(--color);
+  text-transform: var(--text-transform);
   border: none;
   background: none;
   box-shadow: none;
