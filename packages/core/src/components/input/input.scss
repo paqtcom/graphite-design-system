@@ -99,6 +99,7 @@
   justify-content: start;
   position: relative;
   width: 100%;
+  height: var(--min-height);
   font-family: var(--gr-font-family);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
@@ -161,8 +162,6 @@
   margin: 0;
   cursor: inherit;
   -webkit-appearance: none;
-
-  min-height: var(--min-height);
 
   padding-top: 0;
   padding-left: var(--padding-start);
