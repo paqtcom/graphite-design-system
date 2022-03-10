@@ -33,6 +33,19 @@
 | `gr-focus`  | Emitted when the control gains focus.     | `CustomEvent<void>` |
 
 
+## Methods
+
+### `setFocus() => Promise<void>`
+
+Sets focus on the select.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Slots
 
 | Slot             | Description                                                                                       |

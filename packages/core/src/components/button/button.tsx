@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
 import { inheritAttributes } from '../../utils/helpers';
 
 /**
@@ -14,6 +14,7 @@ import { inheritAttributes } from '../../utils/helpers';
 })
 export class Button {
   private inheritedAttributes: { [k: string]: any } = {};
+  private button: HTMLElement;
 
   @Element() el!: HTMLElement;
 
@@ -95,6 +96,18 @@ export class Button {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title']);
   }
 
+  /** Sets focus on the button. */
+  @Method()
+  async setFocus(options?: FocusOptions) {
+    this.button.focus(options);
+  }
+
+  /** Removes focus from the button. */
+  @Method()
+  async removeFocus() {
+    this.button.blur();
+  }
+
   private handleClick = (ev: MouseEvent) => {
     if (this.type !== 'button') {
       // this button wants to specifically submit/reset a form
@@ -150,6 +163,7 @@ export class Button {
         }}
       >
         <TagType
+          ref={el => (this.button = el)}
           {...attrs}
           class="button-native"
           disabled={disabled}

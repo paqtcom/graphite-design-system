@@ -136,6 +136,7 @@ Type: `Promise<void>`
 | `--padding-end`                    | Right padding of the input (will be left padding when we support right-to-left direction) |
 | `--padding-start`                  | Left padding of the input (will be right padding when we support right-to-left direction) |
 | `--placeholder-color`              | Text color of the placeholder                                                             |
+| `--text-transform`                 | Text transform of the input                                                               |
 
 
 ----------------------------------------------

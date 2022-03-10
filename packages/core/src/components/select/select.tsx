@@ -1,4 +1,4 @@
-import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Build } from '@stencil/core';
+import { Component, h, Element, State, Prop, Watch, Event, EventEmitter, Build, Method } from '@stencil/core';
 import FormControl from '../../functional-components/form-control/form-control';
 import { getTextContent, hasSlot } from '../../utils/slot';
 import { inheritAttributes, renderHiddenInput } from '../../utils/helpers';
@@ -158,6 +158,14 @@ export class Select {
 
   disconnectedCallback() {
     this.el.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+  }
+
+  /** Sets focus on the select. */
+  @Method()
+  async setFocus() {
+    this.hasFocus = true;
+    this.grFocus.emit();
+    this.dropdown.focusOnTrigger();
   }
 
   getItemLabel(item: HTMLGrMenuItemElement) {
