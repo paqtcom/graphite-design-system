@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@graphiteds/vue": "^1.7.0",
-    "core-js": "^3.21.0",
+    "core-js": "^3.21.1",
     "vue": "^3.2.30"
   },
   "devDependencies": {
