@@ -58,19 +58,22 @@ Type: `Promise<void>`
 
 ## CSS Custom Properties
 
-| Name                                       | Description                                            |
-| ------------------------------------------ | ------------------------------------------------------ |
-| `--control-background-color`               | Background color of the control                        |
-| `--control-background-color-checked`       | Background color of the control when checked           |
-| `--control-background-color-checked-hover` | Background color of the control when checked on hover  |
-| `--control-background-color-hover`         | Background color of the control on hover               |
-| `--control-border-color`                   | Border color of the control                            |
-| `--control-border-color-checked`           | Border color of the control when checked               |
-| `--control-border-color-checked-hover`     | Border color of the control when checked on hover      |
-| `--control-border-color-hover`             | Border color of the control on hover                   |
-| `--control-color-checked`                  | Color of the control when checked (the checkmark icon) |
-| `--control-size`                           | Size of the control                                    |
-| `--label-color`                            | Color of the label                                     |
+| Name                                       | Description                                                                            |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| `--control-background-color`               | Background color of the control                                                        |
+| `--control-background-color-checked`       | Background color of the control when checked                                           |
+| `--control-background-color-checked-focus` | Background color of the control when checked on focus                                  |
+| `--control-background-color-checked-hover` | Background color of the control when checked on hover                                  |
+| `--control-background-color-hover`         | Background color of the control on hover                                               |
+| `--control-border-color`                   | Border color of the control                                                            |
+| `--control-border-color-checked`           | Border color of the control when checked                                               |
+| `--control-border-color-checked-focus`     | Border color of the control when checked on focus                                      |
+| `--control-border-color-checked-hover`     | Border color of the control when checked on hover                                      |
+| `--control-border-color-hover`             | Border color of the control on hover                                                   |
+| `--control-color-checked`                  | Color of the control when checked (the checkmark icon)                                 |
+| `--control-size`                           | Size of the control                                                                    |
+| `--focus-ring`                             | The focus ring style to use when the checkbox receives focus, a `box-shadow` property. |
+| `--label-color`                            | Color of the label                                                                     |
 
 
 ----------------------------------------------
