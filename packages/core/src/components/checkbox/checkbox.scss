@@ -22,8 +22,10 @@
    * @prop --control-border-color-checked-hover: Border color of the control when checked on hover
    * @prop --control-background-color-checked-hover: Background color of the control when checked on hover
    *
-   * @prop --control-border-color-checked-hover: Border color of the control when checked on focus
-   * @prop --control-background-color-checked-hover: Background color of the control when checked on focus
+   * @prop --control-border-color-checked-focus: Border color of the control when checked on focus
+   * @prop --control-background-color-checked-focus: Background color of the control when checked on focus
+   *
+   * @prop --focus-ring: The focus ring style to use when the checkbox receives focus, a `box-shadow` property.
    */
 
   --label-color: var(--gr-color-dark-tint);
