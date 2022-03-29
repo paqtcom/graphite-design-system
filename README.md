@@ -82,19 +82,26 @@ Run this command in the [core package](packages/core/) to test the core componen
 npm run test
 ```
 
-Or run this command in the root to test the core components and all the framework bindings.
+Or run this command in the root to test the core components and all the framework wrappers.
 
 ## Release a new version
 
-Run this command in the root:
+To create a new npm release, you have to be a member of the graphiteds organization and be logged in to npm in your local terminal (npm login). Your local terminal should also have permission to push to GitHub.
+
+Switch to the `master` branch.
+
+Go to the root of the repo in your terminal.
+
+Run these commands:
 
 ```bash
+npm run bootstrap
 npm run build
 ```
 
-This will generate all necessary builds in the packages (core components and framework bindings).
+This will generate all necessary builds in the packages (core components and framework wrappers).
 
-You can then publish all the packages to npm (with lerna):
+If successful, you can then publish all the packages to npm (with lerna):
 
 ```bash
 npm run publish
