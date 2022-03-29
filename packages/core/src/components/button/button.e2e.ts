@@ -9,6 +9,27 @@ describe('gr-button', () => {
     expect(element).toHaveClass('hydrated');
   });
 
+  it('should use button element by default', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button></gr-button>');
+
+    const nativeButton = await page.find('gr-button >>> button');
+    expect(nativeButton).toHaveClass('button-native');
+  });
+
+  it('should use anchor element when href is set', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button href="https://example.org"></gr-button>');
+
+    const nativeAnchor = await page.find('gr-button >>> a');
+    expect(nativeAnchor).toHaveClass('button-native');
+
+    expect(nativeAnchor).toHaveAttribute('href');
+
+    const href = await nativeAnchor.getAttribute('href');
+    expect(href).toBe('https://example.org');
+  });
+
   it('should emit gr-focus when gaining focus', async () => {
     const page = await newE2EPage({
       html: `
@@ -38,5 +59,115 @@ describe('gr-button', () => {
     await nativeButton.click();
 
     expect(grBlur).toHaveReceivedEventTimes(1);
+  });
+
+  it('should be disabled when disabled is true', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button disabled></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-disabled');
+    expect(button).toHaveAttribute('aria-disabled');
+
+    const grFocus = await button.spyOnEvent('gr-focus');
+    const nativeButton = await page.find('gr-button >>> button');
+
+    expect(nativeButton).toHaveAttribute('disabled');
+
+    await button.click();
+
+    expect(grFocus).toHaveReceivedEventTimes(0);
+  });
+
+  it('should render a spinner when loading is true', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button loading></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-loading');
+
+    const spinner = await page.find('gr-button >>> gr-spinner');
+
+    expect(spinner).not.toBeNull();
+  });
+
+  it('should render a caret svg when caret is true', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button caret></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-caret');
+
+    const svg = await page.find('gr-button >>> .caret svg');
+
+    expect(svg).not.toBeNull();
+  });
+
+  it('should apply correct class when circle is true', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button circle></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-circle');
+  });
+
+  it('should apply correct class when pill is true', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button pill></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-pill');
+  });
+
+  it('should apply correct class when pill is true', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button pill></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-pill');
+  });
+
+  it('should apply correct class when variant is set', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button variant="primary"></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-primary');
+  });
+
+  it('should apply correct class when size is set', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button size="small"></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-small');
+  });
+
+  it('should apply correct class when expand is set', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button expand="block"></gr-button>');
+
+    const button = await page.find('gr-button');
+
+    expect(button).toHaveClass('button-block');
+  });
+
+  it('should inherit aria-label, title, and tabindex', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-button aria-label="aria" title="example" tabindex="-1"></gr-button>');
+
+    const nativeButton = await page.find('gr-button >>> button');
+
+    expect(nativeButton).toHaveAttribute('aria-label');
+    expect(nativeButton).toHaveAttribute('title');
+    expect(nativeButton).toHaveAttribute('tabindex');
   });
 });
