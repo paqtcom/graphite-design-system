@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('date-picker', () => {
-  it('renders', async () => {
+  it('should render', async () => {
     const page = await newE2EPage();
     await page.setContent('<gr-date-picker></gr-date-picker>');
 
