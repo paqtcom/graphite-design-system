@@ -1,2 +1,6 @@
 // Global Mixins
 @import './graphite.mixins';
+
+.gr-scroll-lock {
+  overflow: hidden !important;
+}
