@@ -1,19 +1,14 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, Element } from '@stencil/core';
 // import { autoIncrement  } from '../../utils/AutoIncrement';
 import { scrollIntoView } from '../../utils/scroll';
 import { emit } from '../../utils/event';
-// import type GrTabPanel from '../tab-panel/tab-panel';
-// import type GrTab from '../tab/tab';
-
-// let id = 0;
 
 @Component({
   tag: 'gr-tab-group',
   styleUrl: 'tab-group.scss',
   shadow: true
 })
-export class Tab {
-  // private tab: HTMLGrTabElement;
+export class TabGroup {
   // private readonly attrId = autoIncrement();
   // private readonly componentId = `gr-tab-panel-${this.attrId}`;
 
@@ -23,13 +18,19 @@ export class Tab {
   private indicator: HTMLElement;
   private resizeObserver: ResizeObserver;
   private mutationObserver: MutationObserver;
-  private tabs = [];
-  private panels = [];
+  private tabs: HTMLGrTabElement[] = [];
+  private panels: HTMLGrTabPanelElement[] = [];
+  private activeTab?: HTMLGrTabElement;
+
+  @Element() el: HTMLGrTabGroupElement;
 
   @Prop() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';
 
   connectedCallback() {
-    // super.connectedCallback();
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.syncTabsAndPanels = this.syncTabsAndPanels.bind(this);
+
 
     this.resizeObserver = new ResizeObserver(() => {
       this.preventIndicatorTransition();
@@ -47,22 +48,22 @@ export class Tab {
         this.syncTabsAndPanels();
       }
     });
+  }
 
-    this.updateComplete.then(() => {
-      this.syncTabsAndPanels();
-      this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
-      this.resizeObserver.observe(this.nav);
+  componentDidUpdate() {
+    this.syncTabsAndPanels();
+    this.mutationObserver.observe(this.el, { attributes: true, childList: true, subtree: true });
+    this.resizeObserver.observe(this.nav);
 
-      // Set initial tab state when the tabs first become visible
-      const intersectionObserver = new IntersectionObserver((entries, observer) => {
-        if (entries[0].intersectionRatio > 0) {
-          this.setAriaLabels();
-          this.setActiveTab(this.getActiveTab() ?? this.tabs[0], { emitEvents: false });
-          observer.unobserve(entries[0].target);
-        }
-      });
-      intersectionObserver.observe(this.tabGroup);
+    // Set initial tab state when the tabs first become visible
+    const intersectionObserver = new IntersectionObserver((entries, observer) => {
+      if (entries[0].intersectionRatio > 0) {
+        this.setAriaLabels();
+        this.setActiveTab(this.getActiveTab() ?? this.tabs[0], { emitEvents: false });
+        observer.unobserve(entries[0].target);
+      }
     });
+    intersectionObserver.observe(this.tabGroup);
   }
 
   disconnectedCallback() {
@@ -79,19 +80,21 @@ export class Tab {
     }
   }
 
-  getAllTabs(includeDisabled = false) {
-    const slot = this.shadowRoot!.querySelector<HTMLSlotElement>('slot[name="nav"]')!;
+  getAllTabs(includeDisabled: boolean = false) {
+    const slot = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
 
-    return [...(slot.assignedElements() as SlTab[])].filter(el => {
+    return [...slot.assignedElements({ flatten: true })].filter(
+      (el: any) => {
       return includeDisabled
         ? el.tagName.toLowerCase() === 'gr-tab'
         : el.tagName.toLowerCase() === 'gr-tab' && !el.disabled;
-    });
+    }) as [HTMLGrTabElement];
   }
 
   getAllPanels() {
-    const slot = this.body.querySelector('slot')!;
-    return [...slot.assignedElements()].filter(el => el.tagName.toLowerCase() === 'gr-tab-panel') as [GrTabPanel];
+    const slot = this.body.querySelector('slot') as HTMLSlotElement;;
+    return [...slot.assignedElements({ flatten: true })].filter(
+      (el: any) => el.tagName.toLowerCase() === 'gr-tab-panel') as [HTMLGrTabPanelElement];
   }
 
   getActiveTab() {
@@ -104,7 +107,7 @@ export class Tab {
     const tabGroup = tab?.closest('gr-tab-group');
 
     // Ensure the target tab is in this tab group
-    if (tabGroup !== this) {
+    if (tabGroup !== this.el) {
       return;
     }
 
@@ -119,7 +122,7 @@ export class Tab {
     const tabGroup = tab?.closest('gr-tab-group');
 
     // Ensure the target tab is in this tab group
-    if (tabGroup !== this) {
+    if (tabGroup !== this.el) {
       return;
     }
 
@@ -136,7 +139,7 @@ export class Tab {
       const activeEl = document.activeElement;
 
       if (activeEl?.tagName.toLowerCase() === 'gr-tab') {
-        let index = this.tabs.indexOf(activeEl as Tab);
+        let index = this.tabs.indexOf(activeEl as HTMLGrTabElement);
 
         if (event.key === 'Home') {
           index = 0;
@@ -189,7 +192,7 @@ export class Tab {
     });
   }
 
-  setActiveTab(tab: Tab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
+  setActiveTab(tab: HTMLGrTabElement, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
     options = {
       emitEvents: true,
       scrollBehavior: 'auto',
@@ -212,10 +215,10 @@ export class Tab {
       // Emit events
       if (options.emitEvents) {
         if (previousTab) {
-          emit(this, 'gr-tab-hide', { detail: { name: previousTab.panel } });
+          emit(this.el, 'gr-tab-hide', { detail: { name: previousTab.panel } });
         }
 
-        emit(this, 'gr-tab-show', { detail: { name: this.activeTab.panel } });
+        emit(this.el, 'gr-tab-show', { detail: { name: this.activeTab.panel } });
       }
     }
   }
@@ -232,8 +235,11 @@ export class Tab {
   }
 
   @Watch('placement')
-  syncIndicator() {
+  syncIndicator(): void {
     const tab = this.getActiveTab();
+
+    console.log(tab);
+    
 
     if (tab) {
       this.indicator.style.display = 'block';
@@ -294,16 +300,16 @@ export class Tab {
   }
 
   // This stores tabs and panels so we can refer to a cache instead of calling querySelectorAll() multiple times.
-  syncTabsAndPanels() {
+  syncTabsAndPanels(): void {
     this.tabs = this.getAllTabs();
     this.panels = this.getAllPanels();
     this.syncIndicator();
   }
 
-  render() {
+  render(): any {
     const { placement } = this;
-    // this.id = this.id.length > 0 ? this.id : this.componentId;
-    // this.style.display = this.active ? 'block' : 'none';
+
+    // this.id = this.el.id.length > 0 ? this.el.id : this.componentId;
 
     return (
       <div
@@ -321,21 +327,15 @@ export class Tab {
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
             <div part="tabs" class="tab-group__tabs" role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator"></div>
-              <slot name="nav" onSlotchange={this.syncTabsAndPanels}></slot>
+              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)}></div>
+              <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
             </div>
           </div>
         </div>
-        <div part="body" class="tab-group__body">
-          <slot onSlotchange={this.syncTabsAndPanels}></slot>
+        <div part="body" class="tab-group__body" ref={el => (this.body = el)}>
+          <slot onSlotchange={this.syncTabsAndPanels} />
         </div>
       </div>
     )
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'gr-tab-panel': HTMLGrTabPanelElement;
   }
 }

@@ -13,11 +13,11 @@
   font-size: var(--gr-font-size-medium);
   font-weight: var(--gr-font-weight-normal);
   color: var(--color);
-  padding: var(--gr-spacing-medium) var(--gr-spacing-large);
+  padding: var(--gr-spacing-small) var(--gr-spacing-medium);
   white-space: nowrap;
   user-select: none;
   cursor: pointer;
-  transition: 500 box-shadow, 500 color;
+  transition: 500ms box-shadow, 500ms color;
 }
 .tab:hover:not(.tab--disabled) {
   color: var(--color-disabled);

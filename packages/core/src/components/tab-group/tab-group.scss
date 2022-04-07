@@ -1,5 +1,5 @@
 :host {
-  --track-color: #000;
+  --track-color: var(--gr-color-light-shade);
   --indicator-color: var(--gr-color-primary);
   display: block;
 }
@@ -15,7 +15,7 @@
 .tab-group .tab-group__indicator {
   position: absolute;
   left: 0;
-  transition: 100 transform ease, 100 width ease;
+  transition: 150ms transform ease, 150ms width ease;
 }
 .tab-group--has-scroll-controls .tab-group__nav-container {
   position: relative;
