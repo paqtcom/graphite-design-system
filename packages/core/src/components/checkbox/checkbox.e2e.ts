@@ -132,4 +132,14 @@ describe('gr-checkbox', () => {
 
     expect(shadowInput).toHaveAttribute('aria-label');
   });
+
+  it('should render an hidden input', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gr-checkbox name="test" value="3" checked></gr-checkbox>
+    `);
+
+    const hiddenInput = await page.find('input[type="hidden"][name="test"][value="3"]');
+    expect(hiddenInput).not.toBeNull();
+  });
 });

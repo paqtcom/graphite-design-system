@@ -81,4 +81,14 @@ describe('gr-input', () => {
     expect(grInput).toHaveReceivedEventTimes(6);
     expect(grChange).toHaveReceivedEvent();
   });
+
+  it('should render an hidden input', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gr-input name="test" value="3"></gr-input>
+    `);
+
+    const hiddenInput = await page.find('input[type="hidden"][name="test"][value="3"]');
+    expect(hiddenInput).not.toBeNull();
+  });
 });

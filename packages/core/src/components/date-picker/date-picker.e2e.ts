@@ -38,4 +38,14 @@ describe('date-picker', () => {
 
     expect(grBlur).toHaveReceivedEventTimes(1);
   });
+
+  it('should render an hidden input', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gr-date-picker name="test" value="2022-04-11"></gr-date-picker>
+    `);
+
+    const hiddenInput = await page.find('input[type="hidden"][name="test"][value="2022-04-11"]');
+    expect(hiddenInput).not.toBeNull();
+  });
 });

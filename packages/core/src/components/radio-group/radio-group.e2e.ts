@@ -38,4 +38,14 @@ describe('gr-radio-group', () => {
 
     expect(shadowFieldset).toHaveClass('radio-group-horizontal');
   });
+
+  it('should render an hidden input', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gr-radio-group name="test" value="3"></gr-radio-group>
+    `);
+
+    const hiddenInput = await page.find('input[type="hidden"][name="test"][value="3"]');
+    expect(hiddenInput).not.toBeNull();
+  });
 });
