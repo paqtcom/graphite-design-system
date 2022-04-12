@@ -1,5 +1,4 @@
 import { Component, h, Prop, Watch, Element } from '@stencil/core';
-// import { autoIncrement  } from '../../utils/AutoIncrement';
 import { scrollIntoView } from '../../utils/scroll';
 import { emit } from '../../utils/event';
 
@@ -9,13 +8,6 @@ import { emit } from '../../utils/event';
   shadow: true
 })
 export class TabGroup {
-  // private readonly attrId = autoIncrement();
-  // private readonly componentId = `gr-tab-panel-${this.attrId}`;
-
-  private tabGroup: HTMLElement;
-  private body: HTMLElement;
-  private nav: HTMLElement;
-  private indicator: HTMLElement;
   private resizeObserver: ResizeObserver;
   private mutationObserver: MutationObserver;
   private tabs: HTMLGrTabElement[] = [];
@@ -28,7 +20,6 @@ export class TabGroup {
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.syncTabsAndPanels = this.syncTabsAndPanels.bind(this);
 
 
@@ -42,18 +33,16 @@ export class TabGroup {
       if (mutations.some(m => !['aria-labelledby', 'aria-controls'].includes(m.attributeName!))) {
         setTimeout(() => this.setAriaLabels());
       }
-
-      // Sync tabs when disabled states change
-      if (mutations.some(m => m.attributeName === 'disabled')) {
-        this.syncTabsAndPanels();
-      }
     });
   }
 
-  componentDidUpdate() {
+  componentDidLoad() {   
+    const tabGroup: HTMLElement = this.el.shadowRoot.querySelector('.tab-group');
+    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
+
     this.syncTabsAndPanels();
     this.mutationObserver.observe(this.el, { attributes: true, childList: true, subtree: true });
-    this.resizeObserver.observe(this.nav);
+    this.resizeObserver.observe(nav);
 
     // Set initial tab state when the tabs first become visible
     const intersectionObserver = new IntersectionObserver((entries, observer) => {
@@ -63,12 +52,14 @@ export class TabGroup {
         observer.unobserve(entries[0].target);
       }
     });
-    intersectionObserver.observe(this.tabGroup);
+    intersectionObserver.observe(tabGroup);
   }
 
   disconnectedCallback() {
+    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
+
     this.mutationObserver.disconnect();
-    this.resizeObserver.unobserve(this.nav);
+    this.resizeObserver.unobserve(nav);
   }
 
   /** Shows the specified tab panel. */
@@ -80,19 +71,19 @@ export class TabGroup {
     }
   }
 
-  getAllTabs(includeDisabled: boolean = false) {
+  getAllTabs() {
     const slot = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
 
     return [...slot.assignedElements({ flatten: true })].filter(
       (el: any) => {
-      return includeDisabled
-        ? el.tagName.toLowerCase() === 'gr-tab'
-        : el.tagName.toLowerCase() === 'gr-tab' && !el.disabled;
+      return el.tagName.toLowerCase() === 'gr-tab'
     }) as [HTMLGrTabElement];
   }
 
   getAllPanels() {
-    const slot = this.body.querySelector('slot') as HTMLSlotElement;;
+    const body: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__body');
+
+    const slot = body.querySelector('slot') as HTMLSlotElement;;
     return [...slot.assignedElements({ flatten: true })].filter(
       (el: any) => el.tagName.toLowerCase() === 'gr-tab-panel') as [HTMLGrTabPanelElement];
   }
@@ -116,90 +107,34 @@ export class TabGroup {
     }
   }
 
-  handleKeyDown(event: KeyboardEvent) {
-    const target = event.target as HTMLElement;
-    const tab = target.closest('gr-tab');
-    const tabGroup = tab?.closest('gr-tab-group');
-
-    // Ensure the target tab is in this tab group
-    if (tabGroup !== this.el) {
-      return;
-    }
-
-    // Activate a tab
-    if (['Enter', ' '].includes(event.key)) {
-      if (tab !== null) {
-        this.setActiveTab(tab, { scrollBehavior: 'smooth' });
-        event.preventDefault();
-      }
-    }
-
-    // Move focus left or right
-    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
-      const activeEl = document.activeElement;
-
-      if (activeEl?.tagName.toLowerCase() === 'gr-tab') {
-        let index = this.tabs.indexOf(activeEl as HTMLGrTabElement);
-
-        if (event.key === 'Home') {
-          index = 0;
-        } else if (event.key === 'End') {
-          index = this.tabs.length - 1;
-        } else if (
-          (['top', 'bottom'].includes(this.placement) && event.key === 'ArrowLeft') ||
-          (['start', 'end'].includes(this.placement) && event.key === 'ArrowUp')
-        ) {
-          index--;
-        } else if (
-          (['top', 'bottom'].includes(this.placement) && event.key === 'ArrowRight') ||
-          (['start', 'end'].includes(this.placement) && event.key === 'ArrowDown')
-        ) {
-          index++;
-        }
-
-        if (index < 0) {
-          index = this.tabs.length - 1;
-        }
-
-        if (index > this.tabs.length - 1) {
-          index = 0;
-        }
-
-        this.tabs[index].focus({ preventScroll: true });
-
-        this.setActiveTab(this.tabs[index], { scrollBehavior: 'smooth' });
-
-        if (['top', 'bottom'].includes(this.placement)) {
-          scrollIntoView(this.tabs[index], this.nav, 'horizontal');
-        }
-
-        event.preventDefault();
-      }
-    }
-  }
-
   handleScrollToStart() {
-    this.nav.scroll({
-      left: this.nav.scrollLeft - this.nav.clientWidth,
+    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
+
+    nav.scroll({
+      left: nav.scrollLeft - nav.clientWidth,
       behavior: 'smooth'
     });
   }
 
   handleScrollToEnd() {
-    this.nav.scroll({
-      left: this.nav.scrollLeft + this.nav.clientWidth,
+    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
+
+    nav.scroll({
+      left: nav.scrollLeft + nav.clientWidth,
       behavior: 'smooth'
     });
   }
 
   setActiveTab(tab: HTMLGrTabElement, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
+    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
+
     options = {
       emitEvents: true,
       scrollBehavior: 'auto',
       ...options
     };
 
-    if (tab !== this.activeTab && !tab.disabled) {
+    if (tab !== this.activeTab) {
       const previousTab = this.activeTab;
       this.activeTab = tab;
 
@@ -209,7 +144,7 @@ export class TabGroup {
       this.syncIndicator();
 
       if (['top', 'bottom'].includes(this.placement)) {
-        scrollIntoView(this.activeTab, this.nav, 'horizontal', options.scrollBehavior);
+        scrollIntoView(this.activeTab, nav, 'horizontal', options.scrollBehavior);
       }
 
       // Emit events
@@ -237,20 +172,19 @@ export class TabGroup {
   @Watch('placement')
   syncIndicator(): void {
     const tab = this.getActiveTab();
-
-    console.log(tab);
-    
+    const indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
     if (tab) {
-      this.indicator.style.display = 'block';
+      indicator.style.display = 'block';
       this.repositionIndicator();
     } else {
-      this.indicator.style.display = 'none';
+      indicator.style.display = 'none';
     }
   }
 
   repositionIndicator() {
     const currentTab = this.getActiveTab();
+    const indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
     if (!currentTab) {
       return;
@@ -261,7 +195,7 @@ export class TabGroup {
 
     // We can't used offsetLeft/offsetTop here due to a shadow parent issue where neither can getBoundingClientRect
     // because it provides invalid values for animating elements: https://bugs.chromium.org/p/chromium/issues/detail?id=920069
-    const allTabs = this.getAllTabs(true);
+    const allTabs = this.getAllTabs();
     const precedingTabs = allTabs.slice(0, allTabs.indexOf(currentTab));
     const offset = precedingTabs.reduce(
       (previous, current) => ({
@@ -274,16 +208,16 @@ export class TabGroup {
     switch (this.placement) {
       case 'top':
       case 'bottom':
-        this.indicator.style.width = `${width}px`;
-        this.indicator.style.height = 'auto';
-        this.indicator.style.transform = `translateX(${offset.left}px)`;
+        indicator.style.width = `${width}px`;
+        indicator.style.height = 'auto';
+        indicator.style.transform = `translateX(${offset.left}px)`;
         break;
 
       case 'start':
       case 'end':
-        this.indicator.style.width = 'auto';
-        this.indicator.style.height = `${height}px`;
-        this.indicator.style.transform = `translateY(${offset.top}px)`;
+        indicator.style.width = 'auto';
+        indicator.style.height = `${height}px`;
+        indicator.style.transform = `translateY(${offset.top}px)`;
         break;
     }
   }
@@ -291,11 +225,13 @@ export class TabGroup {
   // In some orientations, when the component is resized, the indicator's position will change causing it to animate
   // while you resize. Calling this method will prevent the transition from running on resize, which feels more natural.
   preventIndicatorTransition() {
-    const transitionValue = this.indicator.style.transition;
-    this.indicator.style.transition = 'none';
+    const indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
+
+    const transitionValue = indicator.style.transition;
+    indicator.style.transition = 'none';
 
     requestAnimationFrame(() => {
-      this.indicator.style.transition = transitionValue;
+      indicator.style.transition = transitionValue;
     });
   }
 
@@ -308,8 +244,8 @@ export class TabGroup {
 
   render(): any {
     const { placement } = this;
-
-    // this.id = this.el.id.length > 0 ? this.el.id : this.componentId;
+    let body: HTMLElement = this.el.querySelector('.tab-group__body');
+    let indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
 
     return (
       <div
@@ -322,17 +258,16 @@ export class TabGroup {
           'tab-group--end': placement === 'end',
         }}
         onClick={this.handleClick}
-        onKeyDown={this.handleKeyDown}
       >
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
             <div part="tabs" class="tab-group__tabs" role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)}></div>
+              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (indicator = el)}></div>
               <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
             </div>
           </div>
         </div>
-        <div part="body" class="tab-group__body" ref={el => (this.body = el)}>
+        <div part="body" class="tab-group__body" ref={el => (body = el)}>
           <slot onSlotchange={this.syncTabsAndPanels} />
         </div>
       </div>

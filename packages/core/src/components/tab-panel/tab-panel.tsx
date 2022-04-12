@@ -1,7 +1,4 @@
 import { Component, h, Element, Prop } from '@stencil/core';
-// import { autoIncrement  } from '../../utils/AutoIncrement';
-
-// let id = 0;
 
 @Component({
   tag: 'gr-tab-panel',
@@ -9,10 +6,6 @@ import { Component, h, Element, Prop } from '@stencil/core';
   shadow: true
 })
 export class TabPanel {
-  // private tab: HTMLGrTabElement;
-  // private readonly attrId = autoIncrement();
-  // private readonly componentId = `gr-tab-panel-${this.attrId}`;
-
   @Element() el: HTMLGrTabPanelElement;
 
   @Prop({ reflect: true }) name = '';
@@ -21,7 +14,7 @@ export class TabPanel {
 
   render() {
     const { active } = this;
-    // this.id = this.id.length > 0 ? this.id : this.componentId;
+
     this.el.style.display = this.active ? 'block' : 'none';
 
     return (

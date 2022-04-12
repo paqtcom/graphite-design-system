@@ -1,7 +1,6 @@
 import { Component, h, Prop, Element, State, Event, EventEmitter } from '@stencil/core';
-// import { autoIncrement  } from '../../utils/AutoIncrement';
 
-// let id = 0;
+let id = 0;
 
 @Component({
   tag: 'gr-tab',
@@ -9,9 +8,7 @@ import { Component, h, Prop, Element, State, Event, EventEmitter } from '@stenci
   shadow: true
 })
 export class Tab {
-  // private tab: HTMLGrTabElement;
-  // private readonly attrId = autoIncrement();
-  // private readonly componentId = `gr-tab-${this.attrId}`;
+  private readonly componentId = `gr-tab-${++id}`;
 
   @Element() el!: HTMLElement;
 
@@ -46,7 +43,6 @@ export class Tab {
 
   render() {
     const { active, disabled } = this;
-    // this.id = this.id.length > 0 ? this.id : this.componentId;
 
     return (
       <div
