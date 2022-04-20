@@ -527,7 +527,6 @@ export namespace Components {
     }
     interface GrTab {
         "active": boolean;
-        "closable": boolean;
         "disabled": boolean;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
@@ -535,6 +534,10 @@ export namespace Components {
         "panel": string;
     }
     interface GrTabGroup {
+        /**
+          * Set to true to draw a pill-style tab with rounded edges.
+         */
+        "pill": boolean;
         "placement": 'top' | 'bottom' | 'start' | 'end';
     }
     interface GrTabPanel {
@@ -1341,7 +1344,6 @@ declare namespace LocalJSX {
     }
     interface GrTab {
         "active"?: boolean;
-        "closable"?: boolean;
         "disabled"?: boolean;
         /**
           * Emitted when the control loses focus.
@@ -1357,6 +1359,10 @@ declare namespace LocalJSX {
         "panel"?: string;
     }
     interface GrTabGroup {
+        /**
+          * Set to true to draw a pill-style tab with rounded edges.
+         */
+        "pill"?: boolean;
         "placement"?: 'top' | 'bottom' | 'start' | 'end';
     }
     interface GrTabPanel {

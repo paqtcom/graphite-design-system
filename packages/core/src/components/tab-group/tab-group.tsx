@@ -14,14 +14,23 @@ export class TabGroup {
   private panels: HTMLGrTabPanelElement[] = [];
   private activeTab?: HTMLGrTabElement;
 
-  @Element() el: HTMLGrTabGroupElement;
+  @Element() el!: HTMLGrTabGroupElement;
 
+  private body: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__body');
+  
   @Prop() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';
+
+  /**
+   * Set to true to draw a pill-style tab with rounded edges.
+   */
+  @Prop({ reflect: true }) pill = false;
+
+  private indicator: HTMLElement = this.pill ? this.el.shadowRoot?.querySelector('.tab-group__indicator--pill') : this.el.shadowRoot?.querySelector('.tab-group__indicator');
+
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
     this.syncTabsAndPanels = this.syncTabsAndPanels.bind(this);
-
 
     this.resizeObserver = new ResizeObserver(() => {
       this.preventIndicatorTransition();
@@ -62,15 +71,6 @@ export class TabGroup {
     this.resizeObserver.unobserve(nav);
   }
 
-  /** Shows the specified tab panel. */
-  show(panel: string) {
-    const tab = this.tabs.find(el => el.panel === panel);
-
-    if (tab) {
-      this.setActiveTab(tab, { scrollBehavior: 'smooth' });
-    }
-  }
-
   getAllTabs() {
     const slot = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
 
@@ -81,9 +81,8 @@ export class TabGroup {
   }
 
   getAllPanels() {
-    const body: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__body');
+    const slot = this.body.querySelector('slot') as HTMLSlotElement;
 
-    const slot = body.querySelector('slot') as HTMLSlotElement;;
     return [...slot.assignedElements({ flatten: true })].filter(
       (el: any) => el.tagName.toLowerCase() === 'gr-tab-panel') as [HTMLGrTabPanelElement];
   }
@@ -97,7 +96,6 @@ export class TabGroup {
     const tab = target.closest('gr-tab');
     const tabGroup = tab?.closest('gr-tab-group');
 
-    // Ensure the target tab is in this tab group
     if (tabGroup !== this.el) {
       return;
     }
@@ -105,24 +103,6 @@ export class TabGroup {
     if (tab !== null) {
       this.setActiveTab(tab, { scrollBehavior: 'smooth' });
     }
-  }
-
-  handleScrollToStart() {
-    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
-
-    nav.scroll({
-      left: nav.scrollLeft - nav.clientWidth,
-      behavior: 'smooth'
-    });
-  }
-
-  handleScrollToEnd() {
-    const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
-
-    nav.scroll({
-      left: nav.scrollLeft + nav.clientWidth,
-      behavior: 'smooth'
-    });
   }
 
   setActiveTab(tab: HTMLGrTabElement, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
@@ -147,7 +127,11 @@ export class TabGroup {
         scrollIntoView(this.activeTab, nav, 'horizontal', options.scrollBehavior);
       }
 
-      // Emit events
+      if (['top'].includes(this.placement)) {
+        nav.shadowRoot.querySelector('tab').setAttribute('class', 'test')
+      }
+
+      // Emit events/
       if (options.emitEvents) {
         if (previousTab) {
           emit(this.el, 'gr-tab-hide', { detail: { name: previousTab.panel } });
@@ -172,19 +156,17 @@ export class TabGroup {
   @Watch('placement')
   syncIndicator(): void {
     const tab = this.getActiveTab();
-    const indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
     if (tab) {
-      indicator.style.display = 'block';
+      this.indicator.style.display = 'block';
       this.repositionIndicator();
     } else {
-      indicator.style.display = 'none';
+      this.indicator.style.display = 'none';
     }
   }
 
   repositionIndicator() {
     const currentTab = this.getActiveTab();
-    const indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
     if (!currentTab) {
       return;
@@ -192,9 +174,6 @@ export class TabGroup {
 
     const width = currentTab.clientWidth;
     const height = currentTab.clientHeight;
-
-    // We can't used offsetLeft/offsetTop here due to a shadow parent issue where neither can getBoundingClientRect
-    // because it provides invalid values for animating elements: https://bugs.chromium.org/p/chromium/issues/detail?id=920069
     const allTabs = this.getAllTabs();
     const precedingTabs = allTabs.slice(0, allTabs.indexOf(currentTab));
     const offset = precedingTabs.reduce(
@@ -208,34 +187,30 @@ export class TabGroup {
     switch (this.placement) {
       case 'top':
       case 'bottom':
-        indicator.style.width = `${width}px`;
-        indicator.style.height = 'auto';
-        indicator.style.transform = `translateX(${offset.left}px)`;
+        this.indicator.style.width = `${width}px`;
+        this.indicator.style.height = 'auto';
+        this.indicator.style.transform = `translateX(${offset.left}px)`;
         break;
 
       case 'start':
       case 'end':
-        indicator.style.width = 'auto';
-        indicator.style.height = `${height}px`;
-        indicator.style.transform = `translateY(${offset.top}px)`;
+        this.indicator.style.width = 'auto';
+        this.indicator.style.height = `${height}px`;
+        this.indicator.style.transform = `translateY(${offset.top}px)`;
         break;
     }
   }
 
-  // In some orientations, when the component is resized, the indicator's position will change causing it to animate
-  // while you resize. Calling this method will prevent the transition from running on resize, which feels more natural.
-  preventIndicatorTransition() {
-    const indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
-
-    const transitionValue = indicator.style.transition;
-    indicator.style.transition = 'none';
+  preventIndicatorTransition(): void {
+    const transitionValue = this.indicator.style.transition;
+    this.indicator.style.transition = 'none';
 
     requestAnimationFrame(() => {
-      indicator.style.transition = transitionValue;
+      this.indicator.style.transition = transitionValue;
     });
   }
 
-  // This stores tabs and panels so we can refer to a cache instead of calling querySelectorAll() multiple times.
+  // Store tabs and panels in a cache.
   syncTabsAndPanels(): void {
     this.tabs = this.getAllTabs();
     this.panels = this.getAllPanels();
@@ -244,8 +219,6 @@ export class TabGroup {
 
   render(): any {
     const { placement } = this;
-    let body: HTMLElement = this.el.querySelector('.tab-group__body');
-    let indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
 
     return (
       <div
@@ -261,13 +234,21 @@ export class TabGroup {
       >
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
-            <div part="tabs" class="tab-group__tabs" role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (indicator = el)}></div>
-              <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
-            </div>
+            {this.pill
+            ?
+              <div part="tabs" class="tab-group__tabs" role="tablist">
+                <div part="active-tab-indicator" class="tab-group__indicator--pill" ref={el => (this.indicator = el)} />
+                <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
+              </div>
+            :
+              <div part="tabs" class="tab-group__tabs" role="tablist">
+                <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)} />
+                <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
+              </div>
+             }
           </div>
         </div>
-        <div part="body" class="tab-group__body" ref={el => (body = el)}>
+        <div part="body" class="tab-group__body" ref={el => (this.body = el)}>
           <slot onSlotchange={this.syncTabsAndPanels} />
         </div>
       </div>

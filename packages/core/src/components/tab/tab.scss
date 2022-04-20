@@ -19,19 +19,27 @@
   cursor: pointer;
   transition: 500ms box-shadow, 500ms color;
 }
+
+.pill-top {
+  padding: var(--gr-spacing-xxx-small) var(--gr-spacing-large);
+}
+
 .tab:hover:not(.tab--disabled) {
   color: var(--color-disabled);
 }
+
 .tab:focus {
   outline: none;
 }
-// .tab${focusVisibleSelector}:not(.tab--disabled) {
-//   color: var(--gr-color-primary);
-//   box-shadow: inset var(--gr-focus-ring-width);
-// }
+
 .tab.tab--active:not(.tab--disabled) {
   color: var(--gr-color-primary);
 }
+
+.pill-top.tab--active:not(.tab--disabled) {
+  color: white;
+}
+
 .tab.tab--closable {
   padding-right: var(--gr-spacing-small);
 }

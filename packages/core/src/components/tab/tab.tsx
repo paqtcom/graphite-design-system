@@ -1,15 +1,11 @@
 import { Component, h, Prop, Element, State, Event, EventEmitter } from '@stencil/core';
 
-let id = 0;
-
 @Component({
   tag: 'gr-tab',
   styleUrl: 'tab.scss',
   shadow: true
 })
 export class Tab {
-  private readonly componentId = `gr-tab-${++id}`;
-
   @Element() el!: HTMLElement;
 
   @State() hasFocus = false;
@@ -19,8 +15,6 @@ export class Tab {
 
   @Prop({ reflect: true }) active: boolean = false;
 
-  @Prop({ reflect: true }) closable: boolean = false;
-
   @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Emitted when the control gains focus. */
@@ -28,18 +22,6 @@ export class Tab {
 
   /** Emitted when the control loses focus. */
   @Event({ eventName: 'gr-blur' }) grBlur!: EventEmitter<void>;
-
-    /** Sets focus on the select. */
-  // @Method()
-  // async setFocus(options: FocusOptions) {
-  //   this.hasFocus = true;
-  //   this.grFocus.emit();
-  //   this.tab.focus(options);
-  // }
-
-  // private onBlur = () => {
-  //   this.grBlur.emit();
-  // };
 
   render() {
     const { active, disabled } = this;
