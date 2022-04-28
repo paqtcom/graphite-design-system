@@ -10,23 +10,31 @@
 | Property   | Attribute  | Description                                                                                      | Type      | Default |
 | ---------- | ---------- | ------------------------------------------------------------------------------------------------ | --------- | ------- |
 | `active`   | `active`   |                                                                                                  | `boolean` | `false` |
-| `disabled` | `disabled` |                                                                                                  | `boolean` | `false` |
+| `disabled` | `disabled` | Set to true to draw the tab in a disabled state.                                                 | `boolean` | `false` |
 | `panel`    | `panel`    | The name of the tab panel the tab will control. The panel must be located in the same tab group. | `string`  | `''`    |
 
 
-## Events
+## Methods
 
-| Event      | Description                           | Type                |
-| ---------- | ------------------------------------- | ------------------- |
-| `gr-blur`  | Emitted when the control loses focus. | `CustomEvent<void>` |
-| `gr-focus` | Emitted when the control gains focus. | `CustomEvent<void>` |
+### `removeFocus() => Promise<void>`
+
+Removes focus from the tab.
+
+#### Returns
+
+Type: `Promise<void>`
 
 
-## Shadow Parts
 
-| Part     | Description |
-| -------- | ----------- |
-| `"base"` |             |
+### `setFocus() => Promise<void>`
+
+Sets focus on the tab.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ----------------------------------------------

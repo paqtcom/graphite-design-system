@@ -19,6 +19,9 @@ import { defineCustomElement as defineGrRadio } from '@graphiteds/core/component
 import { defineCustomElement as defineGrRadioGroup } from '@graphiteds/core/components/gr-radio-group.js';
 import { defineCustomElement as defineGrSelect } from '@graphiteds/core/components/gr-select.js';
 import { defineCustomElement as defineGrSpinner } from '@graphiteds/core/components/gr-spinner.js';
+import { defineCustomElement as defineGrTab } from '@graphiteds/core/components/gr-tab.js';
+import { defineCustomElement as defineGrTabGroup } from '@graphiteds/core/components/gr-tab-group.js';
+import { defineCustomElement as defineGrTabPanel } from '@graphiteds/core/components/gr-tab-panel.js';
 import { defineCustomElement as defineGrTag } from '@graphiteds/core/components/gr-tag.js';
 import { defineCustomElement as defineGrTextarea } from '@graphiteds/core/components/gr-textarea.js';
 
@@ -36,5 +39,8 @@ export const GrRadio = /*@__PURE__*/createReactComponent<JSX.GrRadio, HTMLGrRadi
 export const GrRadioGroup = /*@__PURE__*/createReactComponent<JSX.GrRadioGroup, HTMLGrRadioGroupElement>('gr-radio-group', undefined, undefined, defineGrRadioGroup);
 export const GrSelect = /*@__PURE__*/createReactComponent<JSX.GrSelect, HTMLGrSelectElement>('gr-select', undefined, undefined, defineGrSelect);
 export const GrSpinner = /*@__PURE__*/createReactComponent<JSX.GrSpinner, HTMLGrSpinnerElement>('gr-spinner', undefined, undefined, defineGrSpinner);
+export const GrTab = /*@__PURE__*/createReactComponent<JSX.GrTab, HTMLGrTabElement>('gr-tab', undefined, undefined, defineGrTab);
+export const GrTabGroup = /*@__PURE__*/createReactComponent<JSX.GrTabGroup, HTMLGrTabGroupElement>('gr-tab-group', undefined, undefined, defineGrTabGroup);
+export const GrTabPanel = /*@__PURE__*/createReactComponent<JSX.GrTabPanel, HTMLGrTabPanelElement>('gr-tab-panel', undefined, undefined, defineGrTabPanel);
 export const GrTag = /*@__PURE__*/createReactComponent<JSX.GrTag, HTMLGrTagElement>('gr-tag', undefined, undefined, defineGrTag);
 export const GrTextarea = /*@__PURE__*/createReactComponent<JSX.GrTextarea, HTMLGrTextareaElement>('gr-textarea', undefined, undefined, defineGrTextarea);

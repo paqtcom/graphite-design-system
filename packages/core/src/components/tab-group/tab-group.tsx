@@ -17,7 +17,7 @@ export class TabGroup {
   @Element() el!: HTMLGrTabGroupElement;
 
   private body: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__body');
-  
+
   @Prop() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';
 
   /**
@@ -25,12 +25,17 @@ export class TabGroup {
    */
   @Prop({ reflect: true }) pill = false;
 
-  private indicator: HTMLElement = this.pill ? this.el.shadowRoot?.querySelector('.tab-group__indicator--pill') : this.el.shadowRoot?.querySelector('.tab-group__indicator');
+  /**
+  * The tab's size.
+  */
+  @Prop({ reflect: true }) tabSize: 'small' | 'medium' | 'large' = 'medium';
 
+
+  private indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
-    this.syncTabsAndPanels = this.syncTabsAndPanels.bind(this);
+    this.handleTabsPanelsChange = this.handleTabsPanelsChange.bind(this);
 
     this.resizeObserver = new ResizeObserver(() => {
       this.preventIndicatorTransition();
@@ -45,11 +50,11 @@ export class TabGroup {
     });
   }
 
-  componentDidLoad() {   
+  componentDidLoad() {
     const tabGroup: HTMLElement = this.el.shadowRoot.querySelector('.tab-group');
     const nav = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
 
-    this.syncTabsAndPanels();
+    this.handleTabsPanelsChange();
     this.mutationObserver.observe(this.el, { attributes: true, childList: true, subtree: true });
     this.resizeObserver.observe(nav);
 
@@ -71,16 +76,16 @@ export class TabGroup {
     this.resizeObserver.unobserve(nav);
   }
 
-  getAllTabs() {
+  getTabs() {
     const slot = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
 
     return [...slot.assignedElements({ flatten: true })].filter(
       (el: any) => {
-      return el.tagName.toLowerCase() === 'gr-tab'
-    }) as [HTMLGrTabElement];
+        return el.tagName.toLowerCase() === 'gr-tab'
+      }) as [HTMLGrTabElement];
   }
 
-  getAllPanels() {
+  getPanels() {
     const slot = this.body.querySelector('slot') as HTMLSlotElement;
 
     return [...slot.assignedElements({ flatten: true })].filter(
@@ -88,7 +93,7 @@ export class TabGroup {
   }
 
   getActiveTab() {
-    return this.tabs.find(el => el.active);
+    return this.getTabs().find(el => el.active);
   }
 
   handleClick(event: MouseEvent) {
@@ -114,6 +119,8 @@ export class TabGroup {
       ...options
     };
 
+    tab.setFocus();
+
     if (tab !== this.activeTab) {
       const previousTab = this.activeTab;
       this.activeTab = tab;
@@ -121,14 +128,10 @@ export class TabGroup {
       // Sync active tab and panel
       this.tabs.map(el => (el.active = el === this.activeTab));
       this.panels.map(el => (el.active = el.name === this.activeTab?.panel));
-      this.syncIndicator();
+      this.handleIndicatorChange();
 
       if (['top', 'bottom'].includes(this.placement)) {
         scrollIntoView(this.activeTab, nav, 'horizontal', options.scrollBehavior);
-      }
-
-      if (['top'].includes(this.placement)) {
-        nav.shadowRoot.querySelector('tab').setAttribute('class', 'test')
       }
 
       // Emit events/
@@ -154,10 +157,10 @@ export class TabGroup {
   }
 
   @Watch('placement')
-  syncIndicator(): void {
+  handleIndicatorChange(): void {
     const tab = this.getActiveTab();
 
-    if (tab) {
+    if (tab && !this.pill) {
       this.indicator.style.display = 'block';
       this.repositionIndicator();
     } else {
@@ -174,7 +177,7 @@ export class TabGroup {
 
     const width = currentTab.clientWidth;
     const height = currentTab.clientHeight;
-    const allTabs = this.getAllTabs();
+    const allTabs = this.getTabs();
     const precedingTabs = allTabs.slice(0, allTabs.indexOf(currentTab));
     const offset = precedingTabs.reduce(
       (previous, current) => ({
@@ -211,18 +214,17 @@ export class TabGroup {
   }
 
   // Store tabs and panels in a cache.
-  syncTabsAndPanels(): void {
-    this.tabs = this.getAllTabs();
-    this.panels = this.getAllPanels();
-    this.syncIndicator();
+  handleTabsPanelsChange(): void {
+    this.tabs = this.getTabs();
+    this.panels = this.getPanels();
+    this.handleIndicatorChange();
   }
 
   render(): any {
-    const { placement } = this;
+    const { placement, pill, tabSize } = this;
 
     return (
       <div
-        part="base"
         class={{
           'tab-group': true,
           'tab-group--top': placement === 'top',
@@ -234,22 +236,15 @@ export class TabGroup {
       >
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
-            {this.pill
-            ?
-              <div part="tabs" class="tab-group__tabs" role="tablist">
-                <div part="active-tab-indicator" class="tab-group__indicator--pill" ref={el => (this.indicator = el)} />
-                <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
-              </div>
-            :
-              <div part="tabs" class="tab-group__tabs" role="tablist">
-                <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)} />
-                <slot name="nav" onSlotchange={this.syncTabsAndPanels} />
-              </div>
-             }
+            <div part="tabs" class={{ 'tab-group__tabs': true, 'tab-pill': pill, [`tab-${tabSize}`]: true, }} role="tablist">
+              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)} />
+
+              <slot name="nav" onSlotchange={this.handleTabsPanelsChange} />
+            </div>
           </div>
         </div>
         <div part="body" class="tab-group__body" ref={el => (this.body = el)}>
-          <slot onSlotchange={this.syncTabsAndPanels} />
+          <slot onSlotchange={this.handleTabsPanelsChange} />
         </div>
       </div>
     )

@@ -527,11 +527,22 @@ export namespace Components {
     }
     interface GrTab {
         "active": boolean;
+        /**
+          * Set to true to draw the tab in a disabled state.
+         */
         "disabled": boolean;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
         "panel": string;
+        /**
+          * Removes focus from the tab.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the tab.
+         */
+        "setFocus": () => Promise<void>;
     }
     interface GrTabGroup {
         /**
@@ -539,6 +550,10 @@ export namespace Components {
          */
         "pill": boolean;
         "placement": 'top' | 'bottom' | 'start' | 'end';
+        /**
+          * The tab's size.
+         */
+        "tabSize": 'small' | 'medium' | 'large';
     }
     interface GrTabPanel {
         "active": boolean;
@@ -1344,15 +1359,10 @@ declare namespace LocalJSX {
     }
     interface GrTab {
         "active"?: boolean;
+        /**
+          * Set to true to draw the tab in a disabled state.
+         */
         "disabled"?: boolean;
-        /**
-          * Emitted when the control loses focus.
-         */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
-        /**
-          * Emitted when the control gains focus.
-         */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
@@ -1364,6 +1374,10 @@ declare namespace LocalJSX {
          */
         "pill"?: boolean;
         "placement"?: 'top' | 'bottom' | 'start' | 'end';
+        /**
+          * The tab's size.
+         */
+        "tabSize"?: 'small' | 'medium' | 'large';
     }
     interface GrTabPanel {
         "active"?: boolean;
