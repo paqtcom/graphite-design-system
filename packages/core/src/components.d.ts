@@ -545,10 +545,6 @@ export namespace Components {
         "setFocus": () => Promise<void>;
     }
     interface GrTabGroup {
-        /**
-          * Set to true to draw a pill-style tab with rounded edges.
-         */
-        "pill": boolean;
         "placement": 'top' | 'bottom' | 'start' | 'end';
         /**
           * The tab's size.
@@ -1369,10 +1365,6 @@ declare namespace LocalJSX {
         "panel"?: string;
     }
     interface GrTabGroup {
-        /**
-          * Set to true to draw a pill-style tab with rounded edges.
-         */
-        "pill"?: boolean;
         "placement"?: 'top' | 'bottom' | 'start' | 'end';
         /**
           * The tab's size.

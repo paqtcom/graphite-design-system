@@ -21,11 +21,6 @@ export class TabGroup {
   @Prop() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';
 
   /**
-   * Set to true to draw a pill-style tab with rounded edges.
-   */
-  @Prop({ reflect: true }) pill = false;
-
-  /**
   * The tab's size.
   */
   @Prop({ reflect: true }) tabSize: 'small' | 'medium' | 'large' = 'medium';
@@ -160,7 +155,7 @@ export class TabGroup {
   handleIndicatorChange(): void {
     const tab = this.getActiveTab();
 
-    if (tab && !this.pill) {
+    if (tab) {
       this.indicator.style.display = 'block';
       this.repositionIndicator();
     } else {
@@ -194,7 +189,6 @@ export class TabGroup {
         this.indicator.style.height = 'auto';
         this.indicator.style.transform = `translateX(${offset.left}px)`;
         break;
-
       case 'start':
       case 'end':
         this.indicator.style.width = 'auto';
@@ -221,7 +215,7 @@ export class TabGroup {
   }
 
   render(): any {
-    const { placement, pill, tabSize } = this;
+    const { placement, tabSize } = this;
 
     return (
       <div
@@ -236,7 +230,7 @@ export class TabGroup {
       >
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
-            <div part="tabs" class={{ 'tab-group__tabs': true, 'tab-pill': pill, [`tab-${tabSize}`]: true, }} role="tablist">
+            <div part="tabs" class={{ 'tab-group__tabs': true, [`tab-${tabSize}`]: true, }} role="tablist">
               <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)} />
 
               <slot name="nav" onSlotchange={this.handleTabsPanelsChange} />

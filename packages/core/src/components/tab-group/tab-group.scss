@@ -173,37 +173,10 @@
   --padding: 0 var(--gr-spacing-medium);
 }
 
-.tab-pill slot[name=nav]::slotted(.tab-active:not(.tab-disabled)) {
-  background-color: var(--indicator-color);
-  color: var(--gr-color-primary-contrast);
-}
-
-.tab-group--top .tab-pill slot[name=nav]::slotted(.tab-active:not(.tab-disabled)) {
-  border-top-left-radius: var(--gr-border-radius-medium);
-  border-top-right-radius: var(--gr-border-radius-medium);
-}
-
-.tab-group--bottom .tab-pill slot[name=nav]::slotted(.tab-active:not(.tab-disabled)) {
-  border-bottom-left-radius: var(--gr-border-radius-medium);
-  border-bottom-right-radius: var(--gr-border-radius-medium);
-}
-
-.tab-group--start .tab-pill slot[name=nav]::slotted(.tab-active:not(.tab-disabled)) {
-  border-top-left-radius: var(--gr-border-radius-medium);
-  border-bottom-left-radius: var(--gr-border-radius-medium);
-}
-
-.tab-group--end .tab-pill slot[name=nav]::slotted(.tab-active:not(.tab-disabled)) {
-  border-top-right-radius: var(--gr-border-radius-medium);
-  border-bottom-right-radius: var(--gr-border-radius-medium);
-}
-
-.tab-small slot[name=nav]::slotted(.tab) {
+.tab-small slot[name='nav']::slotted(.tab) {
   padding: var(--gr-spacing-xxx-small) var(--gr-spacing-medium);
 }
 
-.tab-large slot[name=nav]::slotted(.tab) {
-  padding: var(--gr-spacing-medium)
+.tab-large slot[name='nav']::slotted(.tab) {
+  padding: var(--gr-spacing-medium);
 }
-
- 
