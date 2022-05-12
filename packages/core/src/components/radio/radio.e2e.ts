@@ -39,4 +39,45 @@ describe('gr-radio', () => {
 
     expect(grBlur).toHaveReceivedEventTimes(1);
   });
+
+  it('should be checked when value is the same as value of the parent radio group', async () => {
+    const page = await newE2EPage();
+    await page.setContent(`
+      <gr-radio-group>
+        <gr-radio value="33"></gr-radio>
+      </gr-radio-group>
+    `);
+
+    const radioGroup = await page.find('gr-radio-group');
+    const radio = await page.find('gr-radio');
+
+    expect(radio).not.toHaveAttribute('checked');
+
+    radioGroup.setProperty('value', '33');
+    await page.waitForChanges();
+
+    expect(radio).toHaveAttribute('checked');
+
+    radioGroup.setProperty('value', '34');
+    await page.waitForChanges();
+
+    expect(radio).not.toHaveAttribute('checked');
+  });
+
+  it('should reflect correct tabindex', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<gr-radio></gr-radio>');
+
+    const radio = await page.find('gr-radio');
+
+    expect(radio).toHaveAttribute('tabIndex');
+    let tabIndex = radio.getAttribute('tabIndex');
+    expect(tabIndex).toBe('-1');
+
+    radio.callMethod('setButtonTabindex', '0');
+    await page.waitForChanges();
+
+    tabIndex = radio.getAttribute('tabIndex');
+    expect(tabIndex).toBe('0');
+  });
 });
