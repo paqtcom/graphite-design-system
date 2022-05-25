@@ -28,8 +28,8 @@
 }
 
 /*
-   * Top
-   */
+ * Top
+ */
 .tab-group--top {
   flex-direction: column;
 }
@@ -66,12 +66,13 @@
 .tab-group--top .tab-group__body {
   order: 2;
 }
+
 .tab-group--top ::slotted(gr-tab-panel) {
   --padding: var(--gr-spacing-medium) 0;
 }
 /*
-   * Bottom
-   */
+ * Bottom
+ */
 .tab-group--bottom {
   flex-direction: column;
 }
@@ -114,8 +115,8 @@
 }
 
 /*
-   * Start
-   */
+ * Start
+ */
 .tab-group--start {
   flex-direction: row;
 }
@@ -143,8 +144,8 @@
   --padding: 0 var(--gr-spacing-medium);
 }
 /*
-   * End
-   */
+ * End
+ */
 .tab-group--end {
   flex-direction: row;
 }
