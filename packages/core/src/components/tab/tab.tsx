@@ -60,6 +60,7 @@ export class Tab {
         tabIndex={disabled || !active ? 0 : null}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
+        slot="nav"
       >
         <slot></slot>
       </Host>
