@@ -1,7 +1,7 @@
 :host {
   --track-color: var(--gr-color-light-shade);
   --indicator-color: var(--gr-color-primary);
-  --border-radius: var(--gr-border-radius-large);
+  --border-width: var(--gr-border-width-medium);
   display: block;
 }
 
@@ -19,6 +19,7 @@
 .tab-group .tab-group__indicator {
   position: absolute;
   left: 0;
+  box-sizing: border-box;
   transition: 150ms transform ease, 150ms width ease;
 }
 
@@ -55,12 +56,12 @@
   flex: 1 1 auto;
   position: relative;
   flex-direction: row;
-  border-bottom: solid 2px var(--track-color);
+  border-bottom: solid var(--border-width) var(--track-color);
 }
 
 .tab-group--top .tab-group__indicator {
   bottom: -2px;
-  border-bottom: solid 2px var(--indicator-color);
+  border-bottom: solid var(--border-width) var(--indicator-color);
 }
 
 .tab-group--top .tab-group__body {
@@ -98,12 +99,12 @@
   flex: 1 1 auto;
   position: relative;
   flex-direction: row;
-  border-top: solid 2px var(--track-color);
+  border-top: solid var(--border-width) var(--track-color);
 }
 
 .tab-group--bottom .tab-group__indicator {
   top: calc(-1 * 2px);
-  border-top: solid 2px var(--indicator-color);
+  border-top: solid var(--border-width) var(--indicator-color);
 }
 
 .tab-group--bottom .tab-group__body {
@@ -128,12 +129,12 @@
 .tab-group--start .tab-group__tabs {
   flex: 0 0 auto;
   flex-direction: column;
-  border-right: solid 2px var(--track-color);
+  border-right: solid var(--border-width) var(--track-color);
 }
 
 .tab-group--start .tab-group__indicator {
   right: calc(-1 * 2px);
-  border-right: solid 2px var(--indicator-color);
+  border-right: solid var(--border-width) var(--indicator-color);
 }
 
 .tab-group--start .tab-group__body {
@@ -157,12 +158,12 @@
 .tab-group--end .tab-group__tabs {
   flex: 0 0 auto;
   flex-direction: column;
-  border-left: solid 2px var(--track-color);
+  border-left: solid var(--border-width) var(--track-color);
 }
 
 .tab-group--end .tab-group__indicator {
   left: calc(-1 * 2px);
-  border-left: solid 2px var(--indicator-color);
+  border-left: solid var(--border-width) var(--indicator-color);
 }
 
 .tab-group--end .tab-group__body {

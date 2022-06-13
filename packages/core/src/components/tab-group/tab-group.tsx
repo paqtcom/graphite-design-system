@@ -14,9 +14,7 @@ export class TabGroup {
   private panels: HTMLGrTabPanelElement[] = [];
   private activeTab?: HTMLGrTabElement;
 
-  @Element() el!: HTMLGrTabGroupElement;
-
-  private body: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__body');
+  @Element() el: HTMLGrTabGroupElement;
 
   @Prop() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';
 
@@ -24,9 +22,6 @@ export class TabGroup {
   * The tab's size.
   */
   @Prop({ reflect: true }) tabSize: 'small' | 'medium' | 'large' = 'medium';
-
-
-  private indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
@@ -81,7 +76,9 @@ export class TabGroup {
   }
 
   getPanels() {
-    const slot = this.body.querySelector('slot') as HTMLSlotElement;
+    const body: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__body');
+
+    const slot = body.querySelector('slot') as HTMLSlotElement;
 
     return [...slot.assignedElements({ flatten: true })].filter(
       (el: any) => el.tagName.toLowerCase() === 'gr-tab-panel') as [HTMLGrTabPanelElement];
@@ -154,17 +151,19 @@ export class TabGroup {
   @Watch('placement')
   handleIndicatorChange(): void {
     const tab = this.getActiveTab();
+    const indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
     if (tab) {
-      this.indicator.style.display = 'block';
+      indicator.style.display = 'block';
       this.repositionIndicator();
     } else {
-      this.indicator.style.display = 'none';
+      indicator.style.display = 'none';
     }
   }
 
   repositionIndicator() {
     const currentTab = this.getActiveTab();
+    const indicator: HTMLElement = this.el.shadowRoot?.querySelector('.tab-group__indicator');
 
     if (!currentTab) {
       return;
@@ -185,25 +184,26 @@ export class TabGroup {
     switch (this.placement) {
       case 'top':
       case 'bottom':
-        this.indicator.style.width = `${width}px`;
-        this.indicator.style.height = 'auto';
-        this.indicator.style.transform = `translateX(${offset.left}px)`;
+        indicator.style.width = `${width}px`;
+        indicator.style.height = 'auto';
+        indicator.style.transform = `translateX(${offset.left}px)`;
         break;
       case 'start':
       case 'end':
-        this.indicator.style.width = 'auto';
-        this.indicator.style.height = `${height}px`;
-        this.indicator.style.transform = `translateY(${offset.top}px)`;
+        indicator.style.width = 'auto';
+        indicator.style.height = `${height}px`;
+        indicator.style.transform = `translateY(${offset.top}px)`;
         break;
     }
   }
 
   preventIndicatorTransition(): void {
-    const transitionValue = this.indicator.style.transition;
-    this.indicator.style.transition = 'none';
+    const indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
+    const transitionValue = indicator.style.transition;
+    indicator.style.transition = 'none';
 
     requestAnimationFrame(() => {
-      this.indicator.style.transition = transitionValue;
+      indicator.style.transition = transitionValue;
     });
   }
 
@@ -216,6 +216,8 @@ export class TabGroup {
 
   render(): any {
     const { placement, tabSize } = this;
+    let body: HTMLElement = this.el.querySelector('.tab-group__body');
+    let indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
 
     return (
       <div
@@ -231,13 +233,13 @@ export class TabGroup {
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
             <div part="tabs" class={{ 'tab-group__tabs': true, [`tab-${tabSize}`]: true, }} role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (this.indicator = el)} />
+              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (indicator = el)} />
 
               <slot name="nav" onSlotchange={this.handleTabsPanelsChange} />
             </div>
           </div>
         </div>
-        <div part="body" class="tab-group__body" ref={el => (this.body = el)}>
+        <div part="body" class="tab-group__body" ref={el => (body = el)}>
           <slot onSlotchange={this.handleTabsPanelsChange} />
         </div>
       </div>
