@@ -85,7 +85,7 @@ export class TabGroup {
   }
 
   getActiveTab() {
-    return this.getTabs().find(el => el.active);
+    return this.tabs.find(el => el.active);
   }
 
   handleClick(event: MouseEvent) {
@@ -171,7 +171,7 @@ export class TabGroup {
 
     const width = currentTab.clientWidth;
     const height = currentTab.clientHeight;
-    const allTabs = this.getTabs();
+    const allTabs = this.tabs;
     const precedingTabs = allTabs.slice(0, allTabs.indexOf(currentTab));
     const offset = precedingTabs.reduce(
       (previous, current) => ({
