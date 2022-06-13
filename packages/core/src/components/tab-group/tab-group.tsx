@@ -70,7 +70,7 @@ export class TabGroup {
     const slot = this.el.shadowRoot.querySelector('slot[name="nav"]') as HTMLSlotElement;
 
     return [...slot.assignedElements({ flatten: true })].filter(
-      (el: any) => {
+      (el: HTMLGrTabElement) => {
         return el.tagName.toLowerCase() === 'gr-tab'
       }) as [HTMLGrTabElement];
   }
@@ -81,7 +81,7 @@ export class TabGroup {
     const slot = body.querySelector('slot') as HTMLSlotElement;
 
     return [...slot.assignedElements({ flatten: true })].filter(
-      (el: any) => el.tagName.toLowerCase() === 'gr-tab-panel') as [HTMLGrTabPanelElement];
+      (el: HTMLGrTabElement ) => el.tagName.toLowerCase() === 'gr-tab-panel') as [HTMLGrTabPanelElement];
   }
 
   getActiveTab() {
