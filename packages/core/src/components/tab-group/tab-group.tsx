@@ -216,8 +216,6 @@ export class TabGroup {
 
   render(): any {
     const { placement, tabSize } = this;
-    let body: HTMLElement = this.el.querySelector('.tab-group__body');
-    let indicator: HTMLElement = this.el.querySelector('.tab-group__indicator');
 
     return (
       <div
@@ -233,13 +231,13 @@ export class TabGroup {
         <div class="tab-group__nav-container" part="nav">
           <div class="tab-group__nav">
             <div part="tabs" class={{ 'tab-group__tabs': true, [`tab-${tabSize}`]: true, }} role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator" ref={el => (indicator = el)} />
+              <div part="active-tab-indicator" class="tab-group__indicator" />
 
               <slot name="nav" onSlotchange={this.handleTabsPanelsChange} />
             </div>
           </div>
         </div>
-        <div part="body" class="tab-group__body" ref={el => (body = el)}>
+        <div part="body" class="tab-group__body">
           <slot onSlotchange={this.handleTabsPanelsChange} />
         </div>
       </div>
