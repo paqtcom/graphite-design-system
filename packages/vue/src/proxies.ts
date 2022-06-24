@@ -217,7 +217,6 @@ export const GrTab = /*@__PURE__*/ defineContainer<JSX.GrTab>('gr-tab', defineGr
 
 export const GrTabGroup = /*@__PURE__*/ defineContainer<JSX.GrTabGroup>('gr-tab-group', defineGrTabGroup, [
   'placement',
-  'pill',
   'tabSize'
 ]);
 
