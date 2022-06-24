@@ -1,6 +1,7 @@
 :host {
   --track-color: var(--gr-color-light-shade);
   --indicator-color: var(--gr-color-primary);
+  --border-track-width: var(--gr-border-width-small);
   --border-width: var(--gr-border-width-medium);
   display: block;
 }
@@ -56,11 +57,11 @@
   flex: 1 1 auto;
   position: relative;
   flex-direction: row;
-  border-bottom: solid var(--border-width) var(--track-color);
+  border-bottom: solid var(--border-track-width) var(--track-color);
 }
 
 .tab-group--top .tab-group__indicator {
-  bottom: -2px;
+  bottom: 0;
   border-bottom: solid var(--border-width) var(--indicator-color);
 }
 
@@ -99,11 +100,11 @@
   flex: 1 1 auto;
   position: relative;
   flex-direction: row;
-  border-top: solid var(--border-width) var(--track-color);
+  border-top: solid var(--border-track-width) var(--track-color);
 }
 
 .tab-group--bottom .tab-group__indicator {
-  top: calc(-1 * 2px);
+  top: 0;
   border-top: solid var(--border-width) var(--indicator-color);
 }
 
@@ -129,11 +130,11 @@
 .tab-group--start .tab-group__tabs {
   flex: 0 0 auto;
   flex-direction: column;
-  border-right: solid var(--border-width) var(--track-color);
+  border-right: solid var(--border-track-width) var(--track-color);
 }
 
 .tab-group--start .tab-group__indicator {
-  right: calc(-1 * 2px);
+  right: 0;
   border-right: solid var(--border-width) var(--indicator-color);
 }
 
@@ -158,11 +159,11 @@
 .tab-group--end .tab-group__tabs {
   flex: 0 0 auto;
   flex-direction: column;
-  border-left: solid var(--border-width) var(--track-color);
+  border-left: solid var(--border-track-width) var(--track-color);
 }
 
 .tab-group--end .tab-group__indicator {
-  left: calc(-1 * 2px);
+  left: 0;
   border-left: solid var(--border-width) var(--indicator-color);
 }
 
