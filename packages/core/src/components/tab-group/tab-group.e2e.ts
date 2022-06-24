@@ -6,6 +6,6 @@ describe('gr-tab-group', () => {
     await page.setContent('<gr-tab-group></gr-tab-group>');
 
     const element = await page.find('gr-tab-group');
-    expect(element).toHaveClass('hydrated');
+    expect(element).not.toBeNull();
   });
 });
