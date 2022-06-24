@@ -214,7 +214,7 @@ export class TabGroup {
     this.handleIndicatorChange();
   }
 
-  render(): any {
+  render() {
     const { placement, tabSize } = this;
 
     return (
