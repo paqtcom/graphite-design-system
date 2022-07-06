@@ -1,25 +1,97 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Graphite Design System</title>
 
-    <link rel="stylesheet" href="/build/core.css" />
-    <script type="module" src="/build/core.esm.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.css" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Graphite Design System</title>
 
-    <style>
-      body {
-        font-family: sans-serif;
-        background-color: var(--gr-color-light-tint);
-        line-height: var(--gr-line-height-normal);
-        color: var(--gr-color-dark);
-      }
-    </style>
-  </head>
-  <body>
+  <link rel="stylesheet" href="/build/core.css" />
+  <script type="module" src="/build/core.esm.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.css" />
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: var(--gr-color-light-tint);
+      line-height: var(--gr-line-height-normal);
+      color: var(--gr-color-dark);
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h2>gr-tabs</h2>
+
+    <section>
+      <h3>Tabs top</h3>
+
+      <h4>Default</h4>
+      <gr-tab-group>
+        <gr-tab panel="tab-1">
+          Tab 1
+        </gr-tab>
+        <gr-tab panel="tab-2">
+          Tab 2
+        </gr-tab>
+
+        <gr-tab-panel name="tab-1">Tab content 1</gr-tab-panel>
+        <gr-tab-panel name="tab-2">Tab content 2</gr-tab-panel>
+      </gr-tab-group>
+    </section>
+
+    <section>
+      <h3>Tabs bottom</h3>
+
+      <h4>Default</h4>
+      <gr-tab-group placement="bottom">
+        <gr-tab panel="tab-1">
+          Tab 1
+        </gr-tab>
+        <gr-tab panel="tab-2">
+          Tab 2
+        </gr-tab>
+
+        <gr-tab-panel name="tab-1">Tab content 1</gr-tab-panel>
+        <gr-tab-panel name="tab-2">Tab content 2</gr-tab-panel>
+      </gr-tab-group>
+    </section>
+
+    <section>
+      <h3>Tabs start</h3>
+
+      <h4>Default</h4>
+      <gr-tab-group placement="start">
+        <gr-tab panel="tab-1">
+          Tab 1
+        </gr-tab>
+        <gr-tab panel="tab-2">
+          Tab 2
+        </gr-tab>
+
+        <gr-tab-panel name="tab-1">Tab content 1</gr-tab-panel>
+        <gr-tab-panel name="tab-2">Tab content 2</gr-tab-panel>
+      </gr-tab-group>
+    </section>
+
+    <section>
+      <h3>Tabs end</h3>
+
+      <h4>Default</h4>
+      <gr-tab-group placement="end">
+        <gr-tab panel="tab-1">
+          Tab 1
+        </gr-tab>
+        <gr-tab panel="tab-2">
+          Tab 2
+        </gr-tab>
+
+        <gr-tab-panel name="tab-1">Tab content 1</gr-tab-panel>
+        <gr-tab-panel name="tab-2">Tab content 2</gr-tab-panel>
+      </gr-tab-group>
+    </section>
     <section>
       <h2>gr-radio & gr-radio-group</h2>
 
@@ -160,21 +232,15 @@
       <section>
         <h3>Help Text</h3>
 
-        <gr-date-picker
-          label="Enter a date"
-          help-text="Please tell us when you are available (format: dd-mm-yyyy)."
-        ></gr-date-picker>
+        <gr-date-picker label="Enter a date" help-text="Please tell us when you are available (format: dd-mm-yyyy).">
+        </gr-date-picker>
       </section>
 
       <section>
         <h3>Invalid Text</h3>
 
-        <gr-date-picker
-          label="Enter a date"
-          help-text="Please tell us when you are available."
-          invalid-text="Enter a date when you are available."
-          invalid
-        ></gr-date-picker>
+        <gr-date-picker label="Enter a date" help-text="Please tell us when you are available."
+          invalid-text="Enter a date when you are available." invalid></gr-date-picker>
       </section>
 
       <section>
@@ -363,12 +429,8 @@
       <section>
         <h3>Invalid Text</h3>
 
-        <gr-select
-          label="Experience"
-          help-text="Please tell us your skill level."
-          invalid-text="Select your skill level"
-          invalid
-        >
+        <gr-select label="Experience" help-text="Please tell us your skill level."
+          invalid-text="Select your skill level" invalid>
           <gr-menu-item value="option-1">Novice</gr-menu-item>
           <gr-menu-item value="option-2">Intermediate</gr-menu-item>
           <gr-menu-item value="option-3">Advanced</gr-menu-item>
@@ -465,23 +527,14 @@
 
         <div style="display: flex; gap: 12px">
           <div>
-            <gr-input
-              type="password"
-              label="Password"
-              help-text="Passwords must be at least 8 characters."
-              invalid-text="Create a password with at least 8 characters."
-            ></gr-input>
+            <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
+              invalid-text="Create a password with at least 8 characters."></gr-input>
             <p>Test</p>
           </div>
 
           <div>
-            <gr-input
-              type="password"
-              label="Password"
-              help-text="Passwords must be at least 8 characters."
-              invalid-text="Create a password with at least 8 characters."
-              invalid
-            ></gr-input>
+            <gr-input type="password" label="Password" help-text="Passwords must be at least 8 characters."
+              invalid-text="Create a password with at least 8 characters." invalid></gr-input>
             <p>Test</p>
           </div>
         </div>
@@ -574,12 +627,8 @@
       <section>
         <h3>Invalid Text</h3>
 
-        <gr-textarea
-          label="Feedback"
-          help-text="Please tell us what you think."
-          invalid-text="Enter what you think"
-          invalid
-        ></gr-textarea>
+        <gr-textarea label="Feedback" help-text="Please tell us what you think." invalid-text="Enter what you think"
+          invalid></gr-textarea>
       </section>
 
       <section>
@@ -664,13 +713,11 @@
       <h2>gr-menu</h2>
       <p>Including gr-menu-item & gr-menu-divider & gr-menu-label</p>
 
-      <gr-menu
-        style="
+      <gr-menu style="
           max-width: 200px;
           border: solid 1px var(--gr-panel-border-color);
           border-radius: var(--gr-border-radius-medium);
-        "
-      >
+        ">
         <gr-menu-label>Timetravel</gr-menu-label>
         <gr-menu-item value="undo" checked>Undo</gr-menu-item>
         <gr-menu-item value="redo">Redo</gr-menu-item>
@@ -854,5 +901,6 @@
         console.log('gr-blur');
       });
     </script>
-  </body>
+</body>
+
 </html>

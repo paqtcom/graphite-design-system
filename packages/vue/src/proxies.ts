@@ -19,6 +19,9 @@ import { defineCustomElement as defineGrRadio } from '@graphiteds/core/component
 import { defineCustomElement as defineGrRadioGroup } from '@graphiteds/core/components/gr-radio-group.js';
 import { defineCustomElement as defineGrSelect } from '@graphiteds/core/components/gr-select.js';
 import { defineCustomElement as defineGrSpinner } from '@graphiteds/core/components/gr-spinner.js';
+import { defineCustomElement as defineGrTab } from '@graphiteds/core/components/gr-tab.js';
+import { defineCustomElement as defineGrTabGroup } from '@graphiteds/core/components/gr-tab-group.js';
+import { defineCustomElement as defineGrTabPanel } from '@graphiteds/core/components/gr-tab-panel.js';
 import { defineCustomElement as defineGrTag } from '@graphiteds/core/components/gr-tag.js';
 import { defineCustomElement as defineGrTextarea } from '@graphiteds/core/components/gr-textarea.js';
 
@@ -203,6 +206,25 @@ export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select',
 
 
 export const GrSpinner = /*@__PURE__*/ defineContainer<JSX.GrSpinner>('gr-spinner', defineGrSpinner);
+
+
+export const GrTab = /*@__PURE__*/ defineContainer<JSX.GrTab>('gr-tab', defineGrTab, [
+  'panel',
+  'active',
+  'disabled'
+]);
+
+
+export const GrTabGroup = /*@__PURE__*/ defineContainer<JSX.GrTabGroup>('gr-tab-group', defineGrTabGroup, [
+  'placement',
+  'tabSize'
+]);
+
+
+export const GrTabPanel = /*@__PURE__*/ defineContainer<JSX.GrTabPanel>('gr-tab-panel', defineGrTabPanel, [
+  'name',
+  'active'
+]);
 
 
 export const GrTag = /*@__PURE__*/ defineContainer<JSX.GrTag>('gr-tag', defineGrTag, [

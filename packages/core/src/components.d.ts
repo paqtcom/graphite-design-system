@@ -525,6 +525,36 @@ export namespace Components {
     }
     interface GrSpinner {
     }
+    interface GrTab {
+        "active": boolean;
+        /**
+          * Set to true to draw the tab in a disabled state.
+         */
+        "disabled": boolean;
+        /**
+          * The name of the tab panel the tab will control. The panel must be located in the same tab group.
+         */
+        "panel": string;
+        /**
+          * Removes focus from the tab.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Sets focus on the tab.
+         */
+        "setFocus": () => Promise<void>;
+    }
+    interface GrTabGroup {
+        "placement": 'top' | 'bottom' | 'start' | 'end';
+        /**
+          * The tab's size.
+         */
+        "tabSize": 'small' | 'medium' | 'large';
+    }
+    interface GrTabPanel {
+        "active": boolean;
+        "name": string;
+    }
     interface GrTag {
         /**
           * Set to true to make the tag clearable.
@@ -735,6 +765,24 @@ declare global {
         prototype: HTMLGrSpinnerElement;
         new (): HTMLGrSpinnerElement;
     };
+    interface HTMLGrTabElement extends Components.GrTab, HTMLStencilElement {
+    }
+    var HTMLGrTabElement: {
+        prototype: HTMLGrTabElement;
+        new (): HTMLGrTabElement;
+    };
+    interface HTMLGrTabGroupElement extends Components.GrTabGroup, HTMLStencilElement {
+    }
+    var HTMLGrTabGroupElement: {
+        prototype: HTMLGrTabGroupElement;
+        new (): HTMLGrTabGroupElement;
+    };
+    interface HTMLGrTabPanelElement extends Components.GrTabPanel, HTMLStencilElement {
+    }
+    var HTMLGrTabPanelElement: {
+        prototype: HTMLGrTabPanelElement;
+        new (): HTMLGrTabPanelElement;
+    };
     interface HTMLGrTagElement extends Components.GrTag, HTMLStencilElement {
     }
     var HTMLGrTagElement: {
@@ -762,6 +810,9 @@ declare global {
         "gr-radio-group": HTMLGrRadioGroupElement;
         "gr-select": HTMLGrSelectElement;
         "gr-spinner": HTMLGrSpinnerElement;
+        "gr-tab": HTMLGrTabElement;
+        "gr-tab-group": HTMLGrTabGroupElement;
+        "gr-tab-panel": HTMLGrTabPanelElement;
         "gr-tag": HTMLGrTagElement;
         "gr-textarea": HTMLGrTextareaElement;
     }
@@ -1302,6 +1353,28 @@ declare namespace LocalJSX {
     }
     interface GrSpinner {
     }
+    interface GrTab {
+        "active"?: boolean;
+        /**
+          * Set to true to draw the tab in a disabled state.
+         */
+        "disabled"?: boolean;
+        /**
+          * The name of the tab panel the tab will control. The panel must be located in the same tab group.
+         */
+        "panel"?: string;
+    }
+    interface GrTabGroup {
+        "placement"?: 'top' | 'bottom' | 'start' | 'end';
+        /**
+          * The tab's size.
+         */
+        "tabSize"?: 'small' | 'medium' | 'large';
+    }
+    interface GrTabPanel {
+        "active"?: boolean;
+        "name"?: string;
+    }
     interface GrTag {
         /**
           * Set to true to make the tag clearable.
@@ -1441,6 +1514,9 @@ declare namespace LocalJSX {
         "gr-radio-group": GrRadioGroup;
         "gr-select": GrSelect;
         "gr-spinner": GrSpinner;
+        "gr-tab": GrTab;
+        "gr-tab-group": GrTabGroup;
+        "gr-tab-panel": GrTabPanel;
         "gr-tag": GrTag;
         "gr-textarea": GrTextarea;
     }
@@ -1463,6 +1539,9 @@ declare module "@stencil/core" {
             "gr-radio-group": LocalJSX.GrRadioGroup & JSXBase.HTMLAttributes<HTMLGrRadioGroupElement>;
             "gr-select": LocalJSX.GrSelect & JSXBase.HTMLAttributes<HTMLGrSelectElement>;
             "gr-spinner": LocalJSX.GrSpinner & JSXBase.HTMLAttributes<HTMLGrSpinnerElement>;
+            "gr-tab": LocalJSX.GrTab & JSXBase.HTMLAttributes<HTMLGrTabElement>;
+            "gr-tab-group": LocalJSX.GrTabGroup & JSXBase.HTMLAttributes<HTMLGrTabGroupElement>;
+            "gr-tab-panel": LocalJSX.GrTabPanel & JSXBase.HTMLAttributes<HTMLGrTabPanelElement>;
             "gr-tag": LocalJSX.GrTag & JSXBase.HTMLAttributes<HTMLGrTagElement>;
             "gr-textarea": LocalJSX.GrTextarea & JSXBase.HTMLAttributes<HTMLGrTextareaElement>;
         }
