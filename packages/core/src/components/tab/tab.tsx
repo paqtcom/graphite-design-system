@@ -29,8 +29,8 @@ export class Tab {
   @Event({ eventName: 'gr-blur' }) grBlur!: EventEmitter<void>;
 
   connectedCallback() {
-    this.handleBlur = this.handleBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.onFocus = this.onFocus.bind(this);
   }
 
   /** Sets focus on the tab. */
