@@ -1360,6 +1360,14 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Emitted when the button loses focus.
+         */
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the button has focus.
+         */
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
         "panel"?: string;

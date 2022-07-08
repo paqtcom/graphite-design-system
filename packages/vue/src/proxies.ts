@@ -211,7 +211,9 @@ export const GrSpinner = /*@__PURE__*/ defineContainer<JSX.GrSpinner>('gr-spinne
 export const GrTab = /*@__PURE__*/ defineContainer<JSX.GrTab>('gr-tab', defineGrTab, [
   'panel',
   'active',
-  'disabled'
+  'disabled',
+  'gr-focus',
+  'gr-blur'
 ]);
 
 

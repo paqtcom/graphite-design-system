@@ -14,6 +14,14 @@
 | `panel`    | `panel`    | The name of the tab panel the tab will control. The panel must be located in the same tab group. | `string`  | `''`    |
 
 
+## Events
+
+| Event      | Description                          | Type                |
+| ---------- | ------------------------------------ | ------------------- |
+| `gr-blur`  | Emitted when the button loses focus. | `CustomEvent<void>` |
+| `gr-focus` | Emitted when the button has focus.   | `CustomEvent<void>` |
+
+
 ## Methods
 
 ### `removeFocus() => Promise<void>`
