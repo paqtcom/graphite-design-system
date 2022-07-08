@@ -46,16 +46,16 @@
       <h3>Tabs bottom</h3>
 
       <h4>Default</h4>
-      <gr-tab-group placement="bottom">
-        <gr-tab panel="tab-1">
-          Tab 1
+      <gr-tab-group>
+        <gr-tab slot="nav" panel="general">
+          Option 1
         </gr-tab>
-        <gr-tab panel="tab-2">
-          Tab 2
+        <gr-tab slot="nav" panel="second">
+          Option 2
         </gr-tab>
-
-        <gr-tab-panel name="tab-1">Tab content 1</gr-tab-panel>
-        <gr-tab-panel name="tab-2">Tab content 2</gr-tab-panel>
+      
+        <gr-tab-panel name="general">General</gr-tab-panel>
+        <gr-tab-panel name="second">Second</gr-tab-panel>
       </gr-tab-group>
     </section>
 

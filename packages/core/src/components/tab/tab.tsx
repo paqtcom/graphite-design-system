@@ -1,4 +1,4 @@
-import { Component, Method, Prop, State, h, Host, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter, Method, State } from '@stencil/core';
 
 @Component({
   tag: 'gr-tab',
@@ -18,6 +18,16 @@ export class Tab {
   /** Set to true to draw the tab in a disabled state. */
   @Prop({ reflect: true }) disabled: boolean = false;
 
+  /**
+   * Emitted when the button has focus.
+   */
+  @Event({ eventName: 'gr-focus' }) grFocus!: EventEmitter<void>;
+
+  /**
+   * Emitted when the button loses focus.
+   */
+  @Event({ eventName: 'gr-blur' }) grBlur!: EventEmitter<void>;
+
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -35,12 +45,14 @@ export class Tab {
     this.el.blur();
   }
 
-  handleBlur() {
+  onBlur() {
     this.hasFocus = false;
+    this.grBlur.emit();
   }
 
-  handleFocus() {
+  onFocus() {
     this.hasFocus = true;
+    this.grFocus.emit();
   }
 
   render() {
@@ -58,8 +70,8 @@ export class Tab {
         aria-disabled={disabled ? 'true' : 'false'}
         aria-selected={active ? 'true' : 'false'}
         tabIndex={disabled || !active ? 0 : null}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
         slot="nav"
       >
         <slot></slot>
