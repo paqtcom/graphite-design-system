@@ -401,7 +401,7 @@
     :host([type='button']),
     :host([type='reset']),
     :host([type='submit']) {
-      -webkit-appearance: none;
+      -webkit-appearance: none !important;
     }
   }
 }
