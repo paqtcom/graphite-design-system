@@ -393,3 +393,15 @@
     left: calc(50% - 0.5em);
   }
 }
+
+// Safari bug workaround
+// --------------------------------------------------
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    :host([type='button']),
+    :host([type='reset']),
+    :host([type='submit']) {
+      -webkit-appearance: none;
+    }
+  }
+}
