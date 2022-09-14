@@ -125,6 +125,7 @@ export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', de
   'min',
   'max',
   'step',
+  'pattern',
   'enterkeyhint',
   'autocapitalize',
   'autocomplete',
