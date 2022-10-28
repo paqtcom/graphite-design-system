@@ -238,6 +238,76 @@ export namespace Components {
          */
         "label": string;
     }
+    interface GrFileUpload {
+        /**
+          * Set the allowed file types
+         */
+        "allowedFileTypes": string;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce": number;
+        /**
+          * Set to true to disable the file upload control.
+         */
+        "disabled": boolean;
+        /**
+          * The file upload's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText": string;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
+          * The file upload's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText": string;
+        /**
+          * The file upload's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
+        /**
+          * Set the allowed upload size
+         */
+        "maxUploadSize": number;
+        /**
+          * Set to true to enable multiple uploads.
+         */
+        "multiple": boolean;
+        /**
+          * The file uploads's name.
+         */
+        "name": string;
+        /**
+          * Set to true to enable upload previews.
+         */
+        "preview": boolean;
+        /**
+          * If `true`, the user cannot modify the files.
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus from the fileUpload.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
+        /**
+          * Sets focus on the fileUpload.
+         */
+        "setFocus": (options?: FocusOptions) => Promise<void>;
+        /**
+          * The file uploads's size.
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * The file upload's value attribute.
+         */
+        "value": string;
+    }
     interface GrInput {
         /**
           * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
@@ -715,6 +785,12 @@ declare global {
         prototype: HTMLGrFieldGroupElement;
         new (): HTMLGrFieldGroupElement;
     };
+    interface HTMLGrFileUploadElement extends Components.GrFileUpload, HTMLStencilElement {
+    }
+    var HTMLGrFileUploadElement: {
+        prototype: HTMLGrFileUploadElement;
+        new (): HTMLGrFileUploadElement;
+    };
     interface HTMLGrInputElement extends Components.GrInput, HTMLStencilElement {
     }
     var HTMLGrInputElement: {
@@ -805,6 +881,7 @@ declare global {
         "gr-date-picker": HTMLGrDatePickerElement;
         "gr-dropdown": HTMLGrDropdownElement;
         "gr-field-group": HTMLGrFieldGroupElement;
+        "gr-file-upload": HTMLGrFileUploadElement;
         "gr-input": HTMLGrInputElement;
         "gr-menu": HTMLGrMenuElement;
         "gr-menu-divider": HTMLGrMenuDividerElement;
@@ -1066,6 +1143,88 @@ declare namespace LocalJSX {
           * The field group label. Recommended for proper accessibility. Alternatively, you can use the label slot.
          */
         "label"?: string;
+    }
+    interface GrFileUpload {
+        /**
+          * Set the allowed file types
+         */
+        "allowedFileTypes"?: string;
+        /**
+          * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
+         */
+        "debounce"?: number;
+        /**
+          * Set to true to disable the file upload control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The file upload's help text. Alternatively, you can use the help-text slot.
+         */
+        "helpText"?: string;
+        /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
+          * The file upload's invalid text. Alternatively, you can use the invalid-text slot.
+         */
+        "invalidText"?: string;
+        /**
+          * The file upload's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
+        /**
+          * Set the allowed upload size
+         */
+        "maxUploadSize"?: number;
+        /**
+          * Set to true to enable multiple uploads.
+         */
+        "multiple"?: boolean;
+        /**
+          * The file uploads's name.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the control's value changes.
+         */
+        "onGr-change"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the clear button is activated.
+         */
+        "onGr-clear"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the control gains focus.
+         */
+        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the control receives input.
+         */
+        "onGr-input"?: (event: CustomEvent<void>) => void;
+        /**
+          * Set to true to enable upload previews.
+         */
+        "preview"?: boolean;
+        /**
+          * If `true`, the user cannot modify the files.
+         */
+        "readonly"?: boolean;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
+        /**
+          * The file uploads's size.
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The file upload's value attribute.
+         */
+        "value"?: string;
     }
     interface GrInput {
         /**
@@ -1521,6 +1680,7 @@ declare namespace LocalJSX {
         "gr-date-picker": GrDatePicker;
         "gr-dropdown": GrDropdown;
         "gr-field-group": GrFieldGroup;
+        "gr-file-upload": GrFileUpload;
         "gr-input": GrInput;
         "gr-menu": GrMenu;
         "gr-menu-divider": GrMenuDivider;
@@ -1546,6 +1706,7 @@ declare module "@stencil/core" {
             "gr-date-picker": LocalJSX.GrDatePicker & JSXBase.HTMLAttributes<HTMLGrDatePickerElement>;
             "gr-dropdown": LocalJSX.GrDropdown & JSXBase.HTMLAttributes<HTMLGrDropdownElement>;
             "gr-field-group": LocalJSX.GrFieldGroup & JSXBase.HTMLAttributes<HTMLGrFieldGroupElement>;
+            "gr-file-upload": LocalJSX.GrFileUpload & JSXBase.HTMLAttributes<HTMLGrFileUploadElement>;
             "gr-input": LocalJSX.GrInput & JSXBase.HTMLAttributes<HTMLGrInputElement>;
             "gr-menu": LocalJSX.GrMenu & JSXBase.HTMLAttributes<HTMLGrMenuElement>;
             "gr-menu-divider": LocalJSX.GrMenuDivider & JSXBase.HTMLAttributes<HTMLGrMenuDividerElement>;
