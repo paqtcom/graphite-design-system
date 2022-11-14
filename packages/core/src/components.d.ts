@@ -683,6 +683,8 @@ export namespace Components {
          */
         "value": string;
     }
+    interface GrToggle {
+    }
 }
 declare global {
     interface HTMLGrButtonElement extends Components.GrButton, HTMLStencilElement {
@@ -799,6 +801,12 @@ declare global {
         prototype: HTMLGrTextareaElement;
         new (): HTMLGrTextareaElement;
     };
+    interface HTMLGrToggleElement extends Components.GrToggle, HTMLStencilElement {
+    }
+    var HTMLGrToggleElement: {
+        prototype: HTMLGrToggleElement;
+        new (): HTMLGrToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "gr-button": HTMLGrButtonElement;
         "gr-checkbox": HTMLGrCheckboxElement;
@@ -819,6 +827,7 @@ declare global {
         "gr-tab-panel": HTMLGrTabPanelElement;
         "gr-tag": HTMLGrTagElement;
         "gr-textarea": HTMLGrTextareaElement;
+        "gr-toggle": HTMLGrToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -1515,6 +1524,8 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface GrToggle {
+    }
     interface IntrinsicElements {
         "gr-button": GrButton;
         "gr-checkbox": GrCheckbox;
@@ -1535,6 +1546,7 @@ declare namespace LocalJSX {
         "gr-tab-panel": GrTabPanel;
         "gr-tag": GrTag;
         "gr-textarea": GrTextarea;
+        "gr-toggle": GrToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -1560,6 +1572,7 @@ declare module "@stencil/core" {
             "gr-tab-panel": LocalJSX.GrTabPanel & JSXBase.HTMLAttributes<HTMLGrTabPanelElement>;
             "gr-tag": LocalJSX.GrTag & JSXBase.HTMLAttributes<HTMLGrTagElement>;
             "gr-textarea": LocalJSX.GrTextarea & JSXBase.HTMLAttributes<HTMLGrTextareaElement>;
+            "gr-toggle": LocalJSX.GrToggle & JSXBase.HTMLAttributes<HTMLGrToggleElement>;
         }
     }
 }
