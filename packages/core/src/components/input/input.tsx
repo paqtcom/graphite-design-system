@@ -102,6 +102,11 @@ export class Input {
   @Prop() step?: string;
 
   /**
+   * Specifies a regular expression that the input value is checked against.
+   */
+  @Prop() pattern?: string;
+
+  /**
    * A hint to the browser for which enter key to display.
    * Possible values: `"enter"`, `"done"`, `"go"`, `"next"`,
    * `"previous"`, `"search"`, and `"send"`.
@@ -337,6 +342,7 @@ export class Input {
             min={this.min}
             max={this.max}
             step={this.step}
+            pattern={this.pattern}
             value={this.value}
             maxlength={this.maxlength}
             autoCapitalize={this.autocapitalize}

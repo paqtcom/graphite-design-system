@@ -30,10 +30,10 @@
 
       <h4>Default</h4>
       <gr-tab-group>
-        <gr-tab panel="tab-1">
+        <gr-tab slot="nav" panel="tab-1">
           Tab 1
         </gr-tab>
-        <gr-tab panel="tab-2">
+        <gr-tab slot="nav" panel="tab-2">
           Tab 2
         </gr-tab>
 
@@ -446,7 +446,7 @@
 
         <gr-input size="small" placeholder="Small"></gr-input>
         <br />
-        <gr-input size="medium" placeholder="Medium"></gr-input>
+        <gr-input size="medium" pattern="[A-Za-z]{3}" placeholder="Medium"></gr-input>
         <br />
         <gr-input size="large" placeholder="Large"></gr-input>
       </section>

@@ -308,6 +308,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Specifies a regular expression that the input value is checked against.
+         */
+        "pattern"?: string;
+        /**
           * Set to true to draw a pill-style input with rounded edges.
          */
         "pill": boolean;
@@ -1152,6 +1156,10 @@ declare namespace LocalJSX {
           * Emitted when the control receives input.
          */
         "onGr-input"?: (event: CustomEvent<void>) => void;
+        /**
+          * Specifies a regular expression that the input value is checked against.
+         */
+        "pattern"?: string;
         /**
           * Set to true to draw a pill-style input with rounded edges.
          */
