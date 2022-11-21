@@ -13,7 +13,7 @@
     "publish": "lerna publish"
   },
   "devDependencies": {
-    "lerna": "^4.0.0",
+    "lerna": "^5.5.1",
     "lerna-changelog": "^2.2.0"
   },
   "version": "0.0.2"
