@@ -243,6 +243,8 @@ export namespace Components {
           * Set the allowed file types
          */
         "allowedFileTypes": string;
+        "blockUpload": boolean;
+        "calculateFileWrapperHeight": () => Promise<void>;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1149,6 +1151,7 @@ declare namespace LocalJSX {
           * Set the allowed file types
          */
         "allowedFileTypes"?: string;
+        "blockUpload"?: boolean;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
@@ -1197,6 +1200,10 @@ declare namespace LocalJSX {
           * Emitted when the clear button is activated.
          */
         "onGr-clear"?: (event: CustomEvent<void>) => void;
+        /**
+          * Emitted when the control loses focus.
+         */
+        "onGr-error"?: (event: CustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */

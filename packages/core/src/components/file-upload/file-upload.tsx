@@ -18,11 +18,13 @@ let id = 0;
 })
 export class FileUpload {
   private fileUpload: HTMLElement;
+  private dragAndDropWrapper: HTMLElement;
+  private dropZone: HTMLElement;
+
   private inputId = `input-${++id}`;
   private labelId = `input-label-${id}`;
   private helpTextId = `input-help-text-${id}`;
   private invalidTextId = `input-invalid-text-${id}`;
-  private previewWindow: HTMLElement;
   private inheritedAttributes: { [k: string]: any } = {};
 
   @Element() el!: HTMLGrFileUploadElement;
@@ -74,11 +76,15 @@ export class FileUpload {
 
   /** Set to true to enable upload previews. */
   @Prop() preview = false;
+
+  @Prop({ reflect: true }) blockUpload = false;
   
   /**
    * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
    */
   @Prop() debounce = 0;
+
+  showFiles = false
   
   @Watch('debounce')
   protected debounceChanged() {
@@ -107,14 +113,25 @@ export class FileUpload {
   /** Emitted when the control loses focus. */
   @Event({ eventName: 'gr-blur' }) grBlur: EventEmitter<void>;
 
+  /** Emitted when the control loses focus. */
+  @Event({ eventName: 'gr-error' }) grError: EventEmitter<void>;
+  
+  windowDragEnterEvent = () => {
+    this.showDropZone()
+  }
+
   connectedCallback() {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleLabelClick = this.handleLabelClick.bind(this);
     this.handleSlotChange = this.handleSlotChange.bind(this);
+    this.handleAllowDrag = this.handleAllowDrag.bind(this);
+    this.handleDragLeave = this.handleDragLeave.bind(this);
+    this.handleDrop = this.handleDrop.bind(this);
 
     this.el.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
+    this.el.shadowRoot.addEventListener('dragenter', this.windowDragEnterEvent);
 
     this.debounceChanged();
   }
@@ -140,6 +157,20 @@ export class FileUpload {
     this.fileUpload.blur();
   }
 
+  @Method()
+  async calculateFileWrapperHeight() {
+    await customElements.whenDefined('gr-file-upload');
+
+    const flowWrapper = document.getElementById('flow-wrapper')
+    if (!flowWrapper) {
+      return
+    }
+    const dragAndDropWrapper = this.dragAndDropWrapper
+    const wrapperHeight = dragAndDropWrapper.clientHeight
+    const extraPadding = 80
+    flowWrapper!.style.paddingBottom = `${wrapperHeight + extraPadding}px`
+  }
+
   validFileType(file) {
     return this.allowedFileTypes.includes(file.type);
   }
@@ -154,37 +185,34 @@ export class FileUpload {
     }
   }
 
+  showDropZone() {
+    this.dropZone.style.display = 'flex'
+  }
 
-  handleChange(files) {
-    while(this.previewWindow.firstChild) {
-      this.previewWindow.removeChild(this.previewWindow.firstChild);
-    }
-    
-    if (files.length === 0) {
-      const para = document.createElement('p');
-      para.textContent = 'No files currently selected for upload';
-      this.previewWindow.appendChild(para);
-    } else {
-      const list = document.createElement('ol');
-      this.previewWindow.appendChild(list);
 
-      for (const file of files) {
-        const listItem = document.createElement('li');
-        const para = document.createElement('p');
-        if (this.validFileType(file)) {
-          para.textContent = `${file.name} - ${this.returnFileSize(file.size)}.`;
-          const image = document.createElement('img');
-          image.src = URL.createObjectURL(file);
+  hideDropZone() {
+    this.dropZone.style.display = 'none'
+  }
 
-          listItem.appendChild(image);
-          listItem.appendChild(para);
-        }
-
-        list.appendChild(listItem);
+  handleChange($event: Event) {
+    const files = []
+    const target = $event.target as HTMLInputElement
+    if (target && target.files) {
+      for (let i = 0; i < target.files.length; i++) {
+        files.push(target.files[i])
       }
-
-      this.grChange.emit();
     }
+
+    console.log(target.files);
+    
+    this.grChange.emit();
+    this.showFiles = true
+    this.calculateFileWrapperHeight()
+    this.grChange.emit();
+  }
+
+  toggleFileVisibility() {
+    this.showFiles = !this.showFiles
   }
 
   handleBlur() {
@@ -207,10 +235,57 @@ export class FileUpload {
     this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
   }
 
+  handleAllowDrag($event: DragEvent) {
+    $event.preventDefault()
+
+    if ($event.dataTransfer) {
+      $event.dataTransfer.dropEffect = 'copy'
+    }
+  }
+
+  handleDrop($event: DragEvent) {
+    $event.preventDefault()
+
+    const files = []
+    if (this.blockUpload) {
+      this.preview = true
+      this.calculateFileWrapperHeight()
+      this.hideDropZone()
+      return
+    }
+    if ($event.dataTransfer && $event.dataTransfer.items) {
+      for (let i = 0; i < $event.dataTransfer.items.length; i++) {
+        if ($event.dataTransfer.items[i].kind === 'file') {
+          const file = $event.dataTransfer.items[i].getAsFile()
+
+          files.push(file)
+        }
+      }
+    } else if ($event.dataTransfer && $event.dataTransfer.files) {
+      for (let i = 0; i < $event.dataTransfer.files.length; i++) {
+        files.push($event.dataTransfer.files[i])
+      }
+    }
+    if (!this.multiple && files.length > 1) {
+      this.grError.emit()
+      this.hideDropZone()
+      return
+    }
+    this.grChange.emit();
+    this.showFiles = true
+    this.calculateFileWrapperHeight()
+    this.hideDropZone()
+  }
+
+  handleDragLeave = () => {
+    this.hideDropZone()
+  }
+
   render() {
     renderHiddenInput(this.el, this.name, '', this.disabled);
 
     return (
+      <div ref={dragAndDropWrapper => (this.dragAndDropWrapper = dragAndDropWrapper)}>
       <FormControl
         inputId={this.inputId}
         label={this.label}
@@ -246,21 +321,35 @@ export class FileUpload {
             aria-describedby={this.invalid ? this.invalidTextId : this.helpTextId}
             aria-invalid={this.invalid ? 'true' : 'false'}
             aria-required={this.requiredIndicator ? 'true' : 'false'}
-            onChange={($event: any) => this.handleChange($event.target.files)}
+            onChange={this.handleChange}
             class="input-control"
             {...this.inheritedAttributes}
           />
 
-          {this.preview && (
+          {/* {this.preview && (
             <div 
               ref={previewWindow => (this.previewWindow = previewWindow)}
               class="input-preview"
             >
               <span>No files currently selected for upload</span>
             </div>
-          )}
+          )} */}
         </div>
       </FormControl>
+
+      <div
+        ref={dropZone => (this.dropZone = dropZone)}
+        class="dropzone"
+        onDragEnter={this.handleAllowDrag}
+        onDragOver={this.handleAllowDrag}
+        onDragLeave={this.handleDragLeave}
+        onDrop={this.handleDrop}
+      >
+        <div class="mt-4 pointer-events-none">
+          Drop your file(s)
+        </div>
+      </div>
+      </div>
     )
   }
 }
