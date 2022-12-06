@@ -684,6 +684,54 @@ export namespace Components {
         "value": string;
     }
 }
+export interface GrButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrButtonElement;
+}
+export interface GrCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrCheckboxElement;
+}
+export interface GrDatePickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrDatePickerElement;
+}
+export interface GrDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrDropdownElement;
+}
+export interface GrInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrInputElement;
+}
+export interface GrMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrMenuElement;
+}
+export interface GrRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrRadioElement;
+}
+export interface GrRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrRadioGroupElement;
+}
+export interface GrSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrSelectElement;
+}
+export interface GrTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrTabElement;
+}
+export interface GrTagCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrTagElement;
+}
+export interface GrTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrTextareaElement;
+}
 declare global {
     interface HTMLGrButtonElement extends Components.GrButton, HTMLStencilElement {
     }
@@ -850,11 +898,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrButtonCustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrButtonCustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style button with rounded edges.
          */
@@ -908,15 +956,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrCheckboxCustomEvent<void>) => void;
         /**
           * Emitted when the control's checked state changes.
          */
-        "onGr-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: GrCheckboxCustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrCheckboxCustomEvent<void>) => void;
         /**
           * The checkbox's value attribute.
          */
@@ -970,23 +1018,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the date picker input loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrDatePickerCustomEvent<void>) => void;
         /**
           * Emitted when a date is selected.
          */
-        "onGr-change"?: (event: CustomEvent<GrDatePickerChangeEvent>) => void;
+        "onGr-change"?: (event: GrDatePickerCustomEvent<GrDatePickerChangeEvent>) => void;
         /**
           * Emitted when the panel closes.
          */
-        "onGr-close"?: (event: CustomEvent<void>) => void;
+        "onGr-close"?: (event: GrDatePickerCustomEvent<void>) => void;
         /**
           * Emitted when the date picker input gains focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrDatePickerCustomEvent<void>) => void;
         /**
           * Emitted when the panel opens.
          */
-        "onGr-open"?: (event: CustomEvent<void>) => void;
+        "onGr-open"?: (event: GrDatePickerCustomEvent<void>) => void;
         /**
           * The date picker input's placeholder text.
          */
@@ -1020,19 +1068,19 @@ declare namespace LocalJSX {
         /**
           * Emitted after the dropdown closes and all transitions are complete.
          */
-        "onGr-after-hide"?: (event: CustomEvent<void>) => void;
+        "onGr-after-hide"?: (event: GrDropdownCustomEvent<void>) => void;
         /**
           * Emitted after the dropdown opens and all transitions are complete.
          */
-        "onGr-after-show"?: (event: CustomEvent<void>) => void;
+        "onGr-after-show"?: (event: GrDropdownCustomEvent<void>) => void;
         /**
           * Emitted when the dropdown closes. Calling `event.preventDefault()` will prevent it from being closed.
          */
-        "onGr-hide"?: (event: CustomEvent<void>) => void;
+        "onGr-hide"?: (event: GrDropdownCustomEvent<void>) => void;
         /**
           * Emitted when the dropdown opens. Calling `event.preventDefault()` will prevent it from being opened.
          */
-        "onGr-show"?: (event: CustomEvent<void>) => void;
+        "onGr-show"?: (event: GrDropdownCustomEvent<void>) => void;
         /**
           * Indicates whether or not the dropdown is open. You can use this in lieu of the show/hide methods.
          */
@@ -1139,23 +1187,23 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrInputCustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onGr-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: GrInputCustomEvent<void>) => void;
         /**
           * Emitted when the clear button is activated.
          */
-        "onGr-clear"?: (event: CustomEvent<void>) => void;
+        "onGr-clear"?: (event: GrInputCustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrInputCustomEvent<void>) => void;
         /**
           * Emitted when the control receives input.
          */
-        "onGr-input"?: (event: CustomEvent<void>) => void;
+        "onGr-input"?: (event: GrInputCustomEvent<void>) => void;
         /**
           * Specifies a regular expression that the input value is checked against.
          */
@@ -1205,7 +1253,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when a menu item is selected.
          */
-        "onGr-select"?: (event: CustomEvent<{ item: HTMLGrMenuItemElement }>) => void;
+        "onGr-select"?: (event: GrMenuCustomEvent<{ item: HTMLGrMenuItemElement }>) => void;
     }
     interface GrMenuDivider {
     }
@@ -1237,11 +1285,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<any>) => void;
+        "onGr-blur"?: (event: GrRadioCustomEvent<any>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onGr-focus"?: (event: CustomEvent<any>) => void;
+        "onGr-focus"?: (event: GrRadioCustomEvent<any>) => void;
         /**
           * The radio's value attribute.
          */
@@ -1275,7 +1323,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the value has changed.
          */
-        "onGr-change"?: (event: CustomEvent<RadioGroupChangeEventDetail>) => void;
+        "onGr-change"?: (event: GrRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
         /**
           * Set to true to display a required indicator, adds an asterisk to label
          */
@@ -1329,15 +1377,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the control loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrSelectCustomEvent<void>) => void;
         /**
           * Emitted when the control's value changes.
          */
-        "onGr-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: GrSelectCustomEvent<void>) => void;
         /**
           * Emitted when the control gains focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrSelectCustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style select with rounded edges.
          */
@@ -1370,11 +1418,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the button loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrTabCustomEvent<void>) => void;
         /**
           * Emitted when the button has focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrTabCustomEvent<void>) => void;
         /**
           * The name of the tab panel the tab will control. The panel must be located in the same tab group.
          */
@@ -1399,7 +1447,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the clear button is activated.
          */
-        "onGr-clear"?: (event: CustomEvent<void>) => void;
+        "onGr-clear"?: (event: GrTagCustomEvent<void>) => void;
         /**
           * Set to true to draw a pill-style tag with rounded edges.
          */
@@ -1469,19 +1517,19 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea loses focus.
          */
-        "onGr-blur"?: (event: CustomEvent<void>) => void;
+        "onGr-blur"?: (event: GrTextareaCustomEvent<void>) => void;
         /**
           * Emitted when the textarea's value changes.
          */
-        "onGr-change"?: (event: CustomEvent<void>) => void;
+        "onGr-change"?: (event: GrTextareaCustomEvent<void>) => void;
         /**
           * Emitted when the textarea has focus.
          */
-        "onGr-focus"?: (event: CustomEvent<void>) => void;
+        "onGr-focus"?: (event: GrTextareaCustomEvent<void>) => void;
         /**
           * Emitted when the textarea receives input.
          */
-        "onGr-input"?: (event: CustomEvent<void>) => void;
+        "onGr-input"?: (event: GrTextareaCustomEvent<void>) => void;
         /**
           * The textarea's placeholder text.
          */

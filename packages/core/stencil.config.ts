@@ -5,6 +5,9 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'core',
+  extras: {
+    experimentalImportInjection: true,
+  },
   bundles: [
     { components: ['gr-button', 'gr-spinner'] },
     { components: ['gr-checkbox', 'gr-field-group'] },
