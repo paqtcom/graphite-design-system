@@ -1,6 +1,6 @@
 {
   "name": "@graphiteds/react",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "React specific wrapper for the components of the Graphite Design System",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@graphiteds/core": "^1.9.5",
+    "@graphiteds/core": "^1.9.6",
     "tslib": "*"
   },
   "peerDependencies": {
