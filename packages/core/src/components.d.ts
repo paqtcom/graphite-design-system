@@ -406,6 +406,10 @@ export namespace Components {
     }
     interface GrModal {
         /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
+         */
+        "cancelButtonVariant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
+        /**
           * Sets focus on the trigger.
          */
         "focusOnTrigger": () => Promise<void>;
@@ -421,6 +425,10 @@ export namespace Components {
           * Shows the modal dialog
          */
         "show": () => Promise<void>;
+        /**
+          * Set to true to disable the select control.
+         */
+        "showCancelButton": boolean;
     }
     interface GrRadio {
         /**
@@ -1304,6 +1312,10 @@ declare namespace LocalJSX {
     }
     interface GrModal {
         /**
+          * The different variants. The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
+         */
+        "cancelButtonVariant"?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain';
+        /**
           * Emitted after the modal closes and all transitions are complete.
          */
         "onGr-after-hide"?: (event: GrModalCustomEvent<void>) => void;
@@ -1323,6 +1335,10 @@ declare namespace LocalJSX {
           * Indicates whether or not the modal is open. You can use this in lieu of the show/hide methods.
          */
         "open"?: boolean;
+        /**
+          * Set to true to disable the select control.
+         */
+        "showCancelButton"?: boolean;
     }
     interface GrRadio {
         /**

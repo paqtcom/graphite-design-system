@@ -18,6 +18,15 @@ export class Modal {
   /** Indicates whether or not the modal is open. You can use this in lieu of the show/hide methods. */
   @Prop({ mutable: true, reflect: true }) open = false;
 
+  /** Set to true to disable the select control. */
+  @Prop() showCancelButton = false;
+
+/**
+   * The different variants.
+   * The options are: `"default"`, `"primary"`, `"secondary"`, `"danger"`, and `"plain"`.
+   */
+  @Prop({ reflect: true }) cancelButtonVariant?: 'default' | 'primary' | 'secondary' | 'danger' | 'plain' = 'default';
+
   /** Emitted when the modal opens. Calling `event.preventDefault()` will prevent it from being opened. */
   @Event({ eventName: 'gr-show' }) grShow: EventEmitter<void>;
 
@@ -212,7 +221,15 @@ export class Modal {
             <slot></slot>
           </section>
 
-          <slot name="footer" />
+          <div class="modal-footer">
+            <slot name="footer" />
+
+            {this.showCancelButton && (
+              <gr-button variant={ this.cancelButtonVariant } onClick={this.handleTriggerClick}>
+                Cancel
+              </gr-button>
+            )}
+          </div>
         </div>
       </Host>
     );

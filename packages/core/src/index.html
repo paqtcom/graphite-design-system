@@ -22,7 +22,10 @@
 </head>
 
 <body>
-      <gr-modal>
+      <gr-modal
+        show-cancel-button
+        cancel-button-variant="primary"
+      >
         <gr-button slot="trigger" variant="primary">Modal</gr-button>
 
         <span slot="header" style="margin-bottom: 16px;">
@@ -36,10 +39,6 @@
         <div slot="footer">
           <gr-button variant='primary'>
             Confirm
-          </gr-button>
-          
-          <gr-button>
-            Cancel
           </gr-button>
         </div>
       </gr-modal> 
