@@ -404,6 +404,24 @@ export namespace Components {
     }
     interface GrMenuLabel {
     }
+    interface GrModal {
+        /**
+          * Sets focus on the trigger.
+         */
+        "focusOnTrigger": () => Promise<void>;
+        /**
+          * Hides the modal dialog
+         */
+        "hide": () => Promise<void>;
+        /**
+          * Indicates whether or not the modal is open. You can use this in lieu of the show/hide methods.
+         */
+        "open": boolean;
+        /**
+          * Shows the modal dialog
+         */
+        "show": () => Promise<void>;
+    }
     interface GrRadio {
         /**
           * Set to true to draw the radio in a checked state.
@@ -708,6 +726,10 @@ export interface GrMenuCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGrMenuElement;
 }
+export interface GrModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrModalElement;
+}
 export interface GrRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGrRadioElement;
@@ -793,6 +815,12 @@ declare global {
         prototype: HTMLGrMenuLabelElement;
         new (): HTMLGrMenuLabelElement;
     };
+    interface HTMLGrModalElement extends Components.GrModal, HTMLStencilElement {
+    }
+    var HTMLGrModalElement: {
+        prototype: HTMLGrModalElement;
+        new (): HTMLGrModalElement;
+    };
     interface HTMLGrRadioElement extends Components.GrRadio, HTMLStencilElement {
     }
     var HTMLGrRadioElement: {
@@ -858,6 +886,7 @@ declare global {
         "gr-menu-divider": HTMLGrMenuDividerElement;
         "gr-menu-item": HTMLGrMenuItemElement;
         "gr-menu-label": HTMLGrMenuLabelElement;
+        "gr-modal": HTMLGrModalElement;
         "gr-radio": HTMLGrRadioElement;
         "gr-radio-group": HTMLGrRadioGroupElement;
         "gr-select": HTMLGrSelectElement;
@@ -1273,6 +1302,28 @@ declare namespace LocalJSX {
     }
     interface GrMenuLabel {
     }
+    interface GrModal {
+        /**
+          * Emitted after the modal closes and all transitions are complete.
+         */
+        "onGr-after-hide"?: (event: GrModalCustomEvent<void>) => void;
+        /**
+          * Emitted after the modal opens and all transitions are complete.
+         */
+        "onGr-after-show"?: (event: GrModalCustomEvent<void>) => void;
+        /**
+          * Emitted when the modal closes. Calling `event.preventDefault()` will prevent it from being closed.
+         */
+        "onGr-hide"?: (event: GrModalCustomEvent<void>) => void;
+        /**
+          * Emitted when the modal opens. Calling `event.preventDefault()` will prevent it from being opened.
+         */
+        "onGr-show"?: (event: GrModalCustomEvent<void>) => void;
+        /**
+          * Indicates whether or not the modal is open. You can use this in lieu of the show/hide methods.
+         */
+        "open"?: boolean;
+    }
     interface GrRadio {
         /**
           * Set to true to draw the radio in a checked state.
@@ -1574,6 +1625,7 @@ declare namespace LocalJSX {
         "gr-menu-divider": GrMenuDivider;
         "gr-menu-item": GrMenuItem;
         "gr-menu-label": GrMenuLabel;
+        "gr-modal": GrModal;
         "gr-radio": GrRadio;
         "gr-radio-group": GrRadioGroup;
         "gr-select": GrSelect;
@@ -1599,6 +1651,7 @@ declare module "@stencil/core" {
             "gr-menu-divider": LocalJSX.GrMenuDivider & JSXBase.HTMLAttributes<HTMLGrMenuDividerElement>;
             "gr-menu-item": LocalJSX.GrMenuItem & JSXBase.HTMLAttributes<HTMLGrMenuItemElement>;
             "gr-menu-label": LocalJSX.GrMenuLabel & JSXBase.HTMLAttributes<HTMLGrMenuLabelElement>;
+            "gr-modal": LocalJSX.GrModal & JSXBase.HTMLAttributes<HTMLGrModalElement>;
             "gr-radio": LocalJSX.GrRadio & JSXBase.HTMLAttributes<HTMLGrRadioElement>;
             "gr-radio-group": LocalJSX.GrRadioGroup & JSXBase.HTMLAttributes<HTMLGrRadioGroupElement>;
             "gr-select": LocalJSX.GrSelect & JSXBase.HTMLAttributes<HTMLGrSelectElement>;

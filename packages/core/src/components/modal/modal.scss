@@ -1,0 +1,93 @@
+// Modal
+// --------------------------------------------------
+
+:host {
+  /**
+   * @prop --modal-background-color: Background color of the modal modal
+   *
+   * @prop --modal-border-radius: Border radius of the dropdown modal
+   * @prop --modal-border-color: Border color of the button
+   *
+   * @prop --modal-box-shadow: Box shadow of the dropdown modal
+   *
+   * @prop --transition: Transition of the dropdown
+   */
+  --modal-background-color: var(--gr-color-white);
+
+  --modal-border-radius: var(--gr-border-radius-medium);
+  --modal-border-color: var(--gr-modal-border-color);
+
+  --modal-box-shadow: var(--gr-shadow-large);
+
+  --padding-top: var(--gr-spacing-x-large);
+  --padding-start: var(--gr-spacing-x-large);
+  --padding-end: var(--gr-spacing-x-large);
+  --padding-bottom: var(--gr-spacing-x-large);
+
+  --transition: 150ms opacity, 150ms transform;
+
+  display: inline-block;
+  position: relative;
+
+  box-sizing: border-box;
+
+  & *,
+  & *:before,
+  & *:after {
+    box-sizing: inherit;
+  }
+}
+
+.modal-trigger {
+  display: block;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  pointer-events: none;
+  transform: scale(0.9);
+  opacity: 0;
+  z-index: 10;
+
+  &.modal-visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: all;
+  }
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 15vh;
+  left: 25%;
+  width: 50%;
+  font-family: var(--gr-font-family);
+  font-size: var(--gr-font-size-medium);
+  font-weight: var(--gr-font-weight-normal);
+  background-color: var(--modal-background-color);
+  border: solid 1px var(--modal-border-color);
+  border-radius: var(--modal-border-radius);
+  box-shadow: var(--modal-box-shadow);
+  padding-top: var(--padding-top);
+  padding-left: var(--padding-start);
+  padding-right: var(--padding-end);
+  padding-bottom: var(--padding-bottom);
+  transform: scale(0.9);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+
+  &.modal-visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: all;
+  }
+}
