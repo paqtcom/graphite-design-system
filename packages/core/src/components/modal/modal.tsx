@@ -170,9 +170,7 @@ export class Modal {
     const slot = this.trigger.querySelector('slot') as HTMLSlotElement;
     const assignedElements = slot.assignedElements({ flatten: true }) as HTMLElement[];
     const accessibleTrigger = assignedElements.map(getNearestTabbableElement)[0];
-    
-    console.log(accessibleTrigger);
-    
+        
     if (accessibleTrigger) {
       accessibleTrigger.setAttribute('aria-haspopup', 'true');
       accessibleTrigger.setAttribute('aria-expanded', this.open ? 'true' : 'false');

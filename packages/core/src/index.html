@@ -22,6 +22,7 @@
 </head>
 
 <body>
+  <ts-stock-price />
       <gr-modal
         show-cancel-button
         cancel-button-variant="primary"
@@ -37,7 +38,13 @@
         </div>
 
         <div slot="footer">
-          <gr-button variant='primary'>
+          <gr-button variant='primary' id="clickExample">
+            Confirm
+          </gr-button>
+          <gr-button variant='primary' id="clickExample">
+            Confirm
+          </gr-button>
+          <gr-button variant='primary' id="clickExample">
             Confirm
           </gr-button>
         </div>
@@ -464,7 +471,7 @@
       <section>
         <h3>Sizes</h3>
 
-        <gr-input size="small" placeholder="Small"></gr-input>
+        <gr-input size="small" placeholder="Small" autocomplete></gr-input>
         <br />
         <gr-input size="medium" pattern="[A-Za-z]{3}" placeholder="Medium"></gr-input>
         <br />
@@ -874,7 +881,7 @@
       <section>
         <h3>Disabled</h3>
 
-        <gr-button id="clickExample" disabled> Default </gr-button>
+        <!-- <gr-button id="clickExample" disabled> Default </gr-button> -->
 
         <gr-button variant="primary" disabled> Primary </gr-button>
 
@@ -888,6 +895,10 @@
 
     <script>
       let clickExampleElement = document.getElementById('clickExample');
+
+      function test() {
+        console.log('click');
+      }
 
       clickExampleElement.addEventListener('click', () => {
         console.log('clicked');

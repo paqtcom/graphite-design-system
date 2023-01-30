@@ -709,6 +709,8 @@ export namespace Components {
          */
         "value": string;
     }
+    interface TsStockPrice {
+    }
 }
 export interface GrButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -883,6 +885,12 @@ declare global {
         prototype: HTMLGrTextareaElement;
         new (): HTMLGrTextareaElement;
     };
+    interface HTMLTsStockPriceElement extends Components.TsStockPrice, HTMLStencilElement {
+    }
+    var HTMLTsStockPriceElement: {
+        prototype: HTMLTsStockPriceElement;
+        new (): HTMLTsStockPriceElement;
+    };
     interface HTMLElementTagNameMap {
         "gr-button": HTMLGrButtonElement;
         "gr-checkbox": HTMLGrCheckboxElement;
@@ -904,6 +912,7 @@ declare global {
         "gr-tab-panel": HTMLGrTabPanelElement;
         "gr-tag": HTMLGrTagElement;
         "gr-textarea": HTMLGrTextareaElement;
+        "ts-stock-price": HTMLTsStockPriceElement;
     }
 }
 declare namespace LocalJSX {
@@ -1630,6 +1639,8 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface TsStockPrice {
+    }
     interface IntrinsicElements {
         "gr-button": GrButton;
         "gr-checkbox": GrCheckbox;
@@ -1651,6 +1662,7 @@ declare namespace LocalJSX {
         "gr-tab-panel": GrTabPanel;
         "gr-tag": GrTag;
         "gr-textarea": GrTextarea;
+        "ts-stock-price": TsStockPrice;
     }
 }
 export { LocalJSX as JSX };
@@ -1677,6 +1689,7 @@ declare module "@stencil/core" {
             "gr-tab-panel": LocalJSX.GrTabPanel & JSXBase.HTMLAttributes<HTMLGrTabPanelElement>;
             "gr-tag": LocalJSX.GrTag & JSXBase.HTMLAttributes<HTMLGrTagElement>;
             "gr-textarea": LocalJSX.GrTextarea & JSXBase.HTMLAttributes<HTMLGrTextareaElement>;
+            "ts-stock-price": LocalJSX.TsStockPrice & JSXBase.HTMLAttributes<HTMLTsStockPriceElement>;
         }
     }
 }
