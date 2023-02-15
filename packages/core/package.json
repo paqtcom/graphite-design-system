@@ -34,21 +34,22 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/react-output-target": "^0.3.1",
-    "@stencil/sass": "^1.5.2",
-    "@stencil/vue-output-target": "^0.6.0",
-    "@types/jest": "^27.4.1",
-    "@types/puppeteer": "^5.4.5",
+    "@stencil/react-output-target": "^0.4.0",
+    "@stencil/sass": "^2.0.3",
+    "@stencil/vue-output-target": "^0.7.0",
+    "@types/jest": "^29.4.0",
+    "@types/puppeteer": "^7.0.4",
     "@types/resize-observer-browser": "^0.1.7",
-    "clean-css-cli": "^5.6.0",
+    "clean-css-cli": "^5.6.2",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
     "puppeteer": "^13.5.2",
-    "sass": "^1.50.0"
+    "sass": "^1.58.1"
   },
   "dependencies": {
     "@duetds/date-picker": "^1.4.0",
-    "@popperjs/core": "^2.11.5",
-    "@stencil/core": "^2.20.0"
+    "@popperjs/core": "^2.11.6",
+    "@stencil/core": "^3.0.1",
+    "@types/node": "^18.13.0"
   }
 }

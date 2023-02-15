@@ -151,12 +151,12 @@ export class FileUpload {
   }
 
   generateThumbnail(file) {
-      let fileSrc = URL.createObjectURL(file);
-      setTimeout(() => {
-        URL.revokeObjectURL(fileSrc);
-      }, 1000);
-      return fileSrc;
-    }
+    let fileSrc = URL.createObjectURL(file);
+    setTimeout(() => {
+      URL.revokeObjectURL(fileSrc);
+    }, 1000);
+    return fileSrc;
+  }
 
   makeName(name) {
     return (
@@ -234,7 +234,7 @@ export class FileUpload {
     this.hasLabelSlot = hasSlot(this.el, 'label');
   }
 
-  handleDragOver($event: DragEvent) {
+  handleDragOver() {
 
     this.isDragging = true;
   }
