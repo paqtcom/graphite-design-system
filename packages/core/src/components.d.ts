@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
 import { DaysOfWeek } from "./enums";
 import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
+export { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
+export { DaysOfWeek } from "./enums";
+export { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
     interface GrButton {
         /**
