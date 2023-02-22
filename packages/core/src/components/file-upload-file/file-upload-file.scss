@@ -1,0 +1,50 @@
+:host {
+  display: inline-block;
+}
+
+.files-content {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  margin-block-start: 7px;
+
+  &-icon {
+    width: 14px;
+    height: 14px;
+    margin-inline: 0px;
+    margin-block: 3px;
+  }
+
+  &-file {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 8px;
+    box-sizing: border-box;
+
+    &-name {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #ddd;
+    }
+
+    &-remove {
+      text-decoration: none;
+      font-weight: 600;
+      color: #ddd;
+      margin-block-start: 5px;
+      font-size: 12px;
+      line-height: 20px;
+      background: transparent;
+      border: none;
+      display: inline-block;
+      padding: 0px;
+      width: fit-content;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+    }
+  }
+}

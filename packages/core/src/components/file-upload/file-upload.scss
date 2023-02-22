@@ -1,39 +1,8 @@
-@import '../../themes/graphite.globals';
+/**
+  @prop --fw-file-upload-border: border color for file upload
+**/
 
 :host {
-  /**
-   * @prop --font-size: Font size of the input
-   * @prop --font-weight: Font weight of the input
-   *
-   * @prop --background-color: Background color of the input
-   * @prop --background-color-hover: Background color of the input on hover
-   * @prop --background-color-focus: Background color of the input on focus
-   * @prop --background-color-invalid: Background color of the input when invalid
-   * @prop --background-color-invalid-hover: Background color of the input when invalid on focus
-   *
-   * @prop --border-radius: Border radius of the input
-   * @prop --border-color: Border color of the input
-   * @prop --border-color-hover: Border color of the input on hover
-   * @prop --border-color-focus: Border color of the input on focus
-   * @prop --border-color-invalid: Border color of the input when invalid
-   * @prop --border-color-invalid-hover: Border color of the input when invalid on focus
-   *
-   * @prop --color: Text color of the input
-   *
-   * @prop --placeholder-color: Text color of the placeholder
-   *
-   * @prop --min-height: Minimum height of the input
-   *
-   * @prop --icon-color: Color of the icons (start & end slots, clearable & password toggle)
-   * @prop --icon-color-hover: Color of the icons (clearable & password toggle) on hover
-   *
-   * @prop --padding-start: Left padding of the input (will be right padding when we support right-to-left direction)
-   * @prop --padding-end: Right padding of the input (will be left padding when we support right-to-left direction)
-   *
-   * @prop --focus-ring: The focus ring style to use when the input receives focus, a `box-shadow` property.
-   *
-   * @prop --text-transform: Text transform of the input
-   */
   --font-size: var(--gr-form-element-font-size-medium);
   --font-weight: var(--gr-font-weight-normal);
 
@@ -49,22 +18,12 @@
   --border-color-focus: var(--gr-color-primary);
   --border-color-invalid: var(--gr-color-danger);
   --border-color-invalid-hover: var(--gr-color-danger-shade);
+  --border-width: 2px;
+  --border-style: dashed;
 
   --color: var(--gr-color-dark-tint);
 
-  --placeholder-color: var(--gr-color-medium-tint);
-
-  --min-height: var(--gr-form-element-height-medium);
-
-  --icon-color: var(--gr-color-medium);
-  --icon-color-hover: var(--gr-color-dark);
-
-  --padding-start: var(--gr-spacing-medium);
-  --padding-end: var(--gr-spacing-medium);
-
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
-
-  --text-transform: none;
 
   display: block;
 
@@ -77,93 +36,100 @@
   }
 }
 
-.input-preview {
-  flex: 1 1 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: start;
-  position: relative;
+.file-upload-container {
+  display: flex;
   width: 100%;
-  height: 100%;
-  min-height: var(--min-height);
-  font-family: var(--gr-font-family);
-  font-size: var(--font-size);
-  font-weight: var(--font-weight);
-  line-height: var(--gr-line-height-normal);
-  letter-spacing: var(--gr-letter-spacing-normal);
-  vertical-align: middle;
-  overflow: hidden;
-  transition: 150ms color, 150ms border, 150ms box-shadow;
-  cursor: text;
+  min-height: 153px;
+  border: var(--border-style) var(--border-width) var(--border-color);
+  background-color: var(--background-color);
+  justify-content: center;
 
-  &.input-disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    outline: none;
+  .dropzone,
+  .progress,
+  .files {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
   }
-}
 
-.input-control {
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
-  height: 1px;
-}
+  .dropzone {
+    align-items: center;
+    cursor: pointer;
 
-.input-preview ol {
-  padding-left: 0;
-  width: 100%;
-}
+    .dropzone-center {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
 
-.input-preview li {
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  border: 1px solid var(--gr-color-light-shade);
-  padding-left: var(--padding-start);
-  margin-bottom: 5px;
-}
+      .drop-clickable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-inline: 0;
+        margin-block: auto;
+        transform: translateY(-5px);
 
-.input-preview img {
-  height: 64px;
-  order: 1;
-}
+        .drop-clickable-text {
+          line-height: 20px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #000;
+          margin-block-start: 9px;
+          margin-block-end: 3px;
+        }
 
-.dropzone-container {
-  padding: 4rem;
-  background-color: #f7fafc;
-  border: 1px solid #e2e8f0;
-}
+        .drop-clickable-hint {
+          line-height: 20px;
+          font-size: 14px;
+          color: red;
+        }
+      }
 
-.dropzone-container-drag {
-  background-color: red;
-  border-color: var(--border-color-hover);
-}
+      .dropzone-hint {
+        line-height: 20px;
+        font-size: 10px;
+        color: #ddd;
+        text-align: center;
+      }
 
-.preview-container {
-  display: flex;
-  margin-top: 2rem;
-}
+      .dropzone-error {
+        line-height: 12px;
+        font-size: 10px;
+        text-align: center;
+        padding-inline: 0px;
+        padding-block: 5px;
+        box-sizing: border-box;
 
-.preview-card {
-  display: flex;
-  border: 1px solid #a2a2a2;
-  padding: 5px;
-  margin-left: 5px;
-}
+        span {
+          display: block;
+          color: red;
+        }
+      }
+    }
+  }
 
-.preview-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  border: 1px solid #a2a2a2;
-  background-color: #a2a2a2;
-}
+  .progress,
+  .files {
+    padding: 28px;
+    box-sizing: border-box;
+    justify-content: center;
 
-.file-label {
-  font-size: 20px;
-  display: block;
-  cursor: pointer;
+    &-center {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-title {
+      line-height: 20px;
+      font-size: 12px;
+      color: #ddd;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+  }
 }

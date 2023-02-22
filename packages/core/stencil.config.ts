@@ -71,7 +71,7 @@ export const config: Config = {
         },
       ],
       includeGlobalScripts: false,
-      autoDefineCustomElements: true,
+      customElementsExportBehavior: 'auto-define-custom-elements',
     },
     {
       type: 'dist-hydrate-script',

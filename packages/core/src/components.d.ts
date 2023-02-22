@@ -243,74 +243,110 @@ export namespace Components {
     }
     interface GrFileUpload {
         /**
-          * Set the allowed file types
+          * accept - comma separated string. tells us what file formats file upload should accept.
          */
-        "allowedFileTypes": string;
-        "blockUpload": boolean;
+        "accept": string;
+        /**
+          * acceptError - Error message to display when format is invalid.
+         */
+        "acceptError": any;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce": number;
         /**
-          * Set to true to disable the file upload control.
+          * The fileUpload's description attribute.
+         */
+        "description": string;
+        /**
+          * Set to true to disable the input control.
          */
         "disabled": boolean;
         /**
-          * The file upload's help text. Alternatively, you can use the help-text slot.
+          * Max files allowed to upload.
+         */
+        "filesLimit": number;
+        /**
+          * get all locally available files in the component
+          * @returns FileList of all locally available files in the component
+         */
+        "getFiles": () => Promise<FileList>;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText": string;
         /**
-          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
-         */
-        "invalid": boolean;
-        /**
-          * The file upload's invalid text. Alternatively, you can use the invalid-text slot.
+          * The fileupload's invalid text. Alternatively, you can use the invalid-text slot.
          */
         "invalidText": string;
         /**
-          * The file upload's label. Alternatively, you can use the label slot.
+          * maxFileSize - maximum file size the file uploader must accept.
          */
-        "label": string;
+        "maxFileSize": number;
         /**
-          * Set the allowed upload size
+          * maxFileSizeError - Error message to display when file size exceeds limit
          */
-        "maxUploadSize": number;
+        "maxFileSizeError": any;
         /**
-          * Set to true to enable multiple uploads.
+          * maxFilesLimitError - Error message when going beyond files limit.
+         */
+        "maxFilesLimitError": any;
+        /**
+          * multiple - upload multiple files.
          */
         "multiple": boolean;
         /**
-          * The file uploads's name.
+          * The fileUpload's name attribute.
          */
         "name": string;
-        /**
-          * Set to true to enable upload previews.
-         */
-        "preview": boolean;
-        /**
-          * If `true`, the user cannot modify the files.
-         */
-        "readonly": boolean;
         /**
           * Removes focus from the fileUpload.
          */
         "removeFocus": () => Promise<void>;
         /**
-          * Set to true to display a required indicator, adds an asterisk to label
+          * reset file uploader
          */
-        "requiredIndicator": boolean;
+        "reset": () => Promise<void>;
         /**
           * Sets focus on the fileUpload.
          */
         "setFocus": (options?: FocusOptions) => Promise<void>;
         /**
-          * The file uploads's size.
+          * The fileUpload's text attribute.
          */
-        "size": 'small' | 'medium' | 'large';
+        "text": string;
         /**
-          * The file upload's value attribute.
+          * The input's value attribute.
          */
         "value": string;
+    }
+    interface GrFileUploadFile {
+        /**
+          * file Id
+         */
+        "fileId": number;
+        /**
+          * file name
+         */
+        "name": string;
+    }
+    interface GrFileUploadProgress {
+        /**
+          * error text for the file upload
+         */
+        "error": string;
+        /**
+          * file Id
+         */
+        "fileId": number;
+        /**
+          * file name
+         */
+        "fileName": string;
+        /**
+          * file upload progress
+         */
+        "progress": number;
     }
     interface GrInput {
         /**
@@ -778,6 +814,14 @@ export interface GrFileUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGrFileUploadElement;
 }
+export interface GrFileUploadFileCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrFileUploadFileElement;
+}
+export interface GrFileUploadProgressCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGrFileUploadProgressElement;
+}
 export interface GrInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGrInputElement;
@@ -846,6 +890,18 @@ declare global {
     var HTMLGrFileUploadElement: {
         prototype: HTMLGrFileUploadElement;
         new (): HTMLGrFileUploadElement;
+    };
+    interface HTMLGrFileUploadFileElement extends Components.GrFileUploadFile, HTMLStencilElement {
+    }
+    var HTMLGrFileUploadFileElement: {
+        prototype: HTMLGrFileUploadFileElement;
+        new (): HTMLGrFileUploadFileElement;
+    };
+    interface HTMLGrFileUploadProgressElement extends Components.GrFileUploadProgress, HTMLStencilElement {
+    }
+    var HTMLGrFileUploadProgressElement: {
+        prototype: HTMLGrFileUploadProgressElement;
+        new (): HTMLGrFileUploadProgressElement;
     };
     interface HTMLGrInputElement extends Components.GrInput, HTMLStencilElement {
     }
@@ -938,6 +994,8 @@ declare global {
         "gr-dropdown": HTMLGrDropdownElement;
         "gr-field-group": HTMLGrFieldGroupElement;
         "gr-file-upload": HTMLGrFileUploadElement;
+        "gr-file-upload-file": HTMLGrFileUploadFileElement;
+        "gr-file-upload-progress": HTMLGrFileUploadProgressElement;
         "gr-input": HTMLGrInputElement;
         "gr-menu": HTMLGrMenuElement;
         "gr-menu-divider": HTMLGrMenuDividerElement;
@@ -1202,46 +1260,61 @@ declare namespace LocalJSX {
     }
     interface GrFileUpload {
         /**
-          * Set the allowed file types
+          * accept - comma separated string. tells us what file formats file upload should accept.
          */
-        "allowedFileTypes"?: string;
-        "blockUpload"?: boolean;
+        "accept"?: string;
+        /**
+          * acceptError - Error message to display when format is invalid.
+         */
+        "acceptError"?: any;
         /**
           * Set the amount of time, in milliseconds, to wait to trigger the `gr-change` event after each keystroke. This also impacts form bindings such as `ngModel` or `v-model`.
          */
         "debounce"?: number;
         /**
-          * Set to true to disable the file upload control.
+          * The fileUpload's description attribute.
+         */
+        "description"?: string;
+        /**
+          * Set to true to disable the input control.
          */
         "disabled"?: boolean;
         /**
-          * The file upload's help text. Alternatively, you can use the help-text slot.
+          * Max files allowed to upload.
+         */
+        "filesLimit"?: number;
+        /**
+          * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText"?: string;
         /**
-          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
-         */
-        "invalid"?: boolean;
-        /**
-          * The file upload's invalid text. Alternatively, you can use the invalid-text slot.
+          * The fileupload's invalid text. Alternatively, you can use the invalid-text slot.
          */
         "invalidText"?: string;
         /**
-          * The file upload's label. Alternatively, you can use the label slot.
+          * maxFileSize - maximum file size the file uploader must accept.
          */
-        "label"?: string;
+        "maxFileSize"?: number;
         /**
-          * Set the allowed upload size
+          * maxFileSizeError - Error message to display when file size exceeds limit
          */
-        "maxUploadSize"?: number;
+        "maxFileSizeError"?: any;
         /**
-          * Set to true to enable multiple uploads.
+          * maxFilesLimitError - Error message when going beyond files limit.
+         */
+        "maxFilesLimitError"?: any;
+        /**
+          * multiple - upload multiple files.
          */
         "multiple"?: boolean;
         /**
-          * The file uploads's name.
+          * The fileUpload's name attribute.
          */
         "name"?: string;
+        /**
+          * stageChanged - event that gets emitted when component stage changes
+         */
+        "onFwStageChanged"?: (event: GrFileUploadCustomEvent<any>) => void;
         /**
           * Emitted when the control loses focus.
          */
@@ -1251,14 +1324,6 @@ declare namespace LocalJSX {
          */
         "onGr-change"?: (event: GrFileUploadCustomEvent<void>) => void;
         /**
-          * Emitted when the clear button is activated.
-         */
-        "onGr-clear"?: (event: GrFileUploadCustomEvent<void>) => void;
-        /**
-          * Emitted when the control loses focus.
-         */
-        "onGr-error"?: (event: GrFileUploadCustomEvent<void>) => void;
-        /**
           * Emitted when the control gains focus.
          */
         "onGr-focus"?: (event: GrFileUploadCustomEvent<void>) => void;
@@ -1267,25 +1332,49 @@ declare namespace LocalJSX {
          */
         "onGr-input"?: (event: GrFileUploadCustomEvent<void>) => void;
         /**
-          * Set to true to enable upload previews.
+          * The fileUpload's text attribute.
          */
-        "preview"?: boolean;
+        "text"?: string;
         /**
-          * If `true`, the user cannot modify the files.
-         */
-        "readonly"?: boolean;
-        /**
-          * Set to true to display a required indicator, adds an asterisk to label
-         */
-        "requiredIndicator"?: boolean;
-        /**
-          * The file uploads's size.
-         */
-        "size"?: 'small' | 'medium' | 'large';
-        /**
-          * The file upload's value attribute.
+          * The input's value attribute.
          */
         "value"?: string;
+    }
+    interface GrFileUploadFile {
+        /**
+          * file Id
+         */
+        "fileId"?: number;
+        /**
+          * file name
+         */
+        "name"?: string;
+        /**
+          * removeFile - event that gets triggered on file removal
+         */
+        "onFwRemoveFile"?: (event: GrFileUploadFileCustomEvent<any>) => void;
+    }
+    interface GrFileUploadProgress {
+        /**
+          * error text for the file upload
+         */
+        "error"?: string;
+        /**
+          * file Id
+         */
+        "fileId": number;
+        /**
+          * file name
+         */
+        "fileName"?: string;
+        /**
+          * retryUpload event to emit in case of a retry
+         */
+        "onFwRetryUpload"?: (event: GrFileUploadProgressCustomEvent<any>) => void;
+        /**
+          * file upload progress
+         */
+        "progress"?: number;
     }
     interface GrInput {
         /**
@@ -1742,6 +1831,8 @@ declare namespace LocalJSX {
         "gr-dropdown": GrDropdown;
         "gr-field-group": GrFieldGroup;
         "gr-file-upload": GrFileUpload;
+        "gr-file-upload-file": GrFileUploadFile;
+        "gr-file-upload-progress": GrFileUploadProgress;
         "gr-input": GrInput;
         "gr-menu": GrMenu;
         "gr-menu-divider": GrMenuDivider;
@@ -1768,6 +1859,8 @@ declare module "@stencil/core" {
             "gr-dropdown": LocalJSX.GrDropdown & JSXBase.HTMLAttributes<HTMLGrDropdownElement>;
             "gr-field-group": LocalJSX.GrFieldGroup & JSXBase.HTMLAttributes<HTMLGrFieldGroupElement>;
             "gr-file-upload": LocalJSX.GrFileUpload & JSXBase.HTMLAttributes<HTMLGrFileUploadElement>;
+            "gr-file-upload-file": LocalJSX.GrFileUploadFile & JSXBase.HTMLAttributes<HTMLGrFileUploadFileElement>;
+            "gr-file-upload-progress": LocalJSX.GrFileUploadProgress & JSXBase.HTMLAttributes<HTMLGrFileUploadProgressElement>;
             "gr-input": LocalJSX.GrInput & JSXBase.HTMLAttributes<HTMLGrInputElement>;
             "gr-menu": LocalJSX.GrMenu & JSXBase.HTMLAttributes<HTMLGrMenuElement>;
             "gr-menu-divider": LocalJSX.GrMenuDivider & JSXBase.HTMLAttributes<HTMLGrMenuDividerElement>;

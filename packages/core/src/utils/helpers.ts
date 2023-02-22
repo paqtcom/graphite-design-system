@@ -26,6 +26,32 @@ export const inheritAttributes = (el: HTMLElement, attributes: string[] = []) =>
   return attributeObject;
 };
 
+export const renderHiddenField = (
+  container: HTMLElement,
+  name: string,
+  value: string | null,
+  files: FileList | null = null
+) => {
+  let input: HTMLInputElement = container.querySelector('input.hidden-input');
+  if (!input) {
+    input = container.ownerDocument.createElement('input');
+    if (files) {
+      input.style.display = 'none';
+      input.type = 'file';
+    } else {
+      input.type = 'hidden';
+    }
+    input.classList.add('hidden-input');
+    container.appendChild(input);
+  }
+  input.name = name;
+  if (files) {
+    input.files = files;
+  } else {
+    input.value = value || '';
+  }
+};
+
 /**
  * This method is used to add a hidden input to a host element that contains
  * a Shadow DOM. It does not add the input inside of the Shadow root which
