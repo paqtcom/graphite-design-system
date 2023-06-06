@@ -19,7 +19,7 @@ export class Dropdown {
   private isVisible = false;
   private panel: HTMLElement;
   private positioner: HTMLElement;
-  private popoverElement: Popover;
+  private popoverClass: Popover;
   private trigger: HTMLElement;
 
   @Element() el: HTMLGrDropdownElement;
@@ -86,7 +86,7 @@ export class Dropdown {
   @Watch('placement')
   @Watch('skidding')
   handlePopoverOptionsChange() {
-    this.popoverElement.setOptions({
+    this.popoverClass.setOptions({
       strategy: this.hoist ? 'fixed' : 'absolute',
       placement: this.placement,
       distance: this.distance,
@@ -110,7 +110,7 @@ export class Dropdown {
   }
 
   componentDidLoad() {
-    this.popoverElement = new Popover(this.trigger, this.positioner, {
+    this.popoverClass = new Popover(this.trigger, this.positioner, {
       strategy: this.hoist ? 'fixed' : 'absolute',
       placement: this.placement,
       distance: this.distance,
@@ -133,7 +133,7 @@ export class Dropdown {
 
   disconnectedCallback() {
     this.hide();
-    this.popoverElement.destroy();
+    this.popoverClass.destroy();
   }
 
   /** Shows the dropdown panel */
@@ -157,7 +157,7 @@ export class Dropdown {
 
     this.isVisible = true;
     this.open = true;
-    this.popoverElement.show();
+    this.popoverClass.show();
   }
 
   /** Hides the dropdown panel */
@@ -181,7 +181,7 @@ export class Dropdown {
 
     this.isVisible = false;
     this.open = false;
-    this.popoverElement.hide();
+    this.popoverClass.hide();
   }
 
   /** Sets focus on the trigger. */
