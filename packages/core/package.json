@@ -50,5 +50,6 @@
     "@duetds/date-picker": "^1.4.0",
     "@popperjs/core": "^2.11.5",
     "@stencil/core": "^2.20.0"
-  }
+  },
+  "gitHead": "97bceca9cb75be5221d9b884955971732475eeec"
 }

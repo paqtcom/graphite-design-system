@@ -52,5 +52,6 @@
   },
   "sideEffects": [
     "css/*.css"
-  ]
+  ],
+  "gitHead": "97bceca9cb75be5221d9b884955971732475eeec"
 }
