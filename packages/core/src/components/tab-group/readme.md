@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property    | Attribute   | Description     | Type                                    | Default    |
-| ----------- | ----------- | --------------- | --------------------------------------- | ---------- |
-| `placement` | `placement` |                 | `"bottom" \| "end" \| "start" \| "top"` | `'top'`    |
-| `tabSize`   | `tab-size`  | The tab's size. | `"large" \| "medium" \| "small"`        | `'medium'` |
+| Property          | Attribute          | Description                                        | Type                                    | Default    |
+| ----------------- | ------------------ | -------------------------------------------------- | --------------------------------------- | ---------- |
+| `placement`       | `placement`        |                                                    | `"bottom" \| "end" \| "start" \| "top"` | `'top'`    |
+| `routeNavigation` | `route-navigation` | Set to true to draw the button in a loading state. | `boolean`                               | `false`    |
+| `tabSize`         | `tab-size`         | The tab's size.                                    | `"large" \| "medium" \| "small"`        | `'medium'` |
 
 
 ## Shadow Parts
