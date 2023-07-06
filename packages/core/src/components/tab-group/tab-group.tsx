@@ -24,7 +24,7 @@ export class TabGroup {
   @Prop({ reflect: true }) tabSize: 'small' | 'medium' | 'large' = 'medium';
 
   /**
-   * Set to true to draw the button in a loading state.
+   * Set to use a popstate eventlistner, to use route navigation.
    */
   @Prop({ reflect: true }) routeNavigation = false;
 

@@ -551,7 +551,7 @@ export namespace Components {
     interface GrTabGroup {
         "placement": 'top' | 'bottom' | 'start' | 'end';
         /**
-          * Set to true to draw the button in a loading state.
+          * Set to use a popstate eventlistner, to use route navigation.
          */
         "routeNavigation": boolean;
         /**
@@ -1435,7 +1435,7 @@ declare namespace LocalJSX {
     interface GrTabGroup {
         "placement"?: 'top' | 'bottom' | 'start' | 'end';
         /**
-          * Set to true to draw the button in a loading state.
+          * Set to use a popstate eventlistner, to use route navigation.
          */
         "routeNavigation"?: boolean;
         /**
