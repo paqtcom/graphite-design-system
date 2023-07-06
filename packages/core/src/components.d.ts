@@ -551,6 +551,10 @@ export namespace Components {
     interface GrTabGroup {
         "placement": 'top' | 'bottom' | 'start' | 'end';
         /**
+          * Set to use a popstate eventlistner, to use route navigation.
+         */
+        "routeNavigation": boolean;
+        /**
           * The tab's size.
          */
         "tabSize": 'small' | 'medium' | 'large';
@@ -1430,6 +1434,10 @@ declare namespace LocalJSX {
     }
     interface GrTabGroup {
         "placement"?: 'top' | 'bottom' | 'start' | 'end';
+        /**
+          * Set to use a popstate eventlistner, to use route navigation.
+         */
+        "routeNavigation"?: boolean;
         /**
           * The tab's size.
          */

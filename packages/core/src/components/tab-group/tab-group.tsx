@@ -23,6 +23,11 @@ export class TabGroup {
   */
   @Prop({ reflect: true }) tabSize: 'small' | 'medium' | 'large' = 'medium';
 
+  /**
+   * Set to use a popstate eventlistner, to use route navigation.
+   */
+  @Prop({ reflect: true }) routeNavigation = false;
+
   connectedCallback() {
     this.handleClick = this.handleClick.bind(this);
     this.handleTabsPanelsChange = this.handleTabsPanelsChange.bind(this);
@@ -38,6 +43,13 @@ export class TabGroup {
         setTimeout(() => this.setAriaLabels());
       }
     });
+
+
+    if (this.routeNavigation === true) {
+      window.addEventListener('popstate', () => {
+        this.handleTabsPanelsChange();
+      });
+    }
   }
 
   componentDidLoad() {
