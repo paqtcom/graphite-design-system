@@ -154,4 +154,4 @@ const determineLanguage = (): string | undefined => {
   return extractLanguageSubtag(browserLang);
 };
 
-export const localization = translations[determineLanguage()];
+export const localization = translations[determineLanguage()] ?? translations['en'];
