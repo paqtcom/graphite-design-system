@@ -1,6 +1,10 @@
 import { DuetLocalizedText } from '@duetds/date-picker/dist/types/components/duet-date-picker/date-localization';
 
-const translations: { [lang: string]: DuetLocalizedText & { helpText: string } } = {
+export interface localization extends DuetLocalizedText {
+  helpText: string;
+}
+
+const translations: { [lang: string]: localization } = {
   en: {
     buttonLabel: 'Choose date',
     placeholder: '',
@@ -154,4 +158,5 @@ const determineLanguage = (): string | undefined => {
   return extractLanguageSubtag(browserLang);
 };
 
-export const localization = translations[determineLanguage()] ?? translations['en'];
+// Default to english if browser language is not supported
+export const browserLocalization = translations[determineLanguage()] ?? translations['en'];

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
 import { DaysOfWeek } from "./enums";
+import { localization } from "./components/date-picker/date-localization";
 import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
     interface GrButton {
@@ -142,6 +143,10 @@ export namespace Components {
           * The date picker's label. Alternatively, you can use the label slot.
          */
         "label": string;
+        /**
+          * Specify date picker's localization. Can be used if localization is not supported internally. If not specified, defaulted to use the browser's localization and if not supported, defaulted to english.
+         */
+        "localization": localization;
         /**
           * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
          */
@@ -1007,6 +1012,10 @@ declare namespace LocalJSX {
           * The date picker's label. Alternatively, you can use the label slot.
          */
         "label"?: string;
+        /**
+          * Specify date picker's localization. Can be used if localization is not supported internally. If not specified, defaulted to use the browser's localization and if not supported, defaulted to english.
+         */
+        "localization"?: localization;
         /**
           * Maximum date allowed to be picked. Must be in IS0-8601 format: YYYY-MM-DD. This setting can be used alone or together with the min property.
          */

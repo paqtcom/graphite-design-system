@@ -1,7 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter, Element, State, Watch, Method } from '@stencil/core';
 import { DuetDatePicker } from '@duetds/date-picker/custom-element';
 import { DaysOfWeek } from '../../enums';
-import { localization } from './date-localization';
+import { browserLocalization, localization } from './date-localization';
 import dateAdapter from './date-adapter';
 import { DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection } from '../../interface';
 import { DuetDatePickerChangeEvent } from '@duetds/date-picker/dist/types/components/duet-date-picker/duet-date-picker';
@@ -97,6 +97,13 @@ export class DatePicker {
 
   /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
   @Prop({ reflect: true }) invalid = false;
+
+  /**
+   * Specify date picker's localization.
+   * Can be used if localization is not supported internally.
+   * If not specified, defaulted to use the browser's localization and if not supported, defaulted to english.
+   */
+  @Prop() localization: localization = browserLocalization;
 
   @Watch('helpText')
   @Watch('invalidText')
@@ -214,7 +221,7 @@ export class DatePicker {
   render() {
     renderHiddenInput(this.el, this.name, this.value, this.disabled);
 
-    const helpText = this.helpText ? this.helpText : localization.helpText;
+    const helpText = this.helpText ? this.helpText : this.localization.helpText;
 
     return (
       <FormControl
@@ -242,7 +249,7 @@ export class DatePicker {
           min={this.min}
           max={this.max}
           firstDayOfWeek={this.firstDayOfWeek}
-          localization={{ ...localization, placeholder: this.placeholder }}
+          localization={{ ...this.localization, placeholder: this.placeholder }}
           dateAdapter={dateAdapter}
           isDateDisabled={this.isDateDisabled}
           onDuetChange={this.handleDuetChange}
