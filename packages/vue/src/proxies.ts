@@ -74,6 +74,7 @@ export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-
   'helpText',
   'invalidText',
   'invalid',
+  'localization',
   'gr-change',
   'gr-focus',
   'gr-blur',
