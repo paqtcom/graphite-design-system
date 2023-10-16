@@ -8,9 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
 import { DaysOfWeek } from "./enums";
 import { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
-export { AutocompleteTypes, DateDisabledPredicate, GrDatePickerChangeEvent, GrDatePickerDirection, TextFieldTypes } from "./interface";
-export { DaysOfWeek } from "./enums";
-export { RadioGroupChangeEventDetail } from "./components/radio-group/radio-group-interface";
 export namespace Components {
     interface GrButton {
         /**
@@ -276,9 +273,17 @@ export namespace Components {
          */
         "helpText": string;
         /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid": boolean;
+        /**
           * The fileupload's invalid text. Alternatively, you can use the invalid-text slot.
          */
         "invalidText": string;
+        /**
+          * The file upload's label. Alternatively, you can use the label slot.
+         */
+        "label": string;
         /**
           * maxFileSize - maximum file size the file uploader must accept.
          */
@@ -303,6 +308,10 @@ export namespace Components {
           * Removes focus from the fileUpload.
          */
         "removeFocus": () => Promise<void>;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator": boolean;
         /**
           * reset file uploader
          */
@@ -1288,9 +1297,17 @@ declare namespace LocalJSX {
          */
         "helpText"?: string;
         /**
+          * Set to true to indicate this field is invalid. Will display the invalid text instead of the help text
+         */
+        "invalid"?: boolean;
+        /**
           * The fileupload's invalid text. Alternatively, you can use the invalid-text slot.
          */
         "invalidText"?: string;
+        /**
+          * The file upload's label. Alternatively, you can use the label slot.
+         */
+        "label"?: string;
         /**
           * maxFileSize - maximum file size the file uploader must accept.
          */
@@ -1331,6 +1348,10 @@ declare namespace LocalJSX {
           * Emitted when the control receives input.
          */
         "onGr-input"?: (event: GrFileUploadCustomEvent<void>) => void;
+        /**
+          * Set to true to display a required indicator, adds an asterisk to label
+         */
+        "requiredIndicator"?: boolean;
         /**
           * The fileUpload's text attribute.
          */

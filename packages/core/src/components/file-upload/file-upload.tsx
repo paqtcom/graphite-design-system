@@ -40,6 +40,12 @@ export class FileUpload {
    /** The fileUpload's description attribute. */
   @Prop({ mutable: true, reflect: true }) description: string = '';
 
+  /** The file upload's label. Alternatively, you can use the label slot. */
+  @Prop() label = '';
+
+  /** Set to true to display a required indicator, adds an asterisk to label */
+  @Prop() requiredIndicator = false;
+
   /** The input's help text. Alternatively, you can use the help-text slot. */
   @Prop() helpText = ''
 
@@ -76,6 +82,9 @@ export class FileUpload {
   // @i18n({ keyName: 'fileUploader.maxFilesLimitError' })
   @Prop({ mutable: true })
   maxFilesLimitError;
+
+  /** Set to true to indicate this field is invalid. Will display the invalid text instead of the help text */
+  @Prop({ reflect: true }) invalid = false;
 
   /** The fileupload's invalid text. Alternatively, you can use the invalid-text slot. */
   @Prop() invalidText = '';
@@ -554,18 +563,35 @@ export class FileUpload {
     renderHiddenInput(this.el, this.name, this.value, this.disabled);
 
     return (
-      <div class='file-upload-container'>
-        <input
-          type='file'
-          name={this.name}
-          hidden
-          {...multipleFiles}
-          style={{ display: 'none' }}
-          onChange={(ev) => this.fileHandler(ev)}
-          ref={(el) => (this.fileInputElement = el)}
-        ></input>
-        {this.renderFileUpload()}
-      </div>
+      <FormControl
+        inputId={this.inputId}
+        label={this.label}
+        labelId={this.labelId}
+        hasLabelSlot={this.hasLabelSlot}
+        helpTextId={this.helpTextId}
+        helpText={this.helpText}
+        hasHelpTextSlot={this.hasHelpTextSlot}
+        invalidTextId={this.invalidTextId}
+        invalidText={this.invalidText}
+        invalid={this.invalid}
+        size="medium"
+        hasInvalidTextSlot={this.hasInvalidTextSlot}
+        requiredIndicator={this.requiredIndicator}
+      >
+        <div class='file-upload-container'>
+          <input
+            type='file'
+            name={this.name}
+            hidden
+            {...multipleFiles}
+            style={{ display: 'none' }}
+            onChange={(ev) => this.fileHandler(ev)}
+            ref={(el) => (this.fileInputElement = el)}
+          />
+
+          {this.renderFileUpload()}
+        </div>
+      </FormControl>
     );
   }
 }
