@@ -70,6 +70,10 @@ export namespace Components {
     }
     interface GrCheckbox {
         /**
+          * The checkbox's alignment.
+         */
+        "alignment": 'top' | 'center' | 'bottom';
+        /**
           * Set to true to draw the checkbox in a checked state.
          */
         "checked": boolean;
@@ -410,6 +414,10 @@ export namespace Components {
     interface GrMenuLabel {
     }
     interface GrRadio {
+        /**
+          * The radio's alignment.
+         */
+        "alignment": 'top' | 'center' | 'bottom';
         /**
           * Set to true to draw the radio in a checked state.
          */
@@ -939,6 +947,10 @@ declare namespace LocalJSX {
     }
     interface GrCheckbox {
         /**
+          * The checkbox's alignment.
+         */
+        "alignment"?: 'top' | 'center' | 'bottom';
+        /**
           * Set to true to draw the checkbox in a checked state.
          */
         "checked"?: boolean;
@@ -1287,6 +1299,10 @@ declare namespace LocalJSX {
     interface GrMenuLabel {
     }
     interface GrRadio {
+        /**
+          * The radio's alignment.
+         */
+        "alignment"?: 'top' | 'center' | 'bottom';
         /**
           * Set to true to draw the radio in a checked state.
          */

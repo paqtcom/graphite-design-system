@@ -31,6 +31,9 @@ export class Radio {
   /** Set to true to draw the radio in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
 
+  /** The radio's alignment. */
+  @Prop({ reflect: true }) alignment: 'top' | 'center' | 'bottom' = 'center';
+
   /**
    * The tabindex of the radio button.
    * @internal
@@ -133,6 +136,7 @@ export class Radio {
             'radio-checked': this.checked,
             'radio-disabled': this.disabled,
             'radio-focused': this.hasFocus,
+            [`radio-${this.alignment}`]: true,
           }}
           htmlFor={this.inputId}
         >

@@ -64,9 +64,22 @@
   pointer-events: none;
 }
 
+// Alignment modifiers
+// --------------------------------------------------
+.radio-top {
+  align-items: flex-start;
+}
+
+.radio-center {
+  align-items: center;
+}
+
+.radio-bottom {
+  align-items: flex-end;
+}
+
 .radio {
   display: inline-flex;
-  align-items: center;
   font-family: var(--gr-font-family);
   font-size: var(--gr-form-element-font-size-medium);
   font-weight: var(--gr-font-weight-normal);
@@ -150,6 +163,14 @@
   line-height: var(--gr-line-height-normal);
   margin-left: 0.5em;
   user-select: none;
+}
+
+.radio-top .radio-label {
+  margin-top: -0.45rem;
+}
+
+.radio-bottom .radio-label {
+  margin-bottom: -0.3rem;
 }
 
 :host(:focus) {

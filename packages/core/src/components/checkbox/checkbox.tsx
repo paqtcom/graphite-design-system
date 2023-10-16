@@ -53,6 +53,9 @@ export class Checkbox {
   /** Set to true to indicate this field is invalid. Will display the invalid text. */
   @Prop({ reflect: true }) invalid = false;
 
+  /** The checkbox's alignment. */
+  @Prop({ reflect: true }) alignment: 'top' | 'center' | 'bottom' = 'center';
+
   /** Emitted when the control loses focus. */
   @Event({ eventName: 'gr-blur' }) grBlur: EventEmitter<void>;
 
@@ -160,6 +163,7 @@ export class Checkbox {
             'checkbox-disabled': this.disabled,
             'checkbox-focused': this.hasFocus,
             'checkbox-indeterminate': this.indeterminate,
+            [`checkbox-${this.alignment}`]: true,
           }}
           htmlFor={this.inputId}
           onMouseDown={this.handleMouseDown}

@@ -64,9 +64,22 @@
   pointer-events: none;
 }
 
+// Alignment modifiers
+// --------------------------------------------------
+.checkbox-top {
+  align-items: flex-start;
+}
+
+.checkbox-center {
+  align-items: center;
+}
+
+.checkbox-bottom {
+  align-items: flex-end;
+}
+
 .checkbox {
   display: inline-flex;
-  align-items: center;
   font-family: var(--gr-font-family);
   font-size: var(--gr-form-element-font-size-medium);
   font-weight: var(--gr-font-weight-normal);
@@ -170,6 +183,14 @@
   line-height: var(--gr-line-height-normal);
   margin-left: 0.5em;
   user-select: none;
+}
+
+.checkbox-top .checkbox-label {
+  margin-top: -0.45rem;
+}
+
+.checkbox-bottom .checkbox-label {
+  margin-bottom: -0.3rem;
 }
 
 // Invalid text
