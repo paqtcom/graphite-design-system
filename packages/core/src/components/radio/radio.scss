@@ -26,6 +26,8 @@
    * @prop --control-background-color-checked-focus: Background color of the control when checked on focus
    */
   --label-color: var(--gr-color-dark-tint);
+  --label-margin-top-adjustment: -7px;
+  --label-margin-bottom-adjustment: -4px;
 
   --control-size: var(--gr-toggle-size);
 
@@ -166,11 +168,11 @@
 }
 
 .radio-top .radio-label {
-  margin-top: -7px;
+  margin-top: var(--label-margin-top-adjustment);
 }
 
 .radio-bottom .radio-label {
-  margin-bottom: -4px;
+  margin-bottom: var(--label-margin-bottom-adjustment);
 }
 
 :host(:focus) {

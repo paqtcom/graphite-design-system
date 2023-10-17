@@ -29,6 +29,8 @@
    */
 
   --label-color: var(--gr-color-dark-tint);
+  --label-margin-top-adjustment: -7px;
+  --label-margin-bottom-adjustment: -4px;
 
   --control-size: var(--gr-toggle-size);
 
@@ -186,13 +188,12 @@
 }
 
 .checkbox-top .checkbox-label {
-  margin-top: -7px;
+  margin-top: var(--label-margin-top-adjustment);
 }
 
 .checkbox-bottom .checkbox-label {
-  margin-bottom: -4px;
+  margin-bottom: var(--label-margin-bottom-adjustment);
 }
-
 // Invalid text
 .invalid-text {
   display: none;
