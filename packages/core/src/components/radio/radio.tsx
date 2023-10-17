@@ -31,7 +31,7 @@ export class Radio {
   /** Set to true to draw the radio in a checked state. */
   @Prop({ mutable: true, reflect: true }) checked = false;
 
-  /** The radio's alignment. */
+  /** The radio's alignment attribute. */
   @Prop({ reflect: true }) alignment: 'top' | 'center' | 'bottom' = 'center';
 
   /**

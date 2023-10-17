@@ -7,7 +7,7 @@
 
 | Property    | Attribute   | Description                                       | Type                            | Default     |
 | ----------- | ----------- | ------------------------------------------------- | ------------------------------- | ----------- |
-| `alignment` | `alignment` | The radio's alignment.                            | `"bottom" \| "center" \| "top"` | `'center'`  |
+| `alignment` | `alignment` | The radio's alignment attribute.                  | `"bottom" \| "center" \| "top"` | `'center'`  |
 | `checked`   | `checked`   | Set to true to draw the radio in a checked state. | `boolean`                       | `false`     |
 | `disabled`  | `disabled`  | Set to true to disable the radio.                 | `boolean`                       | `false`     |
 | `value`     | `value`     | The radio's value attribute.                      | `string`                        | `undefined` |

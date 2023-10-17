@@ -415,7 +415,7 @@ export namespace Components {
     }
     interface GrRadio {
         /**
-          * The radio's alignment.
+          * The radio's alignment attribute.
          */
         "alignment": 'top' | 'center' | 'bottom';
         /**
@@ -1300,7 +1300,7 @@ declare namespace LocalJSX {
     }
     interface GrRadio {
         /**
-          * The radio's alignment.
+          * The radio's alignment attribute.
          */
         "alignment"?: 'top' | 'center' | 'bottom';
         /**
