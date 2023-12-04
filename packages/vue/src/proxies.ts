@@ -135,6 +135,7 @@ export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', de
   'autofocus',
   'debounce',
   'togglePassword',
+  'hideAppearance',
   'gr-change',
   'gr-clear',
   'gr-input',

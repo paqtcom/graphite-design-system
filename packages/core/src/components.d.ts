@@ -285,6 +285,10 @@ export namespace Components {
          */
         "helpText": string;
         /**
+          * Set to true to hide input appearances.
+         */
+        "hideAppearance": boolean;
+        /**
           * The input's inputmode attribute.
          */
         "inputmode": 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
@@ -1177,6 +1181,10 @@ declare namespace LocalJSX {
           * The input's help text. Alternatively, you can use the help-text slot.
          */
         "helpText"?: string;
+        /**
+          * Set to true to hide input appearances.
+         */
+        "hideAppearance"?: boolean;
         /**
           * The input's inputmode attribute.
          */

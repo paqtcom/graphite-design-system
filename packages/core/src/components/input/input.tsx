@@ -144,6 +144,11 @@ export class Input {
    */
   @Prop() togglePassword = false;
 
+  /**
+   * Set to true to hide input appearances.
+   */
+  @Prop() hideAppearance = true;
+
   @Watch('debounce')
   protected debounceChanged() {
     this.grChange = debounceEvent(this.grChange, this.debounce);
@@ -356,7 +361,7 @@ export class Input {
             onInput={this.handleInput}
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
-            class="input-control"
+            class={{ 'input-control': true, 'input-hide-appearance': this.hideAppearance }}
             {...this.inheritedAttributes}
           />
 
