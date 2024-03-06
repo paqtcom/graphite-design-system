@@ -168,6 +168,12 @@
   }
 }
 
+.tag-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .tag-clear svg {
   width: 1.1em;
   height: 1.1em;

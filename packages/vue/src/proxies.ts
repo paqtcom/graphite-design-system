@@ -240,6 +240,8 @@ export const GrTag = /*@__PURE__*/ defineContainer<JSX.GrTag>('gr-tag', defineGr
   'size',
   'pill',
   'clearable',
+  'truncate',
+  'title',
   'gr-clear'
 ]);
 

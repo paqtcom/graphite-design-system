@@ -21,6 +21,12 @@ export class Tag {
   /** Set to true to make the tag clearable. */
   @Prop({ reflect: true }) clearable = false;
 
+  /** Set to true to make the tag truncated. */
+  @Prop({ reflect: true }) truncate = false;
+
+  /** The tag's title. */
+  @Prop({ reflect: true }) title = '';
+
   /** Emitted when the clear button is activated. */
   @Event({ eventName: 'gr-clear' }) grClear: EventEmitter<void>;
 
@@ -43,7 +49,9 @@ export class Tag {
         }}
       >
         <span class="tag">
-          <slot></slot>
+          <span class={{ 'tag-truncate': this.truncate }} title={this.title}>
+            <slot></slot>
+          </span>
 
           {this.clearable && (
             <gr-button
