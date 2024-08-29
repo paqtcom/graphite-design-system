@@ -10,7 +10,7 @@
 | `clearable` | `clearable` | Set to true to make the tag clearable.                   | `boolean`                                                   | `false`     |
 | `pill`      | `pill`      | Set to true to draw a pill-style tag with rounded edges. | `boolean`                                                   | `false`     |
 | `size`      | `size`      | The tag's size.                                          | `"large" \| "medium" \| "small"`                            | `'medium'`  |
-| `title`     | `title`     |                                                          | `string`                                                    | `''`        |
+| `title`     | `title`     | The tag's title.                                         | `string`                                                    | `''`        |
 | `truncate`  | `truncate`  | Set to true to make the tag truncated.                   | `boolean`                                                   | `false`     |
 | `type`      | `type`      | The tag's type.                                          | `"danger" \| "info" \| "primary" \| "success" \| "warning"` | `'primary'` |
 

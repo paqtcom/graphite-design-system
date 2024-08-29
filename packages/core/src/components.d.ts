@@ -593,6 +593,9 @@ export namespace Components {
           * The tag's size.
          */
         "size": 'small' | 'medium' | 'large';
+        /**
+          * The tag's title.
+         */
         "title": string;
         /**
           * Set to true to make the tag truncated.
@@ -1502,6 +1505,9 @@ declare namespace LocalJSX {
           * The tag's size.
          */
         "size"?: 'small' | 'medium' | 'large';
+        /**
+          * The tag's title.
+         */
         "title"?: string;
         /**
           * Set to true to make the tag truncated.
