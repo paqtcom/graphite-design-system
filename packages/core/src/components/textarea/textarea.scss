@@ -54,6 +54,8 @@
 
   --padding-start: var(--gr-spacing-medium);
   --padding-end: var(--gr-spacing-medium);
+  --padding-top: var(--gr-spacing-x-small);
+  --padding-bottom: var(--gr-spacing-x-small);
 
   --focus-ring: 0 0 0 var(--gr-focus-ring-width) rgb(var(--gr-color-primary-rgb), 0.33);
 
@@ -150,10 +152,10 @@
   cursor: inherit;
   -webkit-appearance: none;
 
-  padding-top: 0.5em;
+  padding-top: var(--padding-top);
   padding-left: var(--padding-start);
   padding-right: var(--padding-end);
-  padding-bottom: 0.5em;
+  padding-bottom: var(--padding-bottom);
 
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button,
