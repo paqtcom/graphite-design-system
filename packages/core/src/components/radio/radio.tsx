@@ -63,9 +63,6 @@ export class Radio {
     if (radioGroup) {
       this.updateState();
       addEventListener(radioGroup, 'gr-change', this.updateState);
-
-      // Needed for the Vue wrappers
-      addEventListener(radioGroup, 'v-gr-change', this.updateState);
     }
   }
 

@@ -57,7 +57,7 @@ export const GrCheckbox = /*@__PURE__*/ defineContainer<JSX.GrCheckbox>('gr-chec
   'gr-focus',
   'gr-change'
 ],
-'checked', 'v-gr-change', 'gr-change');
+'checked', 'gr-change');
 
 
 export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-date-picker', defineGrDatePicker, [
@@ -82,7 +82,7 @@ export const GrDatePicker = /*@__PURE__*/ defineContainer<JSX.GrDatePicker>('gr-
   'gr-open',
   'gr-close'
 ],
-'value', 'v-gr-change', 'gr-change');
+'value', 'gr-change');
 
 
 export const GrDropdown = /*@__PURE__*/ defineContainer<JSX.GrDropdown>('gr-dropdown', defineGrDropdown, [
@@ -142,7 +142,7 @@ export const GrInput = /*@__PURE__*/ defineContainer<JSX.GrInput>('gr-input', de
   'gr-focus',
   'gr-blur'
 ],
-'value', 'v-gr-change', 'gr-change');
+'value', 'gr-change');
 
 
 export const GrMenu = /*@__PURE__*/ defineContainer<JSX.GrMenu>('gr-menu', defineGrMenu, [
@@ -184,7 +184,7 @@ export const GrRadioGroup = /*@__PURE__*/ defineContainer<JSX.GrRadioGroup>('gr-
   'value',
   'gr-change'
 ],
-'value', 'v-gr-change', 'gr-change');
+'value', 'gr-change');
 
 
 export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select', defineGrSelect, [
@@ -207,7 +207,7 @@ export const GrSelect = /*@__PURE__*/ defineContainer<JSX.GrSelect>('gr-select',
   'gr-focus',
   'gr-blur'
 ],
-'value', 'v-gr-change', 'gr-change');
+'value', 'gr-change');
 
 
 export const GrSpinner = /*@__PURE__*/ defineContainer<JSX.GrSpinner>('gr-spinner', defineGrSpinner);
@@ -273,5 +273,5 @@ export const GrTextarea = /*@__PURE__*/ defineContainer<JSX.GrTextarea>('gr-text
   'gr-focus',
   'gr-blur'
 ],
-'value', 'v-gr-change', 'gr-change');
+'value', 'gr-change');
 
