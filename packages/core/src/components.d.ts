@@ -652,6 +652,10 @@ export namespace Components {
          */
         "label": string | undefined;
         /**
+          * The number of max rows
+         */
+        "maxRows": number;
+        /**
           * Specifies how many characters are allowed.
          */
         "maxlength": number;
@@ -1563,6 +1567,10 @@ declare namespace LocalJSX {
           * The textarea's label. Alternatively, you can use the label slot.
          */
         "label"?: string | undefined;
+        /**
+          * The number of max rows
+         */
+        "maxRows"?: number;
         /**
           * Specifies how many characters are allowed.
          */

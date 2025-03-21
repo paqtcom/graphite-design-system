@@ -60,6 +60,9 @@ export class Textarea {
   /** The number of rows to display by default. */
   @Prop() rows = 4;
 
+  /** The number of max rows */
+  @Prop() maxRows: number;
+
   /** Controls how the textarea can be resized. */
   @Prop() resize: 'none' | 'vertical' | 'auto' = 'vertical';
 
@@ -245,6 +248,7 @@ export class Textarea {
     if (this.resize === 'auto') {
       this.textarea.style.height = 'auto';
       this.textarea.style.height = this.textarea.scrollHeight + 'px';
+      this.textarea.style.maxHeight = this.textarea.scrollHeight * this.maxRows + 'px';
     } else {
       this.textarea.style.height = undefined;
     }
@@ -289,7 +293,7 @@ export class Textarea {
             placeholder={this.placeholder}
             disabled={this.disabled}
             readOnly={this.readonly}
-            rows={this.rows}
+            rows={2}
             maxlength={this.maxlength}
             autoCapitalize={this.autocapitalize}
             autoCorrect={this.autocorrect}
