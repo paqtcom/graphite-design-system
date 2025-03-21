@@ -61,7 +61,7 @@ export class Textarea {
   @Prop() rows = 4;
 
   /** The number of max rows */
-  @Prop() maxRows: number;
+  @Prop() maxHeight: number;
 
   /** Controls how the textarea can be resized. */
   @Prop() resize: 'none' | 'vertical' | 'auto' = 'vertical';
@@ -166,11 +166,6 @@ export class Textarea {
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title']);
-
-    if (this.maxRows) {
-      this.textarea.style.maxHeight = 'auto';
-      this.textarea.style.maxHeight = Math.round(this.textarea.scrollHeight * this.maxRows) + 'px';
-    }
   }
 
   /** Sets focus on the textarea. */
@@ -235,6 +230,8 @@ export class Textarea {
   }
 
   handleFocus() {
+    this.textarea.style.maxHeight = this.maxHeight + 'px';
+
     this.hasFocus = true;
     this.grFocus.emit();
   }
@@ -297,7 +294,7 @@ export class Textarea {
             placeholder={this.placeholder}
             disabled={this.disabled}
             readOnly={this.readonly}
-            rows={2}
+            rows={this.rows}
             maxlength={this.maxlength}
             autoCapitalize={this.autocapitalize}
             autoCorrect={this.autocorrect}

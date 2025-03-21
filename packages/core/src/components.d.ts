@@ -654,7 +654,7 @@ export namespace Components {
         /**
           * The number of max rows
          */
-        "maxRows": number;
+        "maxHeight": number;
         /**
           * Specifies how many characters are allowed.
          */
@@ -1570,7 +1570,7 @@ declare namespace LocalJSX {
         /**
           * The number of max rows
          */
-        "maxRows"?: number;
+        "maxHeight"?: number;
         /**
           * Specifies how many characters are allowed.
          */
