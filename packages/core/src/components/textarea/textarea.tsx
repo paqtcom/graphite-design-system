@@ -245,10 +245,12 @@ export class Textarea {
   }
 
   setTextareaHeight() {
+    this.textarea.style.maxHeight = 'auto';
+    this.textarea.style.maxHeight = Math.round(this.textarea.scrollHeight * this.maxRows) + 'px';
+
     if (this.resize === 'auto') {
       this.textarea.style.height = 'auto';
       this.textarea.style.height = this.textarea.scrollHeight + 'px';
-      this.textarea.style.maxHeight = this.textarea.scrollHeight * this.maxRows + 'px';
     } else {
       this.textarea.style.height = undefined;
     }
