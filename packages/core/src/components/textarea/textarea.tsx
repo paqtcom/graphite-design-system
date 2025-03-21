@@ -166,6 +166,11 @@ export class Textarea {
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.el, ['aria-label', 'tabindex', 'title']);
+
+    if (this.maxRows) {
+      this.textarea.style.maxHeight = 'auto';
+      this.textarea.style.maxHeight = Math.round(this.textarea.scrollHeight * this.maxRows) + 'px';
+    }
   }
 
   /** Sets focus on the textarea. */
@@ -245,9 +250,6 @@ export class Textarea {
   }
 
   setTextareaHeight() {
-    this.textarea.style.maxHeight = 'auto';
-    this.textarea.style.maxHeight = Math.round(this.textarea.scrollHeight * this.maxRows) + 'px';
-
     if (this.resize === 'auto') {
       this.textarea.style.height = 'auto';
       this.textarea.style.height = this.textarea.scrollHeight + 'px';
