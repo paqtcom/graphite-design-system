@@ -84,3 +84,6 @@
     pointer-events: all;
   }
 }
+.dropdown-closed .dropdown-positioner {
+  display: none;
+}
