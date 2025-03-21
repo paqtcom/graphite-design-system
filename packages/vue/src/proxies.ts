@@ -257,7 +257,7 @@ export const GrTextarea = /*@__PURE__*/ defineContainer<JSX.GrTextarea>('gr-text
   'invalid',
   'placeholder',
   'rows',
-  'maxRows',
+  'maxHeight',
   'resize',
   'disabled',
   'readonly',
