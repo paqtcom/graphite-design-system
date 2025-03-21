@@ -8,9 +8,8 @@ import { initialize } from "@graphiteds/core/components";
  * v-model values have been updated.
  */
 const toKebabCase = (eventName: string) =>
-  eventName === "gr-change"
-    ? "v-gr-change"
-    : eventName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
+  eventName === "gr-change" ??
+  eventName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
 
 const getHelperFunctions = () => {
   return {

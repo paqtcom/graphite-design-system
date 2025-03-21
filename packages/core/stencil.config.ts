@@ -18,7 +18,7 @@ export const config: Config = {
     },
     { components: ['gr-radio', 'gr-radio-group'] },
     { components: ['gr-date-picker'] },
-    { components: ['gr-tab', 'gr-tab-group', 'gr-tab-panel']}
+    { components: ['gr-tab', 'gr-tab-group', 'gr-tab-panel'] },
   ],
   plugins: [sass()],
   globalStyle: 'src/css/core.scss',
@@ -45,14 +45,12 @@ export const config: Config = {
         {
           elements: ['gr-checkbox'],
           targetAttr: 'checked',
-          event: 'v-gr-change',
-          externalEvent: 'gr-change',
+          event: 'gr-change',
         },
         {
           elements: ['gr-select', 'gr-radio-group', 'gr-input', 'gr-textarea', 'gr-date-picker'],
           targetAttr: 'value',
-          event: 'v-gr-change',
-          externalEvent: 'gr-change',
+          event: 'gr-change',
         },
       ],
     }),
@@ -71,7 +69,7 @@ export const config: Config = {
         },
       ],
       includeGlobalScripts: false,
-      autoDefineCustomElements: true,
+      customElementsExportBehavior: 'auto-define-custom-elements',
     },
     {
       type: 'dist-hydrate-script',
