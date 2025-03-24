@@ -214,6 +214,16 @@ export class Textarea {
     }
   }
 
+  @Method()
+  async setTextareaHeight() {
+    if (this.resize === 'auto') {
+      this.textarea.style.height = 'auto';
+      this.textarea.style.height = this.textarea.scrollHeight + 'px';
+    } else {
+      this.textarea.style.height = undefined;
+    }
+  }
+
   handleChange() {
     this.grChange.emit();
   }
@@ -244,15 +254,6 @@ export class Textarea {
     this.hasLabelSlot = hasSlot(this.el, 'label');
     this.hasHelpTextSlot = hasSlot(this.el, 'help-text');
     this.hasInvalidTextSlot = hasSlot(this.el, 'invalid-text');
-  }
-
-  setTextareaHeight() {
-    if (this.resize === 'auto') {
-      this.textarea.style.height = 'auto';
-      this.textarea.style.height = this.textarea.scrollHeight + 'px';
-    } else {
-      this.textarea.style.height = undefined;
-    }
   }
 
   render() {

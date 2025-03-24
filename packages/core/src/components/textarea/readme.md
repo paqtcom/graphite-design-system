@@ -93,6 +93,16 @@ Type: `Promise<void>`
 
 
 
+### `setTextareaHeight() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Slots
 

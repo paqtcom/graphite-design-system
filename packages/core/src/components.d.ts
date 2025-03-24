@@ -703,6 +703,7 @@ export namespace Components {
           * Sets the start and end positions of the text selection (0-based).
          */
         "setSelectionRange": (selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') => Promise<void>;
+        "setTextareaHeight": () => Promise<void>;
         /**
           * The textarea's size.
          */
