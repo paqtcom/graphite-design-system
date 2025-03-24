@@ -362,6 +362,7 @@ export class Dropdown {
         id={this.componentId}
         class={{
           'dropdown-open': this.open,
+          'dropdown-closed': !this.open,
         }}
       >
         <span
